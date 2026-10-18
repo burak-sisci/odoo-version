@@ -19,6 +19,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 4. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
 5. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
 6. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci` varsayıldı.
+7. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
@@ -59,6 +60,12 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — `burak-sisci` kalsın · **B** — adın soyadın · **C** — şirket veya marka adı (K3 ile birlikte).
   - Claude önerisi: kalıcı marka belirlenene kadar **A**, sonra **C**.
   - Ne zaman: ilk dış demodan önce (F7).
+- [ ] K13 **Karar** — e-tablo formül adlarındaki `ODOO.` öneki (`ODOO.BALANCE`, `ODOO.PIVOT`, `ODOO.LIST` vb.).
+  - Neden: panolarda ve e-tablolarda formül yazan kullanıcı bu adları görür. Ama kayıtlı panolar bu adları içeriyor; değiştirmek kayıtlı formülleri bozar (`docs/research/brand-inventory.md` §10).
+  - Varsayım (otonom mesai 1, geri dönüşü kolay): teknik ad sayılır, marka sızıntısı testinin (T2.6) izin listesinde kalır.
+  - Seçenekler: **A** — olduğu gibi kalsın · **B** — kendi önekimizle eş adlar eklensin, `ODOO.` eski kayıtlar için çalışmaya devam etsin · **C** — tamamen yeniden adlandırılsın, kayıtlı formüller dönüştürülsün.
+  - Claude önerisi: şimdilik **A**; kalıcı marka adı belirlenince (T8.2) **B** yeniden değerlendirilir.
+  - Ne zaman: T2.6'dan önce ya da T8.2'de.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

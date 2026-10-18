@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.1 — Kullanıcıya görünen Odoo izlerinin envanteri
+**Şu anki görev:** T2.2 — Marka modülü `ov_brand`
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 1/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 19/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 20/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -261,7 +261,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Portların lint'i: OCA'nın kod biçimi korunur; bizim lint denetimlerimiz yalnız `addons/` (T1.9).
   - Kabul: addons yolu üç kaynağı da içeriyor; örnek bir port kuruluyor.
 
-### F2 — Marka katmanı `[ ]`
+### F2 — Marka katmanı `[~]`
 
 **Amaç:** kullanıcı hiçbir ekranda Odoo adını veya logosunu görmez; sistem odoo.com'a bağlanmaz (D-007).
 **Kabul (M2):**
@@ -269,28 +269,32 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - Testler sırasında odoo.com'a giden ağ isteği yok.
 - Marka adı tek bir ayardan değişiyor. Böylece T8.2'deki yeniden adlandırma bir ayar değişikliği olur.
 
-- [ ] T2.1 Kullanıcıya görünen Odoo izlerinin envanteri · M · C
+- [x] T2.1 Kullanıcıya görünen Odoo izlerinin envanteri · M · C
   - Kaynak: 20.0 Community kodu. Ekran, dosya ve değiştirme yöntemi listelenir.
   - OCA modüllerinin yazar adı ("Odoo Community Association (OCA)") Uygulamalar ekranında görünüyor. Telif bilgisi olduğu için değiştirilmez (CLAUDE.md kural 2–3). Son kullanıcıdan Uygulamalar menüsünü gizlemek T7.3'te.
   - Çıktı: `docs/research/brand-inventory.md`.
+  - Sonuç: bütün yüzeyler modülle değiştirilebiliyor; çekirdek değişikliği gerekmiyor. MVP modülleriyle 97 kurulu modülde 253 çevrilebilir metin "odoo" içeriyor. Yayıncı garantisi haftalık olarak şirket adı, e-posta ve telefonunu da gönderiyor (KVKK).
 - [ ] T2.2 Marka modülü `ov_brand` · L · C
   - Yapılandırılabilir tek marka adı ve logo.
-  - Değişen yerler: pencere başlığı, favicon, giriş ekranı, kullanıcı menüsü (dokümantasyon, destek, odoo.com hesabı), ayarlardaki "hakkında" alanı, PWA manifesti, hata ekranları.
+  - Değişen yerler (envanter §3): pencere başlığı, favicon, giriş ekranı, PWA manifesti ve simgeleri, çevrimdışı sayfa, pencere ve hata başlıkları, kullanıcı menüsündeki destek bağlantısı, ayarlardaki "hakkında" alanı (Odoo S.A. telif satırı kalır), OdooBot adı ve avatarı, veritabanı yöneticisi.
 - [ ] T2.3 odoo.com bağlantılarının kesilmesi · M · C
-  - Yayıncı garantisi çağrısı.
-  - IAP servisleri: SMS, ortak otomatik tamamlama, posta, OCR. Kapatılır veya gizlenir.
-  - Uygulama listesindeki ve ayarlardaki Enterprise yükseltme reklamları (OCA 20.0 `remove_odoo_enterprise` değerlendirilir).
+  - Envanter §4. İlk iş yayıncı garantisi çağrısı.
+  - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme, düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
+  - `mysubscription` ("Aboneliğim"): 20.0'da yeni, her veritabanına kendiliğinden kuruluyor; menü öğesi gizlenir.
+  - Enterprise reklamları: ayar ekranları için OCA 20.0 `remove_odoo_enterprise`; Uygulamalar listesindeki satın alınacak uygulama kartları (`to_buy`) için ayrı filtre.
   - odoo.com dokümantasyon/destek bağlantıları.
 - [ ] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).
 - [ ] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
   - "Powered by" ifadeleri, e-posta şablonları, PDF rapor düzenleri (`ov_brand_mail`, `ov_brand_website`).
+  - Envanter §6: fatura QR kodunun ortasındaki Odoo logosu, PDF üst verisi (`Creator/Producer`), satın alma portalındaki tanıtım bölümü, özet e-postasının odoo.com'dan yüklenen görseli.
   - PDF motoru seçimi (T1.6 bulgusu): 20.0'da motor eklentili. `base_report_wkhtmltox` kendiliğinden kurulur, ama wkhtmltopdf deposu 2022'den beri arşivde. `base_report_paper_muncher` Odoo'nun yeni motoru (LGPL-3, etkin geliştiriliyor); yalnız Linux ikili dosyaları var. Yerelde ikisi de kurulu değil; PDF denemeleri Linux'ta (CI). Seçim önerisi bu görevde yazılır.
 - [ ] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
-  - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar.
+  - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları şimdilik izin listesinde (K13 varsayımı).
 - [ ] T2.7 Dış istek testi · S · C
+  - Odoo test çatısı `requests` ile yapılan dış istekleri zaten engelliyor ve günlüğe yazıyor (envanter §4.2). Kapsamadıkları: kurulum ve zamanlanmış işler, tarayıcı testlerinde sayfanın kendi istekleri.
   - Testler sırasında dış HTTP istekleri kaydedilir; odoo.com alan adlarına istek = hata.
 
 ### F3 — Türkiye temel yerelleştirmesi `[ ]`

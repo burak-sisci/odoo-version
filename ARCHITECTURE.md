@@ -120,7 +120,7 @@ Kurallar:
 
 | Katman | Modül adı kalıbı | Görev | Lisans (D-016) |
 |---|---|---|---|
-| Marka | `ov_brand`, `ov_brand_website`, `ov_brand_mail` | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta ve rapor altbilgileri, PWA manifest, kullanıcı menüsü bağlantıları; odoo.com'a giden çağrıların (yayıncı garantisi, IAP) kapatılması | AGPL-3 |
+| Marka | `ov_brand`, `ov_brand_website`, `ov_brand_mail` | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta ve rapor altbilgileri, PWA manifest, kullanıcı menüsü bağlantıları; odoo.com'a giden çağrıların (yayıncı garantisi, IAP) kapatılması. Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
 | Türkiye temeli | `ov_l10n_tr`, `ov_l10n_tr_tcmb`, `ov_l10n_tr_mis_reports`, `ov_l10n_tr_check` … | Vergi/tevkifat eksikleri, VKN/TCKN, il/ilçe, TCMB kurları, belge çıktıları, Tekdüzen mali tablolar, çek/senet | AGPL-3. LGPL koddan türetilen kısım varsa (ör. `l10n_latam_check` uyarlaması) LGPL-3 |
 | e-Belge | `ov_l10n_tr_edi` (çekirdek), `ov_l10n_tr_edi_nilvera` (adaptör), `ov_l10n_tr_edispatch` … | UBL-TR üretimi, senaryolar, fatura tipleri, mükellef sorgulama, durum takibi; entegratör adaptörleri; sahte adaptör | **LGPL-3** (19.0 LGPL koddan türetildiği için, D-008/2) |
 | OCA portları | Orijinal OCA adları (`ports/oca/`) | Mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite kontrol … | Orijinal lisans (çoğu AGPL-3) |
