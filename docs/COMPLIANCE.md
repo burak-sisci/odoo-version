@@ -69,6 +69,7 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 | Bileşen | Sürüm/commit | Lisans | Değiştirildi mi? | Nerede |
 |---|---|---|---|---|
 | Odoo Community | 20.0, commit `afbcf79d` (2026-10-18) | LGPL-3 (`LICENSE`, `COPYRIGHT`) | Hayır (D-010) | `upstream/odoo`, sığ git submodule (T1.4) |
+| Odoo AI rehberleri (upstream `skills/`) | 20.0, commit `afbcf79d` | LGPL-3 (klasörde kendi lisans dosyası yok, depo lisansı geçerli; `LICENSE` kopyası yanında) | Hayır; yalnız satır sonu LF'ye çevrildi | `.claude/skills/`, kaynak notu `SOURCE.md` (T1.7, `tools/sync_skills.py`) |
 
 **Geliştirme ortamı araçları (depoya girmez, ürünle dağıtılmaz):**
 

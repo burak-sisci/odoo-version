@@ -118,10 +118,17 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 
 - Modül öneki `ov_` (D-014). Örnek: `ov_brand`, `ov_l10n_tr_edi`. OCA portları orijinal adlarını korur (D-019).
 - Odoo kalıplarını izle:
-  - model genişletme `_inherit` ile, görünüm kalıtımı XPath ile;
+  - model genişletme `_inherit` ile; görünüm kalıtımı ada bağlanır (kısa `<field name=… position=…>` biçimi, gerekirse XPath), konuma göre asla;
   - JS'te `patch()`, asset paketinde `replace`;
   - yetkiler `ir.access.csv` ile (20.0 yetki modeli).
-- Odoo 20 deposu `skills/` klasöründe resmi AI rehberleri içerir (`odoo-guidelines`, `odoo-review`, `odoo-security`, `odoo-web-guidelines`, `odoo-git`). T1.7'de `.claude/skills/` altına kurulacak. Kurulunca kod yazarken ve incelerken bunlara uy.
+- Odoo'nun resmî AI rehberleri `.claude/skills/` altında kurulu (T1.7): `odoo-guidelines`, `odoo-web-guidelines`, `odoo-security`, `odoo-review`, `odoo-git`.
+  - Upstream'in değiştirilmemiş kopyası (LGPL-3). Elle düzenlenmez; upstream commit'i ilerleyince `python tools/sync_skills.py`.
+  - Kod yazarken `odoo-guidelines` / `odoo-web-guidelines`, incelemede `odoo-review`, güvenlik denetiminde `odoo-security` kullanılır.
+  - Rehberler Odoo'nun kendi depoları için yazılmış. Çelişkide bu dosya önce gelir:
+    - `odoo-git` yalnız upstream veya OCA'ya katkıda geçerlidir (K8). Kendi depomuzda commit biçimi ve yazarlık bu dosyadaki gibidir (kural 8); rebase sonrası force-push yoktur.
+    - `odoo-review`'daki "Enterprise'daki diğer yarıya bak" adımı uygulanmaz (kural 1, D-006). Enterprise deposu açılmaz, klonlanmaz.
+    - JS `patch()` kendi modüllerimizde serbesttir (rehber de Odoo dışı kod için uygun buluyor).
+    - ASCII noktalama kuralı kod yorumları, docstring'ler, kullanıcıya görünen metinler ve commit mesajları içindir. Türkçe harfler serbest; Markdown belgelerimiz bu kuralın dışında.
 - Her modülde:
   - manifest'te doğru `license` (kural 3) ve sürüm `20.0.x.y.z`;
   - testler (`tests/`);
@@ -154,6 +161,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
 - Python ortamı: `python -m venv .venv` → `.venv/Scripts/python -m pip install --prefer-binary -r requirements-dev.txt` (upstream güncellenince yeniden çalıştırılır)
 - Odoo sürüm kontrolü: `.venv/Scripts/python upstream/odoo/odoo-bin --version`
+- Odoo AI rehberleri: `python tools/sync_skills.py` (kopyalar), `python tools/sync_skills.py --check` (upstream'le farkı denetler)
 - Yerel yapılandırma: `python tools/odoo_conf.py` (`--force` ile yeniden yazar; `.env`'de `ODOO_ADMIN_PASSWD` yoksa üretir)
 - Demo veritabanı: `.venv/Scripts/python upstream/odoo/odoo-bin db -c odoo.conf init ov_demo --with-demo --language tr_TR --country TR` → `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo -i account,l10n_tr --stop-after-init`
 - Sunucu: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo` → http://127.0.0.1:8069

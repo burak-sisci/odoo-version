@@ -49,6 +49,7 @@ odoo-version/
 ├── LICENSE                  # GNU AGPL v3 (D-016)
 ├── .gitignore  .gitattributes   # gizli bilgiler ve yerel veriler depoya girmez; satır sonu LF
 ├── .github/workflows/       # CI (henüz yok — T1.10)
+├── .claude/skills/          # Odoo'nun AI rehberleri, upstream'den değiştirilmeden kopya (LGPL-3, T1.7)
 ├── docs/
 │   ├── COMPLIANCE.md        # lisans, clean-room, marka, KVKK
 │   ├── MODULE_MATRIX.md     # tüm uygulamaların planı ve durumu
@@ -57,7 +58,8 @@ odoo-version/
 ├── tools/
 │   ├── check_docs.py        # belge tutarlılık denetimi (+ ileride modül şablonu, UBL doğrulama, çeviri ölçümü)
 │   ├── pg.py                # yerel PostgreSQL kümesi: init, start, stop, status (T1.3)
-│   └── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
+│   ├── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
+│   └── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
