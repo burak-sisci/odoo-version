@@ -145,7 +145,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 ## Komutlar
 
 - Belge denetimi: `python tools/check_docs.py`
-- Yeni klonda upstream: `git config core.longpaths true` → `git submodule update --init --depth 1`
+- Yeni klonda upstream: `git -c core.longpaths=true submodule update --init --depth 1`, ardından `git -C upstream/odoo config core.longpaths true` (düz `git config` alt modüle geçmez)
 - PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
 - Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.

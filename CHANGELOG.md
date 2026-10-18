@@ -13,7 +13,8 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 - Odoo 20.0 Community `upstream/odoo` altına sığ git submodule olarak eklendi. Sabit commit `afbcf79d` (2026-10-18), T1.2 denemesinin yapıldığı commit.
   - `.gitmodules`: `branch = 20.0`, `shallow = true`, adres GitHub.
   - İndirme süresini kısaltmak için ilk klon yerel inceleme kopyasından alındı, sonra adres GitHub'a çevrildi (`git submodule set-url`, `sync`).
-  - Kabul: depo temiz bir klasöre klonlandı; `git submodule update --init --depth 1` GitHub'dan sabit commit'i getirdi.
+  - Kabul: depo temiz bir klasöre klonlandı; `git -c core.longpaths=true submodule update --init --depth 1` GitHub'dan sabit commit'i sığ olarak getirdi, çalışma ağacı temiz.
+  - İlk deneme `-c core.longpaths=true` olmadan "Filename too long" ile düştü: süper depodaki `core.longpaths` ayarı alt modülün klonuna geçmiyor. CLAUDE.md komutu buna göre yazıldı.
 - Yerel depoda `core.longpaths` açıldı (Windows yol uzunluğu, R11).
 
 **Belgeler**
