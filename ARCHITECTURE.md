@@ -55,12 +55,14 @@ odoo-version/
 │   ├── specs/               # Enterprise eşdeğerleri için clean-room işlev tanımları
 │   └── research/            # tarihli araştırma kayıtları
 ├── tools/
-│   └── check_docs.py        # belge tutarlılık denetimi (+ ileride modül şablonu, UBL doğrulama, çeviri ölçümü)
+│   ├── check_docs.py        # belge tutarlılık denetimi (+ ileride modül şablonu, UBL doğrulama, çeviri ölçümü)
+│   ├── pg.py                # yerel PostgreSQL kümesi: init, start, stop, status (T1.3)
+│   └── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
 ├── addons/                  # bizim modüllerimiz, önek ov_ (henüz yok)
-└── deploy/                  # kurulum aracı, odoo.conf örneği, ters vekil, yedek betikleri (henüz yok — T1.6, T8.4)
+└── deploy/                  # odoo.conf.example (T1.6); kurulum aracı, ters vekil, yedek betikleri (henüz yok — T8.4)
 ```
 
 Kurallar:
@@ -139,6 +141,10 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - Kullanıcı hesabında çalışır, yalnız `localhost` dinler. Yönetim: `tools/pg.py`. Bağlantı bilgileri `.env` dosyasında (git'e girmez).
   - Sürüm seçimi: Odoo 20.0'ın alt sınırı 16; 18, CI ve olası üretim sunucusunun (Ubuntu) paket sürümleriyle uyumlu.
 - Odoo `upstream/odoo/odoo-bin` ile; addons yolu §2'deki sırayla.
+- **Yerel Odoo (T1.6, çalışıyor):** depo kökündeki `odoo.conf` (git'e girmez) `deploy/odoo.conf.example`'dan `tools/odoo_conf.py` ile üretilir.
+  - Addons yolu glob kalıplarıyla yazılır (`vendor/oca/*`, `ports/oca/*`, `addon[s]`); henüz olmayan klasörler uyarısız atlanır.
+  - Veri klasörü `OV_HOME/odoo-data`. Tek süreç (`workers = 0`), yalnız `127.0.0.1`.
+  - Demo veritabanı `ov_demo` (Türkçe, TR, `account` + `l10n_tr`).
 - **CI (D-020):** GitHub Actions, Ubuntu runner + PostgreSQL servisi. Her push'ta çalışır:
   - belge denetimi;
   - lint;

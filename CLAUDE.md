@@ -138,6 +138,9 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Odoo rolü `odoo` (LOGIN CREATEDB). Bağlantı bilgileri depodaki `.env` dosyasında (git'e girmez).
   - Bilgisayar yeniden başlayınca sunucu kendiliğinden açılmaz: `python tools/pg.py start`.
 - Python sanal ortamı (T1.5): depoda `.venv` (git'e girmez), Python 3.12.10. Bağımlılıklar `requirements-dev.txt`: upstream `requirements.txt` + test/lint araçları (ruff 0.16, websocket-client).
+- Yerel Odoo (T1.6): `odoo.conf` depo kökünde (git'e girmez), `deploy/odoo.conf.example`'dan `tools/odoo_conf.py` ile üretilir. Veri klasörü (filestore, oturumlar) `OV_HOME/odoo-data`.
+  - Demo veritabanı `ov_demo`: Türkçe, ülke TR, demo verili, `account` + `l10n_tr`. Türk hesap planı `TR Company` demo şirketinde; ana şirket upstream demo düzeninde genel hesap planıyla gelir. Giriş `admin`/`admin` (yalnız yerel, `127.0.0.1`).
+  - PDF motoru kurulu değil (T2.5'te seçilir).
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
@@ -151,4 +154,8 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
 - Python ortamı: `python -m venv .venv` → `.venv/Scripts/python -m pip install --prefer-binary -r requirements-dev.txt` (upstream güncellenince yeniden çalıştırılır)
 - Odoo sürüm kontrolü: `.venv/Scripts/python upstream/odoo/odoo-bin --version`
-- Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.
+- Yerel yapılandırma: `python tools/odoo_conf.py` (`--force` ile yeniden yazar; `.env`'de `ODOO_ADMIN_PASSWD` yoksa üretir)
+- Demo veritabanı: `.venv/Scripts/python upstream/odoo/odoo-bin db -c odoo.conf init ov_demo --with-demo --language tr_TR --country TR` → `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo -i account,l10n_tr --stop-after-init`
+- Sunucu: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo` → http://127.0.0.1:8069
+- Odoo kabuğu: `.venv/Scripts/python upstream/odoo/odoo-bin shell -c odoo.conf -d ov_demo --no-http` (Türkçe çıktı için `PYTHONIOENCODING=utf-8`)
+- Test komutları: henüz yok, T1.8'de buraya eklenecek.

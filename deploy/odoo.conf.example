@@ -1,0 +1,25 @@
+; Local development configuration for odoo-version (template).
+; Generate the real file with: python tools/odoo_conf.py
+; The generated odoo.conf holds credentials and is never committed (D-015).
+; Placeholders in curly braces are filled from .env and the local paths.
+
+[options]
+; Order: upstream, vendor/oca/*, ports/oca/*, addons (ARCHITECTURE.md section 2).
+; Glob entries skip directories that do not exist yet, without a warning.
+addons_path = {root}/upstream/odoo/addons,{root}/upstream/odoo/odoo/addons,{root}/vendor/oca/*,{root}/ports/oca/*,{root}/addon[s]
+data_dir = {ov_home}/odoo-data
+
+db_host = {PGHOST}
+db_port = {PGPORT}
+db_user = {PGUSER}
+db_password = {PGPASSWORD}
+
+; Master password of the database manager.
+admin_passwd = {ODOO_ADMIN_PASSWD}
+
+; Listen on this machine only.
+http_interface = 127.0.0.1
+http_port = 8069
+
+; Single process: gevent and prefork workers are not available on Windows.
+workers = 0

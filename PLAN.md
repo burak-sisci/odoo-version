@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.6 — Odoo'nun yerelde çalıştırılması
+**Şu anki görev:** T1.7 — Odoo `skills/` rehberlerinin `.claude/skills/` altına kurulması
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 5/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 6/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 13/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 14/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -232,7 +232,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [x] T1.5 Python sanal ortamı ve bağımlılıklar · S · C — `odoo-bin --version` = Odoo Server 20.0
   - `.venv`; upstream `requirements.txt` + kendi `requirements-dev.txt` (test ve lint araçları).
   - Kabul: `odoo-bin --version` çalışıyor.
-- [ ] T1.6 Odoo'nun yerelde çalıştırılması · S · C
+- [x] T1.6 Odoo'nun yerelde çalıştırılması · S · C — `ov_demo`, Türkçe arayüz ve `TR Company` hesap planı doğrulandı
   - `deploy/odoo.conf.example` depoya girer; yerel `odoo.conf` girmez.
   - Türkçe dil + `l10n_tr` ile demo veritabanı.
   - Kabul: tarayıcıda Türkçe arayüz, Türk demo şirketi ve hesap planı yüklü.
@@ -281,6 +281,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).
 - [ ] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
   - "Powered by" ifadeleri, e-posta şablonları, PDF rapor düzenleri (`ov_brand_mail`, `ov_brand_website`).
+  - PDF motoru seçimi (T1.6 bulgusu): 20.0'da motor eklentili. `base_report_wkhtmltox` kendiliğinden kurulur, ama wkhtmltopdf deposu 2022'den beri arşivde. `base_report_paper_muncher` Odoo'nun yeni motoru (LGPL-3, etkin geliştiriliyor); yalnız Linux ikili dosyaları var. Yerelde ikisi de kurulu değil; PDF denemeleri Linux'ta (CI). Seçim önerisi bu görevde yazılır.
 - [ ] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
   - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar.
@@ -299,6 +300,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T3.1 `l10n_tr` (20.0) analizi · M · C
   - Bugün var olanlar (2026-10-18 incelemesi): Tekdüzen hesap planı, vergiler, mali pozisyonlar, vergi raporu, damga vergisi raporu, ~1.046 vergi dairesi, 81 il.
   - Çıktı: eksik listesi ve her eksiğin hangi göreve gideceği (`docs/research/l10n-tr.md`).
+  - T1.6 demo gözlemleri: bazı hesap adlarında Türkçe büyük harf hatası (`TAHSIL EDILMEYEN ÖDEMELER`); İngilizce kalan hesap ve vergi adları (`Private Sector Bonds, Shares And Notes`, `WH 20% (2/10)`); hesap planı ekranında çevrilmemiş sütun (`Payment Reconciliation`).
 - [ ] T3.2 Temel yerelleştirme modülü `ov_l10n_tr` · M · C
   - T3.1'e göre eksik vergi, tevkifat ve istisna tanımları.
   - Türkiye varsayılanları: TRY, Europe/Istanbul, tarih biçimi, hafta başı Pazartesi.

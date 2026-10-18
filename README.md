@@ -17,7 +17,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Sürüm doğrulandı: 20.0'da kalınıyor (T1.2, `docs/research/nilvera-port.md`).
 - Upstream Odoo 20.0 projeye eklendi (`upstream/odoo`, T1.4).
 - Python geliştirme ortamı hazır (`.venv`, `requirements-dev.txt`, T1.5).
-- Sıradaki görev: Odoo'nun yerelde çalıştırılması (T1.6), ardından test komutları ve CI.
+- Odoo yerelde çalışıyor: Türkçe arayüz, `l10n_tr` ve Türk hesap planlı demo şirketi (T1.6).
+- Sıradaki görevler: Odoo AI rehberleri, test komutları ve CI (T1.7–T1.10).
 - Açık karar yok. Henüz kod yok.
 
 ## Belgeler
