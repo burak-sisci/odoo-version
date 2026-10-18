@@ -18,6 +18,7 @@ Bu matris D-002'nin (tüm Odoo uygulamaları) uygulama planıdır. Her uygulaman
 OCA sayıları: ilgili OCA deposundaki `__manifest__.py` sayısı, 18.0 / 19.0 / 20.0 dalları, 2026-10-18.
 - 20.0 sayısına henüz taşınmamış yer tutucular (`installable: False`, sürümü 19.0) dahildir. Ör. `mis-builder` 20.0'daki 3 modülün hiçbiri kurulamaz.
 - Kurulabilir 20.0 modülleri ve port ölçümü: `docs/research/nilvera-port.md` (T1.2).
+- Ortak bağımlılıklar hazır (T1.11): `date_range` (resmî 20.0, `vendor/oca/server-ux`) ve `report_xlsx` (port, `ports/oca/reporting-engine`). Mali raporlar (`account_financial_report`) ve `mis_builder` bu ikisine dayanıyor.
 
 ## A. Community'de hazır gelenler (upstream, LGPL-3)
 

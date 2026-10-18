@@ -1,0 +1,23 @@
+name: Submodules
+description: >-
+  Check out the pinned submodules (upstream/odoo, vendor/oca/*), shallow. Their
+  git objects are cached per set of pinned commits; when a pin moves, the last
+  cache is restored and only the new commits are fetched.
+runs:
+  using: composite
+  steps:
+    - name: Pinned submodule commits
+      id: pin
+      shell: bash
+      # The tree ids of upstream/ and vendor/ change whenever a pinned commit changes.
+      run: echo "key=$(git ls-tree HEAD upstream vendor | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
+    - name: Submodule git objects cache
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
+      with:
+        path: .git/modules
+        key: submodules-${{ steps.pin.outputs.key }}
+        restore-keys: submodules-
+    - name: Check out the submodules
+      shell: bash
+      # Reuses the cached objects when present; fetches only what is missing.
+      run: git submodule update --init --depth 1

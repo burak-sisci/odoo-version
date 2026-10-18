@@ -7,6 +7,33 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: `vendor/` ve `ports/` düzeni (T1.11) — otonom mesai 1
+
+**Kod**
+- `vendor/oca/server-ux`: OCA'nın resmî 20.0 deposu, sığ git submodule, commit `d952d4df` (2026-10-13).
+  - İçinde `date_range` (LGPL-3). Mali raporlar ve `mis_builder` buna bağımlı.
+  - `git submodule add --depth 1 -b 20.0` dalı bulamadı (sığ klon yalnız varsayılan dalı çekiyor). Yol: önce `git clone --depth 1 --branch 20.0`, sonra `submodule add` ve `absorbgitdirs`.
+- `tools/port_oca.py`:
+  - `fetch <depo> <modül>`: OCA deposunu geçici klasöre sığ ve seyrek klonlar, modülü `ports/oca/<depo>/<modül>`'e kopyalar. Sürüm `20.0.1.0.0` (OCA taşıma kuralı). `PORT.md`: kaynak depo, dal, commit, lisans, yazarlar. AGPL-3/LGPL-3 dışı lisansta durur. İndirilen dosyalardan hiçbiri çalıştırılmaz.
+  - `upgrade <port>`: Odoo'nun `upgrade_code` betikleri (kaynak dalından sonraki sürümler ve Owl 3) yalnız porta. T1.2'deki Windows sorunları araçta çözüldü: yollar `/` ile, UTF-8, yazma yalnız port klasörüne. `ir-access` betiği bağımlılık modüllerini okur, onlara yazılmaz. Sonuç ve uyarı sayısı `PORT.md`'ye.
+  - `diff <port> [--stat]`: kaynak commit'le farkın tamamı.
+- `ports/oca/reporting-engine/report_xlsx`: ilk port, OCA 19.0 commit `b9e8c6cd` (AGPL-3).
+  - `upgrade_code` değişiklik bulmadı (T1.2'deki gibi).
+  - Elle uyarlamalar (T1.2'dekiyle aynı): `odoo.http` paket oldu (`content_disposition` → `odoo.http.stream`, `serialize_exception` → `odoo.http.dispatcher`); kaldırılan `ir.actions.report.report_file` alanı demo verisinden, testten ve kullanım örneğinden (README, `readme/USAGE.md`, `index.html`) silindi.
+  - JS değişmedi: `download`, `user` ve `ir.actions.report handlers` 20.0'da aynı.
+- CI: `.github/actions/upstream` → `.github/actions/submodules`. Bütün alt modüller (upstream + vendor) sığ çekilir. Önbellek anahtarı sabit commit'lerden; biri değişince son önbellek geri yüklenir.
+- Lint: `vendor/` ve `ports/` OCA'nın kod biçiminde kalır. Bizim denetimlerimiz yalnız `addons/` (T1.9 ayarı korunuyor).
+
+**Doğrulama**
+- `python tools/run_tests.py report_xlsx,date_range`: addons yolunda upstream, `vendor/oca/server-ux` ve `ports/oca/reporting-engine` var. Odoo özeti 23 test, 0 hata; `RESULT: OK`, Windows gc hatası da yok.
+- Aracın denemesi `account_financial_report` ile (geçici, depoya girmedi): `t-call` 3, `ir-access` 4, `owl3-migration` 1 dosya; 1 uyarı (`trial_balance.xml`'de `--` içeren yorum). Sonuç T1.2 ölçümüyle aynı. `diff` doğru farkı verdi.
+- OCA'da açık taşıma PR'ı var: reporting-engine #1203 (`report_xlsx`, son güncelleme 2026-10-16). Dosyalar karşılaştırıldı: aynı import değişikliği, aynı `report_file` silme, aynı sürüm `20.0.1.0.0`. PR testleri ayrıca `BaseCommon`'a taşımış; zorunlu değil, alınmadı.
+- gitleaks (yerel, `dir`): `ports/`, `tools/port_oca.py`, `.github/` temiz.
+- Linux referans testi (T1.10 sonrası, elle CI çalıştırması): `l10n_tr` + `account_edi_ubl_cii` 233 test, 4 hata (Enterprise alanına yazan bir test, nedeni incelenmemiş bir içe aktarma testi, PDF motoru olmadığı için 2 test). Windows'taki 27 gc hatası ve `LocalBinaryFile` hatası Linux'ta yok. Ayrıntı `docs/research/nilvera-port.md` §8.
+
+**Belgeler**
+- ARCHITECTURE.md (Durum; §2 ağacı ve "OCA port düzeni": port prosedürü, lint ve test düzeni; §5 CI önbelleği), PLAN.md (T1.11, F1 tamam; T2.1'e OCA yazar adı notu), CLAUDE.md (Ortam: OCA; Komutlar: port aracı, yeni klonda alt modüller), README.md, COMPLIANCE.md §5 (server-ux, `report_xlsx`), MODULE_MATRIX.md (ortak bağımlılıklar), `docs/research/nilvera-port.md` (§5.1 sarmalayıcı araç oldu, §8 Linux referansı; PDF motoru görevi T2.5), state.json.
+
 ### Adım: CI düzeltmesi — elle çalıştırma ayrı grupta (T1.10 sonrası) — otonom mesai 1
 
 **Kod**
