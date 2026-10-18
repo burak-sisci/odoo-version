@@ -4,7 +4,7 @@ Son güncelleme: 2026-10-18
 
 > **Durum: Hedef mimari.**
 > - Dayandığı Geçerli kararlar:
->   - D-010 (yaklaşım **B**), D-011 (sürüm **20.0**; T1.2'de doğrulanacak), D-014 (önek `ov_`);
+>   - D-010 (yaklaşım **B**), D-011 (sürüm **20.0**; T1.2'de doğrulandı), D-014 (önek `ov_`);
 >   - D-016 (lisans **AGPL-3**, LGPL türevleri LGPL-3), D-018 (paketler ve teslim biçimi), D-019 (OCA portları), D-020 (ücretsiz altyapı).
 > - Üretim barındırma yeri D-013 ile ertelendi (§4).
 > - Henüz kod yok. Bu belge kurulacak yapıyı tanımlıyor. Görevler `PLAN.md`'de.

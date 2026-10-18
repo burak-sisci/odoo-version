@@ -16,6 +16,8 @@ Bu matris D-002'nin (tüm Odoo uygulamaları) uygulama planıdır. Her uygulaman
 **Durum:** `plan` → `inceleniyor` → `geliştiriliyor` → `test` → `tamam`
 
 OCA sayıları: ilgili OCA deposundaki `__manifest__.py` sayısı, 18.0 / 19.0 / 20.0 dalları, 2026-10-18.
+- 20.0 sayısına henüz taşınmamış yer tutucular (`installable: False`, sürümü 19.0) dahildir. Ör. `mis-builder` 20.0'daki 3 modülün hiçbiri kurulamaz.
+- Kurulabilir 20.0 modülleri ve port ölçümü: `docs/research/nilvera-port.md` (T1.2).
 
 ## A. Community'de hazır gelenler (upstream, LGPL-3)
 
@@ -50,7 +52,7 @@ Bu uygulamalar için iş: marka katmanı + Türkçe çeviri + Türkiye yerelleş
 | Resmî tatiller ve çalışma takvimi | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |
 | Çek ve senet (`ov_l10n_tr_check`) | Kendimiz; Community `l10n_latam_check` incelenerek | Community 20.0 | AGPL-3; türetme olursa LGPL-3 | T, Ü | P0 | plan |
 | Banka ekstresi içe aktarma + Türk bankası şablonları | OCA 19.0 port + kendi şablonlarımız | OCA `account_statement_import_file`, `account_statement_import_sheet_file` | AGPL-3 (OCA) | T, Ü | P0 | plan |
-| Tekdüzen bilanço ve gelir tablosu (`ov_l10n_tr_mis_reports`) | Kendimiz | OCA `mis_builder` (20.0'da var) | AGPL-3 | T, Ü | P0 | plan |
+| Tekdüzen bilanço ve gelir tablosu (`ov_l10n_tr_mis_reports`) | Kendimiz | OCA `mis_builder` (19.0'dan port, T5.5) | AGPL-3 | T, Ü | P0 | plan |
 | KDV hazırlık raporu | Kendimiz | `l10n_tr` vergi raporu | AGPL-3 | T, Ü | P0 | plan |
 | Mali müşavire aktarım (muhasebe fişleri) | Kendimiz | Muhasebe programlarının kamuya açık içe aktarma biçimleri | AGPL-3 | T, Ü | P0 | plan |
 | e-Fatura + e-Arşiv (entegratörden bağımsız çekirdek) | 19.0 LGPL port + kendi tasarım | odoo/odoo 19.0 `l10n_tr_nilvera_einvoice(_extended)`, `l10n_tr_gib_invoice_scenarios` | LGPL-3 | T, Ü | P0 | plan |
@@ -71,14 +73,14 @@ OCA modülleri D-019'a göre: resmî 20.0 sürümü varsa `vendor/oca/`, yoksa 1
 |---|---|---|---|---|---|
 | Muhasebe: banka mutabakatı | OCA port | account-reconcile (19/4/0) | AGPL-3 (`account_reconcile_oca`) | P0 | plan |
 | Muhasebe: mali raporlar (mizan, muavin, yaşlandırma) | OCA port | account-financial-reporting (8/5/0) | AGPL-3 (`account_financial_report`) | P0 | plan |
-| Muhasebe: bilanço / gelir tablosu altyapısı | OCA (20.0 resmî) | mis-builder (3/3/3) | AGPL-3 (`mis_builder`) | P0 | plan |
+| Muhasebe: bilanço / gelir tablosu altyapısı | OCA port (resmî 20.0 çıkınca `vendor/`) | mis-builder (3/3/3; 20.0'dakiler yer tutucu) | AGPL-3 (`mis_builder`) | P0 | plan |
 | Muhasebe: cari ekstre | OCA port veya kendimiz | account-financial-reporting (8/5/0) | AGPL-3 (`partner_statement`) | P0 | plan |
 | Kalite | OCA port | manufacture (57/20/0) — `quality_control_oca` | doğrulanmadı | P0 | plan |
 | Mobil uygulama | PWA (Community'de manifest + service worker var) | — | LGPL-3 | P0 | plan |
 | Muhasebe: sabit kıymet / amortisman | OCA port | account-financial-tools (41/23/0) | AGPL-3 (`account_asset_management`) | P1 | plan |
 | Çok seviyeli MRP planlama | OCA port | manufacture (57/20/0) — `mrp_multi_level` | doğrulanmadı | P1 | plan |
 | Barkod | OCA 18.0 port veya kendimiz | stock-logistics-barcode (7/3/0) | AGPL-3 (`stock_barcodes`) | P1 | plan |
-| Muhasebe: bütçe | OCA port veya kendimiz | account-budgeting (1/1/0), mis-builder (`mis_builder_budget`, 20.0'da var) | doğrulanmadı | P2 | plan |
+| Muhasebe: bütçe | OCA port veya kendimiz | account-budgeting (1/1/0), mis-builder (`mis_builder_budget`, 20.0'da yer tutucu) | doğrulanmadı | P2 | plan |
 | Onaylar (Approvals) | OCA port | server-ux (35/17/1) — `base_tier_validation` adayı | doğrulanmadı | P2 | plan |
 | Helpdesk | OCA port veya kendimiz | helpdesk (32/15/0) | AGPL-3 (`helpdesk_mgmt`) | P2 | plan |
 | Dokümanlar (Documents) | OCA port | dms (7/1/0) | LGPL-3 (`dms`) | P2 | plan |

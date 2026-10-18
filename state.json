@@ -24,7 +24,7 @@
     "title": "Geliştirme altyapısı ve CI",
     "status": "in_progress"
   },
-  "current_task": "T1.2",
+  "current_task": "T1.4",
   "session": {
     "mode": "otonom",
     "number": 1,
@@ -41,13 +41,14 @@
     "T0.7",
     "T0.8",
     "T1.1",
-    "T1.3"
+    "T1.3",
+    "T1.2"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Sürüm doğrulaması: 19.0 → 20.0 port maliyeti ön analizi, D-011 yeniden değerlendirme (T1.2)",
-    "Odoo 20.0'ı upstream/odoo altına sığ git submodule olarak sabit commit ile eklemek (T1.4)",
-    "Python sanal ortamı ve yerel çalıştırma (T1.5, T1.6)"
+    "Odoo 20.0'ı upstream/odoo altına sığ git submodule olarak sabit commit ile eklemek; T1.2 denemesi afbcf79d üzerinde yapıldı (T1.4)",
+    "Python sanal ortamı ve yerel çalıştırma; PDF için wkhtmltopdf (T1.5, T1.6)",
+    "Odoo skills rehberleri ve test komutları; Windows test temizliği hatasını ayırt etmek (T1.7, T1.8)"
   ],
   "decisions": [
     {
@@ -105,8 +106,7 @@
       "id": "D-011",
       "title": "Odoo sürümü",
       "status": "Geçerli",
-      "value": "20.0",
-      "revisit": "T1.2"
+      "value": "20.0 (T1.2 ölçümüyle doğrulandı; docs/research/nilvera-port.md)"
     },
     {
       "id": "D-012",
@@ -214,6 +214,7 @@
     "docs/research/approach-b-vs-c.md",
     "docs/research/e-fatura.md",
     "docs/research/hosting.md",
-    "docs/research/planning-inputs.md"
+    "docs/research/planning-inputs.md",
+    "docs/research/nilvera-port.md"
   ]
 }

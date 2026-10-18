@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.2 — Sürüm doğrulaması (D-011): 19.0 → 20.0 port maliyeti ön analizi
+**Şu anki görev:** T1.4 — Upstream Odoo'nun `upstream/odoo` altına git submodule olarak eklenmesi
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 2/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 3/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 10/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 11/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -213,7 +213,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - CI her push'ta şunları çalıştırıyor: belge denetimi, lint, gizli bilgi taraması, modül testleri.
 
 - [x] T1.1 Git deposu ve GitHub public depo (D-015) · S · C
-- [ ] T1.2 Sürüm doğrulaması (D-011): 19.0 → 20.0 port maliyeti ön analizi · M · C
+- [x] T1.2 Sürüm doğrulaması (D-011): 19.0 → 20.0 port maliyeti ön analizi · M · C — sonuç: 20.0'da kal; `docs/research/nilvera-port.md`
   - Neden şimdi: sürüm, upstream eklenmeden (T1.4) ve ilk modül yazılmadan önce kesinleşmeli.
   - İçerik:
     - 19.0 LGPL Türkiye e-Belge modüllerinin (`l10n_tr_nilvera*`, `l10n_tr_gib_invoice_scenarios`) boyutu ve 20.0'da değişen API'lere bağımlılığı;
@@ -240,6 +240,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Rehberlerin lisansı kontrol edilir ve envantere yazılır.
 - [ ] T1.8 Test çalıştırma komutları · S · C
   - Tek modül testi ve etiketli test (`--test-tags`) komutları CLAUDE.md "Komutlar" bölümüne yazılır.
+  - Windows'ta 20.0 test temizliği salt okunur filestore dosyalarını silemiyor (`tearDownClass` hatası, T1.2). Komutlar bu hatayı ayırt eder; referans sonuç Linux CI'dır (T1.10).
 - [ ] T1.9 Modül şablonu ve kod kalite araçları · M · C
   - Şablon üretici (`tools/new_module.py`). Ürettiği iskelet:
     - manifest: `license`, `author`, sürüm `20.0.x.y.z`;
@@ -343,6 +344,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Senaryolar (TEMELFATURA, TICARIFATURA, EARSIVFATURA, IHRACAT vb.) ve fatura tipleri (SATIS, IADE, TEVKIFAT, ISTISNA, IHRACKAYITLI vb.).
   - Tevkifat ve istisna kodları, ETTN, numaralama.
   - Mükellef sorgulama arayüzü, durum takibi, adaptör arayüzü.
+  - 20.0 farkları (T1.2): `is_company` vergi numarasından hesaplanıyor; Türkiye için 11 haneli TCKN gerçek kişi sayılır (`cac:Person`). Vergi daireleri için çekirdekteki `l10n_tr.tax.office` kullanılır.
 - [ ] T4.4 Sahte (mock) entegratör adaptörü · S · C
   - Ağsız çalışır; CI ve demo için. Gerçek entegratörün durum geçişlerini taklit eder.
 - [ ] T4.5 Nilvera adaptörü `ov_l10n_tr_edi_nilvera` (LGPL-3) · L · C
@@ -381,8 +383,9 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - OCA `account_reconcile_oca` + `account_statement_base` portu; Türkçe.
 - [ ] T5.4 Mali raporlar · L · C
   - OCA `account_financial_report` portu: mizan, muavin defter, yaşlandırma, açık kalemler; Excel çıktısı.
+  - 20.0'da `account.group` modeli yok; hesap gruplaması `account.account` hiyerarşisine taşınır (T1.2 ölçümü: 12 dosyada 115 atıf).
 - [ ] T5.5 Bilanço ve gelir tablosu · M · C
-  - OCA `mis_builder` (20.0'da mevcut) ile Tekdüzen şablonları (`ov_l10n_tr_mis_reports`).
+  - OCA `mis_builder` portu (19.0; 20.0 dalındaki yer tutucu, T1.2) ile Tekdüzen şablonları (`ov_l10n_tr_mis_reports`). T1.2 denemesinde 4 küçük uyarlamayla 98/98 test geçti.
 - [ ] T5.6 Cari ekstre ve mutabakat · M · C
   - OCA `partner_statement` portu ya da kendi modülümüz; mutabakat mektubu (PDF, e-posta).
 - [ ] T5.7 Çek ve senet `ov_l10n_tr_check` · L · C
@@ -625,7 +628,7 @@ Olasılık/Etki: Y = yüksek, O = orta, D = düşük.
 
 | ID | Risk | Olasılık | Etki | Önlem |
 |---|---|---|---|---|
-| R1 | 19.0 → 20.0 port beklenenden pahalı (Nilvera, OCA) | O | Y | T1.2'de erken ölçüm; D-011 yeniden değerlendirme |
+| R1 | 19.0 → 20.0 port beklenenden pahalı (Nilvera, OCA) | D | O | T1.2'de ölçüldü: 19 modülün 18'i küçük uyarlamayla kuruluyor, ek emek ~9–15 oturum; en büyük kalem T5.4 (`nilvera-port.md`) |
 | R2 | OCA 20.0 geç kalır, port yükü büyür | Y | O | D-019 (kendimiz taşırız); yalnız gerekli modüller; resmî sürüm çıkınca geçiş |
 | R3 | GİB UBL-TR paketleri sık değişir | Y | O | Otomatik doğrulama (T4.2); S3 rutini |
 | R4 | Nilvera test ortamı kapanır veya koşulları değişir | D | O | Sahte adaptör (T4.4); adaptör mimarisi; ikinci entegratör (T11.8) |

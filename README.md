@@ -14,7 +14,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 **Durum:** Faz 1 — Geliştirme altyapısı.
 - Planlama tamamlandı: [PLAN.md](PLAN.md) (ilerleme panosu, fazlar, görevler, müşteri arayışı kapısı).
 - Görevler üç kategoride: kullanıcının yapacakları, birlikte yapılacaklar, Claude'un yapacakları (D-021).
-- Sıradaki görev: sürüm doğrulaması (T1.2), ardından geliştirme ortamı ve CI.
+- Sürüm doğrulandı: 20.0'da kalınıyor (T1.2, `docs/research/nilvera-port.md`).
+- Sıradaki görev: upstream Odoo'nun projeye eklenmesi (T1.4), ardından geliştirme ortamı ve CI.
 - Açık karar yok. Henüz kod yok.
 
 ## Belgeler
