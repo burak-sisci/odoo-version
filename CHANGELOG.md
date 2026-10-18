@@ -7,6 +7,22 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Upstream Odoo submodule (T1.4) — otonom mesai 1
+
+**Kod**
+- Odoo 20.0 Community `upstream/odoo` altına sığ git submodule olarak eklendi. Sabit commit `afbcf79d` (2026-10-18), T1.2 denemesinin yapıldığı commit.
+  - `.gitmodules`: `branch = 20.0`, `shallow = true`, adres GitHub.
+  - İndirme süresini kısaltmak için ilk klon yerel inceleme kopyasından alındı, sonra adres GitHub'a çevrildi (`git submodule set-url`, `sync`).
+  - Kabul: depo temiz bir klasöre klonlandı; `git submodule update --init --depth 1` GitHub'dan sabit commit'i getirdi.
+- Yerel depoda `core.longpaths` açıldı (Windows yol uzunluğu, R11).
+
+**Belgeler**
+- docs/COMPLIANCE.md §5: lisans envanterine ilk satır (Odoo Community 20.0, LGPL-3, değiştirilmedi).
+- CLAUDE.md: "Ortam" (upstream durumu) ve "Komutlar" (yeni klonda submodule komutu).
+- ARCHITECTURE.md §2: `upstream/odoo` satırı. README.md: durum.
+- PLAN.md: T1.4 `[x]`; F1 4/11; toplam 12/114; şu anki görev T1.5.
+- state.json: `upstream` (yol, commit, tarih, `in_project: true`); T1.4 bitenlere eklendi.
+
 ### Adım: Sürüm doğrulaması (T1.2) — otonom mesai 1
 
 19.0'daki Nilvera ve OCA modülleri 20.0'da gerçekten kurulup test edildi. Üç ağaç ölçüldü: değişmemiş kod, Odoo'nun otomatik dönüştürücüsü (`upgrade_code`) ve elle uyarlama.

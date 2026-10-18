@@ -1,0 +1,5 @@
+[submodule "upstream/odoo"]
+	path = upstream/odoo
+	url = https://github.com/odoo/odoo.git
+	branch = 20.0
+	shallow = true

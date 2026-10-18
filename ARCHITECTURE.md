@@ -56,7 +56,7 @@ odoo-version/
 │   └── research/            # tarihli araştırma kayıtları
 ├── tools/
 │   └── check_docs.py        # belge tutarlılık denetimi (+ ileride modül şablonu, UBL doğrulama, çeviri ölçümü)
-├── upstream/odoo/           # Odoo Community 20.0, git submodule, sabit commit (henüz yok — T1.4)
+├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
 ├── addons/                  # bizim modüllerimiz, önek ov_ (henüz yok)

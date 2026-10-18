@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.4 — Upstream Odoo'nun `upstream/odoo` altına git submodule olarak eklenmesi
+**Şu anki görev:** T1.5 — Python sanal ortamı ve bağımlılıklar
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 3/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 4/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 11/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 12/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -225,7 +225,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Yönetici izni gerektirmeyen yol tercih edilir (taşınabilir ikili dosyalar, kullanıcı hesabında çalışan sunucu). Olmazsa `USER_TASKS.md`'ye eylem yazılır.
   - Odoo için veritabanı rolü; şifre yalnız yerel yapılandırmada.
   - Kabul: `psql --version` ≥ 16; rol ile bağlantı kuruluyor.
-- [ ] T1.4 Upstream Odoo'nun (D-011) `upstream/odoo` altına git submodule olarak eklenmesi · M · C
+- [x] T1.4 Upstream Odoo'nun (D-011) `upstream/odoo` altına git submodule olarak eklenmesi · M · C — commit `afbcf79d`
   - Sığ klon (`shallow = true`), sabit commit, Windows'ta `core.longpaths`.
   - Lisans envanterine satır (COMPLIANCE §5).
   - Kabul: temiz bir klonda `git submodule update --init --depth 1` çalışıyor; commit `state.json`'da.
