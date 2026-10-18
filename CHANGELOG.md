@@ -7,6 +7,14 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: CI düzeltmesi — elle çalıştırma ayrı grupta (T1.10 sonrası) — otonom mesai 1
+
+**Kod**
+- `.github/workflows/ci.yml`: eşzamanlılık grubu olay türünü de içeriyor (`ci-<dal>-<olay>`). Önceden `main`'de elle başlatılan referans çalıştırması, sonraki bir push ile iptal edilebiliyordu.
+
+**Doğrulama**
+- `main`'deki ilk CI çalıştırması (c6b11ba) yeşil: `checks` 1 dk 17 sn, `tests` 1 dk 48 sn. Upstream, pre-commit ve pip önbellekleri `main`'de kaydedildi.
+
 ### Adım: GitHub Actions CI (T1.10) — otonom mesai 1
 
 **Kod**
