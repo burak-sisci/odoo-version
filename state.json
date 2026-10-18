@@ -24,7 +24,7 @@
     "title": "Geliştirme altyapısı ve CI",
     "status": "in_progress"
   },
-  "current_task": "T1.7",
+  "current_task": "T1.8",
   "session": {
     "mode": "otonom",
     "number": 1,
@@ -45,13 +45,14 @@
     "T1.2",
     "T1.4",
     "T1.5",
-    "T1.6"
+    "T1.6",
+    "T1.7"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Odoo skills rehberlerinin .claude/skills altına kurulması ve lisans kontrolü (T1.7)",
     "Test komutları; Windows test temizliği hatasını ve markdown2 uyarısını ayırt etmek (T1.8)",
-    "Lint ve pre-commit, ardından CI (T1.9, T1.10)"
+    "Modül şablonu, ruff yapılandırması ve pre-commit; tools/ altındaki 14 ruff bulgusu (T1.9)",
+    "GitHub Actions CI; rehber kopyası denetimi (T1.10)"
   ],
   "decisions": [
     {
@@ -200,7 +201,8 @@
     "node": null,
     "docker": null,
     "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + websocket-client 1.9.2",
-    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5)"
+    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5)",
+    "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)"
   },
   "modules": {
     "ours": [],

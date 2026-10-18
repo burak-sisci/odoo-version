@@ -7,6 +7,28 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Odoo AI rehberleri (T1.7) — otonom mesai 1
+
+**Kod**
+- `.claude/skills/`: upstream `skills/` klasörünün değiştirilmemiş kopyası (24 dosya): `odoo-guidelines`, `odoo-web-guidelines`, `odoo-security`, `odoo-review`, `odoo-git`. Yanında `LICENSE` (upstream kopyası) ve `SOURCE.md` (kaynak commit).
+- `tools/sync_skills.py`: kopyalar; `--check` upstream'le farkı denetler (CI için). Windows'ta upstream çalışma kopyası CRLF olduğundan karşılaştırma satır sonundan bağımsız; kopyalar LF.
+
+**Araştırma**
+- Rehberlerin tamamı okundu; zararlı veya gizli talimat yok.
+- Lisans: klasörde ayrı lisans dosyası yok; deponun LGPL-3 lisansı ve `COPYRIGHT` notu geçerli. Envantere yazıldı.
+- Proje kurallarıyla çelişenler (CLAUDE.md'ye öncelik kuralı olarak yazıldı):
+  - `odoo-git`: `[TAG] kapsam: özet` commit biçimi, rebase ve `--force-with-lease`. Yalnız upstream/OCA katkısında geçerli sayıldı.
+  - `odoo-review`: değişikliğin Enterprise'daki "diğer yarısına" bakma adımı. Clean-room (D-006) gereği uygulanmaz.
+  - `odoo-web-guidelines`: `patch()` Odoo içinde önerilmiyor, Odoo dışı kod için uygun; kendi modüllerimizde serbest.
+  - `comments`: kod yorumları, kullanıcı metinleri ve commit mesajlarında yalnız ASCII noktalama. Markdown belgelerimiz kapsam dışı.
+
+**Belgeler**
+- CLAUDE.md:
+  - Odoo geliştirme kuralları: rehberler ve öncelik kuralları; görünüm kalıtımı kuralı rehberle uyumlu yazıldı.
+  - Eski metin: "görünüm kalıtımı XPath ile". Yeni metin: ada bağlı kalıtım (kısa `field` biçimi, gerekirse XPath), konuma göre asla. Neden: `odoo-guidelines` kısa biçimi tercih ediyor.
+  - Komutlar bölümüne `tools/sync_skills.py` eklendi.
+- ARCHITECTURE.md §2 ağacı, COMPLIANCE.md §5, PLAN.md (T1.7, pano, T1.10'a rehber denetimi), README.md, state.json.
+
 ### Adım: Odoo'nun yerelde çalıştırılması (T1.6) — otonom mesai 1
 
 **Kod**
