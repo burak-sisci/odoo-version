@@ -11,16 +11,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PLAN = "PLAN.md"
+USER_TASKS = "USER_TASKS.md"
 DECISION_STATUSES = {"Geçerli", "Açık", "Ertelendi"}
 MATRIX_STATUSES = {"plan", "inceleniyor", "geliştiriliyor", "test", "tamam"}
+# Task categories (D-021): K = user, B = together, C = Claude.
+CATEGORIES = ("K", "B", "C")
+USER_CATEGORIES = {"K", "B"}
 DATE_RE = re.compile(r"^Son güncelleme: (\d{4}-\d{2}-\d{2})\s*$", re.M)
 TASK_RE = re.compile(r"\bT\d+\.\d+\b")
 TRIGGER_RE = re.compile(r"\*\*(Karar noktası|Yeniden değerlendirme):\*\*(.*)")
-PLAN_TASK_RE = re.compile(r"^- \[(.)\] (T\d+\.\d+)", re.M)
+PLAN_TASK_RE = re.compile(r"^- \[(.)\] (T\d+\.\d+) (.*)$", re.M)
+CATEGORY_RE = re.compile(r"· (\S+)(?: — .*)?$")
 PHASE_RE = re.compile(r"^### (F\d+) — .*`\[(.)\]`\s*$", re.M)
-DASH_RE = re.compile(r"^\| (F\d+) \|(?:[^|]*\|){3} `\[(.)\]` \| (\d+)/(\d+) \|$", re.M)
-TOTAL_RE = re.compile(r"^\*\*Toplam:\*\* (\d+)/(\d+) görev", re.M)
+DASH_RE = re.compile(r"^\| (F\d+) \|(?:[^|]*\|){3} `\[(.)\]` \| (\d+)/(\d+) \| (\d+) · (\d+) · (\d+) \|$", re.M)
+TOTAL_RE = re.compile(r"^\*\*Toplam:\*\* (\d+)/(\d+) görev · Kullanıcı (\d+) · Birlikte (\d+) · Claude (\d+)\s*$", re.M)
 CURRENT_RE = re.compile(r"^\*\*Şu anki görev:\*\* (T\d+\.\d+)", re.M)
+USER_TASK_RE = re.compile(r"^- \[(.)\] (T\d+\.\d+)\b", re.M)
+ACTION_DEF_RE = re.compile(r"^- \[.\] (K\d+)\b", re.M)
+ACTION_REF_RE = re.compile(r"\bK\d+\b")
 
 errors = []
 
@@ -55,12 +63,18 @@ def check_state():
 
 
 def plan_tasks():
-    tasks = {}
-    for mark, tid in PLAN_TASK_RE.findall(read(PLAN)):
+    """Return ({task id: mark}, {task id: category}) from the PLAN task lines."""
+    tasks, categories = {}, {}
+    for mark, tid, rest in PLAN_TASK_RE.findall(read(PLAN)):
         if tid in tasks:
             errors.append(f"{PLAN}: {tid} birden fazla görev satırında")
         tasks[tid] = mark
-    return tasks
+        m = CATEGORY_RE.search(rest)
+        if not m or m.group(1) not in CATEGORIES:
+            errors.append(f"{PLAN}: {tid} kategorisi geçersiz/eksik (izinli: {list(CATEGORIES)})")
+            continue
+        categories[tid] = m.group(1)
+    return tasks, categories
 
 
 def phase_of(tid):
@@ -115,14 +129,19 @@ def check_plan(state, tasks):
                       f"yalnız state={sorted(done_state - done_plan)}")
 
 
-def check_dashboard(state, tasks):
+def category_counts(tids, categories):
+    return tuple(sum(1 for t in tids if categories.get(t) == c) for c in CATEGORIES)
+
+
+def check_dashboard(state, tasks, categories):
     # The progress dashboard is maintained by hand; it must agree with the task lines.
     text = read(PLAN)
     by_phase = {}
     for tid, mark in tasks.items():
         by_phase.setdefault(phase_of(tid), []).append(mark)
     headers = dict(PHASE_RE.findall(text))
-    dash = {f: (mark, int(d), int(t)) for f, mark, d, t in DASH_RE.findall(text)}
+    dash = {f: (mark, int(d), int(t), (int(k), int(b), int(c)))
+            for f, mark, d, t, k, b, c in DASH_RE.findall(text)}
     for phase in sorted(set(headers) | set(dash) | set(by_phase), key=lambda f: int(f[1:])):
         marks = by_phase.get(phase, [])
         if not marks:
@@ -139,20 +158,46 @@ def check_dashboard(state, tasks):
         if phase not in dash:
             errors.append(f"{PLAN}: {phase} panoda yok")
             continue
-        mark, done, total = dash[phase]
+        mark, done, total, cats = dash[phase]
         if mark not in allowed:
             errors.append(f"{PLAN}: panoda {phase} işareti {mark!r}, beklenen {sorted(allowed)}")
         if (done, total) != (marks.count("x"), len(marks)):
             errors.append(f"{PLAN}: panoda {phase} {done}/{total}, görevlere göre {marks.count('x')}/{len(marks)}")
+        expected_cats = category_counts([t for t in tasks if phase_of(t) == phase], categories)
+        if cats != expected_cats:
+            errors.append(f"{PLAN}: panoda {phase} K · B · C = {cats}, görevlere göre {expected_cats}")
     m = TOTAL_RE.search(text)
-    expected = (sum(1 for v in tasks.values() if v == "x"), len(tasks))
+    expected = (sum(1 for v in tasks.values() if v == "x"), len(tasks)) + category_counts(tasks, categories)
     if not m:
-        errors.append(f"{PLAN}: '**Toplam:** n/m görev' satırı yok")
-    elif (int(m.group(1)), int(m.group(2))) != expected:
-        errors.append(f"{PLAN}: toplam {m.group(1)}/{m.group(2)}, görevlere göre {expected[0]}/{expected[1]}")
+        errors.append(f"{PLAN}: '**Toplam:** n/m görev · Kullanıcı k · Birlikte b · Claude c' satırı yok")
+    elif tuple(int(g) for g in m.groups()) != expected:
+        errors.append(f"{PLAN}: toplam satırı {tuple(int(g) for g in m.groups())}, görevlere göre {expected}")
     m = CURRENT_RE.search(text)
     if not m or m.group(1) != state.get("current_task"):
         errors.append(f"{PLAN}: '**Şu anki görev:**' satırı state.json current_task ile aynı olmalı")
+
+
+def check_user_tasks(state, tasks, categories):
+    # USER_TASKS.md lists every K and B task with the same mark as PLAN, and defines the K actions.
+    text = read(USER_TASKS)
+    listed = {}
+    for mark, tid in USER_TASK_RE.findall(text):
+        if tid in listed:
+            errors.append(f"{USER_TASKS}: {tid} birden fazla kez listelenmiş")
+        listed[tid] = mark
+    expected = {t for t, c in categories.items() if c in USER_CATEGORIES}
+    if set(listed) != expected:
+        errors.append(f"{USER_TASKS}: K/B görevleri PLAN ile uyuşmuyor: eksik={sorted(expected - set(listed))}, "
+                      f"fazla={sorted(set(listed) - expected)}")
+    for tid, mark in listed.items():
+        if tid in tasks and tasks[tid] != mark:
+            errors.append(f"{USER_TASKS}: {tid} işareti {mark!r}, {PLAN}'da {tasks[tid]!r}")
+    defined = ACTION_DEF_RE.findall(text)
+    for kid in sorted({k for k in defined if defined.count(k) > 1}):
+        errors.append(f"{USER_TASKS}: {kid} birden fazla kez tanımlı")
+    for rel in ["state.json"] + [d for d in state.get("docs", []) if d.endswith(".md") and d != "CHANGELOG.md"]:
+        for kid in sorted(set(ACTION_REF_RE.findall(read(rel))) - set(defined)):
+            errors.append(f"{rel}: {kid} kullanıcı eylemine atıf var ama {USER_TASKS}'da tanımlı değil")
 
 
 def check_task_refs(state, tasks):
@@ -200,10 +245,11 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     state = check_state()
-    tasks = plan_tasks()
+    tasks, categories = plan_tasks()
     check_decisions(state, tasks)
     check_plan(state, tasks)
-    check_dashboard(state, tasks)
+    check_dashboard(state, tasks, categories)
+    check_user_tasks(state, tasks, categories)
     check_task_refs(state, tasks)
     check_dates(state)
     check_matrix()

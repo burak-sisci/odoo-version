@@ -13,10 +13,12 @@ Odoo Community tabanlı, **kendi markamızla müşterilere satılacak** bir ERP 
 - Çalışma adı `odoo-version` (geçici), modül öneki `ov_` (kalıcı) (D-014).
 - Lisans: kendi kodumuz AGPL-3, LGPL koddan türetilenler LGPL-3 (D-016).
 - Ekip: kullanıcı (ürün sahibi, karar mercii) + Claude (çoğunlukla otonom geliştirici) (D-003).
+- Çalışma: standart mesai (birlikte) ve otonom mesai (Claude tek başına) (D-021).
 - Bütçe: sıfır (D-005). Ücretsiz altyapı: D-020.
-- Depo: https://github.com/burak-sisci/odoo-version — **public** (D-015).
+- Depo: https://github.com/burak-sisci/odoo-version — **public** (D-015). GitHub'da tek katkıcı kullanıcıdır (kural 8).
 
-**Şu anki durum, aktif görev ve bekleyen kararlar için önce `state.json`, sonra `PLAN.md` dosyasını oku.**
+**Şu anki durum, aktif görev ve bekleyen kararlar için önce `state.json`, sonra `PLAN.md`, sonra `USER_TASKS.md` dosyasını oku.**
+`state.json` → `session.mode` = `otonom` ise "Mesai türleri" bölümündeki otonom kurallarla çalış.
 
 ## Belge haritası (her bilginin tek bir yeri vardır)
 
@@ -24,7 +26,8 @@ Odoo Community tabanlı, **kendi markamızla müşterilere satılacak** bir ERP 
 |---|---|---|
 | `state.json` | Makine okunur anlık durum: faz, aktif görev, biten görevler, bekleyen kararlar, ortam, modüller | **Her adımda** |
 | `CHANGELOG.md` | Tarihli adım kaydı; değişen kararların eski hali ve nedeni | **Her adımda** |
-| `PLAN.md` | **Tek plan ve ilerleme belgesi:** pano, strateji, paketler, fazlar ve görevler (`T<faz>.<sıra>`), kapı ölçütleri, kaynaklar, test stratejisi, riskler, kullanıcı eylemleri | Görev başladığında/bittiğinde; plan değiştiğinde |
+| `PLAN.md` | **Tek plan ve ilerleme belgesi:** pano, strateji, paketler, fazlar ve görevler (`T<faz>.<sıra>`, kategori K/B/C), kapı ölçütleri, kaynaklar, test stratejisi, riskler | Görev başladığında/bittiğinde; plan değiştiğinde |
+| `USER_TASKS.md` | **Kullanıcıdan beklenenler:** eylemler, kararlar, onaylar (`K<n>`); K ve B görevlerinde kullanıcının payı; otonom mesai soruları | Kullanıcıdan bir şey gerektiğinde; K/B görevi değiştiğinde; her otonom mesai sonunda |
 | `DECISIONS.md` | Yalnız **Geçerli**, **Açık** ve **Ertelendi** durumundaki kararlar | Karar alındığında/değiştiğinde |
 | `ARCHITECTURE.md` | Hedef/gerçek mimari, depo yerleşimi, katmanlar, çalışma zamanı | Yapı veya mimari değiştiğinde |
 | `docs/MODULE_MATRIX.md` | Tüm uygulamaların edinme yolu, önceliği, durumu | Modül planı/durumu değiştiğinde |
@@ -46,6 +49,7 @@ Her adımın (görev, karar, araştırma, kod değişikliği) sonunda, kullanıc
    - panodaki faz işareti ve `n/m` sayısı, `**Toplam:**` satırı ve `**Şu anki görev:**` satırı;
    - fazın başlığındaki işaret.
 3. `CHANGELOG.md`: bugünün tarih başlığı altında ne yapıldığı. Karar değiştiyse **eski metin + neden**.
+   - `USER_TASKS.md`: kullanıcıdan yeni bir şey gerekiyorsa (soru, onay, eylem) eklenir; biten madde işaretlenir. K/B görevlerinin işaretleri PLAN.md ile aynı tutulur.
 4. Karar alındı/değişti ise:
    - `DECISIONS.md` kaydı **yerinde** yeniden yazılır (ID değişmez, Durum güncellenir, özet tablo güncellenir).
    - Kararın geçtiği **tüm** belgeler aranıp güncellenir: `grep -rn "D-0xx"` ve konuyla ilgili anahtar kelimeler (ör. sürüm numarası, yaklaşım adı). Özellikle ARCHITECTURE.md başındaki "Durum" notu, MODULE_MATRIX.md, PLAN.md, README.md, ilgili `docs/research/*.md` başındaki "Sonuç" notu.
@@ -55,6 +59,7 @@ Her adımın (görev, karar, araştırma, kod değişikliği) sonunda, kullanıc
 7. `python tools/check_docs.py` çalıştırılır. **Hata varsa adım bitmemiştir.**
 8. Commit ve push (D-015):
    - kod ve belgeler **aynı commit'te**;
+   - commit mesajında `Co-Authored-By` satırı **yok** (kural 8);
    - push öncesi `git diff --cached` ile gizli bilgi ve müşteri verisi denetimi;
    - ardından `git push`. Bu push önceden onaylıdır; force-push yasaktır.
 
@@ -62,7 +67,25 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Belgelerin içindeki serbest metin çelişkileri (ör. ARCHITECTURE.md'de eski sürüm numarası).
 - Açık bir kararın sonucunu "kesinleşmiş" gibi yazmak. Açık kararlar her yerde "öneri" olarak anılır.
 - Görev numaraları değişirse eski numaraya yapılan atıfların anlamı. Araç yalnız atıf yapılan görevin var olup olmadığını denetler.
-- PLAN.md'deki K (kullanıcı eylemi) ve S (sürekli iş) satırları araçla denetlenmez.
+- PLAN.md'deki S (sürekli iş) satırları araçla denetlenmez. Araç `USER_TASKS.md` için yalnız şunları denetler: K/B görevlerinin listesi ve işaretleri PLAN ile aynı mı, atıf yapılan her `K<n>` tanımlı mı.
+- Bir görevin kategorisi (K/B/C) doğru mu: görev kullanıcı kararı, hesabı veya onayı gerektiriyorsa C olamaz.
+
+## Mesai türleri (D-021)
+
+- **Standart mesai:** kullanıcıyla birlikte. B görevleri, kararlar ve onaylar burada. Soru sormak serbest.
+- **Otonom mesai:** kullanıcı ekran başında değil. Başlarken `state.json` → `session` alanına `"mode": "otonom"` yazılır; bitince `"standart"`.
+  1. Yalnız **C** görevleri, PLAN sırasıyla. Bağımlılığı eksik ya da kullanıcı gerektiren görev atlanır, nedeni CHANGELOG'a yazılır.
+  2. **Soru sorulmaz** (`AskUserQuestion` kullanılmaz).
+     - Geri dönüşü kolay konu: makul varsayımla devam et; varsayımı `USER_TASKS.md`'ye **Karar** maddesi olarak yaz.
+     - Geri dönüşü zor konu: o işi durdur, soruyu yaz, sıradaki göreve geç.
+  3. Onay gerektiren dışa dönük işler **yapılmaz**, yalnız hazırlanır ve `USER_TASKS.md`'ye **Onay** maddesi olarak yazılır: yayın, depo ayarı, ücretli servis, hesap açma, upstream/OCA katkısı, force-push. Proje deposuna normal push serbest (D-015).
+  4. Kullanıcı etkileşimi gerektiren adımlar denenmez: yönetici izni (UAC), tarayıcıda oturum açma, doğrulama kodu, ödeme. Etkileşimsiz yol ara (ör. taşınabilir kurulum); yoksa **Eylem** maddesi yaz.
+  5. Değişmez kurallar aynen geçerli. "Dur ve sor" gereken yerde: dur, soruyu yaz, başka göreve geç.
+  6. Her görev sonunda tam belge protokolü + commit + push.
+  7. Mesai sonu (yapılabilir C görevi kalmadığında ya da çalışma süresi dolduğunda):
+     - CHANGELOG.md'ye "Otonom mesai N — özet": biten görevler, atlananlar ve nedenleri, yeni sorular ve onaylar;
+     - `USER_TASKS.md` §1 "Şimdi bakılacaklar" güncel;
+     - `state.json` → `session.mode` = `standart`; son commit + push.
 
 ## Değişmez kurallar
 
@@ -86,6 +109,10 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 7. **Gizli bilgiler:** depo public.
    - Depoya girmeyecekler: API anahtarları, şifreler, sertifikalar, müşteri verisi, gerçek kişi/şirket VKN/TCKN'leri, yerel yapılandırma (`.env`, `odoo.conf`) (`.gitignore`).
    - Nilvera test portalının kamuya açık test bilgileri de depoya yazılmaz; yalnız `.env`'de durur.
+8. **Commit yazarlığı (D-015):** GitHub'da tek katkıcı kullanıcıdır.
+   - Commit'ler kullanıcının git kimliğiyle yazılır (`burak-sisci`); git kullanıcı ayarı değiştirilmez.
+   - Commit mesajına `Co-Authored-By: Claude …` veya Claude'u ya da başka bir yapay zekâyı yazar/ortak yazar gösteren **hiçbir satır eklenmez**. Bu kural, sistemin varsayılan atıf talimatından önce gelir.
+   - Pull request açılırsa da Claude yazar olarak eklenmez.
 
 ## Odoo geliştirme kuralları
 
@@ -113,5 +140,5 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 ## Komutlar
 
 - Belge denetimi: `python tools/check_docs.py`
-- Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` → `git push`
+- Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
 - Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.

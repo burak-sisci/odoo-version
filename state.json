@@ -10,9 +10,14 @@
     "repo_visibility": "public",
     "license": "AGPL-3 (kendi kodumuz); LGPL-3 (LGPL koddan türetilenler); OCA portları orijinal lisansla",
     "plan": "PLAN.md",
-    "target_segments": ["küçük işletme (Ticaret paketi)", "orta ölçekli fabrika (Üretim paketi)"],
+    "target_segments": [
+      "küçük işletme (Ticaret paketi)",
+      "orta ölçekli fabrika (Üretim paketi)"
+    ],
     "next_milestone": "M1 Geliştirme altyapısı",
-    "gate_milestone": "M8 Satışa hazır (müşteri arayışı kapısı)"
+    "gate_milestone": "M8 Satışa hazır (müşteri arayışı kapısı)",
+    "user_tasks": "USER_TASKS.md",
+    "commit_author": "burak-sisci (tek katkıcı; Co-Authored-By yok, D-015)"
   },
   "phase": {
     "id": "F1",
@@ -20,7 +25,23 @@
     "status": "in_progress"
   },
   "current_task": "T1.2",
-  "tasks_done": ["T0.1", "T0.2", "T0.3", "T0.4", "T0.5", "T0.6", "T0.7", "T0.8", "T1.1"],
+  "session": {
+    "mode": "otonom",
+    "number": 1,
+    "started": "2026-10-18",
+    "note": "Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md"
+  },
+  "tasks_done": [
+    "T0.1",
+    "T0.2",
+    "T0.3",
+    "T0.4",
+    "T0.5",
+    "T0.6",
+    "T0.7",
+    "T0.8",
+    "T1.1"
+  ],
   "blocked_on_user": [],
   "next_actions": [
     "Sürüm doğrulaması: 19.0 → 20.0 port maliyeti ön analizi, D-011 yeniden değerlendirme (T1.2)",
@@ -29,26 +50,129 @@
     "Python sanal ortamı ve yerel çalıştırma (T1.5, T1.6)"
   ],
   "decisions": [
-    {"id": "D-001", "title": "Ürün hedefi", "status": "Geçerli"},
-    {"id": "D-002", "title": "Kapsam", "status": "Geçerli"},
-    {"id": "D-003", "title": "Ekip ve çalışma modeli", "status": "Geçerli"},
-    {"id": "D-004", "title": "Dokümantasyon protokolü", "status": "Geçerli"},
-    {"id": "D-005", "title": "Bütçe", "status": "Geçerli"},
-    {"id": "D-006", "title": "Clean-room kuralı", "status": "Geçerli"},
-    {"id": "D-007", "title": "Marka kuralı", "status": "Geçerli"},
-    {"id": "D-008", "title": "Lisans uyumu kuralı", "status": "Geçerli"},
-    {"id": "D-009", "title": "Dil", "status": "Geçerli"},
-    {"id": "D-010", "title": "Temel yaklaşım", "status": "Geçerli", "value": "B (çekirdek değiştirilmez, yama kuyruğu yok)"},
-    {"id": "D-011", "title": "Odoo sürümü", "status": "Geçerli", "value": "20.0", "revisit": "T1.2"},
-    {"id": "D-012", "title": "e-Belge stratejisi", "status": "Geçerli", "value": "MVP: e-Fatura + e-Arşiv + e-İrsaliye; özel entegratör API; çekirdek + adaptör; ilk adaptör Nilvera (19.0 LGPL port); e-Defter P1", "revisit": "T8.1"},
-    {"id": "D-013", "title": "Üretim barındırma yeri", "status": "Ertelendi", "decision_point": "T9.5", "interim": "Lokal geliştirme; ücretsiz demo (D-020); sağlayıcıdan bağımsız mimari"},
-    {"id": "D-014", "title": "Çalışma adı ve teknik modül öneki", "status": "Geçerli", "value": "Çalışma adı odoo-version (geçici); önek ov_ (kalıcı)", "revisit": "T8.1"},
-    {"id": "D-015", "title": "Git deposu, GitHub ve push yetkisi", "status": "Geçerli", "value": "Public GitHub deposu; her adım sonunda commit + push (önceden onaylı)"},
-    {"id": "D-016", "title": "Kendi modüllerimizin lisansı", "status": "Geçerli", "value": "AGPL-3; LGPL türevleri LGPL-3; dış katkı şimdilik kabul edilmiyor"},
-    {"id": "D-017", "title": "Hedef müşteriler ve aşama stratejisi", "status": "Geçerli", "value": "Bütçesiz aşama M8 kapısına kadar; ilk segmentler küçük işletme + orta ölçekli fabrika; her satıştan sonra bir üst ölçek", "revisit": "T9.8"},
-    {"id": "D-018", "title": "MVP tanımı, ürün paketleri ve teslim biçimi", "status": "Geçerli", "value": "Ticaret + Üretim paketleri; ilk müşterilerde yönetilen kurulum (on-prem veya bizim sunucumuz); self-servis SaaS F10", "revisit": "T8.1"},
-    {"id": "D-019", "title": "OCA modülleri ve 20.0 portları", "status": "Geçerli", "value": "Resmî 20.0 → vendor/oca; yoksa 19.0'dan port → ports/oca (orijinal ad ve lisans)"},
-    {"id": "D-020", "title": "Ücretsiz altyapı ve araçlar", "status": "Geçerli", "value": "GitHub Actions (CI), GitHub Pages (yalnız açık kaynak belgeler), Cloudflare Quick Tunnel (demo), Nilvera test portalı, Student Pack (isteğe bağlı)"}
+    {
+      "id": "D-001",
+      "title": "Ürün hedefi",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-002",
+      "title": "Kapsam",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-003",
+      "title": "Ekip ve çalışma modeli",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-004",
+      "title": "Dokümantasyon protokolü",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-005",
+      "title": "Bütçe",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-006",
+      "title": "Clean-room kuralı",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-007",
+      "title": "Marka kuralı",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-008",
+      "title": "Lisans uyumu kuralı",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-009",
+      "title": "Dil",
+      "status": "Geçerli"
+    },
+    {
+      "id": "D-010",
+      "title": "Temel yaklaşım",
+      "status": "Geçerli",
+      "value": "B (çekirdek değiştirilmez, yama kuyruğu yok)"
+    },
+    {
+      "id": "D-011",
+      "title": "Odoo sürümü",
+      "status": "Geçerli",
+      "value": "20.0",
+      "revisit": "T1.2"
+    },
+    {
+      "id": "D-012",
+      "title": "e-Belge stratejisi",
+      "status": "Geçerli",
+      "value": "MVP: e-Fatura + e-Arşiv + e-İrsaliye; özel entegratör API; çekirdek + adaptör; ilk adaptör Nilvera (19.0 LGPL port); e-Defter P1",
+      "revisit": "T8.1"
+    },
+    {
+      "id": "D-013",
+      "title": "Üretim barındırma yeri",
+      "status": "Ertelendi",
+      "decision_point": "T9.5",
+      "interim": "Lokal geliştirme; ücretsiz demo (D-020); sağlayıcıdan bağımsız mimari"
+    },
+    {
+      "id": "D-014",
+      "title": "Çalışma adı ve teknik modül öneki",
+      "status": "Geçerli",
+      "value": "Çalışma adı odoo-version (geçici); önek ov_ (kalıcı)",
+      "revisit": "T8.1"
+    },
+    {
+      "id": "D-015",
+      "title": "Git deposu, GitHub ve push yetkisi",
+      "status": "Geçerli",
+      "value": "Public GitHub deposu; her adım sonunda commit + push (önceden onaylı)"
+    },
+    {
+      "id": "D-016",
+      "title": "Kendi modüllerimizin lisansı",
+      "status": "Geçerli",
+      "value": "AGPL-3; LGPL türevleri LGPL-3; dış katkı şimdilik kabul edilmiyor"
+    },
+    {
+      "id": "D-017",
+      "title": "Hedef müşteriler ve aşama stratejisi",
+      "status": "Geçerli",
+      "value": "Bütçesiz aşama M8 kapısına kadar; ilk segmentler küçük işletme + orta ölçekli fabrika; her satıştan sonra bir üst ölçek",
+      "revisit": "T9.8"
+    },
+    {
+      "id": "D-018",
+      "title": "MVP tanımı, ürün paketleri ve teslim biçimi",
+      "status": "Geçerli",
+      "value": "Ticaret + Üretim paketleri; ilk müşterilerde yönetilen kurulum (on-prem veya bizim sunucumuz); self-servis SaaS F10",
+      "revisit": "T8.1"
+    },
+    {
+      "id": "D-019",
+      "title": "OCA modülleri ve 20.0 portları",
+      "status": "Geçerli",
+      "value": "Resmî 20.0 → vendor/oca; yoksa 19.0'dan port → ports/oca (orijinal ad ve lisans)"
+    },
+    {
+      "id": "D-020",
+      "title": "Ücretsiz altyapı ve araçlar",
+      "status": "Geçerli",
+      "value": "GitHub Actions (CI), GitHub Pages (yalnız açık kaynak belgeler), Cloudflare Quick Tunnel (demo), Nilvera test portalı, Student Pack (isteğe bağlı)"
+    },
+    {
+      "id": "D-021",
+      "title": "Mesai türleri ve görev kategorileri",
+      "status": "Geçerli",
+      "value": "Standart ve otonom mesai; görev kategorileri K (kullanıcı), B (birlikte), C (Claude)"
+    }
   ],
   "upstream": {
     "repo": "https://github.com/odoo/odoo",
@@ -62,7 +186,10 @@
     "python": "3.12.10",
     "git": "2.56.0",
     "gh": "2.101.0",
-    "git_repo": {"default_branch": "main", "remote": "origin"},
+    "git_repo": {
+      "default_branch": "main",
+      "remote": "origin"
+    },
     "ci": null,
     "postgresql": null,
     "node": null,
@@ -77,6 +204,7 @@
     "CLAUDE.md",
     "README.md",
     "PLAN.md",
+    "USER_TASKS.md",
     "ARCHITECTURE.md",
     "DECISIONS.md",
     "CHANGELOG.md",
