@@ -153,12 +153,13 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
+- OCA (T1.11, D-019): resmî 20.0 depoları `vendor/oca/<depo>` altında sığ git submodule (şimdilik `server-ux`). 20.0'da olmayan modüllerin portları `ports/oca/<depo>/<modül>` altında, her birinde `PORT.md` (şimdilik `report_xlsx`). Prosedür ARCHITECTURE.md §2.
 - CI (T1.10): GitHub Actions (`.github/workflows/ci.yml`), her push'ta. İki iş: belgeler + lint + gizli bilgi + rehber kopyası; PostgreSQL 18 servisiyle modül testleri. Ayrıntı ARCHITECTURE.md §5.
 
 ## Komutlar
 
 - Belge denetimi: `python tools/check_docs.py`
-- Yeni klonda upstream: `git -c core.longpaths=true submodule update --init --depth 1`, ardından `git -C upstream/odoo config core.longpaths true` (düz `git config` alt modüle geçmez)
+- Yeni klonda alt modüller (upstream, vendor): `git -c core.longpaths=true submodule update --init --depth 1`, ardından `git submodule foreach --quiet git config core.longpaths true` (düz `git config` alt modüle geçmez)
 - PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok; pre-commit kancaları çalışır, hata varsa commit olmaz) → `git push`
 - Python ortamı: `python -m venv .venv` → `.venv/Scripts/python -m pip install --prefer-binary -r requirements-dev.txt` (upstream güncellenince yeniden çalıştırılır)
@@ -186,3 +187,5 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Gizli bilgi denetimi (T1.10): `python tools/check_secrets.py`. Staged değişikliklerde `.env` değerlerini arar; pre-commit kancası olarak her commit'te çalışır. CI'da gitleaks tüm geçmişi tarar.
 - CI (T1.10): `gh run list --limit 5` · başarısız adımların günlüğü `gh run view <id> --log-failed`
   - Linux'ta referans test (ör. upstream modülleri): `gh workflow run ci.yml -f modules=l10n_tr` → `gh run watch <id>`
+- OCA portu (T1.11): `python tools/port_oca.py fetch <depo> <modül> [--branch 19.0] [--commit SHA]` → `python tools/port_oca.py upgrade ports/oca/<depo>/<modül>` → elle uyarlama + `python tools/run_tests.py <modül>`
+  - Kaynakla fark: `python tools/port_oca.py diff ports/oca/<depo>/<modül> [--stat]`. Adımların tamamı ve kayıtlar: ARCHITECTURE.md §2 "Port prosedürü".

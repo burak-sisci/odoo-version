@@ -3,3 +3,8 @@
 	url = https://github.com/odoo/odoo.git
 	branch = 20.0
 	shallow = true
+[submodule "vendor/oca/server-ux"]
+	path = vendor/oca/server-ux
+	url = https://github.com/OCA/server-ux.git
+	branch = 20.0
+	shallow = true

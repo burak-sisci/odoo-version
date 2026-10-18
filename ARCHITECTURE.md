@@ -7,7 +7,8 @@ Son güncelleme: 2026-10-18
 >   - D-010 (yaklaşım **B**), D-011 (sürüm **20.0**; T1.2'de doğrulandı), D-014 (önek `ov_`);
 >   - D-016 (lisans **AGPL-3**, LGPL türevleri LGPL-3), D-018 (paketler ve teslim biçimi), D-019 (OCA portları), D-020 (ücretsiz altyapı).
 > - Üretim barındırma yeri D-013 ile ertelendi (§4).
-> - Henüz kod yok. Bu belge kurulacak yapıyı tanımlıyor. Görevler `PLAN.md`'de.
+> - Kendi ürün modülümüz henüz yok. İlk OCA deposu (`vendor/oca/server-ux`) ve ilk OCA portu (`ports/oca/reporting-engine/report_xlsx`) eklendi (T1.11).
+> - Bu belge kurulacak yapıyı tanımlıyor. Görevler `PLAN.md`'de.
 
 ## 1. Genel bakış
 
@@ -49,7 +50,7 @@ odoo-version/
 ├── LICENSE                  # GNU AGPL v3 (D-016)
 ├── .gitignore  .gitattributes   # gizli bilgiler ve yerel veriler depoya girmez; satır sonu LF
 ├── ruff.toml  .pylintrc  .pre-commit-config.yaml   # lint kuralları ve commit öncesi denetimler (T1.9)
-├── .github/                 # CI (T1.10): workflows/ci.yml; actions/upstream/ (upstream alt modülü ve önbelleği)
+├── .github/                 # CI (T1.10): workflows/ci.yml; actions/submodules/ (alt modüller ve önbelleği, T1.11)
 ├── .claude/skills/          # Odoo'nun AI rehberleri, upstream'den değiştirilmeden kopya (LGPL-3, T1.7)
 ├── docs/
 │   ├── COMPLIANCE.md        # lisans, clean-room, marka, KVKK
@@ -64,10 +65,11 @@ odoo-version/
 │   ├── run_tests.py         # temiz veritabanında modül testleri, Windows gc hatalarını ayırır (T1.8)
 │   ├── new_module.py        # addons/ altında yeni modül iskeleti (T1.9)
 │   ├── check_modules.py     # modüllerimizin proje kuralları: önek, lisans, sürüm, yazar, marka (T1.9)
-│   └── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
+│   ├── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
+│   └── port_oca.py          # OCA modülünü ports/'a alır, upgrade_code'u porta uygular, kaynakla fark (T1.11)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
-├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
-├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
+├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, sığ git submodule, sabit commit (ilk: server-ux, T1.11)
+├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız, her birinde PORT.md (ilk: reporting-engine/report_xlsx)
 ├── addons/                  # bizim modüllerimiz, önek ov_ (henüz yok; iskelet tools/new_module.py)
 └── deploy/                  # odoo.conf.example (T1.6); kurulum aracı, ters vekil, yedek betikleri (henüz yok — T8.4)
 ```
@@ -80,13 +82,37 @@ Kurallar:
 
 ### OCA port düzeni (D-019)
 
-- OCA'nın resmî 20.0 sürümü varsa `vendor/oca/<depo>` kullanılır.
+- OCA'nın resmî 20.0 sürümü varsa `vendor/oca/<depo>` kullanılır:
+  - depo sığ git submodule olarak eklenir (`.gitmodules`: `branch = 20.0`, `shallow = true`), sabit commit'te durur, dokunulmaz;
+  - ekleme: `git clone --depth 1 --branch 20.0 <url> vendor/oca/<depo>` → `git submodule add -b 20.0 <url> vendor/oca/<depo>` → `git submodule absorbgitdirs`. Doğrudan `git submodule add --depth 1 -b 20.0` dalı bulamıyor (sığ klon yalnız varsayılan dalı çekiyor).
 - Yoksa 19.0 sürümü `ports/oca/<depo>/<modül>` altına kopyalanıp 20.0'a taşınır:
   - teknik ad, lisans, yazarlar ve telif notları korunur;
-  - kaynak commit modül klasöründeki bir notta ve lisans envanterinde yazılır;
-  - OCA'nın taşıma kurallarına uyulur.
+  - kaynak commit modül klasöründeki `PORT.md` notunda ve lisans envanterinde yazılır;
+  - OCA'nın taşıma kurallarına uyulur. Ör. ilk sürüm `20.0.1.0.0`: OCA'nın resmî sürümü ve göç betikleri portun ardından boşluksuz gelir.
 - OCA resmî 20.0 sürümünü yayımlayınca port silinir ve `vendor/`'a geçilir. Teknik ad aynı olduğu için veritabanı göçü gerekmez.
-- Ayrıntılı port prosedürü T1.11'de bu bölüme eklenecek.
+
+**Port prosedürü (T1.11, `tools/port_oca.py`):**
+1. Ön kontrol:
+   - modül OCA'nın 20.0 dalında kurulabilir durumda mı (öyleyse `vendor/`);
+   - bağımlılıkları addons yolunda mı (değilse önce onlar);
+   - OCA'da açık taşıma PR'ı var mı: `gh pr list -R OCA/<depo> --base 20.0 --search <modül>`.
+2. `python tools/port_oca.py fetch <depo> <modül>`:
+   - OCA deposu geçici klasöre sığ ve seyrek klonlanır, yalnız modül kopyalanır. İndirilen dosyalardan hiçbiri çalıştırılmaz.
+   - Manifest sürümü `20.0.1.0.0` olur, `PORT.md` yazılır (kaynak depo, dal, commit, lisans, yazarlar).
+   - Lisans AGPL-3 veya LGPL-3 değilse araç durur (önce `docs/COMPLIANCE.md`).
+3. `python tools/port_oca.py upgrade ports/oca/<depo>/<modül>`:
+   - Odoo'nun `upgrade_code` betikleri (kaynak dalından sonraki sürümler ve Owl 3) yalnız porta uygulanır.
+   - T1.2'de bulunan Windows sorunları araçta çözülür: yollar `/` ile, dosyalar UTF-8, yazma yalnız port klasörüne. `ir-access` betiği bağımlılık modüllerini okur, onlara yazılmaz.
+   - Değişen dosya sayısı ve elle bakılacak uyarılar `PORT.md`'ye yazılır.
+4. Elle uyarlamalar, `python tools/run_tests.py <modül>` geçene kadar:
+   - her değişiklik `PORT.md` → "Değişiklikler" altında bir satır;
+   - açık taşıma PR'ı varsa uyarlamalar onunla karşılaştırılır.
+5. Python bağımlılığı upstream `requirements.txt`'de yoksa `requirements-dev.txt`'ye ve lisans envanterine eklenir.
+6. Kayıt: `docs/COMPLIANCE.md` §5 satırı (kaynak commit, lisans, "değiştirildi"), `state.json` → `modules.ported`.
+7. Gözden geçirme: `python tools/port_oca.py diff ports/oca/<depo>/<modül> [--stat]` kaynakla farkın tamamını gösterir.
+
+- **Lint:** `vendor/` ve `ports/` OCA'nın kod biçiminde kalır. ruff, pylint-odoo ve modül kuralı denetimlerimiz yalnız `addons/` (T1.9). OCA'ya katkıda (K8) OCA'nın kendi pre-commit'i çalıştırılır.
+- **Testler:** CI, `ports/` altındaki her modülün testlerini çalıştırır. `vendor/` modülleri yalnız bağımlılık olarak kurulur; testleri OCA'nın CI'ında.
 
 ## 3. Modül katmanları
 
@@ -163,7 +189,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
     - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
     - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).
     - Elle çalıştırmada `modules` girdisindeki modüller (ör. upstream) ayrıca test edilir: Linux referans sonucu.
-  - Önbellekler: upstream git nesneleri (upstream commit'ine göre), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
+  - Önbellekler: alt modüllerin git nesneleri (upstream ve `vendor/` sabit commit'lerine göre; biri değişince son önbellek geri yüklenir, yalnız yeni commit'ler çekilir), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
   - Güvenlik: yalnız okuma yetkisi; eylemler commit SHA'sıyla sabit; gitleaks arşivi SHA-256 ile doğrulanır.
   - Planlanan özel testler: marka sızıntısı, dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.
 - Üretim Linux olduğu için CI aynı zamanda Linux uyumluluk testidir.

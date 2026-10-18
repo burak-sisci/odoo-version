@@ -71,6 +71,8 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 |---|---|---|---|---|
 | Odoo Community | 20.0, commit `afbcf79d` (2026-10-18) | LGPL-3 (`LICENSE`, `COPYRIGHT`) | Hayır (D-010) | `upstream/odoo`, sığ git submodule (T1.4) |
 | Odoo AI rehberleri (upstream `skills/`) | 20.0, commit `afbcf79d` | LGPL-3 (klasörde kendi lisans dosyası yok, depo lisansı geçerli; `LICENSE` kopyası yanında) | Hayır; yalnız satır sonu LF'ye çevrildi | `.claude/skills/`, kaynak notu `SOURCE.md` (T1.7, `tools/sync_skills.py`) |
+| OCA server-ux (`date_range`) | 20.0, commit `d952d4df` (2026-10-13) | `date_range` LGPL-3 (manifest ve dosya başlıkları); depo `LICENSE` AGPL-3 | Hayır (D-010, D-019) | `vendor/oca/server-ux`, sığ git submodule (T1.11) |
+| OCA `report_xlsx` (reporting-engine) | 19.0, commit `b9e8c6cd` (2026-09-23); port sürümü `20.0.1.0.0` | AGPL-3; yazarlar ACSONE SA/NV, Creu Blanca, OCA; telif başlıkları korunuyor | Evet: 20.0 uyarlaması, ayrıntı modüldeki `PORT.md` | `ports/oca/reporting-engine/report_xlsx` (T1.11) |
 
 **Geliştirme ortamı araçları (depoya girmez, ürünle dağıtılmaz):**
 

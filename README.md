@@ -13,7 +13,7 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
   - **Üretim:** Ticaret + üretim, fason, maliyet, kalite, bakım, izlenebilirlik.
 - Uzun vadeli hedef, Odoo'daki tüm uygulamaların işlevsel karşılığı. Enterprise'a özel özellikler clean-room yöntemiyle yeniden yazılacak (D-006).
 
-**Durum:** Faz 1 — Geliştirme altyapısı.
+**Durum:** Faz 2 — Marka katmanı. Faz 1 (geliştirme altyapısı) tamamlandı.
 - Planlama tamamlandı: [PLAN.md](PLAN.md) (ilerleme panosu, fazlar, görevler, müşteri arayışı kapısı).
 - Görevler üç kategoride: kullanıcının yapacakları, birlikte yapılacaklar, Claude'un yapacakları (D-021).
 - Sürüm doğrulandı: 20.0'da kalınıyor (T1.2, `docs/research/nilvera-port.md`).
@@ -24,8 +24,9 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Test komutu hazır (`tools/run_tests.py`, T1.8).
 - Modül şablonu ve kod kalite araçları hazır (`tools/new_module.py`, ruff, pylint-odoo, pre-commit; T1.9).
 - CI çalışıyor: her push'ta belge denetimi, lint, gizli bilgi taraması ve modül testleri (GitHub Actions, T1.10).
-- Sıradaki görev: `vendor/` ve `ports/` düzeni (T1.11), ardından marka katmanı (F2).
-- Açık karar yok. Henüz ürün modülü yok.
+- OCA düzeni hazır: resmî 20.0 depoları `vendor/oca/`, bizim 20.0 portlarımız `ports/oca/` (`tools/port_oca.py`, T1.11). İlk port: `report_xlsx`.
+- Sıradaki görev: kullanıcıya görünen Odoo izlerinin envanteri (T2.1).
+- Açık karar yok. Kendi ürün modülümüz henüz yok.
 
 ## Belgeler
 

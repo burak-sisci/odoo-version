@@ -112,7 +112,7 @@ Satır sayıları boş satırlar dahil. Python sütunu testleri içermez.
 
 Toplam: 63 dosya, +316/−361 satır.
 
-Windows'ta dönüştürücünün kendisi düzgün çalışmıyor. Ölçüm için sarmalayıcı betik yazıldı. T1.9 veya ilk port görevinde araç olarak depoya alınabilir.
+Windows'ta dönüştürücünün kendisi düzgün çalışmıyor. Ölçüm için sarmalayıcı betik yazıldı; T1.11'de araç olarak depoya alındı (`tools/port_oca.py upgrade`). `account_financial_report` denemesinde sonuç bu ölçümle aynı.
 - Yol denetimleri `/static/` gibi POSIX ayırıcıları bekliyor. Windows'ta `owl3-migration` hiçbir dosya görmüyor, `t-call` betiği statik şablonları da değiştiriyor.
 - Varsayılan kodlama cp1252: `PYTHONUTF8=1` gerekiyor.
 - `--from` seçeneği silinen dosyalarda çöküyor.
@@ -209,10 +209,14 @@ Değerlendirme: 19.0'ın avantajı kısa vadeli. Bugünkü port emeği (9–15 o
 - **20.0 henüz taze.** Denenen commit'te Community çekirdeğinde hata var:
   - `account_edi_ubl_cii`, satır değerlerine yalnız Enterprise'da olan `deferred_start_date` alanını koyuyor. Community'de UBL fatura içe aktarma bu yüzden hata veriyor.
   - Çekirdeğin kendi testleri de bu ortamda tam geçmiyor: `account_edi_ubl_cii` 230 testten 199'u geçiyor. Hataların çoğu aşağıdaki Windows sorunu; bir kısmı bu çekirdek hatası ve yerelde PDF motoru (wkhtmltopdf) olmaması.
+  - Linux referansı (CI, 2026-10-18, upstream `afbcf79d`): `l10n_tr` + `account_edi_ubl_cii` 233 test, 4 hata:
+    - `test_invoice_deferred_dates`: test, Enterprise alanı `deferred_start_date`'i yazıyor;
+    - `test_import_ubl_21_line_description`: içe aktarılan faturada satır yok (nedeni incelenmedi);
+    - PDF motoru olmadığı için 2 PDF üretim testi. Windows'taki 27 gc hatası ve `LocalBinaryFile` hatası Linux'ta yok.
   - Önlem: upstream sabit commit'te tutulur (T1.4) ve düzenli güncellenir. Çekirdek yamalanmaz (D-010). Gerekirse kendi modülümüzde geçici çözüm.
 - **Windows'ta test temizliği hatalı.** 20.0, filestore dosyalarını salt okunur yazıyor. Testlerin sonundaki çöp toplama, Windows'ta bu dosyaları silemiyor (`PermissionError`) ve `tearDownClass` hatası üretiyor. Linux'ta bu sorun beklenmiyor.
   - Önlem: test sonuçlarının referansı Linux CI (T1.10). Yerel test komutları (T1.8) bu hatayı ayırt edecek şekilde yazılır.
-- **PDF motoru.** 20.0 PDF için hâlâ wkhtmltopdf kullanıyor; yerelde kurulu değil. T1.6'da ele alınır.
+- **PDF motoru.** 20.0 PDF için hâlâ wkhtmltopdf kullanıyor; yerelde ve CI'da kurulu değil. T1.6'da incelendi, seçim T2.5'te.
 
 ## 9. OCA'nın geçiş gecikmesi
 

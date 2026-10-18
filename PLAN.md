@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.11 — `vendor/` ve `ports/` düzeni (D-019)
+**Şu anki görev:** T2.1 — Kullanıcıya görünen Odoo izlerinin envanteri
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 10/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 18/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 19/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -204,7 +204,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [x] T0.7 Açık kararların (D-010 … D-015) kullanıcıyla netleştirilmesi · S · B
 - [x] T0.8 Detaylı planlama · M · B — bu belge; D-016 … D-020; `docs/research/planning-inputs.md`
 
-### F1 — Geliştirme altyapısı ve CI `[~]`
+### F1 — Geliştirme altyapısı ve CI `[x]`
 
 **Amaç:** lokal çalışan Odoo 20.0, modül şablonu ve her push'ta testleri çalıştıran CI.
 **Kabul (M1):**
@@ -254,10 +254,11 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Şablon denetimi: `tools/new_module.py` ile örnek modül üretilir, testleri ve lint'i çalıştırılır (T1.9). Örnek modül depoya girmez.
   - Upstream önbelleği ile çalışma süresi kısaltılır.
   - Kabul: push'ta yeşil. Kasıtlı bir hata CI'ı kırmızıya çeviriyor (negatif deneme).
-- [ ] T1.11 `vendor/` ve `ports/` düzeni (D-019) · S · C
+- [x] T1.11 `vendor/` ve `ports/` düzeni (D-019) · S · C — `vendor/oca/server-ux`, `ports/oca/reporting-engine/report_xlsx`, `tools/port_oca.py`; testler geçiyor
   - `vendor/oca/<depo>`: resmî OCA 20.0, submodule, dokunulmaz.
   - `ports/oca/<depo>/<modül>`: bizim 20.0 portlarımız.
   - Port prosedürü ARCHITECTURE.md'ye yazılır.
+  - Portların lint'i: OCA'nın kod biçimi korunur; bizim lint denetimlerimiz yalnız `addons/` (T1.9).
   - Kabul: addons yolu üç kaynağı da içeriyor; örnek bir port kuruluyor.
 
 ### F2 — Marka katmanı `[ ]`
@@ -270,6 +271,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 
 - [ ] T2.1 Kullanıcıya görünen Odoo izlerinin envanteri · M · C
   - Kaynak: 20.0 Community kodu. Ekran, dosya ve değiştirme yöntemi listelenir.
+  - OCA modüllerinin yazar adı ("Odoo Community Association (OCA)") Uygulamalar ekranında görünüyor. Telif bilgisi olduğu için değiştirilmez (CLAUDE.md kural 2–3). Son kullanıcıdan Uygulamalar menüsünü gizlemek T7.3'te.
   - Çıktı: `docs/research/brand-inventory.md`.
 - [ ] T2.2 Marka modülü `ov_brand` · L · C
   - Yapılandırılabilir tek marka adı ve logo.
