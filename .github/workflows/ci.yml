@@ -17,8 +17,9 @@ on:
 permissions:
   contents: read
 
+# A new push cancels the older run of the same branch; manual runs have a group of their own.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
