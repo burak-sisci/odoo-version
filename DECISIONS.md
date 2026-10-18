@@ -135,11 +135,14 @@ Son güncelleme: 2026-10-18
 - **Gerekçe:**
   - Odoo her an son 3 ana sürümü destekler. 20.0 en uzun destek süresine sahip (~2029'a kadar).
   - İlk müşteriler büyük olasılıkla 2027'de gelecek. 19.0 ile başlamak, bu müşterilerde kısa süre sonra zorunlu bir ana sürüm göçü demek.
+  - T1.2 ölçümü (`docs/research/nilvera-port.md`): MVP'nin 19 modülünden 18'i, 21 tür küçük uyarlamayla 20.0'da kuruluyor; 268 testin 243'ü geçiyor. Kalan ek emek yaklaşık 9–15 oturum ve mevcut port görevlerinin içinde.
+  - 19.0'da kalmak port işini yalnız erteler. Nilvera 20.0'dan itibaren Community'de yok; 19.0'ın desteği Eylül 2028'de bitiyor. O tarihteki göç, kendi modüllerimiz ve müşteri veritabanlarıyla birlikte daha pahalı.
 - **Kabul edilen bedel:**
   - Nilvera e-Belge modülleri 20.0'da Enterprise'da. 19.0'daki LGPL kodundan taşınacak (F4).
-  - MVP'nin ihtiyaç duyduğu OCA modüllerinin çoğu (mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite) yalnız 19.0'da var. OCA o tarihe kadar taşımazsa biz taşıyacağız (D-019).
-- **Yeniden değerlendirme:** T1.2. İlk tahmin, MVP'nin OCA modülüne ihtiyacı olmadığı varsayımına dayanıyordu. D-018 ile bu varsayım değişti. Port maliyeti, upstream eklenmeden önce ölçülür. 20.0'ın maliyeti çok yüksek çıkarsa 19.0 seçeneği yeniden açılır.
-- **Kaynak / tarih:** Kullanıcı kararı Claude'a bıraktı; Claude, 2026-10-18.
+  - MVP'nin ihtiyaç duyduğu OCA modüllerinin çoğu (mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite) yalnız 19.0'da var. OCA o tarihe kadar taşımazsa biz taşıyacağız (D-019). En büyük kalem `account_financial_report` (20.0'da `account.group` yok, T5.4).
+  - 20.0 taze bir sürüm; denenen commit'te Community çekirdeğinde hata görüldü. Upstream sabit commit'te tutulur ve düzenli güncellenir (T1.4); çekirdek yamalanmaz (D-010).
+- **Yeniden değerlendirme:** Planlı bir nokta yok; sürüm ölçümle doğrulandı. Yalnız şu durumda yeniden açılır: 20.0 çekirdeğinde MVP'yi engelleyen ve modülle aşılamayan bir hata, upstream'de üç ay içinde düzelmezse.
+- **Kaynak / tarih:** Kullanıcı kararı Claude'a bıraktı; Claude, 2026-10-18. T1.2 ölçümüyle doğrulandı, 2026-10-18.
 
 ### D-012 · e-Belge stratejisi
 - **Durum:** Geçerli

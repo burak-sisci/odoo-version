@@ -11,29 +11,32 @@ Araştırma tarihi: 2026-10-18
 
 Kontrol yöntemi: OCA GitHub depolarının 18.0 / 19.0 / 20.0 dallarındaki modül klasörleri.
 
+> **Düzeltme (2026-10-18, T1.2):** klasör saymak yanıltıcıydı. OCA, 20.0 dalını açarken bazı modülleri henüz taşımadan yer tutucu olarak koyuyor (`installable: False`, sürüm 19.0). `mis_builder`, `mis_builder_budget` ve `queue_job` bu durumda; aşağıdaki tablo düzeltildi. Kurulabilirlik ve port ölçümü: `nilvera-port.md`.
+
 | Modül | OCA deposu | 20.0 | 19.0 | Bizim için |
 |---|---|---|---|---|
 | `l10n-turkey` (depo) | l10n-turkey | boş | boş | Türkiye yerelleştirmesi OCA'da yok; kendimiz yazarız (PLAN F3, F4) |
-| `account_statement_base`, `account_statement_import_file`, `account_statement_import_sheet_file` | bank-statement-import | yok | var | Port (T5.2) |
+| `account_statement_import_file`, `account_statement_import_sheet_file` | bank-statement-import | yok | var | Port (T5.2) |
+| `account_statement_base` | account-reconcile | yok | var | Port (T5.2, T5.3) |
 | `account_reconcile_oca` | account-reconcile | yok | var | Port (T5.3) |
 | `account_financial_report` | account-financial-reporting | yok | var | Port (T5.4) |
 | `account_tax_balance` | account-financial-reporting | yok | var | Port (T5.4, T5.8) |
 | `partner_statement` | account-financial-reporting | yok | var | Port (T5.6) |
-| `mis_builder`, `mis_builder_budget` | mis-builder | **var** | var | Doğrudan `vendor/` (T5.5) |
+| `mis_builder`, `mis_builder_budget` | mis-builder | yer tutucu (kurulamaz) | var | Port (T5.5); resmî 20.0 çıkınca `vendor/` |
 | `currency_rate_update` | currency | yok | var | TCMB için kendi modülümüz yeterli olabilir (T3.5'te karar) |
 | `quality_control_oca` | manufacture | yok | var | Port (T6.4) |
 | `mrp_multi_level` | manufacture | yok | var | Port (T11.2) |
 | `account_asset_management` | account-financial-tools | yok | var | Port (T11.1) |
 | `stock_barcodes` | stock-logistics-barcode | yok | yok | 20.0 için ayrı değerlendirme (T11.3) |
 | `web_responsive` | web | yok | var | 20.0'da gerekip gerekmediği T7.5'te ölçülür |
-| `queue_job` | queue | **var** | var | Gerekirse doğrudan `vendor/` |
+| `queue_job` | queue | yer tutucu (kurulamaz) | var | Gerekirse port |
 | `remove_odoo_enterprise` | server-brand | **var** | var | Marka katmanında kullanılabilir (T2.3) |
 | `disable_odoo_online` | server-brand | yok | var | Port veya kendi kodumuz (T2.3) |
 | `base_technical_user`, `module_auto_update` | server-backend, server-tools | yok | var | Gerekirse port |
 
 **Sonuç:**
 - Ticaret ve Üretim paketlerinin ihtiyaç duyduğu OCA modüllerinin çoğu yalnız 19.0'da var.
-- Bu, D-011'deki "MVP OCA'ya muhtaç değil" varsayımını geçersiz kıldı. D-011 bu yüzden T1.2'de yeniden değerlendirilecek: 20.0'da kalıp port etmek mi, 19.0'a dönmek mi daha ucuz?
+- Bu, D-011'deki "MVP OCA'ya muhtaç değil" varsayımını geçersiz kıldı. D-011 bu yüzden T1.2'de yeniden değerlendirildi ve doğrulandı: 20.0'da kalınıyor. Ölçüm ve gerekçe: `nilvera-port.md`.
 - Port kuralları: D-019 (orijinal ad, lisans ve yazarlar korunur; resmî 20.0 sürümü çıkınca `vendor/`'a geçilir).
 
 ## 2. Türkçe çeviri kapsamı (20.0, `i18n/tr.po`)
