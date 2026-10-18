@@ -137,6 +137,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - `pgsql/` ikili dosyalar, `pgdata/` küme, `pglog/` günlük. Sunucu kullanıcı hesabında çalışır, yalnız `localhost:5432` dinler.
   - Odoo rolü `odoo` (LOGIN CREATEDB). Bağlantı bilgileri depodaki `.env` dosyasında (git'e girmez).
   - Bilgisayar yeniden başlayınca sunucu kendiliğinden açılmaz: `python tools/pg.py start`.
+- Python sanal ortamı (T1.5): depoda `.venv` (git'e girmez), Python 3.12.10. Bağımlılıklar `requirements-dev.txt`: upstream `requirements.txt` + test/lint araçları (ruff 0.16, websocket-client).
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
@@ -148,4 +149,6 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Yeni klonda upstream: `git -c core.longpaths=true submodule update --init --depth 1`, ardından `git -C upstream/odoo config core.longpaths true` (düz `git config` alt modüle geçmez)
 - PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
+- Python ortamı: `python -m venv .venv` → `.venv/Scripts/python -m pip install --prefer-binary -r requirements-dev.txt` (upstream güncellenince yeniden çalıştırılır)
+- Odoo sürüm kontrolü: `.venv/Scripts/python upstream/odoo/odoo-bin --version`
 - Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.

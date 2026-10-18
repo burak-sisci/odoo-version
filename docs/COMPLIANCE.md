@@ -75,3 +75,6 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 | Araç | Sürüm | Lisans | Not |
 |---|---|---|---|
 | PostgreSQL sunucusu ve komut satırı araçları (EDB Windows ikili zip) | 18.6 | PostgreSQL License (izin verici) | T1.3. Zip içindeki pgAdmin 4 ve StackBuilder kullanılmıyor. |
+| ruff | 0.16.10 | MIT | T1.5, `requirements-dev.txt`. Lint; kural seti upstream `ruff.toml`. |
+| websocket-client | 1.9.2 | Apache-2.0 | T1.5, `requirements-dev.txt`. Odoo HttpCase tarayıcı testleri için. |
+| Odoo'nun Python bağımlılıkları | upstream `requirements.txt` sürümleri | Çeşitli (çoğu izin verici) | T1.5, `.venv`. Ürünle dağıtılacak paketlerin tam lisans dökümü paketleme görevinde çıkarılır (T8.4). |

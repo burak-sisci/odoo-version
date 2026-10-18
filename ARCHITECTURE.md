@@ -133,6 +133,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
 ## 5. Geliştirme ortamı ve CI (planlanan, PLAN F1)
 
 - Windows 11 + Python 3.12 sanal ortam (`.venv`) + yerel PostgreSQL 16+.
+- **Python ortamı (T1.5, kurulu):** depodaki `.venv` (git'e girmez). `requirements-dev.txt` upstream `requirements.txt`'yi içerir, üstüne test ve lint araçlarını ekler; ürünle dağıtılmaz. Ürün bağımlılıkları upstream'in sabit commit'iyle belirlenir.
 - **Yerel PostgreSQL (T1.3, kurulu):** 18.6, EDB taşınabilir ikili dosyalar; yönetici izni gerekmez.
   - Depo dışında `OV_HOME` = `%LOCALAPPDATA%\odoo-version`: `pgsql/` ikili dosyalar, `pgdata/` küme (UTF-8, `C.UTF-8` yerleşik yerel ayar, scram-sha-256), `pglog/` günlük.
   - Kullanıcı hesabında çalışır, yalnız `localhost` dinler. Yönetim: `tools/pg.py`. Bağlantı bilgileri `.env` dosyasında (git'e girmez).
