@@ -48,6 +48,7 @@ odoo-version/
 ├── CLAUDE.md  README.md  PLAN.md  USER_TASKS.md  ARCHITECTURE.md  DECISIONS.md  CHANGELOG.md  state.json
 ├── LICENSE                  # GNU AGPL v3 (D-016)
 ├── .gitignore  .gitattributes   # gizli bilgiler ve yerel veriler depoya girmez; satır sonu LF
+├── ruff.toml  .pylintrc  .pre-commit-config.yaml   # lint kuralları ve commit öncesi denetimler (T1.9)
 ├── .github/workflows/       # CI (henüz yok — T1.10)
 ├── .claude/skills/          # Odoo'nun AI rehberleri, upstream'den değiştirilmeden kopya (LGPL-3, T1.7)
 ├── docs/
@@ -56,15 +57,17 @@ odoo-version/
 │   ├── specs/               # Enterprise eşdeğerleri için clean-room işlev tanımları
 │   └── research/            # tarihli araştırma kayıtları
 ├── tools/
-│   ├── check_docs.py        # belge tutarlılık denetimi (+ ileride modül şablonu, UBL doğrulama, çeviri ölçümü)
+│   ├── check_docs.py        # belge tutarlılık denetimi (ileride ayrı araçlar: UBL doğrulama, çeviri ölçümü)
 │   ├── pg.py                # yerel PostgreSQL kümesi: init, start, stop, status (T1.3)
 │   ├── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
 │   ├── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
-│   └── run_tests.py         # temiz veritabanında modül testleri, Windows gc hatalarını ayırır (T1.8)
+│   ├── run_tests.py         # temiz veritabanında modül testleri, Windows gc hatalarını ayırır (T1.8)
+│   ├── new_module.py        # addons/ altında yeni modül iskeleti (T1.9)
+│   └── check_modules.py     # modüllerimizin proje kuralları: önek, lisans, sürüm, yazar, marka (T1.9)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
-├── addons/                  # bizim modüllerimiz, önek ov_ (henüz yok)
+├── addons/                  # bizim modüllerimiz, önek ov_ (henüz yok; iskelet tools/new_module.py)
 └── deploy/                  # odoo.conf.example (T1.6); kurulum aracı, ters vekil, yedek betikleri (henüz yok — T8.4)
 ```
 
@@ -149,9 +152,13 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - Veri klasörü `OV_HOME/odoo-data`. Tek süreç (`workers = 0`), yalnız `127.0.0.1`.
   - Demo veritabanı `ov_demo` (Türkçe, TR, `account` + `l10n_tr`).
 - **Yerel testler (T1.8):** `tools/run_tests.py` her çalıştırmada temiz test veritabanı açar (demo yok), ayrı HTTP portu (8079) kullanır. Windows'a özgü filestore temizliği hatalarını ayrı sayar; referans sonuç Linux CI'dır.
+- **Lint ve commit öncesi denetimler (T1.9):** `.pre-commit-config.yaml` her commit'te çalışır; CI'da `pre-commit run --all-files` (T1.10).
+  - `ruff.toml`: upstream `ruff.toml`'u genişletir; `upstream/`, `vendor/`, `ports/` hariç.
+  - `.pylintrc`: pylint-odoo'nun Odoo denetimleri (yalnız `addons/`): sürüm 20.0, lisans AGPL-3/LGPL-3, zorunlu yazar, SQL enjeksiyonu, yöntem adları.
+  - `tools/check_modules.py`: proje kuralları (önek, lisans, sürüm, yazar, kullanıcıya görünen metinlerde marka, `README.rst`, test, `tr.po`).
 - **CI (D-020):** GitHub Actions, Ubuntu runner + PostgreSQL servisi. Her push'ta çalışır:
   - belge denetimi;
-  - lint;
+  - lint (`pre-commit run --all-files`);
   - gizli bilgi taraması;
   - `addons/` ve `ports/` modül testleri;
   - özel testler: marka sızıntısı, dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.

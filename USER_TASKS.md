@@ -18,6 +18,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 3. **K11:** commit mesajlarındaki oturum bağlantısı satırı kalsın mı?
 4. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
 5. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
+6. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci` varsayıldı.
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
@@ -52,6 +53,12 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
 - [ ] K11 **Karar** — commit mesajlarındaki `Claude-Session:` satırı.
   - Bu satır commit'in hangi Claude oturumunda hazırlandığını gösteren bir bağlantı. GitHub'da katkıcı oluşturmaz.
   - Varsayılan: satır kalır. Kaldırılmasını istersen CLAUDE.md'ye kural olarak eklenir.
+- [ ] K12 **Karar** — modül manifestlerindeki yazar (`author`) adı.
+  - Neden: Odoo, Uygulamalar ekranında her modülün yazarını gösterir; müşteri de görür.
+  - Varsayım (otonom mesai 1, geri dönüşü kolay): `burak-sisci`, GitHub kullanıcı adın. `tools/check_modules.py` ve `.pylintrc`'de tanımlı; değişirse mevcut manifestler de güncellenir.
+  - Seçenekler: **A** — `burak-sisci` kalsın · **B** — adın soyadın · **C** — şirket veya marka adı (K3 ile birlikte).
+  - Claude önerisi: kalıcı marka belirlenene kadar **A**, sonra **C**.
+  - Ne zaman: ilk dış demodan önce (F7).
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

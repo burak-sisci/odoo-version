@@ -1,0 +1,10 @@
+# Lint rules: Odoo's own rule set from the pinned upstream (generated for ruff 0.16).
+# Keep the ruff version in requirements-dev.txt and .pre-commit-config.yaml in step.
+extend = "upstream/odoo/ruff.toml"
+# Upstream and official OCA code is never edited (D-010, D-019). OCA ports keep
+# their own style; how they are linted is decided with their layout (T1.11).
+extend-exclude = ["upstream", "vendor", "ports"]
+
+[lint.extend-per-file-ignores]
+# Command-line tools report on stdout.
+"tools/*.py" = ["T201"]

@@ -4,5 +4,9 @@
 
 # HttpCase browser tests: odoo/tests/common.py imports websocket
 websocket-client==1.9.2
-# Linter; the rule set is upstream/odoo/ruff.toml, written for ruff 0.16
+# Lint (T1.9). Keep these versions in step with .pre-commit-config.yaml.
+# ruff: the rule set is upstream/odoo/ruff.toml (written for ruff 0.16), extended by ruff.toml
 ruff==0.16.10
+# Odoo-specific checks; settings in .pylintrc
+pylint-odoo==10.0.12
+pre-commit==4.7.0

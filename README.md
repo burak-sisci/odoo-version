@@ -20,8 +20,9 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Odoo yerelde çalışıyor: Türkçe arayüz, `l10n_tr` ve Türk hesap planlı demo şirketi (T1.6).
 - Odoo'nun AI rehberleri kuruldu (`.claude/skills/`, T1.7).
 - Test komutu hazır (`tools/run_tests.py`, T1.8).
-- Sıradaki görevler: modül şablonu ve lint, CI, `vendor/` ve `ports/` düzeni (T1.9–T1.11).
-- Açık karar yok. Henüz kod yok.
+- Modül şablonu ve kod kalite araçları hazır (`tools/new_module.py`, ruff, pylint-odoo, pre-commit; T1.9).
+- Sıradaki görevler: CI, `vendor/` ve `ports/` düzeni (T1.10–T1.11).
+- Açık karar yok. Henüz ürün modülü yok.
 
 ## Belgeler
 

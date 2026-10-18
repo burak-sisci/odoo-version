@@ -129,8 +129,9 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
     - `odoo-review`'daki "Enterprise'daki diğer yarıya bak" adımı uygulanmaz (kural 1, D-006). Enterprise deposu açılmaz, klonlanmaz.
     - JS `patch()` kendi modüllerimizde serbesttir (rehber de Odoo dışı kod için uygun buluyor).
     - ASCII noktalama kuralı kod yorumları, docstring'ler, kullanıcıya görünen metinler ve commit mesajları içindir. Türkçe harfler serbest; Markdown belgelerimiz bu kuralın dışında.
-- Her modülde:
-  - manifest'te doğru `license` (kural 3) ve sürüm `20.0.x.y.z`;
+- Her modülde (iskelet `tools/new_module.py`; denetim `tools/check_modules.py` ve pylint-odoo, T1.9):
+  - manifest'te doğru `license` (kural 3), sürüm `20.0.x.y.z`, `author` `burak-sisci` (varsayım, USER_TASKS K12); `description` anahtarı yok;
+  - `README.rst`, Türkçe: Odoo bunu Uygulamalar ekranında modülün açıklaması olarak gösterir ve uzantıya bakmadan reStructuredText olarak işler. Kullanıcıya görünür, "Odoo" ve çalışma adı geçmez (kural 2);
   - testler (`tests/`);
   - Türkçe çeviri (`i18n/tr.po`).
 - Enterprise eşdeğeri bir modülden önce `docs/specs/<modül>.md` yazılır (D-006).
@@ -144,7 +145,8 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - `pgsql/` ikili dosyalar, `pgdata/` küme, `pglog/` günlük. Sunucu kullanıcı hesabında çalışır, yalnız `localhost:5432` dinler.
   - Odoo rolü `odoo` (LOGIN CREATEDB). Bağlantı bilgileri depodaki `.env` dosyasında (git'e girmez).
   - Bilgisayar yeniden başlayınca sunucu kendiliğinden açılmaz: `python tools/pg.py start`.
-- Python sanal ortamı (T1.5): depoda `.venv` (git'e girmez), Python 3.12.10. Bağımlılıklar `requirements-dev.txt`: upstream `requirements.txt` + test/lint araçları (ruff 0.16, websocket-client).
+- Python sanal ortamı (T1.5): depoda `.venv` (git'e girmez), Python 3.12.10. Bağımlılıklar `requirements-dev.txt`: upstream `requirements.txt` + test/lint araçları (ruff 0.16, pylint-odoo 10.0, pre-commit 4.7, websocket-client).
+  - pre-commit kancası yerel depoda kurulu (T1.9): her commit'te ruff, pylint-odoo, modül kuralları ve belge denetimi çalışır.
 - Yerel Odoo (T1.6): `odoo.conf` depo kökünde (git'e girmez), `deploy/odoo.conf.example`'dan `tools/odoo_conf.py` ile üretilir. Veri klasörü (filestore, oturumlar) `OV_HOME/odoo-data`.
   - Demo veritabanı `ov_demo`: Türkçe, ülke TR, demo verili, `account` + `l10n_tr`. Türk hesap planı `TR Company` demo şirketinde; ana şirket upstream demo düzeninde genel hesap planıyla gelir. Giriş `admin`/`admin` (yalnız yerel, `127.0.0.1`).
   - PDF motoru kurulu değil (T2.5'te seçilir).
@@ -158,7 +160,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Belge denetimi: `python tools/check_docs.py`
 - Yeni klonda upstream: `git -c core.longpaths=true submodule update --init --depth 1`, ardından `git -C upstream/odoo config core.longpaths true` (düz `git config` alt modüle geçmez)
 - PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
-- Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
+- Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok; pre-commit kancaları çalışır, hata varsa commit olmaz) → `git push`
 - Python ortamı: `python -m venv .venv` → `.venv/Scripts/python -m pip install --prefer-binary -r requirements-dev.txt` (upstream güncellenince yeniden çalıştırılır)
 - Odoo sürüm kontrolü: `.venv/Scripts/python upstream/odoo/odoo-bin --version`
 - Odoo AI rehberleri: `python tools/sync_skills.py` (kopyalar), `python tools/sync_skills.py --check` (upstream'le farkı denetler)
@@ -175,3 +177,9 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Windows'ta Odoo 20.0'ın test sınıflarındaki filestore temizliği hataları (`setUpClass`/`tearDownClass` → `_gc_file_store_unsafe`) ayrı sayılır ve sonucu bozmaz. Referans sonuç Linux CI'dır (T1.10).
   - PDF üreten testler yerelde düşer (PDF motoru yok, T2.5).
   - Doğrudan Odoo ile: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d <db> -i <modül> --test-enable --test-tags /<modül> --stop-after-init`
+- Yeni modül (T1.9): `python tools/new_module.py ov_<ad> [--title …] [--summary …] [--depends base,…] [--license LGPL-3]` → `addons/ov_<ad>/`, ardından `python tools/run_tests.py ov_<ad>`
+- Lint (T1.9): `.venv/Scripts/pre-commit run --all-files`
+  - Tek tek: `.venv/Scripts/ruff check .` · `.venv/Scripts/pylint addons/<modül>` · `python tools/check_modules.py`
+  - Kurallar: `ruff.toml` (upstream'in kural seti), `.pylintrc` (Odoo'ya özgü denetimler), `tools/check_modules.py` (proje kuralları).
+  - Kanca: yeni klonda bir kez `.venv/Scripts/pre-commit install`. İlk çalıştırma ruff ve pylint-odoo ortamlarını kurar (GitHub ve PyPI).
+  - Araç sürümleri `requirements-dev.txt` ve `.pre-commit-config.yaml`'da birlikte güncellenir.
