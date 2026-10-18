@@ -7,6 +7,35 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: GitHub Actions CI (T1.10) — otonom mesai 1
+
+**Kod**
+- `.github/workflows/ci.yml`: her push'ta, pull request'te ve elle (`workflow_dispatch`) çalışır. İki iş paralel:
+  - `checks`: `check_docs.py` → `pre-commit run --all-files` → gitleaks 8.30.1 ile tüm geçmiş (arşivin SHA-256'sı doğrulanır) → `sync_skills.py --check`.
+  - `tests`: Ubuntu 24.04, Python 3.12, PostgreSQL 18 servisi. `.venv` ve `requirements-dev.txt`; `.env` ve `odoo.conf` yerel araçlarla üretilir.
+    - Şablondan `ov_ci_sample` üretilir; modül kuralları, ruff ve pylint-odoo'dan geçirilir.
+    - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`). Hata olursa günlüğün sonu yazdırılır.
+    - Elle çalıştırmada `modules` girdisindeki modüller ayrıca test edilir (Linux referans sonucu).
+  - Güvenlik: yalnız okuma yetkisi, eylemler commit SHA'sıyla sabit, `persist-credentials: false`, elle girilen modül listesi kabuğa ortam değişkeniyle geçer.
+  - Aynı dalda yeni push eski çalıştırmayı iptal eder.
+- `.github/actions/upstream/action.yml`: `upstream/odoo` alt modülünü sığ çeker; git nesneleri upstream commit'ine göre önbellekte.
+- `tools/check_secrets.py`: staged değişikliklerde `.env` değerlerini arar (en az 8 karakter; host, port, kullanıcı adı hariç). Pre-commit kancası. Mesai başından beri oturum klasöründe kullanılan betiğin depoya alınmış hali; `.env` yoksa (CI) atlar.
+- `tools/run_tests.py`: `-v` gerçek hataların traceback'ini yazar.
+
+**Doğrulama**
+- İlk çalıştırma (geçici `ci-setup` dalı): iki iş de yeşil. `checks` 1 dk 14 sn, `tests` 2 dk 11 sn.
+  - Örnek modül kuruldu, 1 test, `RESULT: OK`. gitleaks: 13 commit, sızıntı yok. Rehber kopyası upstream'le aynı.
+- Negatif deneme (geçici `ci-negative` dalı): bilerek başarısız testli `ov_ci_negative` modülü.
+  - `tests` kırmızı: `FAIL: TestOvCiNegative.test_module_installed`, `RESULT: FAILED (1)`, traceback günlükte. `checks` yeşil (lint temiz).
+  - Commit kancaları atlanmadı; lint hatalı commit yerel kanca tarafından zaten engellenir (T1.9 negatif denemesi).
+- `check_secrets.py` negatif denemesi (yerel): `.env` değeri içeren geçici dosya staged iken hata verdi; dosya silindi.
+- gitleaks yerelde de çalıştırıldı (Windows sürümü, sağlama doğrulandı): sızıntı yok.
+- Önbellek: GitHub önbellekleri dala bağlı; iki geçici dal birbirinin önbelleğini göremedi. `main`'de oluşan önbellek bütün dallarda kullanılır. Önbelleksiz sığ upstream çekimi 20–50 sn.
+- Geçici dallar `main`'e tek commit olarak alındı (squash) ve GitHub'dan silindi.
+
+**Belgeler**
+- CLAUDE.md (Ortam: CI; Komutlar: gizli bilgi denetimi, CI), ARCHITECTURE.md (§2 ağacı, §5 CI), PLAN.md (T1.10, pano), README.md (CI rozeti, durum), COMPLIANCE.md (gizli bilgi denetimi; §5 gitleaks, GitHub eylemleri, PostgreSQL imajı), state.json.
+
 ### Adım: Modül şablonu ve kod kalite araçları (T1.9) — otonom mesai 1
 
 **Kod**

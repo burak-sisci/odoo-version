@@ -49,7 +49,7 @@ odoo-version/
 ├── LICENSE                  # GNU AGPL v3 (D-016)
 ├── .gitignore  .gitattributes   # gizli bilgiler ve yerel veriler depoya girmez; satır sonu LF
 ├── ruff.toml  .pylintrc  .pre-commit-config.yaml   # lint kuralları ve commit öncesi denetimler (T1.9)
-├── .github/workflows/       # CI (henüz yok — T1.10)
+├── .github/                 # CI (T1.10): workflows/ci.yml; actions/upstream/ (upstream alt modülü ve önbelleği)
 ├── .claude/skills/          # Odoo'nun AI rehberleri, upstream'den değiştirilmeden kopya (LGPL-3, T1.7)
 ├── docs/
 │   ├── COMPLIANCE.md        # lisans, clean-room, marka, KVKK
@@ -63,7 +63,8 @@ odoo-version/
 │   ├── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
 │   ├── run_tests.py         # temiz veritabanında modül testleri, Windows gc hatalarını ayırır (T1.8)
 │   ├── new_module.py        # addons/ altında yeni modül iskeleti (T1.9)
-│   └── check_modules.py     # modüllerimizin proje kuralları: önek, lisans, sürüm, yazar, marka (T1.9)
+│   ├── check_modules.py     # modüllerimizin proje kuralları: önek, lisans, sürüm, yazar, marka (T1.9)
+│   └── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
@@ -156,12 +157,15 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - `ruff.toml`: upstream `ruff.toml`'u genişletir; `upstream/`, `vendor/`, `ports/` hariç.
   - `.pylintrc`: pylint-odoo'nun Odoo denetimleri (yalnız `addons/`): sürüm 20.0, lisans AGPL-3/LGPL-3, zorunlu yazar, SQL enjeksiyonu, yöntem adları.
   - `tools/check_modules.py`: proje kuralları (önek, lisans, sürüm, yazar, kullanıcıya görünen metinlerde marka, `README.rst`, test, `tr.po`).
-- **CI (D-020):** GitHub Actions, Ubuntu runner + PostgreSQL servisi. Her push'ta çalışır:
-  - belge denetimi;
-  - lint (`pre-commit run --all-files`);
-  - gizli bilgi taraması;
-  - `addons/` ve `ports/` modül testleri;
-  - özel testler: marka sızıntısı, dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.
+- **CI (T1.10, çalışıyor; D-020):** GitHub Actions, `.github/workflows/ci.yml`. Her push'ta, pull request'te ve elle (`workflow_dispatch`) çalışır. İki iş paralel:
+  - **Belgeler, lint, gizli bilgi** (`checks`): belge denetimi → `pre-commit run --all-files` → gitleaks (tüm geçmiş) → `sync_skills.py --check`.
+  - **Modül testleri** (`tests`): Ubuntu 24.04, Python 3.12, PostgreSQL 18 servisi.
+    - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
+    - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).
+    - Elle çalıştırmada `modules` girdisindeki modüller (ör. upstream) ayrıca test edilir: Linux referans sonucu.
+  - Önbellekler: upstream git nesneleri (upstream commit'ine göre), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
+  - Güvenlik: yalnız okuma yetkisi; eylemler commit SHA'sıyla sabit; gitleaks arşivi SHA-256 ile doğrulanır.
+  - Planlanan özel testler: marka sızıntısı, dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.
 - Üretim Linux olduğu için CI aynı zamanda Linux uyumluluk testidir.
 
 ## 6. Sürüm yükseltme stratejisi
