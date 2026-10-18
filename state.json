@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-10-18",
+  "project": {
+    "brand_name": "odoo-version",
+    "brand_name_is_temporary": true,
+    "module_prefix": "ov_",
+    "goal": "Odoo Community tabanlı, kendi markamızla satılacak ERP (ürün ve/veya SaaS)",
+    "repo": "https://github.com/burak-sisci/odoo-version",
+    "repo_visibility": "public"
+  },
+  "phase": {
+    "id": "F0",
+    "title": "Araştırma ve planlama",
+    "status": "in_progress"
+  },
+  "current_task": "T0.8",
+  "tasks_done": ["T0.1", "T0.2", "T0.3", "T0.4", "T0.5", "T0.6", "T0.7", "T1.1"],
+  "blocked_on_user": ["D-016"],
+  "next_actions": [
+    "Kullanıcıyla detaylı planlama: MVP tanımı ve kapsamı, faz ve görev ayrıntısı (T0.8)",
+    "D-016 (kendi modüllerimizin lisansı) kararını T2.2'den önce almak",
+    "PostgreSQL 16+ kurmak (T1.2)",
+    "Odoo 20.0'ı upstream/odoo altına git submodule olarak sabit commit ile eklemek (T1.3)"
+  ],
+  "decisions": [
+    {"id": "D-001", "title": "Ürün hedefi", "status": "Geçerli"},
+    {"id": "D-002", "title": "Kapsam", "status": "Geçerli"},
+    {"id": "D-003", "title": "Ekip ve çalışma modeli", "status": "Geçerli"},
+    {"id": "D-004", "title": "Dokümantasyon protokolü", "status": "Geçerli"},
+    {"id": "D-005", "title": "Bütçe", "status": "Geçerli"},
+    {"id": "D-006", "title": "Clean-room kuralı", "status": "Geçerli"},
+    {"id": "D-007", "title": "Marka kuralı", "status": "Geçerli"},
+    {"id": "D-008", "title": "Lisans uyumu kuralı", "status": "Geçerli"},
+    {"id": "D-009", "title": "Dil", "status": "Geçerli"},
+    {"id": "D-010", "title": "Temel yaklaşım", "status": "Geçerli", "value": "B (çekirdek değiştirilmez, yama kuyruğu yok)"},
+    {"id": "D-011", "title": "Odoo sürümü", "status": "Geçerli", "value": "20.0", "revisit": "T3.1"},
+    {"id": "D-012", "title": "e-Belge stratejisi", "status": "Geçerli", "value": "MVP: e-Fatura + e-Arşiv; özel entegratör API; ilk adaptör Nilvera (19.0 LGPL port)", "revisit": "T6.1"},
+    {"id": "D-013", "title": "Barındırma ve dağıtım modeli", "status": "Ertelendi", "decision_point": "T6.3", "interim": "Lokal geliştirme; ücretsiz demo; sağlayıcıdan bağımsız mimari"},
+    {"id": "D-014", "title": "Çalışma adı ve teknik modül öneki", "status": "Geçerli", "value": "Çalışma adı odoo-version (geçici); önek ov_ (kalıcı)", "revisit": "T6.1"},
+    {"id": "D-015", "title": "Git deposu, GitHub ve push yetkisi", "status": "Geçerli", "value": "Public GitHub deposu; her adım sonunda commit + push (önceden onaylı)"},
+    {"id": "D-016", "title": "Kendi modüllerimizin lisansı", "status": "Açık", "proposal": "AGPL-3; gizli kalması gerekenler ayrı private depoda", "decision_point": "T2.2"}
+  ],
+  "upstream": {
+    "repo": "https://github.com/odoo/odoo",
+    "branch": "20.0",
+    "reviewed_commit": "1740e969d23e6e3e299e5f367a1b0fcc6d2170fe",
+    "in_project": false,
+    "note": "İnceleme kopyası oturuma özel geçici klasörde; projeye T1.3'te git submodule olarak eklenecek"
+  },
+  "environment": {
+    "os": "Windows 11 Pro 10.0.26300",
+    "python": "3.12.10",
+    "git": "2.56.0",
+    "gh": "2.101.0",
+    "git_repo": {"default_branch": "main", "remote": "origin"},
+    "postgresql": null,
+    "node": null,
+    "docker": null
+  },
+  "modules": {
+    "ours": [],
+    "vendored": []
+  },
+  "docs": [
+    "CLAUDE.md",
+    "README.md",
+    "ARCHITECTURE.md",
+    "DECISIONS.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "docs/COMPLIANCE.md",
+    "docs/MODULE_MATRIX.md",
+    "docs/research/odoo-analysis.md",
+    "docs/research/approach-b-vs-c.md",
+    "docs/research/e-fatura.md",
+    "docs/research/hosting.md"
+  ]
+}

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets and local configuration (the repository is public — D-015)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+/odoo.conf
+/*.local.conf
+
+# Local Odoo runtime data (databases dumps, filestore, logs)
+/.local/
+*.dump
+*.log
+
+# Claude Code per-user settings
+.claude/settings.local.json
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
