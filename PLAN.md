@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.5 — Python sanal ortamı ve bağımlılıklar
+**Şu anki görev:** T1.6 — Odoo'nun yerelde çalıştırılması
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 4/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 5/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 12/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 13/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -229,7 +229,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Sığ klon (`shallow = true`), sabit commit, Windows'ta `core.longpaths`.
   - Lisans envanterine satır (COMPLIANCE §5).
   - Kabul: temiz bir klonda `git submodule update --init --depth 1` çalışıyor; commit `state.json`'da.
-- [ ] T1.5 Python sanal ortamı ve bağımlılıklar · S · C
+- [x] T1.5 Python sanal ortamı ve bağımlılıklar · S · C — `odoo-bin --version` = Odoo Server 20.0
   - `.venv`; upstream `requirements.txt` + kendi `requirements-dev.txt` (test ve lint araçları).
   - Kabul: `odoo-bin --version` çalışıyor.
 - [ ] T1.6 Odoo'nun yerelde çalıştırılması · S · C
@@ -474,6 +474,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T8.4 Kurulum aracı (`deploy/`) · L · C
   - Temiz Ubuntu LTS'ye tek komutla kurulum: PostgreSQL, Odoo servisi, Caddy + HTTPS.
   - Docker Compose seçeneği.
+  - Kurulan Python paketlerinin lisans dökümü COMPLIANCE §5'e yazılır (T1.5'te yalnız geliştirme araçları yazıldı).
   - CI'da kurulum testi.
 - [ ] T8.5 Yedekleme, geri yükleme ve güncelleme · M · C
   - Betikler + otomatik geri yükleme testi; modül güncelleme ve geri dönüş prosedürü.

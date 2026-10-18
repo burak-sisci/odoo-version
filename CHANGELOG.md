@@ -7,6 +7,19 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Python sanal ortamı (T1.5) — otonom mesai 1
+
+**Kod**
+- `requirements-dev.txt` eklendi: upstream `requirements.txt`'yi içerir (`-r upstream/odoo/requirements.txt`), üstüne `ruff==0.16.10` (upstream `ruff.toml` 0.16 için yazılmış) ve `websocket-client==1.9.2` (HttpCase tarayıcı testleri `odoo/tests/common.py` içinde `websocket` içe aktarıyor).
+
+**Ortam**
+- Depoda `.venv` (Python 3.12.10, git'e girmez). Kurulum: `pip install --prefer-binary -r requirements-dev.txt`; `pip check` temiz.
+- Kabul: `odoo-bin --version` → `Odoo Server 20.0`.
+- Windows'ta upstream işaretleri yüzünden `gevent`, `greenlet`, `python-magic`, `python-ldap` kurulmaz. Yerel geliştirme iş parçacıklı sunucuyla yapılır; gevent/çok süreçli mod ve LDAP Linux'ta (CI, üretim) sınanır.
+
+**Belgeler**
+- CLAUDE.md (Ortam, Komutlar), ARCHITECTURE.md §5, COMPLIANCE.md §5 (ruff MIT, websocket-client Apache-2.0, upstream Python bağımlılıkları notu), PLAN.md (T1.5, pano, T8.4'e lisans dökümü notu), README.md, state.json.
+
 ### Adım: Upstream Odoo submodule (T1.4) — otonom mesai 1
 
 **Kod**

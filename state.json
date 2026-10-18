@@ -24,7 +24,7 @@
     "title": "Geliştirme altyapısı ve CI",
     "status": "in_progress"
   },
-  "current_task": "T1.5",
+  "current_task": "T1.6",
   "session": {
     "mode": "otonom",
     "number": 1,
@@ -43,13 +43,14 @@
     "T1.1",
     "T1.3",
     "T1.2",
-    "T1.4"
+    "T1.4",
+    "T1.5"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Python sanal ortamı ve bağımlılıklar: upstream requirements.txt + requirements-dev.txt (T1.5)",
     "Odoo'nun yerelde çalıştırılması: deploy/odoo.conf.example, Türkçe + l10n_tr demo veritabanı; PDF için wkhtmltopdf (T1.6)",
-    "Odoo skills rehberleri ve test komutları; Windows test temizliği hatasını ayırt etmek (T1.7, T1.8)"
+    "Odoo skills rehberlerinin .claude/skills altına kurulması ve lisans kontrolü (T1.7)",
+    "Test komutları; Windows test temizliği hatasını ayırt etmek (T1.8)"
   ],
   "decisions": [
     {
@@ -196,7 +197,8 @@
     "ci": null,
     "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py)",
     "node": null,
-    "docker": null
+    "docker": null,
+    "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + websocket-client 1.9.2"
   },
   "modules": {
     "ours": [],
