@@ -2,6 +2,8 @@
 
 Son güncelleme: 2026-10-18
 
+[![CI](https://github.com/burak-sisci/odoo-version/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/burak-sisci/odoo-version/actions/workflows/ci.yml)
+
 > `odoo-version` geçici bir çalışma adıdır. Ürünün kalıcı adı MVP sonunda belirlenecek (D-014).
 
 Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/veya SaaS olarak satılacak bir ERP.
@@ -21,7 +23,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Odoo'nun AI rehberleri kuruldu (`.claude/skills/`, T1.7).
 - Test komutu hazır (`tools/run_tests.py`, T1.8).
 - Modül şablonu ve kod kalite araçları hazır (`tools/new_module.py`, ruff, pylint-odoo, pre-commit; T1.9).
-- Sıradaki görevler: CI, `vendor/` ve `ports/` düzeni (T1.10–T1.11).
+- CI çalışıyor: her push'ta belge denetimi, lint, gizli bilgi taraması ve modül testleri (GitHub Actions, T1.10).
+- Sıradaki görev: `vendor/` ve `ports/` düzeni (T1.11), ardından marka katmanı (F2).
 - Açık karar yok. Henüz ürün modülü yok.
 
 ## Belgeler

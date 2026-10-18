@@ -56,7 +56,8 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
   - Depoya girmeyecekler: gizli bilgi (API anahtarı, şifre, sertifika), müşteri veya test kişisinin gerçek verisi, gerçek VKN/TCKN, yerel yapılandırma (`.env`, `odoo.conf`).
   - Nilvera test portalının test bilgileri kamuya açık bir belgede yayımlanmış olsa da depoya yazılmaz; yalnız `.env`'de tutulur.
   - Yeniden dağıtım izni belirsiz dış dosyalar (ör. GİB UBL-TR XSD/schematron paketleri) depoya konmaz; CI'da kaynağından indirilir (PLAN T4.2).
-  - Her push'tan önce `git diff --cached` ile denetlenir; CI'da gizli bilgi taraması yapılır (PLAN T1.10).
+  - Her commit'te `tools/check_secrets.py` (pre-commit kancası) staged değişikliklerde `.env` değerlerini arar; push'tan önce `git diff --cached` elle de denetlenir.
+  - CI'da gitleaks her push'ta tüm geçmişi tarar (T1.10).
 - **Depo lisansı (D-016):**
   - Depo kökündeki `LICENSE` GNU AGPL v3 metnidir; aksi belirtilmeyen tüm özgün içerik bu lisansla yayımlanır.
   - Depo ileride private yapılırsa, o güne kadar yayımlanmış sürümler AGPL-3 altında kalır.
@@ -80,5 +81,8 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 | pylint-odoo | 10.0.12 | AGPL-3.0-or-later | T1.9, `requirements-dev.txt` ve pre-commit. Odoo'ya özgü lint denetimleri. |
 | pylint, astroid, pylint-plugin-utils | 4.0.10, 4.0.4, 0.9.0 | GPL-2.0-or-later; astroid LGPL-2.1-or-later | T1.9, pylint-odoo'nun bağımlılıkları. Yalnız geliştirmede çalışır, kodumuza lisans etkisi yok. |
 | pre-commit | 4.7.0 | MIT | T1.9, `requirements-dev.txt`. Commit öncesi denetimler; kanca ortamlarını GitHub ve PyPI'dan kurar. |
+| gitleaks | 8.30.1 | MIT | T1.10. CI'da gizli bilgi taraması; resmî sürüm arşivi indirilir, SHA-256 doğrulanır. |
+| GitHub eylemleri: actions/checkout, actions/setup-python, actions/cache | v7.0.1, v7.0.0, v6.1.0 (commit SHA'sıyla sabit) | MIT | T1.10, `.github/`. |
+| PostgreSQL resmî Docker imajı (`postgres:18`) | 18 | PostgreSQL License; imaj betikleri MIT | T1.10. CI'da test veritabanı servisi. |
 | websocket-client | 1.9.2 | Apache-2.0 | T1.5, `requirements-dev.txt`. Odoo HttpCase tarayıcı testleri için. |
 | Odoo'nun Python bağımlılıkları | upstream `requirements.txt` sürümleri | Çeşitli (çoğu izin verici) | T1.5, `.venv`. Ürünle dağıtılacak paketlerin tam lisans dökümü paketleme görevinde çıkarılır (T8.4). |

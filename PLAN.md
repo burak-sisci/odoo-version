@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.10 — GitHub Actions CI (D-020)
+**Şu anki görev:** T1.11 — `vendor/` ve `ports/` düzeni (D-019)
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 9/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 10/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 17/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 18/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -247,7 +247,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - `tests/`, `i18n/tr.po`, `security/ir.access.csv`, `README`.
   - pre-commit: ruff, pylint-odoo; manifest lisans denetimi (D-016 kuralları).
   - Kabul: şablondan üretilen boş modül kuruluyor, testi geçiyor (`tools/run_tests.py`), lint temiz.
-- [ ] T1.10 GitHub Actions CI (D-020) · M · C
+- [x] T1.10 GitHub Actions CI (D-020) · M · C — `.github/workflows/ci.yml`; push'ta yeşil, negatif deneme kırmızı
   - Sıra: belge denetimi → lint → gizli bilgi taraması → PostgreSQL servisiyle `addons/` ve `ports/` testleri.
   - Rehber kopyası denetimi: `python tools/sync_skills.py --check` (T1.7).
   - Lint: `pre-commit run --all-files` (ruff, pylint-odoo, modül kuralları, belge denetimi; T1.9).

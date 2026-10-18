@@ -6,11 +6,12 @@ filestore garbage collection cannot delete files in test set-up/teardown; those
 errors are reported separately and do not fail the run (the reference result
 is the Linux CI). The full log is kept under OV_HOME/logs/tests/.
 
-Usage: python tools/run_tests.py MODULE[,MODULE...] [--tags TAGS] [--db NAME] [--with-demo] [--reuse]
+Usage: python tools/run_tests.py MODULE[,MODULE...] [--tags TAGS] [--db NAME] [--with-demo] [--reuse] [-v]
   --tags       --test-tags value (default: /MODULE for each module)
   --db         database name (default: ov_test_<first module>)
   --with-demo  load demo data (tests should not depend on it)
   --reuse      keep the existing test database and update (-u) instead of installing
+  -v           print the traceback of each real problem (CI)
 """
 import argparse
 import os
@@ -75,6 +76,7 @@ def main():
     parser.add_argument("--db")
     parser.add_argument("--with-demo", action="store_true")
     parser.add_argument("--reuse", action="store_true")
+    parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
     if not CONF.exists():
         sys.exit("odoo.conf missing; run `python tools/odoo_conf.py` first")
@@ -105,8 +107,10 @@ def main():
     print(f"tests: {total}, failed: {failed}, errors: {errors}")
     if known:
         print(f"known Windows filestore gc errors (not counted, T1.2): {len(known)}")
-    for kind, test, _text in real:
+    for kind, test, text in real:
         print(f"  {kind}: {test}")
+        if args.verbose:
+            print("\n".join(f"    {line}" for line in text.splitlines()))
     if other_errors:
         print(f"other ERROR log lines: {len(other_errors)} (see the log; expected ones should be muted in tests)")
     unexplained = failed + errors - len(known)

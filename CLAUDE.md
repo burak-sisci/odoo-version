@@ -153,7 +153,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
-- CI henüz yok (T1.10).
+- CI (T1.10): GitHub Actions (`.github/workflows/ci.yml`), her push'ta. İki iş: belgeler + lint + gizli bilgi + rehber kopyası; PostgreSQL 18 servisiyle modül testleri. Ayrıntı ARCHITECTURE.md §5.
 
 ## Komutlar
 
@@ -183,3 +183,6 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Kurallar: `ruff.toml` (upstream'in kural seti), `.pylintrc` (Odoo'ya özgü denetimler), `tools/check_modules.py` (proje kuralları).
   - Kanca: yeni klonda bir kez `.venv/Scripts/pre-commit install`. İlk çalıştırma ruff ve pylint-odoo ortamlarını kurar (GitHub ve PyPI).
   - Araç sürümleri `requirements-dev.txt` ve `.pre-commit-config.yaml`'da birlikte güncellenir.
+- Gizli bilgi denetimi (T1.10): `python tools/check_secrets.py`. Staged değişikliklerde `.env` değerlerini arar; pre-commit kancası olarak her commit'te çalışır. CI'da gitleaks tüm geçmişi tarar.
+- CI (T1.10): `gh run list --limit 5` · başarısız adımların günlüğü `gh run view <id> --log-failed`
+  - Linux'ta referans test (ör. upstream modülleri): `gh workflow run ci.yml -f modules=l10n_tr` → `gh run watch <id>`

@@ -15,6 +15,12 @@ repos:
         files: ^addons/
   - repo: local
     hooks:
+      - id: check-secrets
+        name: no .env values in the staged changes
+        entry: python tools/check_secrets.py
+        language: python
+        always_run: true
+        pass_filenames: false
       - id: check-modules
         name: module rules (prefix, license, version, author, brand)
         entry: python tools/check_modules.py
