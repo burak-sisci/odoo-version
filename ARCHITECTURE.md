@@ -133,6 +133,10 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
 ## 5. Geliştirme ortamı ve CI (planlanan, PLAN F1)
 
 - Windows 11 + Python 3.12 sanal ortam (`.venv`) + yerel PostgreSQL 16+.
+- **Yerel PostgreSQL (T1.3, kurulu):** 18.6, EDB taşınabilir ikili dosyalar; yönetici izni gerekmez.
+  - Depo dışında `OV_HOME` = `%LOCALAPPDATA%\odoo-version`: `pgsql/` ikili dosyalar, `pgdata/` küme (UTF-8, `C.UTF-8` yerleşik yerel ayar, scram-sha-256), `pglog/` günlük.
+  - Kullanıcı hesabında çalışır, yalnız `localhost` dinler. Yönetim: `tools/pg.py`. Bağlantı bilgileri `.env` dosyasında (git'e girmez).
+  - Sürüm seçimi: Odoo 20.0'ın alt sınırı 16; 18, CI ve olası üretim sunucusunun (Ubuntu) paket sürümleriyle uyumlu.
 - Odoo `upstream/odoo/odoo-bin` ile; addons yolu §2'deki sırayla.
 - **CI (D-020):** GitHub Actions, Ubuntu runner + PostgreSQL servisi. Her push'ta çalışır:
   - belge denetimi;
