@@ -7,6 +7,36 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Odoo'nun yerelde çalıştırılması (T1.6) — otonom mesai 1
+
+**Kod**
+- `deploy/odoo.conf.example`: yerel geliştirme yapılandırma şablonu.
+  - Addons yolu ARCHITECTURE §2 sırasıyla, glob kalıplarıyla (`vendor/oca/*`, `ports/oca/*`, `addon[s]`): henüz olmayan klasörler uyarısız atlanır.
+  - Veri klasörü `OV_HOME/odoo-data`, `workers = 0`, yalnız `127.0.0.1`.
+- `tools/odoo_conf.py`: şablondan depo kökündeki `odoo.conf`'u üretir (git'e girmez). Veritabanı bilgileri `.env`'den; veritabanı yöneticisi ana şifresi ilk çalıştırmada `.env`'ye üretilir (`ODOO_ADMIN_PASSWD`).
+- `ruff check tools/` (henüz depo yapılandırması yok, 0.16 varsayılanları): `odoo_conf.py` temiz; `check_docs.py` ve `pg.py`'de 14 bulgu (çoğu `re.M` → `re.MULTILINE`). Lint yapılandırmasıyla birlikte T1.9'da ele alınır.
+
+**Ortam**
+- Demo veritabanı `ov_demo`: `odoo-bin db init --with-demo --language tr_TR --country TR` (20 sn), ardından `-i account,l10n_tr` (37 sn).
+- Günlükte tek uyarı: `markdown2` kurulu değil. Upstream'in hiçbir bağımlılık dosyasında yok; posta eklerinde markdown gösterimi için isteğe bağlı.
+- Kabul:
+  - giriş sayfası Türkçe (`Giriş`, `Şifre`, `E-posta`); admin oturumu `tr_TR`, `Europe/Istanbul`;
+  - başsız Chrome ile (geçici profil) fatura listesi ve hesap planı ekranları açıldı, JS hatası yok, başlıklar `Faturalar` ve `Hesap Planı`;
+  - `TR Company`: ülke TR, para birimi TRY, hesap planı `tr` (ekranda 343 satır), 44 vergi, Türkçe yevmiyeler (`Satışlar`, `Satınalma`, `Banka`, `Kasa` …), 1.046 vergi dairesi.
+- Upstream demo düzeni: ana şirket (`YourCompany`, ülke TR) genel hesap planıyla ve USD ile gelir; Türk hesap planı ayrı demo şirketi `TR Company`'de. Kendi demo verimiz (T8.3) Türk şirketiyle başlayacak.
+
+**Araştırma**
+- PDF motoru: 20.0'da eklentili.
+  - `base_report_wkhtmltox` kendiliğinden kurulur, ama wkhtmltopdf GitHub deposu arşivde (son push 2022-11-22).
+  - `base_report_paper_muncher` Odoo'nun yeni motoru (LGPL-3, son sürüm v0.9.0, 2026-10-06); yalnız Linux paketleri var.
+  - Yerelde kurulmadı; seçim T2.5'e not edildi.
+- `l10n_tr` veri kalitesi gözlemleri T3.1'e not edildi: Türkçe büyük harf hatası, İngilizce kalan hesap ve vergi adları, çevrilmemiş sütun başlığı.
+- Marka: giriş sayfasının başlığı `Odoo` (T2.2 kapsamında).
+
+**Belgeler**
+- CLAUDE.md (Ortam, Komutlar), ARCHITECTURE.md (§2 ağacı, §5 yerel Odoo), PLAN.md (T1.6, pano, T2.5 ve T3.1 notları), README.md, state.json.
+- ARCHITECTURE §2 ağacında T1.3'te eklenen `tools/pg.py` eksikti; eklendi.
+
 ### Adım: Python sanal ortamı (T1.5) — otonom mesai 1
 
 **Kod**
