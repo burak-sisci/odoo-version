@@ -45,7 +45,7 @@ Modülle çözülemeyen bir durum kullanıcıya yeni karar olarak getirilir.
 
 ```
 odoo-version/
-├── CLAUDE.md  README.md  PLAN.md  ARCHITECTURE.md  DECISIONS.md  CHANGELOG.md  state.json
+├── CLAUDE.md  README.md  PLAN.md  USER_TASKS.md  ARCHITECTURE.md  DECISIONS.md  CHANGELOG.md  state.json
 ├── LICENSE                  # GNU AGPL v3 (D-016)
 ├── .gitignore  .gitattributes   # gizli bilgiler ve yerel veriler depoya girmez; satır sonu LF
 ├── .github/workflows/       # CI (henüz yok — T1.10)

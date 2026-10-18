@@ -1,51 +1,57 @@
 # Plan ve İlerleme
 
 Son güncelleme: 2026-10-18
-İlgili kararlar: D-005, D-011, D-012, D-013, D-014, D-016, D-017, D-018, D-019, D-020
+İlgili kararlar: D-005, D-011, D-012, D-013, D-014, D-016, D-017, D-018, D-019, D-020, D-021
 
 Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip edilir.
 
 - **Görev işaretleri:** `[x]` tamam · `[~]` devam ediyor · `[ ]` yapılacak · `[!]` kullanıcı kararı/eylemi bekliyor.
-- **Görev satırı:** `T<faz>.<sıra> Ad · Boyut · Sorumlu`. Altındaki maddeler çıktıyı ve kabul ölçütünü verir.
+- **Görev satırı:** `T<faz>.<sıra> Ad · Boyut · Kategori`. Altındaki maddeler çıktıyı ve kabul ölçütünü verir.
 - **Boyut (kaba tahmin):**
   - S ≈ 1 çalışma oturumu;
   - M ≈ 2–3 oturum;
   - L ≈ 4–8 oturum;
   - XL > 8 oturum (başlarken alt görevlere bölünür).
-- **Sorumlu:** C = Claude · K = kullanıcı · C+K = birlikte.
-- Pano sayıları ve faz işaretleri `tools/check_docs.py` ile görev satırlarına karşı denetlenir.
+- **Kategori (D-021):** her görev üç kategoriden birindedir.
+  1. **K — kullanıcının yapacakları.** Yalnız kullanıcının yapabileceği işler: müşteri ilişkisi, yasal işlemler, kişisel başvurular, ödeme.
+  2. **B — birlikte yapılacaklar.** Kullanıcının kararı, bilgisi veya onayı gereken işler. Standart mesaide yapılır.
+  3. **C — Claude'un yapacakları.** Claude'un tek başına yapabileceği işler. Otonom mesaide yapılabilir. Görevin içinde bir onay adımı varsa (ör. yayın), o adım `USER_TASKS.md`'ye yazılır; görevin geri kalanı C kalır.
+- Kullanıcıdan beklenen her şey (K ve B görevleri, eylemler, sorular, onaylar): **`USER_TASKS.md`**.
+- Pano sayıları, kategori sayıları ve faz işaretleri `tools/check_docs.py` ile görev satırlarına karşı denetlenir.
 
 ## 1. İlerleme panosu
 
 **Şu anki görev:** T1.2 — Sürüm doğrulaması (D-011): 19.0 → 20.0 port maliyeti ön analizi
 
-| Faz | Ad | Aşama | Kilometre taşı | Durum | Görev |
-|---|---|---|---|---|---|
-| F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 1/11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 |
-| F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 |
-| F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 |
-| F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 |
-| F7 | Kullanıma hazır ürün | Bütçesiz | M7 Kullanıma hazır | `[ ]` | 0/8 |
-| F8 | Satışa hazırlık | Bütçesiz | **M8 Satışa hazır (müşteri arayışı kapısı)** | `[ ]` | 0/12 |
-| F9 | Müşteri arayışı ve ilk müşteri | Müşteri | M9 İlk müşteri | `[ ]` | 0/8 |
-| F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 |
-| F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 |
+| Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
+|---|---|---|---|---|---|---|
+| F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 1/11 | 0 · 0 · 11 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
+| F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
+| F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
+| F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
+| F7 | Kullanıma hazır ürün | Bütçesiz | M7 Kullanıma hazır | `[ ]` | 0/9 | 0 · 1 · 8 |
+| F8 | Satışa hazırlık | Bütçesiz | **M8 Satışa hazır (müşteri arayışı kapısı)** | `[ ]` | 0/12 | 0 · 4 · 8 |
+| F9 | Müşteri arayışı ve ilk müşteri | Müşteri | M9 İlk müşteri | `[ ]` | 0/8 | 3 · 4 · 1 |
+| F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
+| F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 9/113 görev
+**Toplam:** 9/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
-- F9'dan itibaren para gerektiren işler başlar; maliyetler müşteri gelirinden karşılanır.
+- F0–F8'deki işin büyük kısmı Claude'un (C). Kullanıcının bu aşamadaki işi: kararlar ve onaylar (B), isteğe bağlı eylemler (`USER_TASKS.md`).
+- F9'dan itibaren para gerektiren işler başlar; maliyetler müşteri gelirinden karşılanır. Bu fazda kullanıcı ön planda.
 - F11'deki P1 görevleri M8'den önce de yapılabilir, ama F1–F8'deki işi bekletmez.
+- Mesai türleri (D-021): standart mesaide birlikte, otonom mesaide Claude tek başına çalışır. Otonom mesaide C görevleri PLAN sırasıyla yapılır; bağımlılığı karşılanmamış görev atlanır.
 
 ## 2. Bağlam ve strateji
 
 ### 2.1 Başlangıç koşulları
 
-- Öğrenci projesi. Ekip: kullanıcı (ürün sahibi) + Claude (otonom geliştirici) (D-003).
+- Öğrenci projesi. Ekip: kullanıcı (ürün sahibi) + Claude (otonom geliştirici) (D-003). Çalışma standart ve otonom mesailerle yürür (D-021).
 - Bütçe sıfır (D-005). Ücretsiz kaynaklar §7'de.
 - Depo public ve AGPL-3 lisanslı (D-015, D-016).
 - Çalışma adı `odoo-version` geçici. Dış demo, pilot ve satıştan önce kalıcı ad gerekir (D-014, T8.2).
@@ -195,8 +201,8 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [x] T0.4 e-Fatura / e-Arşiv mevzuat araştırması · M · C — `docs/research/e-fatura.md`
 - [x] T0.5 Barındırma seçenekleri · S · C — `docs/research/hosting.md`
 - [x] T0.6 Proje belgelerinin ve belge denetim aracının oluşturulması · M · C
-- [x] T0.7 Açık kararların (D-010 … D-015) kullanıcıyla netleştirilmesi · S · C+K
-- [x] T0.8 Detaylı planlama · M · C+K — bu belge; D-016 … D-020; `docs/research/planning-inputs.md`
+- [x] T0.7 Açık kararların (D-010 … D-015) kullanıcıyla netleştirilmesi · S · B
+- [x] T0.8 Detaylı planlama · M · B — bu belge; D-016 … D-020; `docs/research/planning-inputs.md`
 
 ### F1 — Geliştirme altyapısı ve CI `[~]`
 
@@ -216,7 +222,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Çıktı: analiz notu (`docs/research/nilvera-port.md`); D-011 kaydının güncellenmesi.
   - Kabul: "20.0'da kal" ya da "19.0'a dön" sonucu gerekçeli ve sayılarla yazılmış.
 - [ ] T1.3 PostgreSQL kurulumu (Windows, ≥ 16, ücretsiz) · S · C
-  - Gerekirse kullanıcıdan yönetici izni.
+  - Yönetici izni gerektirmeyen yol tercih edilir (taşınabilir ikili dosyalar, kullanıcı hesabında çalışan sunucu). Olmazsa `USER_TASKS.md`'ye eylem yazılır.
   - Odoo için veritabanı rolü; şifre yalnız yerel yapılandırmada.
   - Kabul: `psql --version` ≥ 16; rol ile bağlantı kuruluyor.
 - [ ] T1.4 Upstream Odoo'nun (D-011) `upstream/odoo` altına git submodule olarak eklenmesi · M · C
@@ -421,7 +427,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 
 **Amaç:** boş bir veritabanından birkaç dakikada çalışan bir şirkete.
 **Kabul (M7):**
-- Elle tur: paketi seçip sihirbazı tamamlayan biri, yardım almadan ilk faturasını ve ilk üretim emrini oluşturabiliyor.
+- Elle tur: paketi seçip sihirbazı tamamlayan biri, yardım almadan ilk faturasını ve ilk üretim emrini oluşturabiliyor (T7.9).
 - Rol bazlı yetki testleri geçiyor.
 
 - [ ] T7.1 Paket modülleri · M · C
@@ -440,18 +446,22 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Büyük demo veriyle ana ekranların süreleri; gerekirse indeks ve sunucu ayarı.
 - [ ] T7.8 Güvenlik ve yetki incelemesi · M · C
   - Rol başına erişim testleri; `odoo-security` rehberiyle kod incelemesi; portal erişimleri.
+- [ ] T7.9 Kullanıcı kabul turu · S · B
+  - Kullanıcı sistemi ilk kez gören biri gibi kullanır: paketi seçer, sihirbazı tamamlar, ilk faturayı ve ilk üretim emrini yardım almadan oluşturur.
+  - Claude tur senaryosunu ve geri bildirim formunu hazırlar; bulgular göreve dönüşür.
+  - Neden B: geliştiren kişi kendi ürününün kullanılabilirliğini tarafsız ölçemez.
 
 ### F8 — Satışa hazırlık `[ ]`
 
 **Amaç:** müşteri arayışına çıkmak için gereken her şey.
 **Kabul (M8):** §2.6'daki kapı ölçütlerinin tamamı.
 
-- [ ] T8.1 MVP sonu değerlendirmesi · S · C+K
+- [ ] T8.1 MVP sonu değerlendirmesi · S · B
   - Kullanıcıya gerekçeli seçeneklerle getirilir:
     - e-Belge gönderim yöntemi (D-012);
     - kalıcı marka adı (D-014);
     - paket kapsamı (D-018).
-- [ ] T8.2 Kalıcı adın uygulanması · M · C+K
+- [ ] T8.2 Kalıcı adın uygulanması · M · B
   - `ov_brand` ayarı ve belgeler güncellenir.
   - Depo yeniden adlandırması kullanıcı onayıyla (K5).
   - Alan adı: Student Pack ücretsiz yılı (K1) ya da ilk gelir.
@@ -472,7 +482,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T8.8 Demo ortamı (D-020) · S · C
   - Toplantı anında: lokal + Cloudflare Quick Tunnel.
   - Sürekli açık demo için ücretsiz seçenek değerlendirmesi. Demolarda gerçek müşteri verisi yok.
-- [ ] T8.9 Rakip ve fiyat araştırması, fiyat listesi · M · C+K
+- [ ] T8.9 Rakip ve fiyat araştırması, fiyat listesi · M · B
   - §2.5 gelir modeli kalemlerine fiyat; paket teklif şablonu.
 - [ ] T8.10 Sözleşme ve KVKK şablonları · M · C
   - Hizmet sözleşmesi, veri işleme sözleşmesi, aydınlatma metni, destek/SLA.
@@ -480,7 +490,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T8.11 Tanıtım materyali · M · C
   - Tanıtım sayfası, sunum, demo senaryosu, tek sayfalık broşür.
   - Tanıtım sayfası GitHub Pages'te barındırılmaz (Pages ticari site için kullanılamaz, D-020). Kurala uygun ücretsiz yer bu görevde seçilir. Yayın kullanıcı onayıyla (K5).
-- [ ] T8.12 Kapı kontrolü ve go/no-go · S · C+K
+- [ ] T8.12 Kapı kontrolü ve go/no-go · S · B
   - §2.6 ölçütleri tek tek denetlenir; sonuç kullanıcıyla karara bağlanır.
 
 ### F9 — Müşteri arayışı ve ilk müşteri `[ ]`
@@ -490,20 +500,20 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 
 - [ ] T9.1 Hedef müşteri listesi ve ilk temaslar · M · K
   - Yakın çevre, organize sanayi bölgeleri, esnaf ve sanayi odaları. Claude liste şablonu ve görüşme soruları hazırlar.
-- [ ] T9.2 Demo görüşmeleri ve geri bildirim döngüsü · M · C+K
+- [ ] T9.2 Demo görüşmeleri ve geri bildirim döngüsü · M · B
   - Görüşme notları kişisel veri içermeden özetlenir; bulgular plana işlenir.
 - [ ] T9.3 Yasal yapı · M · K
   - Şirket veya şahıs işletmesi, mali müşavir, fatura kesme düzeni.
   - Claude araştırma desteği verir (ör. genç girişimci kazanç istisnası, GVK md. 20/B; koşullar doğrulanacak).
 - [ ] T9.4 Hukuki inceleme · M · K
   - Avukat ve mali müşavir: lisanslar, marka, KVKK, e-Belge, sözleşmeler. Ücretsiz seçenekler önce araştırılır.
-- [ ] T9.5 Üretim barındırma kararı (D-013) ve sunucu · S · C+K
+- [ ] T9.5 Üretim barındırma kararı (D-013) ve sunucu · S · B
   - Yalnız müşteri bizim sunucumuzu kullanacaksa gerekir. Maliyet ilk gelirden.
-- [ ] T9.6 İlk pilot kurulum · L · C+K
+- [ ] T9.6 İlk pilot kurulum · L · B
   - Sözleşme, veri aktarımı, kurulum, eğitim, e-Belge'de canlıya geçiş (müşterinin entegratör sözleşmesiyle).
 - [ ] T9.7 Destek ve bakım süreci · M · C
   - Talep kaydı (kendi ürünümüzle), yanıt süreleri, güncelleme takvimi.
-- [ ] T9.8 İlk müşteri sonrası değerlendirme · S · C+K
+- [ ] T9.8 İlk müşteri sonrası değerlendirme · S · B
   - Segment ve basamak stratejisi (D-017), fiyatlar, sıradaki özellikler.
 
 ### F10 — Self-servis SaaS `[ ]`
@@ -516,8 +526,9 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T10.2 Kiracı yaşam döngüsü (`ov_saas_*`) · L · C
   - Oluşturma, askıya alma, silme, plan değişikliği.
 - [ ] T10.3 Self-servis kayıt ve deneme · M · C
-- [ ] T10.4 Abonelik ve tahsilat · L · C
+- [ ] T10.4 Abonelik ve tahsilat · L · B
   - `payment_iyzico` (Community); kendi faturalarımız e-Belge ile.
+  - Neden B: ödeme sağlayıcısının üye işyeri hesabı ve sözleşmesi kullanıcıda.
 - [ ] T10.5 Kiracı başına otomatik yedek ve yedek doğrulama · M · C
 - [ ] T10.6 İzleme ve günlükler · M · C
 - [ ] T10.7 Ana sürüm yükseltme hattı · L · C
@@ -548,7 +559,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T11.11 Enterprise eşdeğerleri P3 paketi · P3 · XL · C
 - [ ] T11.12 Enterprise eşdeğerleri P4 paketi · P4 · XL · C
 - [ ] T11.13 Türkiye bordrosu · P3 · XL · C
-- [ ] T11.14 OCA'ya port katkıları · P2 · M · C+K
+- [ ] T11.14 OCA'ya port katkıları · P2 · M · B
   - Dışa dönük işlem; kullanıcı onayıyla (K8, D-019).
 
 ## 6. Sürekli işler
@@ -631,22 +642,14 @@ Olasılık/Etki: Y = yüksek, O = orta, D = düşük.
 | R15 | e-Belge hatası nedeniyle müşteri zararı | D | Y | GİB doğrulaması; test matrisi (T4.10); sözleşmede sorumluluk sınırı (T8.10) |
 | R16 | Mevzuat yorum hatası (eşikler, tarihler) | O | O | Birincil kaynak önceliği; mali müşavir doğrulaması (T9.4); S4 rutini |
 
-## 10. Kullanıcı eylemleri
+## 10. Kullanıcıdan beklenenler
 
-Plan bunların hiçbirine bağlı değildir. Hepsi isteğe bağlı ya da ilgili göreve gelince gereklidir.
+Ayrı belgede: **`USER_TASKS.md`**. İçeriği:
+- kullanıcı eylemleri, kararları ve onayları (K1, K2, …);
+- kategori K ve B görevlerinde kullanıcıdan beklenenler;
+- otonom mesailerde biriken sorular ve onay bekleyen işler.
 
-- [ ] K1 GitHub Student Developer Pack başvurusu (ücretsiz; öğrenci doğrulaması). Ne zaman: F8'den önce (alan adı, demo kredisi).
-- [ ] K2 (İsteğe bağlı) TÜBİTAK 2209-A başvurusu.
-  - 2026 çağrısında son başvuru: 11 Kasım 2026 (çağrı duyurusu).
-  - Koşullar (danışman vb.) ve destek tutarı duyurudan kontrol edilmeli; tutar doğrulanmadı.
-  - Plan bu desteğe bağlı değil (D-017).
-- [ ] K3 Kalıcı marka adı için aday düşünmek (T8.1'e kadar).
-- [ ] K4 Örnek banka ekstresi dosyaları (kişisel veriler silinmiş; depoya girmez) — T5.2.
-- [ ] K5 Yayın onayları: belge sitesi (T8.7), tanıtım sayfası (T8.11), depo yeniden adlandırma (T8.2).
-- [ ] K6 Hedef müşteri listesi ve ilk temaslar (T9.1).
-- [ ] K7 Yasal yapı ve mali müşavir (T9.3).
-- [ ] K8 (İsteğe bağlı) Upstream ve OCA'ya katkı onayı: çeviriler (T3.6), portlar (T11.14).
-- [ ] K9 (İsteğe bağlı) GitHub güvenlik özelliklerinin açılması (bağımlılık uyarıları, gizli bilgi taraması). Bu bir depo ayarı olduğu için onay gerektirir.
+Plan bu eylemlerin hiçbirine bağlı değildir. Hepsi isteğe bağlı ya da ilgili göreve gelince gereklidir.
 
 ## 11. Kaynaklar
 

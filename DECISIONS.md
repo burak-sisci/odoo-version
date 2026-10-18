@@ -39,6 +39,7 @@ Son güncelleme: 2026-10-18
 | D-018 | MVP tanımı, ürün paketleri ve teslim biçimi | Geçerli |
 | D-019 | OCA modülleri ve 20.0 portları | Geçerli |
 | D-020 | Ücretsiz altyapı ve araçlar | Geçerli |
+| D-021 | Mesai türleri ve görev kategorileri | Geçerli |
 
 ---
 
@@ -62,6 +63,7 @@ Son güncelleme: 2026-10-18
   - Claude araştırma ve geliştirmeyi **çoğunlukla otonom** yürütür.
   - Claude şu durumlarda kullanıcıya sorar: açık kararlar, para gerektiren her şey, hukuki belirsizlik, dışa dönük işlemler (yayınlama, paylaşma, depo ayarları).
   - İstisna: proje deposuna her adım sonunda push önceden onaylıdır (D-015).
+  - Çalışma iki mesai türüyle yürür: standart ve otonom (D-021). Otonom mesaide Claude soru soramaz; sorular ve onaylar `USER_TASKS.md`'ye yazılır.
 - **Kaynak / tarih:** Kullanıcı, 2026-10-18.
 
 ### D-004 · Dokümantasyon protokolü
@@ -179,8 +181,12 @@ Son güncelleme: 2026-10-18
   - Public depo kuralları:
     - Her push'tan önce gizli bilgi ve müşteri verisi denetimi yapılır.
     - Force-push yapılmaz, geçmiş yeniden yazılmaz.
+  - **Commit yazarlığı:** GitHub'da tek katkıcı kullanıcıdır.
+    - Commit'lerin yazarı kullanıcının git kimliğidir (`burak-sisci`).
+    - Claude commit'lere yazar veya ortak yazar olarak eklenmez: `Co-Authored-By` satırı ve Claude'u ya da başka bir yapay zekâyı yazar gösteren hiçbir satır yazılmaz.
+    - İlk iki commit'te bu satır var. Temizlenmesi geçmişi yeniden yazmayı ve force-push'u gerektirdiği için kullanıcı kararına bağlı (`USER_TASKS.md` K10).
   - Diğer dışa dönük işlemler yine kullanıcı onayı ister: depo ayarları (görünürlük, yeniden adlandırma), sürüm yayınlama (release), başka yerde paylaşma.
-- **Kaynak / tarih:** Kullanıcı, 2026-10-18.
+- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi).
 
 ### D-016 · Kendi modüllerimizin lisansı
 - **Durum:** Geçerli
@@ -276,6 +282,31 @@ Son güncelleme: 2026-10-18
   - **Ücretliye geçiş:** yalnız ilk gelirden ve kullanıcı onayıyla (D-003, D-005).
 - **Gerekçe:** `docs/research/planning-inputs.md` (koşullar ve kaynaklar).
 - **Kaynak / tarih:** Claude, 2026-10-18.
+
+### D-021 · Mesai türleri ve görev kategorileri
+- **Durum:** Geçerli
+- **Karar:**
+  - **Görev kategorileri:** PLAN.md'deki her görev üç kategoriden birindedir.
+    1. **K — kullanıcının yapacakları:** yalnız kullanıcının yapabileceği işler (müşteri ilişkisi, yasal işlemler, kişisel başvurular, ödeme).
+    2. **B — birlikte yapılacaklar:** kullanıcının kararı, bilgisi veya onayı gereken işler.
+    3. **C — Claude'un yapacakları:** Claude'un tek başına yapabileceği işler. Görevin içindeki onay adımı (ör. yayın) `USER_TASKS.md`'ye yazılır; görevin geri kalanı C kalır.
+  - **Standart mesai:** kullanıcı ve Claude birlikte çalışır. B görevleri, kararlar ve onaylar burada yapılır.
+  - **Otonom mesai:** Claude tek başına çalışır, kullanıcı ekran başında değildir. Kurallar:
+    1. Mesaiyi kullanıcı başlatır. Claude önce `state.json`, `PLAN.md` ve `USER_TASKS.md`'yi okur.
+    2. Yalnız C görevleri yapılır, PLAN sırasıyla. Bağımlılığı karşılanmamış ya da kullanıcı gerektiren görev atlanır.
+    3. Kullanıcıya soru sorulmaz. Bir konu kullanıcı kararı gerektirirse:
+       - geri dönüşü kolaysa Claude makul bir varsayımla devam eder ve varsayımı `USER_TASKS.md`'ye soru olarak yazar;
+       - geri dönüşü zorsa o iş durdurulur, soru `USER_TASKS.md`'ye yazılır, sıradaki göreve geçilir.
+    4. Dışa dönük ve onay gerektiren işler yapılmaz, yalnız hazırlanır: yayın, depo ayarı, ücretli servis, hesap açma, dış katkı, force-push. Onay `USER_TASKS.md`'de beklenir. Proje deposuna normal push önceden onaylıdır (D-015).
+    5. Kullanıcı etkileşimi gerektiren adımlar denenmez: yönetici izni (UAC), tarayıcıda oturum açma, doğrulama kodları. Bunun yerine etkileşimsiz bir yol aranır (ör. taşınabilir kurulum); bulunamazsa `USER_TASKS.md`'ye eylem yazılır.
+    6. Değişmez kurallar aynen geçerlidir (CLAUDE.md). Normalde "dur ve sor" denen durumda otonom mesaide: dur, soruyu yaz, başka göreve geç.
+    7. Her görev sonunda belge protokolü, commit ve push. Mesai yarıda kesilse de iş kaybolmaz.
+    8. Mesai sonu: Claude, yapılabilir C görevi kalmayınca ya da çalışma süresi dolunca mesaiyi kapatır. CHANGELOG.md'ye mesai özeti yazılır, `USER_TASKS.md` güncellenir, son push yapılır. Kullanıcı mesaiyi istediği an bitirebilir.
+  - Mesainin türü `state.json` → `session` alanında tutulur. Böylece bağlam sıkıştırması veya yeni oturum sonrasında kural korunur.
+- **Gerekçe:**
+  - Kullanıcı her zaman ekran başında olamaz. Otonom mesai, kullanıcı yokken de C görevlerinin ilerlemesini sağlar.
+  - Kategoriler, hangi işin hangi mesaide yapılacağını ve kullanıcının neyi beklediğini açık hale getirir.
+- **Kaynak / tarih:** Kullanıcı (mesai türleri ve üç kategori), 2026-10-18. Otonom mesai kurallarının ayrıntısı Claude'a ait.
 
 ---
 

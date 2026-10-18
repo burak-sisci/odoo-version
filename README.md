@@ -13,12 +13,14 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 
 **Durum:** Faz 1 — Geliştirme altyapısı.
 - Planlama tamamlandı: [PLAN.md](PLAN.md) (ilerleme panosu, fazlar, görevler, müşteri arayışı kapısı).
+- Görevler üç kategoride: kullanıcının yapacakları, birlikte yapılacaklar, Claude'un yapacakları (D-021).
 - Sıradaki görev: sürüm doğrulaması (T1.2), ardından geliştirme ortamı ve CI.
 - Açık karar yok. Henüz kod yok.
 
 ## Belgeler
 
 - [PLAN.md](PLAN.md) — plan ve ilerleme (buradan takip edilir)
+- [USER_TASKS.md](USER_TASKS.md) — kullanıcıdan beklenenler (eylemler, kararlar, onaylar)
 - [state.json](state.json) — anlık durum (makine okunur)
 - [DECISIONS.md](DECISIONS.md) — geçerli ve ertelenmiş kararlar
 - [ARCHITECTURE.md](ARCHITECTURE.md) — mimari
