@@ -139,11 +139,13 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Bilgisayar yeniden başlayınca sunucu kendiliğinden açılmaz: `python tools/pg.py start`.
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
-- Upstream Odoo henüz projede değil (T1.4). CI henüz yok (T1.10).
+- Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
+- CI henüz yok (T1.10).
 
 ## Komutlar
 
 - Belge denetimi: `python tools/check_docs.py`
+- Yeni klonda upstream: `git config core.longpaths true` → `git submodule update --init --depth 1`
 - PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
 - Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.

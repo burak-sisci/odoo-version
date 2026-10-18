@@ -68,7 +68,7 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 
 | Bileşen | Sürüm/commit | Lisans | Değiştirildi mi? | Nerede |
 |---|---|---|---|---|
-| (henüz dış kod yok — upstream PLAN T1.4'te eklenecek) | | | | |
+| Odoo Community | 20.0, commit `afbcf79d` (2026-10-18) | LGPL-3 (`LICENSE`, `COPYRIGHT`) | Hayır (D-010) | `upstream/odoo`, sığ git submodule (T1.4) |
 
 **Geliştirme ortamı araçları (depoya girmez, ürünle dağıtılmaz):**
 
