@@ -7,6 +7,41 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Modül şablonu ve kod kalite araçları (T1.9) — otonom mesai 1
+
+**Kod**
+- `tools/new_module.py`: `addons/ov_<ad>/` iskeleti üretir.
+  - Manifest: sürüm `20.0.1.0.0`, lisans `AGPL-3` (ya da `--license LGPL-3`), yazar, `security/ir.access.csv`.
+  - `README.rst`, boş `models/`, yalnız başlık satırlı `security/ir.access.csv`, `i18n/tr.po` başlığı, kurulumu doğrulayan ilk test (`post_install`).
+- `tools/check_modules.py`: proje kuralları, yalnız standart kütüphane.
+  - `ov_` öneki; lisans AGPL-3 veya LGPL-3 (D-016); sürüm `20.0.x.y.z`; yazar; `description` anahtarı yok.
+  - Manifest adı, özeti ve README'de "Odoo" geçmez (D-007, D-014).
+  - `README.rst`, `tests/test_*.py`, `i18n/tr.po` var. OCA portları kapsam dışı (D-019).
+- `ruff.toml`: upstream `ruff.toml`'u genişletir. `upstream/`, `vendor/`, `ports/` hariç (portların lint düzeni T1.11'de); `tools/` için `print` serbest.
+- `.pylintrc`: pylint-odoo'nun Odoo denetimleri (`disable=all`, `enable=odoolint`). Geçerli sürüm 20.0, izinli lisanslar AGPL-3 ve LGPL-3, zorunlu yazar.
+- `.pre-commit-config.yaml`: ruff (v0.16.10), pylint-odoo (v10.0.12, yalnız `addons/`), modül kuralları, belge denetimi. Yerel depoda kanca kuruldu.
+- `requirements-dev.txt`: `pylint-odoo==10.0.12`, `pre-commit==4.7.0`.
+- `tools/pg.py`: iki `subprocess.run` çağrısına `check=False` (ruff PLW1510).
+
+**Araştırma**
+- Modül açıklaması: Odoo 20.0, manifestte `description` yoksa README'yi kullanır ve uzantısına bakmadan reStructuredText olarak işler (`ir_module.py`). Bu yüzden modül README'si `README.rst`; Markdown başlıkları ekranda düz metin görünürdü. pylint-odoo da `description` anahtarını eskimiş sayıyor.
+- Manifestte `author` yoksa Odoo uyarı verip boş bırakıyor, `license` yoksa LGPL-3 varsayıyor. Şablonda ikisi de açıkça yazılı.
+- T1.6'da not edilen 14 ruff bulgusu depo yapılandırması olmadan, ruff'ın kendi kurallarıyla bulunmuştu. Upstream kural setiyle yalnız ikisi geçerli (`pg.py`, PLW1510); düzeltildi.
+
+**Doğrulama**
+- Kabul: `python tools/new_module.py ov_sample` → `python tools/run_tests.py ov_sample`: modül kuruldu, 1 test, `RESULT: OK` (14 sn). Boş `ir.access.csv` sorunsuz yüklendi. `pre-commit run --all-files` temiz.
+- `README.rst`, Odoo'nun docutils ayarlarıyla doğru başlık ve paragraf üretiyor; yönerge satırları HTML yorumu olarak kalıyor.
+- Negatif denemeler:
+  - lisansı `OPL-1`, sürümü `1.0`, yazarı yanlış, adı ve README'si "Odoo" içeren, SQL birleştiren modül: `check_modules.py` 8 sorun; pylint-odoo C8101, C8103, C8105, C8106, C8108, E8103;
+  - pre-commit üzerinden: ruff (tek satırda çoklu import), pylint-odoo (lisans, sürüm) ve modül kuralları kancaları başarısız, commit engellenirdi.
+- Örnek modül depoya girmedi; şablon CI'da üretilen örnek modülle denetlenecek (T1.10).
+
+**Kullanıcıya soru**
+- K12 (USER_TASKS): modüllerde yazar olarak görünecek ad. Varsayım `burak-sisci`.
+
+**Belgeler**
+- CLAUDE.md (Odoo geliştirme kuralları "Her modülde", Ortam, Komutlar), ARCHITECTURE.md (§2 ağacı, §5 lint), PLAN.md (T1.9, pano, T1.10'a lint ve şablon adımları, §8), USER_TASKS.md (K12), COMPLIANCE.md §5 (pylint-odoo, pylint, pre-commit), README.md, state.json.
+
 ### Adım: Test çalıştırma komutları (T1.8) — otonom mesai 1
 
 **Kod**

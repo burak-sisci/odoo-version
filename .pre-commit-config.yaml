@@ -1,0 +1,29 @@
+# Checks run before every commit (T1.9). Install once: .venv/Scripts/pre-commit install
+# Run by hand: .venv/Scripts/pre-commit run --all-files
+# Keep the ruff and pylint-odoo versions in step with requirements-dev.txt.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.10
+    hooks:
+      # Rules: ruff.toml (upstream Odoo's rule set)
+      - id: ruff-check
+  - repo: https://github.com/OCA/pylint-odoo
+    rev: v10.0.12
+    hooks:
+      # Odoo-specific checks of our modules; settings in .pylintrc
+      - id: pylint_odoo
+        files: ^addons/
+  - repo: local
+    hooks:
+      - id: check-modules
+        name: module rules (prefix, license, version, author, brand)
+        entry: python tools/check_modules.py
+        language: python
+        files: ^addons/
+        pass_filenames: false
+      - id: check-docs
+        name: project documents are consistent
+        entry: python tools/check_docs.py
+        language: python
+        always_run: true
+        pass_filenames: false

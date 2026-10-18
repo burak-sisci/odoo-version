@@ -1,0 +1,17 @@
+# pylint-odoo: Odoo-specific checks for our modules (T1.9). Generic Python
+# style is ruff's (ruff.toml). Keep the pylint-odoo version in
+# requirements-dev.txt and .pre-commit-config.yaml in step.
+[MAIN]
+load-plugins=pylint_odoo
+score=no
+
+[ODOOLINT]
+valid-odoo-versions=20.0
+# Our modules (D-016); the author is an assumption until USER_TASKS K12,
+# tools/check_modules.py (AUTHOR) repeats it.
+license-allowed=AGPL-3,LGPL-3
+manifest-required-authors=burak-sisci
+
+[MESSAGES CONTROL]
+disable=all
+enable=odoolint

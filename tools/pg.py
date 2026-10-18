@@ -83,7 +83,7 @@ def start():
     with open(out, "w", encoding="utf-8") as fh:
         code = subprocess.run([exe("pg_ctl"), "-D", str(DATA), "-l", str(LOG), "-w", "start"],
                               stdin=subprocess.DEVNULL, stdout=fh, stderr=subprocess.STDOUT,
-                              creationflags=flags).returncode
+                              creationflags=flags, check=False).returncode
     print(out.read_text(encoding="utf-8").strip())
     if code:
         sys.exit(f"pg_ctl start failed ({code}); see {LOG}")
@@ -94,7 +94,7 @@ def stop():
 
 
 def status():
-    return subprocess.run([exe("pg_ctl"), "-D", str(DATA), "status"]).returncode
+    return subprocess.run([exe("pg_ctl"), "-D", str(DATA), "status"], check=False).returncode
 
 
 def main():

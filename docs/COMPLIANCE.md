@@ -76,6 +76,9 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 | Araç | Sürüm | Lisans | Not |
 |---|---|---|---|
 | PostgreSQL sunucusu ve komut satırı araçları (EDB Windows ikili zip) | 18.6 | PostgreSQL License (izin verici) | T1.3. Zip içindeki pgAdmin 4 ve StackBuilder kullanılmıyor. |
-| ruff | 0.16.10 | MIT | T1.5, `requirements-dev.txt`. Lint; kural seti upstream `ruff.toml`. |
+| ruff | 0.16.10 | MIT | T1.5, `requirements-dev.txt`. Lint; kural seti upstream `ruff.toml`, depodaki `ruff.toml` onu genişletir (T1.9). |
+| pylint-odoo | 10.0.12 | AGPL-3.0-or-later | T1.9, `requirements-dev.txt` ve pre-commit. Odoo'ya özgü lint denetimleri. |
+| pylint, astroid, pylint-plugin-utils | 4.0.10, 4.0.4, 0.9.0 | GPL-2.0-or-later; astroid LGPL-2.1-or-later | T1.9, pylint-odoo'nun bağımlılıkları. Yalnız geliştirmede çalışır, kodumuza lisans etkisi yok. |
+| pre-commit | 4.7.0 | MIT | T1.9, `requirements-dev.txt`. Commit öncesi denetimler; kanca ortamlarını GitHub ve PyPI'dan kurar. |
 | websocket-client | 1.9.2 | Apache-2.0 | T1.5, `requirements-dev.txt`. Odoo HttpCase tarayıcı testleri için. |
 | Odoo'nun Python bağımlılıkları | upstream `requirements.txt` sürümleri | Çeşitli (çoğu izin verici) | T1.5, `.venv`. Ürünle dağıtılacak paketlerin tam lisans dökümü paketleme görevinde çıkarılır (T8.4). |
