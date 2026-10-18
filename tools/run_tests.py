@@ -16,6 +16,7 @@ Usage: python tools/run_tests.py MODULE[,MODULE...] [--tags TAGS] [--db NAME] [-
 import argparse
 import os
 import re
+import stat
 import subprocess
 import sys
 
@@ -25,6 +26,7 @@ PYTHON = ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/pyt
 ODOO_BIN = ROOT / "upstream" / "odoo" / "odoo-bin"
 CONF = ROOT / "odoo.conf"
 LOG_DIR = OV_HOME / "logs" / "tests"
+FILESTORE = OV_HOME / "odoo-data" / "filestore"
 TEST_HTTP_PORT = "8079"
 
 LOG_LINE = re.compile(r"^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d,\d+ \d+ (\w+) \S+ (\S+): (.*)$")
@@ -41,6 +43,14 @@ def odoo(*args, log):
     cmd = [str(PYTHON), str(ODOO_BIN), *args]
     with open(log, "w", encoding="utf-8") as fh:
         return subprocess.run(cmd, stdout=fh, stderr=subprocess.STDOUT, check=False).returncode
+
+
+def make_filestore_writable(db):
+    """Odoo stores attachments read-only (0o444). On Windows that sets the
+    read-only attribute, and dropping the database then fails on the filestore."""
+    for path in (FILESTORE / db).rglob("*"):
+        if path.is_file():
+            path.chmod(stat.S_IREAD | stat.S_IWRITE)
 
 
 def parse(log):
@@ -87,6 +97,8 @@ def main():
     log = LOG_DIR / f"{db}.log"
 
     if not args.reuse:
+        if os.name == "nt":
+            make_filestore_writable(db)
         init = ["db", "-c", str(CONF), "init", db, "--force"] + (["--with-demo"] if args.with_demo else [])
         if odoo(*init, log=log):
             sys.exit(f"could not create database {db}; see {log}")

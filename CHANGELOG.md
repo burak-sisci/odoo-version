@@ -7,6 +7,46 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Otonom mesai 1 — özet
+
+Kullanıcının isteğiyle T2.2'nin ortasında bitirildi.
+
+**Biten görevler (11):** T1.3 PostgreSQL, T1.2 sürüm doğrulaması (Odoo 20.0 kesinleşti), T1.4 upstream submodule, T1.5 Python ortamı, T1.6 yerel Odoo ve Türkçe demo veritabanı, T1.7 Odoo AI rehberleri, T1.8 test çalıştırıcısı, T1.9 modül şablonu ve lint, T1.10 GitHub Actions CI, T1.11 `vendor/` ve `ports/` düzeni (ilk OCA portu `report_xlsx`), T2.1 marka izleri envanteri. F1 tamamlandı.
+
+**Süren görev:** T2.2 `ov_brand`. Kod yerelde, commit edilmedi (aşağıdaki adım). Sonraki mesaide kaldığı yerden sürer.
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** K12 modül yazar adı, K13 e-tablo `ODOO.` öneki, K14 geçici ürün adı ve görünümü. Hepsi geri dönüşü kolay varsayımlarla ilerledi. Mesai öncesinden bekleyenler: K10 (eski iki commit'teki ortak yazar satırı), K11 (oturum bağlantısı satırı).
+
+**Onay bekleyen dışa dönük iş:** yeni yok. K9 (GitHub güvenlik özellikleri) bekliyor.
+
+**Yerelde kalanlar:**
+- `addons/ov_brand/` (commit edilmedi).
+- Geçici veritabanları `ov_brand_scan` (T2.1 taraması, T2.2 denemeleri) ve `ov_test_ov_brand` (test çalıştırıcısı her seferinde yeniden kurar). Yalnız yerelde; T2.2 bitince `ov_brand_scan` silinir.
+- PostgreSQL sunucusu durduruldu. Yeniden başlatmak için: `python tools/pg.py start`.
+
+**CI:** T2.1 commit'inin çalıştırması (39152359525) başarılı.
+
+### Adım: Marka modülü `ov_brand` (T2.2, sürüyor) — otonom mesai 1
+
+**Kod** (yerelde, commit edilmedi)
+- `addons/ov_brand` (`web`, `base_setup`): marka adı `ov_brand.name` sistem parametresinden (varsayılan `OV ERP`, K14). Oturum bilgisine (`ov_brand_name`) ve QWeb şablonlarına veriliyor.
+  - Sunucu şablonları: sekme başlığı, favicon, giriş ekranı altbilgisi, bağlantı önizlemesi etiketleri (Odoo sloganı ve @Odoo kaldırıldı, görsel bizim simge), iOS simgesi ve tema rengi, çevrimdışı sayfa (metin, düğme rengi).
+  - PWA manifesti: ad (Genel Ayarlar'daki uygulama adı hâlâ önce gelir), renk, simgeler.
+  - JS `patch()`: pencere varsayılan başlığı, hata pencereleri ("Odoo Hatası" → "Hata" vb.), oturum süresi bildirimi, kullanıcı menüsünde "Yardım" (destek adresi yoksa gizli), Ayarlar "hakkında" alanı (marka adı ve sürüm; Odoo S.A. telif satırı kaldı, yanına AGPL notu).
+  - SCSS: `$o-community-color` = `#1f5f8b`. Geçici simgeler (SVG, PNG, ICO) Pillow ile üretildi.
+- Testler (`tests/test_ov_brand.py`): 11 test. 10'u geçiyor, iki tarayıcı testi dahil (web istemcisi ve giriş sayfası).
+  - Kalan hata kendi testimizde: `test_login_page_js`, modül yükleyicide bekleyen işleri hata sayıyor. Bekleyen tek iş upstream'in test turu (`html_editor`); bu tembel yüklenen pakette normal. Denetim yalnız yüklenemeyen modüllere ve kendi modüllerimize bakacak biçimde düzeltilecek.
+  - Kalanlar: `i18n/tr.po`, `README.rst`, lint, belge protokolü, commit.
+- `tools/run_tests.py`: Odoo ek dosyaları salt okunur (0o444) yazıyor; Windows'ta bu, test veritabanı yeniden kurulurken silmeyi engelliyordu. Çalıştırıcı artık kurulumdan önce o veritabanının filestore dosyalarını yazılabilir yapıyor. T1.2'deki filestore gc hatalarının nedeni de büyük olasılıkla bu.
+
+**Belgeler**
+- PLAN.md: T2.2 `[~]`, ara durum notu. OdooBot T2.5'e taşındı. Veritabanı yöneticisi T2.2 kapsamından çıktı (veritabanı olmadan çalışır; üretimde `list_db = False`).
+- `docs/research/brand-inventory.md` §3 ve §8: veritabanı yöneticisi ve OdooBot satırları düzeltildi, bağlantı önizlemesi etiketleri eklendi, `logo.png` yedeğinin ne zaman göründüğü netleşti.
+  - Düzeltilen eski metin: "Kendi kurulumlarımız için şablon override `ov_brand`'da". Neden: veritabanı olmadan çalışan rotalar yalnız sunucu genelinde yüklü modülleri görür.
+- USER_TASKS.md: K14 (yeni Karar), §1 güncel.
+
 ### Adım: Marka izleri envanteri (T2.1) — otonom mesai 1
 
 **Araştırma**

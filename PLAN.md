@@ -274,9 +274,11 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - OCA modüllerinin yazar adı ("Odoo Community Association (OCA)") Uygulamalar ekranında görünüyor. Telif bilgisi olduğu için değiştirilmez (CLAUDE.md kural 2–3). Son kullanıcıdan Uygulamalar menüsünü gizlemek T7.3'te.
   - Çıktı: `docs/research/brand-inventory.md`.
   - Sonuç: bütün yüzeyler modülle değiştirilebiliyor; çekirdek değişikliği gerekmiyor. MVP modülleriyle 97 kurulu modülde 253 çevrilebilir metin "odoo" içeriyor. Yayıncı garantisi haftalık olarak şirket adı, e-posta ve telefonunu da gönderiyor (KVKK).
-- [ ] T2.2 Marka modülü `ov_brand` · L · C
+- [~] T2.2 Marka modülü `ov_brand` · L · C
   - Yapılandırılabilir tek marka adı ve logo.
-  - Değişen yerler (envanter §3): pencere başlığı, favicon, giriş ekranı, PWA manifesti ve simgeleri, çevrimdışı sayfa, pencere ve hata başlıkları, kullanıcı menüsündeki destek bağlantısı, ayarlardaki "hakkında" alanı (Odoo S.A. telif satırı kalır), OdooBot adı ve avatarı, veritabanı yöneticisi.
+  - Değişen yerler (envanter §3): pencere başlığı, favicon, giriş ekranı ve bağlantı önizlemesi (Open Graph), PWA manifesti ve simgeleri, çevrimdışı sayfa, pencere ve hata başlıkları, kullanıcı menüsündeki destek bağlantısı, ayarlardaki "hakkında" alanı (Odoo S.A. telif satırı kalır).
+  - Kapsam dışı: OdooBot adı ve avatarı `mail` modülüne bağlı, T2.5'e taşındı. Veritabanı yöneticisi veritabanı olmadan çalışır, veritabanına kurulan modüller ona ulaşamaz; üretimde `list_db = False` ile kapalıdır.
+  - Ara durum (otonom mesai 1 sonu): modül yerelde yazıldı, **commit edilmedi**. 11 testten 10'u geçiyor. Kalanlar: `test_login_page_js` denetiminin düzeltilmesi (upstream test turu modülleri tembel yüklenen pakette bekliyor, hata değil), `i18n/tr.po`, `README.rst`, lint, belge protokolü.
 - [ ] T2.3 odoo.com bağlantılarının kesilmesi · M · C
   - Envanter §4. İlk iş yayıncı garantisi çağrısı.
   - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme, düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
@@ -289,6 +291,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
   - "Powered by" ifadeleri, e-posta şablonları, PDF rapor düzenleri (`ov_brand_mail`, `ov_brand_website`).
   - Envanter §6: fatura QR kodunun ortasındaki Odoo logosu, PDF üst verisi (`Creator/Producer`), satın alma portalındaki tanıtım bölümü, özet e-postasının odoo.com'dan yüklenen görseli.
+  - OdooBot adı ve avatarı (`base.partner_root`, `mail`; T2.2'den taşındı).
   - PDF motoru seçimi (T1.6 bulgusu): 20.0'da motor eklentili. `base_report_wkhtmltox` kendiliğinden kurulur, ama wkhtmltopdf deposu 2022'den beri arşivde. `base_report_paper_muncher` Odoo'nun yeni motoru (LGPL-3, etkin geliştiriliyor); yalnız Linux ikili dosyaları var. Yerelde ikisi de kurulu değil; PDF denemeleri Linux'ta (CI). Seçim önerisi bu görevde yazılır.
 - [ ] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.

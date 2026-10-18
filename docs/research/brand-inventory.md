@@ -46,7 +46,7 @@ Kapsam:
 | Sekme başlığı (istemci) | `Odoo` | `title_plugin.js` (`defaultTitle`) | JS `patch()` |
 | Favicon | Odoo simgesi | `web.layout` → `/web/static/img/favicon.ico`; ayrıca `discuss_public_templates`, veritabanı yöneticisi | Şablon kalıtımı; marka favicon'u için bir rota |
 | Giriş ekranı | "Hazırlayan Odoo" (www.odoo.com bağlantısı) | `web.login_layout` → `web.brand_promotion_message` | Şablon kalıtımı |
-| Giriş ekranı üst verisi | `og:site_name` = Odoo, `twitter:site` = @Odoo | `web.login` | Şablon kalıtımı |
+| Giriş ekranı üst verisi | `og:site_name` = Odoo, `twitter:site` = @Odoo, Odoo sloganı (`og:description`), `og_image.png`; başlık yedeği `Odoo` (`web/controllers/utils.py`) | `web.login` (yalnız `/odoo` yönlendirmeli bağlantı önizlemesinde) | Şablon kalıtımı |
 | iOS ana ekran simgesi | `odoo-icon-ios.png` | `web.webclient_bootstrap`, `webmanifest.py` | Şablon kalıtımı, controller override |
 | PWA manifesti | ad `Odoo`, renk `#714B67`, `odoo-icon-192/512` | `web/controllers/webmanifest.py` | Ad zaten ayarlı: `web.web_app_name` parametresi. Renk ve simge için controller override |
 | PWA çevrimdışı sayfası | "Odoo logosu", "… Odoo yüklenecektir." | `web.webclient_offline` | Şablon kalıtımı |
@@ -58,8 +58,8 @@ Kapsam:
 | Kullanıcı menüsü: Aboneliğim | "My Subscription" | `mysubscription` (kendiliğinden kurulur) | T2.3 (§4.3) |
 | Ayarlar → "hakkında" | "Odoo 20.0 (Community Edition)", "Copyright © 2004 Odoo S.A. GNU LGPL Licensed" | `settings_form_view/widgets/res_config_edition.xml` | Owl şablon kalıtımı. Başlık marka adı ve sürümü olur. **Telif satırı kalır** (CLAUDE.md kural 2); yanına kendi AGPL notumuz eklenir |
 | Ayarlar → PWA adı alanı | yer tutucu `Odoo`, açıklamada "Odoo" | `base_setup` `res_config_settings_view_form` | Görünüm kalıtımı |
-| OdooBot | ad "OdooBot", `odoobot.webp` avatarı | `mail/data/res_partner_data.xml` (`base.partner_root`); `mail_bot` | Veri kaydıyla ad ve avatar; bot mesajları `mail_bot` metinlerinde |
-| Veritabanı yöneticisi | başlık `Odoo`, `logo2.png`, "Odoo online services", odoo.com gizlilik bağlantısı | `web/static/src/public/database_manager.qweb.html` | Üretimde `list_db = False` ile kapalı (müşteri görmez). Kendi kurulumlarımız için şablon override `ov_brand`'da |
+| OdooBot | ad "OdooBot", `odoobot.webp` avatarı | `mail/data/res_partner_data.xml` (`base.partner_root`); `mail_bot` | Veri kaydıyla ad ve avatar; bot mesajları `mail_bot` metinlerinde. `mail`'e bağlı olduğu için T2.5'te (`ov_brand_mail`) |
+| Veritabanı yöneticisi | başlık `Odoo`, `logo2.png`, "Odoo online services", odoo.com gizlilik bağlantısı | `web/static/src/public/database_manager.qweb.html` | Üretimde `list_db = False` ile kapalı (müşteri görmez). Veritabanı olmadan çalışan rotalar yalnız sunucu genelinde yüklü modülleri (`server_wide_modules`) görür; `ov_brand` buraya ulaşamaz |
 
 Notlar:
 - Topbar ve gezinme çubuğu rengi `$o-community-color` (`#71639e`), SCSS değişkeni (`primary_variables.scss`). Marka rengi `ov_brand` asset'inde değişkenle verilir.
@@ -156,11 +156,11 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 |---|---|---|
 | `web/static/img/favicon.ico` | sekme simgesi; veritabanı yöneticisi, herkese açık sohbet | T2.2 |
 | `web/static/img/odoo-icon-192x192.png`, `-512x512.png`, `odoo-icon-ios.png` | PWA ve iOS ana ekran | T2.2 |
-| `web/static/img/logo.png` | şirket logosu yoksa yedek (`/web/binary/company_logo`), portal "Powered by" | T2.2, T2.5 |
-| `web/static/img/logo2.png` | veritabanı yöneticisi | T2.2 |
+| `web/static/img/logo.png` | `/web/binary/company_logo` yedeği: yalnız veritabanı yokken ve hata durumunda (şirket logosu yoksa `nologo.png`; varsayılan şirket logosu markasız "Your logo"), portal "Powered by" | T2.5 (portal) |
+| `web/static/img/logo2.png` | veritabanı yöneticisi | üretimde kapalı (`list_db = False`) |
 | `web/static/img/logo_inverse_white_206px.png` | e-Fatura bildirim e-postası | T2.5 |
 | `account/static/src/img/Odoo_logo_O.svg` | fatura QR kodu | T2.5 |
-| `mail/static/src/img/odoobot.webp` | OdooBot avatarı | T2.2 |
+| `mail/static/src/img/odoobot.webp` | OdooBot avatarı | T2.5 |
 | `web/static/img/odoo_logo.svg` | POS, web sitesi yükleyicisi | MVP dışı |
 
 Yöntem: dosyanın kendisi değiştirilmez (upstream'e dokunulmaz). Görseli kullanan şablon/rota markanın görseline yöneltilir.
