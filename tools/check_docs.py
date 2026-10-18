@@ -10,11 +10,17 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+PLAN = "PLAN.md"
 DECISION_STATUSES = {"Geçerli", "Açık", "Ertelendi"}
 MATRIX_STATUSES = {"plan", "inceleniyor", "geliştiriliyor", "test", "tamam"}
 DATE_RE = re.compile(r"^Son güncelleme: (\d{4}-\d{2}-\d{2})\s*$", re.M)
 TASK_RE = re.compile(r"\bT\d+\.\d+\b")
 TRIGGER_RE = re.compile(r"\*\*(Karar noktası|Yeniden değerlendirme):\*\*(.*)")
+PLAN_TASK_RE = re.compile(r"^- \[(.)\] (T\d+\.\d+)", re.M)
+PHASE_RE = re.compile(r"^### (F\d+) — .*`\[(.)\]`\s*$", re.M)
+DASH_RE = re.compile(r"^\| (F\d+) \|(?:[^|]*\|){3} `\[(.)\]` \| (\d+)/(\d+) \|$", re.M)
+TOTAL_RE = re.compile(r"^\*\*Toplam:\*\* (\d+)/(\d+) görev", re.M)
+CURRENT_RE = re.compile(r"^\*\*Şu anki görev:\*\* (T\d+\.\d+)", re.M)
 
 errors = []
 
@@ -48,9 +54,17 @@ def check_state():
     return state
 
 
-def roadmap_tasks():
-    text = read("ROADMAP.md")
-    return dict((tid, mark) for mark, tid in re.findall(r"^- \[(.)\] (T\d+\.\d+)", text, flags=re.M))
+def plan_tasks():
+    tasks = {}
+    for mark, tid in PLAN_TASK_RE.findall(read(PLAN)):
+        if tid in tasks:
+            errors.append(f"{PLAN}: {tid} birden fazla görev satırında")
+        tasks[tid] = mark
+    return tasks
+
+
+def phase_of(tid):
+    return "F" + tid[1:].split(".")[0]
 
 
 def check_decisions(state, tasks):
@@ -86,17 +100,59 @@ def check_decisions(state, tasks):
         errors.append(f"state.json blocked_on_user açık kararlarla aynı olmalı: {sorted(open_ids)}")
 
 
-def check_roadmap(state, tasks):
+def check_plan(state, tasks):
     current = state.get("current_task")
     if current not in tasks:
-        errors.append(f"state.json current_task {current!r} ROADMAP.md içinde yok")
+        errors.append(f"state.json current_task {current!r} {PLAN} içinde yok")
     elif tasks[current] == "x":
-        errors.append(f"state.json current_task {current} ROADMAP.md'de tamamlanmış görünüyor")
-    done_roadmap = {t for t, mark in tasks.items() if mark == "x"}
+        errors.append(f"state.json current_task {current} {PLAN}'de tamamlanmış görünüyor")
+    elif state.get("phase", {}).get("id") != phase_of(current):
+        errors.append(f"state.json phase.id {state.get('phase', {}).get('id')!r} != current_task fazı {phase_of(current)}")
+    done_plan = {t for t, mark in tasks.items() if mark == "x"}
     done_state = set(state.get("tasks_done", []))
-    if done_roadmap != done_state:
-        errors.append(f"tamamlanan görevler uyuşmuyor: yalnız ROADMAP={sorted(done_roadmap - done_state)}, "
-                      f"yalnız state={sorted(done_state - done_roadmap)}")
+    if done_plan != done_state:
+        errors.append(f"tamamlanan görevler uyuşmuyor: yalnız {PLAN}={sorted(done_plan - done_state)}, "
+                      f"yalnız state={sorted(done_state - done_plan)}")
+
+
+def check_dashboard(state, tasks):
+    # The progress dashboard is maintained by hand; it must agree with the task lines.
+    text = read(PLAN)
+    by_phase = {}
+    for tid, mark in tasks.items():
+        by_phase.setdefault(phase_of(tid), []).append(mark)
+    headers = dict(PHASE_RE.findall(text))
+    dash = {f: (mark, int(d), int(t)) for f, mark, d, t in DASH_RE.findall(text)}
+    for phase in sorted(set(headers) | set(dash) | set(by_phase), key=lambda f: int(f[1:])):
+        marks = by_phase.get(phase, [])
+        if not marks:
+            errors.append(f"{PLAN}: {phase} fazında görev yok")
+            continue
+        if all(m == "x" for m in marks):
+            allowed = {"x"}
+        elif any(m in "x~" for m in marks):
+            allowed = {"~"}
+        else:
+            allowed = {" ", "!"}
+        if headers.get(phase) not in allowed:
+            errors.append(f"{PLAN}: {phase} başlık işareti {headers.get(phase)!r}, beklenen {sorted(allowed)}")
+        if phase not in dash:
+            errors.append(f"{PLAN}: {phase} panoda yok")
+            continue
+        mark, done, total = dash[phase]
+        if mark not in allowed:
+            errors.append(f"{PLAN}: panoda {phase} işareti {mark!r}, beklenen {sorted(allowed)}")
+        if (done, total) != (marks.count("x"), len(marks)):
+            errors.append(f"{PLAN}: panoda {phase} {done}/{total}, görevlere göre {marks.count('x')}/{len(marks)}")
+    m = TOTAL_RE.search(text)
+    expected = (sum(1 for v in tasks.values() if v == "x"), len(tasks))
+    if not m:
+        errors.append(f"{PLAN}: '**Toplam:** n/m görev' satırı yok")
+    elif (int(m.group(1)), int(m.group(2))) != expected:
+        errors.append(f"{PLAN}: toplam {m.group(1)}/{m.group(2)}, görevlere göre {expected[0]}/{expected[1]}")
+    m = CURRENT_RE.search(text)
+    if not m or m.group(1) != state.get("current_task"):
+        errors.append(f"{PLAN}: '**Şu anki görev:**' satırı state.json current_task ile aynı olmalı")
 
 
 def check_task_refs(state, tasks):
@@ -104,7 +160,7 @@ def check_task_refs(state, tasks):
     for rel in ["state.json"] + [d for d in state.get("docs", []) if d.endswith(".md") and d != "CHANGELOG.md"]:
         for tid in sorted(set(TASK_RE.findall(read(rel)))):
             if tid not in tasks:
-                errors.append(f"{rel}: {tid} görevine atıf var ama ROADMAP.md'de yok")
+                errors.append(f"{rel}: {tid} görevine atıf var ama {PLAN}'da yok")
 
 
 def check_dates(state):
@@ -144,9 +200,10 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     state = check_state()
-    tasks = roadmap_tasks()
+    tasks = plan_tasks()
     check_decisions(state, tasks)
-    check_roadmap(state, tasks)
+    check_plan(state, tasks)
+    check_dashboard(state, tasks)
     check_task_refs(state, tasks)
     check_dates(state)
     check_matrix()

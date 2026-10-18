@@ -3,10 +3,11 @@
 Son güncelleme: 2026-10-18
 İlgili karar: D-013 (DECISIONS.md)
 
-> **Sonuç (2026-10-18):** D-013 **Ertelendi**. Karar noktası: ROADMAP T6.3 (ilk pilot müşteriden önce).
-> O zamana kadar geliştirme lokal, demolar ücretsiz yöntemlerle. Mimari sağlayıcıdan bağımsız kurulur.
+> **Sonuç (2026-10-18):** D-013 (**Üretim barındırma yeri**) **Ertelendi**. Karar noktası: PLAN T9.5 (sistemi bizim sunucumuzda kullanacak ilk müşteriden önce).
+> - O zamana kadar geliştirme lokal, demolar ücretsiz yöntemlerle (D-020). Mimari sağlayıcıdan bağımsız kurulur.
+> - Teslim biçimi planlama adımında ayrı bir karara taşındı (D-018): ilk müşterilere yönetilen kurulum yapılır; sistem müşterinin sunucusunda (Seçenek 6) veya bizim sunucumuzda çalışır. Bizim sunucumuzun yeri bu karardır. Self-servis SaaS sonra (PLAN F10).
 
-> Hukuki noktalar bilgi amaçlıdır; satıştan önce avukatla doğrulanmalıdır (ROADMAP T6.2).
+> Hukuki noktalar bilgi amaçlıdır; satıştan önce avukatla doğrulanmalıdır (PLAN T9.4).
 
 ## Karar ne zaman gerekli?
 
@@ -15,11 +16,11 @@ Son güncelleme: 2026-10-18
 2. Mimari sağlayıcıdan bağımsız: değiştirilmemiş Odoo + modüller, standart Linux + PostgreSQL üzerinde her yerde aynı çalışır.
 3. Taşınmanın maliyeti düşük: veritabanı yedeği ve filestore yeni sunucuya geri yüklenir.
 
-**Kararın gerektiği an:** ilk gerçek müşteri verisinin işleneceği an, yani pilot (T6.3). KVKK ve e-Belge saklama kuralları gerçek veriyle devreye girer; sunucu ücreti de o zaman doğar.
+**Kararın gerektiği an:** ilk gerçek müşteri verisinin bizim sunucumuzda işleneceği an (T9.5). Müşteri kendi sunucusunu seçerse karar daha da ertelenebilir. KVKK ve e-Belge saklama kuralları gerçek veriyle devreye girer; sunucu ücreti de o zaman doğar.
 
 **Şimdiden dikkat edilenler:**
 - Bulut sağlayıcısına özel yönetilen servis kullanılmaz.
-- Geliştirme Windows'ta yapılıyor, üretim Linux olacak. Kritik testler ileride Linux'ta da çalıştırılır (WSL2 veya CI).
+- Geliştirme Windows'ta yapılıyor, üretim Linux olacak. Testler CI'da Linux üzerinde de çalıştırılır (PLAN T1.10).
 
 ## Belirleyici kısıtlar
 
@@ -45,7 +46,7 @@ Son güncelleme: 2026-10-18
 1. Hiçbiri işe kendi veri merkeziyle başlamamış, sunucu kiralıyorlar. Odoo S.A. bile OVH, Google ve AWS kullanıyor.
 2. Uluslararası platformların Türkiye bölgesi yok. Türk müşterisi KVKK yurt dışı aktarım sürecini kendisi yürütmek zorunda. Türkiye'de barındırma bu yüzden bizim için bir satış argümanı olabilir.
 3. Hepsi bulut ve on-prem seçeneklerini birlikte sunuyor. Bizim mimarimiz (değiştirilmemiş Odoo + modüller) ikisine de uygun.
-4. **Açık soru (T6.2'de netleşecek):**
+4. **Açık soru (T9.4'te netleşecek):**
    - Özel entegratörler e-Belgeleri kendi Türkiye altyapılarında saklıyor.
    - Bizim sistemimizde duran kopya hukuken "asıl saklama" sayılırsa yer Türkiye olmak zorunda. "İkincil arşiv" sayılırsa yer serbest.
    - Cevap, barındırma kısıtının ne kadar katı olduğunu belirleyecek.
@@ -55,11 +56,11 @@ Son güncelleme: 2026-10-18
 | # | Seçenek | Maliyet | Avantajlar | Dezavantajlar | Uygun kullanım |
 |---|---|---|---|---|---|
 | 1 | **Bu bilgisayar (lokal)** | 0 | Hızlı geliştirme döngüsü, tam kontrol | Müşteri erişemez; bilgisayar kapanınca durur; Windows üretim için önerilmez | Geliştirme ve test (**şimdi**) |
-| 2 | **Lokal + Cloudflare Tunnel** | 0 (sabit adres için alan adı gerekir) | Ücretsiz HTTPS, port açmadan dışarıya demo | PC açık olmalı; ev interneti; üretim verisi için uygun değil | Potansiyel müşteriye demo |
+| 2 | **Lokal + Cloudflare Tunnel** | 0 (Quick Tunnel hesap ve alan adı istemez; sabit adres için alan adı gerekir) | Ücretsiz HTTPS, port açmadan dışarıya demo | PC açık olmalı; ev interneti; üretim verisi için uygun değil. Quick Tunnel yalnız test/geliştirme içindir: en fazla 200 eşzamanlı istek, SSE yok, adres her açılışta değişir | Potansiyel müşteriye toplantı sırasında demo (D-020) |
 | 3 | **Ücretsiz bulut katmanları** (ör. Oracle Cloud Always Free) | 0 | 7/24 açık, gerçek Linux sunucu | Koşullar değişebilir; hesap/kaynak geri alınabilir; bölge büyük olasılıkla yurt dışı (KVKK + e-Belge kuralı) | Pilot/demo. Ödeme yapan müşteri verisi için değil |
 | 4 | **Yurt dışı VPS** (Hetzner, DigitalOcean vb.) | Düşük aylık ücret | Ucuz, güvenilir, iyi araçlar (snapshot, API) | KVKK yurt dışı aktarım süreci; e-Belge asıl saklama kuralı | Türkiye dışı müşteriler veya yedek |
 | 5 | **Türkiye'de VPS/bulut** (yerli veri merkezleri) | Aylık ücret (ilk gelirden karşılanır) | KVKK ve e-Belge kuralları açısından en temiz yol; "verileriniz Türkiye'de" satış argümanı; düşük gecikme | Ücretli; sağlayıcıya göre araç ve güvenilirlik farkı (snapshot ve yedek desteği olan seçilmeli) | **Üretim SaaS** |
-| 6 | **Müşterinin kendi sunucusu (on-prem)** | Bize 0 | Veri müşteride; bazı kurumsal müşteriler bunu şart koşar; barındırma maliyeti yok | Müşteri başına kurulum, yükseltme ve destek yükü; Python kaynak kodu müşteride görünür; LGPL dağıtım yükümlülükleri devreye girer; düzenli gelir zorlaşır | İleride, büyük müşteriler için opsiyon |
+| 6 | **Müşterinin kendi sunucusu (on-prem)** | Bize 0 | Veri müşteride; bazı müşteriler (özellikle fabrikalar) bunu tercih eder ya da şart koşar; barındırma maliyeti yok | Müşteri başına kurulum, yükseltme ve destek yükü; dağıtımla AGPL/LGPL yükümlülükleri devreye girer (kaynak zaten açık olduğu için ek yük küçük); düzenli gelir için bakım sözleşmesi gerekir | İlk müşterilerden itibaren seçenek (D-018) |
 
 ## SaaS'ta çok kiracılı yapı (Odoo'nun kendi yöntemi)
 
@@ -68,12 +69,12 @@ Son güncelleme: 2026-10-18
 - Önde ters vekil (Caddy/nginx), wildcard TLS (Let's Encrypt — ücretsiz).
 - Avantaj: düşük maliyet, tek kod tabanı, kolay yedekleme. Dezavantaj: tüm müşteriler aynı modül sürümünde olmalı; ağır bir müşteri diğerlerini etkileyebilir (işçi/worker ayarı ve izleme gerekir).
 
-## Ön öneri (aşamalı — karar T6.3'te verilecek)
+## Ön öneri (aşamalı — karar T9.5'te verilecek)
 
 1. **Şimdi:** geliştirme bu bilgisayarda (Seçenek 1). 0 TL.
 2. **Demo dönemi:** Seçenek 2 veya 3, yalnız müşteri verisi içermeyen demo verisiyle. 0 TL.
-3. **İlk pilot / ödeme yapan müşteri (T6.3):** Seçenek 5, Türkiye'de sunucu. Maliyet ilk gelirden karşılanır, böylece sıfır bütçe kuralı bozulmaz.
-4. **İleride:** büyük müşteriler için Seçenek 6 opsiyonu.
+3. **Sistemi bizim sunucumuzda kullanacak ilk müşteri (T9.5):** Seçenek 5, Türkiye'de sunucu. Maliyet ilk gelirden karşılanır, böylece sıfır bütçe kuralı bozulmaz.
+4. **Kendi sunucusunu isteyen müşteri:** Seçenek 6, ilk müşterilerden itibaren (D-018).
 
 ## Kaynaklar
 
@@ -87,3 +88,4 @@ Son güncelleme: 2026-10-18
 - Frappe Cloud (bölgeler): https://frappe.io/cloud
 - Paraşüt aydınlatma metni: https://www.parasut.com/kisisel-verilerin-korunmasi-ve-islenmesine-iliskin-aydinlatma-metni
 - Logo ürün mimarisi (Logo Cloud / Logo Edge): https://www.capital.com.tr/haberler/tum-haberler/logo-yazilim-urun-mimarisini-yeniden-yapilandirdi
+- Cloudflare Quick Tunnel (sınırlar): https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/

@@ -5,11 +5,14 @@ Araştırma tarihi: 2026-10-18
 İlgili karar: D-012 (DECISIONS.md)
 
 > **Sonuç (2026-10-18):** D-012 Geçerli.
-> - MVP kapsamı e-Fatura + e-Arşiv; gönderim mevcut bir özel entegratörün API'si üzerinden.
-> - Mimari: entegratörden bağımsız çekirdek + adaptör; ilk adaptör Nilvera (19.0 LGPL port).
-> - Gönderim yöntemi MVP sonunda yeniden ele alınacak (ROADMAP T6.1).
+> - MVP kapsamı **e-Fatura + e-Arşiv + e-İrsaliye**. e-İrsaliye planlama adımında MVP'ye alındı, çünkü orta ölçekli fabrikalar hedef segmentte (D-017).
+> - e-Defter MVP'de yok. MVP'de muhasebe kayıtları mali müşavirin programına aktarılır (PLAN T5.9); e-Defter P1 (PLAN T11.4).
+> - Gönderim mevcut bir özel entegratörün API'si üzerinden.
+> - Mimari: entegratörden bağımsız çekirdek + adaptör + sahte (mock) adaptör; ilk adaptör Nilvera (19.0 LGPL port).
+> - Gönderim yöntemi MVP sonunda yeniden ele alınacak (PLAN T8.1).
+> - Planlama için ek bulgular: §6.
 
-> Bu belge hukuki görüş değildir. Satışa çıkmadan önce bir mali müşavir/avukat ile doğrulanmalıdır (ROADMAP T6.2).
+> Bu belge hukuki görüş değildir. Satışa çıkmadan önce bir mali müşavir/avukat ile doğrulanmalıdır (PLAN T9.4).
 > Birincil kaynak: GİB'in yayımladığı **509 Sıra No.lu VUK Genel Tebliği'nin güncel (konsolide) metni** (2026),
 > 589 Sıra No.lu Tebliğ değişiklikleri dahil (RG 31/12/2025, sayı 33124, 5. mükerrer). Bölüm numaraları bu metne aittir.
 
@@ -45,7 +48,8 @@ e-Arşiv'e dahil olmayan mükelleflerin düzenlediği faturalar GİB portalinden
 ### e-Defter
 
 - İkincil kaynağa göre (Finrota): e-Fatura'ya geçen bilanço esaslı mükellefler, geçiş yılını izleyen yılın başından itibaren e-Defter tutar.
-- e-Defter ayrı tebliğle düzenlenir. **Doğrulanmadı.**
+- 2026-10-18'de başka ikincil kaynaklar da (Paraşüt, Sovos, Faturaport) aynı kuralı veriyor (§6).
+- e-Defter ayrı tebliğle düzenlenir. Birincil kaynak henüz okunmadı; **doğrulanmadı.**
 
 ## 2. Nasıl gönderilir? (509 Tebliğ V.1)
 
@@ -85,21 +89,61 @@ ISO 27001 / 22301 / 20000 belgeleri gerekiyor. **Sıfır bütçeyle mümkün de�
 
 **Önemli:** 19.0'daki LGPL izni geri alınamaz. Bu modülleri 20.0'a taşımak (port) yasaldır. Taşınan kod LGPL-3 kalır ve Odoo S.A. telif notları korunur. Enterprise 20.0 sürümünün koduna **bakılmaz** (D-006).
 
-OCA `l10n-turkey` deposu: 18.0 ve 19.0 dallarında modül yok.
+OCA `l10n-turkey` deposu: 18.0, 19.0 ve 20.0 dallarında modül yok (son kontrol 2026-10-18, `planning-inputs.md`).
 
 ## 5. Bizim amacımız açısından değerlendirme
 
 | Belge | Gereklilik | Gerekçe |
 |---|---|---|
 | e-Fatura + e-Arşiv | **Zorunlu (MVP)** | Türkiye'de B2B müşterilerin büyük kısmı e-Fatura mükellefi. 2026'dan itibaren bilanço esaslı şirketler kâğıt fatura kesemiyor. Bu özelliği olmayan bir ERP'nin fatura modülü kullanılamaz; ürün satılamaz |
-| e-İrsaliye | Yüksek (2. aşama) | Stok/dağıtım yapan ve 10 Milyon TL üstü hasılatlı müşteriler için zorunlu |
-| e-Defter | Orta (ileride) | Çoğu KOBİ e-Defter'i mali müşavirinin yazılımında tutuyor. Tam muhasebe hedefi için ileride |
+| e-İrsaliye | **Zorunlu (MVP)**. İlk değerlendirmede "Yüksek (2. aşama)" idi; planlama adımında MVP'ye alındı (D-012) | Stok/dağıtım yapan ve 10 Milyon TL üstü hasılatlı müşteriler için zorunlu. Hedef segmentteki orta ölçekli fabrikaların çoğu bu eşiğin üstünde |
+| e-Defter | P1 (MVP sonrası) | Çoğu KOBİ e-Defter'i mali müşavirinin yazılımında tutuyor. MVP'de mali müşavire aktarım var (PLAN T5.9); kendi muhasebesini yapan fabrikalar için e-Defter P1 (PLAN T11.4) |
 | e-SMM, e-Müstahsil vb. | Düşük | Niş müşteri grupları |
 
 **Maliyet:** Entegratör kontör/paket ücretini son müşteri öder (müşteri entegratörle kendisi sözleşme yapar). Biz yalnız API bağlantısını sağlarız → bize bütçe yükü yok.
-Geliştirme için Nilvera test ortamı var. Test hesabı koşulları **doğrulanmadı**.
+Geliştirme için Nilvera'nın kamuya açık, ücretsiz test ortamı var (§6).
 
 **Mimari öneri:** entegratörden bağımsız bir e-Belge çekirdeği (UBL-TR üretimi, senaryolar, fatura tipleri, mükellef sorgulama, durum takibi) + entegratör başına adaptör modülü. İlk adaptör: Nilvera (19.0 LGPL kodundan port). Diğer entegratörler pazara göre eklenir.
+
+## 6. Planlama için ek bulgular (2026-10-18)
+
+### Nilvera test ortamı (ücretsiz)
+
+- Test portalı `portaltest.nilvera.com`; API dokümantasyonu `developer.nilvera.com`.
+- Nilvera'nın Odoo entegrasyon kurulum belgesi (PDF, kaynaklarda) herkesin kullandığı ortak bir test şirketi tanımlıyor ("Test Kurum Bir").
+  - Belgede portal kullanıcı adı ve şifresi de yazıyor. **Bu bilgiler depoya yazılmaz**; yalnız yerel `.env` dosyasında tutulur (COMPLIANCE).
+  - API anahtarı test portalındaki "Yönetim Paneli → API" menüsünden üretiliyor.
+- Sonuç: e-Fatura, e-Arşiv ve e-İrsaliye akışları sıfır bütçeyle test edilebilir.
+
+### GİB test ortamı
+
+- GİB'in kendi başvuru ve test süreci mali mühür gerektiriyor (GİB e-Fatura başvuru açıklamaları). Mali mühür ücretli ve şirkete özgü.
+- Sonuç: sıfır bütçeyle GİB'e doğrudan test yapılamaz; entegratörün test ortamı kullanılır (D-012).
+
+### UBL-TR paketleri ve 2026 güncellemeleri
+
+- GİB, UBL-TR 1.2.1 şemalarını (XSD), schematron kurallarını ve kod listelerini paketler halinde yayımlıyor.
+- 2026 güncellemeleri (ikincil kaynaklar: PwC e-dönüşüm bültenleri, Faturaport):
+  - 9 Ocak'ta yayımlanan, 2 Şubat 2026'da yürürlüğe giren paketler (e-Fatura, e-Arşiv, UBL-TR, kod listeleri kılavuzu);
+  - 16 Mart'ta yayımlanan, 1 Nisan 2026'da yürürlüğe giren paketler;
+  - 27 Temmuz (schematron) ve 14 Eylül 2026 güncellemeleri.
+- Sonuç: paketler yılda birkaç kez değişiyor. Otomatik doğrulama (PLAN T4.2) ve düzenli takip gerekiyor.
+- GİB paketleri depoya konmaz (yeniden dağıtım izni belirsiz). CI ve yerel ortam onları GİB'den indirir (PLAN §7).
+
+### Ba-Bs formları kaldırıldı
+
+- 565 Sıra No.lu VUK Genel Tebliği (RG 25.09.2024, sayı 32673) ile Ba-Bs formları Eylül 2024 döneminden itibaren kaldırıldı.
+- Sonuç: üründe Ba-Bs raporu gerekmiyor.
+
+### e-Defter
+
+- İkincil kaynaklar (Paraşüt, Sovos, Faturaport): e-Fatura'ya geçmek zorunda olan bilanço esaslı mükellefler, geçiş yılını izleyen yılın başından itibaren e-Defter tutar. Örnek: 1 Temmuz 2026'da e-Fatura'ya geçen, 1 Ocak 2027'den itibaren e-Defter tutar.
+- Hedef segmentteki orta ölçekli fabrikalar bu kapsamda. Kendi muhasebesini yapan fabrikalar için e-Defter ileride satış koşulu olabilir (P1, PLAN T11.4).
+- Pazar örneği: bazı e-Belge sağlayıcıları muhasebe programlarına (ör. Luca) aktarımı ücretli ek hizmet olarak sunuyor. Bu, MVP'deki "mali müşavire aktarım" yaklaşımının (PLAN T5.9) pazarda karşılığı olduğunu gösteriyor.
+
+### 20.0 `l10n_tr` içeriği
+
+- 20.0 `l10n_tr` modülünde hesap planı ve vergilerin yanında ~1.046 vergi dairesi kaydı zaten var. Vergi daireleri için ayrı veri seti gerekmiyor (PLAN T3.1'de doğrulanacak).
 
 ## Kaynaklar
 
@@ -112,3 +156,13 @@ Geliştirme için Nilvera test ortamı var. Test hesabı koşulları **doğrulan
 - Odoo 20 sürüm notları: https://www.odoo.com/odoo-20-release-notes
 - Odoo 19.0 Nilvera modülleri: https://github.com/odoo/odoo/tree/19.0/addons/l10n_tr_nilvera_einvoice
 - Ücretli 3. parti örnek: https://apps.odoo.com/apps/modules/18.0/parasut
+- Odoo 19.0 Türkiye yerelleştirme dokümanı: https://www.odoo.com/documentation/19.0/applications/finance/fiscal_localizations/turkiye.html
+- Nilvera–Odoo entegrasyon kurulum belgesi (test şirketi; içindeki kimlik bilgileri depoya alınmadı): https://test-setup.obs.tr-west-1.myhuaweicloud.com/odoo/Nilvera_Odoo_Integration_Information.pdf
+- Nilvera test portalı: https://portaltest.nilvera.com — API dokümantasyonu: https://developer.nilvera.com
+- GİB e-Fatura başvuru açıklamaları (mali mühür): https://ebelgebasvuru.gib.gov.tr/assets/documents/e-Fatura-Ba%C5%9Fvuru-A%C3%A7%C4%B1klamalar.pdf
+- PwC — UBL-TR 1.2.1 paketi güncellendi: https://www.pwc.com.tr/tr/hizmetlerimiz/vergi/dolayli-vergi/bultenler/e-donusum-bultenleri/2026/ubl-tr-1-2-1-paketi-guncellenmistir.html
+- PwC — özel entegrasyon kılavuzu güncellendi: https://www.pwc.com.tr/tr/hizmetlerimiz/vergi/dolayli-vergi/bultenler/e-donusum-bultenleri/2026/e-fatura-uygulamasi-ozel-entegrasyon-kilavuzu-guncellendi.html
+- Faturaport — GİB paket güncellemeleri: https://faturaport.com/blog/e-fatura/gib-e-fatura-e-arsiv-ve-ubl-tr-paketlerini-guncelledi
+- Ba-Bs kaldırılması: https://www.cottgroup.com/en/component/zoo/item/ba-bs-formu-eylul-2024-itibariyla-kaldirildi ve https://vergidegundem.com/documents/10156/0/2024.09.25-072%28Ba-BsForm%29.pdf/c5f48631-b056-423f-9088-506c2cef4260
+- e-Defter (ikincil): https://www.parasut.com/blog/e-fatura-mukellefleri-icin-e-defter-zorunlulugu, https://sovos.com/tr/blog/kdv/e-deftere-gecme-sartlari/, https://faturaport.com/blog/e-fatura/2027de-kimler-e-deftere-gecmek-zorunda
+- Faturaport — Luca entegrasyonu (pazar örneği): https://faturaport.com/blog/e-donusum/faturaport-a-luca-entegrasyonu-eklendi
