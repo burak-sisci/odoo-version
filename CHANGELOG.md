@@ -7,6 +7,24 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Test çalıştırma komutları (T1.8) — otonom mesai 1
+
+**Kod**
+- `tools/run_tests.py`: modül testlerini temiz bir veritabanında çalıştırır ve günlüğü özetler.
+  - `db init --force` ile test veritabanı (demo yok, `en_US`), ardından `-i <modüller> --test-enable --test-tags /<modül>`. `--reuse` veritabanını korur ve `-u` kullanır.
+  - Testler ayrı HTTP portunda (8079): Odoo test modunda HTTP sunucusunu her zaman açıyor; geliştirme sunucusuyla çakışmaz.
+  - Günlükteki `ERROR:`/`FAIL:` bloklarını ve `X failed, Y error(s) of Z tests` satırını okur.
+  - Windows'ta test sınıflarının filestore temizliği hataları (traceback'te `_gc_file_store_unsafe` + `PermissionError` ya da `.__gc` dosyası `AssertionError`) ayrı sayılır, çıkış kodunu etkilemez. `setUpClass`'ta da çıkıyor; ilk sürüm yalnız `tearDownClass`'ı tanıyordu, düzeltildi.
+  - Özet satırı yoksa (kurulum çöktü) hata sayılır.
+
+**Ortam**
+- Doğrulama:
+  - `l10n_tr`: 3 test, hata yok, `RESULT: OK` (38 sn).
+  - `account_edi_ubl_cii` (negatif deneme): 230 test, 3 failed + 29 error. 27'si Windows gc hatası (24 `tearDownClass`, 3 `setUpClass`). Kalan 5 gerçek hata: T1.2'deki çekirdek test hatası (`deferred_start_date`), satır açıklaması içe aktarma testi, PDF motoru olmadığı için 2 PDF üretim testi, gömülü PDF testinde `LocalBinaryFile` TypeError. Sonuç `RESULT: FAILED (5)`, çıkış kodu 1.
+
+**Belgeler**
+- CLAUDE.md Komutlar (test komutları), ARCHITECTURE.md (§2 ağacı, §5 yerel testler), PLAN.md (T1.8, pano, T1.9 kabulüne komut), README.md, state.json.
+
 ### Adım: Odoo AI rehberleri (T1.7) — otonom mesai 1
 
 **Kod**

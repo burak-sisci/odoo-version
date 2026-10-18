@@ -166,4 +166,12 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Demo veritabanı: `.venv/Scripts/python upstream/odoo/odoo-bin db -c odoo.conf init ov_demo --with-demo --language tr_TR --country TR` → `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo -i account,l10n_tr --stop-after-init`
 - Sunucu: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo` → http://127.0.0.1:8069
 - Odoo kabuğu: `.venv/Scripts/python upstream/odoo/odoo-bin shell -c odoo.conf -d ov_demo --no-http` (Türkçe çıktı için `PYTHONIOENCODING=utf-8`)
-- Test komutları: henüz yok, T1.8'de buraya eklenecek.
+- Testler (T1.8): `python tools/run_tests.py <modül>[,<modül>…]`
+  - Her çalıştırmada temiz test veritabanı (`ov_test_<ilk modül>`, demo yok, `en_US`), modül(ler) testlerle kurulur, varsayılan etiket `/<modül>`.
+  - Etiketli veya tek test: `--tags` Odoo'nun `--test-tags` sözdizimiyle (`[-][etiket][/modül][:Sınıf][.yöntem]`; ör. `--tags /l10n_tr:TestClassName.test_method`, `--tags post_install/l10n_tr`).
+  - Hızlı tekrar: `--reuse` (veritabanını korur, `-u` ile günceller). Demo gerekiyorsa `--with-demo` (testler demoya dayanmamalı).
+  - Testler kendi HTTP portunu kullanır (8079); geliştirme sunucusu 8069'da açık kalabilir.
+  - Çıktı: test sayısı, gerçek hatalar, `RESULT: OK` / `RESULT: FAILED (n)`; çıkış kodu 0/1. Tam günlük `OV_HOME/logs/tests/<db>.log`.
+  - Windows'ta Odoo 20.0'ın test sınıflarındaki filestore temizliği hataları (`setUpClass`/`tearDownClass` → `_gc_file_store_unsafe`) ayrı sayılır ve sonucu bozmaz. Referans sonuç Linux CI'dır (T1.10).
+  - PDF üreten testler yerelde düşer (PDF motoru yok, T2.5).
+  - Doğrudan Odoo ile: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d <db> -i <modül> --test-enable --test-tags /<modül> --stop-after-init`
