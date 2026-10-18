@@ -64,8 +64,14 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
 
 ## 5. Lisans envanteri
 
-Projeye giren her dış kod buraya yazılır.
+Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme ortamında kullanılan araçlar ayrı tabloda.
 
 | Bileşen | Sürüm/commit | Lisans | Değiştirildi mi? | Nerede |
 |---|---|---|---|---|
 | (henüz dış kod yok — upstream PLAN T1.4'te eklenecek) | | | | |
+
+**Geliştirme ortamı araçları (depoya girmez, ürünle dağıtılmaz):**
+
+| Araç | Sürüm | Lisans | Not |
+|---|---|---|---|
+| PostgreSQL sunucusu ve komut satırı araçları (EDB Windows ikili zip) | 18.6 | PostgreSQL License (izin verici) | T1.3. Zip içindeki pgAdmin 4 ve StackBuilder kullanılmıyor. |

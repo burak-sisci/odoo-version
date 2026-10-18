@@ -133,12 +133,17 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 
 - Windows 11 Pro. Kabuk: PowerShell 5.1 (birincil) ve Git Bash.
 - Kurulu: Python 3.12.10, Git 2.56.0, GitHub CLI 2.101.0 (oturum açık).
-- Kurulu değil: PostgreSQL (T1.3'te kurulacak), Node.js, Docker (zorunlu değil).
+- PostgreSQL 18.6 (T1.3): yönetici izni gerektirmeyen taşınabilir kurulum, depo dışında `%LOCALAPPDATA%\odoo-version` (`OV_HOME`) altında.
+  - `pgsql/` ikili dosyalar, `pgdata/` küme, `pglog/` günlük. Sunucu kullanıcı hesabında çalışır, yalnız `localhost:5432` dinler.
+  - Odoo rolü `odoo` (LOGIN CREATEDB). Bağlantı bilgileri depodaki `.env` dosyasında (git'e girmez).
+  - Bilgisayar yeniden başlayınca sunucu kendiliğinden açılmaz: `python tools/pg.py start`.
+- Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo henüz projede değil (T1.4). CI henüz yok (T1.10).
 
 ## Komutlar
 
 - Belge denetimi: `python tools/check_docs.py`
+- PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok) → `git push`
 - Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.
