@@ -23,9 +23,9 @@
   "phase": {
     "id": "F2",
     "title": "Marka katmanı",
-    "status": "not_started"
+    "status": "in_progress"
   },
-  "current_task": "T2.1",
+  "current_task": "T2.2",
   "session": {
     "mode": "otonom",
     "number": 1,
@@ -51,12 +51,13 @@
     "T1.8",
     "T1.9",
     "T1.10",
-    "T1.11"
+    "T1.11",
+    "T2.1"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Marka izlerinin envanteri (T2.1)",
-    "Marka modülü ov_brand (T2.2)"
+    "Marka modülü ov_brand (T2.2)",
+    "odoo.com bağlantılarının kesilmesi (T2.3)"
   ],
   "decisions": [
     {
@@ -251,6 +252,7 @@
     "docs/research/e-fatura.md",
     "docs/research/hosting.md",
     "docs/research/planning-inputs.md",
-    "docs/research/nilvera-port.md"
+    "docs/research/nilvera-port.md",
+    "docs/research/brand-inventory.md"
   ]
 }

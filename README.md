@@ -25,7 +25,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Modül şablonu ve kod kalite araçları hazır (`tools/new_module.py`, ruff, pylint-odoo, pre-commit; T1.9).
 - CI çalışıyor: her push'ta belge denetimi, lint, gizli bilgi taraması ve modül testleri (GitHub Actions, T1.10).
 - OCA düzeni hazır: resmî 20.0 depoları `vendor/oca/`, bizim 20.0 portlarımız `ports/oca/` (`tools/port_oca.py`, T1.11). İlk port: `report_xlsx`.
-- Sıradaki görev: kullanıcıya görünen Odoo izlerinin envanteri (T2.1).
+- Kullanıcıya görünen Odoo izlerinin envanteri çıkarıldı (`docs/research/brand-inventory.md`, T2.1).
+- Sıradaki görev: marka modülü `ov_brand` (T2.2).
 - Açık karar yok. Kendi ürün modülümüz henüz yok.
 
 ## Belgeler

@@ -7,6 +7,31 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-18
 
+### Adım: Marka izleri envanteri (T2.1) — otonom mesai 1
+
+**Araştırma**
+- `docs/research/brand-inventory.md`: kullanıcıya görünen Odoo izleri, odoo.com'a giden çağrılar ve her birinin değiştirme yöntemi, görevleriyle (T2.2–T2.7).
+  - Yöntem: upstream kod taraması; `.pot` sayımı; MVP modülleriyle kurulan geçici veritabanında kayıt sayımı ve oturumsuz sayfaların HTTP denetimi.
+  - Bütün yüzeyler modülle değiştirilebiliyor (şablon kalıtımı, JS `patch()`, model/controller override, veri kaydı). Çekirdek değişikliği gereken yüzey bulunmadı; `/odoo` yolu T2.4'te.
+  - MVP modülleriyle 97 kurulu modül; 40'ında 253 çevrilebilir metin "odoo" içeriyor. Tüm upstream: 168 modülde 542 metin.
+  - Yayıncı garantisi (`mail`, haftalık iş varsayılan olarak açık): veritabanı kimliği, kullanıcı sayıları, kurulu uygulamalar, şirket adı, e-postası ve telefonu şifresiz HTTP ile `services.odoo.com`'a gidiyor. Yanıttaki mesajlar çalışan kanalına yazılıyor. T2.3'ün ilk işi; COMPLIANCE KVKK maddesine eklendi.
+  - 20.0'da yeni `mysubscription` her veritabanına kendiliğinden kuruluyor ve odoo.com fiyat/hesap sayfalarına bağlanıyor.
+  - Müşteriye giden belgelerde: fatura QR kodunun ortasında Odoo logosu, PDF üst verisinde `Creator/Producer: Odoo`, e-posta altbilgilerinde "Powered by Odoo", satın alma portalında tedarikçiye Odoo tanıtımı.
+  - OCA `server-brand`: `remove_odoo_enterprise` resmî 20.0 (yalnız ayar ekranları); `disable_odoo_online` 19.0, 20.0 taşıma PR'ı (#124) açık.
+  - Odoo test çatısı `requests` ile dış istekleri zaten engelliyor ve günlüğe yazıyor; T2.7 bunun üstüne kurulacak.
+
+**Kararlar**
+- K13 (yeni, varsayım, geri dönüşü kolay): e-tablo formüllerindeki `ODOO.` öneki teknik ad sayılır; marka sızıntısı testinin izin listesinde. USER_TASKS.md'de kullanıcı kararına açık.
+
+**Ortam**
+- Geçici veritabanı `ov_brand_scan` (tr_TR, TR; MVP modülleri). Yalnız yerelde, T2.2 denemeleri için tutuluyor.
+
+**Doğrulama**
+- T1.11 commit'inin CI çalıştırması (39151290971) başarılı: `ov_ci_sample` ve `report_xlsx` testleri Linux'ta geçti; alt modül önbelleği kaydedildi.
+
+**Belgeler**
+- PLAN.md (T2.1 tamam, F2 başladı; T2.2, T2.3, T2.5, T2.6, T2.7'ye envanter bulguları), USER_TASKS.md (K13), docs/COMPLIANCE.md (KVKK: yayıncı garantisinin gönderdikleri), ARCHITECTURE.md (marka katmanı satırı), docs/MODULE_MATRIX.md (`server-brand` adayları), README.md, state.json.
+
 ### Adım: `vendor/` ve `ports/` düzeni (T1.11) — otonom mesai 1
 
 **Kod**

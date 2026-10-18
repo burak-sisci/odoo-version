@@ -52,6 +52,7 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
 - **e-Belge saklama:** asıl saklama Türkiye'de zorunlu; başkasının e-Belgesini saklamak GİB izni gerektirir (`research/e-fatura.md` §3).
 - **KVKK:** müşteri = veri sorumlusu, biz (SaaS) = veri işleyen. Yurt dışı sunucu → m.9 süreçleri (`research/hosting.md`).
 - **odoo.com'a veri gönderimi:** Community'de odoo.com'a veri gönderen bileşenler (yayıncı garantisi, IAP) ürünümüzde kapatılır veya kendi sağlayıcılarımızla değiştirilir (PLAN T2.3). Bu, otomatik testle denetlenir (PLAN T2.7). Müşteri verisi bizim bilgimiz dışında 3. tarafa gitmemelidir.
+  - Envanter (T2.1, `research/brand-inventory.md` §4): yayıncı garantisi haftada bir veritabanı kimliğini, kullanıcı sayılarını, kurulu uygulamaları ve şirketin adı, e-postası ve telefonunu şifresiz HTTP ile `services.odoo.com`'a gönderiyor; varsayılan olarak açık.
 - **Public depo (D-015):** depodaki her şey herkese açık.
   - Depoya girmeyecekler: gizli bilgi (API anahtarı, şifre, sertifika), müşteri veya test kişisinin gerçek verisi, gerçek VKN/TCKN, yerel yapılandırma (`.env`, `odoo.conf`).
   - Nilvera test portalının test bilgileri kamuya açık bir belgede yayımlanmış olsa da depoya yazılmaz; yalnız `.env`'de tutulur.
