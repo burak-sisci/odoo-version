@@ -8,13 +8,15 @@ Bu dosya, bu projede çalışan Claude (ve diğer AI ajanları) için çalışma
 
 Odoo Community tabanlı, **kendi markamızla müşterilere satılacak** bir ERP (ürün ve/veya SaaS).
 - Hedef: Odoo'daki tüm uygulamaların (Community + Enterprise) işlevsel karşılığı (D-001, D-002).
+- İlk satış kapsamı (MVP): Ticaret paketi (küçük işletme) + Üretim paketi (orta ölçekli fabrika) (D-017, D-018).
 - Temel: Odoo 20.0 Community, çekirdeğe dokunmadan yalnız modüllerle (D-010 B, D-011).
 - Çalışma adı `odoo-version` (geçici), modül öneki `ov_` (kalıcı) (D-014).
+- Lisans: kendi kodumuz AGPL-3, LGPL koddan türetilenler LGPL-3 (D-016).
 - Ekip: kullanıcı (ürün sahibi, karar mercii) + Claude (çoğunlukla otonom geliştirici) (D-003).
-- Bütçe: sıfır (D-005).
+- Bütçe: sıfır (D-005). Ücretsiz altyapı: D-020.
 - Depo: https://github.com/burak-sisci/odoo-version — **public** (D-015).
 
-**Şu anki durum, aktif görev ve bekleyen kararlar için önce `state.json` dosyasını oku.**
+**Şu anki durum, aktif görev ve bekleyen kararlar için önce `state.json`, sonra `PLAN.md` dosyasını oku.**
 
 ## Belge haritası (her bilginin tek bir yeri vardır)
 
@@ -22,11 +24,11 @@ Odoo Community tabanlı, **kendi markamızla müşterilere satılacak** bir ERP 
 |---|---|---|
 | `state.json` | Makine okunur anlık durum: faz, aktif görev, biten görevler, bekleyen kararlar, ortam, modüller | **Her adımda** |
 | `CHANGELOG.md` | Tarihli adım kaydı; değişen kararların eski hali ve nedeni | **Her adımda** |
+| `PLAN.md` | **Tek plan ve ilerleme belgesi:** pano, strateji, paketler, fazlar ve görevler (`T<faz>.<sıra>`), kapı ölçütleri, kaynaklar, test stratejisi, riskler, kullanıcı eylemleri | Görev başladığında/bittiğinde; plan değiştiğinde |
 | `DECISIONS.md` | Yalnız **Geçerli**, **Açık** ve **Ertelendi** durumundaki kararlar | Karar alındığında/değiştiğinde |
-| `ROADMAP.md` | Fazlar ve görevler (`T<faz>.<sıra>`), durum işaretleri | Görev başladığında/bittiğinde |
 | `ARCHITECTURE.md` | Hedef/gerçek mimari, depo yerleşimi, katmanlar, çalışma zamanı | Yapı veya mimari değiştiğinde |
 | `docs/MODULE_MATRIX.md` | Tüm uygulamaların edinme yolu, önceliği, durumu | Modül planı/durumu değiştiğinde |
-| `docs/COMPLIANCE.md` | Lisans, clean-room, marka, KVKK; **lisans envanteri** | Dış kod eklendiğinde, hukuki bulguda |
+| `docs/COMPLIANCE.md` | Lisans, clean-room, marka, KVKK; **lisans envanteri** | Dış kod/veri eklendiğinde, hukuki bulguda |
 | `docs/specs/<modül>.md` | Enterprise eşdeğerleri için clean-room işlev tanımı | Modül geliştirmeden önce |
 | `docs/research/*.md` | Tarihli araştırma kayıtları (kaynaklı) | Bulgu yeniden doğrulandığında/değiştiğinde |
 | `README.md` | İnsanlar için kısa genel bakış | Durum özeti değiştiğinde |
@@ -38,16 +40,20 @@ Kullanıcı için kritik: **eski bir kararın herhangi bir belgede kalması veya
 
 Her adımın (görev, karar, araştırma, kod değişikliği) sonunda, kullanıcıya "bitti" demeden **önce**:
 
-1. `state.json`: `last_updated`, `current_task`, `tasks_done`, `blocked_on_user`, `next_actions`, `decisions`, `environment`, `modules`.
-2. `CHANGELOG.md`: bugünün tarih başlığı altında ne yapıldığı. Karar değiştiyse **eski metin + neden**.
-3. Karar alındı/değişti ise:
+1. `state.json`: `last_updated`, `phase`, `current_task`, `tasks_done`, `blocked_on_user`, `next_actions`, `decisions`, `environment`, `modules`.
+2. `PLAN.md`:
+   - görev işareti (`[~]` başlarken, `[x]` bitince);
+   - panodaki faz işareti ve `n/m` sayısı, `**Toplam:**` satırı ve `**Şu anki görev:**` satırı;
+   - fazın başlığındaki işaret.
+3. `CHANGELOG.md`: bugünün tarih başlığı altında ne yapıldığı. Karar değiştiyse **eski metin + neden**.
+4. Karar alındı/değişti ise:
    - `DECISIONS.md` kaydı **yerinde** yeniden yazılır (ID değişmez, Durum güncellenir, özet tablo güncellenir).
-   - Kararın geçtiği **tüm** belgeler aranıp güncellenir: `grep -rn "D-0xx"` ve konuyla ilgili anahtar kelimeler (ör. sürüm numarası, yaklaşım adı). Özellikle ARCHITECTURE.md başındaki "Durum" notu, MODULE_MATRIX.md, ROADMAP.md, README.md, ilgili `docs/research/*.md` başındaki "Sonuç" notu.
+   - Kararın geçtiği **tüm** belgeler aranıp güncellenir: `grep -rn "D-0xx"` ve konuyla ilgili anahtar kelimeler (ör. sürüm numarası, yaklaşım adı). Özellikle ARCHITECTURE.md başındaki "Durum" notu, MODULE_MATRIX.md, PLAN.md, README.md, ilgili `docs/research/*.md` başındaki "Sonuç" notu.
    - Bir görev tamamlandığında, o göreve `**Karar noktası:**` veya `**Yeniden değerlendirme:**` ile bağlı kararlar da ele alınır ve güncellenir.
-4. Etkilenen diğer belgeler: yukarıdaki haritaya göre.
-5. Her güncellenen Markdown belgesinde `Son güncelleme:` tarihi değiştirilir.
-6. `python tools/check_docs.py` çalıştırılır. **Hata varsa adım bitmemiştir.**
-7. Commit ve push (D-015):
+5. Etkilenen diğer belgeler: yukarıdaki haritaya göre.
+6. Her güncellenen Markdown belgesinde `Son güncelleme:` tarihi değiştirilir.
+7. `python tools/check_docs.py` çalıştırılır. **Hata varsa adım bitmemiştir.**
+8. Commit ve push (D-015):
    - kod ve belgeler **aynı commit'te**;
    - push öncesi `git diff --cached` ile gizli bilgi ve müşteri verisi denetimi;
    - ardından `git push`. Bu push önceden onaylıdır; force-push yasaktır.
@@ -56,39 +62,56 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Belgelerin içindeki serbest metin çelişkileri (ör. ARCHITECTURE.md'de eski sürüm numarası).
 - Açık bir kararın sonucunu "kesinleşmiş" gibi yazmak. Açık kararlar her yerde "öneri" olarak anılır.
 - Görev numaraları değişirse eski numaraya yapılan atıfların anlamı. Araç yalnız atıf yapılan görevin var olup olmadığını denetler.
+- PLAN.md'deki K (kullanıcı eylemi) ve S (sürekli iş) satırları araçla denetlenmez.
 
 ## Değişmez kurallar
 
 1. **Clean-room (D-006):** Odoo Enterprise kodu, sızıntıları, Enterprise deneme/SaaS örneklerinden gelen JS/CSS/görseller **asla** kullanılmaz ve açılıp incelenmez. İzinli/yasak kaynaklar: `docs/COMPLIANCE.md` §2. Emin değilsen dur ve kullanıcıya sor.
 2. **Marka (D-007, D-014):** Kullanıcıya görünen hiçbir yerde "Odoo" adı/logosu ürün adı olarak kullanılmaz. Lisans ve telif başlıkları silinmez. Çalışma adı `odoo-version` dış demoya, pilota veya müşteriye çıkmaz.
-3. **Lisans (D-008, D-016):** LGPL'den türetilen kod LGPL kalır. Kapalı kaynak modüllerimiz AGPL modüllere bağımlı olamaz. Projeye giren her dış kod `docs/COMPLIANCE.md` §5 lisans envanterine yazılır. Kendi modüllerimizin lisansı D-016 ile belirlenmeden ilk modül (T2.2) yazılmaz.
-4. **Upstream'e dokunma (D-010):** `upstream/` ve `vendor/` altı hiçbir koşulda düzenlenmez, yama kuyruğu yoktur. Modülle çözülemeyen durumda dur ve kullanıcıya yeni karar olarak getir.
+3. **Lisans (D-008, D-016, D-019):**
+   - Kendi özgün modüllerimiz `'license': 'AGPL-3'`.
+   - LGPL koddan türetilen modüller (ör. 19.0 Nilvera portu, `l10n_latam_check`'ten uyarlama) `'license': 'LGPL-3'` ve orijinal telif notlarıyla.
+   - OCA portları orijinal lisans, yazar ve teknik adla.
+   - Kapalı kaynak modül yok; olursa AGPL modüllere bağımlı olamaz.
+   - Projeye giren her dış kod ve veri `docs/COMPLIANCE.md` §5 lisans envanterine yazılır.
+   - Dış katkı (pull request) şimdilik kabul edilmez (D-016).
+4. **Upstream'e dokunma (D-010, D-019):**
+   - `upstream/` ve `vendor/` altı hiçbir koşulda düzenlenmez, yama kuyruğu yoktur.
+   - OCA modülünü değiştirmek gerekiyorsa (20.0 portu), kopya `ports/oca/<depo>/<modül>` altına alınır ve orada değiştirilir.
+   - Modülle çözülemeyen durumda dur ve kullanıcıya yeni karar olarak getir.
 5. **Para ve dış dünya (D-003, D-005, D-015):**
-   - Önce kullanıcı onayı gerekenler: ücretli servis/altyapı, yayınlama/paylaşma, depo ayarları (görünürlük, ad, release).
+   - Önce kullanıcı onayı gerekenler: ücretli servis/altyapı, yayınlama/paylaşma (belge sitesi, tanıtım sayfası, upstream/OCA katkısı), depo ayarları (görünürlük, ad, release, güvenlik özellikleri).
    - Proje deposuna her adım sonunda push önceden onaylıdır.
 6. **Açık ve ertelenmiş kararlar:** bir karar açıkken veya ertelenmişken o karara bağlı, geri dönüşü zor işler yapılmaz. Karar noktası görevine gelince önce karar alınır.
-7. **Gizli bilgiler:** depo public. API anahtarları, şifreler, müşteri verisi, yerel yapılandırma (`.env`, `odoo.conf`) depoya girmez (`.gitignore`).
+7. **Gizli bilgiler:** depo public.
+   - Depoya girmeyecekler: API anahtarları, şifreler, sertifikalar, müşteri verisi, gerçek kişi/şirket VKN/TCKN'leri, yerel yapılandırma (`.env`, `odoo.conf`) (`.gitignore`).
+   - Nilvera test portalının kamuya açık test bilgileri de depoya yazılmaz; yalnız `.env`'de durur.
 
 ## Odoo geliştirme kuralları
 
-- Modül öneki `ov_` (D-014). Örnek: `ov_brand`, `ov_l10n_tr_edi`.
+- Modül öneki `ov_` (D-014). Örnek: `ov_brand`, `ov_l10n_tr_edi`. OCA portları orijinal adlarını korur (D-019).
 - Odoo kalıplarını izle:
   - model genişletme `_inherit` ile, görünüm kalıtımı XPath ile;
   - JS'te `patch()`, asset paketinde `replace`;
   - yetkiler `ir.access.csv` ile (20.0 yetki modeli).
-- Odoo 20 deposu `skills/` klasöründe resmi AI rehberleri içerir (`odoo-guidelines`, `odoo-review`, `odoo-security`, `odoo-web-guidelines`, `odoo-git`). T1.6'da `.claude/skills/` altına kurulacak. Kurulunca kod yazarken ve incelerken bunlara uy.
-- Her modülde: manifest'te doğru `license`, testler (`tests/`), Türkçe çeviri (`i18n/tr.po`).
+- Odoo 20 deposu `skills/` klasöründe resmi AI rehberleri içerir (`odoo-guidelines`, `odoo-review`, `odoo-security`, `odoo-web-guidelines`, `odoo-git`). T1.7'de `.claude/skills/` altına kurulacak. Kurulunca kod yazarken ve incelerken bunlara uy.
+- Her modülde:
+  - manifest'te doğru `license` (kural 3) ve sürüm `20.0.x.y.z`;
+  - testler (`tests/`);
+  - Türkçe çeviri (`i18n/tr.po`).
+- Enterprise eşdeğeri bir modülden önce `docs/specs/<modül>.md` yazılır (D-006).
+- Test verisi kurgusaldır (PLAN.md §8).
 
 ## Ortam
 
 - Windows 11 Pro. Kabuk: PowerShell 5.1 (birincil) ve Git Bash.
 - Kurulu: Python 3.12.10, Git 2.56.0, GitHub CLI 2.101.0 (oturum açık).
-- Kurulu değil: PostgreSQL (T1.2'de kurulacak), Node.js, Docker (zorunlu değil).
+- Kurulu değil: PostgreSQL (T1.3'te kurulacak), Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
-- Upstream Odoo henüz projede değil (T1.3).
+- Upstream Odoo henüz projede değil (T1.4). CI henüz yok (T1.10).
 
 ## Komutlar
 
 - Belge denetimi: `python tools/check_docs.py`
 - Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` → `git push`
-- Odoo çalıştırma ve test komutları: henüz yok, T1.5 / T1.7'de buraya eklenecek.
+- Odoo çalıştırma ve test komutları: henüz yok, T1.6 / T1.8'de buraya eklenecek.

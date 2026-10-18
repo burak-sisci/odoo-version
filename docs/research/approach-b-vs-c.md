@@ -4,7 +4,7 @@ Son güncelleme: 2026-10-18
 İlgili karar: D-010 (DECISIONS.md)
 
 > **Sonuç (2026-10-18):** Kullanıcı **B**'yi seçti (D-010 Geçerli). Aşağıdaki B+ önerisi kabul edilmedi.
-> Çekirdekte hiçbir dosya değiştirilmez. "Zor noktalar" (ör. `/odoo` URL yolu) modül düzeyinde çözülecek: controller override ve asset paketinde dosya değiştirme (`replace`) (ROADMAP T2.4).
+> Çekirdekte hiçbir dosya değiştirilmez. "Zor noktalar" (ör. `/odoo` URL yolu) modül düzeyinde çözülecek: controller override ve asset paketinde dosya değiştirme (`replace`) (PLAN T2.4).
 > Modülle çözülemeyen bir nokta çıkarsa kullanıcıya yeni karar olarak getirilecek.
 
 ## Tanımlar
