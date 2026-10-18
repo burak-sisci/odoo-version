@@ -20,6 +20,9 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 5. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
 6. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci` varsayıldı.
 7. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
+8. **K14:** geçici ürün adı `OV ERP`, renk ve simge. Kalıcı ada kadar yer tutucu olarak varsayıldı.
+
+Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
@@ -66,6 +69,13 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — olduğu gibi kalsın · **B** — kendi önekimizle eş adlar eklensin, `ODOO.` eski kayıtlar için çalışmaya devam etsin · **C** — tamamen yeniden adlandırılsın, kayıtlı formüller dönüştürülsün.
   - Claude önerisi: şimdilik **A**; kalıcı marka adı belirlenince (T8.2) **B** yeniden değerlendirilir.
   - Ne zaman: T2.6'dan önce ya da T8.2'de.
+- [ ] K14 **Karar** — kalıcı marka adı seçilene kadar kullanıcıya görünen geçici ürün adı, renk ve simge (T2.2).
+  - Neden: çalışma adı `odoo-version` kullanıcıya çıkamaz (D-007, D-014), ama ekranlarda bir ad gerekiyor.
+  - Varsayım (otonom mesai 1, geri dönüşü kolay): ad `OV ERP`, renk `#1f5f8b` (koyu mavi), simge mavi kare üstünde beyaz "OV" harfleri. Ad bir sistem parametresinden (`ov_brand.name`) değişir; renk ve simge `ov_brand` modülünde tek yerde.
+  - Kullanıcı menüsündeki "Yardım" öğesi destek adresi (`ov_brand.support_url`) girilene kadar gizli.
+  - Seçenekler: **A** — kalıcı ada (K3, T8.2) kadar böyle kalsın · **B** — başka bir geçici ad, renk ya da simge söyle.
+  - Claude önerisi: **A**.
+  - Ne zaman: T8.2'ye kadar; dış demodan önce mutlaka.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

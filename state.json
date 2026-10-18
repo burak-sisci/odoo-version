@@ -27,10 +27,11 @@
   },
   "current_task": "T2.2",
   "session": {
-    "mode": "otonom",
+    "mode": "standart",
     "number": 1,
     "started": "2026-10-18",
-    "note": "Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md"
+    "ended": "2026-10-18",
+    "note": "Otonom mesai 1 bitti (kullanıcı isteğiyle, T2.2 ortasında); özet CHANGELOG.md. Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md"
   },
   "tasks_done": [
     "T0.1",
@@ -56,7 +57,7 @@
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Marka modülü ov_brand (T2.2)",
+    "T2.2'ye devam: addons/ov_brand yerelde, commit edilmedi. Kalanlar: test_login_page_js denetimi, i18n/tr.po, README.rst, lint, belge protokolü, commit",
     "odoo.com bağlantılarının kesilmesi (T2.3)"
   ],
   "decisions": [
@@ -202,13 +203,13 @@
       "remote": "origin"
     },
     "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi",
-    "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py)",
+    "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py); otonom mesai 1 sonunda durduruldu (python tools/pg.py start)",
     "node": null,
     "docker": null,
     "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + pylint-odoo 10.0.12 + pre-commit 4.7.0 + websocket-client 1.9.2",
-    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5)",
+    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5); geçici DB'ler ov_brand_scan (T2.1/T2.2) ve ov_test_ov_brand (yalnız yerel)",
     "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)",
-    "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests",
+    "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests; Windows'ta kurulumdan önce test DB'sinin filestore dosyaları yazılabilir yapılır (Odoo ek dosyaları 0o444)",
     "lint": "pre-commit (yerel kanca kurulu): ruff (ruff.toml → upstream kural seti), pylint-odoo (.pylintrc, addons/), tools/check_modules.py, tools/check_docs.py; modül iskeleti tools/new_module.py; tools/check_secrets.py (.env değerleri)",
     "oca": "vendor/oca/<depo> (resmî 20.0, sığ submodule; server-ux), ports/oca/<depo>/<modül> (19.0'dan port, PORT.md; report_xlsx); tools/port_oca.py fetch|upgrade|diff; prosedür ARCHITECTURE.md §2"
   },
