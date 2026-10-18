@@ -59,7 +59,8 @@ odoo-version/
 │   ├── check_docs.py        # belge tutarlılık denetimi (+ ileride modül şablonu, UBL doğrulama, çeviri ölçümü)
 │   ├── pg.py                # yerel PostgreSQL kümesi: init, start, stop, status (T1.3)
 │   ├── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
-│   └── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
+│   ├── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
+│   └── run_tests.py         # temiz veritabanında modül testleri, Windows gc hatalarını ayırır (T1.8)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, git submodule, sabit commit (henüz yok — T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız (henüz yok — D-019)
@@ -147,6 +148,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - Addons yolu glob kalıplarıyla yazılır (`vendor/oca/*`, `ports/oca/*`, `addon[s]`); henüz olmayan klasörler uyarısız atlanır.
   - Veri klasörü `OV_HOME/odoo-data`. Tek süreç (`workers = 0`), yalnız `127.0.0.1`.
   - Demo veritabanı `ov_demo` (Türkçe, TR, `account` + `l10n_tr`).
+- **Yerel testler (T1.8):** `tools/run_tests.py` her çalıştırmada temiz test veritabanı açar (demo yok), ayrı HTTP portu (8079) kullanır. Windows'a özgü filestore temizliği hatalarını ayrı sayar; referans sonuç Linux CI'dır.
 - **CI (D-020):** GitHub Actions, Ubuntu runner + PostgreSQL servisi. Her push'ta çalışır:
   - belge denetimi;
   - lint;

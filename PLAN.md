@@ -21,12 +21,12 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T1.8 — Test çalıştırma komutları
+**Şu anki görev:** T1.9 — Modül şablonu ve kod kalite araçları
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
-| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 7/11 | 0 · 0 · 11 |
+| F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[~]` | 8/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[ ]` | 0/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 15/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 16/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -238,7 +238,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Kabul: tarayıcıda Türkçe arayüz, Türk demo şirketi ve hesap planı yüklü.
 - [x] T1.7 Odoo `skills/` rehberlerinin `.claude/skills/` altına kurulması · S · C — 5 rehber, LGPL-3; öncelik kuralları CLAUDE.md'de
   - Rehberlerin lisansı kontrol edilir ve envantere yazılır.
-- [ ] T1.8 Test çalıştırma komutları · S · C
+- [x] T1.8 Test çalıştırma komutları · S · C — `tools/run_tests.py`
   - Tek modül testi ve etiketli test (`--test-tags`) komutları CLAUDE.md "Komutlar" bölümüne yazılır.
   - Windows'ta 20.0 test temizliği salt okunur filestore dosyalarını silemiyor (`tearDownClass` hatası, T1.2). Komutlar bu hatayı ayırt eder; referans sonuç Linux CI'dır (T1.10).
 - [ ] T1.9 Modül şablonu ve kod kalite araçları · M · C
@@ -246,7 +246,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - manifest: `license`, `author`, sürüm `20.0.x.y.z`;
     - `tests/`, `i18n/tr.po`, `security/ir.access.csv`, `README`.
   - pre-commit: ruff, pylint-odoo; manifest lisans denetimi (D-016 kuralları).
-  - Kabul: şablondan üretilen boş modül kuruluyor, testi geçiyor, lint temiz.
+  - Kabul: şablondan üretilen boş modül kuruluyor, testi geçiyor (`tools/run_tests.py`), lint temiz.
 - [ ] T1.10 GitHub Actions CI (D-020) · M · C
   - Sıra: belge denetimi → lint → gizli bilgi taraması → PostgreSQL servisiyle `addons/` ve `ports/` testleri.
   - Rehber kopyası denetimi: `python tools/sync_skills.py --check` (T1.7).
