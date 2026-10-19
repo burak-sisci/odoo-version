@@ -149,7 +149,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Python sanal ortamı (T1.5): depoda `.venv` (git'e girmez), Python 3.12.10. Bağımlılıklar `requirements-dev.txt`: upstream `requirements.txt` + test/lint araçları (ruff 0.16, pylint-odoo 10.0, pre-commit 4.7, websocket-client).
   - pre-commit kancası yerel depoda kurulu (T1.9): her commit'te ruff, pylint-odoo, modül kuralları ve belge denetimi çalışır.
 - Yerel Odoo (T1.6): `odoo.conf` depo kökünde (git'e girmez), `deploy/odoo.conf.example`'dan `tools/odoo_conf.py` ile üretilir. Veri klasörü (filestore, oturumlar) `OV_HOME/odoo-data`.
-  - Demo veritabanı `ov_demo`: Türkçe, ülke TR, demo verili, `account` + `l10n_tr`. Türk hesap planı `TR Company` demo şirketinde; ana şirket upstream demo düzeninde genel hesap planıyla gelir. Giriş `admin`/`admin` (yalnız yerel, `127.0.0.1`).
+  - Demo veritabanı `ov_demo`: Türkçe, ülke TR, demo verili, `ov_brand` + `account` + `l10n_tr`. Türk hesap planı `TR Company` demo şirketinde; ana şirket upstream demo düzeninde genel hesap planıyla gelir. Giriş `admin`/`admin` (yalnız yerel, `127.0.0.1`).
   - PDF motoru kurulu değil (T2.5'te seçilir).
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
@@ -167,11 +167,12 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Odoo sürüm kontrolü: `.venv/Scripts/python upstream/odoo/odoo-bin --version`
 - Odoo AI rehberleri: `python tools/sync_skills.py` (kopyalar), `python tools/sync_skills.py --check` (upstream'le farkı denetler)
 - Yerel yapılandırma: `python tools/odoo_conf.py` (`--force` ile yeniden yazar; `.env`'de `ODOO_ADMIN_PASSWD` yoksa üretir)
-- Demo veritabanı: `.venv/Scripts/python upstream/odoo/odoo-bin db -c odoo.conf init ov_demo --with-demo --language tr_TR --country TR` → `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo -i account,l10n_tr --stop-after-init`
+- Demo veritabanı: `.venv/Scripts/python upstream/odoo/odoo-bin db -c odoo.conf init ov_demo --with-demo --language tr_TR --country TR` → `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo -i ov_brand,account,l10n_tr --stop-after-init`
 - Sunucu: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d ov_demo` → http://127.0.0.1:8069
 - Odoo kabuğu: `.venv/Scripts/python upstream/odoo/odoo-bin shell -c odoo.conf -d ov_demo --no-http` (Türkçe çıktı için `PYTHONIOENCODING=utf-8`)
 - Testler (T1.8): `python tools/run_tests.py <modül>[,<modül>…]`
   - Her çalıştırmada temiz test veritabanı (`ov_test_<ilk modül>`, demo yok, `en_US`), modül(ler) testlerle kurulur, varsayılan etiket `/<modül>`.
+  - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur: kurulumu çevrim içi hizmet modüllerini kaldırıyor, Odoo da modül kaldıran çalıştırmada `post_install` testlerini başlatmıyor (T2.3).
   - Etiketli veya tek test: `--tags` Odoo'nun `--test-tags` sözdizimiyle (`[-][etiket][/modül][:Sınıf][.yöntem]`; ör. `--tags /l10n_tr:TestClassName.test_method`, `--tags post_install/l10n_tr`).
   - Hızlı tekrar: `--reuse` (veritabanını korur, `-u` ile günceller). Demo gerekiyorsa `--with-demo` (testler demoya dayanmamalı).
   - Testler kendi HTTP portunu kullanır (8079); geliştirme sunucusu 8069'da açık kalabilir.

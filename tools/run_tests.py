@@ -1,7 +1,10 @@
 """Run Odoo module tests on a fresh database and summarise the result.
 
 Creates (or recreates) a test database without demo data, installs the given
-modules with tests enabled, and reads the log. On Windows, Odoo 20.0's
+modules with tests enabled, and reads the log. When the modules need ov_brand,
+it is installed first without tests: it removes the publisher's online service
+modules, and Odoo skips the post_install tests of a run that removed modules.
+On Windows, Odoo 20.0's
 filestore garbage collection cannot delete files in test set-up/teardown; those
 errors are reported separately and do not fail the run (the reference result
 is the Linux CI). The full log is kept under OV_HOME/logs/tests/.
@@ -14,6 +17,7 @@ Usage: python tools/run_tests.py MODULE[,MODULE...] [--tags TAGS] [--db NAME] [-
   -v           print the traceback of each real problem (CI)
 """
 import argparse
+import ast
 import os
 import re
 import stat
@@ -28,6 +32,9 @@ CONF = ROOT / "odoo.conf"
 LOG_DIR = OV_HOME / "logs" / "tests"
 FILESTORE = OV_HOME / "odoo-data" / "filestore"
 TEST_HTTP_PORT = "8079"
+# Removes modules at the end of its installation (T2.3). Odoo then reloads the
+# registry, and the post_install tests of that run never start.
+PREINSTALL = "ov_brand"
 
 LOG_LINE = re.compile(r"^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d,\d+ \d+ (\w+) \S+ (\S+): (.*)$")
 TEST_PROBLEM = re.compile(r"^(ERROR|FAIL): (.+)$")
@@ -43,6 +50,19 @@ def odoo(*args, log):
     cmd = [str(PYTHON), str(ODOO_BIN), *args]
     with open(log, "w", encoding="utf-8") as fh:
         return subprocess.run(cmd, stdout=fh, stderr=subprocess.STDOUT, check=False).returncode
+
+
+def own_closure(modules):
+    """Return the modules and their dependencies among our modules (addons/)."""
+    todo, seen = list(modules), set()
+    while todo:
+        name = todo.pop()
+        manifest = ROOT / "addons" / name / "__manifest__.py"
+        if name in seen or not manifest.exists():
+            continue
+        seen.add(name)
+        todo += ast.literal_eval(manifest.read_text(encoding="utf-8")).get("depends", [])
+    return seen
 
 
 def make_filestore_writable(db):
@@ -102,8 +122,18 @@ def main():
         init = ["db", "-c", str(CONF), "init", db, "--force"] + (["--with-demo"] if args.with_demo else [])
         if odoo(*init, log=log):
             sys.exit(f"could not create database {db}; see {log}")
+    if args.reuse:
+        install, update = [], modules
+    elif PREINSTALL in own_closure(modules):
+        if odoo("-c", str(CONF), "-d", db, "-i", PREINSTALL, "--stop-after-init", log=log):
+            sys.exit(f"could not install {PREINSTALL}; see {log}")
+        install = [m for m in modules if m != PREINSTALL]
+        update = [PREINSTALL] if PREINSTALL in modules else []
+    else:
+        install, update = modules, []
+    selection = (["-i", ",".join(install)] if install else []) + (["-u", ",".join(update)] if update else [])
     # Tests start Odoo's HTTP server; a port of its own lets them run next to the dev server.
-    rc = odoo("-c", str(CONF), "-d", db, "-u" if args.reuse else "-i", ",".join(modules), "--test-enable",
+    rc = odoo("-c", str(CONF), "-d", db, *selection, "--test-enable",
               "--test-tags", tags, "--http-port", TEST_HTTP_PORT, "--stop-after-init", log=log)
 
     summary, problems, other_errors = parse(log)

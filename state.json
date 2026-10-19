@@ -58,7 +58,7 @@
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "T2.3'e devam: IAP servis modülleri (iap, mysubscription) kaldırılır ve arayüzden yeniden kurulmaz; ardından Enterprise reklamları (OCA remove_odoo_enterprise), dokümantasyon ve düzenleyici bağlantıları",
+    "T2.3'e devam: Enterprise reklamları (OCA server-brand 20.0 remove_odoo_enterprise, vendor), Uygulamalar listesindeki to_buy kartları, dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası",
     "/odoo URL yolu için modül düzeyinde çözüm (T2.4)"
   ],
   "decisions": [
@@ -208,7 +208,7 @@
     "node": null,
     "docker": null,
     "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + pylint-odoo 10.0.12 + pre-commit 4.7.0 + websocket-client 1.9.2",
-    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5); geçici DB'ler ov_brand_scan (T2.1/T2.2) ve ov_test_ov_brand (yalnız yerel)",
+    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5); geçici DB'ler ov_brand_scan (T2.1/T2.2) ve ov_test_ov_brand (yalnız yerel)",
     "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)",
     "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests; Windows'ta kurulumdan önce test DB'sinin filestore dosyaları yazılabilir yapılır (Odoo ek dosyaları 0o444)",
     "lint": "pre-commit (yerel kanca kurulu): ruff (ruff.toml → upstream kural seti), pylint-odoo (.pylintrc, addons/), tools/check_modules.py, tools/check_docs.py; modül iskeleti tools/new_module.py; tools/check_secrets.py (.env değerleri); pylint-odoo'nun odoo-addons-relative-import denetimi kanca argümanıyla kapalı (ruff TID252 ile çelişiyor; modül içi içe aktarmalar mutlak)",
@@ -226,7 +226,7 @@
           "base_setup"
         ],
         "task": "T2.2",
-        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14)"
+        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15)"
       },
       {
         "module": "ov_brand_mail",

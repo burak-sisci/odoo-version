@@ -16,6 +16,7 @@ Araştırma tarihi: 2026-10-18
 > - Veri gönderen bir zamanlanmış iş varsayılan olarak açık: yayıncı garantisi (`mail.ir_cron_module_update_notification`, haftalık). Veritabanı kimliği, kullanıcı sayıları, kurulu uygulamalar, şirket adı, e-postası ve telefonu `services.odoo.com`'a gidiyor (§4.1). KVKK açısından T2.3'ün ilk işi.
 > - Müşteriye giden belgelerde de iz var: faturadaki QR kodun ortasında Odoo logosu, PDF üst verisinde `Creator/Producer: Odoo`, e-posta altbilgisinde "Powered by Odoo" (§6).
 > - T2.2 (2026-10-19): §3'teki web istemcisi yüzeyleri `ov_brand` ile değişti. Kalan üç JS metni T2.6'da (§3).
+> - T2.3 (2026-10-19, sürüyor): yayıncı garantisi kapandı; IAP ve `mysubscription` modülleri bağlı modülleriyle kaldırıldı (§4).
 > - Bu belge kontrol tarihindeki upstream commit'ini anlatır (`afbcf79d`). T2.6'daki otomatik test, upstream ilerledikçe yeni izleri yakalamak için var.
 
 ## 1. Soru ve kapsam
@@ -92,6 +93,8 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 | Ödeme vekilleri | Stripe, Razorpay, PayU, MercadoPago bağlantı akışları | `payment_*` | hayır | Hesap bağlama | MVP dışı (iyzico T10.4) |
 | IoT | `download.odoo.com`, IoT vekili | `iot_drivers` | hayır | Kutu güncellemesi | MVP dışı |
 
+- Sonuç (T2.3, 2026-10-19): IAP hesap ve kredi, aday zenginleştirme, aday üretme, iş ortağı otomatik tamamlama, SMS, Snailmail ve Aboneliğim satırları için tablodaki "gizle" önerileri yerine modüller kaldırıldı (`ov_brand`, USER_TASKS K15 varsayımı). Kurulumun sonunda kaldırılırlar, arayüzden kurulamazlar, Ayarlar'daki kutuları gizli. Diğer satırlar T2.3'te sürüyor.
+
 ### 4.1. Yayıncı garantisi (KVKK)
 
 - `mail/models/update.py`, model `publisher_warranty.contract`. Zamanlanmış iş `mail.ir_cron_module_update_notification`, haftada bir. Ayrıca `l10n_fr_account` ve `l10n_fr_pos_cert` kurulumda çağırıyor.
@@ -112,6 +115,7 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 - 20.0'da yeni. `auto_install` ve bağımlılığı yalnız `base` + `web`, yani her veritabanına kuruluyor. Modül bağımlılığıyla engellenemiyor.
 - Kullanıcı menüsüne "My Subscription" ekliyor; açılan sayfa odoo.com fiyat, sürüm ve hesap sayfalarına bağlanıyor. Parametre: `mysubscription.database`.
 - Öneri (T2.3): `ov_brand` JS'te kullanıcı menüsü kaydından öğeyi kaldırır, istemci eylemi gizlenir.
+- Sonuç (T2.3, 2026-10-19): öneri uygulanmadı; modül kaldırıldı (§4 sonucu, K15).
 
 ## 5. `/odoo` URL yolu (T2.4)
 
@@ -190,7 +194,7 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 ## 11. Görevlere etkisi
 
 - **T2.2 `ov_brand` (tamam):** §3, "Diğer istemci mesajları" satırı hariç. Marka adı tek ayardan okunur (F2 kabul ölçütü): `ov_brand.name` sistem parametresi, varsayılan Nexus. `web.web_app_name` eşitlenmedi: Genel Ayarlar'daki uygulama adı yalnız tarayıcıdan kurulan uygulamanın adıdır, boşsa marka adı kullanılır.
-- **T2.3:** §4. İlk iş yayıncı garantisi; sonra IAP, `mysubscription`, Enterprise reklamları (`remove_odoo_enterprise` + Uygulamalar filtresi), dokümantasyon bağlantıları.
+- **T2.3 (sürüyor):** §4. Yayıncı garantisi, IAP ve `mysubscription` tamam; kalanlar Enterprise reklamları (`remove_odoo_enterprise` + Uygulamalar filtresi), dokümantasyon bağlantıları.
 - **T2.4:** §5.
 - **T2.5:** §6 ve PDF motoru seçimi (PLAN'daki not).
 - **T2.6:** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) ve §10'daki izin listesi. §3'ten kalan üç JS metni.

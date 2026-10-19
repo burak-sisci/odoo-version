@@ -282,11 +282,15 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Kalan üç JS metni T2.6'ya taşındı (aşağıda).
 - [~] T2.3 odoo.com bağlantılarının kesilmesi · M · C
   - Envanter §4. İlk iş yayıncı garantisi çağrısı.
-  - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme, düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
-  - `mysubscription` ("Aboneliğim"): 20.0'da yeni, her veritabanına kendiliğinden kuruluyor; menü öğesi gizlenir.
+  - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme ve üretme. Modülleriyle kaldırılır (K15 varsayımı).
+  - Düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
+  - `mysubscription` ("Aboneliğim"): 20.0'da yeni, her veritabanına kendiliğinden kuruluyor; kaldırılır (K15 varsayımı).
   - Enterprise reklamları: ayar ekranları için OCA 20.0 `remove_odoo_enterprise`; Uygulamalar listesindeki satın alınacak uygulama kartları (`to_buy`) için ayrı filtre.
   - odoo.com dokümantasyon/destek bağlantıları.
-  - Ara durum: yayıncı garantisi kapandı (`ov_brand_mail`: rapor hiç gönderilmez, zamanlanmış iş pasif). Sıradakiler: IAP servis modülleri ve `mysubscription`, Enterprise reklamları, dokümantasyon ve düzenleyici bağlantıları.
+  - Ara durum:
+    - yayıncı garantisi kapandı (`ov_brand_mail`: rapor hiç gönderilmez, zamanlanmış iş pasif);
+    - `iap` ve `mysubscription` bağlı modülleriyle kaldırıldı (`ov_brand`): her kurulum ve güncellemenin sonunda kaldırılır, arayüzden kurulamaz, ayar kutuları gizli. `tools/run_tests.py` bu yüzden `ov_brand`'i önce testsiz kurar;
+    - sıradakiler: Enterprise reklamları, dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası.
 - [ ] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).

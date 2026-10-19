@@ -32,9 +32,26 @@ Sistem parametreleri (geliştirici modunda Ayarlar > Teknik > Sistem Parametrele
 Genel Ayarlar'da bir uygulama adı girilmişse tarayıcıdan kurulan uygulama o adı
 kullanır.
 
+Kaldırılan çevrim içi hizmetler
+===============================
+
+Yayıncının çevrim içi hizmetleri (uygulama içi satın alma kredileri ve abonelik
+sayfası) her yeni veritabanına kendiliğinden kurulur. Bu modül onları, onlara
+bağlı modüllerle birlikte kaldırır:
+
+* SMS gönderimi,
+* iş ortağı otomatik tamamlama,
+* aday zenginleştirme ve aday üretme,
+* posta ile gönderim,
+* "Aboneliğim" sayfası.
+
+Bu modüller Uygulamalar ekranından kurulamaz; Ayarlar ekranındaki kutuları
+gösterilmez. Komut satırından kurulsalar da kurulumun sonunda yeniden kaldırılır.
+
 Bilinen sınırlar
 ================
 
 * Veritabanı yöneticisi veritabanı olmadan çalışır ve bu modülü görmez. Üretimde
   kapalı tutulur (``list_db = False``).
 * E-posta, rapor ve portal altbilgileri ayrı modüllerde ele alınır.
+* SMS gönderimi için yerli bir sağlayıcıyla ayrı bir modül gerekir.

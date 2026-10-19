@@ -8,6 +8,12 @@ DEFAULT_BRAND_NAME = 'Nexus'
 BRAND_COLOR = '#1f5f8b'
 IMG_PATH = '/ov_brand/static/img'
 
+# Modules of the publisher's online services (T2.3). Every new database gets them
+# (auto_install on web and base_setup); ov_brand removes them together with the
+# modules depending on them: SMS, partner autocomplete, lead enrichment and lead
+# mining, postal mail, the subscription page.
+ONLINE_SERVICE_MODULES = ('iap', 'mysubscription')
+
 
 def get_brand_name(env):
     """Return the product name users see, from the ``ov_brand.name`` system parameter."""
