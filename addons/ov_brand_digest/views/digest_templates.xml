@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="digest_mail_main" inherit_id="digest.digest_mail_main">
+        <!-- "Sent by" the publisher, before the unsubscribe link -->
+        <xpath expr="//div[hasclass('by_odoo')][a[@href='https://www.odoo.com']]" position="replace">
+            <div style="margin-bottom: 15px;">
+                <a t-if="unsubscribe_token"
+                   t-attf-href="/digest/#{object.id}/unsubscribe?token=#{unsubscribe_token}&amp;user_id=#{user.id}"
+                   target="_blank" style="text-decoration: none;">
+                    <span style="color: #878d97;">Unsubscribe</span>
+                </a>
+                <a t-elif="object and object._name == 'digest.digest'"
+                   t-att-href="'/odoo/digest.digest/%s' % object.id"
+                   target="_blank" style="text-decoration: none;">
+                    <span style="color: #878d97;">Unsubscribe</span>
+                </a>
+            </div>
+        </xpath>
+        <!-- Banner of the publisher's mobile app, its images on the publisher's servers -->
+        <xpath expr="//t[@t-call='digest.digest_section_mobile']/.." position="replace"/>
+        <!-- "Powered by" the publisher under the company name -->
+        <xpath expr="//p[@id='powered']" position="replace"/>
+    </template>
+
+</odoo>

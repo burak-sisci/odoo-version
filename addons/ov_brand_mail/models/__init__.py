@@ -1,1 +1,6 @@
-from . import publisher_warranty_contract
+from . import (
+    ir_config_parameter,
+    mail_render_mixin,
+    publisher_warranty_contract,
+    res_partner,
+)

@@ -22,6 +22,8 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 7. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
 8. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
 9. **K16:** web istemcisinin adresi `/odoo` yerine `/app` oldu. Başka bir yol istersen iki sabiti değiştirmek yeter.
+10. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
+11. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -90,6 +92,18 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — `/app` · **B** — marka adı (`/nexus`) · **C** — başka bir yol.
   - Claude önerisi: **A**. Değer `ov_brand`'de iki sabitte (`tools.py` ve `web_path.js`). Müşteriye çıktıktan sonra değiştirmek eski bağlantılar için bir yönlendirme daha gerektirir.
   - Ne zaman: ilk dış demodan önce (F7).
+- [ ] K17 **Karar** — müşteriye giden e-posta ve sayfalarda "Powered by" satırı (T2.5).
+  - Neden: upstream bildirim e-postalarının, özet e-postasının ve portal belgelerinin altına "Powered by Odoo" ve yayıncının bağlantısını koyuyor (D-007).
+  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. Satırlar kaldırıldı; takibi bırakma ve abonelikten çıkma bağlantıları kaldı.
+  - Seçenekler: **A** — satır yok · **B** — "Powered by Nexus", bağlantısız · **C** — "Powered by Nexus", ürün sitesine bağlantılı.
+  - Claude önerisi: **A**, ad tescili (R17, T8.2) ve ürün sitesi netleşene kadar. B ve C, müşterinin kendi müşterilerine ürünün reklamı demek; açılırsa müşterinin kapatabileceği bir ayar olur.
+  - Ne zaman: ilk dış demodan önce (F7).
+- [ ] K18 **Karar** — PDF motoru (T2.5).
+  - Neden: Odoo 20.0'da iki motor var. wkhtmltopdf upstream'in varsayılanı ama 2022'den beri arşivde, güvenlik düzeltmesi almıyor. Paper Muncher yayıncının yeni motoru; kendi tanımıyla "erken alfa" ve yalnız amd64 Linux için paketli.
+  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A**. Henüz kurulan bir şey yok; T3.7'de CI'a buna göre kurulur.
+  - Seçenekler: **A** — üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor · **B** — hemen Paper Muncher · **C** — belge türüne göre ikisi.
+  - Claude önerisi: **A**. Geçiş ölçütü: Paper Muncher'ın 1.0'a ulaşması ya da upstream'in varsayılanı yapması, ve Türkçe belgelerin (T3.7) onunla doğru çıkması. Ayrıntı `docs/research/pdf-engine.md`.
+  - Ne zaman: T3.7'den önce. Barındırma kararında (D-013) sunucu arm64 olursa Paper Muncher kaynaktan derlenmeli.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

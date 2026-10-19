@@ -1,6 +1,6 @@
 # Modül Matrisi
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 İlgili kararlar: D-002, D-006, D-008, D-011, D-012, D-016, D-017, D-018, D-019
 
 Bu matris D-002'nin (tüm Odoo uygulamaları) uygulama planıdır. Her uygulamanın edinme yolu, önceliği ve durumu burada tutulur. Görevler ve sıralama `PLAN.md`'de.
@@ -19,7 +19,7 @@ OCA sayıları: ilgili OCA deposundaki `__manifest__.py` sayısı, 18.0 / 19.0 /
 - 20.0 sayısına henüz taşınmamış yer tutucular (`installable: False`, sürümü 19.0) dahildir. Ör. `mis-builder` 20.0'daki 3 modülün hiçbiri kurulamaz.
 - Kurulabilir 20.0 modülleri ve port ölçümü: `docs/research/nilvera-port.md` (T1.2).
 - Ortak bağımlılıklar hazır (T1.11): `date_range` (resmî 20.0, `vendor/oca/server-ux`) ve `report_xlsx` (port, `ports/oca/reporting-engine`). Mali raporlar (`account_financial_report`) ve `mis_builder` bu ikisine dayanıyor.
-- Marka katmanı için OCA `server-brand` adayları (T2.3, T2.5): `remove_odoo_enterprise` resmî 20.0; `disable_odoo_online` ve `*_debranding` modülleri 19.0. Ayrıntı: `docs/research/brand-inventory.md` §9.
+- Marka katmanı için OCA `server-brand` adayları (T2.3, T2.5): `remove_odoo_enterprise` resmî 20.0; `disable_odoo_online` ve `*_debranding` modülleri 19.0, kullanılmadı (yerine `ov_brand_*` köprü modülleri). Ayrıntı: `docs/research/brand-inventory.md` §9.
 
 ## A. Community'de hazır gelenler (upstream, LGPL-3)
 

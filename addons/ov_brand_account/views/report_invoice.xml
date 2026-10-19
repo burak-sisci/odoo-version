@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The publisher's logo in the middle of the QR codes of the invoice -->
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='qrcode']//img[@id='qrcode_odoo_logo']" position="replace"/>
+        <xpath expr="//div[@id='payment_link_qrcode']//img[@id='qrcode_odoo_logo']" position="replace"/>
+    </template>
+
+</odoo>

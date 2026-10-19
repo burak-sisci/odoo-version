@@ -14,6 +14,7 @@
         'security/ir.access.csv',
         'views/webclient_templates.xml',
         'views/ir_module_views.xml',
+        'views/report_templates.xml',
         'views/res_config_settings_views.xml',
     ],
     'assets': {

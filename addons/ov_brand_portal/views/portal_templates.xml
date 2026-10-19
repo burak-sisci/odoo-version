@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- "Powered by" and the publisher's logo under the sidebar of the documents -->
+    <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar">
+        <xpath expr="//a[contains(@href, 'www.odoo.com')]/.." position="replace"/>
+    </template>
+
+    <!-- Link of the API keys section to the publisher's documentation (debug mode) -->
+    <template id="portal_my_security" inherit_id="portal.portal_my_security">
+        <xpath expr="//a[starts-with(@href, 'https://www.odoo.com/documentation')]" position="replace"/>
+    </template>
+
+    <!-- Link of the two-factor authentication section to the publisher's documentation -->
+    <template id="totp_portal_hook" inherit_id="auth_totp_portal.totp_portal_hook">
+        <xpath expr="//a[starts-with(@href, 'https://www.odoo.com/documentation')]" position="replace"/>
+    </template>
+
+</odoo>

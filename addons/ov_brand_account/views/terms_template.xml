@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sample terms and conditions: the note named the publisher -->
+    <template id="account_default_terms_and_conditions" inherit_id="account.account_default_terms_and_conditions">
+        <xpath expr="//p[contains(., 'Odoo S.A.')]" position="replace">
+            <p>The text below is only a suggestion; review it before use.</p>
+        </xpath>
+    </template>
+
+</odoo>

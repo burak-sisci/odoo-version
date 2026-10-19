@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The "Connect with your software" window of the purchase orders advertised
+         the publisher's product to the vendor; the address of the structured
+         data stays. -->
+    <template id="portal_my_purchase_order" inherit_id="purchase.portal_my_purchase_order">
+        <xpath expr="//div[@id='portal_connect_software_modal']//div[hasclass('modal-body')]" position="replace">
+            <div class="modal-body">
+                <h5>Import this document into your software</h5>
+                <t t-set="doc_url" t-value="'%s/my/purchase/%s/download_edi?%s' % (order.get_base_url(), order.id, keep_query())"/>
+                <div class="input-group mb-3 w-50">
+                    <input type="text" class="form-control" aria-describedby="copy-button" readonly="readonly" t-att-value="doc_url"/>
+                    <button class="btn btn-outline-secondary" type="button" id="copy-button"
+                            t-attf-onclick="navigator.clipboard.writeText('#{doc_url}')">Copy</button>
+                </div>
+                <p>Use the above URL to get the structured data of the purchase order in UBL format.</p>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

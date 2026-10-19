@@ -120,7 +120,7 @@ Kurallar:
 
 | Katman | Modül adı kalıbı | Görev | Lisans (D-016) |
 |---|---|---|---|
-| Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta ve rapor altbilgileri, PWA manifest, kullanıcı menüsü bağlantıları; odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası) ve dokümantasyon bağlantılarının kapatılması. Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
+| Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account`, `ov_brand_purchase`; sonra `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta, portal ve rapor altbilgileri, PDF başlığı ve üst verisi, botun adı, PWA manifest, kullanıcı menüsü bağlantıları; odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası) ve dokümantasyon bağlantılarının kapatılması. Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
 | Türkiye temeli | `ov_l10n_tr`, `ov_l10n_tr_tcmb`, `ov_l10n_tr_mis_reports`, `ov_l10n_tr_check` … | Vergi/tevkifat eksikleri, VKN/TCKN, il/ilçe, TCMB kurları, belge çıktıları, Tekdüzen mali tablolar, çek/senet | AGPL-3. LGPL koddan türetilen kısım varsa (ör. `l10n_latam_check` uyarlaması) LGPL-3 |
 | e-Belge | `ov_l10n_tr_edi` (çekirdek), `ov_l10n_tr_edi_nilvera` (adaptör), `ov_l10n_tr_edispatch` … | UBL-TR üretimi, senaryolar, fatura tipleri, mükellef sorgulama, durum takibi; entegratör adaptörleri; sahte adaptör | **LGPL-3** (19.0 LGPL koddan türetildiği için, D-008/2) |
 | OCA portları | Orijinal OCA adları (`ports/oca/`) | Mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite kontrol … | Orijinal lisans (çoğu AGPL-3) |
@@ -156,6 +156,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
 ```
 
 - **Kiracı ayrımı:** veritabanı başına kiracı, `dbfilter = ^%d$`, `list_db = False`, veritabanı yöneticisi kapalı.
+- **PDF motoru:** Odoo sunucusunda harici program. Öneri wkhtmltopdf, Paper Muncher ikinci motor (USER_TASKS K18, `docs/research/pdf-engine.md`); kurulum aracı kurar (T8.4).
 - **Yedekleme:** her kiracı için `pg_dump` + filestore. Yedeklerin bir kopyası farklı bir yerde (ikincil arşiv yurt dışında olabilir, `docs/research/hosting.md`).
 - **Konum:** D-013 ile ertelendi (karar noktası T9.5). Ön öneri Türkiye'de bir sunucu (e-Belge saklama + KVKK).
 - **Sağlayıcıdan bağımsızlık (D-013 kısıtı):**

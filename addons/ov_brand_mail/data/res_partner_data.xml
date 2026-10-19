@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Name and avatar of the system user's partner (upstream's chat bot), also
+         after an update -->
+    <function model="res.partner" name="_ov_brand_update_bot"/>
+
+</odoo>
