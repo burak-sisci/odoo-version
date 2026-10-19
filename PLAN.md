@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.4 — `/odoo` URL yolu için modül düzeyinde çözüm
+**Şu anki görev:** T2.5 — E-posta, rapor, portal ve web sitesi altbilgileri
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 3/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 4/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 22/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 23/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -296,9 +296,14 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - uygulama mağazası kapalı (`ov_brand`, `base_import_module`): Uygulamalar ekranında "Sektörler" süzgeci yok, mağaza listesi ve indirme hiç çağrılmaz, "Tema Mağazası" ve "Üçüncü Taraf Uygulamaları" menüleri pasif;
     - Gmail/Outlook vekili Community'de zaten kapalı (sürüm denetimi). Kalan uç durum T2.7'de denetlenir (envanter §4.4). `mail`'deki diğer dış istekler yayıncıya gitmiyor;
     - kapanan özellikler (çeviri, yapay zekâ metni) ileride kendi sağlayıcımızla geri gelebilir; ihtiyaç doğarsa yeni görev.
-- [ ] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
+- [x] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).
+  - Sonuç: modülle çözüldü (`ov_brand`), çekirdeğe dokunulmadı. Web istemcisi `/app` yolunda (K16 varsayımı):
+    - sunucu `/app`'i sunar, `/odoo` ve altındaki her adresi sorgusuyla birlikte `/app`'e yönlendirir. Sunucunun hâlâ `/odoo` ile ürettiği bağlantılar (e-posta, bildirim, yönlendirme) ve kayıtlı yer imleri çalışır;
+    - JS yönlendiricide yalnız URL dönüşümleri yamalı (`router.stateToUrl`/`urlToState`), iç durum `/odoo` ile çalışmaya devam eder. `/odoo` bağlantılarına tıklamak da sayfayı yenilemeden açılır;
+    - giriş sonrası yönlendirme, giriş sayfasının bağlantı önizlemesi, tarayıcıdan kurulan uygulamanın kapsamı ve kısayolları, service worker ve çevrimdışı sayfa `/app`'te. Menü ve ilişki alanı bağlantıları da `/app` gösterir;
+    - sınır: upstream'in diğer JS bağlantıları ve sunucunun ürettiği adresler `/odoo` ile kalır, yönlendirmeyle `/app`'e varır; fareyle üzerine gelince `/odoo` görünebilir. Web sitesi modülünün düzenleyicisi `/odoo` varsayıyor (MVP dışı). Envanter §5.
 - [ ] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
   - "Powered by" ifadeleri, e-posta şablonları, PDF rapor düzenleri (`ov_brand_mail`, `ov_brand_website`).
   - Envanter §6: fatura QR kodunun ortasındaki Odoo logosu, PDF üst verisi (`Creator/Producer`), satın alma portalındaki tanıtım bölümü, özet e-postasının odoo.com'dan yüklenen görseli.

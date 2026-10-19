@@ -11,5 +11,7 @@ yayıncının sunucularına gönderir.
 * Görsel ekleme penceresinde yayıncının çizim kitaplığı aranmaz, "Çizimler" süzgeci
   gösterilmez.
 * Bu hizmetlerin sunucu uçları doğrudan çağrılsa da ağa çıkmadan hata döndürür.
+* Düzenleyiciye yapıştırılan kayıt bağlantıları, web istemcisinin ``/app``
+  adresiyle de önizlenir.
 
 Metin düzenleyicinin kurulu olduğu her veritabanına kendiliğinden kurulur.

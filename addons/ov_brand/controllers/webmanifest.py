@@ -1,10 +1,21 @@
 import json
+import re
 
 from odoo import http
 from odoo.http import request
 
-from odoo.addons.ov_brand.tools import BRAND_COLOR, IMG_PATH, get_brand_name
+from odoo.addons.ov_brand.tools import (
+    BRAND_COLOR,
+    IMG_PATH,
+    UPSTREAM_WEB_PATH,
+    WEB_PATH,
+    get_brand_name,
+    web_path,
+)
 from odoo.addons.web.controllers.webmanifest import WebManifest
+
+# Quoted web client paths in the service worker script
+SCRIPT_UPSTREAM_WEB_PATH = re.compile(rf'''(["'`]){UPSTREAM_WEB_PATH}(?=["'`/?])''')
 
 
 class OvBrandWebManifest(WebManifest):
@@ -21,7 +32,26 @@ class OvBrandWebManifest(WebManifest):
             'sizes': f'{size}x{size}',
             'type': 'image/png',
         } for size in (192, 512)]
+        manifest['scope'] = web_path(manifest['scope'])
+        manifest['start_url'] = web_path(manifest['start_url'])
+        for shortcut in manifest['shortcuts']:
+            shortcut['url'] = web_path(shortcut['url'])
+        if 'share_target' in manifest:
+            manifest['share_target']['action'] = web_path(manifest['share_target']['action'])
         return manifest
+
+    @http.route()
+    def service_worker(self):
+        # Scope of the web client path (T2.4). The paths in the script follow,
+        # also those of the modules extending it (mail).
+        response = super().service_worker()
+        response.set_data(SCRIPT_UPSTREAM_WEB_PATH.sub(rf'\1{WEB_PATH}', response.get_data(as_text=True)))
+        response.headers['Service-Worker-Allowed'] = WEB_PATH
+        return response
+
+    @http.route([f'{UPSTREAM_WEB_PATH}/offline', f'{WEB_PATH}/offline'])
+    def offline(self):
+        return super().offline()
 
     @http.route()
     def scoped_app_manifest(self, app_id, path, app_name=''):

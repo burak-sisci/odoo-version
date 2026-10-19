@@ -178,6 +178,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Testler kendi HTTP portunu kullanır (8079); geliştirme sunucusu 8069'da açık kalabilir.
   - Çıktı: test sayısı, gerçek hatalar, `RESULT: OK` / `RESULT: FAILED (n)`; çıkış kodu 0/1. Tam günlük `OV_HOME/logs/tests/<db>.log`.
   - Windows'ta Odoo 20.0'ın test sınıflarındaki filestore temizliği hataları (`setUpClass`/`tearDownClass` → `_gc_file_store_unsafe`) ayrı sayılır ve sonucu bozmaz. Referans sonuç Linux CI'dır (T1.10).
+  - Windows'ta tarayıcı testleri ara sıra "Session Expired" ile düşebilir. Upstream'in oturum deposu, bir istek oturum dosyasını yeniden yazarken aynı anda okuyan isteğe boş oturum veriyor (Windows'ta dosya değişimi atomik değil). Test tek başına yeniden çalıştırılır (`--reuse --tags`); Linux CI etkilenmez (T2.4).
   - PDF üreten testler yerelde düşer (PDF motoru yok, T2.5).
   - Doğrudan Odoo ile: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d <db> -i <modül> --test-enable --test-tags /<modül> --stop-after-init`
 - Yeni modül (T1.9): `python tools/new_module.py ov_<ad> [--title …] [--summary …] [--depends base,…] [--license LGPL-3]` → `addons/ov_<ad>/`, ardından `python tools/run_tests.py ov_<ad>`

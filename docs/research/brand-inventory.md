@@ -137,6 +137,11 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 - PWA manifesti: `scope` ve `start_url` = `/odoo`, paylaşım hedefi `/odoo?share_target=trigger`.
 - Çevrimdışı sayfa `/odoo/offline`.
 - Yöntem T2.4'te: controller override + JS yönlendirici `patch()`; eski yoldan yönlendirme.
+- Sonuç (T2.4, 2026-10-19): `ov_brand` web istemcisini `/app`'te sunar (USER_TASKS K16). Ayrıntı PLAN.md T2.4 ve CHANGELOG.
+  - Yamalanan yüzeyler: sunucuda `Home.web_client` (yönlendirme), `_login_redirect`, `web_login` (bağlantı önizlemesi), PWA manifesti, service worker (`Service-Worker-Allowed`, betikteki yollar), çevrimdışı sayfa; JS'te `router.stateToUrl`/`urlToState`, iç bağlantı tıklamaları, service worker kaydı, `NavBar.getMenuItemHref`, `Many2One.linkHref`; düzenleyicinin iç bağlantı önizlemesi (`ov_brand_html_editor`).
+  - `/odoo` ile kalanlar (yönlendirmeyle çalışır): upstream'in ~80 Python ve ~40 JS dosyasında ürettiği adresler (e-posta bağlantıları, `window.location` atamaları, şablonlardaki `href`). Kullanıcı yalnız fareyle üzerine gelince görebilir. Komut paletindeki menü bağlantıları (`menu_helpers.js`, modül düzeyinde fonksiyon) da böyle.
+  - `/odoo` varsayan, yamalanmayan mantık: `mail`'in küçük ekranda sohbet penceresini katlaması, veritabanı yükleme hatasında `?db=` temizliği (`odoo/http/router.py`), web sitesi düzenleyicisi (MVP dışı).
+  - Upstream testleri `/odoo` bekliyor (ör. `web` giriş testi); `ov_brand` kuruluyken düşerler. T2.7'nin dış istek testi ve T2.6'nın taraması kendi modüllerimizle çalışır.
 
 ## 6. E-posta, rapor, portal (T2.5)
 
@@ -209,7 +214,7 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 
 - **T2.2 `ov_brand` (tamam):** §3, "Diğer istemci mesajları" satırı hariç. Marka adı tek ayardan okunur (F2 kabul ölçütü): `ov_brand.name` sistem parametresi, varsayılan Nexus. `web.web_app_name` eşitlenmedi: Genel Ayarlar'daki uygulama adı yalnız tarayıcıdan kurulan uygulamanın adıdır, boşsa marka adı kullanılır.
 - **T2.3 (tamam):** §4. Yayıncı garantisi, IAP, `mysubscription`, Enterprise reklamları, dokümantasyon bağlantıları, metin düzenleyici ve uygulama mağazası. Gmail/Outlook uç durumu T2.7'de (§4.4).
-- **T2.4:** §5.
+- **T2.4 (tamam):** §5.
 - **T2.5:** §6 ve PDF motoru seçimi (PLAN'daki not).
 - **T2.6:** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) ve §10'daki izin listesi. §3'ten kalan üç JS metni.
 - **T2.7:** §4.2'deki test çatısı engelinin üstüne günlük denetimi ve tarayıcı ağ kaydı; §4.4'teki uç durum.

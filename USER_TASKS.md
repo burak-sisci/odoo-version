@@ -21,6 +21,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 6. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
 7. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
 8. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
+9. **K16:** web istemcisinin adresi `/odoo` yerine `/app` oldu. Başka bir yol istersen iki sabiti değiştirmek yeter.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -83,6 +84,12 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Claude önerisi: **A**. Gizlemede upstream'in her yeni sürümünde yeni bir çağrıyı kaçırma riski var; kaldırınca kod hiç yüklenmiyor (KVKK, T2.7).
   - Sonucu: upstream `sms` modülü `iap`'ye bağlı. Yerli bir SMS sağlayıcısı ya bu bağımlılık olmadan yazılır ya da bu karar yeniden açılır.
   - Ne zaman: SMS ya da şirket bilgisi otomatik doldurma ihtiyacı doğduğunda (yerli kaynak T3.3).
+- [ ] K16 **Karar** — web istemcisinin adres yolu (T2.4).
+  - Neden: upstream web istemcisini `/odoo` yolunda sunuyor; adres çubuğunda görünür (D-007).
+  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. `/app` markadan bağımsız; ad değişse (R17) yol değişmez. `/odoo` adresleri `/app`'e yönlendirilir.
+  - Seçenekler: **A** — `/app` · **B** — marka adı (`/nexus`) · **C** — başka bir yol.
+  - Claude önerisi: **A**. Değer `ov_brand`'de iki sabitte (`tools.py` ve `web_path.js`). Müşteriye çıktıktan sonra değiştirmek eski bağlantılar için bir yönlendirme daha gerektirir.
+  - Ne zaman: ilk dış demodan önce (F7).
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 
