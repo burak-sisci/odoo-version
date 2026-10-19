@@ -1,6 +1,6 @@
 # Kararlar
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 
 > **Kural:** Bu dosya yalnızca güncel kayıtları tutar. Üç durum vardır:
 > - **Geçerli:** alınmış ve uygulanan karar.
@@ -32,7 +32,7 @@ Son güncelleme: 2026-10-18
 | D-011 | Odoo sürümü | Geçerli |
 | D-012 | e-Belge stratejisi | Geçerli |
 | D-013 | Üretim barındırma yeri | Ertelendi |
-| D-014 | Çalışma adı ve teknik modül öneki | Geçerli |
+| D-014 | Ürün adı, çalışma adı ve teknik modül öneki | Geçerli |
 | D-015 | Git deposu, GitHub ve push yetkisi | Geçerli |
 | D-016 | Kendi modüllerimizin lisansı | Geçerli |
 | D-017 | Hedef müşteriler ve aşama stratejisi | Geçerli |
@@ -163,17 +163,19 @@ Son güncelleme: 2026-10-18
   - Kullanıcı: kapsam (e-Fatura + e-Arşiv) ve yöntem, 2026-10-18.
   - Claude: ilk entegratör seçimi ve e-İrsaliye'nin MVP'ye alınması, 2026-10-18. Kullanıcı planlama kararlarını Claude'a bıraktı.
 
-### D-014 · Çalışma adı ve teknik modül öneki
+### D-014 · Ürün adı, çalışma adı ve teknik modül öneki
 - **Durum:** Geçerli
 - **Karar:**
-  - **Çalışma adı:** `odoo-version`. Geçicidir, MVP sonunda kalıcı adla değişecek. GitHub deposunun adı da budur.
+  - **Ürün adı (kalıcı): Nexus.** Kullanıcıya görünen her yerde (web istemcisi, e-posta, PDF, portal, tanıtım) bu ad kullanılır. Görünen ad `ov_brand` modülündeki tek bir ayardan gelir (T2.2).
+    - Tescil ve alan adı uygunluğu henüz araştırılmadı. "Nexus" yaygın bir sözcük; yazılım alanında başka markalarla çakışma olasılığı var (PLAN R17). TÜRKPATENT sorgusu ve alan adı kontrolü dış demodan önce (T8.2).
+  - **Çalışma adı:** `odoo-version`. Yalnız GitHub deposunun adında, yerel klasörlerde (`OV_HOME`) ve geliştirme ortamında kalır. Depo yeniden adlandırması kullanıcı onayıyla (K5, T8.2).
   - **Teknik modül öneki:** `ov_`. Markadan bağımsızdır ve kalıcıdır.
     - Marka değiştiğinde modül adları değişmez; yalnız marka modülündeki görünen ad değişir. Kurulu bir modülün teknik adını değiştirmek veritabanı göçü gerektirir, bu yüzden önek sabit tutulur.
     - Odoo 20.0'da `ov_` ile başlayan modül yok (2026-10-18). `x_` öneki Odoo'da özel alanlara ayrılmış olduğu için kullanılamaz.
     - İstisna: OCA portları orijinal teknik adlarını korur (D-019).
-  - **D-007 ile ilişki:** çalışma adı "Odoo" sözcüğünü içeriyor. Bu yüzden yalnız depoda, belgelerde ve geliştirme ortamında kullanılır. Ürün müşteriye, pilot kullanıcıya veya dış demoya çıkmadan önce kalıcı ad zorunludur (T8.2).
-- **Yeniden değerlendirme:** T8.1 (kalıcı ad ve yeniden adlandırma).
-- **Kaynak / tarih:** Kullanıcı (çalışma adı), 2026-10-18. Önek seçimi Claude'a ait.
+  - **D-007 ile ilişki:** çalışma adı "Odoo" sözcüğünü içeriyor. Bu yüzden müşteriye, pilot kullanıcıya veya dış demoya çıkan hiçbir yüzeyde görünmez.
+- **Yeniden değerlendirme:** T8.2 (tescil araştırması ve depo yeniden adlandırması).
+- **Kaynak / tarih:** Kullanıcı: çalışma adı 2026-10-18, ürün adı Nexus 2026-10-19 (K3). Önek seçimi Claude'a ait.
 
 ### D-015 · Git deposu, GitHub ve push yetkisi
 - **Durum:** Geçerli
@@ -187,9 +189,10 @@ Son güncelleme: 2026-10-18
   - **Commit yazarlığı:** GitHub'da tek katkıcı kullanıcıdır.
     - Commit'lerin yazarı kullanıcının git kimliğidir (`burak-sisci`).
     - Claude commit'lere yazar veya ortak yazar olarak eklenmez: `Co-Authored-By` satırı ve Claude'u ya da başka bir yapay zekâyı yazar gösteren hiçbir satır yazılmaz.
-    - İlk iki commit'te bu satır var. Temizlenmesi geçmişi yeniden yazmayı ve force-push'u gerektirdiği için kullanıcı kararına bağlı (`USER_TASKS.md` K10).
+    - Commit mesajına Claude oturum bağlantısı (`Claude-Session:`) satırı da yazılmaz (K11, 2026-10-19).
+    - İlk iki commit'te ortak yazar satırı, 2026-10-19'a kadarki commit'lerin çoğunda oturum bağlantısı satırı var. Temizlenmeleri geçmişi yeniden yazmayı ve force-push'u gerektirdiği için kullanıcı kararına bağlı (`USER_TASKS.md` K10).
   - Diğer dışa dönük işlemler yine kullanıcı onayı ister: depo ayarları (görünürlük, yeniden adlandırma), sürüm yayınlama (release), başka yerde paylaşma.
-- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi).
+- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi; oturum bağlantısı satırı 2026-10-19'da kaldırıldı).
 
 ### D-016 · Kendi modüllerimizin lisansı
 - **Durum:** Geçerli

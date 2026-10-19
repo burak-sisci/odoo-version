@@ -1,6 +1,6 @@
 # Plan ve İlerleme
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 İlgili kararlar: D-005, D-011, D-012, D-013, D-014, D-016, D-017, D-018, D-019, D-020, D-021
 
 Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip edilir.
@@ -54,7 +54,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 - Öğrenci projesi. Ekip: kullanıcı (ürün sahibi) + Claude (otonom geliştirici) (D-003). Çalışma standart ve otonom mesailerle yürür (D-021).
 - Bütçe sıfır (D-005). Ücretsiz kaynaklar §7'de.
 - Depo public ve AGPL-3 lisanslı (D-015, D-016).
-- Çalışma adı `odoo-version` geçici. Dış demo, pilot ve satıştan önce kalıcı ad gerekir (D-014, T8.2).
+- Ürünün kalıcı adı **Nexus** (D-014). Depo ve geliştirme ortamı şimdilik çalışma adı `odoo-version`'ı kullanıyor; bu ad hiçbir kullanıcı yüzeyine çıkmaz, depo T8.2'de yeniden adlandırılır.
 
 ### 2.2 Hedef müşteriler (D-017)
 
@@ -110,7 +110,7 @@ Kapı ölçütleri (T8.12'de tek tek denetlenir):
 3. Kullanıcıya görünen hiçbir yerde "Odoo" yok, odoo.com'a istek gitmiyor (T2.6, T2.7).
 4. Paket modüllerinde Türkçe çeviri ≥ %95 (T3.6 aracıyla ölçülür).
 5. Kurulum aracı temiz bir Linux sunucuya tek komutla kuruyor. Yedekten geri yükleme test edildi (T8.4, T8.5).
-6. Kalıcı marka adı seçildi ve uygulandı (T8.2).
+6. Kalıcı ad (Nexus) her yüzeyde uygulandı; tescil ve alan adı uygunluğu araştırıldı (T8.2).
 7. Kullanıcı belgeleri, demo ortamı, fiyat listesi, teklif ve sözleşme şablonları hazır (T8.7–T8.11).
 8. CI yeşil; bilinen kritik hata yok.
 9. Kullanıcıyla go/no-go kararı verildi.
@@ -267,7 +267,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 **Kabul (M2):**
 - Marka sızıntısı testi (en_US + tr_TR) CI'da geçiyor.
 - Testler sırasında odoo.com'a giden ağ isteği yok.
-- Marka adı tek bir ayardan değişiyor. Böylece T8.2'deki yeniden adlandırma bir ayar değişikliği olur.
+- Marka adı (Nexus) tek bir ayardan geliyor. Ad değişirse yalnız bu ayar değişir.
 
 - [x] T2.1 Kullanıcıya görünen Odoo izlerinin envanteri · M · C
   - Kaynak: 20.0 Community kodu. Ekran, dosya ve değiştirme yöntemi listelenir.
@@ -476,13 +476,13 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T8.1 MVP sonu değerlendirmesi · S · B
   - Kullanıcıya gerekçeli seçeneklerle getirilir:
     - e-Belge gönderim yöntemi (D-012);
-    - kalıcı marka adı (D-014);
     - paket kapsamı (D-018).
+  - Kalıcı marka adı bu listeden çıktı: kullanıcı 2026-10-19'da Nexus'u seçti (D-014, K3).
 - [ ] T8.2 Kalıcı adın uygulanması · M · B
-  - `ov_brand` ayarı ve belgeler güncellenir.
-  - Depo yeniden adlandırması kullanıcı onayıyla (K5).
+  - Ad seçildi: Nexus (D-014). `ov_brand`'ın varsayılan adı T2.2'den beri Nexus.
+  - Kalan: depo yeniden adlandırması kullanıcı onayıyla (K5); belgelerde ve geliştirme ortamında çalışma adı.
   - Alan adı: Student Pack ücretsiz yılı (K1) ya da ilk gelir.
-  - Marka araştırması: TÜRKPATENT sorgusu ücretsiz. Tescil ücretli olduğu için ilk gelirle yapılır.
+  - Marka araştırması: TÜRKPATENT sorgusu ücretsiz; dış demodan önce yapılır (R17). Tescil ücretli olduğu için ilk gelirle yapılır.
 - [ ] T8.3 Demo verisi üretici · M · C
   - Ticaret (toptan satış) ve Üretim (ör. metal/mobilya) senaryolu kurgusal şirketler; gerçek kişisel veri yok.
 - [ ] T8.4 Kurulum aracı (`deploy/`) · L · C
@@ -659,6 +659,7 @@ Olasılık/Etki: Y = yüksek, O = orta, D = düşük.
 | R14 | Türkçe çeviri kalitesi düşük kalır | O | O | Ölçüm aracı ve eşik (T3.6); terim listesi |
 | R15 | e-Belge hatası nedeniyle müşteri zararı | D | Y | GİB doğrulaması; test matrisi (T4.10); sözleşmede sorumluluk sınırı (T8.10) |
 | R16 | Mevzuat yorum hatası (eşikler, tarihler) | O | O | Birincil kaynak önceliği; mali müşavir doğrulaması (T9.4); S4 rutini |
+| R17 | Kalıcı ad "Nexus" tescilli bir markayla çakışır (yaygın sözcük) | O | O | TÜRKPATENT sorgusu ve alan adı kontrolü dış demodan önce (T8.2); gerekirse ayırt edici ek; ad tek ayardan geldiği için teknik maliyet düşük (D-014) |
 
 ## 10. Kullanıcıdan beklenenler
 

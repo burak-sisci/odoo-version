@@ -1,6 +1,6 @@
 # Kullanıcıdan Beklenenler
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 İlgili kararlar: D-003, D-015, D-021
 
 Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her şeyin** tek listesidir.
@@ -14,13 +14,12 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 Öncelik sırasıyla. Hiçbiri Claude'un işini durdurmuyor.
 
 1. **K2: TÜBİTAK 2209-A için son başvuru 11 Kasım 2026.** Başvurmak istiyorsan danışman bulmak zaman alır.
-2. **K10:** geçmiş iki commit'te Claude ortak yazar görünüyor; temizlensin mi?
-3. **K11:** commit mesajlarındaki oturum bağlantısı satırı kalsın mı?
-4. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
-5. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
-6. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci` varsayıldı.
-7. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
-8. **K14:** geçici ürün adı `OV ERP`, renk ve simge. Kalıcı ada kadar yer tutucu olarak varsayıldı.
+2. **K10:** eski commit'lerde Claude ortak yazar satırı (ilk iki) ve oturum bağlantısı satırları var; geçmiş temizlensin mi? Force-push gerekir.
+3. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
+4. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
+5. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
+6. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
+7. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -36,7 +35,7 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Koşullar (danışman vb.) ve destek tutarı çağrı duyurusundan kontrol edilmeli; tutar doğrulanmadı (`docs/research/planning-inputs.md`).
   - Başvurmaya karar verirsen Claude standart mesaide proje önerisi taslağını hazırlar.
   - Plan bu desteğe bağlı değil (D-017).
-- [ ] K3 **Karar** — kalıcı marka adı için adaylar. Ne zaman: T8.1'e kadar. Claude T8.1'de marka ve alan adı uygunluk araştırmasıyla seçenek sunar.
+- [x] K3 **Karar** — kalıcı marka adı: **Nexus** (kullanıcı, 2026-10-19; D-014). Tescil ve alan adı uygunluğu dış demodan önce araştırılır (T8.2, PLAN R17).
 - [ ] K4 **Eylem (isteğe bağlı)** — örnek banka ekstresi dosyaları.
   - Kullandığın bankalardan Excel/CSV ekstre. Kişisel veriler silinmiş olmalı; depoya girmez.
   - Ne zaman: T5.2'den önce. Yoksa bankaların kamuya açık biçim belgeleriyle ve kurgusal dosyalarla çalışılır.
@@ -47,21 +46,20 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
 - [ ] K9 **Onay (isteğe bağlı)** — GitHub güvenlik özelliklerinin açılması.
   - Dependabot uyarıları ve gizli bilgi taraması (push koruması dahil). Public depoda ücretsiz.
   - Bu bir depo ayarı olduğu için onay gerekiyor (D-015). Onay verirsen Claude `gh` ile açar.
-- [ ] K10 **Karar** — geçmiş commit'lerdeki Claude ortak yazar satırı.
+- [ ] K10 **Karar** — geçmiş commit'lerdeki Claude ortak yazar ve oturum bağlantısı satırları.
   - Durum: ilk iki commit'te (`cf37443`, `24f56b3`) `Co-Authored-By: Claude` satırı var. GitHub bu yüzden Claude'u katkıcı olarak gösteriyor. Bundan sonraki commit'lerde bu satır yok (D-015, CLAUDE.md).
+  - 2026-10-19'a kadarki commit'lerin çoğunda `Claude-Session:` satırı da var. Yeni commit'lerde artık yok (K11).
   - Seçenekler:
     - **A — bırak:** geçmiş değişmez, Claude katkıcı listesinde kalır.
-    - **B — temizle:** iki commit'in mesajı yeniden yazılır ve `main` bir kez force-push edilir. D-015 force-push'u yasaklıyor, bu yüzden senin açık onayın gerekir.
+    - **B — temizle:** commit mesajlarından iki satır türü de silinir ve `main` bir kez force-push edilir. Bütün commit kimlikleri (SHA) değişir; belgelerde geçen kimlikler güncellenir. D-015 force-push'u yasaklıyor, bu yüzden senin açık onayın gerekir.
   - Claude önerisi: **B**. Depo yeni ve başka kopyası yok, risk düşük. GitHub'ın katkıcı listesinin güncellenmesi biraz sürebilir.
   - Onay verirsen bir sonraki mesaide yapılır.
-- [ ] K11 **Karar** — commit mesajlarındaki `Claude-Session:` satırı.
-  - Bu satır commit'in hangi Claude oturumunda hazırlandığını gösteren bir bağlantı. GitHub'da katkıcı oluşturmaz.
-  - Varsayılan: satır kalır. Kaldırılmasını istersen CLAUDE.md'ye kural olarak eklenir.
+- [x] K11 **Karar** — commit mesajlarındaki `Claude-Session:` satırı: **kaldırıldı** (kullanıcı, 2026-10-19). Kural CLAUDE.md kural 8'de ve D-015'te. Eski commit'lerdeki satırlar K10'la birlikte temizlenebilir.
 - [ ] K12 **Karar** — modül manifestlerindeki yazar (`author`) adı.
   - Neden: Odoo, Uygulamalar ekranında her modülün yazarını gösterir; müşteri de görür.
   - Varsayım (otonom mesai 1, geri dönüşü kolay): `burak-sisci`, GitHub kullanıcı adın. `tools/check_modules.py` ve `.pylintrc`'de tanımlı; değişirse mevcut manifestler de güncellenir.
-  - Seçenekler: **A** — `burak-sisci` kalsın · **B** — adın soyadın · **C** — şirket veya marka adı (K3 ile birlikte).
-  - Claude önerisi: kalıcı marka belirlenene kadar **A**, sonra **C**.
+  - Seçenekler: **A** — `burak-sisci` kalsın · **B** — adın soyadın · **C** — marka adı `Nexus` (K3).
+  - Claude önerisi: **C**, marka belirlendi. Onay verirsen manifestler ve denetim aracı birlikte güncellenir.
   - Ne zaman: ilk dış demodan önce (F7).
 - [ ] K13 **Karar** — e-tablo formül adlarındaki `ODOO.` öneki (`ODOO.BALANCE`, `ODOO.PIVOT`, `ODOO.LIST` vb.).
   - Neden: panolarda ve e-tablolarda formül yazan kullanıcı bu adları görür. Ama kayıtlı panolar bu adları içeriyor; değiştirmek kayıtlı formülleri bozar (`docs/research/brand-inventory.md` §10).
@@ -69,13 +67,14 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — olduğu gibi kalsın · **B** — kendi önekimizle eş adlar eklensin, `ODOO.` eski kayıtlar için çalışmaya devam etsin · **C** — tamamen yeniden adlandırılsın, kayıtlı formüller dönüştürülsün.
   - Claude önerisi: şimdilik **A**; kalıcı marka adı belirlenince (T8.2) **B** yeniden değerlendirilir.
   - Ne zaman: T2.6'dan önce ya da T8.2'de.
-- [ ] K14 **Karar** — kalıcı marka adı seçilene kadar kullanıcıya görünen geçici ürün adı, renk ve simge (T2.2).
-  - Neden: çalışma adı `odoo-version` kullanıcıya çıkamaz (D-007, D-014), ama ekranlarda bir ad gerekiyor.
-  - Varsayım (otonom mesai 1, geri dönüşü kolay): ad `OV ERP`, renk `#1f5f8b` (koyu mavi), simge mavi kare üstünde beyaz "OV" harfleri. Ad bir sistem parametresinden (`ov_brand.name`) değişir; renk ve simge `ov_brand` modülünde tek yerde.
+- [ ] K14 **Karar** — ürünün rengi ve simgesi (T2.2).
+  - Ad artık kalıcı: Nexus (K3, D-014). Otonom mesai 1'deki geçici ad varsayımı (`OV ERP`) kalktı.
+  - Neden: ekranlarda bir renk ve simge gerekiyor, ama logo tasarımı henüz yok.
+  - Varsayım (geri dönüşü kolay): renk `#1f5f8b` (koyu mavi), simge mavi kare üstünde beyaz "N" harfi. Renk ve simge `ov_brand` modülünde tek yerde; ad bir sistem parametresinden (`ov_brand.name`) de değiştirilebilir.
   - Kullanıcı menüsündeki "Yardım" öğesi destek adresi (`ov_brand.support_url`) girilene kadar gizli.
-  - Seçenekler: **A** — kalıcı ada (K3, T8.2) kadar böyle kalsın · **B** — başka bir geçici ad, renk ya da simge söyle.
-  - Claude önerisi: **A**.
-  - Ne zaman: T8.2'ye kadar; dış demodan önce mutlaka.
+  - Seçenekler: **A** — logo tasarlanana kadar böyle kalsın · **B** — kendi renk ya da logonu ver.
+  - Claude önerisi: **A**; logo tanıtım materyaliyle birlikte ele alınır (T8.11).
+  - Ne zaman: dış demodan önce.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 
@@ -103,9 +102,9 @@ Standart mesaide yapılır. Senden beklenen her görevin altında yazıyor.
   - Sen: sistemi ilk kez gören biri gibi paketi seçip kurulum sihirbazını tamamlarsın; ilk faturayı ve ilk üretim emrini yardım almadan oluşturursun.
   - Claude: tur senaryosu ve geri bildirim formu; bulgular göreve dönüşür.
 - [ ] T8.1 MVP sonu değerlendirmesi
-  - Sen: e-Belge gönderim yöntemi (D-012), kalıcı marka adı (D-014, K3) ve paket kapsamı (D-018) kararları.
+  - Sen: e-Belge gönderim yöntemi (D-012) ve paket kapsamı (D-018) kararları. Kalıcı ad seçildi (Nexus, K3).
 - [ ] T8.2 Kalıcı adın uygulanması
-  - Sen: ad seçimi, depo yeniden adlandırma onayı (K5), alan adı (K1).
+  - Sen: depo yeniden adlandırma onayı (K5), alan adı (K1). Ad seçildi: Nexus (K3).
 - [ ] T8.9 Rakip ve fiyat araştırması, fiyat listesi
   - Sen: fiyatların onayı.
 - [ ] T8.12 Kapı kontrolü ve go/no-go

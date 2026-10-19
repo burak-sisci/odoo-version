@@ -1,9 +1,28 @@
 # Değişiklik Günlüğü
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 
 Her adımın kaydı en üste, tarih başlığıyla eklenir. Bir karar değiştiğinde **eski metni ve değişiklik nedeni** buraya yazılır (DECISIONS.md yalnız güncel hali tutar).
 Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
+
+## 2026-10-19
+
+### Adım: kararlar — kalıcı ürün adı Nexus (K3) ve commit oturum satırı (K11)
+
+**Kararlar**
+- K3 / D-014: kullanıcı kalıcı ürün adını seçti: **Nexus**. D-014 yerinde yeniden yazıldı (başlık "Ürün adı, çalışma adı ve teknik modül öneki").
+  - Eski metin: "**Çalışma adı:** `odoo-version`. Geçicidir, MVP sonunda kalıcı adla değişecek. GitHub deposunun adı da budur." · "Yeniden değerlendirme: T8.1 (kalıcı ad ve yeniden adlandırma)."
+  - Yeni: ürün adı Nexus; çalışma adı yalnız depo adında ve geliştirme ortamında kalır; yeniden değerlendirme T8.2 (tescil araştırması, depo yeniden adlandırması). Modül öneki `ov_` değişmedi.
+  - Neden: kullanıcı kararı. Kalıcı ad T8.1'deki MVP sonu değerlendirmesinden öne alındı.
+  - Not: "Nexus" yaygın bir sözcük; tescil çakışması riski PLAN'a R17 olarak eklendi. TÜRKPATENT sorgusu ve alan adı kontrolü dış demodan önce (T8.2).
+- K11 / D-015: commit mesajlarındaki `Claude-Session:` satırı kaldırıldı. Kural CLAUDE.md kural 8'e ve D-015'e eklendi.
+  - Eski hali: "Varsayılan: satır kalır" (USER_TASKS K11).
+  - Eski commit'lerdeki satırlar geçmiş yeniden yazılmadan silinemez; K10'un B seçeneği bunları da kapsayacak biçimde genişletildi.
+- K14: geçici ad varsayımı (`OV ERP`) kalktı; madde yalnız renk ve simgeyi kapsıyor. Simge "N" harfine çevrilecek (T2.2).
+- K12: C seçeneği artık marka adı `Nexus`; Claude önerisi C. Karar kullanıcıda.
+
+**Belgeler**
+- DECISIONS.md (D-014, D-015), CLAUDE.md (proje özeti, kural 2 ve 8, protokol, komutlar), PLAN.md (§2.1, M2 kabulü, kapı ölçütü 6, T8.1, T8.2, R17), USER_TASKS.md (§1, K3, K10, K11, K12, K14, T8.1, T8.2), README.md (başlık ve ad notu), docs/COMPLIANCE.md §3, state.json.
 
 ## 2026-10-18
 

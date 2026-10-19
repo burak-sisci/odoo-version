@@ -1,9 +1,10 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-10-18",
+  "last_updated": "2026-10-19",
   "project": {
-    "brand_name": "odoo-version",
-    "brand_name_is_temporary": true,
+    "brand_name": "Nexus",
+    "working_name": "odoo-version (depo adı ve geliştirme ortamı; yeniden adlandırma K5, T8.2)",
+    "brand_name_is_temporary": false,
     "module_prefix": "ov_",
     "goal": "Odoo Community tabanlı, kendi markamızla satılacak ERP (ürün ve/veya SaaS)",
     "repo": "https://github.com/burak-sisci/odoo-version",
@@ -17,7 +18,7 @@
     "next_milestone": "M2 Markasız çekirdek",
     "gate_milestone": "M8 Satışa hazır (müşteri arayışı kapısı)",
     "user_tasks": "USER_TASKS.md",
-    "commit_author": "burak-sisci (tek katkıcı; Co-Authored-By yok, D-015)",
+    "commit_author": "burak-sisci (tek katkıcı; Co-Authored-By ve Claude-Session satırı yok, D-015)",
     "module_author": "burak-sisci (varsayım, USER_TASKS K12)"
   },
   "phase": {
@@ -134,16 +135,16 @@
     },
     {
       "id": "D-014",
-      "title": "Çalışma adı ve teknik modül öneki",
+      "title": "Ürün adı, çalışma adı ve teknik modül öneki",
       "status": "Geçerli",
-      "value": "Çalışma adı odoo-version (geçici); önek ov_ (kalıcı)",
-      "revisit": "T8.1"
+      "value": "Ürün adı Nexus (kalıcı, 2026-10-19); çalışma adı odoo-version yalnız depo ve geliştirme ortamında; önek ov_ (kalıcı)",
+      "revisit": "T8.2"
     },
     {
       "id": "D-015",
       "title": "Git deposu, GitHub ve push yetkisi",
       "status": "Geçerli",
-      "value": "Public GitHub deposu; her adım sonunda commit + push (önceden onaylı)"
+      "value": "Public GitHub deposu; her adım sonunda commit + push (önceden onaylı); commit mesajında Co-Authored-By ve Claude-Session satırı yok"
     },
     {
       "id": "D-016",
