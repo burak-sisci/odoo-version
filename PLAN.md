@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.3 — odoo.com bağlantılarının kesilmesi
+**Şu anki görev:** T2.4 — `/odoo` URL yolu için modül düzeyinde çözüm
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 2/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 3/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 21/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 22/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -280,18 +280,22 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Kapsam dışı: OdooBot adı ve avatarı `mail` modülüne bağlı, T2.5'e taşındı. Veritabanı yöneticisi veritabanı olmadan çalışır, veritabanına kurulan modüller ona ulaşamaz; üretimde `list_db = False` ile kapalıdır.
   - Sonuç: `addons/ov_brand` (AGPL-3; `web`, `base_setup`). Ürün adı `ov_brand.name` sistem parametresinden, varsayılan Nexus. Renk `#1f5f8b` ve "N" simgesi yer tutucu (K14). Tarayıcıdan tek uygulama olarak kurulumun manifesti de marka renginde. 12 test (ikisi tarayıcıda), Türkçe çeviri.
   - Kalan üç JS metni T2.6'ya taşındı (aşağıda).
-- [~] T2.3 odoo.com bağlantılarının kesilmesi · M · C
+- [x] T2.3 odoo.com bağlantılarının kesilmesi · M · C
   - Envanter §4. İlk iş yayıncı garantisi çağrısı.
   - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme ve üretme. Modülleriyle kaldırılır (K15 varsayımı).
   - Düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
   - `mysubscription` ("Aboneliğim"): 20.0'da yeni, her veritabanına kendiliğinden kuruluyor; kaldırılır (K15 varsayımı).
   - Enterprise reklamları: ayar ekranları için OCA 20.0 `remove_odoo_enterprise`; Uygulamalar listesindeki satın alınacak uygulama kartları (`to_buy`) için ayrı filtre.
   - odoo.com dokümantasyon/destek bağlantıları.
-  - Ara durum:
+  - Sonuç:
     - yayıncı garantisi kapandı (`ov_brand_mail`: rapor hiç gönderilmez, zamanlanmış iş pasif);
     - `iap` ve `mysubscription` bağlı modülleriyle kaldırıldı (`ov_brand`): her kurulum ve güncellemenin sonunda kaldırılır, arayüzden kurulamaz, ayar kutuları gizli. `tools/run_tests.py` bu yüzden `ov_brand`'i önce testsiz kurar;
     - Enterprise reklamları kalktı: OCA `remove_odoo_enterprise` (20.0, `vendor/oca/server-brand`) `ov_brand`'in bağımlılığı. Ayarlar'daki Enterprise özellikleri gizli; Uygulamalar listesindeki satın alınacak uygulamalar (`to_buy`) ve ödeme sağlayıcıları aramada hiç dönmüyor;
-    - sıradakiler: dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası.
+    - ayarlardaki odoo.com dokümantasyon bağlantıları ("?") gizli (`ov_brand`, JS `patch()`); kendi belge sitemiz hazır olunca ona yönlendirilir (T8.7);
+    - metin düzenleyicinin yayıncı hizmetleri kapalı: Google Translate ile çeviri, çizim kitaplığı, yapay zekâ metni (`ov_brand_html_editor`; `html_editor` kurulu her veritabanına kendiliğinden kurulur). Sunucu uçları doğrudan çağrılsa da ağa çıkmadan hata döner;
+    - uygulama mağazası kapalı (`ov_brand`, `base_import_module`): Uygulamalar ekranında "Sektörler" süzgeci yok, mağaza listesi ve indirme hiç çağrılmaz, "Tema Mağazası" ve "Üçüncü Taraf Uygulamaları" menüleri pasif;
+    - Gmail/Outlook vekili Community'de zaten kapalı (sürüm denetimi). Kalan uç durum T2.7'de denetlenir (envanter §4.4). `mail`'deki diğer dış istekler yayıncıya gitmiyor;
+    - kapanan özellikler (çeviri, yapay zekâ metni) ileride kendi sağlayıcımızla geri gelebilir; ihtiyaç doğarsa yeni görev.
 - [ ] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).
@@ -307,6 +311,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T2.7 Dış istek testi · S · C
   - Odoo test çatısı `requests` ile yapılan dış istekleri zaten engelliyor ve günlüğe yazıyor (envanter §4.2). Kapsamadıkları: kurulum ve zamanlanmış işler, tarayıcı testlerinde sayfanın kendi istekleri.
   - Testler sırasında dış HTTP istekleri kaydedilir; odoo.com alan adlarına istek = hata.
+  - Envanter §4.4'teki Gmail/Outlook belirteç yenileme uç durumu da denetlenir.
 
 ### F3 — Türkiye temel yerelleştirmesi `[ ]`
 
@@ -504,6 +509,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Kontrol listesi ve denetim betiği: `list_db`, yönetici şifresi, `proxy_mode`, güvenlik duvarı, HTTPS, yedek şifreleme.
 - [ ] T8.7 Kullanıcı belgeleri sitesi · M · C
   - MkDocs; GitHub Pages (D-020). Yayın kullanıcı onayıyla (K5).
+  - Ayarlardaki "?" dokümantasyon bağlantıları T2.3'ten beri gizli; site hazır olunca ona yönlendirilir (`ov_brand`).
   - İçerik: kurulum, e-Belge, ticaret ve üretim akışları, SSS.
 - [ ] T8.8 Demo ortamı (D-020) · S · C
   - Toplantı anında: lokal + Cloudflare Quick Tunnel.

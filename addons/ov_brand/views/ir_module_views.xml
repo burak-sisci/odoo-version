@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The industries and the stores are the publisher's app store (T2.3) -->
+    <record id="view_module_filter" model="ir.ui.view">
+        <field name="name">ir.module.module.search.inherit.ov.brand</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base_import_module.view_module_filter_apps_inherit"/>
+        <field name="arch" type="xml">
+            <field name="module_type" position="replace"/>
+        </field>
+    </record>
+
+    <record id="base.menu_theme_store" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="base.menu_third_party" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

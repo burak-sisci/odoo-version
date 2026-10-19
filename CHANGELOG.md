@@ -7,6 +7,28 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: dokümantasyon bağlantıları, metin düzenleyici ve uygulama mağazası (T2.3 bitti) — otonom mesai 2
+
+**Kod**
+- `ov_brand`:
+  - Ayarlardaki odoo.com dokümantasyon bağlantıları ("?") gizli: `DocumentationLink` bileşenine JS `patch()`, bağlantı yayıncının sitesine gidiyorsa çizilmez. Hakkında bölümündeki telif satırının bağlantısı kalıyor (D-007).
+  - Uygulama mağazası: `base_import_module` bağımlılık oldu (zaten `web` ile kendiliğinden kuruluyordu). Sektör modüllerinin listesi ve kategorileri boş döner, indirme hata verir; mağazaya hiç istek gitmez. Uygulamalar ekranındaki "Sektörler" süzgeci kaldırıldı, "Tema Mağazası" ve "Üçüncü Taraf Uygulamaları" menüleri pasif.
+  - Yeni testler: ayarlarda yayıncıya giden dokümantasyon bağlantısı yok (tarayıcıda), mağaza çağrılmıyor, süzgeç ve menüler gizli. `test_webclient_js` sabit bir eylemi açıyor: `mail` kuruluyken varsayılan uygulama (Discuss) başlığa sohbet adını yazabiliyor, bir kez "OdooBot" görüldü (T2.5). `ov_brand` 20 test.
+- Yeni modül `ov_brand_html_editor` (AGPL-3; `ov_brand`, `html_editor`; kendiliğinden kurulur):
+  - Düzenleyicide "Google Translate ile çevir" eklentisi yok (sohbet penceresindeki düzenleyici dahil).
+  - Görsel ekleme penceresi yayıncının çizim kitaplığını aramıyor, "Çizimler" süzgeci gizli.
+  - Sunucu uçları (`generate_text`, `google_translate`, `save_library_media`) ağa çıkmadan hata döner; `media_library_search` boş sonuç verir. Bu hizmetler düzenlenen metni veya arama sözcüklerini veritabanı kimliğiyle gönderiyordu.
+  - 2 test (biri tarayıcıda), Türkçe çeviri, `README.rst`.
+- Bulgular, kod gerekmedi:
+  - Gmail/Outlook OAuth vekili: Community'de ilk bağlantı sürüm denetimiyle engelli, vekil fiilen kapalı. Uç durum: kendi istemci kimliğiyle bağlandıktan sonra kimlik ve gizli anahtar silinirse belirteç yenileme vekile gidiyor. T2.7'nin dış istek testine eklendi (envanter §4.4).
+  - `mail`'deki dış istekler yayıncıya gitmiyor: görüntülü görüşme sunucusu (SFU) ve Twilio yalnız kullanıcı ayarlarsa, bağlantı önizlemesi mesajdaki adrese. Görüşmeler varsayılan olarak Google'ın STUN sunucularını kullanıyor (tarayıcıdan, IP adresi görünür); KVKK notu olarak COMPLIANCE.md'ye yazıldı.
+  - OCA `disable_odoo_online` 20.0 portu (PR #124) hâlâ birleşmemiş; kendi modüllerimiz aynı işi yapıyor, kullanılmıyor.
+- Testler: `ov_brand`, `ov_brand_mail`, `ov_brand_html_editor`, `remove_odoo_enterprise` birlikte 27 test, hepsi geçti.
+
+**Belgeler**
+- PLAN.md: T2.3 `[x]`, sonuç; F2 3/7; şu anki görev T2.4. T2.7 ve T8.7'ye not.
+- `docs/research/brand-inventory.md` (§4 sonuç, yeni §4.4, §9, §11), COMPLIANCE.md (KVKK), ARCHITECTURE.md (marka katmanı), README.md, state.json.
+
 ### Adım: Enterprise reklamları kaldırıldı — OCA `remove_odoo_enterprise` (T2.3, sürüyor) — otonom mesai 2
 
 **Kod**

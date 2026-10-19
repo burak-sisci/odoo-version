@@ -7,11 +7,13 @@
     'depends': [
         'web',
         'base_setup',
+        'base_import_module',
         'remove_odoo_enterprise',
     ],
     'data': [
         'security/ir.access.csv',
         'views/webclient_templates.xml',
+        'views/ir_module_views.xml',
         'views/res_config_settings_views.xml',
     ],
     'assets': {

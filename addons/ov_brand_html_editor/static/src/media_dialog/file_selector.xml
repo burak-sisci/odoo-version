@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Search filter of the publisher's media library (T2.3) -->
+    <t t-inherit="html_editor.FileSelectorControlPanel" t-inherit-mode="extension">
+        <xpath expr="//option[@value='media-library']" position="replace"/>
+    </t>
+
+</templates>
