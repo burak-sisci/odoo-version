@@ -26,7 +26,7 @@
     "title": "Marka katmanı",
     "status": "in_progress"
   },
-  "current_task": "T2.3",
+  "current_task": "T2.4",
   "session": {
     "mode": "otonom",
     "number": 2,
@@ -54,12 +54,13 @@
     "T1.10",
     "T1.11",
     "T2.1",
-    "T2.2"
+    "T2.2",
+    "T2.3"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "T2.3'e devam: ayarlardaki dokümantasyon bağlantıları, düzenleyicinin görsel kitaplığı ve yapay zekâ metni, Gmail/Outlook OAuth vekili, uygulama mağazası (base_import_module), mail'deki dış istek",
-    "/odoo URL yolu için modül düzeyinde çözüm (T2.4)"
+    "/odoo URL yolu için modül düzeyinde çözüm (T2.4)",
+    "E-posta, rapor, portal altbilgileri ve OdooBot (T2.5)"
   ],
   "decisions": [
     {
@@ -224,10 +225,11 @@
         "depends": [
           "web",
           "base_setup",
+          "base_import_module",
           "remove_odoo_enterprise"
         ],
         "task": "T2.2",
-        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15)"
+        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3)"
       },
       {
         "module": "ov_brand_mail",
@@ -241,6 +243,19 @@
         "auto_install": true,
         "task": "T2.3",
         "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; T2.5'te e-posta altbilgileri de buraya"
+      },
+      {
+        "module": "ov_brand_html_editor",
+        "path": "addons/ov_brand_html_editor",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "ov_brand",
+          "html_editor"
+        ],
+        "auto_install": true,
+        "task": "T2.3",
+        "note": "metin düzenleyicide Google Translate çevirisi, çizim kitaplığı ve yapay zekâ metni kapalı; sunucu uçları ağa çıkmadan hata döner"
       }
     ],
     "ported": [

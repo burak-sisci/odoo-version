@@ -134,6 +134,12 @@ msgid ""
 msgstr "Uygulama tarayıcı üzerinden yüklendiğinde bu ad kullanılır."
 
 #. module: ov_brand
+#. odoo-python
+#: code:addons/ov_brand/models/ir_module_module.py:0
+msgid "This product does not use the publisher's app store."
+msgstr "Bu ürün yayıncının uygulama mağazasını kullanmıyor."
+
+#. module: ov_brand
 #. odoo-javascript
 #: code:addons/ov_brand/static/src/core/error_dialogs.js:0
 msgid "Warning"

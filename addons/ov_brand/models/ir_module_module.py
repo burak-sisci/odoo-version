@@ -47,3 +47,17 @@ class IrModuleModule(models.Model):
             if 'iap.account' in self.env:
                 self.env['iap.account'].sudo().with_context(active_test=False).search([('service_id', '!=', False)]).unlink()
             online.button_uninstall()
+
+    # The industries are listed and downloaded from the publisher's app store
+    # (base_import_module, T2.3). The list stays empty, nothing is downloaded.
+
+    @api.model
+    def _get_modules_from_apps(self, fields, module_type, module_name, domain=None, limit=None, offset=None):
+        return []
+
+    @api.model
+    def _get_industry_categories_from_apps(self):
+        return []
+
+    def button_immediate_install_app(self):
+        raise UserError(self.env._("This product does not use the publisher's app store."))

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- "?" links of the settings and other documentation links (T2.3) -->
+    <t t-inherit="web.DocumentationLink" t-inherit-mode="extension">
+        <xpath expr="//a" position="attributes">
+            <attribute name="t-if">!this.ovHidden</attribute>
+        </xpath>
+    </t>
+
+</templates>

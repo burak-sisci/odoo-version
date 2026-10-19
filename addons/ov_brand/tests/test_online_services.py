@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from lxml import etree
 
 from odoo.exceptions import UserError
@@ -42,3 +44,21 @@ class TestOvBrandOnlineServices(TransactionCase):
         self.assertIn('module_auth_oauth', fields)
         # The block holding only these two settings is gone with them
         self.assertFalse(arch.xpath("//block[@name='contacts_setting_container']"))
+
+    def test_app_store_not_called(self):
+        industries = [('module_type', '=', 'industries')]
+        with patch('requests.post') as post, patch('requests.get') as get:
+            self.assertEqual(self.Module.web_search_read(industries, {'name': {}})['records'], [])
+            self.assertEqual(self.Module.search_panel_select_range('category_id', category_domain=industries)['values'], [])
+            with self.assertRaises(UserError):
+                self.Module.with_context(module_name='test').button_immediate_install_app()
+        post.assert_not_called()
+        get.assert_not_called()
+
+    def test_app_store_hidden(self):
+        view = self.env.ref('base.view_module_filter')
+        arch = etree.fromstring(self.Module.get_view(view.id, 'search')['arch'])
+        self.assertTrue(arch.xpath('//searchpanel/field'))
+        self.assertFalse(arch.xpath("//searchpanel/field[@name='module_type']"))
+        self.assertFalse(self.env.ref('base.menu_theme_store').active)
+        self.assertFalse(self.env.ref('base.menu_third_party').active)

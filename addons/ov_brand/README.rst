@@ -19,6 +19,10 @@ Neleri değiştirir
   öğe gizlenir.
 * Ücretli sürümün uygulamaları Uygulamalar ekranında listelenmez, Ayarlar'daki
   ücretli sürüm özellikleri gizlenir (OCA'nın bu iş için yazdığı modülle).
+* Ayarlar ekranındaki "?" bağlantıları yayıncının belge sitesine gidiyorsa
+  gösterilmez.
+* Uygulamalar ekranı yayıncının uygulama mağazasına bağlanmaz: "Sektörler"
+  süzgeci, "Tema Mağazası" ve "Üçüncü Taraf Uygulamaları" menüleri gizlenir.
 
 Ayarlar
 =======

@@ -138,6 +138,20 @@ class TestOvBrandPages(HttpCase):
             console.log("test successful");
         """ % DEFAULT_BRAND_NAME, login='admin')
 
+    def test_settings_documentation_links(self):
+        # LDAP authentication has a "?" link to the publisher's documentation
+        self.browser_js('/odoo/settings', """
+            if (!document.querySelector("[name='module_auth_ldap']")) {
+                throw new Error("the LDAP setting is missing");
+            }
+            // The copyright line of the About section links to odoo.com and stays (D-007)
+            const links = [...document.querySelectorAll("a.o_doc_link")].filter((a) => a.href.includes("odoo.com"));
+            if (links.length) {
+                throw new Error(`links to odoo.com: ${links.map((a) => a.href)}`);
+            }
+            console.log("test successful");
+        """, ready="!!document.querySelector('.o_setting_right_pane')", login='admin')
+
     def test_login_page_js(self):
         # The patches also run in the public bundle (lazy loaded after the page).
         # Pending jobs of other modules are fine: test tours wait for their own bundle.

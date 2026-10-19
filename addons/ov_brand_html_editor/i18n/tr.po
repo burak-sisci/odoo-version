@@ -1,0 +1,29 @@
+# Turkish translation of the ov_brand_html_editor module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_brand_html_editor 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: ov_brand_html_editor
+#: model:ir.module.module,shortdesc:base.module_ov_brand_html_editor
+msgid "Editor Branding"
+msgstr "Metin Düzenleyici Markası"
+
+#. module: ov_brand_html_editor
+#. odoo-python
+#: code:addons/ov_brand_html_editor/controllers/main.py:0
+msgid "This service is not available in this product."
+msgstr "Bu hizmet bu üründe kullanılamaz."
+
+#. module: ov_brand_html_editor
+#: model:ir.module.module,summary:base.module_ov_brand_html_editor
+msgid "Turns off the publisher's online services of the text editor"
+msgstr "Metin düzenleyicide yayıncının çevrim içi hizmetlerini kapatır"

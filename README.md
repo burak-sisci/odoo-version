@@ -26,8 +26,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - CI çalışıyor: her push'ta belge denetimi, lint, gizli bilgi taraması ve modül testleri (GitHub Actions, T1.10).
 - OCA düzeni hazır: resmî 20.0 depoları `vendor/oca/`, bizim 20.0 portlarımız `ports/oca/` (`tools/port_oca.py`, T1.11). İlk port: `report_xlsx`.
 - Kullanıcıya görünen Odoo izlerinin envanteri çıkarıldı (`docs/research/brand-inventory.md`, T2.1).
-- Marka modülleri: `ov_brand` ürün adını (Nexus), simgeleri, giriş ekranını ve hata pencerelerini değiştiriyor (T2.2). `ov_brand_mail` yayıncıya giden haftalık veritabanı raporunu kapatıyor; `ov_brand` yayıncının çevrim içi hizmet modüllerini (IAP, Aboneliğim) kaldırıyor (T2.3).
-- Sıradaki görev: odoo.com bağlantılarının kesilmesi (T2.3).
+- Marka modülleri: `ov_brand` ürün adını (Nexus), simgeleri, giriş ekranını ve hata pencerelerini değiştiriyor (T2.2). `ov_brand_mail` yayıncıya giden haftalık veritabanı raporunu kapatıyor; `ov_brand` yayıncının çevrim içi hizmet modüllerini (IAP, Aboneliğim), Enterprise reklamlarını, dokümantasyon bağlantılarını ve uygulama mağazasını kaldırıyor; `ov_brand_html_editor` metin düzenleyicinin yayıncı hizmetlerini kapatıyor (T2.3).
+- Sıradaki görev: `/odoo` URL yolu (T2.4).
 - Açık karar yok.
 
 ## Belgeler
