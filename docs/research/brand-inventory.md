@@ -99,6 +99,7 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 - Adres yapılandırma dosyasından değişiyor (`publisher_warranty_url`, yalnız dosyada). Varsayılan `http://services.odoo.com/publisher-warranty/`, yani şifresiz HTTP.
 - Yanıttaki mesajlar "tüm çalışanlar" kanalına yazılıyor. Yani dış sunucu müşterinin ekranına mesaj gönderebiliyor.
 - Öneri (T2.3): `_get_sys_logs` / `update_notification` override ile çağrı hiç yapılmaz; iş pasif. Üretim yapılandırmasında adres ayrıca boş bir yerel adrese yöneltilebilir (iki kat güvence). OCA `disable_odoo_online` aynı işi yapıyor (§9).
+- Sonuç (T2.3, 2026-10-19): `ov_brand_mail` `_get_sys_logs`'u ağa çıkmayan boş bir yanıtla değiştirir; iş pasif. `mail` kurulu her veritabanına kendiliğinden kurulur. Yapılandırma dosyasındaki adres değiştirilmedi; üretim yapılandırmasında ikinci güvence olarak T8.4'te ele alınabilir.
 
 ### 4.2. Testlerde dış istek
 

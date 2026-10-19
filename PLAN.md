@@ -280,12 +280,13 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Kapsam dışı: OdooBot adı ve avatarı `mail` modülüne bağlı, T2.5'e taşındı. Veritabanı yöneticisi veritabanı olmadan çalışır, veritabanına kurulan modüller ona ulaşamaz; üretimde `list_db = False` ile kapalıdır.
   - Sonuç: `addons/ov_brand` (AGPL-3; `web`, `base_setup`). Ürün adı `ov_brand.name` sistem parametresinden, varsayılan Nexus. Renk `#1f5f8b` ve "N" simgesi yer tutucu (K14). Tarayıcıdan tek uygulama olarak kurulumun manifesti de marka renginde. 12 test (ikisi tarayıcıda), Türkçe çeviri.
   - Kalan üç JS metni T2.6'ya taşındı (aşağıda).
-- [ ] T2.3 odoo.com bağlantılarının kesilmesi · M · C
+- [~] T2.3 odoo.com bağlantılarının kesilmesi · M · C
   - Envanter §4. İlk iş yayıncı garantisi çağrısı.
   - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme, düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
   - `mysubscription` ("Aboneliğim"): 20.0'da yeni, her veritabanına kendiliğinden kuruluyor; menü öğesi gizlenir.
   - Enterprise reklamları: ayar ekranları için OCA 20.0 `remove_odoo_enterprise`; Uygulamalar listesindeki satın alınacak uygulama kartları (`to_buy`) için ayrı filtre.
   - odoo.com dokümantasyon/destek bağlantıları.
+  - Ara durum: yayıncı garantisi kapandı (`ov_brand_mail`: rapor hiç gönderilmez, zamanlanmış iş pasif). Sıradakiler: IAP servis modülleri ve `mysubscription`, Enterprise reklamları, dokümantasyon ve düzenleyici bağlantıları.
 - [ ] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).

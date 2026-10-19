@@ -7,6 +7,18 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: yayıncı garantisi kapatıldı — `ov_brand_mail` (T2.3, sürüyor) — otonom mesai 2
+
+**Kod**
+- Yeni modül `addons/ov_brand_mail` (AGPL-3; `ov_brand`, `mail`). `auto_install`: `mail` kurulu her veritabanına kendiliğinden kurulur.
+  - `publisher_warranty.contract._get_sys_logs` ağa çıkmadan boş yanıt döndürür. Rapor (veritabanı kimliği, kullanıcı sayıları, kurulu uygulamalar, şirketin adı, e-postası ve telefonu) hiç gönderilmez. Kurulumda raporu çağıran `l10n_fr_account` ve `l10n_fr_pos_cert` de bu yoldan geçer.
+  - `mail.ir_cron_module_update_notification` pasif. `mail`'in kaydı `noupdate`; `mail` güncellenince yeniden açılmaz.
+  - 2 test: rapor isteği hiç yapılmıyor (`requests.post` çağrılmıyor), iş pasif. `i18n/tr.po`, `README.rst`.
+- OCA `disable_odoo_online` yerine kendi override'ımız: 20.0 portu (PR #124) hâlâ açık; işimiz tek yöntem (envanter §9 önerisi).
+
+**Belgeler**
+- PLAN.md (T2.3 `[~]`, ara durum), state.json (`modules.ours`), docs/COMPLIANCE.md (KVKK: yayıncı garantisi kapalı), `docs/research/brand-inventory.md` §4.1 (sonuç), ARCHITECTURE.md (modül listesi state.json'a bağlandı), README.md.
+
 ### Adım: Marka modülü `ov_brand` (T2.2) — otonom mesai 2
 
 **Kod**

@@ -58,7 +58,7 @@
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "odoo.com bağlantılarının kesilmesi (T2.3): önce yayıncı garantisi, sonra IAP, mysubscription, Enterprise reklamları, dokümantasyon bağlantıları",
+    "T2.3'e devam: IAP servis modülleri (iap, mysubscription) kaldırılır ve arayüzden yeniden kurulmaz; ardından Enterprise reklamları (OCA remove_odoo_enterprise), dokümantasyon ve düzenleyici bağlantıları",
     "/odoo URL yolu için modül düzeyinde çözüm (T2.4)"
   ],
   "decisions": [
@@ -227,6 +227,19 @@
         ],
         "task": "T2.2",
         "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14)"
+      },
+      {
+        "module": "ov_brand_mail",
+        "path": "addons/ov_brand_mail",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "ov_brand",
+          "mail"
+        ],
+        "auto_install": true,
+        "task": "T2.3",
+        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; T2.5'te e-posta altbilgileri de buraya"
       }
     ],
     "ported": [

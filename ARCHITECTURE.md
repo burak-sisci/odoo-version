@@ -7,7 +7,7 @@ Son güncelleme: 2026-10-19
 >   - D-010 (yaklaşım **B**), D-011 (sürüm **20.0**; T1.2'de doğrulandı), D-014 (önek `ov_`);
 >   - D-016 (lisans **AGPL-3**, LGPL türevleri LGPL-3), D-018 (paketler ve teslim biçimi), D-019 (OCA portları), D-020 (ücretsiz altyapı).
 > - Üretim barındırma yeri D-013 ile ertelendi (§4).
-> - İlk ürün modülümüz `addons/ov_brand` (marka, T2.2). İlk OCA deposu (`vendor/oca/server-ux`) ve ilk OCA portu (`ports/oca/reporting-engine/report_xlsx`) eklendi (T1.11).
+> - Kendi modüllerimiz `addons/` altında (T2.2'den beri; güncel liste `state.json` → `modules.ours`). İlk OCA deposu (`vendor/oca/server-ux`) ve ilk OCA portu (`ports/oca/reporting-engine/report_xlsx`) eklendi (T1.11).
 > - Bu belge kurulacak yapıyı tanımlıyor. Görevler `PLAN.md`'de.
 
 ## 1. Genel bakış
@@ -70,7 +70,7 @@ odoo-version/
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, sığ git submodule, sabit commit (ilk: server-ux, T1.11)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız, her birinde PORT.md (ilk: reporting-engine/report_xlsx)
-├── addons/                  # bizim modüllerimiz, önek ov_ (ilk: ov_brand; iskelet tools/new_module.py)
+├── addons/                  # bizim modüllerimiz, önek ov_ (liste: state.json → modules.ours; iskelet tools/new_module.py)
 └── deploy/                  # odoo.conf.example (T1.6); kurulum aracı, ters vekil, yedek betikleri (henüz yok — T8.4)
 ```
 
