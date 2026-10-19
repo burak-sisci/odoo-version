@@ -1,0 +1,38 @@
+# Turkish translation of the ov_brand_mail module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_brand_mail 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: ov_brand_mail
+#: model:ir.model.fields,field_description:ov_brand_mail.field_publisher_warranty_contract__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: ov_brand_mail
+#: model:ir.model.fields,field_description:ov_brand_mail.field_publisher_warranty_contract__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ov_brand_mail
+#: model:ir.module.module,shortdesc:base.module_ov_brand_mail
+msgid "Mail Branding"
+msgstr "E-posta Markası"
+
+#. module: ov_brand_mail
+#: model:ir.model,name:ov_brand_mail.model_publisher_warranty_contract
+msgid "Publisher Warranty Contract"
+msgstr "Yayıncı Garanti Sözleşmesi"
+
+#. module: ov_brand_mail
+#: model:ir.module.module,summary:base.module_ov_brand_mail
+msgid "Turns off the weekly database report sent to the publisher"
+msgstr "Yayıncıya haftada bir gönderilen veritabanı raporunu kapatır"
