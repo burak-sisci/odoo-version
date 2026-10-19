@@ -1,0 +1,4 @@
+// Product colour (navigation bar, primary buttons). Same value as BRAND_COLOR
+// in ov_brand/tools.py. Loaded before web's primary variables, which only set
+// their defaults.
+$o-community-color: #1f5f8b;

@@ -1,6 +1,6 @@
 # Marka İzleri Envanteri (Odoo 20.0 Community)
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 Araştırma tarihi: 2026-10-18
 İlgili kararlar: D-006, D-007, D-010, D-014 (DECISIONS.md)
 İlgili görev: T2.1 (PLAN.md); sonuçları kullanan görevler T2.2–T2.7
@@ -15,6 +15,7 @@ Araştırma tarihi: 2026-10-18
 > - MVP modülleriyle kurulan veritabanında 97 modül kurulu. Bunların 40'ında 253 çevrilebilir metin "odoo" içeriyor (§7).
 > - Veri gönderen bir zamanlanmış iş varsayılan olarak açık: yayıncı garantisi (`mail.ir_cron_module_update_notification`, haftalık). Veritabanı kimliği, kullanıcı sayıları, kurulu uygulamalar, şirket adı, e-postası ve telefonu `services.odoo.com`'a gidiyor (§4.1). KVKK açısından T2.3'ün ilk işi.
 > - Müşteriye giden belgelerde de iz var: faturadaki QR kodun ortasında Odoo logosu, PDF üst verisinde `Creator/Producer: Odoo`, e-posta altbilgisinde "Powered by Odoo" (§6).
+> - T2.2 (2026-10-19): §3'teki web istemcisi yüzeyleri `ov_brand` ile değişti. Kalan üç JS metni T2.6'da (§3).
 > - Bu belge kontrol tarihindeki upstream commit'ini anlatır (`afbcf79d`). T2.6'daki otomatik test, upstream ilerledikçe yeni izleri yakalamak için var.
 
 ## 1. Soru ve kapsam
@@ -48,12 +49,12 @@ Kapsam:
 | Giriş ekranı | "Hazırlayan Odoo" (www.odoo.com bağlantısı) | `web.login_layout` → `web.brand_promotion_message` | Şablon kalıtımı |
 | Giriş ekranı üst verisi | `og:site_name` = Odoo, `twitter:site` = @Odoo, Odoo sloganı (`og:description`), `og_image.png`; başlık yedeği `Odoo` (`web/controllers/utils.py`) | `web.login` (yalnız `/odoo` yönlendirmeli bağlantı önizlemesinde) | Şablon kalıtımı |
 | iOS ana ekran simgesi | `odoo-icon-ios.png` | `web.webclient_bootstrap`, `webmanifest.py` | Şablon kalıtımı, controller override |
-| PWA manifesti | ad `Odoo`, renk `#714B67`, `odoo-icon-192/512` | `web/controllers/webmanifest.py` | Ad zaten ayarlı: `web.web_app_name` parametresi. Renk ve simge için controller override |
+| PWA manifesti | ad `Odoo`, renk `#714B67`, `odoo-icon-192/512` | `web/controllers/webmanifest.py` (`/web/manifest.webmanifest`; tek uygulama kurulumu için `scoped_app_manifest`) | Ad zaten ayarlı: `web.web_app_name` parametresi. Renk ve simge için controller override |
 | PWA çevrimdışı sayfası | "Odoo logosu", "… Odoo yüklenecektir." | `web.webclient_offline` | Şablon kalıtımı |
 | Pencere varsayılan başlığı | `Odoo` | `core/dialog/dialog.js` | JS `patch()` |
 | Hata pencereleri | "Odoo Hatası", "Odoo Müşteri Hatası", "Odoo Ağ Hatası", "Odoo Sunucu Hatası", "Odoo Uyarısı" | `core/errors/error_dialogs.js` | JS `patch()` (başlıklar marka adından) |
 | Oturum süresi doldu bildirimi | "Odoo Session Expired" | `public/error_notifications.js` | JS `patch()` |
-| Diğer istemci mesajları | barkod tarayıcı, güvensiz bağlam (`start.js`), rapor işçileri (`reports/utils.js`) | ilgili JS dosyaları | JS `patch()` veya metin düzeyinde değişiklik |
+| Diğer istemci mesajları | barkod tarayıcının kamera izni mesajı, güvensiz bağlam uyarısı (yalnız konsolda), rapor işçileri uyarısı | `core/barcode/barcode_video_scanner.js`, `start.js`, `webclient/actions/reports/utils.js` | Metinler yöntem gövdesinde; `patch()` bütün yöntemi kopyalamayı gerektirir. T2.2'de değişmedi, metin düzeyinde değişiklik T2.6'da |
 | Kullanıcı menüsü: Destek | `https://www.odoo.com/buy` | `web/models/ir_http.py` → `session.support_url` | `ir.http` oturum bilgisi override: marka destek adresi ya da öğe kaldırılır |
 | Kullanıcı menüsü: Aboneliğim | "My Subscription" | `mysubscription` (kendiliğinden kurulur) | T2.3 (§4.3) |
 | Ayarlar → "hakkında" | "Odoo 20.0 (Community Edition)", "Copyright © 2004 Odoo S.A. GNU LGPL Licensed" | `settings_form_view/widgets/res_config_edition.xml` | Owl şablon kalıtımı. Başlık marka adı ve sürümü olur. **Telif satırı kalır** (CLAUDE.md kural 2); yanına kendi AGPL notumuz eklenir |
@@ -187,9 +188,9 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 
 ## 11. Görevlere etkisi
 
-- **T2.2 `ov_brand`:** §3'ün tamamı. Marka adı tek ayardan okunur (F2 kabul ölçütü). Bunun için tek kaynak: `ir.config_parameter` (ör. `ov_brand.name`); `web.web_app_name` de bu değerle eşitlenir. Yöntem ayrıntısı T2.2'de.
+- **T2.2 `ov_brand` (tamam):** §3, "Diğer istemci mesajları" satırı hariç. Marka adı tek ayardan okunur (F2 kabul ölçütü): `ov_brand.name` sistem parametresi, varsayılan Nexus. `web.web_app_name` eşitlenmedi: Genel Ayarlar'daki uygulama adı yalnız tarayıcıdan kurulan uygulamanın adıdır, boşsa marka adı kullanılır.
 - **T2.3:** §4. İlk iş yayıncı garantisi; sonra IAP, `mysubscription`, Enterprise reklamları (`remove_odoo_enterprise` + Uygulamalar filtresi), dokümantasyon bağlantıları.
 - **T2.4:** §5.
 - **T2.5:** §6 ve PDF motoru seçimi (PLAN'daki not).
-- **T2.6:** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) ve §10'daki izin listesi.
+- **T2.6:** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) ve §10'daki izin listesi. §3'ten kalan üç JS metni.
 - **T2.7:** §4.2'deki test çatısı engelinin üstüne günlük denetimi ve tarayıcı ağ kaydı.

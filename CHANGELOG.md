@@ -7,6 +7,32 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: Marka modülü `ov_brand` (T2.2) — otonom mesai 2
+
+**Kod**
+- `addons/ov_brand` tamamlandı ve depoya girdi (otonom mesai 1'deki ara durumun devamı).
+  - Varsayılan ürün adı `OV ERP` yerine **Nexus** (K3). Simge mavi kare üstünde beyaz "N" (K14 varsayımı, renk `#1f5f8b`).
+  - Tarayıcıdan tek uygulama olarak kurulumun manifesti (`/web/manifest.scoped_app_manifest`): Odoo'nun sabit rengi `#714B67` yerine marka rengi. Uygulamanın kendi simgesi yoksa marka simgesi.
+  - `test_login_page_js` düzeltildi: yalnız yüklenemeyen modüllere ve `@ov_brand/` modüllerine bakıyor. Upstream'in test turları tembel yüklenen pakette bekleyebilir; bu hata değil.
+  - `i18n/tr.po` (19 metin) ve `README.rst` (Türkçe: neleri değiştirir, ayarlar, bilinen sınırlar).
+  - Testler: 12/12, ikisi tarayıcıda. Günlükteki tek CRITICAL satırı upstream gürültüsü: test kipinde websocket kapalı, Chrome kapanırken bu isteğin bağlantısı kopuyor.
+- Lint çelişkisi: ruff (upstream kural seti, TID252) aynı modülden içe aktarmaların mutlak, pylint-odoo (`odoo-addons-relative-import`) göreli olmasını istiyor.
+  - Upstream'in kuralı uygulandı: içe aktarmalar mutlak (`from odoo.addons.ov_brand.tools import …`).
+  - pylint denetimi `.pre-commit-config.yaml`'daki kanca argümanıyla kapatıldı. `.pylintrc`'de `disable=all` + `enable=odoolint` sonrasında tek bir mesaj kapatılamıyor; `.pylintrc`'ye açıklama notu eklendi.
+- Kalanlar T2.6'ya taşındı: barkod tarayıcının kamera izni mesajı ("Odoo needs your authorization first."), rapor işçileri uyarısı, güvensiz bağlam konsol uyarısı. Üçü de upstream yöntemlerinin gövdesinde çevrilebilir metin.
+
+**Araştırma**
+- Envanterdeki öneri değişti (`docs/research/brand-inventory.md` §11).
+  - Eski metin: "`web.web_app_name` de bu değerle eşitlenir."
+  - Yeni: eşitlenmiyor. Genel Ayarlar'daki uygulama adı yalnız tarayıcıdan kurulan uygulamanın adıdır; boşsa marka adı kullanılır.
+  - Neden: iki ayarı eşitlemek, müşterinin kendi uygulama adını ürün adının üstüne yazmasına yol açar. Marka adının tek kaynağı `ov_brand.name` kalır (M2 kabul ölçütü).
+
+**Ortam**
+- Geçici veritabanı `ov_brand_scan` T2.3 denemeleri için tutuluyor. Otonom mesai 1 özetinde "T2.2 bitince silinir" yazıyordu; mesai sonunda silinecek.
+
+**Belgeler**
+- PLAN.md (T2.2 tamam; T2.6'ya kalan metinler), state.json (`modules.ours`, lint notu), CLAUDE.md (lint komutu, içe aktarma notu), ARCHITECTURE.md (durum notu, depo yerleşimi, lint), README.md, `docs/research/brand-inventory.md` (§3, §11).
+
 ### Adım: kararlar — kalıcı ürün adı Nexus (K3) ve commit oturum satırı (K11)
 
 **Kararlar**

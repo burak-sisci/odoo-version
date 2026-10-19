@@ -1,0 +1,116 @@
+# Turkish translation of the ov_brand module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_brand 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: ov_brand
+#: model:ir.module.module,shortdesc:base.module_ov_brand
+msgid "Branding"
+msgstr "Marka"
+
+#. module: ov_brand
+#: model_terms:ir.ui.view,arch_db:ov_brand.webclient_offline
+msgid ""
+"Check your network connection and come back here. The application will load "
+"as soon as you're back online."
+msgstr ""
+"Ağ bağlantınızı kontrol edin ve buraya geri dönün. Tekrar çevrim içi "
+"olduğunuz anda uygulama yüklenecektir."
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.js:0
+msgid "Client Error"
+msgstr "İstemci Hatası"
+
+#. module: ov_brand
+#: model:ir.model.fields,field_description:ov_brand.field_ir_http__display_name
+#: model:ir.model.fields,field_description:ov_brand.field_ir_qweb__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.js:0
+msgid "Error"
+msgstr "Hata"
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/webclient/res_config_edition.xml:0
+msgid "GNU AGPL Licensed"
+msgstr "GNU AGPL Lisanslıdır"
+
+#. module: ov_brand
+#: model:ir.model,name:ov_brand.model_ir_http
+msgid "HTTP Routing"
+msgstr "HTTP Yönlendirme"
+
+#. module: ov_brand
+#: model:ir.model.fields,field_description:ov_brand.field_ir_http__id
+#: model:ir.model.fields,field_description:ov_brand.field_ir_qweb__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ov_brand
+#: model_terms:ir.ui.view,arch_db:ov_brand.webclient_offline
+msgid "Logo"
+msgstr "Logo"
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.js:0
+msgid "Network Error"
+msgstr "Ağ Hatası"
+
+#. module: ov_brand
+#: model:ir.module.module,summary:base.module_ov_brand
+msgid "Product name, logo and icons of the web client"
+msgstr "Web istemcisinin ürün adı, logosu ve simgeleri"
+
+#. module: ov_brand
+#: model:ir.model,name:ov_brand.model_ir_qweb
+msgid "Qweb"
+msgstr "Qweb"
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.js:0
+msgid "Server Error"
+msgstr "Sunucu Hatası"
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.xml:0
+#: code:addons/ov_brand/static/src/public/error_notifications.js:0
+msgid "Session Expired"
+msgstr "Oturumun Süresi Doldu"
+
+#. module: ov_brand
+#: model_terms:ir.ui.view,arch_db:ov_brand.res_config_settings_view_form
+msgid ""
+"This name is used for the application when it is installed through the "
+"browser."
+msgstr "Uygulama tarayıcı üzerinden yüklendiğinde bu ad kullanılır."
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.js:0
+msgid "Warning"
+msgstr "Uyarı"
+
+#. module: ov_brand
+#. odoo-javascript
+#: code:addons/ov_brand/static/src/core/error_dialogs.xml:0
+#: code:addons/ov_brand/static/src/public/error_notifications.js:0
+msgid "Your session expired. The current page is about to be refreshed."
+msgstr "Oturumunuzun süresi doldu. Geçerli sayfa yenilenmek üzere."

@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.2 — Marka modülü `ov_brand`
+**Şu anki görev:** T2.3 — odoo.com bağlantılarının kesilmesi
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 1/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 2/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 20/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 21/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -274,11 +274,12 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - OCA modüllerinin yazar adı ("Odoo Community Association (OCA)") Uygulamalar ekranında görünüyor. Telif bilgisi olduğu için değiştirilmez (CLAUDE.md kural 2–3). Son kullanıcıdan Uygulamalar menüsünü gizlemek T7.3'te.
   - Çıktı: `docs/research/brand-inventory.md`.
   - Sonuç: bütün yüzeyler modülle değiştirilebiliyor; çekirdek değişikliği gerekmiyor. MVP modülleriyle 97 kurulu modülde 253 çevrilebilir metin "odoo" içeriyor. Yayıncı garantisi haftalık olarak şirket adı, e-posta ve telefonunu da gönderiyor (KVKK).
-- [~] T2.2 Marka modülü `ov_brand` · L · C
+- [x] T2.2 Marka modülü `ov_brand` · L · C
   - Yapılandırılabilir tek marka adı ve logo.
   - Değişen yerler (envanter §3): pencere başlığı, favicon, giriş ekranı ve bağlantı önizlemesi (Open Graph), PWA manifesti ve simgeleri, çevrimdışı sayfa, pencere ve hata başlıkları, kullanıcı menüsündeki destek bağlantısı, ayarlardaki "hakkında" alanı (Odoo S.A. telif satırı kalır).
   - Kapsam dışı: OdooBot adı ve avatarı `mail` modülüne bağlı, T2.5'e taşındı. Veritabanı yöneticisi veritabanı olmadan çalışır, veritabanına kurulan modüller ona ulaşamaz; üretimde `list_db = False` ile kapalıdır.
-  - Ara durum (otonom mesai 1 sonu): modül yerelde yazıldı, **commit edilmedi**. 11 testten 10'u geçiyor. Kalanlar: `test_login_page_js` denetiminin düzeltilmesi (upstream test turu modülleri tembel yüklenen pakette bekliyor, hata değil), `i18n/tr.po`, `README.rst`, lint, belge protokolü.
+  - Sonuç: `addons/ov_brand` (AGPL-3; `web`, `base_setup`). Ürün adı `ov_brand.name` sistem parametresinden, varsayılan Nexus. Renk `#1f5f8b` ve "N" simgesi yer tutucu (K14). Tarayıcıdan tek uygulama olarak kurulumun manifesti de marka renginde. 12 test (ikisi tarayıcıda), Türkçe çeviri.
+  - Kalan üç JS metni T2.6'ya taşındı (aşağıda).
 - [ ] T2.3 odoo.com bağlantılarının kesilmesi · M · C
   - Envanter §4. İlk iş yayıncı garantisi çağrısı.
   - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme, düzenleyicinin görsel kitaplığı ve yapay zekâ metni; Gmail/Outlook OAuth vekilleri. Kapatılır veya gizlenir.
@@ -296,6 +297,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
   - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları şimdilik izin listesinde (K13 varsayımı).
+  - T2.2'den kalanlar (envanter §3): barkod tarayıcının kamera izni mesajı, rapor işçileri uyarısı, güvensiz bağlam konsol uyarısı. Üçü de upstream yöntemlerinin gövdesinde çevrilebilir metin; `patch()` bütün yöntemi kopyalamayı gerektirir. Metin düzeyinde değiştirme yöntemi bu görevde seçilir.
 - [ ] T2.7 Dış istek testi · S · C
   - Odoo test çatısı `requests` ile yapılan dış istekleri zaten engelliyor ve günlüğe yazıyor (envanter §4.2). Kapsamadıkları: kurulum ve zamanlanmış işler, tarayıcı testlerinde sayfanın kendi istekleri.
   - Testler sırasında dış HTTP istekleri kaydedilir; odoo.com alan adlarına istek = hata.

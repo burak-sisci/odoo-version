@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- "About" section of General Settings. Odoo's copyright line stays (D-007). -->
+    <t t-inherit="res_config_edition" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('user-heading')]/h3" position="replace">
+            <h3 class="px-0">
+                <t t-out="this.ovBrandName"/> <t t-out="this.serverVersion"/>
+            </h3>
+        </xpath>
+        <xpath expr="//a[@id='license']" position="after">
+            <br/>
+            <t t-out="this.ovBrandName"/>:
+            <a id="ov_brand_license" target="_blank" href="https://www.gnu.org/licenses/agpl-3.0.html" style="text-decoration: underline;">GNU AGPL Licensed</a>
+        </xpath>
+    </t>
+
+</templates>
