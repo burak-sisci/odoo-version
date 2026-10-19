@@ -1,10 +1,10 @@
-# odoo-version — Odoo Community tabanlı markalı ERP
+# Nexus — Odoo Community tabanlı ERP
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 
 [![CI](https://github.com/burak-sisci/odoo-version/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/burak-sisci/odoo-version/actions/workflows/ci.yml)
 
-> `odoo-version` geçici bir çalışma adıdır. Ürünün kalıcı adı MVP sonunda belirlenecek (D-014).
+> Ürünün adı **Nexus** (D-014). Depo adı `odoo-version` geçici bir çalışma adıdır; depo kullanıcı onayıyla yeniden adlandırılacak (T8.2).
 
 Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/veya SaaS olarak satılacak bir ERP.
 - Odoo çekirdeği değiştirilmez; her şey ayrı modüllerle eklenir (D-010).

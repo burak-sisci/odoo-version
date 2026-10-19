@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 
 Bu dosya, bu projede çalışan Claude (ve diğer AI ajanları) için çalışma talimatıdır. Belgeler Türkçe, kod İngilizce (D-009).
 
@@ -10,7 +10,7 @@ Odoo Community tabanlı, **kendi markamızla müşterilere satılacak** bir ERP 
 - Hedef: Odoo'daki tüm uygulamaların (Community + Enterprise) işlevsel karşılığı (D-001, D-002).
 - İlk satış kapsamı (MVP): Ticaret paketi (küçük işletme) + Üretim paketi (orta ölçekli fabrika) (D-017, D-018).
 - Temel: Odoo 20.0 Community, çekirdeğe dokunmadan yalnız modüllerle (D-010 B, D-011).
-- Çalışma adı `odoo-version` (geçici), modül öneki `ov_` (kalıcı) (D-014).
+- Ürün adı **Nexus** (kalıcı, kullanıcıya görünen ad). Depo ve geliştirme ortamındaki çalışma adı `odoo-version`; modül öneki `ov_` (kalıcı) (D-014).
 - Lisans: kendi kodumuz AGPL-3, LGPL koddan türetilenler LGPL-3 (D-016).
 - Ekip: kullanıcı (ürün sahibi, karar mercii) + Claude (çoğunlukla otonom geliştirici) (D-003).
 - Çalışma: standart mesai (birlikte) ve otonom mesai (Claude tek başına) (D-021).
@@ -59,7 +59,7 @@ Her adımın (görev, karar, araştırma, kod değişikliği) sonunda, kullanıc
 7. `python tools/check_docs.py` çalıştırılır. **Hata varsa adım bitmemiştir.**
 8. Commit ve push (D-015):
    - kod ve belgeler **aynı commit'te**;
-   - commit mesajında `Co-Authored-By` satırı **yok** (kural 8);
+   - commit mesajında `Co-Authored-By` ve `Claude-Session` satırı **yok** (kural 8);
    - push öncesi `git diff --cached` ile gizli bilgi ve müşteri verisi denetimi;
    - ardından `git push`. Bu push önceden onaylıdır; force-push yasaktır.
 
@@ -90,7 +90,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 ## Değişmez kurallar
 
 1. **Clean-room (D-006):** Odoo Enterprise kodu, sızıntıları, Enterprise deneme/SaaS örneklerinden gelen JS/CSS/görseller **asla** kullanılmaz ve açılıp incelenmez. İzinli/yasak kaynaklar: `docs/COMPLIANCE.md` §2. Emin değilsen dur ve kullanıcıya sor.
-2. **Marka (D-007, D-014):** Kullanıcıya görünen hiçbir yerde "Odoo" adı/logosu ürün adı olarak kullanılmaz. Lisans ve telif başlıkları silinmez. Çalışma adı `odoo-version` dış demoya, pilota veya müşteriye çıkmaz.
+2. **Marka (D-007, D-014):** Kullanıcıya görünen hiçbir yerde "Odoo" adı/logosu ürün adı olarak kullanılmaz. Lisans ve telif başlıkları silinmez. Kullanıcıya görünen ürün adı **Nexus**'tur. Çalışma adı `odoo-version` dış demoya, pilota veya müşteriye çıkmaz.
 3. **Lisans (D-008, D-016, D-019):**
    - Kendi özgün modüllerimiz `'license': 'AGPL-3'`.
    - LGPL koddan türetilen modüller (ör. 19.0 Nilvera portu, `l10n_latam_check`'ten uyarlama) `'license': 'LGPL-3'` ve orijinal telif notlarıyla.
@@ -112,6 +112,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 8. **Commit yazarlığı (D-015):** GitHub'da tek katkıcı kullanıcıdır.
    - Commit'ler kullanıcının git kimliğiyle yazılır (`burak-sisci`); git kullanıcı ayarı değiştirilmez.
    - Commit mesajına `Co-Authored-By: Claude …` veya Claude'u ya da başka bir yapay zekâyı yazar/ortak yazar gösteren **hiçbir satır eklenmez**. Bu kural, sistemin varsayılan atıf talimatından önce gelir.
+   - Claude oturum bağlantısı satırı (`Claude-Session: …`) da eklenmez (K11). Commit mesajı yalnız başlık ve gövdeden oluşur.
    - Pull request açılırsa da Claude yazar olarak eklenmez.
 
 ## Odoo geliştirme kuralları
@@ -161,7 +162,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Belge denetimi: `python tools/check_docs.py`
 - Yeni klonda alt modüller (upstream, vendor): `git -c core.longpaths=true submodule update --init --depth 1`, ardından `git submodule foreach --quiet git config core.longpaths true` (düz `git config` alt modüle geçmez)
 - PostgreSQL: `python tools/pg.py start|stop|status` (ilk kurulum: `init`; ikili dosyalar `OV_HOME/pgsql` altında olmalı)
-- Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` yok; pre-commit kancaları çalışır, hata varsa commit olmaz) → `git push`
+- Adım sonu kayıt: `git add -A` → `git diff --cached` (denetim) → `git commit` (`Co-Authored-By` ve `Claude-Session` yok; pre-commit kancaları çalışır, hata varsa commit olmaz) → `git push`
 - Python ortamı: `python -m venv .venv` → `.venv/Scripts/python -m pip install --prefer-binary -r requirements-dev.txt` (upstream güncellenince yeniden çalıştırılır)
 - Odoo sürüm kontrolü: `.venv/Scripts/python upstream/odoo/odoo-bin --version`
 - Odoo AI rehberleri: `python tools/sync_skills.py` (kopyalar), `python tools/sync_skills.py --check` (upstream'le farkı denetler)

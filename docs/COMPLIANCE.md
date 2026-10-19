@@ -1,6 +1,6 @@
 # Lisans, Marka ve Hukuki Uyum
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-10-19
 İlgili kararlar: D-006, D-007, D-008, D-014, D-015, D-016, D-019, D-020
 
 > Hukuki görüş değildir. Ticari satıştan önce avukat incelemesi yapılacaktır (PLAN T9.4).
@@ -42,9 +42,10 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
 - Ürün adı, logo, favicon, sayfa başlıkları, e-posta altbilgileri, PDF rapor başlıkları, giriş ekranı, web sitesi altbilgisi ve PWA manifestinde **kendi markamız** kullanılır.
 - Kaynak dosyalardaki `# Part of Odoo. See LICENSE file…` başlıkları ve `LICENSE`/`COPYRIGHT` dosyaları **silinmez**.
 - "Odoo Community tabanlıdır" gibi tanımlayıcı bir ifade belgelerde kullanılabilir; ürün adı veya logo olarak kullanılamaz. Pazarlama metinlerinde kullanım avukata danışılarak netleştirilecek.
+- **Ürün adı: Nexus** (D-014, 2026-10-19). Kullanıcıya görünen ad `ov_brand` modülündeki tek bir ayardan gelir.
+  - Tescil uygunluğu henüz araştırılmadı: TÜRKPATENT sorgusu ve alan adı kontrolü dış demodan önce (PLAN T8.2, R17).
 - **Çalışma adı `odoo-version` (D-014)** "Odoo" sözcüğünü içerir.
-  - Yalnız depo adı, belgeler ve geliştirme ortamında kullanılır.
-  - Dış demo, pilot ve satıştan önce kalıcı adla değiştirilir (PLAN T8.2).
+  - Yalnız depo adı, belgeler ve geliştirme ortamında kullanılır; hiçbir kullanıcı yüzeyinde görünmez.
   - Public GitHub depo adı da o adımda yeniden adlandırılır; GitHub eski adresi yeni adrese yönlendirir.
 
 ## 4. Veri ve mevzuat
