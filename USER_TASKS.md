@@ -14,7 +14,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 Öncelik sırasıyla. Hiçbiri Claude'un işini durdurmuyor.
 
 1. **K2: TÜBİTAK 2209-A için son başvuru 11 Kasım 2026.** Başvurmak istiyorsan danışman bulmak zaman alır.
-2. **K10:** eski commit'lerde Claude ortak yazar satırı (ilk iki) ve oturum bağlantısı satırları var; geçmiş temizlensin mi? Force-push gerekir.
+2. **K10:** eski commit'lerdeki oturum bağlantısı satırları silindi (isteğin üzerine, 2026-10-19). İlk iki commit'teki Claude ortak yazar satırı duruyor; o da silinsin mi? Bir force-push daha gerekir.
 3. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
 4. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
 5. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
@@ -47,15 +47,15 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
 - [ ] K9 **Onay (isteğe bağlı)** — GitHub güvenlik özelliklerinin açılması.
   - Dependabot uyarıları ve gizli bilgi taraması (push koruması dahil). Public depoda ücretsiz.
   - Bu bir depo ayarı olduğu için onay gerekiyor (D-015). Onay verirsen Claude `gh` ile açar.
-- [ ] K10 **Karar** — geçmiş commit'lerdeki Claude ortak yazar ve oturum bağlantısı satırları.
-  - Durum: ilk iki commit'te (`cf37443`, `24f56b3`) `Co-Authored-By: Claude` satırı var. GitHub bu yüzden Claude'u katkıcı olarak gösteriyor. Bundan sonraki commit'lerde bu satır yok (D-015, CLAUDE.md).
-  - 2026-10-19'a kadarki commit'lerin çoğunda `Claude-Session:` satırı da var. Yeni commit'lerde artık yok (K11).
+- [ ] K10 **Karar** — geçmiş commit'lerdeki Claude ortak yazar satırı.
+  - Oturum bağlantısı satırları (`Claude-Session:`) eski commit'lerden silindi: kullanıcının isteği, 2026-10-19. Geçmiş bir kez yeniden yazıldı ve `main` force-push edildi; bütün commit kimlikleri değişti (eşleme CHANGELOG.md'de).
+  - Kalan: ilk iki commit'te (`b267933`, `363a288`) `Co-Authored-By: Claude` satırı var. GitHub bu yüzden Claude'u katkıcı olarak gösteriyor. Sonraki commit'lerde bu satır yok (D-015, CLAUDE.md).
   - Seçenekler:
     - **A — bırak:** geçmiş değişmez, Claude katkıcı listesinde kalır.
-    - **B — temizle:** commit mesajlarından iki satır türü de silinir ve `main` bir kez force-push edilir. Bütün commit kimlikleri (SHA) değişir; belgelerde geçen kimlikler güncellenir. D-015 force-push'u yasaklıyor, bu yüzden senin açık onayın gerekir.
+    - **B — temizle:** iki satır silinir, `main` bir kez daha force-push edilir. Commit kimlikleri yine değişir; belgelerde geçen kimlikler güncellenir. D-015 force-push'u yasaklıyor, bu yüzden senin açık onayın gerekir.
   - Claude önerisi: **B**. Depo yeni ve başka kopyası yok, risk düşük. GitHub'ın katkıcı listesinin güncellenmesi biraz sürebilir.
   - Onay verirsen bir sonraki mesaide yapılır.
-- [x] K11 **Karar** — commit mesajlarındaki `Claude-Session:` satırı: **kaldırıldı** (kullanıcı, 2026-10-19). Kural CLAUDE.md kural 8'de ve D-015'te. Eski commit'lerdeki satırlar K10'la birlikte temizlenebilir.
+- [x] K11 **Karar** — commit mesajlarındaki `Claude-Session:` satırı: **kaldırıldı** (kullanıcı, 2026-10-19). Kural CLAUDE.md kural 8'de ve D-015'te. Eski commit'lerdeki satırlar da silindi (kullanıcı, 2026-10-19; geçmiş yeniden yazıldı, tek force-push).
 - [ ] K12 **Karar** — modül manifestlerindeki yazar (`author`) adı.
   - Neden: Odoo, Uygulamalar ekranında her modülün yazarını gösterir; müşteri de görür.
   - Varsayım (otonom mesai 1, geri dönüşü kolay): `burak-sisci`, GitHub kullanıcı adın. `tools/check_modules.py` ve `.pylintrc`'de tanımlı; değişirse mevcut manifestler de güncellenir.
