@@ -7,6 +7,48 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: eski commit'lerden oturum bağlantısı satırları silindi (K10) — otonom mesai 2
+
+**Kullanıcının isteği:** "önceki commitlerden claude oturum linklerini sil."
+
+**Yapılan**
+- 21 commit'in 17'sindeki `Claude-Session:` satırı silindi. Satırın önünde kalan boş satır da gitti; mesajların geri kalanı aynı.
+- Yöntem: depo geçici klasöre klonlandı, `git filter-branch --msg-filter` ile yalnız mesajlar yeniden yazıldı. `main` `--force-with-lease` ile bir kez force-push edildi (`ca350bb` → `e4a98f7`).
+- Denetim: son commit'in dosya ağacı yeniden yazmadan önceyle aynı (`e6f9387`), commit sayısı aynı, yazar, işleyen ve tarihler aynı.
+- Yerel depo yeni geçmişe `git reset --soft` ile taşındı. Ağaçlar aynı olduğu için çalışma alanı değişmedi; yarım kalan T2.3 işi korundu.
+- Kalan: ilk iki commit'teki `Co-Authored-By: Claude` satırı. İstek yalnız oturum bağlantılarıydı; bu satırlar K10'da ayrı soru olarak duruyor.
+- Bilinen sınır: GitHub eski commit'leri kimlikleriyle bir süre daha açabilir, eski CI çalıştırmaları eski kimlikleri gösterir. Tamamen silinmeleri için GitHub desteğine başvurmak gerekir.
+
+**Commit kimlikleri (eski → yeni)**
+
+| Eski | Yeni |
+|---|---|
+| `ca350bb` | `e4a98f7` |
+| `2a6b523` | `67a61ba` |
+| `c48b98f` | `1dd6aaf` |
+| `1495616` | `ec14669` |
+| `b4380e5` | `1bac273` |
+| `a49a92c` | `9e90991` |
+| `c2dbc6c` | `9fee384` |
+| `1e2960f` | `6a2fc36` |
+| `c6b11ba` | `6309fd5` |
+| `185e4b4` | `1b94f2a` |
+| `2a3a8ef` | `6df7425` |
+| `b0019a5` | `95f94a8` |
+| `c6d154f` | `6347bda` |
+| `a253ed4` | `3f1d555` |
+| `b4f2ea6` | `05c4fa2` |
+| `d5d0cd6` | `3f2edda` |
+| `a170482` | `a8f6bd2` |
+| `811f913` | `45bda8d` |
+| `409a403` | `f33fe70` |
+| `24f56b3` | `363a288` |
+| `cf37443` | `b267933` |
+
+**Belgeler**
+- Belgelerde geçen eski kimlikler güncellendi: USER_TASKS.md K10 (`cf37443`, `24f56b3`), bu dosyadaki ilk CI çalıştırması notu (`c6b11ba`).
+- DECISIONS.md D-015 (force-push istisnası, eski commit'ler), USER_TASKS.md (K10 yalnız ortak yazar satırına indi; K11 notu).
+
 ### Adım: çevrim içi hizmet modülleri kaldırıldı — IAP ve `mysubscription` (T2.3, sürüyor) — otonom mesai 2
 
 **Kod**
@@ -182,7 +224,7 @@ Kullanıcının isteğiyle T2.2'nin ortasında bitirildi.
 - `.github/workflows/ci.yml`: eşzamanlılık grubu olay türünü de içeriyor (`ci-<dal>-<olay>`). Önceden `main`'de elle başlatılan referans çalıştırması, sonraki bir push ile iptal edilebiliyordu.
 
 **Doğrulama**
-- `main`'deki ilk CI çalıştırması (c6b11ba) yeşil: `checks` 1 dk 17 sn, `tests` 1 dk 48 sn. Upstream, pre-commit ve pip önbellekleri `main`'de kaydedildi.
+- `main`'deki ilk CI çalıştırması (`6309fd5`; geçmiş 2026-10-19'da yeniden yazılmadan önce `c6b11ba`) yeşil: `checks` 1 dk 17 sn, `tests` 1 dk 48 sn. Upstream, pre-commit ve pip önbellekleri `main`'de kaydedildi.
 
 ### Adım: GitHub Actions CI (T1.10) — otonom mesai 1
 

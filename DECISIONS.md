@@ -185,14 +185,14 @@ Son güncelleme: 2026-10-19
   - Claude her görev/adım sonunda kodu ve belgeleri **aynı commit'te** kaydeder ve `origin/main`'e push eder. Bu push kullanıcı tarafından önceden onaylanmıştır.
   - Public depo kuralları:
     - Her push'tan önce gizli bilgi ve müşteri verisi denetimi yapılır.
-    - Force-push yapılmaz, geçmiş yeniden yazılmaz.
+    - Force-push yapılmaz, geçmiş yeniden yazılmaz. İstisna yalnız kullanıcının açık isteğiyle olur; ilk ve tek istisna 2026-10-19'da oturum bağlantısı satırlarının eski commit'lerden silinmesi (K10).
   - **Commit yazarlığı:** GitHub'da tek katkıcı kullanıcıdır.
     - Commit'lerin yazarı kullanıcının git kimliğidir (`burak-sisci`).
     - Claude commit'lere yazar veya ortak yazar olarak eklenmez: `Co-Authored-By` satırı ve Claude'u ya da başka bir yapay zekâyı yazar gösteren hiçbir satır yazılmaz.
     - Commit mesajına Claude oturum bağlantısı (`Claude-Session:`) satırı da yazılmaz (K11, 2026-10-19).
-    - İlk iki commit'te ortak yazar satırı, 2026-10-19'a kadarki commit'lerin çoğunda oturum bağlantısı satırı var. Temizlenmeleri geçmişi yeniden yazmayı ve force-push'u gerektirdiği için kullanıcı kararına bağlı (`USER_TASKS.md` K10).
+    - Eski commit'lerdeki oturum bağlantısı satırları da silindi (kullanıcı isteği, 2026-10-19; geçmiş yeniden yazıldı, commit kimlikleri değişti). İlk iki commit'teki ortak yazar satırı duruyor; temizlenmesi yine force-push gerektirir (`USER_TASKS.md` K10).
   - Diğer dışa dönük işlemler yine kullanıcı onayı ister: depo ayarları (görünürlük, yeniden adlandırma), sürüm yayınlama (release), başka yerde paylaşma.
-- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi; oturum bağlantısı satırı 2026-10-19'da kaldırıldı).
+- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi; oturum bağlantısı satırı 2026-10-19'da kaldırıldı, aynı gün eski commit'lerden de silindi).
 
 ### D-016 · Kendi modüllerimizin lisansı
 - **Durum:** Geçerli
