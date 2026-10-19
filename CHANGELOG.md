@@ -7,6 +7,28 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: web istemcisi `/app` yolunda (T2.4) — otonom mesai 2
+
+**Kod (`ov_brand`)**
+- Yol `/app` (`tools.WEB_PATH`; USER_TASKS K16 varsayımı). Çekirdeğe dokunmadan, yalnız modülle (D-010).
+- Sunucu:
+  - `Home.web_client` override: `/app` ve `/app/...` web istemcisini sunar; `/odoo` ve `/odoo/...` sorgusuyla birlikte `/app`'e yönlendirilir (303). Sunucunun `/odoo` ile ürettiği bağlantılar (e-posta, bildirim, giriş sonrası) böylece çalışır.
+  - Giriş: sonrası `/app`'e gider; `redirect=/app/...` adresli giriş sayfasının bağlantı önizlemesi eylemin adını gösterir (upstream bunu yalnız `/odoo` için yapıyordu).
+  - Tarayıcıdan kurulan uygulama: kapsam, başlangıç adresi, kısayollar ve paylaşım hedefi `/app`. Service worker `/app` kapsamında; betikteki yollar (`web` ve `mail` parçaları) `/app`. Çevrimdışı sayfa iki yolda da.
+- JS (`static/src/webclient/web_path.js`):
+  - `router.stateToUrl` ve `router.urlToState` yamalı; yönlendiricinin iç durumu `/odoo` ile çalışmaya devam ediyor. Yönlendirici modül yüklenirken adresi okuduğu için yamadan sonra yeniden başlatılıyor.
+  - Upstream'in iç bağlantı dinleyicisi yalnız `/odoo` sayfalarında çalışıyor; `/app` için aynısı eklendi, `/odoo` bağlantıları da sayfa yenilenmeden açılıyor.
+  - Service worker kaydı `/app` kapsamıyla; menü ve ilişki alanı bağlantıları `/app` gösteriyor.
+- `ov_brand_html_editor`: düzenleyiciye yapıştırılan `/app/...` kayıt bağlantılarının önizlemesi (upstream yalnız `/odoo`'yu tanıyordu).
+- Testler: yeni `test_web_path.py` (yönlendirme, giriş, önizleme, manifest, service worker; tarayıcıda yönlendirici, menü bağlantıları ve sayfa yenilemeden iç bağlantı). Eski testler `/app` ile. `ov_brand` 27, `ov_brand_html_editor` 3 test; dört modül birlikte 35 test, hepsi geçti.
+- Windows'ta bir tam çalıştırmada `test_settings_documentation_links` "Session Expired" ile düştü, tekrarında geçti.
+  - Neden upstream'in oturum deposu: service worker kurulurken ana sayfayı ister, o istek oturum dosyasını yeniden yazar. Windows'ta değiştirilmekte olan dosyayı aynı anda okuyan istek `PermissionError` alır ve boş oturumla devam eder.
+  - Ölçüm: 3 saniyede 17 044 okumanın 1 617'si hata verdi. Linux'ta dosya değişimi atomik; CI etkilenmez. CLAUDE.md'ye not eklendi.
+- Bilinen sınırlar (envanter §5): upstream'in diğer JS bağlantıları `/odoo` ile; fareyle üzerine gelince görünebilir, tıklanınca yönlendirme ya da yeni dinleyiciyle `/app`'e varır. Veritabanı yükleme hatasındaki `?db=` temizliği yalnız `/odoo` için. Web sitesi düzenleyicisi `/odoo` varsayıyor (MVP dışı). Upstream'in `/odoo` bekleyen testleri `ov_brand` kuruluyken düşer; kendi testlerimiz etkilenmiyor.
+
+**Belgeler**
+- PLAN.md (T2.4 `[x]`, sonuç; F2 4/7; şu anki görev T2.5), USER_TASKS.md (K16), `docs/research/brand-inventory.md` §5 ve §11, README.md, CLAUDE.md (Windows test notu), state.json.
+
 ### Adım: dokümantasyon bağlantıları, metin düzenleyici ve uygulama mağazası (T2.3 bitti) — otonom mesai 2
 
 **Kod**

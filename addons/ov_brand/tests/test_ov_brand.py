@@ -7,6 +7,7 @@ from odoo.addons.ov_brand.tools import (
     BRAND_NAME_PARAM,
     DEFAULT_BRAND_NAME,
     SUPPORT_URL_PARAM,
+    WEB_PATH,
     get_brand_name,
 )
 
@@ -106,13 +107,13 @@ class TestOvBrandPages(HttpCase):
         self.assertEqual([icon['src'] for icon in manifest['icons']], ['/ov_brand/static/img/icon_192.png'])
 
     def test_offline_page(self):
-        response = self.url_open('/odoo/offline')
+        response = self.url_open(f'{WEB_PATH}/offline')
         self.assertEqual(response.status_code, 200)
         self.assertNoOdooText(html.fromstring(response.content))
 
     def test_webclient_page(self):
         self.authenticate('admin', 'admin')
-        response = self.url_open('/odoo')
+        response = self.url_open(WEB_PATH)
         self.assertEqual(response.status_code, 200)
         tree = html.fromstring(response.content)
         self.assertEqual(tree.findtext('.//title'), DEFAULT_BRAND_NAME)
@@ -123,7 +124,7 @@ class TestOvBrandPages(HttpCase):
         # Fails on any JS error, e.g. a broken patch or template extension.
         # A fixed action: with mail installed, the default app (Discuss) can put
         # a conversation name in the title; "OdooBot" was seen (T2.5).
-        self.browser_js('/odoo/action-base.action_res_users', """
+        self.browser_js(f'{WEB_PATH}/action-base.action_res_users', """
             const { session } = odoo.loader.modules.get("@web/session");
             const { registry } = odoo.loader.modules.get("@web/core/registry");
             if (session.ov_brand_name !== "%s") {
@@ -140,7 +141,7 @@ class TestOvBrandPages(HttpCase):
 
     def test_settings_documentation_links(self):
         # LDAP authentication has a "?" link to the publisher's documentation
-        self.browser_js('/odoo/settings', """
+        self.browser_js(f'{WEB_PATH}/settings', """
             if (!document.querySelector("[name='module_auth_ldap']")) {
                 throw new Error("the LDAP setting is missing");
             }

@@ -51,3 +51,14 @@ class TestOvBrandHtmlEditor(HttpCase):
                 }
             });
         """, login='admin')
+
+    def test_link_preview_internal(self):
+        # A link to a record at the web client path of ov_brand (T2.4)
+        partner = self.env['res.partner'].create({'name': 'Preview Partner'})
+        # Not recognized, it would be fetched as an external page
+        with patch(f'{CONTROLLER}.link_preview.get_link_preview_from_url', return_value=False) as fetch:
+            result = self.make_jsonrpc_request('/html_editor/link_preview_internal', {
+                'preview_url': f'{self.base_url()}/app/res.partner/{partner.id}',
+            })
+        self.assertEqual(result.get('display_name'), 'Preview Partner')
+        fetch.assert_not_called()

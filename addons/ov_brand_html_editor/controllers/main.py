@@ -3,6 +3,7 @@ from odoo.exceptions import UserError
 from odoo.http import request
 
 from odoo.addons.html_editor.controllers.main import HTML_Editor
+from odoo.addons.ov_brand.tools import upstream_path
 
 
 class HtmlEditor(HTML_Editor):
@@ -29,3 +30,8 @@ class HtmlEditor(HTML_Editor):
     def media_library_search(self, **params):
         # Same answer as an empty search, the media dialog shows no illustrations
         return {'media': [], 'results': 0}
+
+    @http.route()
+    def link_preview_metadata_internal(self, preview_url):
+        # Links to records are recognized by the upstream path of the web client (T2.4)
+        return super().link_preview_metadata_internal(upstream_path(preview_url))
