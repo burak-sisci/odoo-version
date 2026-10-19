@@ -60,7 +60,7 @@ Kapsam:
 | Kullanıcı menüsü: Aboneliğim | "My Subscription" | `mysubscription` (kendiliğinden kurulur) | T2.3 (§4.3) |
 | Ayarlar → "hakkında" | "Odoo 20.0 (Community Edition)", "Copyright © 2004 Odoo S.A. GNU LGPL Licensed" | `settings_form_view/widgets/res_config_edition.xml` | Owl şablon kalıtımı. Başlık marka adı ve sürümü olur. **Telif satırı kalır** (CLAUDE.md kural 2); yanına kendi AGPL notumuz eklenir |
 | Ayarlar → PWA adı alanı | yer tutucu `Odoo`, açıklamada "Odoo" | `base_setup` `res_config_settings_view_form` | Görünüm kalıtımı |
-| OdooBot | ad "OdooBot", `odoobot.webp` avatarı | `mail/data/res_partner_data.xml` (`base.partner_root`); `mail_bot` | Veri kaydıyla ad ve avatar; bot mesajları `mail_bot` metinlerinde. `mail`'e bağlı olduğu için T2.5'te (`ov_brand_mail`) |
+| OdooBot | ad "OdooBot", `odoobot.webp` avatarı | `mail/data/res_partner_data.xml` (`base.partner_root`); `mail_bot` | Veri kaydıyla ad ve avatar; bot mesajları `mail_bot` metinlerinde. `mail`'e bağlı olduğu için T2.5'te (`ov_brand_mail`). Sekme başlığında da görülüyor: `mail` kuruluyken açılıştaki Discuss uygulaması başlığa "OdooBot" yazabiliyor (T2.3 testlerinde, 2026-10-19) |
 | Veritabanı yöneticisi | başlık `Odoo`, `logo2.png`, "Odoo online services", odoo.com gizlilik bağlantısı | `web/static/src/public/database_manager.qweb.html` | Üretimde `list_db = False` ile kapalı (müşteri görmez). Veritabanı olmadan çalışan rotalar yalnız sunucu genelinde yüklü modülleri (`server_wide_modules`) görür; `ov_brand` buraya ulaşamaz |
 
 Notlar:
@@ -94,6 +94,7 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 | IoT | `download.odoo.com`, IoT vekili | `iot_drivers` | hayır | Kutu güncellemesi | MVP dışı |
 
 - Sonuç (T2.3, 2026-10-19): IAP hesap ve kredi, aday zenginleştirme, aday üretme, iş ortağı otomatik tamamlama, SMS, Snailmail ve Aboneliğim satırları için tablodaki "gizle" önerileri yerine modüller kaldırıldı (`ov_brand`, USER_TASKS K15 varsayımı). Kurulumun sonunda kaldırılırlar, arayüzden kurulamazlar, Ayarlar'daki kutuları gizli. Diğer satırlar T2.3'te sürüyor.
+- Sonuç (T2.3, 2026-10-19): Enterprise uygulama kartları ve ayarlardaki Enterprise özellikleri satırları OCA `remove_odoo_enterprise` ile kapandı (`ov_brand`'in bağımlılığı). OCA'nın 20.0 sürümü `to_buy` uygulamalarını aramadan da çıkarıyor; ayrı filtre gerekmedi.
 
 ### 4.1. Yayıncı garantisi (KVKK)
 
@@ -175,14 +176,14 @@ Yöntem: dosyanın kendisi değiştirilmez (upstream'e dokunulmaz). Görseli kul
 
 | Modül | Dal | Lisans | Bağımlılık | Ne yapar | Değerlendirme |
 |---|---|---|---|---|---|
-| `remove_odoo_enterprise` | 20.0 (var) | AGPL-3 | `base_setup` | Ayar ekranlarından yalnız Enterprise'da olan özellikleri kaldırır | T2.3'te kullanılır; `vendor/oca/server-brand` alt modülü olarak |
+| `remove_odoo_enterprise` | 20.0 (var) | AGPL-3 | `base_setup` | Ayar ekranlarından yalnız Enterprise'da olan özellikleri kaldırır; 20.0'da satın alınacak uygulamaları ve ödeme sağlayıcılarını aramadan da çıkarır | Kullanılıyor (T2.3): `vendor/oca/server-brand`, `ov_brand`'in bağımlılığı |
 | `disable_odoo_online` | 19.0; 20.0 port PR'ı açık (#124) | AGPL-3 | `mail` | Yayıncı garantisi ve odoo.com bağlantılarını kapatır | T2.3'te PR'ın durumu yeniden bakılır. Birleşmemişse kendi küçük override'ımız (§4.1) yeterli |
 | `mail_debranding` | 19.0 | AGPL-3 | `mail` | E-posta "Powered by" | T2.5'te değerlendirilir; 20.0 portu gerekir |
 | `portal_debranding` | 19.0 | LGPL-3 | `portal` | Portal "Powered by" | T2.5 |
 | `sale_portal_debranding` | 19.0 | AGPL-3 | `sale` | Satış portalı | T2.5 |
 | `website_debranding` | 19.0 | LGPL-3 | `website` | Web sitesi | MVP dışı |
 
-Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uygulamalar ekranı). Telif bilgisi olduğu için değiştirilmez; Uygulamalar menüsü son kullanıcıdan T7.3'te gizlenir.
+Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uygulamalar ekranı). Telif bilgisi olduğu için değiştirilmez; Uygulamalar menüsü son kullanıcıdan T7.3'te gizlenir. `remove_odoo_enterprise`'ın adında "Odoo" da geçiyor ("Remove Odoo Enterprise"); T2.6'nın izin listesinde ele alınır.
 
 ## 10. Değiştirilmeyenler (T2.6 izin listesi önerisi)
 
@@ -194,7 +195,7 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 ## 11. Görevlere etkisi
 
 - **T2.2 `ov_brand` (tamam):** §3, "Diğer istemci mesajları" satırı hariç. Marka adı tek ayardan okunur (F2 kabul ölçütü): `ov_brand.name` sistem parametresi, varsayılan Nexus. `web.web_app_name` eşitlenmedi: Genel Ayarlar'daki uygulama adı yalnız tarayıcıdan kurulan uygulamanın adıdır, boşsa marka adı kullanılır.
-- **T2.3 (sürüyor):** §4. Yayıncı garantisi, IAP ve `mysubscription` tamam; kalanlar Enterprise reklamları (`remove_odoo_enterprise` + Uygulamalar filtresi), dokümantasyon bağlantıları.
+- **T2.3 (sürüyor):** §4. Yayıncı garantisi, IAP, `mysubscription` ve Enterprise reklamları tamam; kalanlar dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası.
 - **T2.4:** §5.
 - **T2.5:** §6 ve PDF motoru seçimi (PLAN'daki not).
 - **T2.6:** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) ve §10'daki izin listesi. §3'ten kalan üç JS metni.

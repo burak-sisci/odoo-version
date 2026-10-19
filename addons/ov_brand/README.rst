@@ -17,6 +17,8 @@ Neleri değiştirir
   lisans satırı korunur, yanına ürünün GNU AGPL lisans bağlantısı eklenir.
 * Kullanıcı menüsündeki "Yardım" öğesi destek adresini açar; adres girilmemişse
   öğe gizlenir.
+* Ücretli sürümün uygulamaları Uygulamalar ekranında listelenmez, Ayarlar'daki
+  ücretli sürüm özellikleri gizlenir (OCA'nın bu iş için yazdığı modülle).
 
 Ayarlar
 =======

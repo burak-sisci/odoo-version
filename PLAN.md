@@ -290,7 +290,8 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Ara durum:
     - yayıncı garantisi kapandı (`ov_brand_mail`: rapor hiç gönderilmez, zamanlanmış iş pasif);
     - `iap` ve `mysubscription` bağlı modülleriyle kaldırıldı (`ov_brand`): her kurulum ve güncellemenin sonunda kaldırılır, arayüzden kurulamaz, ayar kutuları gizli. `tools/run_tests.py` bu yüzden `ov_brand`'i önce testsiz kurar;
-    - sıradakiler: Enterprise reklamları, dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası.
+    - Enterprise reklamları kalktı: OCA `remove_odoo_enterprise` (20.0, `vendor/oca/server-brand`) `ov_brand`'in bağımlılığı. Ayarlar'daki Enterprise özellikleri gizli; Uygulamalar listesindeki satın alınacak uygulamalar (`to_buy`) ve ödeme sağlayıcıları aramada hiç dönmüyor;
+    - sıradakiler: dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası.
 - [ ] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).

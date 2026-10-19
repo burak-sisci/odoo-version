@@ -7,6 +7,21 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: Enterprise reklamları kaldırıldı — OCA `remove_odoo_enterprise` (T2.3, sürüyor) — otonom mesai 2
+
+**Kod**
+- OCA `server-brand` deposu 20.0 dalıyla `vendor/oca/server-brand` altına sığ git submodule olarak eklendi (commit `9637fe38`, 2026-10-07). 20.0 dalında yalnız `remove_odoo_enterprise` var.
+- `remove_odoo_enterprise` (AGPL-3; `base_setup`) `ov_brand`'in bağımlılığı oldu, marka modülüyle her zaman kurulu.
+  - Ayarlar ekranında yalnız Enterprise'da olan özellikler (`upgrade_boolean`) ve boşalan bloklar gizleniyor.
+  - Uygulamalar listesindeki satın alınacak uygulamalar (`to_buy`) ve ödeme sağlayıcıları aramada dönmüyor. Envanter §4'teki "ayrı `to_buy` filtresi" önerisine gerek kalmadı: OCA'nın 20.0 sürümü bunu da yapıyor.
+- Yeni test: satın alınacak uygulamalar veritabanında duruyor ama listelenmiyor (`ov_brand` 17 test). `README.rst`.
+- `tools/run_tests.py`: `ov_brand` önce kurulunca onunla gelen hedef modüller (ör. `remove_odoo_enterprise`) ikinci çalıştırmada güncellenir (`-i` ve `-u` birlikte), testleri de çalışır. Önceki sürümde bunların testleri atlanıyordu. Birlikte çalıştırma: 22/22 (`ov_brand` 17, `ov_brand_mail` 2, `remove_odoo_enterprise` 3).
+- `ov_brand`'in tarayıcı testi sabit bir eylemi açıyor (Kullanıcılar). `mail` kuruluyken açılış uygulaması Discuss sekme başlığına "OdooBot" yazabiliyor; yerelde bir kez testi düşürdü. Gerçek bir marka izi: envanter §3'teki OdooBot satırına eklendi, T2.5'te.
+- Not: modülün Uygulamalar ekranındaki adı "Remove Odoo Enterprise". Telif ve yazar bilgisi olduğu için değiştirilmedi; Uygulamalar menüsü son kullanıcıdan T7.3'te gizlenir, T2.6'nın izin listesinde ele alınır.
+
+**Belgeler**
+- docs/COMPLIANCE.md §5 (lisans envanteri), state.json (`modules.vendored`, ortam), ARCHITECTURE.md (durum notu, depo yerleşimi), CLAUDE.md (ortam), PLAN.md (T2.3 ara durum), `docs/research/brand-inventory.md` (§3 OdooBot, §4 sonuç, §9).
+
 ### Adım: eski commit'lerden oturum bağlantısı satırları silindi (K10) — otonom mesai 2
 
 **Kullanıcının isteği:** "önceki commitlerden claude oturum linklerini sil."
