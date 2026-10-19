@@ -20,6 +20,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 5. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
 6. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
 7. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
+8. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -75,6 +76,13 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — logo tasarlanana kadar böyle kalsın · **B** — kendi renk ya da logonu ver.
   - Claude önerisi: **A**; logo tanıtım materyaliyle birlikte ele alınır (T8.11).
   - Ne zaman: dış demodan önce.
+- [ ] K15 **Karar** — yayıncının çevrim içi hizmet modülleri (T2.3).
+  - Neden: `iap` (uygulama içi satın alma kredileri) ve `mysubscription` ("Aboneliğim") her yeni veritabanına kendiliğinden kuruluyor ve odoo.com'a bağlanıyor. SMS, iş ortağı otomatik tamamlama, aday zenginleştirme ve üretme, posta ile gönderim bunlara bağlı.
+  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. `ov_brand` bu modülleri bağlı modülleriyle kaldırır; arayüzden kurulamazlar, Ayarlar'daki kutuları gizli.
+  - Seçenekler: **A** — kaldırılsın · **B** — kurulu kalsın, yalnız arayüzde gizlensin; veri gönderen çağrılar tek tek kapatılsın.
+  - Claude önerisi: **A**. Gizlemede upstream'in her yeni sürümünde yeni bir çağrıyı kaçırma riski var; kaldırınca kod hiç yüklenmiyor (KVKK, T2.7).
+  - Sonucu: upstream `sms` modülü `iap`'ye bağlı. Yerli bir SMS sağlayıcısı ya bu bağımlılık olmadan yazılır ya da bu karar yeniden açılır.
+  - Ne zaman: SMS ya da şirket bilgisi otomatik doldurma ihtiyacı doğduğunda (yerli kaynak T3.3).
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

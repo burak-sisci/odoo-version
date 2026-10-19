@@ -7,6 +7,26 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: çevrim içi hizmet modülleri kaldırıldı — IAP ve `mysubscription` (T2.3, sürüyor) — otonom mesai 2
+
+**Kod**
+- `ov_brand` yayıncının çevrim içi hizmet modüllerini (`iap`, `mysubscription`) onlara bağlı modüllerle birlikte kaldırıyor.
+  - Neden kaldırma: ikisi de `auto_install` (`web` + `base_setup`, `base` + `web`); her yeni veritabanına kuruluyorlar, modül bağımlılığıyla engellenemiyorlar. MVP modüllerinden hiçbiri bunlara zorunlu bağımlı değil.
+  - Yöntem: her kurulum ve güncellemenin sonunda (`ir.model.data._process_end`; Odoo'nun kaldırılacak modülleri kaldırmadan hemen önceki adımı) kurulu olanlar kaldırılmak üzere işaretlenir. Komut satırından kurulanlar da böylece geri alınır. `post_init_hook` kullanılmadı: aynı çalıştırmada kurulan modüller yükleme sonunda yeniden "kurulu" işaretleniyor.
+  - IAP hesap kayıtları kaldırmadan önce silinir. Yoksa upstream'in kaldırma adımı, hizmet kayıtlarını silemediğini (kısıtlı yabancı anahtar) ERROR olarak günlüğe yazıyor; tablolar yine de siliniyor.
+  - Arayüzden kurulum (`button_install`) bu modülleri getirecekse hata verir.
+  - Ayarlar ekranında bu modülleri kuracak kutular (`module_sms`, `module_partner_autocomplete`, CRM'deki aday zenginleştirme ve üretme vb.) görünümden çıkarılır; boşalan blok da kalkar.
+  - MVP deneme veritabanında (`ov_brand_scan`) kaldırılan 12 modül: `iap`, `iap_mail`, `iap_crm`, `sms`, `calendar_sms`, `crm_sms`, `sale_sms`, `stock_sms`, `partner_autocomplete`, `crm_iap_enrich`, `crm_iap_mine`, `mysubscription`. Kurulu modül sayısı 87.
+  - 4 yeni test (`ov_brand` 16/16, `ov_brand_mail` 2/2). `i18n/tr.po`, `README.rst`.
+- `tools/run_tests.py`: hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur, testler ikinci çalıştırmada. Neden: modül kaldıran bir çalıştırmada Odoo kayıt defterini yeniden yükler ve `post_install` testlerini hiç başlatmaz.
+- Yerel `ov_demo` veritabanına `ov_brand` kuruldu (`ov_brand_mail` kendiliğinden geldi); CLAUDE.md'deki demo komutu güncellendi.
+
+**Karar**
+- USER_TASKS K15 (otonom varsayım, geri dönüşü kolay): gizlemek yerine kaldırmak. PLAN T2.3'teki "kapatılır veya gizlenir" ve `mysubscription` için "menü öğesi gizlenir" önerileri bu varsayımla değişti. Envanter §4.3'teki öneri (JS ile menü öğesini kaldırmak) da uygulanmadı.
+
+**Belgeler**
+- PLAN.md (T2.3 maddeleri ve ara durum), USER_TASKS.md (K15), docs/COMPLIANCE.md (KVKK), `docs/research/brand-inventory.md` (Sonuç, §4, §4.3), ARCHITECTURE.md (demo veritabanı, test aracı), CLAUDE.md (demo komutu, test aracı), README.md, state.json.
+
 ### Adım: yayıncı garantisi kapatıldı — `ov_brand_mail` (T2.3, sürüyor) — otonom mesai 2
 
 **Kod**

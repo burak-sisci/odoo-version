@@ -33,8 +33,16 @@ msgid "Client Error"
 msgstr "İstemci Hatası"
 
 #. module: ov_brand
+#: model:ir.model,name:ov_brand.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: ov_brand
 #: model:ir.model.fields,field_description:ov_brand.field_ir_http__display_name
+#: model:ir.model.fields,field_description:ov_brand.field_ir_model_data__display_name
+#: model:ir.model.fields,field_description:ov_brand.field_ir_module_module__display_name
 #: model:ir.model.fields,field_description:ov_brand.field_ir_qweb__display_name
+#: model:ir.model.fields,field_description:ov_brand.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "İsim Göster"
 
@@ -57,7 +65,10 @@ msgstr "HTTP Yönlendirme"
 
 #. module: ov_brand
 #: model:ir.model.fields,field_description:ov_brand.field_ir_http__id
+#: model:ir.model.fields,field_description:ov_brand.field_ir_model_data__id
+#: model:ir.model.fields,field_description:ov_brand.field_ir_module_module__id
 #: model:ir.model.fields,field_description:ov_brand.field_ir_qweb__id
+#: model:ir.model.fields,field_description:ov_brand.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
 
@@ -65,6 +76,16 @@ msgstr "ID"
 #: model_terms:ir.ui.view,arch_db:ov_brand.webclient_offline
 msgid "Logo"
 msgstr "Logo"
+
+#. module: ov_brand
+#: model:ir.model,name:ov_brand.model_ir_model_data
+msgid "Model Data"
+msgstr "Model Verileri"
+
+#. module: ov_brand
+#: model:ir.model,name:ov_brand.model_ir_module_module
+msgid "Module"
+msgstr "Modül"
 
 #. module: ov_brand
 #. odoo-javascript
@@ -94,6 +115,16 @@ msgstr "Sunucu Hatası"
 #: code:addons/ov_brand/static/src/public/error_notifications.js:0
 msgid "Session Expired"
 msgstr "Oturumun Süresi Doldu"
+
+#. module: ov_brand
+#. odoo-python
+#: code:addons/ov_brand/models/ir_module_module.py:0
+msgid ""
+"These modules need the publisher's online services, which this product does "
+"not use: %s"
+msgstr ""
+"Bu modüller yayıncının çevrim içi hizmetlerine ihtiyaç duyuyor; bu ürün bu "
+"hizmetleri kullanmıyor: %s"
 
 #. module: ov_brand
 #: model_terms:ir.ui.view,arch_db:ov_brand.res_config_settings_view_form

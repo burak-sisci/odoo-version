@@ -177,8 +177,9 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
 - **Yerel Odoo (T1.6, çalışıyor):** depo kökündeki `odoo.conf` (git'e girmez) `deploy/odoo.conf.example`'dan `tools/odoo_conf.py` ile üretilir.
   - Addons yolu glob kalıplarıyla yazılır (`vendor/oca/*`, `ports/oca/*`, `addon[s]`); henüz olmayan klasörler uyarısız atlanır.
   - Veri klasörü `OV_HOME/odoo-data`. Tek süreç (`workers = 0`), yalnız `127.0.0.1`.
-  - Demo veritabanı `ov_demo` (Türkçe, TR, `account` + `l10n_tr`).
+  - Demo veritabanı `ov_demo` (Türkçe, TR, `ov_brand` + `account` + `l10n_tr`).
 - **Yerel testler (T1.8):** `tools/run_tests.py` her çalıştırmada temiz test veritabanı açar (demo yok), ayrı HTTP portu (8079) kullanır. Windows'a özgü filestore temizliği hatalarını ayrı sayar; referans sonuç Linux CI'dır.
+  - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur (T2.3). Kurulumu çevrim içi hizmet modüllerini kaldırıyor; modül kaldıran bir çalıştırmada Odoo `post_install` testlerini başlatmaz.
 - **Lint ve commit öncesi denetimler (T1.9):** `.pre-commit-config.yaml` her commit'te çalışır; CI'da `pre-commit run --all-files` (T1.10).
   - `ruff.toml`: upstream `ruff.toml`'u genişletir; `upstream/`, `vendor/`, `ports/` hariç.
   - `.pylintrc`: pylint-odoo'nun Odoo denetimleri (yalnız `addons/`): sürüm 20.0, lisans AGPL-3/LGPL-3, zorunlu yazar, SQL enjeksiyonu, yöntem adları.
