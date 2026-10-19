@@ -26,8 +26,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - CI çalışıyor: her push'ta belge denetimi, lint, gizli bilgi taraması ve modül testleri (GitHub Actions, T1.10).
 - OCA düzeni hazır: resmî 20.0 depoları `vendor/oca/`, bizim 20.0 portlarımız `ports/oca/` (`tools/port_oca.py`, T1.11). İlk port: `report_xlsx`.
 - Kullanıcıya görünen Odoo izlerinin envanteri çıkarıldı (`docs/research/brand-inventory.md`, T2.1).
-- Marka modülleri: `ov_brand` ürün adını (Nexus), simgeleri, giriş ekranını ve hata pencerelerini değiştiriyor (T2.2). `ov_brand_mail` yayıncıya giden haftalık veritabanı raporunu kapatıyor; `ov_brand` yayıncının çevrim içi hizmet modüllerini (IAP, Aboneliğim), Enterprise reklamlarını, dokümantasyon bağlantılarını ve uygulama mağazasını kaldırıyor; `ov_brand_html_editor` metin düzenleyicinin yayıncı hizmetlerini kapatıyor (T2.3). Web istemcisi `/app` adresinde (T2.4).
-- Sıradaki görev: e-posta, rapor ve portal altbilgileri (T2.5).
+- Marka modülleri: `ov_brand` ürün adını (Nexus), simgeleri, giriş ekranını ve hata pencerelerini değiştiriyor (T2.2). `ov_brand_mail` yayıncıya giden haftalık veritabanı raporunu kapatıyor; `ov_brand` yayıncının çevrim içi hizmet modüllerini (IAP, Aboneliğim), Enterprise reklamlarını, dokümantasyon bağlantılarını ve uygulama mağazasını kaldırıyor; `ov_brand_html_editor` metin düzenleyicinin yayıncı hizmetlerini kapatıyor (T2.3). Web istemcisi `/app` adresinde (T2.4). E-posta, portal, özet e-postası, fatura ve satın alma portalındaki yayıncı izleri, PDF başlığı ve üst verisi kaldırıldı; bot ürünün adını taşıyor (T2.5).
+- Sıradaki görev: otomatik marka sızıntısı testi (T2.6).
 - Açık karar yok.
 
 ## Belgeler

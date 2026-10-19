@@ -1,0 +1,51 @@
+# Turkish translation of the ov_brand_digest module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_brand_digest 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: ov_brand_digest
+#: model_terms:ir.ui.view,arch_db:ov_brand_digest.digest_mail_main
+msgid "<span style=\"color: #878d97;\">Unsubscribe</span>"
+msgstr "<span style=\"color: #878d97;\">Abonelikten çık</span>"
+
+#. module: ov_brand_digest
+#: model:ir.model,name:ov_brand_digest.model_digest_digest
+msgid "Digest"
+msgstr "Özet"
+
+#. module: ov_brand_digest
+#: model:ir.module.module,shortdesc:base.module_ov_brand_digest
+msgid "Digest Branding"
+msgstr "Özet E-postası Markası"
+
+#. module: ov_brand_digest
+#: model:ir.model.fields,field_description:ov_brand_digest.field_digest_digest__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: ov_brand_digest
+#: model:ir.model.fields,field_description:ov_brand_digest.field_digest_digest__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ov_brand_digest
+#: model:ir.module.module,summary:base.module_ov_brand_digest
+msgid ""
+"Removes the publisher's name, tips and app banner from the digest e-mails"
+msgstr ""
+"Özet e-postalarından yayıncının adını, ipuçlarını ve uygulama tanıtımını "
+"kaldırır"
+
+#. module: ov_brand_digest
+#: model:digest.digest,name:digest.digest_digest_default
+msgid "Your Periodic Digest"
+msgstr "Periyodik Özetiniz"

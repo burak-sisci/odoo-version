@@ -11,6 +11,7 @@ Neleri değiştirir
 * Web istemcisinin adresi ``/app``. Altyapının eski adresleri, e-postalardaki
   bağlantılar da dahil, oraya yönlendirilir.
 * Tarayıcı sekmesinin başlığı ve simgesi.
+* PDF belgelerinin başlığı; sunucunun yazdığı PDF dosyalarında üretici adı.
 * Giriş ekranının altbilgisi ve paylaşılan bağlantıların önizlemesi.
 * Tarayıcıdan kurulan uygulamanın adı, rengi ve simgeleri; çevrimdışı sayfası.
 * Gezinme çubuğunun ve ana düğmelerin rengi.

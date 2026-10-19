@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.5 — E-posta, rapor, portal ve web sitesi altbilgileri
+**Şu anki görev:** T2.6 — Otomatik marka sızıntısı testi
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 4/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 5/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 23/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 24/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -304,14 +304,21 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - JS yönlendiricide yalnız URL dönüşümleri yamalı (`router.stateToUrl`/`urlToState`), iç durum `/odoo` ile çalışmaya devam eder. `/odoo` bağlantılarına tıklamak da sayfayı yenilemeden açılır;
     - giriş sonrası yönlendirme, giriş sayfasının bağlantı önizlemesi, tarayıcıdan kurulan uygulamanın kapsamı ve kısayolları, service worker ve çevrimdışı sayfa `/app`'te. Menü ve ilişki alanı bağlantıları da `/app` gösterir;
     - sınır: upstream'in diğer JS bağlantıları ve sunucunun ürettiği adresler `/odoo` ile kalır, yönlendirmeyle `/app`'e varır; fareyle üzerine gelince `/odoo` görünebilir. Web sitesi modülünün düzenleyicisi `/odoo` varsayıyor (MVP dışı). Envanter §5.
-- [ ] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
+- [x] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
   - "Powered by" ifadeleri, e-posta şablonları, PDF rapor düzenleri (`ov_brand_mail`, `ov_brand_website`).
   - Envanter §6: fatura QR kodunun ortasındaki Odoo logosu, PDF üst verisi (`Creator/Producer`), satın alma portalındaki tanıtım bölümü, özet e-postasının odoo.com'dan yüklenen görseli.
   - OdooBot adı ve avatarı (`base.partner_root`, `mail`; T2.2'den taşındı).
   - PDF motoru seçimi (T1.6 bulgusu): 20.0'da motor eklentili. `base_report_wkhtmltox` kendiliğinden kurulur, ama wkhtmltopdf deposu 2022'den beri arşivde. `base_report_paper_muncher` Odoo'nun yeni motoru (LGPL-3, etkin geliştiriliyor); yalnız Linux ikili dosyaları var. Yerelde ikisi de kurulu değil; PDF denemeleri Linux'ta (CI). Seçim önerisi bu görevde yazılır.
+  - Sonuç: OCA `*_debranding` modülleri yerine kendi şablon kalıtımlarımız (envanter §9). "Powered by" satırları kaldırıldı, yerine ürün adı yazılmadı (K17 varsayımı):
+    - `ov_brand_mail`: bildirim e-postalarında "Powered by" yok, takibi bırakma bağlantısı kalır; e-postalara gömülü yayıncı logosu (ör. e-Fatura bildirimi) süzülür; herkese açık sohbet sayfasının başlığı ve simgesi. Bot (`base.partner_root`) marka adını ve simgesini taşır, `ov_brand.name` değişince eşitlenir;
+    - `ov_brand`: PDF başlığı marka adı; sunucunun yazdığı PDF dosyalarında (bölünen, birleştirilen, PDF/A) `Creator/Producer` marka adı;
+    - yeni köprü modüller, ilgili uygulamayla kendiliğinden kurulur: `ov_brand_portal` (belge kenar çubuğu, güvenlik sayfasındaki belge bağlantıları), `ov_brand_digest` (özet e-postasında "Sent by"/"Powered by", mobil uygulama tanıtımı, ipuçları; varsayılan özetin adı), `ov_brand_account` (fatura QR kodundaki logo, şartlar ve koşullar örneğindeki yayıncı adı), `ov_brand_purchase` (tedarikçi portalındaki reklam);
+    - PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor (K18, `docs/research/pdf-engine.md`). Kurulum T3.7 (CI) ve T8.4'te;
+    - web sitesi altbilgileri MVP dışı (`ov_brand_website` sonra). Kalanlar T2.6'da.
 - [ ] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
   - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları şimdilik izin listesinde (K13 varsayımı).
+  - T2.5'ten kalanlar: botun karşılama mesajlarındaki eski ad (`mail_bot`) ve e-posta adresi (`odoobot@example.com`); MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi). Tek kayıtlık PDF'te motorun kendi üst verisi T3.7'de, Factur-X üst verisi T4.x'te.
   - T2.2'den kalanlar (envanter §3): barkod tarayıcının kamera izni mesajı, rapor işçileri uyarısı, güvensiz bağlam konsol uyarısı. Üçü de upstream yöntemlerinin gövdesinde çevrilebilir metin; `patch()` bütün yöntemi kopyalamayı gerektirir. Metin düzeyinde değiştirme yöntemi bu görevde seçilir.
 - [ ] T2.7 Dış istek testi · S · C
   - Odoo test çatısı `requests` ile yapılan dış istekleri zaten engelliyor ve günlüğe yazıyor (envanter §4.2). Kapsamadıkları: kurulum ve zamanlanmış işler, tarayıcı testlerinde sayfanın kendi istekleri.
@@ -350,6 +357,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.
   - Tutarın yazıyla gösterimi (num2words, Odoo'nun mevcut bağımlılığı); VKN, vergi dairesi, MERSİS alanları.
+  - PDF motoru CI'a kurulur (K18 önerisi: wkhtmltopdf, Paper Muncher ikinci motor). Belgeler iki motorla PDF olarak basılıp denetlenir; motorun üst verisi de (`docs/research/pdf-engine.md`).
 - [ ] T3.8 Resmî tatiller ve çalışma takvimi · S · C
   - Sabit tatiller + yıllık dini bayram verisi; iş merkezleri ve izin hesapları için.
 - [ ] T3.9 Türkiye temeli kabul testi · S · C
@@ -506,6 +514,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T8.4 Kurulum aracı (`deploy/`) · L · C
   - Temiz Ubuntu LTS'ye tek komutla kurulum: PostgreSQL, Odoo servisi, Caddy + HTTPS.
   - Docker Compose seçeneği.
+  - PDF motorunun kurulumu (K18). Paper Muncher seçilirse sunucu amd64 olmalı; wkhtmltopdf'in Ubuntu 24.04 paketi yok, jammy paketi denenir.
   - Kurulan Python paketlerinin lisans dökümü COMPLIANCE §5'e yazılır (T1.5'te yalnız geliştirme araçları yazıldı).
   - CI'da kurulum testi.
 - [ ] T8.5 Yedekleme, geri yükleme ve güncelleme · M · C
@@ -679,6 +688,7 @@ Olasılık/Etki: Y = yüksek, O = orta, D = düşük.
 | R15 | e-Belge hatası nedeniyle müşteri zararı | D | Y | GİB doğrulaması; test matrisi (T4.10); sözleşmede sorumluluk sınırı (T8.10) |
 | R16 | Mevzuat yorum hatası (eşikler, tarihler) | O | O | Birincil kaynak önceliği; mali müşavir doğrulaması (T9.4); S4 rutini |
 | R17 | Kalıcı ad "Nexus" tescilli bir markayla çakışır (yaygın sözcük) | O | O | TÜRKPATENT sorgusu ve alan adı kontrolü dış demodan önce (T8.2); gerekirse ayırt edici ek; ad tek ayardan geldiği için teknik maliyet düşük (D-014) |
+| R18 | PDF motoru: wkhtmltopdf bakım almıyor; Paper Muncher erken alfa ve yalnız amd64 | O | O | Motor tek parametreyle değişir; iki motor CI'da (T3.7); geçiş ölçütü K18 (`docs/research/pdf-engine.md`) |
 
 ## 10. Kullanıcıdan beklenenler
 

@@ -26,7 +26,7 @@
     "title": "Marka katmanı",
     "status": "in_progress"
   },
-  "current_task": "T2.5",
+  "current_task": "T2.6",
   "session": {
     "mode": "otonom",
     "number": 2,
@@ -56,12 +56,13 @@
     "T2.1",
     "T2.2",
     "T2.3",
-    "T2.4"
+    "T2.4",
+    "T2.5"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "E-posta, rapor, portal altbilgileri, OdooBot ve PDF motoru önerisi (T2.5)",
-    "Marka sızıntısı testi (T2.6)"
+    "Marka sızıntısı testi (T2.6)",
+    "Dış istek testi (T2.7)"
   ],
   "decisions": [
     {
@@ -210,7 +211,7 @@
     "node": null,
     "docker": null,
     "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + pylint-odoo 10.0.12 + pre-commit 4.7.0 + websocket-client 1.9.2",
-    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (T2.5); geçici DB'ler ov_brand_scan (T2.1/T2.2) ve ov_test_ov_brand (yalnız yerel)",
+    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (öneri K18: üretimde wkhtmltopdf, Paper Muncher ikinci motor; CI'a T3.7'de); geçici DB'ler ov_brand_scan (T2.1/T2.2) ve ov_test_ov_brand (yalnız yerel)",
     "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)",
     "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests; Windows'ta kurulumdan önce test DB'sinin filestore dosyaları yazılabilir yapılır (Odoo ek dosyaları 0o444)",
     "lint": "pre-commit (yerel kanca kurulu): ruff (ruff.toml → upstream kural seti), pylint-odoo (.pylintrc, addons/), tools/check_modules.py, tools/check_docs.py; modül iskeleti tools/new_module.py; tools/check_secrets.py (.env değerleri); pylint-odoo'nun odoo-addons-relative-import denetimi kanca argümanıyla kapalı (ruff TID252 ile çelişiyor; modül içi içe aktarmalar mutlak)",
@@ -230,7 +231,7 @@
           "remove_odoo_enterprise"
         ],
         "task": "T2.2",
-        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16)"
+        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5)"
       },
       {
         "module": "ov_brand_mail",
@@ -243,7 +244,7 @@
         ],
         "auto_install": true,
         "task": "T2.3",
-        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; T2.5'te e-posta altbilgileri de buraya"
+        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; e-postalarda 'Powered by' yok (K17), gömülü yayıncı logosu süzülür, herkese açık sohbet sayfası; bot marka adı ve simgesiyle, ov_brand.name ile eşitlenir (T2.5)"
       },
       {
         "module": "ov_brand_html_editor",
@@ -257,6 +258,59 @@
         "auto_install": true,
         "task": "T2.3",
         "note": "metin düzenleyicide Google Translate çevirisi, çizim kitaplığı ve yapay zekâ metni kapalı; sunucu uçları ağa çıkmadan hata döner; /app kayıt bağlantılarının önizlemesi (T2.4)"
+      },
+      {
+        "module": "ov_brand_portal",
+        "path": "addons/ov_brand_portal",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "ov_brand",
+          "portal",
+          "auth_totp_portal"
+        ],
+        "auto_install": true,
+        "task": "T2.5",
+        "note": "portal belge kenar çubuğunda 'Powered by' ve logo yok; güvenlik sayfasındaki yayıncı belge bağlantıları kaldırıldı"
+      },
+      {
+        "module": "ov_brand_digest",
+        "path": "addons/ov_brand_digest",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "ov_brand",
+          "digest"
+        ],
+        "auto_install": true,
+        "task": "T2.5",
+        "note": "özet e-postasında 'Sent by'/'Powered by', mobil uygulama tanıtımı ve ipuçları yok; varsayılan özetin adı yayıncısız, eski çevirileri kurulumda silinir"
+      },
+      {
+        "module": "ov_brand_account",
+        "path": "addons/ov_brand_account",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "ov_brand",
+          "account"
+        ],
+        "auto_install": true,
+        "task": "T2.5",
+        "note": "fatura QR kodundaki yayıncı logosu ve şartlar ve koşullar örneğindeki yayıncı adı kaldırıldı"
+      },
+      {
+        "module": "ov_brand_purchase",
+        "path": "addons/ov_brand_purchase",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "ov_brand",
+          "purchase"
+        ],
+        "auto_install": true,
+        "task": "T2.5",
+        "note": "tedarikçi portalındaki yayıncı tanıtımı kaldırıldı, UBL indirme adresi kalır"
       }
     ],
     "ported": [
@@ -306,6 +360,7 @@
     "docs/research/hosting.md",
     "docs/research/planning-inputs.md",
     "docs/research/nilvera-port.md",
-    "docs/research/brand-inventory.md"
+    "docs/research/brand-inventory.md",
+    "docs/research/pdf-engine.md"
   ]
 }

@@ -1,0 +1,42 @@
+# Turkish translation of the ov_brand_purchase module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_brand_purchase 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: ov_brand_purchase
+#: model_terms:ir.ui.view,arch_db:ov_brand_purchase.portal_my_purchase_order
+msgid "Copy"
+msgstr "Kopyala"
+
+#. module: ov_brand_purchase
+#: model_terms:ir.ui.view,arch_db:ov_brand_purchase.portal_my_purchase_order
+msgid "Import this document into your software"
+msgstr "Bu belgeyi yazılımınıza aktarın"
+
+#. module: ov_brand_purchase
+#: model:ir.module.module,shortdesc:base.module_ov_brand_purchase
+msgid "Purchase Branding"
+msgstr "Satın Alma Markası"
+
+#. module: ov_brand_purchase
+#: model:ir.module.module,summary:base.module_ov_brand_purchase
+msgid "Removes the publisher's advertisement from the purchase portal"
+msgstr "Satın alma portalından yayıncının reklamını kaldırır"
+
+#. module: ov_brand_purchase
+#: model_terms:ir.ui.view,arch_db:ov_brand_purchase.portal_my_purchase_order
+msgid ""
+"Use the above URL to get the structured data of the purchase order in UBL "
+"format."
+msgstr ""
+"Satın alma siparişinin UBL biçimindeki yapılandırılmış verisini almak için "
+"yukarıdaki adresi kullanın."

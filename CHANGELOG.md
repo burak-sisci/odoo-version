@@ -7,6 +7,38 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-10-19
 
+### Adım: e-posta, rapor ve portal altbilgileri, bot, PDF motoru önerisi (T2.5) — otonom mesai 2
+
+**Kod**
+- Yöntem: OCA `mail_debranding`, `portal_debranding`, `sale_portal_debranding` (19.0) yerine kendi şablon kalıtımlarımız. 20.0 portu gerekirdi; kapsadıkları yüzeyler bizim envanterimizin (§6) bir parçası.
+- "Powered by" satırları kaldırıldı, yerine ürün adı yazılmadı (USER_TASKS K17 varsayımı).
+- `ov_brand`:
+  - PDF başlığı (`web.report_layout`, `web.report_preview_layout`) marka adı.
+  - Sunucunun yazdığı PDF dosyalarında (bölünen, birleştirilen, PDF/A) `Creator` ve `Producer` marka adı. Upstream bunları çekirdek yazıcı sınıfında sabit yazıyor; sınıfın yazma yöntemi modül yüklenirken değiştirildi, ad rapor başına bağlam değişkeninden geliyor.
+- `ov_brand_mail`:
+  - Bildirim e-postalarının iki düzeninde "Powered by" satırı yok; takibi bırakma bağlantısı kalır.
+  - E-postalara gömülü yayıncı logosu (ör. e-Fatura bildirim şablonu) işlenen metinden süzülür.
+  - Herkese açık sohbet sayfasının başlığı ve simgesi.
+  - Bot (`base.partner_root`, upstream'de "OdooBot") marka adını ve simgesini taşır; `ov_brand.name` değişince eşitlenir. Bot sohbetlerde ve kayıt geçmişinde görünür; bu yüzden `mail`'e bağlı modülde.
+- Yeni modüller (AGPL-3, ilgili uygulamayla kendiliğinden kurulur):
+  - `ov_brand_portal`: belge kenar çubuğundaki "Powered by" ve logo; güvenlik sayfasındaki iki belge bağlantısı (iki adımlı doğrulama, API anahtarları).
+  - `ov_brand_digest`: özet e-postasında "Sent by" ve "Powered by" satırları, mobil uygulama tanıtımı (görselleri yayıncının sunucusunda), ipuçları (yayıncının içeriği, görselleri yayıncının sunucusunda). Varsayılan özetin adı "Your Periodic Digest"; kurulumda bu kaydın eski çevirileri silinir, yoksa upstream'in "Odoo Periyodik Özetiniz" çevirisi bizimkinin önüne geçiyor (çeviri yükleyicisi var olan çeviriyi değiştirmiyor).
+  - `ov_brand_account`: fatura PDF'indeki QR kodların ortasındaki yayıncı logosu; şartlar ve koşullar örneğindeki yayıncı adı geçen cümle.
+  - `ov_brand_purchase`: tedarikçi portalındaki "Want to import this document in Odoo?" / "Start on Odoo" tanıtımı; yerinde belgeyi UBL olarak indirme adresi kalır.
+- Testler: `ov_brand` 30, `ov_brand_mail` 6, `ov_brand_portal` 2, `ov_brand_digest` 3, `ov_brand_account` 3, `ov_brand_purchase` 1 test yöntemi. Sekiz marka modülü birlikte 51 test, hepsi geçti.
+- Çeviriler: yeni metinlerin Türkçesi (`i18n/tr.po`).
+- `ov_demo`: `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account` kuruldu; `ov_brand`, `ov_brand_mail` güncellendi. Özetin Türkçe adı "Periyodik Özetiniz", botun adı Nexus.
+
+**Araştırma**
+- PDF motoru (`docs/research/pdf-engine.md`): wkhtmltopdf upstream'in varsayılanı ama arşivde; Paper Muncher etkin ama kendi tanımıyla erken alfa, yalnız amd64 Linux. Öneri üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor (USER_TASKS K18). Yeni risk R18.
+
+**Kararlar (USER_TASKS)**
+- K17 (yeni, varsayım A): "Powered by" satırı yok.
+- K18 (yeni, varsayım A): PDF motoru önerisi.
+
+**Belgeler**
+- PLAN.md (T2.5 `[x]`, sonuç; T2.6, T3.7, T8.4 notları; R18; F2 5/7; şu anki görev T2.6), USER_TASKS.md (K17, K18), ARCHITECTURE.md (Marka satırı, PDF motoru), CLAUDE.md (PDF motoru notları), `docs/MODULE_MATRIX.md`, `docs/research/brand-inventory.md` (Sonuç, §6, §9, §11), yeni `docs/research/pdf-engine.md`, README.md, state.json.
+
 ### Adım: web istemcisi `/app` yolunda (T2.4) — otonom mesai 2
 
 **Kod (`ov_brand`)**

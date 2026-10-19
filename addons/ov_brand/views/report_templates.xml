@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Title of the PDF documents, shown by PDF readers -->
+    <template id="report_layout" inherit_id="web.report_layout">
+        <xpath expr="//title/t" position="attributes">
+            <attribute name="t-out">title or ov_brand_name</attribute>
+        </xpath>
+    </template>
+
+    <template id="report_preview_layout" inherit_id="web.report_preview_layout">
+        <xpath expr="//title/t" position="attributes">
+            <attribute name="t-out">title or ov_brand_name</attribute>
+        </xpath>
+    </template>
+
+</odoo>

@@ -38,6 +38,7 @@ msgid "Config Settings"
 msgstr "Yapılandırma Ayarları"
 
 #. module: ov_brand
+#: model:ir.model.fields,field_description:ov_brand.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:ov_brand.field_ir_http__display_name
 #: model:ir.model.fields,field_description:ov_brand.field_ir_model_data__display_name
 #: model:ir.model.fields,field_description:ov_brand.field_ir_module_module__display_name
@@ -64,6 +65,7 @@ msgid "HTTP Routing"
 msgstr "HTTP Yönlendirme"
 
 #. module: ov_brand
+#: model:ir.model.fields,field_description:ov_brand.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:ov_brand.field_ir_http__id
 #: model:ir.model.fields,field_description:ov_brand.field_ir_model_data__id
 #: model:ir.model.fields,field_description:ov_brand.field_ir_module_module__id
@@ -102,6 +104,11 @@ msgstr "Web istemcisinin ürün adı, logosu ve simgeleri"
 #: model:ir.model,name:ov_brand.model_ir_qweb
 msgid "Qweb"
 msgstr "Qweb"
+
+#. module: ov_brand
+#: model:ir.model,name:ov_brand.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapor işlemi"
 
 #. module: ov_brand
 #. odoo-javascript

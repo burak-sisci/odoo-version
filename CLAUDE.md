@@ -150,7 +150,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - pre-commit kancası yerel depoda kurulu (T1.9): her commit'te ruff, pylint-odoo, modül kuralları ve belge denetimi çalışır.
 - Yerel Odoo (T1.6): `odoo.conf` depo kökünde (git'e girmez), `deploy/odoo.conf.example`'dan `tools/odoo_conf.py` ile üretilir. Veri klasörü (filestore, oturumlar) `OV_HOME/odoo-data`.
   - Demo veritabanı `ov_demo`: Türkçe, ülke TR, demo verili, `ov_brand` + `account` + `l10n_tr`. Türk hesap planı `TR Company` demo şirketinde; ana şirket upstream demo düzeninde genel hesap planıyla gelir. Giriş `admin`/`admin` (yalnız yerel, `127.0.0.1`).
-  - PDF motoru kurulu değil (T2.5'te seçilir).
+  - PDF motoru kurulu değil. Öneri: üretimde wkhtmltopdf, Paper Muncher ikinci motor (USER_TASKS K18); CI'a T3.7'de kurulur.
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
@@ -179,7 +179,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Çıktı: test sayısı, gerçek hatalar, `RESULT: OK` / `RESULT: FAILED (n)`; çıkış kodu 0/1. Tam günlük `OV_HOME/logs/tests/<db>.log`.
   - Windows'ta Odoo 20.0'ın test sınıflarındaki filestore temizliği hataları (`setUpClass`/`tearDownClass` → `_gc_file_store_unsafe`) ayrı sayılır ve sonucu bozmaz. Referans sonuç Linux CI'dır (T1.10).
   - Windows'ta tarayıcı testleri ara sıra "Session Expired" ile düşebilir. Upstream'in oturum deposu, bir istek oturum dosyasını yeniden yazarken aynı anda okuyan isteğe boş oturum veriyor (Windows'ta dosya değişimi atomik değil). Test tek başına yeniden çalıştırılır (`--reuse --tags`); Linux CI etkilenmez (T2.4).
-  - PDF üreten testler yerelde düşer (PDF motoru yok, T2.5).
+  - Testlerde raporlar PDF yerine HTML üretir (upstream davranışı). PDF'i zorlayan (`force_report_rendering`) ve motoru taklit etmeyen testler yerelde düşer; PDF denemeleri Linux CI'da (T3.7).
   - Doğrudan Odoo ile: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d <db> -i <modül> --test-enable --test-tags /<modül> --stop-after-init`
 - Yeni modül (T1.9): `python tools/new_module.py ov_<ad> [--title …] [--summary …] [--depends base,…] [--license LGPL-3]` → `addons/ov_<ad>/`, ardından `python tools/run_tests.py ov_<ad>`
 - Lint (T1.9): `.venv/Scripts/pre-commit run --all-files`
