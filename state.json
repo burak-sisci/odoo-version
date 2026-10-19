@@ -58,7 +58,7 @@
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "T2.3'e devam: Enterprise reklamları (OCA server-brand 20.0 remove_odoo_enterprise, vendor), Uygulamalar listesindeki to_buy kartları, dokümantasyon ve düzenleyici bağlantıları, Gmail/Outlook vekili, uygulama mağazası",
+    "T2.3'e devam: ayarlardaki dokümantasyon bağlantıları, düzenleyicinin görsel kitaplığı ve yapay zekâ metni, Gmail/Outlook OAuth vekili, uygulama mağazası (base_import_module), mail'deki dış istek",
     "/odoo URL yolu için modül düzeyinde çözüm (T2.4)"
   ],
   "decisions": [
@@ -212,7 +212,7 @@
     "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)",
     "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests; Windows'ta kurulumdan önce test DB'sinin filestore dosyaları yazılabilir yapılır (Odoo ek dosyaları 0o444)",
     "lint": "pre-commit (yerel kanca kurulu): ruff (ruff.toml → upstream kural seti), pylint-odoo (.pylintrc, addons/), tools/check_modules.py, tools/check_docs.py; modül iskeleti tools/new_module.py; tools/check_secrets.py (.env değerleri); pylint-odoo'nun odoo-addons-relative-import denetimi kanca argümanıyla kapalı (ruff TID252 ile çelişiyor; modül içi içe aktarmalar mutlak)",
-    "oca": "vendor/oca/<depo> (resmî 20.0, sığ submodule; server-ux), ports/oca/<depo>/<modül> (19.0'dan port, PORT.md; report_xlsx); tools/port_oca.py fetch|upgrade|diff; prosedür ARCHITECTURE.md §2"
+    "oca": "vendor/oca/<depo> (resmî 20.0, sığ submodule; server-ux, server-brand), ports/oca/<depo>/<modül> (19.0'dan port, PORT.md; report_xlsx); tools/port_oca.py fetch|upgrade|diff; prosedür ARCHITECTURE.md §2"
   },
   "modules": {
     "ours": [
@@ -223,7 +223,8 @@
         "license": "AGPL-3",
         "depends": [
           "web",
-          "base_setup"
+          "base_setup",
+          "remove_odoo_enterprise"
         ],
         "task": "T2.2",
         "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15)"
@@ -262,6 +263,14 @@
         "branch": "20.0",
         "commit": "d952d4dfbe65e7b67c6999c94c9dbb8e69c441c2",
         "license": "LGPL-3"
+      },
+      {
+        "module": "remove_odoo_enterprise",
+        "repo": "OCA/server-brand",
+        "path": "vendor/oca/server-brand",
+        "branch": "20.0",
+        "commit": "9637fe389a357526524915d54a4dff447bfca993",
+        "license": "AGPL-3"
       }
     ]
   },

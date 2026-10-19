@@ -120,8 +120,10 @@ class TestOvBrandPages(HttpCase):
         self.assertEqual(tree.xpath("//link[@rel='apple-touch-icon']/@href"), ['/ov_brand/static/img/icon_ios.png'])
 
     def test_webclient_js(self):
-        # Fails on any JS error, e.g. a broken patch or template extension
-        self.browser_js('/odoo', """
+        # Fails on any JS error, e.g. a broken patch or template extension.
+        # A fixed action: with mail installed, the default app (Discuss) can put
+        # a conversation name in the title; "OdooBot" was seen (T2.5).
+        self.browser_js('/odoo/action-base.action_res_users', """
             const { session } = odoo.loader.modules.get("@web/session");
             const { registry } = odoo.loader.modules.get("@web/core/registry");
             if (session.ov_brand_name !== "%s") {
@@ -152,3 +154,13 @@ class TestOvBrandPages(HttpCase):
             odoo.loader.modules.has("@ov_brand/public/error_notifications")
             && !document.querySelector(".oe_login_form").classList.contains("d-none")
         """)
+
+
+@tagged('post_install', '-at_install')
+class TestOvBrandEnterpriseApps(TransactionCase):
+
+    def test_apps_to_buy_hidden(self):
+        # The apps of the paid edition stay in the database but are never listed
+        self.env.cr.execute("SELECT count(*) FROM ir_module_module WHERE to_buy")
+        self.assertTrue(self.env.cr.fetchone()[0])
+        self.assertFalse(self.env['ir.module.module'].search_count([('to_buy', '=', True)]))

@@ -4,10 +4,11 @@ Creates (or recreates) a test database without demo data, installs the given
 modules with tests enabled, and reads the log. When the modules need ov_brand,
 it is installed first without tests: it removes the publisher's online service
 modules, and Odoo skips the post_install tests of a run that removed modules.
-On Windows, Odoo 20.0's
-filestore garbage collection cannot delete files in test set-up/teardown; those
-errors are reported separately and do not fail the run (the reference result
-is the Linux CI). The full log is kept under OV_HOME/logs/tests/.
+The given modules it brought along are then updated with tests.
+
+On Windows, Odoo 20.0's filestore garbage collection cannot delete files in test
+set-up/teardown; those errors are reported separately and do not fail the run
+(the reference result is the Linux CI). The full log is kept under OV_HOME/logs/tests/.
 
 Usage: python tools/run_tests.py MODULE[,MODULE...] [--tags TAGS] [--db NAME] [--with-demo] [--reuse] [-v]
   --tags       --test-tags value (default: /MODULE for each module)
@@ -122,16 +123,17 @@ def main():
         init = ["db", "-c", str(CONF), "init", db, "--force"] + (["--with-demo"] if args.with_demo else [])
         if odoo(*init, log=log):
             sys.exit(f"could not create database {db}; see {log}")
+    names = ",".join(modules)
     if args.reuse:
-        install, update = [], modules
+        selection = ["-u", names]
     elif PREINSTALL in own_closure(modules):
         if odoo("-c", str(CONF), "-d", db, "-i", PREINSTALL, "--stop-after-init", log=log):
             sys.exit(f"could not install {PREINSTALL}; see {log}")
-        install = [m for m in modules if m != PREINSTALL]
-        update = [PREINSTALL] if PREINSTALL in modules else []
+        # Odoo installs the missing ones and updates those that came with it,
+        # so that the tests of all of them run
+        selection = ["-i", names, "-u", names]
     else:
-        install, update = modules, []
-    selection = (["-i", ",".join(install)] if install else []) + (["-u", ",".join(update)] if update else [])
+        selection = ["-i", names]
     # Tests start Odoo's HTTP server; a port of its own lets them run next to the dev server.
     rc = odoo("-c", str(CONF), "-d", db, *selection, "--test-enable",
               "--test-tags", tags, "--http-port", TEST_HTTP_PORT, "--stop-after-init", log=log)

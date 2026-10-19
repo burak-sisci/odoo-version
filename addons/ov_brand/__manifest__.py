@@ -7,6 +7,7 @@
     'depends': [
         'web',
         'base_setup',
+        'remove_odoo_enterprise',
     ],
     'data': [
         'security/ir.access.csv',

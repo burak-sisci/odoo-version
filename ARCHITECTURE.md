@@ -7,7 +7,7 @@ Son güncelleme: 2026-10-19
 >   - D-010 (yaklaşım **B**), D-011 (sürüm **20.0**; T1.2'de doğrulandı), D-014 (önek `ov_`);
 >   - D-016 (lisans **AGPL-3**, LGPL türevleri LGPL-3), D-018 (paketler ve teslim biçimi), D-019 (OCA portları), D-020 (ücretsiz altyapı).
 > - Üretim barındırma yeri D-013 ile ertelendi (§4).
-> - Kendi modüllerimiz `addons/` altında (T2.2'den beri; güncel liste `state.json` → `modules.ours`). İlk OCA deposu (`vendor/oca/server-ux`) ve ilk OCA portu (`ports/oca/reporting-engine/report_xlsx`) eklendi (T1.11).
+> - Kendi modüllerimiz `addons/` altında (T2.2'den beri; güncel liste `state.json` → `modules.ours`). OCA depoları `vendor/oca/server-ux` (T1.11) ve `vendor/oca/server-brand` (T2.3), ilk OCA portu `ports/oca/reporting-engine/report_xlsx` (T1.11).
 > - Bu belge kurulacak yapıyı tanımlıyor. Görevler `PLAN.md`'de.
 
 ## 1. Genel bakış
@@ -68,7 +68,7 @@ odoo-version/
 │   ├── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
 │   └── port_oca.py          # OCA modülünü ports/'a alır, upgrade_code'u porta uygular, kaynakla fark (T1.11)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
-├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, sığ git submodule, sabit commit (ilk: server-ux, T1.11)
+├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, sığ git submodule, sabit commit (server-ux T1.11, server-brand T2.3)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız, her birinde PORT.md (ilk: reporting-engine/report_xlsx)
 ├── addons/                  # bizim modüllerimiz, önek ov_ (liste: state.json → modules.ours; iskelet tools/new_module.py)
 └── deploy/                  # odoo.conf.example (T1.6); kurulum aracı, ters vekil, yedek betikleri (henüz yok — T8.4)
@@ -179,7 +179,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - Veri klasörü `OV_HOME/odoo-data`. Tek süreç (`workers = 0`), yalnız `127.0.0.1`.
   - Demo veritabanı `ov_demo` (Türkçe, TR, `ov_brand` + `account` + `l10n_tr`).
 - **Yerel testler (T1.8):** `tools/run_tests.py` her çalıştırmada temiz test veritabanı açar (demo yok), ayrı HTTP portu (8079) kullanır. Windows'a özgü filestore temizliği hatalarını ayrı sayar; referans sonuç Linux CI'dır.
-  - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur (T2.3). Kurulumu çevrim içi hizmet modüllerini kaldırıyor; modül kaldıran bir çalıştırmada Odoo `post_install` testlerini başlatmaz.
+  - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur (T2.3). Kurulumu çevrim içi hizmet modüllerini kaldırıyor; modül kaldıran bir çalıştırmada Odoo `post_install` testlerini başlatmaz. Onunla gelen hedef modüller ikinci çalıştırmada güncellenir, testleri de çalışır.
 - **Lint ve commit öncesi denetimler (T1.9):** `.pre-commit-config.yaml` her commit'te çalışır; CI'da `pre-commit run --all-files` (T1.10).
   - `ruff.toml`: upstream `ruff.toml`'u genişletir; `upstream/`, `vendor/`, `ports/` hariç.
   - `.pylintrc`: pylint-odoo'nun Odoo denetimleri (yalnız `addons/`): sürüm 20.0, lisans AGPL-3/LGPL-3, zorunlu yazar, SQL enjeksiyonu, yöntem adları.

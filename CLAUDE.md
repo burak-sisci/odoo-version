@@ -154,7 +154,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Kurulu değil: Node.js, Docker (zorunlu değil).
 - Git deposu: varsayılan dal `main`, uzak depo `origin` = GitHub.
 - Upstream Odoo 20.0: `upstream/odoo` altında sığ git submodule, sabit commit (`state.json` → `upstream`). Windows'ta `core.longpaths` açık olmalı.
-- OCA (T1.11, D-019): resmî 20.0 depoları `vendor/oca/<depo>` altında sığ git submodule (şimdilik `server-ux`). 20.0'da olmayan modüllerin portları `ports/oca/<depo>/<modül>` altında, her birinde `PORT.md` (şimdilik `report_xlsx`). Prosedür ARCHITECTURE.md §2.
+- OCA (T1.11, D-019): resmî 20.0 depoları `vendor/oca/<depo>` altında sığ git submodule (`server-ux`, `server-brand`). 20.0'da olmayan modüllerin portları `ports/oca/<depo>/<modül>` altında, her birinde `PORT.md` (şimdilik `report_xlsx`). Prosedür ARCHITECTURE.md §2.
 - CI (T1.10): GitHub Actions (`.github/workflows/ci.yml`), her push'ta. İki iş: belgeler + lint + gizli bilgi + rehber kopyası; PostgreSQL 18 servisiyle modül testleri. Ayrıntı ARCHITECTURE.md §5.
 
 ## Komutlar
@@ -172,7 +172,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Odoo kabuğu: `.venv/Scripts/python upstream/odoo/odoo-bin shell -c odoo.conf -d ov_demo --no-http` (Türkçe çıktı için `PYTHONIOENCODING=utf-8`)
 - Testler (T1.8): `python tools/run_tests.py <modül>[,<modül>…]`
   - Her çalıştırmada temiz test veritabanı (`ov_test_<ilk modül>`, demo yok, `en_US`), modül(ler) testlerle kurulur, varsayılan etiket `/<modül>`.
-  - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur: kurulumu çevrim içi hizmet modüllerini kaldırıyor, Odoo da modül kaldıran çalıştırmada `post_install` testlerini başlatmıyor (T2.3).
+  - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur: kurulumu çevrim içi hizmet modüllerini kaldırıyor, Odoo da modül kaldıran çalıştırmada `post_install` testlerini başlatmıyor (T2.3). Onunla gelen hedef modüller (ör. `remove_odoo_enterprise`) ikinci çalıştırmada güncellenir, testleri de çalışır.
   - Etiketli veya tek test: `--tags` Odoo'nun `--test-tags` sözdizimiyle (`[-][etiket][/modül][:Sınıf][.yöntem]`; ör. `--tags /l10n_tr:TestClassName.test_method`, `--tags post_install/l10n_tr`).
   - Hızlı tekrar: `--reuse` (veritabanını korur, `-u` ile günceller). Demo gerekiyorsa `--with-demo` (testler demoya dayanmamalı).
   - Testler kendi HTTP portunu kullanır (8079); geliştirme sunucusu 8069'da açık kalabilir.
