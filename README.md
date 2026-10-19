@@ -26,8 +26,9 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - CI çalışıyor: her push'ta belge denetimi, lint, gizli bilgi taraması ve modül testleri (GitHub Actions, T1.10).
 - OCA düzeni hazır: resmî 20.0 depoları `vendor/oca/`, bizim 20.0 portlarımız `ports/oca/` (`tools/port_oca.py`, T1.11). İlk port: `report_xlsx`.
 - Kullanıcıya görünen Odoo izlerinin envanteri çıkarıldı (`docs/research/brand-inventory.md`, T2.1).
-- Sıradaki görev: marka modülü `ov_brand` (T2.2).
-- Açık karar yok. Kendi ürün modülümüz henüz yok.
+- İlk ürün modülü: marka modülü `ov_brand`. Ürün adı Nexus, simgeler, giriş ekranı, hata pencereleri (T2.2).
+- Sıradaki görev: odoo.com bağlantılarının kesilmesi (T2.3).
+- Açık karar yok.
 
 ## Belgeler
 

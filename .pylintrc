@@ -13,5 +13,7 @@ license-allowed=AGPL-3,LGPL-3
 manifest-required-authors=burak-sisci
 
 [MESSAGES CONTROL]
+# odoo-addons-relative-import is also disabled, from the pre-commit hook
+# arguments (.pre-commit-config.yaml): it contradicts ruff's TID252.
 disable=all
 enable=odoolint

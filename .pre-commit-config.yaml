@@ -13,6 +13,10 @@ repos:
       # Odoo-specific checks of our modules; settings in .pylintrc
       - id: pylint_odoo
         files: ^addons/
+        # ruff (upstream rule set, TID252) wants absolute imports inside a module,
+        # as upstream does; this check wants relative ones. An rc file cannot
+        # disable one message after `disable=all` + `enable=odoolint`.
+        args: [--disable=odoo-addons-relative-import]
   - repo: local
     hooks:
       - id: check-secrets

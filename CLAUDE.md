@@ -181,8 +181,9 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Doğrudan Odoo ile: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d <db> -i <modül> --test-enable --test-tags /<modül> --stop-after-init`
 - Yeni modül (T1.9): `python tools/new_module.py ov_<ad> [--title …] [--summary …] [--depends base,…] [--license LGPL-3]` → `addons/ov_<ad>/`, ardından `python tools/run_tests.py ov_<ad>`
 - Lint (T1.9): `.venv/Scripts/pre-commit run --all-files`
-  - Tek tek: `.venv/Scripts/ruff check .` · `.venv/Scripts/pylint addons/<modül>` · `python tools/check_modules.py`
+  - Tek tek: `.venv/Scripts/ruff check .` · `.venv/Scripts/pre-commit run pylint_odoo --all-files` · `python tools/check_modules.py`
   - Kurallar: `ruff.toml` (upstream'in kural seti), `.pylintrc` (Odoo'ya özgü denetimler), `tools/check_modules.py` (proje kuralları).
+  - Modül içi import mutlak yazılır (`from odoo.addons.<modül>.tools import …`), upstream gibi; ruff TID252 bunu ister. pylint-odoo'nun tersini isteyen `odoo-addons-relative-import` denetimi kanca argümanıyla kapalı.
   - Kanca: yeni klonda bir kez `.venv/Scripts/pre-commit install`. İlk çalıştırma ruff ve pylint-odoo ortamlarını kurar (GitHub ve PyPI).
   - Araç sürümleri `requirements-dev.txt` ve `.pre-commit-config.yaml`'da birlikte güncellenir.
 - Gizli bilgi denetimi (T1.10): `python tools/check_secrets.py`. Staged değişikliklerde `.env` değerlerini arar; pre-commit kancası olarak her commit'te çalışır. CI'da gitleaks tüm geçmişi tarar.

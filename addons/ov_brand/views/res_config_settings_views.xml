@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ov.brand</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[field[@name='web_app_name']]" position="attributes">
+                <attribute name="help">This name is used for the application when it is installed through the browser.</attribute>
+            </xpath>
+            <field name="web_app_name" position="attributes">
+                <attribute name="placeholder"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
