@@ -8,8 +8,9 @@ gönderilen veritabanı raporunu kapatır.
 Neleri değiştirir
 =================
 
-* Bildirim e-postalarının altındaki "Powered by" satırı ve yayıncının bağlantısı
-  kaldırılır; takibi bırakma bağlantısı kalır.
+* Bildirim e-postalarının altında yayıncının adı ve bağlantısı yerine ürünün adı
+  yazar ("Altyapı: Nexus"), bağlantı verilmez. Takibi bırakma bağlantısı kalır.
+  Satır Genel Ayarlar'dan kapatılabilir (Alt Bilgide Ürün Adı).
 * E-posta şablonlarındaki yayıncı logosu (ör. e-fatura bildirimleri) gönderilen
   e-postadan çıkarılır.
 * Otomatik mesajların yazarı ve sohbet botu ürünün adını, simgesini ve örnek bir

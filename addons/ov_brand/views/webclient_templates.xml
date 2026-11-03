@@ -10,11 +10,28 @@
         </xpath>
     </template>
 
+    <!-- "Powered by" and the product name, without a link (K17), under the
+         e-mails and portal pages. Customers can hide it in the settings. -->
+    <template id="powered_by" name="Powered by the Product">
+        <t t-if="ov_powered_by">
+            <t t-set="ov_powered_by_message">Powered by %s</t>
+            <t t-out="ov_powered_by_message % ov_brand_name"/>
+        </t>
+    </template>
+
+    <!-- Footer of the portal pages -->
     <template id="brand_promotion_message" inherit_id="web.brand_promotion_message">
         <xpath expr="//t[@t-set='odoo_logo']" position="replace">
             <t t-set="odoo_logo">
                 <strong t-out="ov_brand_name"/>
             </t>
+        </xpath>
+        <!-- Same text, translated by this module: the name comes first in Turkish -->
+        <xpath expr="//t[@t-set='final_message']" position="replace">
+            <t t-set="final_message">Powered by %s%s</t>
+        </xpath>
+        <xpath expr="//t[starts-with(@t-out, 'final_message')]" position="attributes">
+            <attribute name="t-if">ov_powered_by</attribute>
         </xpath>
     </template>
 

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- "Powered by" the publisher under the notification e-mails. The unfollow
-         link stays; mail.mail recognizes it by its id. -->
+    <!-- "Powered by" the publisher under the notification e-mails: the product
+         name instead, without a link (K17). The unfollow link stays; mail.mail
+         recognizes it by its id and removes it with its separator for the
+         recipients who are not followers. -->
     <template id="mail_notification_layout" inherit_id="mail.mail_notification_layout">
         <xpath expr="//span[@id='mail_unfollow']/.." position="replace">
-            <div t-if="show_footer and show_unfollow" style="color: #555555; font-size:11px;">
-                <span id="mail_unfollow">
+            <div t-if="show_footer and (ov_powered_by or show_unfollow)" style="color: #555555; font-size:11px;">
+                <t t-call="ov_brand.powered_by"/>
+                <span t-if="show_unfollow" id="mail_unfollow">
+                    <t t-if="ov_powered_by">|</t>
                     <a href="/mail/unfollow" style="text-decoration:none; color:#555555;">Unfollow</a>
                 </span>
             </div>
@@ -15,9 +19,11 @@
 
     <template id="mail_notification_light" inherit_id="mail.mail_notification_light">
         <xpath expr="//span[@id='mail_unfollow']/../.." position="replace">
-            <tr t-if="show_unfollow">
+            <tr t-if="ov_powered_by or show_unfollow">
                 <td align="center" style="min-width: 590px;">
-                    <span id="mail_unfollow">
+                    <t t-call="ov_brand.powered_by"/>
+                    <span t-if="show_unfollow" id="mail_unfollow">
+                        <t t-if="ov_powered_by">|</t>
                         <a href="/mail/unfollow" style="text-decoration:none; color:#555555;">Unfollow</a>
                     </span>
                 </td>

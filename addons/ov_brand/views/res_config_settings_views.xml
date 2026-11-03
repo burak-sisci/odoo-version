@@ -12,6 +12,12 @@
             <field name="web_app_name" position="attributes">
                 <attribute name="placeholder"/>
             </field>
+            <xpath expr="//setting[@id='document_layout_setting']" position="after">
+                <setting id="ov_powered_by_setting"
+                         help="Show &quot;Powered by&quot; and the product name, without a link, under the e-mails and the portal pages your customers see.">
+                    <field name="ov_powered_by"/>
+                </setting>
+            </xpath>
         </field>
     </record>
 

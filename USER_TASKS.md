@@ -19,14 +19,13 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 4. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
 5. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
 6. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
-7. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
-8. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
-9. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
-10. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
-11. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
-12. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
-13. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
-14. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
+7. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
+8. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
+9. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
+10. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
+11. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
+12. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
+13. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
 
 Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
 
@@ -125,12 +124,11 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - `ov_brand` web istemcisini `/nexus`'ta sunar; `/odoo` adresleri sorgusuyla birlikte oraya yönlendirilir (T2.4). Değer iki sabitte: `tools.py` ve `web_path.js`.
   - T2.4'ten beri kullanılan `/app` yalnız geliştirme ortamında kullanıldığı için yönlendirilmiyor.
   - Ad değişirse (R17) yol da değişir; müşterideki eski bağlantılar için bir yönlendirme daha gerekir.
-- [ ] K17 **Karar** — müşteriye giden e-posta ve sayfalarda "Powered by" satırı (T2.5).
-  - Neden: upstream bildirim e-postalarının, özet e-postasının ve portal belgelerinin altına "Powered by Odoo" ve yayıncının bağlantısını koyuyor (D-007).
-  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. Satırlar kaldırıldı; takibi bırakma ve abonelikten çıkma bağlantıları kaldı.
-  - Seçenekler: **A** — satır yok · **B** — "Powered by Nexus", bağlantısız · **C** — "Powered by Nexus", ürün sitesine bağlantılı.
-  - Claude önerisi: **A**, ad tescili (R17, T8.2) ve ürün sitesi netleşene kadar. B ve C, müşterinin kendi müşterilerine ürünün reklamı demek; açılırsa müşterinin kapatabileceği bir ayar olur.
-  - Ne zaman: ilk dış demodan önce (F7).
+- [x] K17 **Karar** — müşteriye giden e-posta ve sayfalarda "Powered by" satırı: **B — ürün adı, bağlantısız** (kullanıcı, 2026-11-03).
+  - Bildirim e-postalarının, özet e-postasının, portal belgelerinin ve portal sayfalarının altında "Powered by Nexus" yazar; yayıncıya ya da ürün sitesine bağlantı yok. Satır tek bir şablonda (`ov_brand.powered_by`), ad `ov_brand.name`'den gelir.
+  - Müşteri satırı kapatabilir: Genel Ayarlar > Şirketler > Alt Bilgide Ürün Adı (varsayılan açık).
+  - Türkçesi "Altyapı: Nexus" (Claude seçimi; upstream "Powered by"ı "Hazırlayan" diye çeviriyor, ad sonra geliyordu). Başka bir ifade istersen yalnız `ov_brand/i18n/tr.po`'daki iki satır değişir.
+  - Özet e-postasındaki ikinci satır ("Sent by") geri gelmedi: aynı e-postada ad iki kez yazmasın diye.
 - [ ] K18 **Karar** — PDF motoru (T2.5).
   - Neden: Odoo 20.0'da iki motor var. wkhtmltopdf upstream'in varsayılanı ama 2022'den beri arşivde, güvenlik düzeltmesi almıyor. Paper Muncher yayıncının yeni motoru; kendi tanımıyla "erken alfa" ve yalnız amd64 Linux için paketli.
   - Varsayım (otonom mesai 2, geri dönüşü kolay): **A**. Henüz kurulan bir şey yok; T3.7'de CI'a buna göre kurulur.

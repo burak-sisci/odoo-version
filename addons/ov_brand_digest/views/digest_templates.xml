@@ -19,8 +19,13 @@
         </xpath>
         <!-- Banner of the publisher's mobile app, its images on the publisher's servers -->
         <xpath expr="//t[@t-call='digest.digest_section_mobile']/.." position="replace"/>
-        <!-- "Powered by" the publisher under the company name -->
-        <xpath expr="//p[@id='powered']" position="replace"/>
+        <!-- "Powered by" the publisher under the company name: the product name
+             instead, without a link (K17) -->
+        <xpath expr="//p[@id='powered']" position="replace">
+            <p t-if="ov_powered_by" class="by_odoo" id="powered">
+                <t t-call="ov_brand.powered_by"/>
+            </p>
+        </xpath>
     </template>
 
 </odoo>

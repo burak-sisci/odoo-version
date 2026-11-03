@@ -174,6 +174,7 @@ Sonuç (T2.5, 2026-10-19):
 - Satın alma portalı: `ov_brand_purchase`. Fatura QR kodu ve şartlar ve koşullar örneği: `ov_brand_account`.
 - PDF başlığı ve sunucunun yazdığı PDF'lerin üst verisi: `ov_brand`. Upstream, birden çok kayıtlı raporu bölüp birleştirirken ve PDF/A'ya çevirirken dosyayı çekirdekteki yazıcı sınıfıyla yeniden yazıyor. Tek kayıtlık PDF'te motorun kendi üst verisi kalıyor (T3.7, `docs/research/pdf-engine.md`).
 - Bot (`base.partner_root`): adı ve simgesi marka (`ov_brand_mail`). Karşılama mesajlarındaki eski ad ve botun e-posta adresi T2.6'da değişti (§7).
+- "Powered by" satırları (USER_TASKS K17, 2026-11-03): bildirim e-postalarında, özet e-postasında, portal kenar çubuğunda ve portal sayfalarının altbilgisinde bağlantısız ürün adı ("Powered by Nexus", Türkçesi "Altyapı: Nexus"). Ortak şablon `ov_brand.powered_by`; müşteri Genel Ayarlar'dan kapatabilir (`ov_brand.powered_by`). T2.5'te satırlar kaldırılmıştı (K17 varsayımı A).
 - Değişmeyenler: Factur-X üst verisi (T4.x), web sitesi (MVP dışı). MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama) o modüller eklenince T2.6'nın testiyle bulunur.
 
 ## 7. Çeviri metinleri ve veritabanı kayıtları (T2.6)

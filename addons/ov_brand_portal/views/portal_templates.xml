@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- "Powered by" and the publisher's logo under the sidebar of the documents -->
+    <!-- "Powered by" and the publisher's logo under the sidebar of the documents:
+         the product name instead, without a link (K17) -->
     <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar">
-        <xpath expr="//a[contains(@href, 'www.odoo.com')]/.." position="replace"/>
+        <xpath expr="//a[contains(@href, 'www.odoo.com')]/.." position="replace">
+            <div t-if="ov_powered_by" class="d-none d-lg-block mt-4 small text-center text-muted">
+                <t t-call="ov_brand.powered_by"/>
+            </div>
+        </xpath>
     </template>
 
     <!-- Link of the API keys section to the publisher's documentation (debug mode) -->

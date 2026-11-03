@@ -7,6 +7,32 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: e-posta ve portal altlarında "Powered by Nexus" (K17) — standart mesai
+
+**Kullanıcının kararı:** "k17: B. powered by Nexus, ürün bağlantısız." (K17 seçenek B)
+
+**Kararlar**
+- K17: müşteriye giden e-posta ve sayfaların altında bağlantısız "Powered by Nexus". Eski metin: "Satırlar kaldırıldı, yerine ürün adı yazılmadı (K17 varsayımı A)". Neden: kullanıcı seçeneği.
+  - K17'deki seçenek metninde yazdığı gibi müşteri satırı kapatabilir: Genel Ayarlar > Şirketler > Alt Bilgide Ürün Adı, varsayılan açık.
+  - Türkçesi "Altyapı: Nexus" (Claude seçimi, USER_TASKS K17'de). Upstream "Powered by"ı tek başına "Hazırlayan" diye çeviriyor; portal altbilgisindeki "Powered by %s%s" ise "Tarafından desteklenmektedir Nexus" çıkıyordu. Ad metnin içine yer tutucuyla girdi, Türkçede sıra doğru.
+  - Özet e-postasındaki "Sent by" satırı geri gelmedi; ad aynı e-postada iki kez yazmasın.
+
+**Kod**
+- `ov_brand`:
+  - ortak şablon `ov_brand.powered_by` (çevrilebilir "Powered by %s", ad kaçışlı);
+  - ayar `ov_powered_by` (`ov_brand.powered_by`, 20.0'ın tipli parametresiyle varsayılan açık);
+  - portal sayfalarının altbilgisi aynı ayara bağlı, metni bu modülde çevriliyor.
+  - Şablon değerleri (`ov_brand_name`, `ov_brand_color`, `ov_powered_by`) artık en küçük bağlamla (`minimal_qcontext`) oluşturulan şablonlara da veriliyor; e-postalar bu bağlamla oluşturuluyor.
+- `ov_brand_mail`: iki bildirim düzeninde satır, takibi bırakma bağlantısının önünde ayraç. Ayraç bağlantının içinde: takipçi olmayan alıcıda upstream bağlantıyı silerken ayracı da siliyor.
+- `ov_brand_portal`: belge kenar çubuğunda yayıncı logosu yerine satır. `ov_brand_digest`: şirket adının altında satır.
+- Testler: yeni `test_powered_by.py` (bağlantısız, en küçük bağlamda da, ad kaçışlı, ayar, Türkçe); e-posta, portal ve özet testleri satırı ve ayarla gizlenmesini ölçüyor. E-posta testi upstream'in takipçi olmayan alıcı için yaptığı kişiselleştirmeyi de çalıştırıyor; bildirim düzeninin alt bilgisi, fatura, satış ve satın alma gönderimlerindeki gibi bağlamla açılıyor (20.0'da varsayılan kapalı).
+- `test_web_path`: tarayıcı testi menü bağlantıları oluşmadan denetime başlayabiliyordu (temiz veritabanında bir kez düştü, tek başına iki kez geçti). Hazır olma koşulu artık menü bağlantılarını da bekliyor.
+- Doğrulama: yedi marka modülü temiz veritabanında 86 test, 0 hata. Yeni dört metnin Türkçesi var (Odoo'nun terim çıkarıcısıyla `tr.po` karşılaştırıldı, yeni eksik 0).
+- README.rst'ler (dört modül), `ov_brand` Türkçe çevirisi (4 metin).
+
+**Belgeler**
+- USER_TASKS.md (K17 `[x]`, §1'den çıktı), PLAN.md (T2.5 sonucu), docs/research/brand-inventory.md (§6), state.json.
+
 ### Adım: web istemcisi `/nexus` yolunda (K16); e-tablo formül adları kararı (K13) — standart mesai
 
 **Kullanıcının kararları**

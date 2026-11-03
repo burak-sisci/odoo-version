@@ -1,8 +1,16 @@
-from odoo import api, models
+from odoo import api, fields, models
+
+from odoo.addons.ov_brand.tools import POWERED_BY_PARAM
 
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
+
+    ov_powered_by = fields.Boolean(
+        string='Product Name in Footers',
+        config_parameter=POWERED_BY_PARAM,
+        default=True,
+    )
 
     @api.model
     def _get_view(self, view_id=None, view_type='form', **options):

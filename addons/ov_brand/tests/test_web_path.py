@@ -117,4 +117,5 @@ class TestOvBrandWebPath(HttpCase):
                     console.error(`internal link not followed: ${location.pathname}`);
                 }
             }, 100);
-        """, ready="!!document.querySelector('.o_list_view')", login='admin')
+        """, ready="!!document.querySelector('.o_list_view') && !!document.querySelector('.o_navbar a[href]')",
+            login='admin')

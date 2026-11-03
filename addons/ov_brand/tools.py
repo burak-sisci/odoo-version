@@ -4,6 +4,8 @@ from odoo.addons.ov_brand.rebrand import set_database_brand
 
 BRAND_NAME_PARAM = 'ov_brand.name'
 SUPPORT_URL_PARAM = 'ov_brand.support_url'
+# "Powered by" and the product name under the e-mails and portal pages (K17)
+POWERED_BY_PARAM = 'ov_brand.powered_by'
 
 # Product name (D-014). The working name of the repository must not reach
 # users (D-007).
@@ -36,6 +38,11 @@ def get_brand_name(env):
 def get_support_url(env):
     """Return the URL of the "Help" item of the user menu, empty to hide the item."""
     return env['ir.config_parameter'].sudo().get_str(SUPPORT_URL_PARAM)
+
+
+def show_powered_by(env):
+    """Return whether e-mails and portal pages show "Powered by" and the product name."""
+    return env['ir.config_parameter'].sudo().get_bool(POWERED_BY_PARAM, True)
 
 
 def _replace_path_prefix(url, old, new):

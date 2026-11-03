@@ -3,7 +3,7 @@ from unittest.mock import patch
 from lxml import etree, html
 
 from odoo.exceptions import UserError
-from odoo.tests import TransactionCase, tagged
+from odoo.tests import TransactionCase, new_test_user, tagged
 from odoo.tools import file_open
 
 from odoo.addons.ov_brand.rebrand import rebrand, rebrand_html
@@ -14,10 +14,12 @@ from odoo.addons.ov_brand.tests.brand_leak import (
     scan_arch,
 )
 from odoo.addons.ov_brand.tests.external_requests import ExternalRequestsMixin
+from odoo.addons.ov_brand.tests.test_powered_by import powered_by_lines
 from odoo.addons.ov_brand.tools import (
     BRAND_NAME_PARAM,
     DEFAULT_BRAND_NAME,
     IMG_PATH,
+    POWERED_BY_PARAM,
     get_brand_name,
 )
 from odoo.addons.ov_brand_mail.models.res_partner import BOT_EMAIL
@@ -37,23 +39,51 @@ class TestOvBrandMail(TransactionCase):
         cron = self.env.ref('mail.ir_cron_module_update_notification')
         self.assertFalse(cron.active)
 
+    def _post(self, record, layout):
+        """Post a message on the record, return its e-mail to the followers.
+
+        The footer of the notification layout is shown on demand, as when
+        sending invoices, quotations and purchase orders.
+        """
+        record = record.with_user(self.env.ref('base.user_admin')).with_context(email_notification_allow_footer=True)
+        message = record.message_post(
+            body='Hello',
+            message_type='comment',
+            subtype_xmlid='mail.mt_comment',
+            email_layout_xmlid=layout,
+        )
+        mail = self.env['mail.mail'].sudo().search([('mail_message_id', '=', message.id)])
+        self.assertEqual(len(mail), 1)
+        self.assertIn('Hello', mail.body_html)
+        self.assertNotIn('odoo.com', mail.body_html)
+        return mail
+
     def test_notification_layouts(self):
-        admin = self.env.ref('base.user_admin')
-        customer = self.env['res.partner'].create({'name': 'Fictional Customer', 'email': 'customer@example.com'})
+        # "Powered by" and the product name, without a link (K17). An internal
+        # follower gets the footer and the unfollow link; the link is removed
+        # with its separator for the other recipients.
+        follower = new_test_user(self.env, 'ov_follower', email='follower@example.com', notification_type='email')
+        other = self.env['res.partner'].create({'name': 'Fictional Recipient', 'email': 'recipient@example.com'})
+        record = self.env['res.partner'].create({'name': 'Fictional Customer'})
+        record.message_subscribe(partner_ids=follower.partner_id.ids)
+        brand = DEFAULT_BRAND_NAME
         for layout in ('mail.mail_notification_layout', 'mail.mail_notification_light'):
             with self.subTest(layout=layout):
-                message = customer.with_user(admin).message_post(
-                    body='Hello',
-                    partner_ids=customer.ids,
-                    message_type='comment',
-                    subtype_xmlid='mail.mt_comment',
-                    email_layout_xmlid=layout,
-                )
-                mail = self.env['mail.mail'].sudo().search([('mail_message_id', '=', message.id)])
-                self.assertTrue(mail)
-                self.assertIn('Hello', mail.body_html)
-                self.assertNotIn('Powered by', mail.body_html)
-                self.assertNotIn('odoo.com', mail.body_html)
+                mail = self._post(record, layout)
+                body = mail.body_html
+                self.assertEqual(powered_by_lines(body), [f'Powered by {brand} | Unfollow'])
+                self.assertFalse(html.fromstring(body).xpath(f"//a[contains(., 'Powered by') or contains(., '{brand}')]"))
+                self.assertEqual(powered_by_lines(mail._personalize_outgoing_body(body, partner=other)), [f'Powered by {brand}'])
+
+        # Hidden in the settings: the unfollow link stays, without separator
+        self.env['ir.config_parameter'].sudo().set_bool(POWERED_BY_PARAM, False)
+        for layout in ('mail.mail_notification_layout', 'mail.mail_notification_light'):
+            with self.subTest(layout=layout, powered_by=False):
+                body = self._post(record, layout).body_html
+                self.assertNotIn('Powered by', body)
+                self.assertNotIn(brand, body)
+                unfollow = html.fromstring(body).xpath("//span[@id='mail_unfollow']")
+                self.assertEqual([' '.join(node.text_content().split()) for node in unfollow], ['Unfollow'])
 
     def test_upstream_logo_removed(self):
         partner = self.env['res.partner'].create({'name': 'Fictional Customer'})

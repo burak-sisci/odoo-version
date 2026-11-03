@@ -13,6 +13,8 @@ Neleri değiştirir
 * Tarayıcı sekmesinin başlığı ve simgesi.
 * PDF belgelerinin başlığı; sunucunun yazdığı PDF dosyalarında üretici adı.
 * Giriş ekranının altbilgisi ve paylaşılan bağlantıların önizlemesi.
+* Portal sayfalarının altbilgisinde "Altyapı: Nexus" yazar, yayıncıya bağlantı
+  verilmez. E-posta ve portal modüllerinin markaları aynı satırı kullanır.
 * Tarayıcıdan kurulan uygulamanın adı, rengi ve simgeleri; çevrimdışı sayfası.
 * Gezinme çubuğunun ve ana düğmelerin rengi.
 * Pencere ve hata başlıkları, oturum süresi doldu bildirimi.
@@ -61,6 +63,10 @@ Sistem parametreleri (geliştirici modunda Ayarlar > Teknik > Sistem Parametrele
 
 Genel Ayarlar'da bir uygulama adı girilmişse tarayıcıdan kurulan uygulama o adı
 kullanır.
+
+Genel Ayarlar > Şirketler > **Alt Bilgide Ürün Adı**: müşterilerin gördüğü
+e-postaların ve portal sayfalarının altındaki "Altyapı: Nexus" satırı. Varsayılan
+olarak açıktır; kapatılırsa satır hiçbir yerde gösterilmez.
 
 Kaldırılan çevrim içi hizmetler
 ===============================

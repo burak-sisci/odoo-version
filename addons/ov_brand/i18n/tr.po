@@ -96,6 +96,21 @@ msgid "Network Error"
 msgstr "Ağ Hatası"
 
 #. module: ov_brand
+#: model_terms:ir.ui.view,arch_db:ov_brand.powered_by
+msgid "Powered by %s"
+msgstr "Altyapı: %s"
+
+#. module: ov_brand
+#: model_terms:ir.ui.view,arch_db:ov_brand.brand_promotion_message
+msgid "Powered by %s%s"
+msgstr "Altyapı: %s%s"
+
+#. module: ov_brand
+#: model:ir.model.fields,field_description:ov_brand.field_res_config_settings__ov_powered_by
+msgid "Product Name in Footers"
+msgstr "Alt Bilgide Ürün Adı"
+
+#. module: ov_brand
 #: model:ir.module.module,summary:base.module_ov_brand
 msgid "Product name, logo and icons of the web client"
 msgstr "Web istemcisinin ürün adı, logosu ve simgeleri"
@@ -122,6 +137,15 @@ msgstr "Sunucu Hatası"
 #: code:addons/ov_brand/static/src/public/error_notifications.js:0
 msgid "Session Expired"
 msgstr "Oturumun Süresi Doldu"
+
+#. module: ov_brand
+#: model_terms:ir.ui.view,arch_db:ov_brand.res_config_settings_view_form
+msgid ""
+"Show \"Powered by\" and the product name, without a link, under the e-mails "
+"and the portal pages your customers see."
+msgstr ""
+"Müşterilerinizin gördüğü e-postaların ve portal sayfalarının altında "
+"\"Altyapı:\" ve ürün adını bağlantısız gösterir."
 
 #. module: ov_brand
 #. odoo-python
