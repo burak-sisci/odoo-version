@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.1 — `l10n_tr` (20.0) analizi
+**Şu anki görev:** T3.2 — Temel yerelleştirme modülü `ov_l10n_tr`
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 1/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 26/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 27/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -180,8 +180,8 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 | Ba-Bs formları | **Kaldırıldı** (565 Sıra No.lu VUK Genel Tebliği, Eylül 2024 döneminden itibaren) | Gerekmiyor | — |
 | Tekdüzen hesap planı, KDV oranları, damga vergisi raporu | Herkes | `l10n_tr` (20.0'da var) + eksikler T3.1–T3.2 | P0 |
 | KDV tevkifatı ve istisnalar | Tevkifatlı işlem yapanlar, ihracatçılar | T3.2, T4.3 | P0 |
-| VKN / TCKN | Herkes | T3.3 | P0 |
-| Vergi dairesi | Herkes (e-Belge'de zorunlu) | `l10n_tr` 20.0'da ~1.046 vergi dairesi var; T3.1'de doğrulanır | P0 |
+| VKN / TCKN | Herkes | Sağlama çekirdekte var; kişi/şirket ayrımı ve MERSİS T3.3 | P0 |
+| Vergi dairesi | Herkes (e-Belge'de zorunlu) | `l10n_tr` 20.0'da 1.046 vergi dairesi var; 81 ilin hepsi, ek veri gerekmez (T3.1) | P0 |
 | İl / ilçe adres | e-Belge adres alanları | 81 il upstream'de var; ilçe T3.4 | P0 |
 | Döviz değerlemesi (TCMB kuru) | Dövizli işlem yapanlar | T3.5 | P0 |
 | Çek ve senet | Çoğu ticari işletme | T5.7 | P0 |
@@ -337,7 +337,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Gmail/Outlook uç durumu gerçekti: kimlik bilgileri silinince upstream yenileme belirtecini `gmail.api.odoo.com` / `outlook.api.odoo.com`'a gönderiyordu (ölçüldü). `ov_brand_mail` artık bilgilerin yeniden girilmesini isteyen bir hata verir, ağa çıkmaz;
     - ölçüm: MVP veritabanında 28 zamanlanmış iş çalıştı (hiçbiri hata vermedi). Kurulum, işler, testler ve sayfalarda yayıncıya 0 istek; tek dış adres testin kendi örneği (`example.com`). CI'da MVP adımı bu testleri de çalıştırır.
 
-### F3 — Türkiye temel yerelleştirmesi `[ ]`
+### F3 — Türkiye temel yerelleştirmesi `[~]`
 
 **Amaç:** e-Belge dışındaki Türkiye ihtiyaçları.
 **Kabul (M3):**
@@ -346,19 +346,34 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - TCMB kurları otomatik geliyor.
 - Paket modüllerinde Türkçe çeviri ≥ %95.
 
-- [ ] T3.1 `l10n_tr` (20.0) analizi · M · C
+- [x] T3.1 `l10n_tr` (20.0) analizi · M · C
   - Bugün var olanlar (2026-10-18 incelemesi): Tekdüzen hesap planı, vergiler, mali pozisyonlar, vergi raporu, damga vergisi raporu, ~1.046 vergi dairesi, 81 il.
   - Çıktı: eksik listesi ve her eksiğin hangi göreve gideceği (`docs/research/l10n-tr.md`).
   - T1.6 demo gözlemleri: bazı hesap adlarında Türkçe büyük harf hatası (`TAHSIL EDILMEYEN ÖDEMELER`); İngilizce kalan hesap ve vergi adları (`Private Sector Bonds, Shares And Notes`, `WH 20% (2/10)`); hesap planı ekranında çevrilmemiş sütun (`Payment Reconciliation`).
+  - **Sonuç (2026-11-03):** 26 eksik (G1–G26), her biri bir göreve bağlandı (`docs/research/l10n-tr.md` §4).
+    - Ölçüldü: 347 hesap, 44 vergi, 1.046 vergi dairesi. Vergi daireleri 81 ilin hepsini kapsıyor; ek veri gerekmez.
+    - VKN/TCKN sağlaması çekirdekte zaten var; Türkçe tarih/sayı biçimi ve hafta başı upstream'de doğru.
+    - Çoğu eksik ad/çeviri hatası. 20 hesabın Türkçe adı yok; ~25 hesapta büyük harf/yazım hatası var. Yanlış çeviriler: "SATIŞ NOKTASI", "SATIN ALIMLAR NE ZAMAN", tevkifat grupları "ne zaman %-20". 31 vergi Türkçe ekranda İngilizce kısaltmalı; KDV tevkifatına "stopaj" deniyor.
+    - İşlevsel eksikler: TCKN'li gerçek kişi şirket sayılıyor (ölçüldü); tevkifat yalnız %20 KDV için; istisna ve stopaj tanımları eksik; ilçe, tatil ve kur verisi yok.
 - [ ] T3.2 Temel yerelleştirme modülü `ov_l10n_tr` · M · C
-  - T3.1'e göre eksik vergi, tevkifat ve istisna tanımları.
-  - Türkiye varsayılanları: TRY, Europe/Istanbul, tarih biçimi, hafta başı Pazartesi.
+  - T3.1'e göre (`docs/research/l10n-tr.md` G1–G13, G24):
+    - hesap adı düzeltmeleri ve eksik THP hesapları;
+    - vergi, vergi grubu ve açıklama adları ("stopaj" → tevkifat);
+    - %10/%1 oranlı tevkifat, istisna ve gelir vergisi stopajı tanımları;
+    - oranların güncel mevzuatla doğrulanması.
+  - Düzeltmeler upstream'e dokunmadan `@template('tr', …)` uzantılarıyla (T3.1 §5).
+  - Kalıcı ad testi: Türkçe bağlamda İngilizce ad ve kısaltma, yasak sözcükler, Türkçe büyük harf hatası. T1.6 örnekleri bu testte yakalanmalı.
+  - Türkiye varsayılanları: saat dilimi Europe/Istanbul. TRY hesap planıyla geliyor; tarih biçimi ve hafta başı upstream'de doğru (T3.1).
 - [ ] T3.3 VKN / TCKN doğrulama · S · C
-  - Sağlama algoritması (python-stdnum, Odoo'nun mevcut bağımlılığı).
-  - Gerçek kişi / tüzel kişi ayrımı; e-Belge için mükellef türü.
+  - Sağlama algoritması çekirdekte var (`check_vat_tr`, python-stdnum; T3.1). Bu görevde:
+    - gerçek kişi / tüzel kişi ayrımı: TCKN'li kişi şirket sayılmamalı (ölçüldü, G16);
+    - e-Belge için mükellef türü;
+    - MERSİS biçim denetimi (G18);
+    - Türkçe yer tutucu ve VKN etiketi (G17).
 - [ ] T3.4 İl/ilçe adres yapısı · M · C
   - İlçe verisi açık lisanslı bir veri setinden gelir; lisans envanterine yazılır.
   - İlçe seçimi e-Belge adres alanlarıyla eşleşir.
+  - Türkiye için il zorunluluğu ve posta kodunun zorunlu olmaması değerlendirilir (bugün çekirdek varsayılanıyla zorunlu; T3.1 G19).
 - [ ] T3.5 TCMB döviz kurları `ov_l10n_tr_tcmb` · M · C
   - Günlük zamanlanmış iş (`today.xml`), geçmiş tarih arşivi, alış/satış/efektif seçimi, tatil günü davranışı.
 - [ ] T3.6 Türkçe çeviri · L · C
@@ -445,6 +460,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Tasarım girdisi: Community `l10n_latam_check` (LGPL) incelenir; türetilen kod LGPL-3 kalır (D-008/2).
 - [ ] T5.8 KDV hazırlık raporu · M · C
   - `l10n_tr` vergi raporunun üzerine: KDV beyannamesi için matrah ve vergi özetleri, tevkifat ayrıntısı, indirilecek KDV listesi.
+  - Rapor satırlarında "stopaj" yerine tevkifat; damga vergisi raporu başlıkları (T3.1 G14, G15).
   - Yalnız dışa aktarım; beyanname gönderimi yok.
 - [ ] T5.9 Mali müşavire aktarım · M · C
   - Muhasebe fişlerinin dışa aktarımı: genel Excel biçimi + yaygın muhasebe programlarının kamuya açık içe aktarma biçimleri (araştırılarak).
@@ -487,6 +503,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 
 - [ ] T7.1 Paket modülleri · M · C
   - `ov_pack_ticaret`, `ov_pack_uretim`: bağımlılıklar + ön ayarlar.
+  - Hesap ön ayarı (T3.1 G5): `l10n_tr` gider ve stok hesabı olarak 150 İlk Madde ve Malzeme veriyor. Ticaret paketinde 153 Ticari Mallar / 621 Satılan Ticari Mallar Maliyeti; üretim paketinde T6.3'teki 7/A eşleştirmesi.
 - [ ] T7.2 Türkiye kurulum sihirbazı · L · C
   - Şirket (unvan, VKN, vergi dairesi, adres, MERSİS), hesap planı, e-Belge entegratör bağlantısı (test/canlı), açılış bakiyeleri, depolar.
 - [ ] T7.3 Rol şablonları ve sade menüler · M · C
@@ -717,3 +734,4 @@ Planı besleyen araştırmalar ve kaynak bağlantıları:
 - `docs/research/planning-inputs.md`: OCA 20.0 durumu, çeviri kapsamı, ücretsiz kaynaklar, veri kaynakları, pazar referansları.
 - `docs/research/e-fatura.md`: e-Belge mevzuatı, Nilvera test ortamı, GİB paketleri, Ba-Bs, e-Defter.
 - `docs/research/hosting.md`: barındırma seçenekleri.
+- `docs/research/l10n-tr.md`: upstream `l10n_tr` (20.0) içeriği, ölçümler, Türkiye temeli eksik listesi (G1–G26) ve hedef görevler.

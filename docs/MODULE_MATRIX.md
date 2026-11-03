@@ -1,6 +1,6 @@
 # Modül Matrisi
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 İlgili kararlar: D-002, D-006, D-008, D-011, D-012, D-016, D-017, D-018, D-019
 
 Bu matris D-002'nin (tüm Odoo uygulamaları) uygulama planıdır. Her uygulamanın edinme yolu, önceliği ve durumu burada tutulur. Görevler ve sıralama `PLAN.md`'de.
@@ -47,7 +47,7 @@ Bu uygulamalar için iş: marka katmanı + Türkçe çeviri + Türkiye yerelleş
 
 | Uygulama | Yol | Kaynak | Lisans | Paket | Öncelik | Durum |
 |---|---|---|---|---|---|---|
-| Temel yerelleştirme (`ov_l10n_tr`): vergi/tevkifat eksikleri, VKN/TCKN, il/ilçe, Türkiye varsayılanları | Kendimiz, `l10n_tr` üzerine | `l10n_tr` (20.0), python-stdnum, açık lisanslı ilçe verisi | AGPL-3 | T, Ü | P0 | plan |
+| Temel yerelleştirme (`ov_l10n_tr`): hesap ve vergi adı düzeltmeleri, vergi/tevkifat/istisna eksikleri, kişi/şirket ayrımı ve MERSİS, il/ilçe, Türkiye varsayılanları (eksik listesi `docs/research/l10n-tr.md`) | Kendimiz, `l10n_tr` üzerine | `l10n_tr` (20.0), python-stdnum, açık lisanslı ilçe verisi | AGPL-3 | T, Ü | P0 | plan |
 | TCMB döviz kurları (`ov_l10n_tr_tcmb`) | Kendimiz | TCMB kamuya açık XML | AGPL-3 | T, Ü | P0 | plan |
 | Türkçe çeviri tamamlama | Kendimiz | Upstream `tr.po` dosyaları | LGPL-3 (upstream metinlerinin çevirisi) | T, Ü | P0 | plan |
 | Türkçe belge çıktıları (teklif, sipariş, irsaliye, makbuz; tutar yazıyla) | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |

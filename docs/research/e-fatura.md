@@ -1,6 +1,6 @@
 # e-Fatura / e-Arşiv / e-İrsaliye Araştırması
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-11-03
 Araştırma tarihi: 2026-10-18
 İlgili karar: D-012 (DECISIONS.md)
 
@@ -143,7 +143,7 @@ Geliştirme için Nilvera'nın kamuya açık, ücretsiz test ortamı var (§6).
 
 ### 20.0 `l10n_tr` içeriği
 
-- 20.0 `l10n_tr` modülünde hesap planı ve vergilerin yanında ~1.046 vergi dairesi kaydı zaten var. Vergi daireleri için ayrı veri seti gerekmiyor (PLAN T3.1'de doğrulanacak).
+- 20.0 `l10n_tr` modülünde hesap planı ve vergilerin yanında ~1.046 vergi dairesi kaydı zaten var. Vergi daireleri için ayrı veri seti gerekmiyor. T3.1'de doğrulandı (2026-11-03): 1.046 kayıt, 81 ilin hepsi, tekrar yok (`docs/research/l10n-tr.md`).
 
 ## Kaynaklar
 

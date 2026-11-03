@@ -29,7 +29,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Marka modülleri: `ov_brand` ürün adını (Nexus), simgeleri, giriş ekranını ve hata pencerelerini değiştiriyor (T2.2). `ov_brand_mail` yayıncıya giden haftalık veritabanı raporunu kapatıyor; `ov_brand` yayıncının çevrim içi hizmet modüllerini (IAP, Aboneliğim), Enterprise reklamlarını, dokümantasyon bağlantılarını ve uygulama mağazasını kaldırıyor; `ov_brand_html_editor` metin düzenleyicinin yayıncı hizmetlerini kapatıyor (T2.3). Web istemcisi `/app` adresinde (T2.4). E-posta, portal, özet e-postası, fatura ve satın alma portalındaki yayıncı izleri, PDF başlığı ve üst verisi kaldırıldı; bot ürünün adını taşıyor (T2.5).
 - Altyapı metinlerindeki eski ürün adı gösterilirken Nexus'la değiştiriliyor; otomatik sızıntı testi kurulu bütün modülleri İngilizce ve Türkçe tarıyor, CI'da MVP uygulamalarıyla çalışıyor (T2.6).
 - Kurulumda, zamanlanmış işlerde, testlerde ve ana sayfalarda yayıncının alan adlarına istek gitmediği otomatik testle denetleniyor; CI'da MVP uygulamalarıyla çalışıyor. Marka katmanı (F2) tamamlandı (T2.7).
-- Sıradaki görev: `l10n_tr` analizi (T3.1).
+- Upstream `l10n_tr` (20.0) incelendi: 26 eksik bulundu ve her biri bir göreve bağlandı (`docs/research/l10n-tr.md`, T3.1).
+- Sıradaki görev: temel yerelleştirme modülü `ov_l10n_tr` (T3.2).
 - Açık karar yok.
 
 ## Belgeler

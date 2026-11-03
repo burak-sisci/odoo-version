@@ -24,9 +24,9 @@
   "phase": {
     "id": "F3",
     "title": "Türkiye temel yerelleştirmesi",
-    "status": "not_started"
+    "status": "in_progress"
   },
-  "current_task": "T3.1",
+  "current_task": "T3.2",
   "session": {
     "mode": "otonom",
     "number": 3,
@@ -59,12 +59,13 @@
     "T2.4",
     "T2.5",
     "T2.6",
-    "T2.7"
+    "T2.7",
+    "T3.1"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "l10n_tr (20.0) analizi (T3.1)",
-    "Temel yerelleştirme modülü ov_l10n_tr (T3.2)"
+    "Temel yerelleştirme modülü ov_l10n_tr (T3.2): docs/research/l10n-tr.md G1-G13, G24 ve kalıcı ad testi",
+    "VKN / TCKN: kişi/şirket ayrımı, MERSİS (T3.3)"
   ],
   "decisions": [
     {

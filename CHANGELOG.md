@@ -7,6 +7,33 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: `l10n_tr` (20.0) analizi (T3.1) — otonom mesai 3
+
+**Araştırma**
+- `docs/research/l10n-tr.md` (yeni): upstream `l10n_tr` (commit `afbcf79d`) ve çekirdekteki Türkiye'ye özgü kod incelendi; `ov_demo`'da Türkçe bağlamda ölçüldü.
+  - Var olan: 347 hesap, 44 vergi, 8 mali pozisyon, vergi ve damga vergisi raporu.
+  - 1.046 vergi dairesi: 81 ilin hepsi, ilsiz kayıt ve tekrar yok, ek veri gerekmez.
+  - VKN/TCKN sağlaması çekirdekte (`check_vat_tr`); Türkçe tarih/sayı biçimi ve hafta başı doğru.
+- 26 eksik (G1–G26), her biri bir göreve bağlandı. Başlıcaları:
+  - 20 hesabın Türkçe adı yok; ~25 hesapta büyük harf ve yazım hatası.
+  - Yanlış çeviriler: "Sales WH" → "SATIŞ NOKTASI", "Purchases WH" → "SATIN ALIMLAR NE ZAMAN", tevkifat grupları "ne zaman %-20".
+  - 31 vergi Türkçe ekranda İngilizce kısaltmalı; KDV tevkifatına "stopaj" deniyor.
+  - TCKN'li gerçek kişi şirket sayılıyor (ölçüldü).
+  - Tevkifat yalnız %20 KDV için; istisna ve gelir vergisi stopajı tanımları eksik.
+  - Eksik THP hesapları 480, 481, 523.
+  - Çeviri kapsamı: `l10n_tr` %33,3, paket modülleri %70,8–86,3.
+- Mevzuat karşılaştırmasında resmî tebliğ metnine ulaşılamadı. İkincil kaynakla doğrulananlar ayrıldı; oranların ve kodların tek tek doğrulanması T3.2/T4.3'te.
+
+**Belgeler**
+- PLAN.md:
+  - T3.1 `[x]` ve sonucu; F3 `[~]` 1/9; şu anki görev T3.2.
+  - T3.2 maddeleri T3.1'e göre yazıldı. Eski metin: "T3.1'e göre eksik vergi, tevkifat ve istisna tanımları. / Türkiye varsayılanları: TRY, Europe/Istanbul, tarih biçimi, hafta başı Pazartesi." Neden: tarih biçimi ve hafta başı upstream'de zaten doğru, TRY hesap planıyla geliyor; eksikler listelendi; kalıcı ad testi eklendi.
+  - T3.3. Eski metin: "Sağlama algoritması (python-stdnum, Odoo'nun mevcut bağımlılığı). / Gerçek kişi / tüzel kişi ayrımı; e-Belge için mükellef türü." Neden: sağlama çekirdekte zaten var; görev kişi/şirket ayrımı, MERSİS ve Türkçe etikete daraldı.
+  - T3.4'e il/posta kodu zorunluluğu, T5.8'e terim düzeltmesi, T7.1'e hesap ön ayarı (153/621) eklendi.
+  - §4 tablosu: vergi dairesi "T3.1'de doğrulanır" → doğrulandı; VKN/TCKN satırı. §11'e araştırma belgesi.
+- `docs/research/e-fatura.md` (vergi dairesi notu doğrulandı), `docs/MODULE_MATRIX.md` (`ov_l10n_tr` satırı), README, `state.json`.
+- T2.7'nin CI sonucu (Linux, run 41589662350): 85 test geçti; MVP adımında 13 test geçti, dış adres yalnız `example.com`. M2 Linux'ta da doğrulandı.
+
 ### Adım: dış istek testi (T2.7), marka katmanı (F2) tamam — otonom mesai 3
 
 **Kod**
