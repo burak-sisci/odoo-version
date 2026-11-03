@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ov_tcmb_rate_import_view_form" model="ir.ui.view">
+        <field name="name">ov.tcmb.rate.import.form</field>
+        <field name="model">ov.tcmb.rate.import</field>
+        <field name="arch" type="xml">
+            <form string="Import TCMB Exchange Rates">
+                <p class="text-muted">The bulletins of the period are stored as the exchange rates of the company. A rate applies from the day after its date. Rates already stored for these days are replaced.</p>
+                <group>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="rate_type"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button name="action_import" type="object" string="Import" class="btn-primary" data-hotkey="q"/>
+                    <button special="cancel" string="Cancel" class="btn-secondary" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ov_tcmb_rate_import" model="ir.actions.act_window">
+        <field name="name">Import TCMB Exchange Rates</field>
+        <field name="res_model">ov.tcmb.rate.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

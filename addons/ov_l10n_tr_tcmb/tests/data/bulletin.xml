@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="isokur.xsl"?>
+<!-- Fictional rates in the layout of a TCMB bulletin (test data, not real rates). -->
+<Tarih_Date Tarih="13.01.2025" Date="01/13/2025"  Bulten_No="2025/008" >
+	<Currency CrossOrder="0" Kod="USD" CurrencyCode="USD">
+			<Unit>1</Unit>
+			<Isim>ABD DOLARI</Isim>
+			<CurrencyName>US DOLLAR</CurrencyName>
+			<ForexBuying>40.0000</ForexBuying>
+			<ForexSelling>40.2000</ForexSelling>
+			<BanknoteBuying>39.9000</BanknoteBuying>
+			<BanknoteSelling>40.3000</BanknoteSelling>
+			<CrossRateUSD/>
+			<CrossRateOther/>
+	</Currency>
+	<Currency CrossOrder="9" Kod="EUR" CurrencyCode="EUR">
+			<Unit>1</Unit>
+			<Isim>EURO</Isim>
+			<CurrencyName>EURO</CurrencyName>
+			<ForexBuying>44.0000</ForexBuying>
+			<ForexSelling>44.2000</ForexSelling>
+			<BanknoteBuying>43.9000</BanknoteBuying>
+			<BanknoteSelling>44.3000</BanknoteSelling>
+			<CrossRateUSD/>
+			<CrossRateOther>1.1000</CrossRateOther>
+	</Currency>
+	<Currency CrossOrder="10" Kod="GBP" CurrencyCode="GBP">
+			<Unit>1</Unit>
+			<Isim>İNGİLİZ STERLİNİ</Isim>
+			<CurrencyName>POUND STERLING</CurrencyName>
+			<ForexBuying>50.0000</ForexBuying>
+			<ForexSelling>50.2500</ForexSelling>
+			<BanknoteBuying>49.9000</BanknoteBuying>
+			<BanknoteSelling>50.4000</BanknoteSelling>
+			<CrossRateUSD/>
+			<CrossRateOther>1.2500</CrossRateOther>
+	</Currency>
+	<Currency CrossOrder="11" Kod="JPY" CurrencyCode="JPY">
+			<Unit>100</Unit>
+			<Isim>JAPON YENİ</Isim>
+			<CurrencyName>JAPENESE YEN</CurrencyName>
+			<ForexBuying>27.0000</ForexBuying>
+			<ForexSelling>27.2000</ForexSelling>
+			<BanknoteBuying>26.9000</BanknoteBuying>
+			<BanknoteSelling>27.3000</BanknoteSelling>
+			<CrossRateUSD>148.15</CrossRateUSD>
+			<CrossRateOther/>
+	</Currency>
+	<Currency CrossOrder="13" Kod="RUB" CurrencyCode="RUB">
+			<Unit>1</Unit>
+			<Isim>RUS RUBLESİ</Isim>
+			<CurrencyName>RUSSIAN ROUBLE</CurrencyName>
+			<ForexBuying>0.5000</ForexBuying>
+			<ForexSelling>0.5100</ForexSelling>
+			<BanknoteBuying></BanknoteBuying>
+			<BanknoteSelling></BanknoteSelling>
+			<CrossRateUSD>80.00</CrossRateUSD>
+			<CrossRateOther/>
+	</Currency>
+	<Currency CrossOrder="0" Kod="XDR" CurrencyCode="XDR">
+			<Unit>1</Unit>
+			<Isim>ÖZEL ÇEKME HAKKI (SDR)                            </Isim>
+			<CurrencyName>SPECIAL DRAWING RIGHT (SDR)                       </CurrencyName>
+			<ForexBuying>55.0000</ForexBuying>
+			<ForexSelling></ForexSelling>
+			<BanknoteBuying></BanknoteBuying>
+			<BanknoteSelling></BanknoteSelling>
+			<CrossRateUSD>1.37500</CrossRateUSD>
+			<CrossRateOther/>
+	</Currency>
+</Tarih_Date>

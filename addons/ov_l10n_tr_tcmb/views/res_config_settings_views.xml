@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ov_l10n_tr_tcmb</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='main_currency_setting_container']" position="inside">
+                <setting id="ov_tcmb_rates" string="TCMB Exchange Rates" company_dependent="1"
+                         invisible="not group_multi_currency"
+                         help="Daily rates of the Central Bank of the Republic of Türkiye">
+                    <field name="ov_tcmb_auto"/>
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <label for="ov_tcmb_rate_type" class="col-lg-3 o_light_label"/>
+                            <field name="ov_tcmb_rate_type"/>
+                        </div>
+                        <div class="row" invisible="not ov_tcmb_last_date">
+                            <label for="ov_tcmb_last_date" class="col-lg-3 o_light_label"/>
+                            <field name="ov_tcmb_last_date"/>
+                        </div>
+                        <div class="mt8">
+                            <button name="ov_tcmb_action_update" type="object" string="Update Now" class="btn-link" icon="refresh"/>
+                        </div>
+                        <div>
+                            <button name="%(ov_l10n_tr_tcmb.action_ov_tcmb_rate_import)d" type="action" string="Import Past Rates" class="btn-link" icon="east"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

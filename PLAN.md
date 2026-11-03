@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.5 — TCMB döviz kurları `ov_l10n_tr_tcmb`
+**Şu anki görev:** T3.6 — Türkçe çeviri
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 4/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 5/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 30/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 31/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -183,7 +183,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 | VKN / TCKN | Herkes | Sağlama çekirdekte var; kişi/şirket ayrımı ve MERSİS T3.3 | P0 |
 | Vergi dairesi | Herkes (e-Belge'de zorunlu) | `l10n_tr` 20.0'da 1.046 vergi dairesi var; 81 ilin hepsi, ek veri gerekmez (T3.1) | P0 |
 | İl / ilçe adres | e-Belge adres alanları | 81 il upstream'de; 973 ilçe ve Türkiye adres düzeni T3.4'te eklendi | P0 |
-| Döviz değerlemesi (TCMB kuru) | Dövizli işlem yapanlar | T3.5 | P0 |
+| Döviz değerlemesi (TCMB kuru) | Dövizli işlem yapanlar | Günlük TCMB kurları T3.5'te eklendi (`ov_l10n_tr_tcmb`) | P0 |
 | Çek ve senet | Çoğu ticari işletme | T5.7 | P0 |
 | Amortisman (VUK oranları) | Demirbaşı olanlar | T11.1 | P1 |
 | Enflasyon düzeltmesi | Bilanço esaslılar (güncel kapsam doğrulanmadı) | T11.7 araştırma | P1 |
@@ -399,8 +399,17 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Ölçüm: 15 yeni test (4'ü portalın HTTP uçlarıyla); modülde 34, bütün modüllerle birlikte 114 test geçti. `ov_demo` 20.0.1.2.0'a güncellendi: 973 ilçe; 7 Türk kişiden 2'si ilçeye bağlandı (Beyoğlu, Ürgüp), belirsiz 5'i olduğu gibi kaldı.
     - Ad yazımı Wikidata'yla karşılaştırıldı: yalnız büyük/küçük harf farkı olan ad yok. Şapkalı iki ad (Balâ, Şehitkâmil) resmî yazımla şapkasız.
     - Varsayımlar: `USER_TASKS.md` K22.
-- [ ] T3.5 TCMB döviz kurları `ov_l10n_tr_tcmb` · M · C
+- [x] T3.5 TCMB döviz kurları `ov_l10n_tr_tcmb` · M · C
   - Günlük zamanlanmış iş (`today.xml`), geçmiş tarih arşivi, alış/satış/efektif seçimi, tatil günü davranışı.
+  - **Sonuç (2026-11-03):** `ov_l10n_tr_tcmb` 20.0.1.0.0 (AGPL-3, `ov_l10n_tr` ile kendiliğinden kurulur); G20 kapandı.
+    - Günlük iş: her gün 16.00'da (İstanbul) `today.xml` alınır. Kaçırılan iş günleri arşivden en çok 31 gün geriye kadar tamamlanır. Alınamazsa uyarı günlüğe yazılır ve iş bir saat sonra yeniden denenir.
+    - Kur türü şirket ayarı: döviz alış (varsayılan), döviz satış, efektif alış, efektif satış. Efektif kuru olmayan para birimlerinde aynı yönün döviz kuru kullanılır.
+    - Tarih kuralı (ölçüldü): 20.0'da tarihi D olan kur D+1'den başlayarak uygulanır. Bülten kendi tarihiyle kaydedilir; işleme önceki iş gününün kuru uygulanır, Türkiye'deki uygulama gibi. Hafta sonu ve tatilde son bülten geçerli kalır; bülten olmayan gün (404) atlanır.
+    - Şirketler: kur ana şirkete yazılır, şubeler onu kullanır. Para birimi TRY olmayan şirkete Türk lirası üzerinden çapraz kur yazılır; şirketin para birimi bültende yoksa kur yazılmaz. Yalnız etkin para birimlerine kur yazılır.
+    - Ayarlar: Faturalama ayarlarında Para Birimleri bölümünde günlük güncelleme, kur türü, son bülten tarihi, "Şimdi Güncelle" ve "Geçmiş Kurları Aktar" (bir seferde en çok 62 gün; bağlantı koparsa kaydedilenler korunur).
+    - Güvenlik: XML ayrıştırıcı dış varlık ve DTD yüklemez, DOCTYPE'lı ya da 1 MB'tan büyük yanıt reddedilir. İstekte şirket ya da müşteri bilgisi gönderilmez (`docs/COMPLIANCE.md` §4).
+    - Ölçüm: 28 yeni test (TCMB taklit edilerek; dış istek yok); bütün modüllerle birlikte 146 test geçti. `ov_demo`'da canlı: günlük iş 3,4 s'de iki Türk ana şirkete 03.11.2026 bültenini yazdı (USD = 49,9094 TRY, TCMB döviz alışıyla aynı). 01.10–03.11.2026 aktarımı 5,2 s'de 22 bülten; 28 ve 29 Ekim'de bülten yok (404). Arşiv yanıt süresi ortanca 0,35 s, en çok 3,5 s.
+    - Varsayımlar: `USER_TASKS.md` K23.
 - [ ] T3.6 Türkçe çeviri · L · C
   - Başka modüllerin çevirisini kendi modülümüzle tamamlama/değiştirme yöntemi araştırılır.
   - Ölçüm aracı `tools/po_coverage.py`; CI'da eşik.

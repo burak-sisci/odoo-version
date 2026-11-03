@@ -23,7 +23,7 @@ Kontrol yöntemi: OCA GitHub depolarının 18.0 / 19.0 / 20.0 dallarındaki mod�
 | `account_tax_balance` | account-financial-reporting | yok | var | Port (T5.4, T5.8) |
 | `partner_statement` | account-financial-reporting | yok | var | Port (T5.6) |
 | `mis_builder`, `mis_builder_budget` | mis-builder | yer tutucu (kurulamaz) | var | Port (T5.5); resmî 20.0 çıkınca `vendor/` |
-| `currency_rate_update` | currency | yok | var | TCMB için kendi modülümüz yeterli olabilir (T3.5'te karar) |
+| `currency_rate_update` | currency | yok | var | Port edilmedi: TCMB için kendi modülümüz `ov_l10n_tr_tcmb` yazıldı (T3.5) |
 | `quality_control_oca` | manufacture | yok | var | Port (T6.4) |
 | `mrp_multi_level` | manufacture | yok | var | Port (T11.2) |
 | `account_asset_management` | account-financial-tools | yok | var | Port (T11.1) |

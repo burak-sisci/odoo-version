@@ -48,7 +48,7 @@ Bu uygulamalar için iş: marka katmanı + Türkçe çeviri + Türkiye yerelleş
 | Uygulama | Yol | Kaynak | Lisans | Paket | Öncelik | Durum |
 |---|---|---|---|---|---|---|
 | Temel yerelleştirme (`ov_l10n_tr`): hesap ve vergi adı düzeltmeleri, eksik THP hesapları, stopaj vergileri ve şirketin özel hesapları (T3.2, tamam); kişi/şirket ayrımı, VKN/TCKN etiketleri ve MERSİS denetimi (T3.3, tamam); il/ilçe listesi ve Türkiye adres düzeni (T3.4, tamam); tevkifat/istisna eksikleri (T4.3) (eksik listesi `docs/research/l10n-tr.md`) | Kendimiz, `l10n_tr` üzerine | `l10n_tr` ve `base_address_extended` (20.0), python-stdnum, İçişleri Bakanlığı ilçe envanteri | AGPL-3 | T, Ü | P0 | geliştiriliyor |
-| TCMB döviz kurları (`ov_l10n_tr_tcmb`) | Kendimiz | TCMB kamuya açık XML | AGPL-3 | T, Ü | P0 | plan |
+| TCMB döviz kurları (`ov_l10n_tr_tcmb`): günlük zamanlanmış iş, kur türü seçimi, geçmiş aktarımı (T3.5, tamam) | Kendimiz | TCMB kamuya açık XML | AGPL-3 | T, Ü | P0 | tamam |
 | Türkçe çeviri tamamlama | Kendimiz | Upstream `tr.po` dosyaları | LGPL-3 (upstream metinlerinin çevirisi) | T, Ü | P0 | plan |
 | Türkçe belge çıktıları (teklif, sipariş, irsaliye, makbuz; tutar yazıyla) | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |
 | Resmî tatiller ve çalışma takvimi | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |

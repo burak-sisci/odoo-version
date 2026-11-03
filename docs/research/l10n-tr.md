@@ -5,6 +5,10 @@ Araştırma tarihi: 2026-11-03
 İlgili kararlar: D-006, D-008, D-010, D-011 (DECISIONS.md)
 İlgili görev: T3.1 (PLAN.md); sonuçları kullanan görevler T3.2–T3.8, T4.3, T5.8, T6.2, T7.1
 
+> **T3.5 sonucu (2026-11-03):** `ov_l10n_tr_tcmb` 20.0.1.0.0 TCMB kuru eksiğini kapattı (G20; §4).
+> - Her gün 16.00'da (İstanbul) `today.xml`; kaçırılan iş günleri arşivden (31 güne kadar), alınamazsa bir saat sonra yeniden deneme. Geçmiş aktarımı ayarlardan (62 güne kadar).
+> - Kur türü şirket ayarı (varsayılan döviz alış). Bülten kendi tarihiyle kaydedilir; 20.0 bir kuru ertesi günden başlayarak uygular (ölçüldü), yani işleme önceki iş gününün kuru.
+
 > **T3.4 sonucu (2026-11-03):** `ov_l10n_tr` 20.0.1.2.0 adres eksiğini kapattı (G19; §3.4, §4).
 > - 81 ilin 973 ilçesi (İçişleri Bakanlığı envanteri: 922 ilçe ve büyükşehir olmayan 51 ilin merkez ilçesi). Formda ilçe seçilince il dolar; il seçiliyse liste o ille sınırlı. Portal ve e-ticaret formunda da ilçe listeden seçilir.
 > - İl zorunlu, posta kodu isteğe bağlı, adres "34710 Kadıköy/İstanbul". e-Belge'de ilçe `CitySubdivisionName`, il `CityName` (T4.3).
@@ -231,12 +235,12 @@ Mevzuat doğrulaması:
 | G17 | VKN/TCKN yer tutucusu İngilizce ("NIN"); ülkenin VKN etiketi boş | Görünüm | T3.3 — kapandı |
 | G18 | MERSİS biçim denetimi yok; MERSİS/ticaret sicil/şube etiketleri çevrilmemiş | Hatalı MERSİS belgeye gider | T3.3 — kapandı (denetim ve çeviri) |
 | G19 | Adreste ilçe yok, il zorunlu değil, posta kodu zorunlu | e-Belge adres alanları | T3.4 — kapandı (973 ilçe; il zorunlu, posta kodu isteğe bağlı) |
-| G20 | TCMB kuru yok | Dövizli işlem elle | T3.5 |
+| G20 | TCMB kuru yok | Dövizli işlem elle | T3.5 — kapandı (`ov_l10n_tr_tcmb`) |
 | G21 | Çeviri kapsamı: `l10n_tr` %33, paket modülleri %71–86 | Türkçe arayüzde İngilizce metin | T3.6 |
 | G22 | Yazıyla tutar "Lira", "Yalnız" öneki yok | Belge alışkanlığı | T3.7 |
 | G23 | Resmî tatil verisi yok | İş merkezi ve izin takvimi | T3.8 |
 | G24 | Saat dilimi varsayılanı (kullanıcıda tarayıcıdan) | Zamanlanmış işler ve belge saatleri | T3.2 — gerekmiyor: şirket dilimi ülkeden `Europe/Istanbul` (§3.5) |
-| G25 | `l10n_tr`'de tek test (satış iadesi) | Yerelleştirme hataları fark edilmiyor | T3.2–T3.4 testleri, T3.9 (T3.2: 9, T3.3: 10, T3.4: 15 test) |
+| G25 | `l10n_tr`'de tek test (satış iadesi) | Yerelleştirme hataları fark edilmiyor | T3.2–T3.5 testleri, T3.9 (T3.2: 9, T3.3: 10, T3.4: 15, T3.5: 28 test) |
 | G26 | Vergi daireleri: güncellik (kapanan/birleşen daireler) yalnız upstream'le gelir | e-Belge'de eski daire adı | T4.3 (e-Belge testleri); şimdilik ek veri yok |
 | G27 | Erken ödeme indirimi, kasa farkı ve cari yıl kârı için plan dışı 999 kodlu hesaplar (§3.6) | Tekdüzen dışı hesaplar, mizanda yabancı kalem | T3.2 — kapandı (611, 649, 679, 689, 590) |
 | G28 | Kira stopajı 191 İndirilecek KDV'ye kaydediliyor (§3.6) | Ödenecek vergi, indirilecek KDV görünüyor | T3.2 — kapandı (360'a kaydeden yeni vergiler; eskisi pasif) |

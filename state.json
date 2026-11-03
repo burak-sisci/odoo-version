@@ -26,7 +26,7 @@
     "title": "Türkiye temel yerelleştirmesi",
     "status": "in_progress"
   },
-  "current_task": "T3.5",
+  "current_task": "T3.6",
   "session": {
     "mode": "otonom",
     "number": 4,
@@ -63,13 +63,14 @@
     "T3.1",
     "T3.2",
     "T3.3",
-    "T3.4"
+    "T3.4",
+    "T3.5"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K10, K9, K12–K22 (USER_TASKS.md §1)",
-    "TCMB döviz kurları ov_l10n_tr_tcmb (T3.5)",
-    "Türkçe çeviri: ölçüm aracı ve paket modüllerindeki eksikler (T3.6)"
+    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K10, K9, K12–K23 (USER_TASKS.md §1)",
+    "Türkçe çeviri: ölçüm aracı ve paket modüllerindeki eksikler (T3.6)",
+    "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [
     {
@@ -335,6 +336,19 @@
         "auto_install": true,
         "task": "T3.2, T3.3, T3.4",
         "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20; T3.3: ad 'Turkey - Localization' (Türkiye Yerelleştirmesi); TCKN'li Türk iş ortağı gerçek kişi (_compute_is_company), mükellef türü _ov_l10n_tr_tax_id_type(); VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS 16 hane (validation_function); kurulu iş ortakları post_init_hook ve migrations/20.0.1.1.0 ile yeniden hesaplanır; varsayımlar USER_TASKS K21; T3.4: 973 ilçe (res.city; İçişleri Bakanlığı envanteri, tools/tr_districts.py), ülke ayarları res.country._ov_l10n_tr_setup (il zorunlu, posta kodu isteğe bağlı, adres '34710 Kadıköy/İstanbul'); il seçiliyse ilçe listesi o ille sınırlı (form, portal ve e-ticaret); kurulu kişiler belirsizlik yoksa ilçeye bağlanır (post_init_hook, migrations/20.0.1.2.0); varsayımlar USER_TASKS K22"
+      },
+      {
+        "module": "ov_l10n_tr_tcmb",
+        "path": "addons/ov_l10n_tr_tcmb",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "account",
+          "ov_l10n_tr"
+        ],
+        "auto_install": true,
+        "task": "T3.5",
+        "note": "TCMB döviz kurları: günlük zamanlanmış iş 16.00 İstanbul (today.xml), kaçırılan iş günleri arşivden en çok 31 gün, hata olursa 1 saat sonra yeniden deneme (ir.cron._trigger); kur türü şirket ayarı (döviz/efektif alış/satış, varsayılan döviz alış; efektif yoksa aynı yönün döviz kuru); bülten kendi tarihiyle kaydedilir, 20.0 ertesi günden uygular; kur ana şirkete yazılır, yalnız etkin para birimleri; TRY olmayan şirkete çapraz kur; ayarlarda Şimdi Güncelle ve Geçmiş Kurları Aktar (ov.tcmb.rate.import, en çok 62 gün); güvenli XML ayrıştırma (DTD/varlık yok, 1 MB sınırı); varsayımlar USER_TASKS K23"
       }
     ],
     "ported": [

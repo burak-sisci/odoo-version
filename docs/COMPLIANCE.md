@@ -65,6 +65,10 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
   - Dosya bizim biçimimizde: Türkçe yazım (envanterde büyük harf), kendi kimliklerimiz, eklenen 51 "Merkez" ilçesi. Envanterin tablo düzeni kopyalanmadı.
   - Envanterde lisans ya da kullanım koşulu belirtilmemiş. Plandaki açık lisanslı GitHub veri setleri (`research/planning-inputs.md` §5) aynı olguların ikincil kopyası olduğu için resmî kaynak seçildi (`USER_TASKS.md` K22). Hukuki incelemede (T9.4) teyit edilir.
   - Wikidata yalnız ad yazımını karşılaştırmak için kullanıldı; verisi depoya girmedi.
+- **TCMB döviz kurları (T3.5):** `ov_l10n_tr_tcmb`, TCMB'nin herkese açık kur bültenini (`www.tcmb.gov.tr/kurlar`) müşterinin kendi sunucusunda, çalışma anında alır. Kurlar olgudur ve yalnız müşterinin veritabanına kur kaydı olarak yazılır; ürünle dağıtılmaz, yeniden yayımlanmaz.
+  - İstek düz bir HTTPS GET'tir: TCMB yalnız sunucunun IP adresini ve kütüphanenin varsayılan User-Agent'ını görür. Şirket, kullanıcı ya da müşteri bilgisi gönderilmez. Dış istek testi (T2.7) TCMB'yi yayıncı alan adı saymaz; testlerde istek taklit edilir.
+  - Depoda TCMB verisi yok: test bülteni (`tests/data/bulletin.xml`) TCMB'nin biçiminde, kurgusal kurlarla yazıldı. Bu yüzden envantere giriş gerekmez.
+  - Yanıt güvenilmeyen veri sayılır: dış varlık ve DTD yüklenmez, DOCTYPE'lı ya da 1 MB'tan büyük yanıt reddedilir.
 - **Public depo (D-015):** depodaki her şey herkese açık.
   - Depoya girmeyecekler: gizli bilgi (API anahtarı, şifre, sertifika), müşteri veya test kişisinin gerçek verisi, gerçek VKN/TCKN, yerel yapılandırma (`.env`, `odoo.conf`).
   - Nilvera test portalının test bilgileri kamuya açık bir belgede yayımlanmış olsa da depoya yazılmaz; yalnız `.env`'de tutulur.

@@ -28,6 +28,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 13. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
 14. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
 15. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
+16. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
 
 Otonom mesai 3 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 3 — özet". Yeni maddeler: K19, K20, K21.
 
@@ -155,6 +156,20 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — varsayımlar kalsın · **B** — merkez ilçeler il adıyla anılsın ("Bolu Merkez") · **C** — posta kodu zorunlu olsun · **D** — veri açık lisanslı bir GitHub veri setinden alınsın.
   - Claude önerisi: **A**. Resmî envanter kendi sayılarıyla denetlenebiliyor (922 ilçe); ikincil veri setlerinin güncelliği ona bağlı.
   - Ne zaman: e-Belge çekirdeğinden (T4.3) önce.
+
+- [ ] K23 **Karar** — TCMB döviz kurlarının kullanımı (T3.5).
+  - Neden: upstream'de TCMB kuru yoktu, dövizli işlemde kur elle giriliyordu (`docs/research/l10n-tr.md` G20). Hangi kurun hangi güne yazılacağı muhasebe uygulamasına bağlı.
+  - Varsayımlar (otonom mesai 4, geri dönüşü kolay; hepsi `ov_l10n_tr_tcmb`'de):
+    - Varsayılan kur türü **döviz alış**. Şirket ayarından döviz satış, efektif alış ya da efektif satış seçilebilir.
+    - Bülten kendi tarihiyle kaydedilir; sistem bir kuru tarihinden sonraki günden başlayarak uygular. Böylece işleme önceki iş günü ilan edilen kur uygulanır (3 Kasım bülteni 4 Kasım işlemlerinde). Hafta sonu ve tatilde son bülten geçerli kalır.
+    - TCMB'nin efektif kur vermediği para birimlerinde (RUB, CNY, AED ve diğerleri) aynı yönün döviz kuru kullanılır.
+    - Ülkesi Türkiye olan şirketlerde günlük güncelleme açık gelir. Kurlar her gün 16.00'da alınır (bülten 15.30 sularında).
+    - Yalnız etkin para birimlerine kur yazılır.
+    - Kaçırılan bültenler en çok 31 gün geriye kadar tamamlanır; alınamazsa bir saat sonra yeniden denenir. Elle aktarım bir seferde en çok 62 gün.
+    - Para birimi Türk lirası olmayan şirkete Türk lirası üzerinden çapraz kur yazılır.
+  - Seçenekler: **A** — varsayımlar kalsın · **B** — bülten yayımlandığı gün de uygulansın (3 Kasım bülteni 3 Kasım'da) · **C** — varsayılan kur türü başka olsun (ör. efektif satış) · **D** — başka bir düzen.
+  - Claude önerisi: **A**. Yaygın uygulamada TCMB'nin bir gün ilan ettiği kur ertesi günün işlemlerinde kullanılır; 20.0'ın tarih kuralı bunu kendiliğinden veriyor (ölçüldü). Döviz alış en yaygın seçim. Vergi mevzuatındaki kesin kural bu oturumda birincil kaynaktan doğrulanmadı; mali müşavirle teyit edilmeli.
+  - Ne zaman: ilk pilot müşteriden (F9) önce; mali müşavire K20 sorularıyla birlikte sorulabilir.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

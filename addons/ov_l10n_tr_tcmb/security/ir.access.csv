@@ -1,0 +1,2 @@
+id,name,model_id,group_id/id,operation,domain
+access_ov_tcmb_rate_import,ov.tcmb.rate.import,ov.tcmb.rate.import,account.group_account_manager,cru,

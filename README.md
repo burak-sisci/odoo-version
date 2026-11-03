@@ -33,7 +33,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - `ov_l10n_tr` Türk hesap planını düzeltiyor: Türkçe hesap ve vergi adları, eksik Tekdüzen hesapları, kira ve serbest meslek stopajı, Tekdüzen'e bağlı özel hesaplar. Kalıcı test Türkçe adlardaki İngilizce kalıntıları ve büyük harf hatalarını yakalıyor (T3.2).
 - `ov_l10n_tr` kimlik numaralarını Türkiye kurallarıyla ele alıyor: TCKN'li iş ortağı gerçek kişi, VKN'li iş ortağı şirket; VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS numarasında 16 hane denetleniyor (T3.3).
 - `ov_l10n_tr` adreslere 81 ilin 973 ilçesini ekledi (İçişleri Bakanlığı envanteri): ilçe seçilince il dolar, il seçiliyse liste o ille sınırlı; portal ve e-ticaret formunda da. İl zorunlu, posta kodu isteğe bağlı; adres "34710 Kadıköy/İstanbul" biçiminde (T3.4).
-- Sıradaki görev: TCMB döviz kurları (T3.5).
+- `ov_l10n_tr_tcmb` Merkez Bankası (TCMB) döviz kurlarını her iş günü kendiliğinden alıyor: kur türü seçilebiliyor (döviz/efektif, alış/satış), kaçırılan günler tamamlanıyor, geçmiş kurlar ayarlardan aktarılıyor (T3.5).
+- Sıradaki görev: Türkçe çeviri (T3.6).
 - Açık karar yok.
 
 ## Belgeler

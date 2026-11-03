@@ -1,0 +1,237 @@
+# Turkish translation of the ov_l10n_tr_tcmb module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_l10n_tr_tcmb 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/wizard/tcmb_rate_import.py:0
+msgid "%(bulletins)s TCMB bulletins stored (%(rates)s rates)."
+msgstr "%(bulletins)s TCMB bülteni kaydedildi (%(rates)s kur)."
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/wizard/tcmb_rate_import.py:0
+msgid ""
+"%(bulletins)s TCMB bulletins stored (%(rates)s rates). The bulletin of "
+"%(date)s could not be fetched: %(error)s. Import again from that day."
+msgstr ""
+"%(bulletins)s TCMB bülteni kaydedildi (%(rates)s kur). %(date)s bülteni "
+"alınamadı: %(error)s. Aktarımı o günden yeniden başlatın."
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields.selection,name:ov_l10n_tr_tcmb.selection__res_company__ov_tcmb_rate_type__banknote_buying
+msgid "Banknote Buying"
+msgstr "Efektif Alış"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields.selection,name:ov_l10n_tr_tcmb.selection__res_company__ov_tcmb_rate_type__banknote_selling
+msgid "Banknote Selling"
+msgstr "Efektif Satış"
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.ov_tcmb_rate_import_view_form
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model,name:ov_l10n_tr_tcmb.model_res_company
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__company_id
+msgid "Company"
+msgstr "Şirket"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model,name:ov_l10n_tr_tcmb.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__create_uid
+msgid "Created by"
+msgstr "Tarafından oluşturuldu"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__create_date
+msgid "Created on"
+msgstr "Oluşturuldu"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_company__ov_tcmb_auto
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_config_settings__ov_tcmb_auto
+msgid "Daily TCMB Rates"
+msgstr "Günlük TCMB Kurları"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.module.module,summary:base.module_ov_l10n_tr_tcmb
+msgid ""
+"Daily exchange rates of the Central Bank of the Republic of Türkiye (TCMB)"
+msgstr "Türkiye Cumhuriyet Merkez Bankası (TCMB) günlük döviz kurları"
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.res_config_settings_view_form
+msgid "Daily rates of the Central Bank of the Republic of Türkiye"
+msgstr "Türkiye Cumhuriyet Merkez Bankası günlük kurları"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_company__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,help:ov_l10n_tr_tcmb.field_res_company__ov_tcmb_auto
+#: model:ir.model.fields,help:ov_l10n_tr_tcmb.field_res_config_settings__ov_tcmb_auto
+msgid ""
+"Fetch the exchange rates of the Central Bank of the Republic of Türkiye "
+"(TCMB) every business day."
+msgstr ""
+"Türkiye Cumhuriyet Merkez Bankası (TCMB) döviz kurları her iş günü alınır."
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields.selection,name:ov_l10n_tr_tcmb.selection__res_company__ov_tcmb_rate_type__forex_buying
+msgid "Forex Buying"
+msgstr "Döviz Alış"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields.selection,name:ov_l10n_tr_tcmb.selection__res_company__ov_tcmb_rate_type__forex_selling
+msgid "Forex Selling"
+msgstr "Döviz Satış"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__date_from
+msgid "From"
+msgstr "Başlangıç"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__id
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_company__id
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.ov_tcmb_rate_import_view_form
+msgid "Import"
+msgstr "Aktar"
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.res_config_settings_view_form
+msgid "Import Past Rates"
+msgstr "Geçmiş Kurları Aktar"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.actions.act_window,name:ov_l10n_tr_tcmb.action_ov_tcmb_rate_import
+#: model:ir.model,name:ov_l10n_tr_tcmb.model_ov_tcmb_rate_import
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.ov_tcmb_rate_import_view_form
+msgid "Import TCMB Exchange Rates"
+msgstr "TCMB Kurlarını Aktar"
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/wizard/tcmb_rate_import.py:0
+msgid "Import at most %(days)s days at a time."
+msgstr "Bir seferde en çok %(days)s günlük dönem aktarılabilir."
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_company__ov_tcmb_last_date
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_config_settings__ov_tcmb_last_date
+msgid "Last TCMB Bulletin"
+msgstr "Son TCMB Bülteni"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,help:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__rate_type
+#: model:ir.model.fields,help:ov_l10n_tr_tcmb.field_res_company__ov_tcmb_rate_type
+#: model:ir.model.fields,help:ov_l10n_tr_tcmb.field_res_config_settings__ov_tcmb_rate_type
+msgid ""
+"Rate of the TCMB bulletin stored as the exchange rate. Where TCMB gives no "
+"banknote rate, the forex rate of the same side is used."
+msgstr ""
+"TCMB bülteninden kur olarak kaydedilen değer. TCMB efektif kur vermiyorsa "
+"aynı yönün döviz kuru kullanılır."
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.res_config_settings_view_form
+msgid "TCMB Exchange Rates"
+msgstr "TCMB Döviz Kurları"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__rate_type
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_company__ov_tcmb_rate_type
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_res_config_settings__ov_tcmb_rate_type
+msgid "TCMB Rate Type"
+msgstr "TCMB Kur Türü"
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/models/res_config_settings.py:0
+msgid "TCMB bulletin of %(date)s: %(count)s exchange rates stored."
+msgstr "%(date)s tarihli TCMB bülteni: %(count)s döviz kuru kaydedildi."
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/wizard/tcmb_rate_import.py:0
+msgid "TCMB published no bulletin in this period."
+msgstr "TCMB bu dönemde bülten yayımlamadı."
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.actions.server,name:ov_l10n_tr_tcmb.ir_cron_tcmb_rates_ir_actions_server
+msgid "TCMB: Update exchange rates"
+msgstr "TCMB: Döviz kurlarını güncelle"
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/models/res_config_settings.py:0
+msgid "The TCMB exchange rates could not be fetched: %s"
+msgstr "TCMB döviz kurları alınamadı: %s"
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.ov_tcmb_rate_import_view_form
+msgid ""
+"The bulletins of the period are stored as the exchange rates of the company."
+" A rate applies from the day after its date. Rates already stored for these "
+"days are replaced."
+msgstr ""
+"Dönemin bültenleri şirketin döviz kurları olarak kaydedilir. Bir kur, "
+"tarihinden sonraki günden başlayarak uygulanır. Bu günler için kayıtlı "
+"kurlar değiştirilir."
+
+#. module: ov_l10n_tr_tcmb
+#. odoo-python
+#: code:addons/ov_l10n_tr_tcmb/wizard/tcmb_rate_import.py:0
+msgid "The period must start before it ends, and not in the future."
+msgstr "Dönemin başlangıcı bitişinden önce olmalı ve gelecekte olmamalıdır."
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.model.fields,field_description:ov_l10n_tr_tcmb.field_ov_tcmb_rate_import__date_to
+msgid "To"
+msgstr "Bitiş"
+
+#. module: ov_l10n_tr_tcmb
+#: model:ir.module.module,shortdesc:base.module_ov_l10n_tr_tcmb
+msgid "Turkey - TCMB Exchange Rates"
+msgstr "Türkiye - TCMB Döviz Kurları"
+
+#. module: ov_l10n_tr_tcmb
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr_tcmb.res_config_settings_view_form
+msgid "Update Now"
+msgstr "Şimdi Güncelle"

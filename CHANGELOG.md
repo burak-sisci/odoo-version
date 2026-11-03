@@ -7,6 +7,45 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: TCMB döviz kurları (T3.5) — otonom mesai 4
+
+**Kod**
+- Yeni modül `ov_l10n_tr_tcmb` 20.0.1.0.0 (AGPL-3). `account` ve `ov_l10n_tr`'ye bağlı, kendiliğinden kurulur (G20).
+- Bülten okuma (`tools.py`): `today.xml` ve tarih arşivi (`kurlar/YYYYAA/GGAAYYYY.xml`).
+  - Ayrıştırıcı dış varlık ve DTD yüklemez; DOCTYPE'lı, 1 MB'tan büyük ya da `Tarih_Date` olmayan yanıt reddedilir. Geçersiz kod, birim ya da değer atlanır.
+  - Bülten olmayan gün (404) boş döner. İstenen günden başka tarihli bülten hata sayılır.
+  - Kur türü: döviz alış/satış, efektif alış/satış. Efektif kuru olmayan para birimlerinde aynı yönün döviz kuru kullanılır. Birim (JPY 100 gibi) bölünür.
+  - Para birimi TRY olmayan şirket için kurlar Türk lirası üzerinden çapraz hesaplanır; şirketin para birimi bültende yoksa kur yazılmaz.
+- Şirket (`res.company`): günlük güncelleme (ülkesi Türkiye olan şirkette açık gelir), kur türü (varsayılan döviz alış), son bülten tarihi.
+  - Kurlar ana şirkete, yalnız etkin para birimlerine yazılır. Aynı güne kayıtlı kur değiştirilir.
+  - Kaçırılan iş günleri arşivden tamamlanır, en çok 31 gün geriye; indirilen bülten aynı çalıştırmada tekrar istenmez.
+- Zamanlanmış iş "TCMB: Döviz kurlarını güncelle": her gün 16.00 (İstanbul; bülten 15.30 sularında). Bağlantı ya da bülten hatasında uyarı yazılır ve iş bir saat sonrasına yeniden kurulur (`ir.cron._trigger`). İş, kullanıcısının şirketlerinden bağımsız bütün ana şirketleri tarar.
+- Ayarlar: Faturalama ayarlarında Para Birimleri bölümünde "TCMB Döviz Kurları" (ikinci para birimi etkinken görünür). Günlük güncelleme, kur türü, son bülten, "Şimdi Güncelle", "Geçmiş Kurları Aktar". Şubede açılan ayar ana şirketin ayarıdır.
+  - Bölüm upstream'in "kurları güncelle" ayarına değil bölümün kendisine bağlandı: `ov_brand` OCA `remove_odoo_enterprise` ile o ayarı (Enterprise modülü kutusu) kaldırıyor.
+- Geçmiş aktarımı (`ov.tcmb.rate.import`, yalnız muhasebe yöneticisi): bir seferde en çok 62 gün, bugünden ileri gitmez. Bağlantı koparsa o güne kadar kaydedilenler korunur ve hangi günden yeniden başlanacağı söylenir. Son bülten tarihine dokunmaz.
+- Çeviri: `i18n/tr.po` 37 metin. Modül açıklaması Türkçe README olduğu için çeviriye girmez.
+- Testler: 28 yeni test (TCMB taklit edilir, dış istek yok). 10'u bülten okuma ve hesaplar, 18'i kur kaydı, tarih kuralı, zamanlanmış işin tamamlama, sınır, hata ve yeniden deneme davranışı, ayarlar, aktarım ve görünümler. Test bülteni kurgusal (13.01.2025).
+  - Sonuç: `ov_l10n_tr_tcmb` 28/28; bütün modüllerle birlikte 146/146.
+- Ölçüm (`ov_demo`, canlı TCMB; alınan kurlar demo veritabanında kaldı):
+  - zamanlanmış iş 3,42 s: iki Türk ana şirkete 03.11.2026 bülteni. TR Company'de USD = 49,9094 TRY (TCMB döviz alış); para birimi USD olan şirkette TRY kuru aynı değerden;
+  - 01.10–03.11.2026 aktarımı 5,2 s: 22 bülten, 22 kur. 28 ve 29 Ekim'de bülten yok (404);
+  - dönüşümler: 31.10 ve 02.11'de 49,7747 (30.10 bülteni), 03.11'de 49,8827 (02.11 bülteni), 04.11'de 49,9094;
+  - Türkçe arayüz: ayar ve sihirbaz metinleri, iş adı, tarih biçimi (03.11.2026).
+
+**Araştırma**
+- Kur tarihinin anlamı ölçüldü (`ov_demo`, geri alınan betik): 20.0'da bir kur, tarihinden sonraki günden başlayarak uygulanır (`_get_rates`, `name < tarih`). Önceki kur yoksa ilk sonraki kur kullanılır. Bu yüzden bülten kendi tarihiyle kaydedildi; işleme önceki iş gününün kuru uygulanır.
+- TCMB arşivi: ortanca yanıt 0,35 s, en çok 3,46 s; art arda isteklerde bir kez 20 s zaman aşımı. Kütüphanenin varsayılan User-Agent'ı kabul ediliyor. Zaman aşımı 10 s bağlantı, 30 s okuma.
+- OCA `currency` deposunun 20.0 dalında modül yok. `currency_rate_update` port edilmedi; kendi modülümüz yazıldı.
+  - Eski metin (`docs/research/planning-inputs.md` §1): "TCMB için kendi modülümüz yeterli olabilir (T3.5'te karar)".
+  - Neden: TCMB'ye özgü iş (kur türü, tarih kuralı, çapraz kur, tatil günleri) küçük ve tek kaynaklı; genel sağlayıcı çatısı 20.0'a port edilmeden gerekmiyor.
+
+**Belgeler**
+- PLAN.md: T3.5 `[x]` ve sonucu; F3 5/9; toplam 31/114; şu anki görev T3.6. §4'teki döviz satırı.
+- USER_TASKS.md: K23 (TCMB varsayımları), §1'e eklendi.
+- `docs/COMPLIANCE.md` §4: TCMB notu (çalışma anında alınan olgu verisi, istekte müşteri bilgisi yok; depoda TCMB verisi yok, envanter girişi gerekmez).
+- `docs/research/l10n-tr.md`: T3.5 sonucu, G20 kapandı, G25 test sayıları. `docs/research/planning-inputs.md`: `currency_rate_update` satırı.
+- `docs/MODULE_MATRIX.md`, README.md, ARCHITECTURE.md (Türkiye temeli), state.json.
+
 ### Adım: il/ilçe adres yapısı (T3.4) — otonom mesai 4
 
 **Kod**
