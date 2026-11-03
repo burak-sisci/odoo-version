@@ -5,6 +5,11 @@ extend = "upstream/odoo/ruff.toml"
 # their own style; how they are linted is decided with their layout (T1.11).
 extend-exclude = ["upstream", "vendor", "ports"]
 
+[lint]
+# Turkish letters are allowed in comments and docstrings (CLAUDE.md, Odoo
+# development rules): the dotless "ı" is a Turkish letter, not a look-alike of "i".
+allowed-confusables = ["ı"]
+
 [lint.extend-per-file-ignores]
 # Command-line tools report on stdout.
 "tools/*.py" = ["T201"]

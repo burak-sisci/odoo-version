@@ -27,6 +27,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 12. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
 13. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
 14. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
+15. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
 
 Otonom mesai 3 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 3 — özet". Yeni maddeler: K19, K20, K21.
 
@@ -141,6 +142,19 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — varsayımlar kalsın · **B** — şahıs şirketleri şirket sayılsın (kişi yalnız e-Belge'de ayrılır) · **C** — MERSİS iç yapısı da denetlensin.
   - Claude önerisi: **A**. Şahıs şirketi vergide gerçek kişidir; resmî kaynağı olmayan bir iç yapı denetimi geçerli bir numarayı reddedebilir.
   - Ne zaman: e-Belge çekirdeğinden (T4.3) önce; mali müşavire K20 sorularıyla birlikte sorulabilir.
+
+- [ ] K22 **Karar** — Türkiye adreslerinde il/ilçe düzeni (T3.4).
+  - Neden: upstream'de ilçe listesi yoktu, il zorunlu değildi, posta kodu zorunluydu (`docs/research/l10n-tr.md` G19). e-Belge adreste il ve ilçe bekler.
+  - Varsayımlar (otonom mesai 4, geri dönüşü kolay; hepsi `ov_l10n_tr`'de):
+    - Veri kaynağı: plandaki açık lisanslı GitHub veri setleri yerine İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri. O depolar aynı adların ikincil kopyası. İlçe adları kanunla belirlenen olgular; envanterde lisans belirtilmemiş (`docs/COMPLIANCE.md` §4). Hukuki incelemede (T9.4) teyit edilir.
+    - Büyükşehir olmayan 51 ilin merkez ilçesinin adı "Merkez" (adreslerde "Merkez/Bolu" gibi). Envanter bu ilçeleri ilçe listesinde vermiyor; il belediyesi listesinden eklendi.
+    - Adlar resmî yazımla, şapkasız: "Bala", "Şehitkamil". Kurulu kişilerdeki şapkalı yazım ("Balâ") eşleştirmede tanınır.
+    - İl zorunlu, posta kodu isteğe bağlı. Adres biçimi "34710 Kadıköy/İstanbul".
+    - Portal ve e-ticaret adres formunda ilçe, ilin listesinden seçilir; listede olmayan ilçe yazılamaz.
+    - Kurulu kişiler yalnız belirsizlik yoksa ilçeye bağlanır. Şehir alanına il adı yazılmış kişi o ilin merkez ilçesine bağlanır.
+  - Seçenekler: **A** — varsayımlar kalsın · **B** — merkez ilçeler il adıyla anılsın ("Bolu Merkez") · **C** — posta kodu zorunlu olsun · **D** — veri açık lisanslı bir GitHub veri setinden alınsın.
+  - Claude önerisi: **A**. Resmî envanter kendi sayılarıyla denetlenebiliyor (922 ilçe); ikincil veri setlerinin güncelliği ona bağlı.
+  - Ne zaman: e-Belge çekirdeğinden (T4.3) önce.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

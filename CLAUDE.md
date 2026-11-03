@@ -193,5 +193,6 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Gizli bilgi denetimi (T1.10): `python tools/check_secrets.py`. Staged değişikliklerde `.env` değerlerini arar; pre-commit kancası olarak her commit'te çalışır. CI'da gitleaks tüm geçmişi tarar.
 - CI (T1.10): `gh run list --limit 5` · başarısız adımların günlüğü `gh run view <id> --log-failed`
   - Linux'ta referans test (ör. upstream modülleri): `gh workflow run ci.yml -f modules=l10n_tr` → `gh run watch <id>`
+- İlçe listesi (T3.4): `.venv/Scripts/python tools/tr_districts.py` İçişleri Bakanlığı envanterini indirir, `addons/ov_l10n_tr/data/res.city.csv`'yi yazar. `--check` fark varsa 1 döner; `--save-dir DIR` indirilen raporları saklar, `--from-dir DIR` onları kullanır.
 - OCA portu (T1.11): `python tools/port_oca.py fetch <depo> <modül> [--branch 19.0] [--commit SHA]` → `python tools/port_oca.py upgrade ports/oca/<depo>/<modül>` → elle uyarlama + `python tools/run_tests.py <modül>`
   - Kaynakla fark: `python tools/port_oca.py diff ports/oca/<depo>/<modül> [--stat]`. Adımların tamamı ve kayıtlar: ARCHITECTURE.md §2 "Port prosedürü".

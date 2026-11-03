@@ -49,10 +49,16 @@ msgstr "Kontak"
 #. module: ov_l10n_tr
 #: model:ir.module.module,summary:base.module_ov_l10n_tr
 msgid ""
-"Corrects the Turkish chart of accounts and taxes; Turkish tax ID and "
-"registry numbers"
+"Corrects the Turkish chart of accounts and taxes; tax ID, registry numbers "
+"and districts"
 msgstr ""
-"Türk hesap planını ve vergileri düzeltir; VKN/TCKN ve MERSİS kuralları"
+"Türk hesap planını ve vergileri düzeltir; VKN/TCKN, MERSİS ve il/ilçe "
+"listesi"
+
+#. module: ov_l10n_tr
+#: model:ir.model,name:ov_l10n_tr.model_res_country
+msgid "Country"
+msgstr "Ülke"
 
 #. module: ov_l10n_tr
 #. odoo-python

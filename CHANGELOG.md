@@ -7,6 +7,47 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: il/ilçe adres yapısı (T3.4) — otonom mesai 4
+
+**Kod**
+- `ov_l10n_tr` 20.0.1.1.0 → 20.0.1.2.0. Yeni bağımlılıklar `base_address_extended` ve `portal`. İkisi `l10n_tr` kurulunca zaten kuruluyor (`account` → `portal` → `base_address_extended`); kendiliğinden kurulma koşulu değişmedi.
+- İlçe listesi (G19): `data/res.city.csv`, 81 ilin 973 ilçesi.
+  - 922'si İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri'nin ilçe listesinden. Büyükşehir olmayan 51 ilin merkez ilçesi bu listede yok; il belediyeleri listesinden "Merkez" adıyla eklendi.
+  - Adlar envanterdeki büyük harften Türkçe yazıma çevrildi ("KARAİSALI" → "Karaisalı", "19 MAYIS" → "19 Mayıs").
+  - `tools/tr_districts.py` (yeni): iki raporu indirir, okunan ilçeleri envanterin kendi sayılarıyla karşılaştırır (il başına ilçe sayısı, toplam 922), CSV'yi yazar. `--check` farkı bildirir; kayıtlı raporlardan aynı dosya yeniden üretildi.
+- Ülke ayarları (`res.country._ov_l10n_tr_setup`):
+  - ilçe listeden seçilir, il zorunlu, posta kodu isteğe bağlı;
+  - adres biçimi `%(zip)s %(city)s/%(state_name)s` ("34710 Kadıköy/İstanbul"). İlçe ya da il boşsa eğik çizgi yazılmaz. İlçe seçilmiş ama şehir metni boşsa (içe aktarma, API) ilçenin adı yazılır.
+  - `base.tr` noupdate olduğu için T3.3'teki XML veri dosyası (`data/res_country_data.xml`, yalnız VKN etiketi) kaldırıldı. Bütün ülke ayarlarını kurulum kancası ve güncelleme betiği aynı yöntemle yazar.
+- Form: il seçiliyse ilçe listesi o ilin ilçeleriyle sınırlı (kişi ve alt kişi formu). Aynı adlı ilçeler ayrılır: Ereğli (Konya, Zonguldak).
+- Portal ve e-ticaret adres formu: upstream ilçe seçimini beş ülkeyle (BR, CL, PE, CO, TW) sınırlıyor; Türkiye eklendi. İl seçilince ilçeleri gelir; ilçe ve il zorunlu.
+- Kurulu kişiler (kurulum kancası, `migrations/20.0.1.2.0`): şehir metni tek bir ilçeyi gösteriyorsa kişi ilçeye bağlanır. Büyük/küçük harf, şapka ve boşluk farkı yok sayılır.
+  - İl seçiliyse o ilin ilçesi; şehir alanına il adı yazılmışsa o ilin merkez ilçesi; il seçili değilse yalnız tek ilde bulunan bir ad.
+  - Belirsizler (iki ilde aynı ad, bilinmeyen ad, il seçilmeden "Merkez") olduğu gibi kalır.
+- Lint: ruff, yorum ve docstring'lerdeki Türkçe "ı" harfini "i"ye benzeyen karakter sayıyordu (RUF002, RUF003). `ruff.toml`'a `allowed-confusables = ["ı"]` eklendi: Türkçe harfler kod yorumlarında serbest (CLAUDE.md).
+- Testler: 15 yeni test.
+  - 11'i veri, ad yazımı, ülke ayarları, adres metni, form, ilçe alanının süzgeci ve kurulu kişilerin eşleştirilmesi için.
+  - 4'ü portalın HTTP uçlarıyla: ülke bilgisi, ilin ilçeleri, adres kaydı, ilçe ve il zorunluluğu.
+  - Sonuç: `ov_l10n_tr` 34/34; bütün modüllerle birlikte 114/114. Günlükteki 2 CRITICAL satırı bilinen upstream gürültüsü (test kipinde websocket kapalı, Chrome kapanırken bağlantı kopuyor).
+- Ölçüm (`ov_demo`, 20.0.1.2.0'a güncellendi; göç 0,13 sn):
+  - 973 ilçe; ülke ayarları yazıldı;
+  - 7 Türk kişinin 2'si ilçeye bağlandı: Beyoğlu/İstanbul, Ürgüp/Nevşehir. Bağlanmayanlar: "Konak Belediyesi", "İç Anadolu Bölgesi" ve ili California görünen 3 demo kaydı.
+
+**Araştırma**
+- İlçe verisinin kaynağı değişti.
+  - Eski metin (`docs/research/planning-inputs.md` §5): "`siberfx/turkiye-address` (MIT) ve GitHub `turkiye-il-ilce-listesi` konusu altındaki depolar". PLAN T3.4: "İlçe verisi açık lisanslı bir veri setinden gelir".
+  - Neden: o depolar aynı olguların ikincil kopyası; doğrulukları ve güncellikleri resmî envantere bağlı. Resmî envanter kendi sayılarıyla denetlenebiliyor.
+  - Lisans durumu `docs/COMPLIANCE.md` §4'te; varsayım `USER_TASKS.md` K22.
+- Ad yazımı Wikidata'yla karşılaştırıldı (yalnız denetim, depoya girmedi). Yalnız büyük/küçük harf farkı olan ad yok. Wikidata'da o ile bağlı bulunmayan 44 adın 2'si şapkalı yazım (Balâ, Şehitkâmil); resmî yazım şapkasız. Kalanlar Wikidata'da ile bağlanmamış bilinen ilçeler (Çekmeköy, Gaziosmanpaşa gibi).
+- e-Belge adres eşlemesi (T4.3 için): ilçe `cbc:CitySubdivisionName`, il `cbc:CityName`.
+
+**Belgeler**
+- PLAN.md: T3.4 `[x]` ve sonucu; F3 4/9; toplam 30/114; şu anki görev T3.5. §4'teki il/ilçe satırı; T4.3'e adres eşlemesi eklendi.
+- USER_TASKS.md: K22 (il/ilçe varsayımları), §1'e eklendi.
+- `docs/COMPLIANCE.md`: §4 ilçe listesi notu, §5 envanter satırı.
+- `docs/research/l10n-tr.md`: T3.4 sonucu, G19 kapandı, kaynaklar. `docs/research/planning-inputs.md` §5: seçilen kaynak.
+- `docs/MODULE_MATRIX.md`, README.md, ARCHITECTURE.md (Türkiye temeli, `tools/` ağacı, ruff notu), CLAUDE.md (ilçe listesi komutu), state.json.
+
 ### Otonom mesai 3 — özet
 
 Mesai, kullanıcının isteğiyle T3.3'ten sonra kapandı (2026-11-03). Kullanıcı gerektiren işler mesai boyunca bekletildi; mesai sonunda birlikte ele alınacak.

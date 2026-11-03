@@ -4,7 +4,8 @@ Türkiye Yerelleştirmesi
 
 Türk hesap planı (Tekdüzen Hesap Planı) ve vergi tanımlarındaki ad, hesap ve vergi
 hatalarını düzeltir; VKN/TCKN ve MERSİS numaralarını Türkiye kurallarıyla işler.
-Türkiye muhasebe paketiyle birlikte kendiliğinden kurulur.
+Adreslerde il ve ilçe listeden seçilir. Türkiye muhasebe paketiyle birlikte
+kendiliğinden kurulur.
 
 Hesap planı
 ===========
@@ -64,11 +65,30 @@ Kimlik numaraları
   yalnız rakamlar kalır.
 * MERSİS No, Ticaret Sicil No ve Şube No alanları Türkçe adlarıyla görünür.
 
+Adres
+=====
+
+* 81 ilin 973 ilçesi yüklüdür: İçişleri Bakanlığı Mülki İdare Bölümleri
+  Envanteri'ndeki 922 ilçe ile büyükşehir olmayan 51 ilin merkez ilçesi
+  ("Merkez").
+* Kişi formunda ilçe seçilince il ve şehir alanı kendiliğinden dolar. İl
+  seçiliyse ilçe listesi o ilin ilçeleriyle sınırlıdır: Ereğli yazınca Konya'da
+  Konya'nın, Zonguldak'ta Zonguldak'ın Ereğli'si gelir.
+* Müşteri portalında ve e-ticaret adres formunda da ilçe, seçilen ilin
+  listesinden seçilir.
+* İl zorunlu, posta kodu isteğe bağlıdır.
+* Adres Türkiye düzeninde yazılır: "34710 Kadıköy/İstanbul". İlçe ya da il boşsa
+  tek başına eğik çizgi kalmaz.
+
 Mevcut şirketler
 ================
 
 Modül kurulduğunda Türk hesap planını kullanan şirketler de güncellenir: yeni
 hesaplar ve vergiler eklenir, adlar düzeltilir. Daha önce TCKN'yle kaydedilmiş
-kişiler de gerçek kişi olur. Kullanıcının değiştirdiği bir ad
+kişiler de gerçek kişi olur. Şehir alanına ilçe adı yazılmış Türk kişiler, ad
+tek bir ilçeyi gösteriyorsa o ilçeye bağlanır: il seçiliyse o ilin ilçesi, il
+adının kendisi yazılmışsa o ilin merkez ilçesi, il seçili değilse yalnız tek
+ilde bulunan bir ilçe adı. Belirsiz kayıtlar olduğu gibi kalır. Kullanıcının
+değiştirdiği bir ad
 korunur; yalnız hâlâ eski haliyle duran ya da hiç Türkçesi olmayan adlar
 değişir.

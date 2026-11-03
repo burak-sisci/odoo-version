@@ -60,6 +60,11 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
   - Görüntülü görüşmeler varsayılan olarak Google'ın STUN sunucularını kullanır: kullanıcının IP adresi Google'a görünür, görüşme içeriği gitmez. Kendi STUN/TURN sunucumuz Ayarlar'dan girilebilir; SaaS'ta değerlendirilir (envanter §4.4).
 - **Mevzuat verisi (T3.2):** `ov_l10n_tr`'deki hesap adları Tekdüzen Hesap Planı'ndan (Muhasebe Sistemi Uygulama Genel Tebliğleri, Resmî Gazete'de yayımlanmış kamu metni), vergi oranları kanundan (GVK, Damga Vergisi Kanunu). Veri dosyaları bizim yazdığımız düzeltmelerdir; upstream CSV'lerinden toplu kopya yok, kayıtlar yalnız kimlikleriyle (`tr360` vb.) anılır. Bu yüzden modül AGPL-3 ve envantere dış kod girişi gerekmez (`research/l10n-tr.md` §5).
   - Hesap eşlemeleri muhasebe görüşü değildir; mali müşavire sorulacaklar `USER_TASKS.md` K20'de.
+- **İlçe listesi (T3.4):** `ov_l10n_tr/data/res.city.csv`, İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri'nin kamuya açık iki raporundan (ilçe listesi, il belediyeleri; e-icisleri.gov.tr, 2026-11-03) `tools/tr_districts.py` ile üretildi.
+  - İçerik olgudur: ilçelerin adı ve bağlı olduğu il kanunla belirlenir. Resmen yayımlanmış kanunlar serbestçe çoğaltılabilir (FSEK m.31).
+  - Dosya bizim biçimimizde: Türkçe yazım (envanterde büyük harf), kendi kimliklerimiz, eklenen 51 "Merkez" ilçesi. Envanterin tablo düzeni kopyalanmadı.
+  - Envanterde lisans ya da kullanım koşulu belirtilmemiş. Plandaki açık lisanslı GitHub veri setleri (`research/planning-inputs.md` §5) aynı olguların ikincil kopyası olduğu için resmî kaynak seçildi (`USER_TASKS.md` K22). Hukuki incelemede (T9.4) teyit edilir.
+  - Wikidata yalnız ad yazımını karşılaştırmak için kullanıldı; verisi depoya girmedi.
 - **Public depo (D-015):** depodaki her şey herkese açık.
   - Depoya girmeyecekler: gizli bilgi (API anahtarı, şifre, sertifika), müşteri veya test kişisinin gerçek verisi, gerçek VKN/TCKN, yerel yapılandırma (`.env`, `odoo.conf`).
   - Nilvera test portalının test bilgileri kamuya açık bir belgede yayımlanmış olsa da depoya yazılmaz; yalnız `.env`'de tutulur.
@@ -81,6 +86,7 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 | Odoo AI rehberleri (upstream `skills/`) | 20.0, commit `afbcf79d` | LGPL-3 (klasörde kendi lisans dosyası yok, depo lisansı geçerli; `LICENSE` kopyası yanında) | Hayır; yalnız satır sonu LF'ye çevrildi | `.claude/skills/`, kaynak notu `SOURCE.md` (T1.7, `tools/sync_skills.py`) |
 | OCA server-ux (`date_range`) | 20.0, commit `d952d4df` (2026-10-13) | `date_range` LGPL-3 (manifest ve dosya başlıkları); depo `LICENSE` AGPL-3 | Hayır (D-010, D-019) | `vendor/oca/server-ux`, sığ git submodule (T1.11) |
 | OCA server-brand (`remove_odoo_enterprise`) | 20.0, commit `9637fe38` (2026-10-07) | AGPL-3 (manifest, dosya başlıkları, depo `LICENSE`); yazarlar Eska, Onestein, OCA | Hayır (D-010, D-019) | `vendor/oca/server-brand`, sığ git submodule (T2.3) |
+| Türkiye ilçe listesi (İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri) | 2026-11-03 indirmesi: 922 ilçe + 51 merkez ilçe | Resmî kamu verisi, lisans belirtilmemiş; içerik kanunla belirlenen adlar (§4) | Evet: Türkçe yazım, 51 "Merkez" eklendi, kendi kimliklerimiz | `addons/ov_l10n_tr/data/res.city.csv`, üretici `tools/tr_districts.py` (T3.4) |
 | OCA `report_xlsx` (reporting-engine) | 19.0, commit `b9e8c6cd` (2026-09-23); port sürümü `20.0.1.0.0` | AGPL-3; yazarlar ACSONE SA/NV, Creu Blanca, OCA; telif başlıkları korunuyor | Evet: 20.0 uyarlaması, ayrıntı modüldeki `PORT.md` | `ports/oca/reporting-engine/report_xlsx` (T1.11) |
 
 **Geliştirme ortamı araçları (depoya girmez, ürünle dağıtılmaz):**

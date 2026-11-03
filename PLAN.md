@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.4 — İl/ilçe adres yapısı
+**Şu anki görev:** T3.5 — TCMB döviz kurları `ov_l10n_tr_tcmb`
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 3/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 4/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 29/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 30/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -182,7 +182,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 | KDV tevkifatı ve istisnalar | Tevkifatlı işlem yapanlar, ihracatçılar | %20 tevkifat adları T3.2'de; %10/%1 tevkifat, istisnalar ve kodlar T4.3 | P0 |
 | VKN / TCKN | Herkes | Sağlama çekirdekte var; kişi/şirket ayrımı ve MERSİS T3.3 | P0 |
 | Vergi dairesi | Herkes (e-Belge'de zorunlu) | `l10n_tr` 20.0'da 1.046 vergi dairesi var; 81 ilin hepsi, ek veri gerekmez (T3.1) | P0 |
-| İl / ilçe adres | e-Belge adres alanları | 81 il upstream'de var; ilçe T3.4 | P0 |
+| İl / ilçe adres | e-Belge adres alanları | 81 il upstream'de; 973 ilçe ve Türkiye adres düzeni T3.4'te eklendi | P0 |
 | Döviz değerlemesi (TCMB kuru) | Dövizli işlem yapanlar | T3.5 | P0 |
 | Çek ve senet | Çoğu ticari işletme | T5.7 | P0 |
 | Amortisman (VUK oranları) | Demirbaşı olanlar | T11.1 | P1 |
@@ -386,10 +386,19 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - MERSİS: 16 hane denetlenir, boşluk ve tire temizlenir. İç yapı (şirkette 0 + VKN + 5 hane) yalnız ikincil kaynaklarda geçtiği için denetlenmez. MERSİS, ticaret sicil ve şube etiketleri Türkçe (G18'in çeviri kısmı T3.6 yerine burada kapandı).
     - Ölçüm (`ov_demo`, Türkçe): TCKN'li kişi `is_company = False`, VKN'li firma `True`; etiket, yer tutucu, hata metni ve MERSİS reddi beklendiği gibi. 10 yeni test; modülde 19 test geçti.
     - Varsayımlar: `USER_TASKS.md` K21.
-- [ ] T3.4 İl/ilçe adres yapısı · M · C
+- [x] T3.4 İl/ilçe adres yapısı · M · C
   - İlçe verisi açık lisanslı bir veri setinden gelir; lisans envanterine yazılır.
   - İlçe seçimi e-Belge adres alanlarıyla eşleşir.
   - Türkiye için il zorunluluğu ve posta kodunun zorunlu olmaması değerlendirilir (bugün çekirdek varsayılanıyla zorunlu; T3.1 G19).
+  - **Sonuç (2026-11-03):** `ov_l10n_tr` 20.0.1.2.0; G19 kapandı.
+    - Veri: 81 ilin 973 ilçesi (`data/res.city.csv`, `base_address_extended`'in `res.city` modeli). Kaynak İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri: 922 ilçe ve büyükşehir olmayan 51 ilin merkez ilçesi ("Merkez"). Açık lisanslı veri seti yerine resmî kaynak seçildi; ilçe adları kanunla belirlenen olgular (`docs/COMPLIANCE.md` §4). Dosya `tools/tr_districts.py` ile envanterden yeniden üretilir ve envanterin kendi sayılarıyla denetlenir.
+    - Form: ilçe seçilince il ve şehir dolar; il seçiliyse ilçe listesi o ille sınırlı (aynı adlı ilçeler ayrılır: Ereğli, Konya ve Zonguldak). Portal ve e-ticaret adres formunda da ilçe, ilin listesinden seçilir; upstream bunu beş ülkeyle sınırlıyordu.
+    - Ülke ayarları: il zorunlu, posta kodu isteğe bağlı, adres biçimi "34710 Kadıköy/İstanbul". `base.tr` noupdate olduğu için ayarları kurulum kancası ve güncelleme betiği yazar.
+    - Kurulu kişiler: şehir metni tek bir ilçeyi gösteriyorsa ilçeye bağlanır; belirsizler olduğu gibi kalır.
+    - e-Belge eşlemesi (T4.3): ilçe `cbc:CitySubdivisionName`, il `cbc:CityName`.
+    - Ölçüm: 15 yeni test (4'ü portalın HTTP uçlarıyla); modülde 34, bütün modüllerle birlikte 114 test geçti. `ov_demo` 20.0.1.2.0'a güncellendi: 973 ilçe; 7 Türk kişiden 2'si ilçeye bağlandı (Beyoğlu, Ürgüp), belirsiz 5'i olduğu gibi kaldı.
+    - Ad yazımı Wikidata'yla karşılaştırıldı: yalnız büyük/küçük harf farkı olan ad yok. Şapkalı iki ad (Balâ, Şehitkâmil) resmî yazımla şapkasız.
+    - Varsayımlar: `USER_TASKS.md` K22.
 - [ ] T3.5 TCMB döviz kurları `ov_l10n_tr_tcmb` · M · C
   - Günlük zamanlanmış iş (`today.xml`), geçmiş tarih arşivi, alış/satış/efektif seçimi, tatil günü davranışı.
 - [ ] T3.6 Türkçe çeviri · L · C
@@ -429,6 +438,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - T3.2'den taşınanlar (`docs/research/l10n-tr.md` G9, G10): %10 ve %1 oranlı KDV için tevkifatlı vergiler; istisna vergileri ve nedenleri; ihraç kayıtlı satış vergisinin (-%20) IHRACKAYITLI tipiyle uyumu. Vergiler GİB kod listeleriyle (T4.2) birlikte `ov_l10n_tr`'ye eklenir.
   - Mükellef sorgulama arayüzü, durum takibi, adaptör arayüzü.
   - 20.0 farkları (T1.2): `is_company` vergi numarasından hesaplanıyor; Türkiye için 11 haneli TCKN gerçek kişi sayılır (`cac:Person`). Kural T3.3'te `ov_l10n_tr`'ye eklendi; mükellef türü `res.partner._ov_l10n_tr_tax_id_type()`. Vergi daireleri için çekirdekteki `l10n_tr.tax.office` kullanılır.
+  - Adres (T3.4): `cbc:CitySubdivisionName` ilçe (`city_id.name`, yoksa `city`), `cbc:CityName` il (`state_id.name`). Posta kodu isteğe bağlı; boşsa yazılmaz.
 - [ ] T4.4 Sahte (mock) entegratör adaptörü · S · C
   - Ağsız çalışır; CI ve demo için. Gerçek entegratörün durum geçişlerini taklit eder.
 - [ ] T4.5 Nilvera adaptörü `ov_l10n_tr_edi_nilvera` (LGPL-3) · L · C

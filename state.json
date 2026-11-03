@@ -26,13 +26,12 @@
     "title": "Türkiye temel yerelleştirmesi",
     "status": "in_progress"
   },
-  "current_task": "T3.4",
+  "current_task": "T3.5",
   "session": {
-    "mode": "standart",
-    "number": 3,
+    "mode": "otonom",
+    "number": 4,
     "started": "2026-11-03",
-    "ended": "2026-11-03",
-    "note": "Otonom mesai 3 kullanıcının isteğiyle T3.3 sonrası kapandı; özeti CHANGELOG.md. Bekleyen kullanıcı işleri USER_TASKS.md §1 (K19, K20, K21 yeni)."
+    "note": "Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md."
   },
   "tasks_done": [
     "T0.1",
@@ -63,14 +62,14 @@
     "T2.7",
     "T3.1",
     "T3.2",
-    "T3.3"
+    "T3.3",
+    "T3.4"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "PostgreSQL başlat: python tools/pg.py start",
-    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K10, K9, K12–K21 (USER_TASKS.md §1)",
-    "İl/ilçe adres yapısı: açık lisanslı ilçe verisi, lisans envanteri, e-Belge adres eşlemesi (T3.4)",
-    "TCMB döviz kurları ov_l10n_tr_tcmb (T3.5)"
+    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K10, K9, K12–K22 (USER_TASKS.md §1)",
+    "TCMB döviz kurları ov_l10n_tr_tcmb (T3.5)",
+    "Türkçe çeviri: ölçüm aracı ve paket modüllerindeki eksikler (T3.6)"
   ],
   "decisions": [
     {
@@ -326,14 +325,16 @@
       {
         "module": "ov_l10n_tr",
         "path": "addons/ov_l10n_tr",
-        "version": "20.0.1.1.0",
+        "version": "20.0.1.2.0",
         "license": "AGPL-3",
         "depends": [
-          "l10n_tr"
+          "base_address_extended",
+          "l10n_tr",
+          "portal"
         ],
         "auto_install": true,
-        "task": "T3.2, T3.3",
-        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20; T3.3: ad 'Turkey - Localization' (Türkiye Yerelleştirmesi); TCKN'li Türk iş ortağı gerçek kişi (_compute_is_company), mükellef türü _ov_l10n_tr_tax_id_type(); VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS 16 hane (validation_function); kurulu iş ortakları post_init_hook ve migrations/20.0.1.1.0 ile yeniden hesaplanır; varsayımlar USER_TASKS K21"
+        "task": "T3.2, T3.3, T3.4",
+        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20; T3.3: ad 'Turkey - Localization' (Türkiye Yerelleştirmesi); TCKN'li Türk iş ortağı gerçek kişi (_compute_is_company), mükellef türü _ov_l10n_tr_tax_id_type(); VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS 16 hane (validation_function); kurulu iş ortakları post_init_hook ve migrations/20.0.1.1.0 ile yeniden hesaplanır; varsayımlar USER_TASKS K21; T3.4: 973 ilçe (res.city; İçişleri Bakanlığı envanteri, tools/tr_districts.py), ülke ayarları res.country._ov_l10n_tr_setup (il zorunlu, posta kodu isteğe bağlı, adres '34710 Kadıköy/İstanbul'); il seçiliyse ilçe listesi o ille sınırlı (form, portal ve e-ticaret); kurulu kişiler belirsizlik yoksa ilçeye bağlanır (post_init_hook, migrations/20.0.1.2.0); varsayımlar USER_TASKS K22"
       }
     ],
     "ported": [

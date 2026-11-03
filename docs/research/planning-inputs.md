@@ -1,6 +1,6 @@
 # Planlama Girdileri
 
-Son güncelleme: 2026-10-18
+Son güncelleme: 2026-11-03
 Araştırma tarihi: 2026-10-18
 İlgili kararlar: D-011, D-017, D-018, D-019, D-020 (DECISIONS.md)
 
@@ -92,7 +92,7 @@ Kontrol yöntemi: OCA GitHub depolarının 18.0 / 19.0 / 20.0 dallarındaki mod�
 | Veri | Kaynak | Lisans / not | Görev |
 |---|---|---|---|
 | Döviz kurları | TCMB günlük XML: `https://www.tcmb.gov.tr/kurlar/today.xml` | Kamuya açık | T3.5 |
-| İl / ilçe listesi | `siberfx/turkiye-address` (MIT) ve GitHub `turkiye-il-ilce-listesi` konusu altındaki depolar | Lisans T3.4'te yeniden kontrol edilir; seçilen kaynak COMPLIANCE §5 lisans envanterine yazılır | T3.4 |
+| İl / ilçe listesi | İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri (T3.4'te seçildi) | Resmî kamu verisi; COMPLIANCE §4 ve §5. İlk adaylar `siberfx/turkiye-address` (MIT) ve GitHub `turkiye-il-ilce-listesi` depoları aynı olguların ikincil kopyası olduğu için seçilmedi | T3.4 |
 | Vergi daireleri | 20.0 `l10n_tr` | LGPL-3 (upstream) | T3.1 |
 
 ## 6. Pazar referansları
@@ -110,6 +110,7 @@ Kontrol yöntemi: OCA GitHub depolarının 18.0 / 19.0 / 20.0 dallarındaki mod�
 - TÜBİTAK 2209-A 2026 çağrı duyurusu: https://tubitak.gov.tr/sites/default/files/2026-10/2209-A_2026_Yili_Cagri_Duyurusu.pdf
 - TÜBİTAK 2209-A başvuru tarihleri: https://www.tubitak.gov.tr/tr/burslar/lisans/burs-programlari/2209-a/icerik-basvuru-tarihleri
 - TCMB günlük kurlar: https://www.tcmb.gov.tr/kurlar/today.xml
+- İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri: https://www.e-icisleri.gov.tr/Anasayfa/MulkiIdariBolumleri.aspx
 - `siberfx/turkiye-address`: https://packagist.org/packages/siberfx/turkiye-address
 - GitHub `turkiye-il-ilce-listesi` konusu: https://github.com/topics/turkiye-il-ilce-listesi
 - Odoo fiyat artışı (Brussels Times): https://www.brusselstimes.com/business/2332306/odoo-announces-e10-billion-valuation-and-a-partial-price-increase

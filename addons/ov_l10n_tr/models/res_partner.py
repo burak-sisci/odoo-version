@@ -3,7 +3,14 @@ import re
 from odoo import api, models
 from odoo.tools import LazyTranslate
 
-from odoo.addons.ov_l10n_tr.tools import TCKN, TURKEY, mersis_validate, tax_id_type
+from odoo.addons.ov_l10n_tr.tools import (
+    CENTRAL_DISTRICT,
+    TCKN,
+    TURKEY,
+    fold_name,
+    mersis_validate,
+    tax_id_type,
+)
 
 _lt = LazyTranslate(__name__)
 
@@ -89,3 +96,50 @@ class ResPartner(models.Model):
         partners = self.with_context(active_test=False).search([('country_id.code', '=', TURKEY), ('vat', '!=', False)])
         self.env.add_to_compute(self._fields['is_company'], partners)
         partners.flush_recordset(['is_company'])
+
+    def _prepare_display_address(self, without_name=False):
+        address_format, args = super()._prepare_display_address(without_name)
+        if self.country_id.code != TURKEY:
+            return address_format, args
+        # The form copies the district to the city text; an import or an API call may not.
+        if not args['city'] and self.city_id:
+            args['city'] = self.city_id.name
+        # "Kadıköy/İstanbul": without the district or the province, no lone slash.
+        if not (args['city'] and args['state_name']):
+            address_format = address_format.replace('%(city)s/%(state_name)s', '%(city)s %(state_name)s')
+        return address_format, args
+
+    @api.model
+    def _ov_l10n_tr_match_districts(self):
+        """Link the Turkish partners typed before the district list to their district.
+
+        A partner is linked when its city text names one district only:
+        - a district of its province;
+        - the province itself, for a province with a central district ("Merkez");
+        - without a province, a district name used by one province only.
+        Other partners keep their text. Return the number of linked partners.
+        """
+        Partner = self.with_context(active_test=False)
+        partners = Partner.search([('country_id.code', '=', TURKEY), ('city_id', '=', False), ('city', '!=', False)])
+        if not partners:
+            return 0
+        districts = self.env['res.city'].search([('country_id.code', '=', TURKEY)])
+        by_province, by_name = {}, {}
+        for district in districts:
+            by_province[district.state_id.id, fold_name(district.name)] = district
+            by_name.setdefault(fold_name(district.name), []).append(district)
+        centres = {district.state_id.id: district for district in districts if district.name == CENTRAL_DISTRICT}
+        linked = 0
+        for partner in partners:
+            name = fold_name(partner.city)
+            if partner.state_id:
+                district = by_province.get((partner.state_id.id, name))
+                if not district and name == fold_name(partner.state_id.name):
+                    district = centres.get(partner.state_id.id)
+            else:
+                candidates = by_name.get(name, [])
+                district = candidates[0] if len(candidates) == 1 and candidates[0].name != CENTRAL_DISTRICT else None
+            if district:
+                partner.write({'city_id': district.id, 'city': district.name, 'state_id': district.state_id.id})
+                linked += 1
+        return linked

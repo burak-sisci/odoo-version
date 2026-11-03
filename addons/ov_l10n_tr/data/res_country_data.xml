@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <!-- Label of the tax ID of Turkish partners and companies: tax number or citizen number.
-         base.tr is a no-update record: this applies at install (updates: migrations/20.0.1.1.0). -->
-    <record id="base.tr" model="res.country">
-        <field name="vat_label">VKN/TCKN</field>
-    </record>
-</odoo>
