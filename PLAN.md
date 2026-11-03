@@ -410,11 +410,15 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Güvenlik: XML ayrıştırıcı dış varlık ve DTD yüklemez, DOCTYPE'lı ya da 1 MB'tan büyük yanıt reddedilir. İstekte şirket ya da müşteri bilgisi gönderilmez (`docs/COMPLIANCE.md` §4).
     - Ölçüm: 28 yeni test (TCMB taklit edilerek; dış istek yok); bütün modüllerle birlikte 146 test geçti. `ov_demo`'da canlı: günlük iş 3,4 s'de iki Türk ana şirkete 03.11.2026 bültenini yazdı (USD = 49,9094 TRY, TCMB döviz alışıyla aynı). 01.10–03.11.2026 aktarımı 5,2 s'de 22 bülten; 28 ve 29 Ekim'de bülten yok (404). Arşiv yanıt süresi ortanca 0,35 s, en çok 3,5 s.
     - Varsayımlar: `USER_TASKS.md` K23.
-- [ ] T3.6 Türkçe çeviri · L · C
+- [~] T3.6 Türkçe çeviri · L · C
   - Başka modüllerin çevirisini kendi modülümüzle tamamlama/değiştirme yöntemi araştırılır.
   - Ölçüm aracı `tools/po_coverage.py`; CI'da eşik.
   - Paket modüllerindeki eksikler çevrilir. Öncelik: `l10n_tr` (%33), `account`, `sale`, `purchase`, `stock`, `mrp`, `mail`, `web`.
   - Upstream'e çeviri katkısı isteğe bağlı ve kullanıcı onayıyla (K8).
+  - **Durum (2026-11-03, otonom mesai 4 sonunda):** yöntem araştırması başladı; kod yok. Upstream 20.0'da okunanlar:
+    - Kayıt metinleri (alan adı, menü, görünüm, veri): `.po` satırı hedef modülün kimliğini taşır (`account.field_…`), bu yüzden bizim modülün `.po`'su başka modülün kaydını çevirebilir. Ancak bir modül kurulurken yalnız kendi `.po`'su okunur (`ir.module.module._load_module_terms`); sonradan kurulan uygulama (ör. `mrp`) için bizim dosyanın da okunması bu yöntemin genişletilmesini gerektirir.
+    - Kod metinleri (Python `_()`, JS `_t`): yalnız modülün kendi `i18n/` ve `i18n_extra/` klasöründen okunur (`CodeTranslations`, `get_po_paths`). Yüklü modülün yolu yalnız kendi klasöründe aranır (`file_path`), yani ayrı bir addons yolundaki `account/i18n_extra/tr.po` okunmaz. Kod metinleri için okuma işlevinin genişletilmesi gerekir.
+    - Birleştirme: modül güncellemesinde var olan çeviri korunur (`overwrite` kapalı). Hatalı upstream çevirisini düzeltmenin üzerine yazma kuralı açık nokta.
 - [ ] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.
   - Tutarın yazıyla gösterimi (num2words, Odoo'nun mevcut bağımlılığı); VKN, vergi dairesi, MERSİS alanları.

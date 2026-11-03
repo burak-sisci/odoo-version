@@ -7,6 +7,36 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Otonom mesai 4 — özet
+
+Mesai, kullanıcının isteğiyle T3.6'nın yöntem araştırması sırasında kapandı (2026-11-03).
+
+**Biten görevler (2):**
+- T3.4 il/ilçe adres yapısı: 973 ilçe (İçişleri Bakanlığı envanteri), il zorunlu, posta kodu isteğe bağlı, portal ve e-ticaret formunda ilçe seçimi;
+- T3.5 TCMB döviz kurları: yeni modül `ov_l10n_tr_tcmb` (günlük iş, kur türü, eksik günleri tamamlama, geçmiş aktarımı).
+
+**İlerleme:** toplam 31/114 görev; F3 5/9.
+
+**Yarım kalan:** T3.6 Türkçe çeviri `[~]`. Yalnız upstream'in çeviri yükleme kodu okundu; kod ve belge değişikliği yok. Bulgular PLAN.md'deki T3.6 durum notunda: başka modülün kayıt metinleri bizim `.po`'muzla çevrilebiliyor; kod metinleri (Python, JS) ve sonradan kurulan uygulamalar için yükleme yönteminin genişletilmesi gerekiyor.
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** ikisi de geri dönüşü kolay varsayımlarla ilerledi.
+- K22: ilçe listesinin kaynağı, "Merkez" ilçeler, il zorunlu, posta kodu isteğe bağlı (T3.4).
+- K23: TCMB kur türü (döviz alış) ve tarih kuralı (önceki iş gününün kuru); mali müşavire K20 ile birlikte sorulabilir (T3.5).
+
+**Onay bekleyen dışa dönük iş:** K10 (ilk iki commit'teki ortak yazar satırı, force-push gerekir), K9 (GitHub güvenlik özellikleri). Yeni onay yok.
+
+**Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
+
+**CI:** T3.4 (`23ca86d`) ve T3.5 (`db97a74`) commit'leri Linux'ta geçti. T3.5'te bütün modüllerle 147 test, MVP uygulamalarıyla marka sızıntısı ve dış istek testi 13 test; yayıncıya istek yok. Yerelde bütün modüllerle 146/146.
+
+**Yerelde kalanlar:**
+- PostgreSQL mesai sonunda düzgün kapatıldı (`python tools/pg.py stop`). Sonraki mesaide `python tools/pg.py start`.
+- `ov_demo` güncel: `ov_l10n_tr` 20.0.1.2.0, `ov_l10n_tr_tcmb` 20.0.1.0.0 kurulu. 01.10–03.11.2026 TCMB kurları canlı ölçümden kaldı.
+- Geçici veritabanları: `ov_brand_scan` ve `t12_base` (eski denemeler, silinmedi) ile `ov_test_*` test veritabanları (`tools/run_tests.py` her çalıştırmada yeniden kurar).
+- Çalışan Odoo sunucusu ya da test tarayıcısı yok. Commit edilmemiş iş yok.
+
 ### Adım: TCMB döviz kurları (T3.5) — otonom mesai 4
 
 **Kod**

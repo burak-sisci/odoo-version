@@ -28,10 +28,11 @@
   },
   "current_task": "T3.6",
   "session": {
-    "mode": "otonom",
+    "mode": "standart",
     "number": 4,
     "started": "2026-11-03",
-    "note": "Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md."
+    "ended": "2026-11-03",
+    "note": "Otonom mesai 4 kullanıcının isteğiyle T3.6 araştırması sırasında kapandı; özeti CHANGELOG.md. Bekleyen kullanıcı işleri USER_TASKS.md §1 (K22, K23 yeni)."
   },
   "tasks_done": [
     "T0.1",
@@ -68,8 +69,9 @@
   ],
   "blocked_on_user": [],
   "next_actions": [
+    "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K10, K9, K12–K23 (USER_TASKS.md §1)",
-    "Türkçe çeviri: ölçüm aracı ve paket modüllerindeki eksikler (T3.6)",
+    "Türkçe çeviri: başka modüllerin çevirisini tamamlama yöntemi (araştırma notu PLAN T3.6), ölçüm aracı ve paket modüllerindeki eksikler (T3.6)",
     "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [

@@ -30,7 +30,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 15. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
 16. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
 
-Otonom mesai 3 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 3 — özet". Yeni maddeler: K19, K20, K21.
+Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
