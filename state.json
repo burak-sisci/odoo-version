@@ -70,7 +70,7 @@
   "blocked_on_user": [],
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
-    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K10, K9, K12–K23 (USER_TASKS.md §1)",
+    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K9, K12–K23 (USER_TASKS.md §1)",
     "Türkçe çeviri: başka modüllerin çevirisini tamamlama yöntemi (araştırma notu PLAN T3.6), ölçüm aracı ve paket modüllerindeki eksikler (T3.6)",
     "Türkçe belge çıktıları (T3.7)"
   ],

@@ -1,6 +1,6 @@
 # Kararlar
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 
 > **Kural:** Bu dosya yalnızca güncel kayıtları tutar. Üç durum vardır:
 > - **Geçerli:** alınmış ve uygulanan karar.
@@ -185,14 +185,14 @@ Son güncelleme: 2026-10-19
   - Claude her görev/adım sonunda kodu ve belgeleri **aynı commit'te** kaydeder ve `origin/main`'e push eder. Bu push kullanıcı tarafından önceden onaylanmıştır.
   - Public depo kuralları:
     - Her push'tan önce gizli bilgi ve müşteri verisi denetimi yapılır.
-    - Force-push yapılmaz, geçmiş yeniden yazılmaz. İstisna yalnız kullanıcının açık isteğiyle olur; ilk ve tek istisna 2026-10-19'da oturum bağlantısı satırlarının eski commit'lerden silinmesi (K10).
+    - Force-push yapılmaz, geçmiş yeniden yazılmaz. İstisna yalnız kullanıcının açık isteğiyle olur. Şimdiye kadar iki istisna: 2026-10-19'da oturum bağlantısı satırlarının, 2026-11-03'te ilk iki commit'teki ortak yazar satırlarının eski commit'lerden silinmesi (K10).
   - **Commit yazarlığı:** GitHub'da tek katkıcı kullanıcıdır.
     - Commit'lerin yazarı kullanıcının git kimliğidir (`burak-sisci`).
     - Claude commit'lere yazar veya ortak yazar olarak eklenmez: `Co-Authored-By` satırı ve Claude'u ya da başka bir yapay zekâyı yazar gösteren hiçbir satır yazılmaz.
     - Commit mesajına Claude oturum bağlantısı (`Claude-Session:`) satırı da yazılmaz (K11, 2026-10-19).
-    - Eski commit'lerdeki oturum bağlantısı satırları da silindi (kullanıcı isteği, 2026-10-19; geçmiş yeniden yazıldı, commit kimlikleri değişti). İlk iki commit'teki ortak yazar satırı duruyor; temizlenmesi yine force-push gerektirir (`USER_TASKS.md` K10).
+    - Eski commit'lerdeki oturum bağlantısı satırları (2026-10-19) ve ilk iki commit'teki ortak yazar satırları (2026-11-03) da silindi: kullanıcı isteği (`USER_TASKS.md` K10). Her seferinde geçmiş yeniden yazıldı, commit kimlikleri değişti. Geçmişte Claude'u yazar gösteren satır kalmadı.
   - Diğer dışa dönük işlemler yine kullanıcı onayı ister: depo ayarları (görünürlük, yeniden adlandırma), sürüm yayınlama (release), başka yerde paylaşma.
-- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi; oturum bağlantısı satırı 2026-10-19'da kaldırıldı, aynı gün eski commit'lerden de silindi).
+- **Kaynak / tarih:** Kullanıcı, 2026-10-18 (commit yazarlığı kuralı aynı gün eklendi; oturum bağlantısı satırı 2026-10-19'da kaldırıldı, aynı gün eski commit'lerden de silindi; ilk iki commit'teki ortak yazar satırları 2026-11-03'te silindi).
 
 ### D-016 · Kendi modüllerimizin lisansı
 - **Durum:** Geçerli

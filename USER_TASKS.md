@@ -14,21 +14,20 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 Öncelik sırasıyla. Hiçbiri Claude'un işini durdurmuyor.
 
 1. **K2: TÜBİTAK 2209-A için son başvuru 11 Kasım 2026.** Başvurmak istiyorsan danışman bulmak zaman alır.
-2. **K10:** eski commit'lerdeki oturum bağlantısı satırları silindi (isteğin üzerine, 2026-10-19). İlk iki commit'teki Claude ortak yazar satırı duruyor; o da silinsin mi? Bir force-push daha gerekir.
-3. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
-4. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
-5. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
-6. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
-7. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
-8. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
-9. **K16:** web istemcisinin adresi `/odoo` yerine `/app` oldu. Başka bir yol istersen iki sabiti değiştirmek yeter.
-10. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
-11. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
-12. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
-13. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
-14. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
-15. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
-16. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
+2. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
+3. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
+4. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
+5. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
+6. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
+7. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
+8. **K16:** web istemcisinin adresi `/odoo` yerine `/app` oldu. Başka bir yol istersen iki sabiti değiştirmek yeter.
+9. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
+10. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
+11. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
+12. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
+13. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
+14. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
+15. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
 
 Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
 
@@ -55,14 +54,9 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
 - [ ] K9 **Onay (isteğe bağlı)** — GitHub güvenlik özelliklerinin açılması.
   - Dependabot uyarıları ve gizli bilgi taraması (push koruması dahil). Public depoda ücretsiz.
   - Bu bir depo ayarı olduğu için onay gerekiyor (D-015). Onay verirsen Claude `gh` ile açar.
-- [ ] K10 **Karar** — geçmiş commit'lerdeki Claude ortak yazar satırı.
-  - Oturum bağlantısı satırları (`Claude-Session:`) eski commit'lerden silindi: kullanıcının isteği, 2026-10-19. Geçmiş bir kez yeniden yazıldı ve `main` force-push edildi; bütün commit kimlikleri değişti (eşleme CHANGELOG.md'de).
-  - Kalan: ilk iki commit'te (`b267933`, `363a288`) `Co-Authored-By: Claude` satırı var. GitHub bu yüzden Claude'u katkıcı olarak gösteriyor. Sonraki commit'lerde bu satır yok (D-015, CLAUDE.md).
-  - Seçenekler:
-    - **A — bırak:** geçmiş değişmez, Claude katkıcı listesinde kalır.
-    - **B — temizle:** iki satır silinir, `main` bir kez daha force-push edilir. Commit kimlikleri yine değişir; belgelerde geçen kimlikler güncellenir. D-015 force-push'u yasaklıyor, bu yüzden senin açık onayın gerekir.
-  - Claude önerisi: **B**. Depo yeni ve başka kopyası yok, risk düşük. GitHub'ın katkıcı listesinin güncellenmesi biraz sürebilir.
-  - Onay verirsen bir sonraki mesaide yapılır.
+- [x] K10 **Karar** — geçmiş commit'lerdeki Claude ortak yazar satırı: **silindi** (kullanıcı, 2026-11-03; seçenek B).
+  - Oturum bağlantısı satırları (`Claude-Session:`) 2026-10-19'da, ilk iki commit'teki `Co-Authored-By: Claude` satırları 2026-11-03'te silindi. Her seferinde geçmiş yeniden yazıldı ve `main` bir kez force-push edildi; commit kimlikleri değişti (eşlemeler CHANGELOG.md'de).
+  - Artık hiçbir commit'te Claude'u yazar ya da ortak yazar gösteren satır yok. GitHub'ın katkıcı listesinin güncellenmesi biraz sürebilir.
 - [x] K11 **Karar** — commit mesajlarındaki `Claude-Session:` satırı: **kaldırıldı** (kullanıcı, 2026-10-19). Kural CLAUDE.md kural 8'de ve D-015'te. Eski commit'lerdeki satırlar da silindi (kullanıcı, 2026-10-19; geçmiş yeniden yazıldı, tek force-push).
 - [ ] K12 **Karar** — modül manifestlerindeki yazar (`author`) adı.
   - Neden: Odoo, Uygulamalar ekranında her modülün yazarını gösterir; müşteri de görür.

@@ -7,6 +7,63 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: ilk iki commit'ten Claude ortak yazar satırı silindi (K10) — standart mesai
+
+**Kullanıcının kararı:** "k10: claude ortak yazar satırı da silinsin." (K10 seçenek B)
+
+**Yapılan**
+- İlk iki commit'teki `Co-Authored-By: Claude` satırı ve önündeki boş satır silindi (`b267933` → `872fbf1`, `363a288` → `7c199aa`). Öteki 33 commit'in mesajı bayt bayt aynı.
+- Yöntem 2026-10-19'dakiyle aynı: depo geçici bir çıplak kopyaya klonlandı, `git filter-branch --msg-filter` ile yalnız mesajlar yeniden yazıldı. Önceki geçmiş bir git paketine (bundle) yedeklendi (yerel, depo dışında).
+- Denetim: 35 commit'in hepsinde dosya ağacı, yazar, işleyen ve tarihler aynı. Son commit'in ağacı değişmedi. Geçmişte `Co-Authored-By` satırı kalmadı.
+- Yerel depo yeni geçmişe `git reset --soft` ile taşındı; çalışma alanı değişmedi. `main` `--force-with-lease` ile bir kez force-push edildi (`75ba52d` → `dfb751d`, üstüne bu kayıt).
+- Bilinen sınır: GitHub eski commit'leri kimlikleriyle bir süre daha açabilir; eski CI çalıştırmaları eski kimlikleri gösterir. Katkıcı listesinin güncellenmesi biraz sürebilir.
+
+**Commit kimlikleri (eski → yeni)**
+
+2026-10-19 tablosunun "Yeni" sütunu bu tablonun "Eski" sütunudur.
+
+| Eski | Yeni |
+|---|---|
+| `75ba52d` | `dfb751d` |
+| `db97a74` | `82db439` |
+| `23ca86d` | `54224e2` |
+| `ff3ceb2` | `6056763` |
+| `da141d5` | `851a8e4` |
+| `183d2fe` | `251c56b` |
+| `2b8cd27` | `7e6da9a` |
+| `2307c4b` | `fb132a9` |
+| `5e3dc81` | `7ee7b8e` |
+| `19ed083` | `2e5183e` |
+| `1d3d8a7` | `96ed93d` |
+| `d0a89dd` | `3c72da5` |
+| `ef074d3` | `7ed099d` |
+| `4eee7bd` | `3850677` |
+| `e4a98f7` | `fe49d3c` |
+| `67a61ba` | `3d2c308` |
+| `1dd6aaf` | `24133d4` |
+| `ec14669` | `e8a306f` |
+| `1bac273` | `7478a25` |
+| `9e90991` | `e450845` |
+| `9fee384` | `1e8747d` |
+| `6a2fc36` | `24c5100` |
+| `6309fd5` | `d35d8ab` |
+| `1b94f2a` | `117fd43` |
+| `6df7425` | `3d04eb8` |
+| `95f94a8` | `5a4940f` |
+| `6347bda` | `41d71a6` |
+| `3f1d555` | `b42f278` |
+| `05c4fa2` | `f121240` |
+| `3f2edda` | `368c888` |
+| `a8f6bd2` | `3a8849d` |
+| `45bda8d` | `9288986` |
+| `f33fe70` | `5fc8995` |
+| `363a288` | `7c199aa` |
+| `b267933` | `872fbf1` |
+
+**Belgeler**
+- USER_TASKS.md: K10 `[x]`, §1'den çıktı. DECISIONS.md D-015: force-push istisnaları ve eski commit'ler. state.json: bekleyenler.
+- Bu dosyada geçen kimlikler güncellendi: mesai özetlerindeki CI notları (`23ca86d`, `db97a74`, `da141d5`) ve ilk CI çalıştırması notu (`6309fd5`). Eski kayıtlardaki K10 anlatımları tarihleriyle olduğu gibi kaldı.
+
 ### Otonom mesai 4 — özet
 
 Mesai, kullanıcının isteğiyle T3.6'nın yöntem araştırması sırasında kapandı (2026-11-03).
@@ -29,7 +86,7 @@ Mesai, kullanıcının isteğiyle T3.6'nın yöntem araştırması sırasında k
 
 **Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
 
-**CI:** T3.4 (`23ca86d`) ve T3.5 (`db97a74`) commit'leri Linux'ta geçti. T3.5'te bütün modüllerle 147 test, MVP uygulamalarıyla marka sızıntısı ve dış istek testi 13 test; yayıncıya istek yok. Yerelde bütün modüllerle 146/146.
+**CI:** T3.4 (`54224e2`) ve T3.5 (`82db439`) commit'leri Linux'ta geçti. T3.5'te bütün modüllerle 147 test, MVP uygulamalarıyla marka sızıntısı ve dış istek testi 13 test; yayıncıya istek yok. Yerelde bütün modüllerle 146/146.
 
 **Yerelde kalanlar:**
 - PostgreSQL mesai sonunda düzgün kapatıldı (`python tools/pg.py stop`). Sonraki mesaide `python tools/pg.py start`.
@@ -141,7 +198,7 @@ Mesai, kullanıcının isteğiyle T3.3'ten sonra kapandı (2026-11-03). Kullanı
 
 **Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
 
-**CI:** T3.3 commit'i (`da141d5`) Linux'ta geçti: bütün modüllerle 104 test, MVP uygulamalarıyla marka sızıntısı ve dış istek testi 13 test; yayıncıya istek yok. Yereldeki birleşik çalıştırma PostgreSQL kapandığı için yarım kaldı (T3.3 kaydı).
+**CI:** T3.3 commit'i (`851a8e4`) Linux'ta geçti: bütün modüllerle 104 test, MVP uygulamalarıyla marka sızıntısı ve dış istek testi 13 test; yayıncıya istek yok. Yereldeki birleşik çalıştırma PostgreSQL kapandığı için yarım kaldı (T3.3 kaydı).
 
 **Yerelde kalanlar:**
 - PostgreSQL kapalı: 10:27'de bir Ctrl+C olayıyla kapandı (T3.3 kaydı). Sonraki mesaide `python tools/pg.py start`.
@@ -637,7 +694,7 @@ Kullanıcının isteğiyle T2.2'nin ortasında bitirildi.
 - `.github/workflows/ci.yml`: eşzamanlılık grubu olay türünü de içeriyor (`ci-<dal>-<olay>`). Önceden `main`'de elle başlatılan referans çalıştırması, sonraki bir push ile iptal edilebiliyordu.
 
 **Doğrulama**
-- `main`'deki ilk CI çalıştırması (`6309fd5`; geçmiş 2026-10-19'da yeniden yazılmadan önce `c6b11ba`) yeşil: `checks` 1 dk 17 sn, `tests` 1 dk 48 sn. Upstream, pre-commit ve pip önbellekleri `main`'de kaydedildi.
+- `main`'deki ilk CI çalıştırması (`d35d8ab`; geçmiş yeniden yazılmadan önce 2026-10-19'a kadar `c6b11ba`, 2026-11-03'e kadar `6309fd5`) yeşil: `checks` 1 dk 17 sn, `tests` 1 dk 48 sn. Upstream, pre-commit ve pip önbellekleri `main`'de kaydedildi.
 
 ### Adım: GitHub Actions CI (T1.10) — otonom mesai 1
 
