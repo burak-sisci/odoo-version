@@ -47,7 +47,7 @@ Bu uygulamalar için iş: marka katmanı + Türkçe çeviri + Türkiye yerelleş
 
 | Uygulama | Yol | Kaynak | Lisans | Paket | Öncelik | Durum |
 |---|---|---|---|---|---|---|
-| Temel yerelleştirme (`ov_l10n_tr`): hesap ve vergi adı düzeltmeleri, vergi/tevkifat/istisna eksikleri, kişi/şirket ayrımı ve MERSİS, il/ilçe, Türkiye varsayılanları (eksik listesi `docs/research/l10n-tr.md`) | Kendimiz, `l10n_tr` üzerine | `l10n_tr` (20.0), python-stdnum, açık lisanslı ilçe verisi | AGPL-3 | T, Ü | P0 | plan |
+| Temel yerelleştirme (`ov_l10n_tr`): hesap ve vergi adı düzeltmeleri, eksik THP hesapları, stopaj vergileri ve şirketin özel hesapları (T3.2, tamam); tevkifat/istisna eksikleri (T4.3), kişi/şirket ayrımı ve MERSİS (T3.3), il/ilçe (T3.4) (eksik listesi `docs/research/l10n-tr.md`) | Kendimiz, `l10n_tr` üzerine | `l10n_tr` (20.0), python-stdnum, açık lisanslı ilçe verisi | AGPL-3 | T, Ü | P0 | geliştiriliyor |
 | TCMB döviz kurları (`ov_l10n_tr_tcmb`) | Kendimiz | TCMB kamuya açık XML | AGPL-3 | T, Ü | P0 | plan |
 | Türkçe çeviri tamamlama | Kendimiz | Upstream `tr.po` dosyaları | LGPL-3 (upstream metinlerinin çevirisi) | T, Ü | P0 | plan |
 | Türkçe belge çıktıları (teklif, sipariş, irsaliye, makbuz; tutar yazıyla) | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |

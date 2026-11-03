@@ -15,7 +15,7 @@
       "küçük işletme (Ticaret paketi)",
       "orta ölçekli fabrika (Üretim paketi)"
     ],
-    "next_milestone": "M2 Markasız çekirdek",
+    "next_milestone": "M3 Türkiye temeli",
     "gate_milestone": "M8 Satışa hazır (müşteri arayışı kapısı)",
     "user_tasks": "USER_TASKS.md",
     "commit_author": "burak-sisci (tek katkıcı; Co-Authored-By ve Claude-Session satırı yok, D-015)",
@@ -26,7 +26,7 @@
     "title": "Türkiye temel yerelleştirmesi",
     "status": "in_progress"
   },
-  "current_task": "T3.2",
+  "current_task": "T3.3",
   "session": {
     "mode": "otonom",
     "number": 3,
@@ -60,12 +60,13 @@
     "T2.5",
     "T2.6",
     "T2.7",
-    "T3.1"
+    "T3.1",
+    "T3.2"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Temel yerelleştirme modülü ov_l10n_tr (T3.2): docs/research/l10n-tr.md G1-G13, G24 ve kalıcı ad testi",
-    "VKN / TCKN: kişi/şirket ayrımı, MERSİS (T3.3)"
+    "VKN / TCKN: kişi/şirket ayrımı, MERSİS, Türkçe yer tutucu ve etiket (T3.3)",
+    "İl/ilçe adres yapısı (T3.4)"
   ],
   "decisions": [
     {
@@ -317,6 +318,18 @@
         "auto_install": true,
         "task": "T2.5",
         "note": "tedarikçi portalındaki yayıncı tanıtımı kaldırıldı, UBL indirme adresi kalır"
+      },
+      {
+        "module": "ov_l10n_tr",
+        "path": "addons/ov_l10n_tr",
+        "version": "20.0.1.0.0",
+        "license": "AGPL-3",
+        "depends": [
+          "l10n_tr"
+        ],
+        "auto_install": true,
+        "task": "T3.2",
+        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20"
       }
     ],
     "ported": [
@@ -367,6 +380,7 @@
     "docs/research/planning-inputs.md",
     "docs/research/nilvera-port.md",
     "docs/research/brand-inventory.md",
-    "docs/research/pdf-engine.md"
+    "docs/research/pdf-engine.md",
+    "docs/research/l10n-tr.md"
   ]
 }

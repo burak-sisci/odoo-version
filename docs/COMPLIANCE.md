@@ -58,6 +58,8 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
   - IAP ve `mysubscription` modülleri kaldırıldı (T2.3, 2026-10-19; K15 varsayımı). Böylece iş ortağı otomatik tamamlama (yeni şirket kaydında şirket bilgisinin sorgulanması) ve aday zenginleştirme (adayların e-posta alan adları, günlük iş) da yok.
   - Metin düzenleyici yayıncıya metin göndermiyor (T2.3, 2026-10-19; `ov_brand_html_editor`): çeviri için seçili metin, yapay zekâ için istem, çizim kitaplığı için arama sözcükleri. Uygulama mağazası da çağrılmıyor (`ov_brand`).
   - Görüntülü görüşmeler varsayılan olarak Google'ın STUN sunucularını kullanır: kullanıcının IP adresi Google'a görünür, görüşme içeriği gitmez. Kendi STUN/TURN sunucumuz Ayarlar'dan girilebilir; SaaS'ta değerlendirilir (envanter §4.4).
+- **Mevzuat verisi (T3.2):** `ov_l10n_tr`'deki hesap adları Tekdüzen Hesap Planı'ndan (Muhasebe Sistemi Uygulama Genel Tebliğleri, Resmî Gazete'de yayımlanmış kamu metni), vergi oranları kanundan (GVK, Damga Vergisi Kanunu). Veri dosyaları bizim yazdığımız düzeltmelerdir; upstream CSV'lerinden toplu kopya yok, kayıtlar yalnız kimlikleriyle (`tr360` vb.) anılır. Bu yüzden modül AGPL-3 ve envantere dış kod girişi gerekmez (`research/l10n-tr.md` §5).
+  - Hesap eşlemeleri muhasebe görüşü değildir; mali müşavire sorulacaklar `USER_TASKS.md` K20'de.
 - **Public depo (D-015):** depodaki her şey herkese açık.
   - Depoya girmeyecekler: gizli bilgi (API anahtarı, şifre, sertifika), müşteri veya test kişisinin gerçek verisi, gerçek VKN/TCKN, yerel yapılandırma (`.env`, `odoo.conf`).
   - Nilvera test portalının test bilgileri kamuya açık bir belgede yayımlanmış olsa da depoya yazılmaz; yalnız `.env`'de tutulur.

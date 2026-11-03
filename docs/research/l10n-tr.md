@@ -5,6 +5,16 @@ Araştırma tarihi: 2026-11-03
 İlgili kararlar: D-006, D-008, D-010, D-011 (DECISIONS.md)
 İlgili görev: T3.1 (PLAN.md); sonuçları kullanan görevler T3.2–T3.8, T4.3, T5.8, T6.2, T7.1
 
+> **T3.2 sonucu (2026-11-03):** `ov_l10n_tr` modülü ad, hesap ve vergi eksiklerini kapattı (G1–G4, G6–G8 vergi kısmı, G11, G13, G24; §4).
+> - Ölçüm (`ov_demo`, Türkçe bağlam): sorunlu ad sayısı 86'dan 0'a indi. Kapsam: 366 hesap, 15 vergi grubu, 46 vergi, 8 mali pozisyon.
+> - Kalıcı ad testi upstream'in 400 Türkçe adından 35'ini işaretliyor; T1.6'da elle görülen örneklerin hepsi bunların içinde.
+> - T3.2'de üç yeni hata bulundu (G27–G29, §3.6):
+>   - şirketin özel hesapları plan dışı 999 kodlu hesaplara bağlanıyordu;
+>   - kira stopajı 191 İndirilecek KDV hesabına kaydediliyordu;
+>   - 193 ve 360 alacak/borç hesabı türünde olduğu için bu hesaplara vergi kaydedilemiyordu.
+> - %10/%1 oranlı tevkifat ve istisna tanımları (G9, G10) T4.3'e taşındı: GİB kod listeleriyle (T4.2) birlikte tanımlanacaklar.
+> - Mali müşavire sorulacak üç hesap eşlemesi `USER_TASKS.md` K20'de.
+
 > **Sonuç (2026-11-03):** Upstream `l10n_tr` (20.0) temel yapıyı veriyor. Ek veri seti gerektirmeyen kısımlar:
 > - Tekdüzen hesap planı: 347 kayıt, 261 üç haneli hesap;
 > - 44 vergi, 8 mali pozisyon, vergi raporu ve damga vergisi raporu;
@@ -87,7 +97,7 @@ Hukuki görüş değildir (T9.4).
   - 391 "Vat Calculated" (İngilizce ad büyük/küçük harf hatalı; Türkçesi doğru).
 - **Eksik hesaplar:**
   - Doğrulanan: 480 Gelecek Yıllara Ait Gelirler, 481 Gider Tahakkukları, 523 İştirakler Yeniden Değerleme Artışları.
-  - Doğrulanacak adaylar: 170–179 Yıllara Yaygın İnşaat ve Onarım Maliyetleri, 502/503 sermaye düzeltmesi farkları.
+  - T3.2'de doğrulandı (MSUGT Sıra No 12, §6): 17 Yıllara Yaygın İnşaat ve Onarım Maliyetleri grubu ve 170, 178, 179 hesapları; 502/503 sermaye düzeltmesi olumlu/olumsuz farkları. Hepsi T3.2'de eklendi.
 - **Varsayılan gider ve stok hesabı 150** (İlk Madde ve Malzeme), maliyet hesapları 710/713 (7/A).
   - Üretim işletmesine uygun.
   - Ticaret işletmesinde beklenen 153 Ticari Mallar / 621 Satılan Ticari Mallar Maliyeti. Bu, paket ön ayarıdır.
@@ -114,11 +124,11 @@ Bulgular:
   - Ayrıca "Stopajlı KDV %20 (Mutlak 4/10)", "%0 satın al" gibi bozuk açıklamalar ve "Tevkif" / "Tevkifat" tutarsızlığı var.
 - **Kapsam:**
   - Tevkifatlı vergiler yalnız %20 KDV için. %10 ve %1 oranlı bir işlem tevkifata tabiyse tanım yok.
-  - Tevkifat oranları ve işlem türleri (e-Belge'de 6xx kodları) güncel tebliğe göre T3.2/T4.3'te doğrulanacak. Kaynak: GİB UBL-TR kod listeleri, T4.2'de indirilir.
+  - Tevkifat oranları ve işlem türleri (e-Belge'de 6xx kodları) güncel tebliğe göre T4.3'te doğrulanacak (T3.2'den taşındı: oranlar kodlarla birlikte tanımlanır). Kaynak: GİB UBL-TR kod listeleri, T4.2'de indirilir.
 - **İstisnalar:** Yalnız ihracat (%0) ve ihraç kaydıyla satış var. İstisna nedenleri ve kodları yok; e-Belge'de satır bazında istenir.
-  - "İhraç kayıtlı satış" vergisinin -%20 bir satış vergisi olarak kurgulanması T3.2'de mevzuat ve e-Belge (IHRACKAYITLI tipi) ile birlikte incelenir.
+  - "İhraç kayıtlı satış" vergisinin -%20 bir satış vergisi olarak kurgulanması e-Belge'nin IHRACKAYITLI tipiyle birlikte T4.3'te incelenir (T3.2'de yalnız adı düzeltildi).
 - **Diğer vergiler:** Serbest meslek vb. gelir vergisi stopajları, ÖTV, ÖİV ve konaklama vergisi yok. Stopajlar ticaret ve üretim paketinde de görülür; diğerleri sektörel, MVP dışı.
-- Damga vergisi oranlarının güncelliği T3.2'de doğrulanır.
+- Damga vergisi oranlarının güncelliği T3.2'de doğrulandı: değişmedi (§3.6).
 
 ### 3.3 Raporlar
 
@@ -146,7 +156,7 @@ Bulgular:
 
 ### 3.5 Dil, para birimi, belgeler
 
-- Tarih, sayı biçimi ve hafta başı upstream'de doğru. PLAN T3.2'deki "tarih biçimi, hafta başı Pazartesi" maddesi gereksiz; saat dilimi ve TRY'nin şirket varsayılanı olduğunun denetimi kalır.
+- Tarih, sayı biçimi ve hafta başı upstream'de doğru. PLAN T3.2'deki "tarih biçimi, hafta başı Pazartesi" maddesi gereksiz. Saat dilimi T3.2'de denetlendi (aşağıda); TRY hesap planıyla şirket para birimi oluyor.
 - Yazıyla tutar "Binikiyüzotuzdört Lira ve Ellialtı Kuruş" çıkıyor. Türk belgelerinde "Türk Lirası" ve "Yalnız" öneki beklenir (T3.7).
 - **Çeviri kapsamı** (upstream `tr.po`, çevrilmiş / toplam):
 
@@ -164,24 +174,45 @@ Bulgular:
   | `contacts` | 16/22 (%72,7) |
 
   Hesap ve vergi adları `.po`'da değil, hesap planı CSV'lerindeki `@tr` sütunlarındadır. Bu yüzden §3.1–3.2'deki eksikler çeviri aracıyla değil T3.2'deki veri düzeltmesiyle kapanır.
+- **Saat dilimi (T3.2'de ölçüldü):** `resource` modülü şirketin saat dilimini ülkesinden hesaplıyor; Türkiye tek dilimli olduğu için `Europe/Istanbul` (`ov_demo`'daki iki şirkette ölçüldü). Kullanıcının dilimi tarayıcısından gelir; tarayıcıyla uyuşmazsa web istemcisi uyarır. Ek iş gerekmez (G24).
+
+### 3.6 T3.2'de bulunanlar
+
+Hesap adları (T3.1'deki kurallara takılmayan, THP listesiyle karşılaştırınca görülen):
+- 437 ve 438 kaymış: 437'nin Türkçe adı 438'in adı ("KAMUYA OLAN ERTELENMİŞ…"), 438'inki 436'nın adı ("DİĞER ÇEŞİTLİ BORÇLAR"). İngilizce adlar doğru.
+- 326 (borç hesabı) "VERİLEN DEPOZİTO VE TEMİNATLAR"; THP'de 326 Alınan Depozito ve Teminatlar. İngilizcesi de "Given".
+- 690 ve 692 aynı adı taşıyor ("DÖNEM NET KÂRI (ZARARI)", İngilizcesi de aynı); THP'de 690 Dönem Kârı veya Zararı, 692 Dönem Net Kârı veya Zararı.
+- 54 "BİRİKMİŞ KARLAR"; THP'de 54 Kâr Yedekleri.
+- 195 "İŞ AVANSLAR" (ek eksik), 152 ve 620 "MAMÜL" (doğrusu "mamul"), 631'de "(-)" eksik.
+- 391001–391003 "20% KDV": yüzde işareti Türkçede sayının önünde ("%20").
+
+Hesap ve vergi ayarları (işlevsel):
+- **G27 — özel hesaplar plan dışı:** `account` modülü, Türk hesap planı bunları vermediği için erken ödeme indirimi, kasa farkı ve cari yıl kârı/zararı için 999 kodlu beş hesap açıyor ("Cash Discount Loss" vb.). Tekdüzen'de karşılıkları var: 611, 649, 679, 689, 590.
+- **G28 — kira stopajı yanlış hesapta:** upstream'in "PR WH 20%" vergisi kesilen gelir vergisini 191 İndirilecek KDV hesabına kaydediyor. Stopaj vergi dairesine ödenecek bir borçtur (360). Vergi ayrıca KDV tevkifatı grubunda duruyor.
+- **G29 — 193 ve 360'a vergi kaydedilemiyor:** iki hesap alacak/borç (cari) hesabı türünde. 20.0, alış belgesinde borç hesabına vadesiz satır yazılmasını reddediyor ("must have a due date"); bu yüzden 360'a kaydeden bir stopaj vergisi fatura onayında hata veriyordu (ölçüldü, T3.2 testi). İkisi de cari hesap değil, vergi hesabıdır.
+
+Mevzuat doğrulaması:
+- Damga vergisi oranları (binde 9,48, 7,59 ve 1,89) 2026'da değişmedi; yalnız maktu tutarlar ve üst sınır her yıl güncelleniyor (§6). Oranlar doğru (G13).
+- Gelir vergisi stopajı: kira (GVK 94/5-a) ve serbest meslek ödemeleri (GVK 94/2-b) için %20 (§6).
+- Alışta tevkif edilen KDV upstream'de 391005'e, satıştaki damga vergisi 391006'ya (391 altında), alıştaki damga vergisi 770'e kaydediliyor. Uygulamada tevkif edilen KDV genellikle 360'ta izlenir. Bunlar muhasebe tercihi; mali müşavire sorulacak (`USER_TASKS.md` K20), değiştirilmedi.
 
 ## 4. Eksik listesi ve hedef görevler
 
 | # | Eksik | Etki | Hedef |
 |---|---|---|---|
-| G1 | 20 hesabın Türkçe adı yok | Türkçe ekranda İngilizce hesap | T3.2 |
-| G2 | ~25 hesap adında büyük harf ve yazım hatası ("TAHSIL EDILMEYEN", "SATIŞ YE DAĞITIM", "(1)") | Görünüm, güven | T3.2 + kalıcı test |
-| G3 | 391004/391005 yanlış çeviri ("SATIŞ NOKTASI", "SATIN ALIMLAR NE ZAMAN") | Yanlış hesap anlamı | T3.2 |
-| G4 | Eksik THP hesapları: 480, 481, 523 (doğrulandı); 170–179, 502/503 (doğrulanacak) | Uzun vadeli tahakkuk ve sermaye hesapları elle açılıyor | T3.2 |
+| G1 | 20 hesabın Türkçe adı yok | Türkçe ekranda İngilizce hesap | T3.2 — kapandı |
+| G2 | ~25 hesap adında büyük harf ve yazım hatası ("TAHSIL EDILMEYEN", "SATIŞ YE DAĞITIM", "(1)") | Görünüm, güven | T3.2 + kalıcı test — kapandı |
+| G3 | 391004/391005 yanlış çeviri ("SATIŞ NOKTASI", "SATIN ALIMLAR NE ZAMAN") | Yanlış hesap anlamı | T3.2 — kapandı |
+| G4 | Eksik THP hesapları: 480, 481, 523; 17 grubu ve 170, 178, 179; 502/503 (hepsi doğrulandı) | Uzun vadeli tahakkuk ve sermaye hesapları elle açılıyor | T3.2 — kapandı |
 | G5 | Varsayılan gider/stok hesabı 150; ticaret için 153/621 | Ticari mal alımları yanlış hesaba | T7.1 (ticaret paketi), T6.2/T6.3 (üretim, 7/A) |
-| G6 | 31 verginin Türkçe adı yok; tevkifat çocuk ve grup vergileri aynı adlı | Vergi seçimi karışıyor | T3.2 |
-| G7 | 7 tevkifat grubunun adı "ne zaman %-…"; kullanılmayan "KDV %18" grubu | Fatura toplamlarında yanlış başlık | T3.2 |
-| G8 | KDV tevkifatına "stopaj" deniyor; bozuk açıklamalar ("Mutlak 4/10", "%0 satın al") | Yanlış terim | T3.2 (vergiler), T5.8 (rapor) |
-| G9 | Tevkifat yalnız %20 KDV için; oran ve işlem türü listesi doğrulanmamış | %10/%1 oranlı tevkifatlı işlem kesilemiyor | T3.2 (oranlar), T4.3 (6xx kodları) |
-| G10 | İstisna tanımları ve nedenleri yok (ihracat dışında) | İstisnalı satış doğru vergilenemiyor | T3.2 (vergiler), T4.3 (3xx kodları) |
-| G11 | Gelir vergisi stopajı yalnız kira | Serbest meslek alımları elle | T3.2 |
+| G6 | 31 verginin Türkçe adı yok; tevkifat çocuk ve grup vergileri aynı adlı | Vergi seçimi karışıyor | T3.2 — kapandı |
+| G7 | 7 tevkifat grubunun adı "ne zaman %-…"; kullanılmayan "KDV %18" grubu | Fatura toplamlarında yanlış başlık | T3.2 — kapandı. "KDV %18" grubu kalır: vergi grubu pasif yapılamıyor, vergisi olmadığı için seçimde görünmüyor |
+| G8 | KDV tevkifatına "stopaj" deniyor; bozuk açıklamalar ("Mutlak 4/10", "%0 satın al") | Yanlış terim | T3.2 (vergiler) — kapandı; T5.8 (rapor) |
+| G9 | Tevkifat yalnız %20 KDV için; oran ve işlem türü listesi doğrulanmamış | %10/%1 oranlı tevkifatlı işlem kesilemiyor | T4.3: oranlar ve 6xx kodları birlikte (T3.2'den taşındı) |
+| G10 | İstisna tanımları ve nedenleri yok (ihracat dışında) | İstisnalı satış doğru vergilenemiyor | T4.3: vergiler ve 3xx kodları birlikte (T3.2'den taşındı) |
+| G11 | Gelir vergisi stopajı yalnız kira | Serbest meslek alımları elle | T3.2 — kapandı (kira ve serbest meslek %20) |
 | G12 | ÖTV, ÖİV, konaklama vergisi yok | Sektörel | MVP dışı; pilot ihtiyacında yeni görev |
-| G13 | Damga vergisi oranlarının güncelliği doğrulanmadı | — | T3.2 |
+| G13 | Damga vergisi oranlarının güncelliği doğrulanmadı | — | T3.2 — doğrulandı, değişiklik yok |
 | G14 | Vergi raporu beyanname düzeninde değil, "stopaj" terimi | Beyanname hazırlığı elle | T5.8 |
 | G15 | Damga vergisi raporu başlıkları ("Satış Vergisi") | Görünüm | T5.8 |
 | G16 | TCKN girilen gerçek kişi şirket sayılıyor (ölçüldü) | e-Belge alıcı türü, ad biçimi | T3.3 |
@@ -192,9 +223,12 @@ Bulgular:
 | G21 | Çeviri kapsamı: `l10n_tr` %33, paket modülleri %71–86 | Türkçe arayüzde İngilizce metin | T3.6 |
 | G22 | Yazıyla tutar "Lira", "Yalnız" öneki yok | Belge alışkanlığı | T3.7 |
 | G23 | Resmî tatil verisi yok | İş merkezi ve izin takvimi | T3.8 |
-| G24 | Saat dilimi varsayılanı (kullanıcıda tarayıcıdan) | Zamanlanmış işler ve belge saatleri | T3.2 |
-| G25 | `l10n_tr`'de tek test (satış iadesi) | Yerelleştirme hataları fark edilmiyor | T3.2–T3.4 testleri, T3.9 |
+| G24 | Saat dilimi varsayılanı (kullanıcıda tarayıcıdan) | Zamanlanmış işler ve belge saatleri | T3.2 — gerekmiyor: şirket dilimi ülkeden `Europe/Istanbul` (§3.5) |
+| G25 | `l10n_tr`'de tek test (satış iadesi) | Yerelleştirme hataları fark edilmiyor | T3.2–T3.4 testleri, T3.9 (T3.2: 9 test) |
 | G26 | Vergi daireleri: güncellik (kapanan/birleşen daireler) yalnız upstream'le gelir | e-Belge'de eski daire adı | T4.3 (e-Belge testleri); şimdilik ek veri yok |
+| G27 | Erken ödeme indirimi, kasa farkı ve cari yıl kârı için plan dışı 999 kodlu hesaplar (§3.6) | Tekdüzen dışı hesaplar, mizanda yabancı kalem | T3.2 — kapandı (611, 649, 679, 689, 590) |
+| G28 | Kira stopajı 191 İndirilecek KDV'ye kaydediliyor (§3.6) | Ödenecek vergi, indirilecek KDV görünüyor | T3.2 — kapandı (360'a kaydeden yeni vergiler; eskisi pasif) |
+| G29 | 193 ve 360 alacak/borç hesabı türünde; vergi kaydedilemiyor (§3.6) | 360'a kaydeden vergi fatura onayında hata | T3.2 — kapandı (kayıtsız hesaplarda tür değişir) |
 
 ## 5. T3.2 için uygulama notları
 
@@ -220,5 +254,8 @@ Bulgular:
 - python-stdnum 1.19: `stdnum.tr.vkn`, `stdnum.tr.tckimlik`.
 - Muhasebe Sistemi Uygulama Genel Tebliği (Sıra No: 1), Resmî Gazete 26.12.1992, 21447 mükerrer (Tekdüzen hesap planı). Tebliğin kendisine ulaşılamadı; atıf ikincil kaynaktan: https://www.alomaliye.com/2015/08/30/tek-duzen-hesap-plani/
 - Tekdüzen hesap planı listesi (ikincil, 480/481/523 doğrulaması): https://www.muhasebetr.com/tekduzenhesapplani
+- Muhasebe Sistemi Uygulama Genel Tebliği Sıra No 12 (enflasyon düzeltmesi hesapları: 178, 358, 502/503, 697; T3.2): https://www.alomaliye.com/2004/05/05/muhasebe-sistemi-uygulama-genel-tebligi-sira-no12/
+- Damga vergisi 2026 oran ve tutarları (ikincil, T3.2): https://faturaport.com/blog/vergi/2026-yili-damga-vergisi-oran-ve-tutarlari-nelerdir
+- Gelir vergisi stopaj oranları 2026, GVK 94 (ikincil, T3.2): https://musavirlerkulubu.com.tr/makale/stopaj-uygulamalari-rehberi-2026-vergi-kesintisi-oranlar-ve-beyanname-sureci
 - e-Belge kod listeleri (tevkifat 6xx, istisna 3xx): GİB UBL-TR kod listeleri kılavuzu. İndirme ve sürüm sabitleme T4.2'de (`docs/research/e-fatura.md` §6).
-- Ölçüm betikleri bu araştırma için geçici yazıldı; kalıcı denetim T3.2 testine taşınır (§5).
+- Ölçüm betikleri bu araştırma için geçici yazıldı; kalıcı denetim T3.2 testine taşındı (`addons/ov_l10n_tr/tests/turkish_names.py`, `test_turkish_chart.py`).

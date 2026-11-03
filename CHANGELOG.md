@@ -7,6 +7,43 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: temel yerelleştirme modülü `ov_l10n_tr` (T3.2) — otonom mesai 3
+
+**Kod**
+- `addons/ov_l10n_tr` (yeni, AGPL-3, `l10n_tr`'ye bağlı, kendiliğinden kurulur). Upstream'e dokunmadan `@template('tr', …)` uzantılarıyla; yöntem adları `_ov_l10n_tr_*`, böylece upstream'in yöntemlerinden sonra çalışıp onların verisine eklenir.
+  - Hesap planı (`data/template/account.account-tr.csv`):
+    - 69 hesabın adı düzeltildi: Türkçesi olmayanlar, büyük harf ve yazım hataları, yanlış çeviriler (391004/391005), kaymış ya da yanlış adlar (326, 437, 438, 54, 690/692).
+    - 17 grubu ve 8 eksik hesap eklendi: 170, 178, 179, 480, 481, 502, 503, 523.
+    - 193 ve 360 alacak/borç hesabı türünden vergi hesabı türüne alındı; hesapta kayıt varsa değişmez.
+  - Şirket ayarları: erken ödeme indirimi 611/649, kasa farkı 679/689, cari yıl kârı veya zararı 590. Plan dışı 999 kodlu hesaplar artık açılmıyor. Kurulu bir şirket kendi 999999 hesabını korur; bu hesap Türkçe ad alır.
+  - Vergiler (`account.tax-tr.csv`, `account.tax.group-tr.csv`):
+    - 44 verginin ve 7 tevkifat grubunun Türkçe adı, açıklaması ve fatura etiketi: "%20 Tevkifatlı 2/10", "Satış Tevkifatı 2/10 (%-4)", "Tevkifat %-4", "DV %0,948".
+    - "Kira Stopajı %-20" ve "Serbest Meslek Stopajı %-20" (yeni, 360'a kaydeder) ve "Stopaj %-20" grubu.
+    - Upstream'in 191'e kaydeden kira stopajı pasif yapıldı.
+  - Kurulu şirketler: `post_init_hook`, Türk hesap planlı her şirkete upstream'in modül kurulumundaki yeniden yükleme adımlarını uygular. Ardından Türkçe adları yazar; kullanıcının değiştirdiği ad korunur, yalnız upstream'deki haliyle ya da Türkçesi olmadan duran adlar değişir.
+  - Kalıcı ad testi (`tests/turkish_names.py`): Türkçe bağlamda İngilizce kalan ad ve kısaltma, yasak ifadeler ("ne zaman", "satın al"), Türkçe büyük harf hatası (ince ünlüden sonra "I", kök sözlüğü), dipnot artığı. Upstream'in 400 Türkçe adından 35'ini işaretliyor; T1.6'da elle görülen örneklerin hepsi içinde.
+  - 9 test: adlar, kuralların upstream hatalarını yakalaması, düzeltilen ve yeni hesaplar, özel hesaplar, stopajlı alış faturası (1.000 → 360'a 200, toplam 800), kurulu şirketin güncellenmesi, kurulu şirketin cari yıl kârı hesabı.
+- Ölçüm (`ov_demo`, Türkçe bağlam): sorunlu ad 86 → 0 (366 hesap, 15 vergi grubu, 46 vergi, 8 mali pozisyon). `ov_l10n_tr` `ov_demo`'ya kuruldu.
+- Testler: `ov_l10n_tr` 9/9; bütün modüllerle birlikte 93 test geçti, yayıncıya istek yok.
+
+**Araştırma**
+- `docs/research/l10n-tr.md`: T3.2 sonucu notu; §3.6 T3.2'de bulunanlar; §4'te kapanan eksikler işaretlendi; yeni eksikler G27 (999 kodlu özel hesaplar), G28 (kira stopajı 191'de), G29 (193/360 türü vergi kaydını engelliyor).
+  - 17 grubu, 170–179 ve 502/503 MSUGT Sıra No 12 ile doğrulandı. G4'ün eski metni: "Eksik THP hesapları: 480, 481, 523 (doğrulandı); 170–179, 502/503 (doğrulanacak)". Neden: doğrulandı ve eklendi.
+  - Damga vergisi oranları 2026'da değişmedi (G13). Kira ve serbest meslek stopajı %20 (GVK 94/5-a, 94/2-b).
+  - Saat dilimi (G24): şirket dilimi ülkeden `Europe/Istanbul` hesaplanıyor (`ov_demo`'da iki şirkette ölçüldü). İş gerekmedi.
+  - G9 ve G10'un eski hedefi: "T3.2 (oranlar), T4.3 (6xx kodları)" ve "T3.2 (vergiler), T4.3 (3xx kodları)". Yeni hedef T4.3. Neden: %10/%1 oranlı tevkifat ve istisna vergileri GİB kod listeleriyle (T4.2) birlikte tanımlanınca e-Belge'deki kodlarla tek seferde eşleşir. İhraç kayıtlı satış vergisinin incelenmesi de T4.3'e (IHRACKAYITLI tipi).
+
+**Belgeler**
+- PLAN.md: T3.2 `[x]` ve sonucu; F3 2/9; toplam 28/114; şu anki görev T3.3. T4.3'e T3.2'den taşınanlar, T5.8'e stopaj özeti ve K20 notu eklendi.
+- USER_TASKS.md: K20 (hesap eşleme varsayımları ve mali müşavire üç soru), §1'e eklendi.
+- `docs/COMPLIANCE.md` §4: mevzuat verisinin kaynağı ve lisans notu (envantere dış kod girişi gerekmez).
+- `docs/MODULE_MATRIX.md`: `ov_l10n_tr` `plan` → `geliştiriliyor` (T3.3, T3.4 ve T4.3 de bu modüle eklenecek).
+- ARCHITECTURE.md (Türkiye temeli satırı), README (durum ve madde), `state.json` (modül, görev, sonraki işler).
+- Eski kalmış iki durum bilgisi düzeltildi:
+  - README "Durum: Faz 2 — Marka katmanı. Faz 1 (geliştirme altyapısı) tamamlandı." → Faz 3; F2 T2.7'de bitmişti.
+  - `state.json` `next_milestone` "M2 Markasız çekirdek" → "M3 Türkiye temeli".
+- `state.json` `docs` listesine T3.1'de eklenmemiş `docs/research/l10n-tr.md` eklendi.
+
 ### Adım: `l10n_tr` (20.0) analizi (T3.1) — otonom mesai 3
 
 **Araştırma**

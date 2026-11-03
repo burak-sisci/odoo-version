@@ -25,6 +25,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 10. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
 11. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
 12. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
+13. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -114,6 +115,22 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Aynı adımdaki küçük varsayımlar:
     - botun e-posta adresi `bot@example.com` (upstream `odoobot@example.com`);
     - yayıncının destek masasına yönlendiren cümleler (e-tablo hata mesajları) çıkarıldı. Destek adresimiz (`ov_brand.support_url`, K14) girilince oraya yönlendirme ayrı bir iş olarak eklenebilir.
+
+- [ ] K20 **Karar** — Türk hesap planındaki hesap eşlemeleri (T3.2).
+  - Neden: upstream bazı işlemleri Tekdüzen dışı ya da yanlış hesaplara kaydediyordu (`docs/research/l10n-tr.md` §3.6, G27–G29). Doğru hesap muhasebe uygulamasına bağlı; mali müşavir görüşü gerekir.
+  - Varsayımlar (otonom mesai 3, geri dönüşü kolay; hepsi `ov_l10n_tr` verisinde):
+    - erken ödeme indirimi: verilen 611 Satış İskontoları, alınan 649 Diğer Olağan Gelir ve Kârlar;
+    - kasa farkı: fazla 679, eksik 689 (diğer olağandışı gelir/gider);
+    - cari yıl kârı veya zararı: 590 Dönem Net Kârı (yalnız yeni şirkette; kurulu şirket kendi 999999 hesabını korur);
+    - gelir vergisi stopajı: kira (GVK 94/5-a) ve serbest meslek (GVK 94/2-b) %20, 360 Ödenecek Vergi ve Fonlar'a. Upstream'in 191'e kaydeden kira stopajı pasif; geçmiş kayıtlar değişmez;
+    - 193 ve 360 alacak/borç hesabı türünden çıkarıldı. Yoksa bu hesaplara vergi kaydedilemiyor. Kayıtlı hesapta tür değişmez.
+  - Mali müşavire sorulacaklar (upstream'in eşlemeleri, değiştirilmedi):
+    1. Alışta tevkif edilen KDV 391005'e kaydediliyor. Uygulamada genellikle 360'ta izlenir. Hangisi?
+    2. Satışta damga vergisi 391006'ya (Hesaplanan KDV'nin altında) kaydediliyor. 360 daha doğru olabilir.
+    3. Alışta damga vergisi 770 Genel Yönetim Giderleri'ne kaydediliyor. Uygun mu?
+  - Seçenekler: **A** — varsayımlar kalsın, sorular pilot öncesi mali müşavire sorulsun · **B** — şimdi farklı bir eşleme ver.
+  - Claude önerisi: **A**. Değişiklik yalnız veri dosyasında; kurulu şirketler modül güncellemesiyle yeni eşlemeyi alır.
+  - Ne zaman: T5.8 (KDV hazırlık raporu) ya da ilk pilottan (T9.6) önce; sorular T9.4'teki mali müşavir görüşmesine de eklenebilir.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.2 — Temel yerelleştirme modülü `ov_l10n_tr`
+**Şu anki görev:** T3.3 — VKN / TCKN doğrulama
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 1/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 2/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 27/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 28/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -179,7 +179,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 | e-Defter | e-Fatura'ya geçen bilanço esaslı mükellefler, geçişi izleyen yıl başından (ikincil kaynak) | MVP'de mali müşavire aktarım (T5.9); e-Defter T11.4 | P1 |
 | Ba-Bs formları | **Kaldırıldı** (565 Sıra No.lu VUK Genel Tebliği, Eylül 2024 döneminden itibaren) | Gerekmiyor | — |
 | Tekdüzen hesap planı, KDV oranları, damga vergisi raporu | Herkes | `l10n_tr` (20.0'da var) + eksikler T3.1–T3.2 | P0 |
-| KDV tevkifatı ve istisnalar | Tevkifatlı işlem yapanlar, ihracatçılar | T3.2, T4.3 | P0 |
+| KDV tevkifatı ve istisnalar | Tevkifatlı işlem yapanlar, ihracatçılar | %20 tevkifat adları T3.2'de; %10/%1 tevkifat, istisnalar ve kodlar T4.3 | P0 |
 | VKN / TCKN | Herkes | Sağlama çekirdekte var; kişi/şirket ayrımı ve MERSİS T3.3 | P0 |
 | Vergi dairesi | Herkes (e-Belge'de zorunlu) | `l10n_tr` 20.0'da 1.046 vergi dairesi var; 81 ilin hepsi, ek veri gerekmez (T3.1) | P0 |
 | İl / ilçe adres | e-Belge adres alanları | 81 il upstream'de var; ilçe T3.4 | P0 |
@@ -355,7 +355,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - VKN/TCKN sağlaması çekirdekte zaten var; Türkçe tarih/sayı biçimi ve hafta başı upstream'de doğru.
     - Çoğu eksik ad/çeviri hatası. 20 hesabın Türkçe adı yok; ~25 hesapta büyük harf/yazım hatası var. Yanlış çeviriler: "SATIŞ NOKTASI", "SATIN ALIMLAR NE ZAMAN", tevkifat grupları "ne zaman %-20". 31 vergi Türkçe ekranda İngilizce kısaltmalı; KDV tevkifatına "stopaj" deniyor.
     - İşlevsel eksikler: TCKN'li gerçek kişi şirket sayılıyor (ölçüldü); tevkifat yalnız %20 KDV için; istisna ve stopaj tanımları eksik; ilçe, tatil ve kur verisi yok.
-- [ ] T3.2 Temel yerelleştirme modülü `ov_l10n_tr` · M · C
+- [x] T3.2 Temel yerelleştirme modülü `ov_l10n_tr` · M · C
   - T3.1'e göre (`docs/research/l10n-tr.md` G1–G13, G24):
     - hesap adı düzeltmeleri ve eksik THP hesapları;
     - vergi, vergi grubu ve açıklama adları ("stopaj" → tevkifat);
@@ -364,6 +364,15 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Düzeltmeler upstream'e dokunmadan `@template('tr', …)` uzantılarıyla (T3.1 §5).
   - Kalıcı ad testi: Türkçe bağlamda İngilizce ad ve kısaltma, yasak sözcükler, Türkçe büyük harf hatası. T1.6 örnekleri bu testte yakalanmalı.
   - Türkiye varsayılanları: saat dilimi Europe/Istanbul. TRY hesap planıyla geliyor; tarih biçimi ve hafta başı upstream'de doğru (T3.1).
+  - **Sonuç (2026-11-03):** `addons/ov_l10n_tr` (AGPL-3), `l10n_tr` kurulunca kendiliğinden kurulur.
+    - Hesap planı: 69 hesabın adı düzeltildi; 17 grubu ve 8 eksik hesap eklendi (170, 178, 179, 480, 481, 502, 503, 523). 193 ve 360 vergi hesabı türüne alındı (kayıtlı hesapta değişmez).
+    - Şirket ayarları: erken ödeme indirimi 611/649, kasa farkı 679/689, cari yıl kârı 590. Plan dışı 999 kodlu hesaplar artık açılmıyor (G27).
+    - Vergiler: 44 verginin ve 7 tevkifat grubunun adı Türkçe; "stopaj" yalnız gelir vergisi kesintisinde. Yeni "Kira Stopajı %-20" ve "Serbest Meslek Stopajı %-20" 360'a kaydeder. Upstream'in 191'e kaydeden kira stopajı pasif (G28).
+    - Kurulu şirketler kurulumda güncellenir. Kullanıcının değiştirdiği ad korunur; yalnız upstream'deki haliyle ya da Türkçesi olmadan duran adlar değişir.
+    - Ölçüm (`ov_demo`): Türkçe bağlamda sorunlu ad 86 → 0. 9 test; bütün modüllerle birlikte 93 test geçti.
+    - Saat dilimi için iş gerekmedi: şirket dilimi ülkeden `Europe/Istanbul` (ölçüldü).
+    - Damga vergisi oranları doğrulandı, değişmedi. %10/%1 oranlı tevkifat ve istisna tanımları T4.3'e taşındı: GİB kod listeleriyle birlikte tanımlanırlar.
+    - Muhasebe eşleme varsayımları ve mali müşavire sorulacaklar: `USER_TASKS.md` K20.
 - [ ] T3.3 VKN / TCKN doğrulama · S · C
   - Sağlama algoritması çekirdekte var (`check_vat_tr`, python-stdnum; T3.1). Bu görevde:
     - gerçek kişi / tüzel kişi ayrımı: TCKN'li kişi şirket sayılmamalı (ölçüldü, G16);
@@ -410,6 +419,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - UBL-TR 1.2.1 üretimi.
   - Senaryolar (TEMELFATURA, TICARIFATURA, EARSIVFATURA, IHRACAT vb.) ve fatura tipleri (SATIS, IADE, TEVKIFAT, ISTISNA, IHRACKAYITLI vb.).
   - Tevkifat ve istisna kodları, ETTN, numaralama.
+  - T3.2'den taşınanlar (`docs/research/l10n-tr.md` G9, G10): %10 ve %1 oranlı KDV için tevkifatlı vergiler; istisna vergileri ve nedenleri; ihraç kayıtlı satış vergisinin (-%20) IHRACKAYITLI tipiyle uyumu. Vergiler GİB kod listeleriyle (T4.2) birlikte `ov_l10n_tr`'ye eklenir.
   - Mükellef sorgulama arayüzü, durum takibi, adaptör arayüzü.
   - 20.0 farkları (T1.2): `is_company` vergi numarasından hesaplanıyor; Türkiye için 11 haneli TCKN gerçek kişi sayılır (`cac:Person`). Vergi daireleri için çekirdekteki `l10n_tr.tax.office` kullanılır.
 - [ ] T4.4 Sahte (mock) entegratör adaptörü · S · C
@@ -461,6 +471,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T5.8 KDV hazırlık raporu · M · C
   - `l10n_tr` vergi raporunun üzerine: KDV beyannamesi için matrah ve vergi özetleri, tevkifat ayrıntısı, indirilecek KDV listesi.
   - Rapor satırlarında "stopaj" yerine tevkifat; damga vergisi raporu başlıkları (T3.1 G14, G15).
+  - Gelir vergisi stopajı (kira, serbest meslek; T3.2) muhtasar beyanname hazırlığı için ayrı özetlenir. Tevkif edilen KDV ve damga vergisinin hesapları K20'deki mali müşavir yanıtına göre.
   - Yalnız dışa aktarım; beyanname gönderimi yok.
 - [ ] T5.9 Mali müşavire aktarım · M · C
   - Muhasebe fişlerinin dışa aktarımı: genel Excel biçimi + yaygın muhasebe programlarının kamuya açık içe aktarma biçimleri (araştırılarak).

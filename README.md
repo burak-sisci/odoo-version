@@ -13,7 +13,7 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
   - **Üretim:** Ticaret + üretim, fason, maliyet, kalite, bakım, izlenebilirlik.
 - Uzun vadeli hedef, Odoo'daki tüm uygulamaların işlevsel karşılığı. Enterprise'a özel özellikler clean-room yöntemiyle yeniden yazılacak (D-006).
 
-**Durum:** Faz 2 — Marka katmanı. Faz 1 (geliştirme altyapısı) tamamlandı.
+**Durum:** Faz 3 — Türkiye temel yerelleştirmesi. Faz 1 (geliştirme altyapısı) ve Faz 2 (marka katmanı) tamamlandı.
 - Planlama tamamlandı: [PLAN.md](PLAN.md) (ilerleme panosu, fazlar, görevler, müşteri arayışı kapısı).
 - Görevler üç kategoride: kullanıcının yapacakları, birlikte yapılacaklar, Claude'un yapacakları (D-021).
 - Sürüm doğrulandı: 20.0'da kalınıyor (T1.2, `docs/research/nilvera-port.md`).
@@ -30,7 +30,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - Altyapı metinlerindeki eski ürün adı gösterilirken Nexus'la değiştiriliyor; otomatik sızıntı testi kurulu bütün modülleri İngilizce ve Türkçe tarıyor, CI'da MVP uygulamalarıyla çalışıyor (T2.6).
 - Kurulumda, zamanlanmış işlerde, testlerde ve ana sayfalarda yayıncının alan adlarına istek gitmediği otomatik testle denetleniyor; CI'da MVP uygulamalarıyla çalışıyor. Marka katmanı (F2) tamamlandı (T2.7).
 - Upstream `l10n_tr` (20.0) incelendi: 26 eksik bulundu ve her biri bir göreve bağlandı (`docs/research/l10n-tr.md`, T3.1).
-- Sıradaki görev: temel yerelleştirme modülü `ov_l10n_tr` (T3.2).
+- `ov_l10n_tr` Türk hesap planını düzeltiyor: Türkçe hesap ve vergi adları, eksik Tekdüzen hesapları, kira ve serbest meslek stopajı, Tekdüzen'e bağlı özel hesaplar. Kalıcı test Türkçe adlardaki İngilizce kalıntıları ve büyük harf hatalarını yakalıyor (T3.2).
+- Sıradaki görev: VKN / TCKN doğrulama (T3.3).
 - Açık karar yok.
 
 ## Belgeler
