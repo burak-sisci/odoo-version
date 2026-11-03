@@ -7,6 +7,18 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: örnek banka ekstrelerinde istenenler (K4) — standart mesai
+
+**Kullanıcının isteği:** "örnek banka ekstreleri ile ilgili tam olarak isteklerini user_task.md dosyasına yaz. örneğin, ekstreler hangi işlemlerin çıktısı olsun? buna göre gerekli araştırmayı yapacağım."
+
+**Belgeler**
+- USER_TASKS.md K4 ayrıntılandı:
+  - en az istenen (2 banka, TL hesap, 1 ay); bankalar, hesap türü, dönem ve biçimler;
+  - ekstrede olması istenen işlemler: 7'si olmazsa olmaz, 10'u varsa iyi olur;
+  - anonimleştirme kuralları (neyin değişeceği, neyin korunacağı, hangi araçla);
+  - her dosya için not, bankaya sorulacak araştırma soruları ve dosyaların yeri (depo dışında).
+- K4 §1'e eklendi. PLAN.md T5.2: bankalar MT940 ya da camt.053 veriyorsa OCA'nın bu biçimler için içe aktarıcıları da değerlendirilir.
+
 ### Adım: ilk iki commit'ten Claude ortak yazar satırı silindi (K10) — standart mesai
 
 **Kullanıcının kararı:** "k10: claude ortak yazar satırı da silinsin." (K10 seçenek B)

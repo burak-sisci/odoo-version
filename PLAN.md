@@ -486,6 +486,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [ ] T5.2 Banka ekstresi içe aktarma · M · C
   - OCA `account_statement_import_file` ve `account_statement_import_sheet_file` portu (19.0).
   - Türk bankaları için Excel/CSV eşleme şablonları. Örnek dosyalar kullanıcıdan (K4), depoya girmez.
+  - Bankalar MT940 ya da camt.053 veriyorsa OCA'nın bu biçimler için içe aktarıcıları da değerlendirilir (K4 araştırması).
 - [ ] T5.3 Banka mutabakatı · L · C
   - OCA `account_reconcile_oca` + `account_statement_base` portu; Türkçe.
 - [ ] T5.4 Mali raporlar · L · C

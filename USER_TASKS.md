@@ -28,6 +28,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 13. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
 14. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
 15. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
+16. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
 
 Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
 
@@ -44,9 +45,48 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Başvurmaya karar verirsen Claude standart mesaide proje önerisi taslağını hazırlar.
   - Plan bu desteğe bağlı değil (D-017).
 - [x] K3 **Karar** — kalıcı marka adı: **Nexus** (kullanıcı, 2026-10-19; D-014). Tescil ve alan adı uygunluğu dış demodan önce araştırılır (T8.2, PLAN R17).
-- [ ] K4 **Eylem (isteğe bağlı)** — örnek banka ekstresi dosyaları.
-  - Kullandığın bankalardan Excel/CSV ekstre. Kişisel veriler silinmiş olmalı; depoya girmez.
-  - Ne zaman: T5.2'den önce. Yoksa bankaların kamuya açık biçim belgeleriyle ve kurgusal dosyalarla çalışılır.
+- [ ] K4 **Eylem (isteğe bağlı)** — örnek banka ekstreleri (T5.2 içe aktarma, T5.3 mutabakat).
+  - Ne için: Türk bankalarının ekstre dosyalarını okuyan eşleme şablonları (T5.2) ve banka mutabakatı testleri (T5.3). Gerçek dosyanın düzeni (sütunlar, tarih ve tutar biçimi, karakter kodlaması, açıklama kalıpları) kurgusal dosyayla tahmin edilemez.
+  - **En az:** 2 banka, her birinden 1 TL hesap, 1 ay, aşağıdaki "olmazsa olmaz" işlemlerle. Gerisi isteğe bağlı.
+  - **Bankalar:** senin ve hedef müşterilerin kullandığı bankalar; ideali 4–5 banka. Kamu (Ziraat, Halkbank, VakıfBank), özel (İş, Garanti BBVA, Yapı Kredi, Akbank) ve bir katılım bankası (Kuveyt Türk gibi) karışık olursa iyi.
+  - **Hesap:** öncelik ticari hesap (kurumsal internet şubesi), TL vadesiz. Varsa bir döviz hesabı (USD ya da EUR). Bireysel hesap da işe yarar ama dosya düzeni farklı olabilir; hangisi olduğunu not et.
+  - **Dönem:** en az bir ay, bir ay sonunu kapsasın. Aynı hesaptan örtüşen iki dosya (ör. ayın 1–20'si ve 15–31'i) çift kayıt denetimi için iyi olur.
+  - **Biçimler:** bankanın sunduğu her biçimden bir dosya: Excel (xlsx/xls), CSV/TXT; varsa MT940 ya da camt.053 (XML). PDF yalnız karşılaştırma için. İndirme ekranının (biçim seçenekleri) ekran görüntüsü de yararlı.
+  - **İşlemler:** ekstrede bulunmasını istediklerim.
+    - Olmazsa olmaz:
+      1. Gelen havale/EFT/FAST (müşteriden tahsilat; açıklamada fatura numarası geçen varsa daha iyi).
+      2. Giden havale/EFT/FAST (tedarikçiye ödeme).
+      3. Banka masrafı ve komisyon; ayrı satırda BSMV.
+      4. Kendi hesapların arasında virman.
+      5. Nakit yatırma ya da çekme (şube veya ATM).
+      6. Vergi ya da SGK ödemesi.
+      7. Talimatlı ödeme (elektrik, telefon) ya da kredi kartı borcu ödemesi.
+    - Varsa iyi olur:
+      8. POS (üye işyeri) tahsilatı: blokaj çözülmesi, komisyon kesintisi.
+      9. Çek: tahsile verilen müşteri çekinin takastan tahsili, kendi çekinin ödenmesi, karşılıksız çek (T5.7 için de).
+      10. Senet tahsili.
+      11. Faiz geliri ve stopajı; kredi taksiti; ek hesap (BCH/KMH) faizi.
+      12. Döviz alım-satımı: TL ve döviz hesabı arasında, iki hesabın ekstresiyle.
+      13. Toplu ödeme (maaş gibi). Kişisel veri yoğun; anonimleştirmesi zorsa atla.
+      14. DBS (Doğrudan Borçlandırma Sistemi) ödemesi.
+      15. İade ya da iptal edilmiş bir işlem.
+      16. İşlem tarihiyle valör tarihi farklı bir işlem.
+      17. Aynı gün aynı tutarda iki işlem.
+  - **Anonimleştirme:** dosyayı bana vermeden önce. Ham dosya yalnız senin bilgisayarında kalır. Okuduğum dosyanın içeriği yapay zekâ hizmetine gider; karşı tarafların kişisel verileri bu yüzden önceden çıkarılmalı (KVKK).
+    - Değiştir: karşı tarafın adı ve unvanı ("Müşteri A", "Tedarikçi B"), IBAN ve hesap numarası (aynı uzunlukta başka rakamlar), VKN/TCKN, telefon, adres, kendi şirketinin adı ve hesap numarası, açıklamalardaki kişi adları.
+    - Değiştirme: sütun başlıkları ve sırası, tarih ve tutar biçimi (ör. `1.234,56`, eksi işareti ya da B/A sütunu), bankanın işlem kodları ve açıklama kalıpları ("FAST GELEN", "BSMV" gibi), boş satırlar, başlık ve toplam satırları.
+    - Tutarlar: değiştirmen gerekmez. Değiştirirsen not et; bakiye sütunu tutmayacağı için bunu dosyanın hatası saymayayım.
+    - Araç: Excel dosyasını Excel'de düzenleyip aynı biçimde (xlsx ya da xls) kaydet. CSV, TXT ve MT940 dosyasını Excel'de açıp kaydetme; ayraç ve Türkçe karakter kodlaması bozulur. Bunlar için kodlamayı koruyan bir metin düzenleyici kullan (Notepad++ gibi).
+  - **Her dosya için kısa not** (dosyanın yanına `NOT.txt`):
+    - banka, kanal (kurumsal/bireysel internet şubesi, mobil) ve menü yolu (ör. "Hesaplar > Hesap Hareketleri > Excel'e Aktar");
+    - seçilebilen biçimler, hesabın para birimi, dönem;
+    - anonimleştirmede neyin değiştiği; dosya indirildikten sonra bir programda açılıp kaydedildi mi.
+  - **Araştırma soruları** (bankaya ya da mali müşavire sorulabilir):
+    - Hedef müşterilerin (küçük ticari işletme, orta ölçekli fabrika) en çok kullandığı bankalar hangileri?
+    - Her banka ticari müşteriye hangi biçimleri veriyor: Excel, CSV, MT940, camt.053? MT940 için başvuru ya da ücret gerekiyor mu?
+    - Otomatik kanal var mı: e-posta ya da SFTP ile günlük MT940, bankanın ERP entegrasyonu (web servisi), açık bankacılık (hesap bilgisi hizmeti)? Bunlar MVP sonrası için not edilir.
+  - **Nereye:** depo dışında, `%LOCALAPPDATA%\odoo-version\samples\bank\<banka>\` klasörüne (yoksa oluştur). Depoya girmez. Testler bu dosyaların düzeninde üretilmiş kurgusal dosyalarla çalışır (PLAN.md §8).
+  - Ne zaman: T5.2'den önce. Gelmezse bankaların kamuya açık biçim belgeleriyle ve kurgusal dosyalarla çalışılır.
 - [ ] K5 **Onay** — yayınlar.
   - Kullanıcı belgeleri sitesi (T8.7), tanıtım sayfası (T8.11), depo yeniden adlandırma (T8.2).
   - Claude içeriği hazırlar; yayın senin onayınla.
