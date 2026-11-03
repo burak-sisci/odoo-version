@@ -1,9 +1,10 @@
-=============================
-Türkiye Muhasebe Düzeltmeleri
-=============================
+=======================
+Türkiye Yerelleştirmesi
+=======================
 
 Türk hesap planı (Tekdüzen Hesap Planı) ve vergi tanımlarındaki ad, hesap ve vergi
-hatalarını düzeltir. Türkiye muhasebe paketiyle birlikte kendiliğinden kurulur.
+hatalarını düzeltir; VKN/TCKN ve MERSİS numaralarını Türkiye kurallarıyla işler.
+Türkiye muhasebe paketiyle birlikte kendiliğinden kurulur.
 
 Hesap planı
 ===========
@@ -49,10 +50,25 @@ Vergiler
 * Eski kira stopajı vergisi kesintiyi 191 İndirilecek KDV hesabına kaydediyordu.
   Pasif yapılır; geçmiş kayıtlar değişmez.
 
+Kimlik numaraları
+=================
+
+* TCKN (11 hane) girilen kişi gerçek kişi sayılır, şirket sayılmaz. Şahıs
+  işletmeleri de TCKN ile vergilendirildiği için gerçek kişidir. VKN (10 hane)
+  girilen kayıt şirkettir.
+* Vergi numarası alanının adı "VKN/TCKN"; örnek metni "2222222222 (VKN) veya
+  11111111111 (TCKN)".
+* Hatalı numarada ileti Türkçedir ve VKN'nin 10, TCKN'nin 11 hane olduğunu
+  söyler.
+* MERSİS numarası 16 hane olmalıdır; boşluk ve tire girilebilir, kayıtta
+  yalnız rakamlar kalır.
+* MERSİS No, Ticaret Sicil No ve Şube No alanları Türkçe adlarıyla görünür.
+
 Mevcut şirketler
 ================
 
 Modül kurulduğunda Türk hesap planını kullanan şirketler de güncellenir: yeni
-hesaplar ve vergiler eklenir, adlar düzeltilir. Kullanıcının değiştirdiği bir ad
+hesaplar ve vergiler eklenir, adlar düzeltilir. Daha önce TCKN'yle kaydedilmiş
+kişiler de gerçek kişi olur. Kullanıcının değiştirdiği bir ad
 korunur; yalnız hâlâ eski haliyle duran ya da hiç Türkçesi olmayan adlar
 değişir.

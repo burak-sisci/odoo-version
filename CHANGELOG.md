@@ -7,6 +7,33 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: VKN / TCKN doğrulama, kişi/şirket ayrımı ve MERSİS (T3.3) — otonom mesai 3
+
+**Kod**
+- `ov_l10n_tr` 20.0.1.0.0 → 20.0.1.1.0. Modülün adı "Turkish Accounting Corrections" (Türkçesi "Türkiye Muhasebe Düzeltmeleri") idi, "Turkey - Localization" (Türkçesi "Türkiye Yerelleştirmesi") oldu. Neden: kapsam hesap planının dışına çıktı (kimlik numaraları; sırada il/ilçe, T3.4).
+- Kişi/şirket ayrımı (G16): 20.0'da `is_company` hesaplanan bir alan; vergi numarası olan her iş ortağı şirket sayılıyordu. Türkiye'de 11 haneli vergi numarası (TCKN) olan iş ortağı artık gerçek kişi, şahıs şirketi dahil. 10 haneli VKN'li iş ortağı şirket kalır. Kural yalnız Türk iş ortaklarına uygulanır.
+  - Kurulu iş ortakları kurulumda (`post_init_hook`) ve güncellemede (`migrations/20.0.1.1.0`) yeniden hesaplanır.
+  - e-Belge için mükellef türü: `res.partner._ov_l10n_tr_tax_id_type()` ticari iş ortağına göre `VKN` / `TCKN` döner (T4.3'te `cac:Person` ve `schemeID`).
+- Türkçe görünüm (G17):
+  - ülkenin vergi numarası etiketi "VKN/TCKN";
+  - iş ortağı ve şirket formunda yer tutucu "2222222222 (VKN) veya 11111111111 (TCKN)" (upstream'de İngilizce "NIN" kısaltması);
+  - geçersiz numara hatası: "Ayşe Örnek için girilen VKN/TCKN [...] geçerli değil. VKN 10, TCKN 11 hanelidir."
+- MERSİS (G18): 16 hane denetlenir, boşluk ve tire temizlenir; harfli ya da eksik/fazla haneli numara reddedilir. MERSİS, ticaret sicil ve şube numarası etiketleri Türkçe.
+- Bulgu: `base.tr` ülke kaydı `noupdate`. Modülün XML verisi etiketi yalnız ilk kurulumda yazar; kurulu veritabanında etiketi güncelleme betiği yazar.
+- Testler: 10 yeni test (kurgusal VKN/TCKN, resmî sağlama algoritmasıyla üretildi). `ov_l10n_tr` 19/19.
+  - Bütün modüllerle birlikte yerel çalıştırma testlere geçmeden durdu: PostgreSQL 10:27'de bir Ctrl+C olayıyla kapandı (istemci süreci `0xC000013A` ile sonlandı, ardından hızlı kapanma). Kodla ilgisi yok; birleşik doğrulama Linux CI'da.
+- Ölçüm (`ov_demo`, 20.0.1.1.0'a güncellendi, Türkçe): TCKN'li kişi `is_company = False`, VKN'li firma `True`; etiket "VKN/TCKN"; yer tutucu, etiketler ve hata metni Türkçe; "12AB" MERSİS olarak reddedildi.
+
+**Araştırma**
+- `docs/research/l10n-tr.md`: T3.3 sonucu notu; G16, G17, G18 kapandı. G18'in eski hedefi: "T3.3 (denetim), T3.6 (çeviri)". Neden: etiketler kimlik numarası kurallarıyla aynı yerde tanımlandığı için çevirileri de bu görevde yapıldı.
+- MERSİS: 16 hane bütün kaynaklarda aynı. İç yapı (şirkette 0 + VKN + 5 hane, şahıs şirketinde TCKN + 5 hane) yalnız ikincil kaynaklarda geçiyor; bu yüzden denetlenmiyor (USER_TASKS K21).
+
+**Belgeler**
+- PLAN.md: T3.3 `[x]` ve sonucu; F3 3/9; toplam 29/114; şu anki görev T3.4. T4.3'teki `cac:Person` notuna T3.3'ün kuralı ve yöntemi eklendi.
+- USER_TASKS.md: K21 (kişi/şirket ve MERSİS varsayımları), §1'e eklendi.
+  - K15'in "Ne zaman" satırı ve `docs/research/brand-inventory.md`'deki iş ortağı otomatik tamamlama satırı Türkiye için yerli kaynağı T3.3'e bağlıyordu ("yerli kaynak T3.3", "Türkiye için yerel kaynak ayrı iş (T3.3)"). T3.3 bu işi içermiyordu. Yeni atıf: e-Belge mükellef sorgulaması VKN'den unvanı verir (T4.3, T4.5).
+- `docs/MODULE_MATRIX.md`, README.md, ARCHITECTURE.md (Türkiye temeli satırı), state.json: T3.3 sonucu.
+
 ### Adım: temel yerelleştirme modülü `ov_l10n_tr` (T3.2) — otonom mesai 3
 
 **Kod**

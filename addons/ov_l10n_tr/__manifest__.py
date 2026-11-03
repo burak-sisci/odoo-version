@@ -1,7 +1,7 @@
 {
-    'name': 'Turkish Accounting Corrections',
-    'version': '20.0.1.0.0',
-    'summary': 'Corrects the names, accounts and taxes of the Turkish chart of accounts',
+    'name': 'Turkey - Localization',
+    'version': '20.0.1.1.0',
+    'summary': 'Corrects the Turkish chart of accounts and taxes; Turkish tax ID and registry numbers',
     'author': 'burak-sisci',
     'license': 'AGPL-3',
     'depends': [
@@ -9,6 +9,7 @@
     ],
     'data': [
         'security/ir.access.csv',
+        'data/res_country_data.xml',
     ],
     'post_init_hook': 'post_init_hook',
     'auto_install': True,

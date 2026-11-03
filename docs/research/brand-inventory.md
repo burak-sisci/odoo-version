@@ -80,7 +80,7 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 | IAP hesap ve kredi | `iap.odoo.com` (`iap.endpoint`) | `iap`, `iap_mail`, `iap_crm` | evet | Kredi bakiyesi, satın alma bağlantıları | Gizle / devre dışı |
 | Aday zenginleştirme | `iap-services.odoo.com` (`enrich.endpoint`) | `crm_iap_enrich` | evet, günlük iş açık | Aday e-posta alan adından şirket bilgisi | İş pasif, ayar gizli |
 | Aday üretme | `iap-services.odoo.com` | `crm_iap_mine` | evet | Ücretli aday listesi | Gizle |
-| İş ortağı otomatik tamamlama | `partner-autocomplete.odoo.com` | `partner_autocomplete` | evet | Şirket adı/VKN'den adres doldurma | Gizle; Türkiye için yerel kaynak ayrı iş (T3.3) |
+| İş ortağı otomatik tamamlama | `partner-autocomplete.odoo.com` | `partner_autocomplete` | evet | Şirket adı/VKN'den adres doldurma | Gizle; Türkiye için yerel kaynak: e-Belge mükellef sorgulaması (T4.3, T4.5) |
 | SMS | `sms.api.odoo.com` (`sms.endpoint`) | `sms`, `calendar_sms`, `crm_sms`, `sale_sms`, `stock_sms` | evet | SMS gönderimi IAP kredisiyle | IAP kapanınca SMS çalışmaz. Gizlenir; yerli SMS sağlayıcı ihtiyacı sonra |
 | Gmail / Outlook OAuth vekili | `gmail.api.odoo.com`, `outlook.api.odoo.com` | `google_gmail`, `microsoft_outlook` | evet | Kendi OAuth anahtarı yoksa Odoo'nun vekil sunucusu | Vekil kapatılır; yalnız kendi istemci kimliğiyle |
 | Düzenleyici görsel kitaplığı ve yapay zekâ metni | `media-api.odoo.com`, `olg.api.odoo.com` | `html_editor` | evet | Simge/çizim kitaplığı, metin üretimi | Gizle. (`web_unsplash` doğrudan `api.unsplash.com`'a gider; odoo.com değil, kendi anahtarıyla çalışır) |

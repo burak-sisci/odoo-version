@@ -1,1 +1,1 @@
-from . import test_turkish_chart
+from . import test_partner_identifiers, test_turkish_chart

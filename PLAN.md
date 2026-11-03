@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.3 — VKN / TCKN doğrulama
+**Şu anki görev:** T3.4 — İl/ilçe adres yapısı
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 2/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 3/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 28/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 29/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -373,12 +373,19 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Saat dilimi için iş gerekmedi: şirket dilimi ülkeden `Europe/Istanbul` (ölçüldü).
     - Damga vergisi oranları doğrulandı, değişmedi. %10/%1 oranlı tevkifat ve istisna tanımları T4.3'e taşındı: GİB kod listeleriyle birlikte tanımlanırlar.
     - Muhasebe eşleme varsayımları ve mali müşavire sorulacaklar: `USER_TASKS.md` K20.
-- [ ] T3.3 VKN / TCKN doğrulama · S · C
+- [x] T3.3 VKN / TCKN doğrulama · S · C
   - Sağlama algoritması çekirdekte var (`check_vat_tr`, python-stdnum; T3.1). Bu görevde:
     - gerçek kişi / tüzel kişi ayrımı: TCKN'li kişi şirket sayılmamalı (ölçüldü, G16);
     - e-Belge için mükellef türü;
     - MERSİS biçim denetimi (G18);
     - Türkçe yer tutucu ve VKN etiketi (G17).
+  - **Sonuç (2026-11-03):** `ov_l10n_tr` 20.0.1.1.0 (modülün adı "Türkiye Yerelleştirmesi" oldu; kapsam genişledi).
+    - Kişi/şirket: Türkiye'de 11 haneli vergi numarası (TCKN) olan iş ortağı gerçek kişi sayılır (`is_company = False`), şahıs şirketi dahil. 10 haneli VKN'li iş ortağı şirket kalır. Kural yalnız Türkiye için; kurulu iş ortakları kurulum ve güncellemede yeniden hesaplanır.
+    - e-Belge mükellef türü: `res.partner._ov_l10n_tr_tax_id_type()` ticari iş ortağına göre `VKN` / `TCKN` döner (T4.3'te `cac:Person` ve `schemeID` için).
+    - Görünüm: ülkenin vergi numarası etiketi "VKN/TCKN"; iş ortağı ve şirket formunda yer tutucu "2222222222 (VKN) veya 11111111111 (TCKN)". Geçersiz numara hatası Türkçe ve "VKN 10, TCKN 11 hanelidir" açıklamalı.
+    - MERSİS: 16 hane denetlenir, boşluk ve tire temizlenir. İç yapı (şirkette 0 + VKN + 5 hane) yalnız ikincil kaynaklarda geçtiği için denetlenmez. MERSİS, ticaret sicil ve şube etiketleri Türkçe (G18'in çeviri kısmı T3.6 yerine burada kapandı).
+    - Ölçüm (`ov_demo`, Türkçe): TCKN'li kişi `is_company = False`, VKN'li firma `True`; etiket, yer tutucu, hata metni ve MERSİS reddi beklendiği gibi. 10 yeni test; modülde 19 test geçti.
+    - Varsayımlar: `USER_TASKS.md` K21.
 - [ ] T3.4 İl/ilçe adres yapısı · M · C
   - İlçe verisi açık lisanslı bir veri setinden gelir; lisans envanterine yazılır.
   - İlçe seçimi e-Belge adres alanlarıyla eşleşir.
@@ -421,7 +428,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Tevkifat ve istisna kodları, ETTN, numaralama.
   - T3.2'den taşınanlar (`docs/research/l10n-tr.md` G9, G10): %10 ve %1 oranlı KDV için tevkifatlı vergiler; istisna vergileri ve nedenleri; ihraç kayıtlı satış vergisinin (-%20) IHRACKAYITLI tipiyle uyumu. Vergiler GİB kod listeleriyle (T4.2) birlikte `ov_l10n_tr`'ye eklenir.
   - Mükellef sorgulama arayüzü, durum takibi, adaptör arayüzü.
-  - 20.0 farkları (T1.2): `is_company` vergi numarasından hesaplanıyor; Türkiye için 11 haneli TCKN gerçek kişi sayılır (`cac:Person`). Vergi daireleri için çekirdekteki `l10n_tr.tax.office` kullanılır.
+  - 20.0 farkları (T1.2): `is_company` vergi numarasından hesaplanıyor; Türkiye için 11 haneli TCKN gerçek kişi sayılır (`cac:Person`). Kural T3.3'te `ov_l10n_tr`'ye eklendi; mükellef türü `res.partner._ov_l10n_tr_tax_id_type()`. Vergi daireleri için çekirdekteki `l10n_tr.tax.office` kullanılır.
 - [ ] T4.4 Sahte (mock) entegratör adaptörü · S · C
   - Ağsız çalışır; CI ve demo için. Gerçek entegratörün durum geçişlerini taklit eder.
 - [ ] T4.5 Nilvera adaptörü `ov_l10n_tr_edi_nilvera` (LGPL-3) · L · C

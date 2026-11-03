@@ -26,6 +26,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 11. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
 12. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
 13. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
+14. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -87,7 +88,7 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — kaldırılsın · **B** — kurulu kalsın, yalnız arayüzde gizlensin; veri gönderen çağrılar tek tek kapatılsın.
   - Claude önerisi: **A**. Gizlemede upstream'in her yeni sürümünde yeni bir çağrıyı kaçırma riski var; kaldırınca kod hiç yüklenmiyor (KVKK, T2.7).
   - Sonucu: upstream `sms` modülü `iap`'ye bağlı. Yerli bir SMS sağlayıcısı ya bu bağımlılık olmadan yazılır ya da bu karar yeniden açılır.
-  - Ne zaman: SMS ya da şirket bilgisi otomatik doldurma ihtiyacı doğduğunda (yerli kaynak T3.3).
+  - Ne zaman: SMS ya da şirket bilgisi otomatik doldurma ihtiyacı doğduğunda. Yerli kaynak: e-Belge mükellef sorgulaması VKN'den unvanı verir (T4.3, T4.5).
 - [ ] K16 **Karar** — web istemcisinin adres yolu (T2.4).
   - Neden: upstream web istemcisini `/odoo` yolunda sunuyor; adres çubuğunda görünür (D-007).
   - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. `/app` markadan bağımsız; ad değişse (R17) yol değişmez. `/odoo` adresleri `/app`'e yönlendirilir.
@@ -131,6 +132,15 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — varsayımlar kalsın, sorular pilot öncesi mali müşavire sorulsun · **B** — şimdi farklı bir eşleme ver.
   - Claude önerisi: **A**. Değişiklik yalnız veri dosyasında; kurulu şirketler modül güncellemesiyle yeni eşlemeyi alır.
   - Ne zaman: T5.8 (KDV hazırlık raporu) ya da ilk pilottan (T9.6) önce; sorular T9.4'teki mali müşavir görüşmesine de eklenebilir.
+
+- [ ] K21 **Karar** — Türkiye'de kişi/şirket ayrımı ve MERSİS denetimi (T3.3).
+  - Neden: 20.0'da iş ortağının şirket olup olmadığı elle seçilmiyor; vergi numarası olan herkes şirket sayılıyordu. TCKN girilen gerçek kişi de şirket görünüyordu (`docs/research/l10n-tr.md` G16).
+  - Varsayımlar (otonom mesai 3, geri dönüşü kolay; hepsi `ov_l10n_tr` kodunda):
+    - 11 haneli vergi numarası (TCKN) olan Türk iş ortağı gerçek kişidir, şahıs şirketi dahil. e-Belge'de kişi olarak (`cac:Person`) yazılması bu kurala dayanacak (T4.3). 10 haneli VKN'li iş ortağı şirkettir.
+    - MERSİS numarasında yalnız 16 hane denetlenir; boşluk ve tire temizlenir. İç yapısı (şirkette 0 + VKN + 5 hane) yalnız ikincil kaynaklarda geçiyor; resmî bir kural bulunamadı.
+  - Seçenekler: **A** — varsayımlar kalsın · **B** — şahıs şirketleri şirket sayılsın (kişi yalnız e-Belge'de ayrılır) · **C** — MERSİS iç yapısı da denetlensin.
+  - Claude önerisi: **A**. Şahıs şirketi vergide gerçek kişidir; resmî kaynağı olmayan bir iç yapı denetimi geçerli bir numarayı reddedebilir.
+  - Ne zaman: e-Belge çekirdeğinden (T4.3) önce; mali müşavire K20 sorularıyla birlikte sorulabilir.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

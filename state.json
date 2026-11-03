@@ -26,7 +26,7 @@
     "title": "Türkiye temel yerelleştirmesi",
     "status": "in_progress"
   },
-  "current_task": "T3.3",
+  "current_task": "T3.4",
   "session": {
     "mode": "otonom",
     "number": 3,
@@ -61,12 +61,13 @@
     "T2.6",
     "T2.7",
     "T3.1",
-    "T3.2"
+    "T3.2",
+    "T3.3"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "VKN / TCKN: kişi/şirket ayrımı, MERSİS, Türkçe yer tutucu ve etiket (T3.3)",
-    "İl/ilçe adres yapısı (T3.4)"
+    "İl/ilçe adres yapısı: açık lisanslı ilçe verisi, lisans envanteri, e-Belge adres eşlemesi (T3.4)",
+    "TCMB döviz kurları ov_l10n_tr_tcmb (T3.5)"
   ],
   "decisions": [
     {
@@ -322,14 +323,14 @@
       {
         "module": "ov_l10n_tr",
         "path": "addons/ov_l10n_tr",
-        "version": "20.0.1.0.0",
+        "version": "20.0.1.1.0",
         "license": "AGPL-3",
         "depends": [
           "l10n_tr"
         ],
         "auto_install": true,
-        "task": "T3.2",
-        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20"
+        "task": "T3.2, T3.3",
+        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20; T3.3: ad 'Turkey - Localization' (Türkiye Yerelleştirmesi); TCKN'li Türk iş ortağı gerçek kişi (_compute_is_company), mükellef türü _ov_l10n_tr_tax_id_type(); VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS 16 hane (validation_function); kurulu iş ortakları post_init_hook ve migrations/20.0.1.1.0 ile yeniden hesaplanır; varsayımlar USER_TASKS K21"
       }
     ],
     "ported": [

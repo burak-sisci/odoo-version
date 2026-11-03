@@ -5,6 +5,11 @@ Araştırma tarihi: 2026-11-03
 İlgili kararlar: D-006, D-008, D-010, D-011 (DECISIONS.md)
 İlgili görev: T3.1 (PLAN.md); sonuçları kullanan görevler T3.2–T3.8, T4.3, T5.8, T6.2, T7.1
 
+> **T3.3 sonucu (2026-11-03):** `ov_l10n_tr` 20.0.1.1.0 kimlik numarası eksiklerini kapattı (G16–G18; §3.4, §4).
+> - TCKN'li iş ortağı gerçek kişi, VKN'li iş ortağı şirket; kural yalnız Türkiye için. e-Belge mükellef türü `res.partner._ov_l10n_tr_tax_id_type()`.
+> - Ülke etiketi "VKN/TCKN"; yer tutucu ve geçersiz numara hatası Türkçe.
+> - MERSİS 16 hane denetleniyor. İç yapısı (0 + VKN + 5 hane) yalnız ikincil kaynaklarda geçtiği için denetlenmiyor.
+
 > **T3.2 sonucu (2026-11-03):** `ov_l10n_tr` modülü ad, hesap ve vergi eksiklerini kapattı (G1–G4, G6–G8 vergi kısmı, G11, G13, G24; §4).
 > - Ölçüm (`ov_demo`, Türkçe bağlam): sorunlu ad sayısı 86'dan 0'a indi. Kapsam: 366 hesap, 15 vergi grubu, 46 vergi, 8 mali pozisyon.
 > - Kalıcı ad testi upstream'in 400 Türkçe adından 35'ini işaretliyor; T1.6'da elle görülen örneklerin hepsi bunların içinde.
@@ -143,10 +148,12 @@ Bulgular:
 - **Kişi/şirket ayrımı (ölçüldü):** Geçerli bir TCKN girilen "Ayşe Örnek" `is_company = True` oldu.
   - e-Belge'de alıcı türü (kişi / kurum), adın biçimi ve e-Arşiv ayrımı buna bağlı.
   - 19.0 Nilvera modülleri bu ayrımı yapıyordu (`docs/research/nilvera-port.md` §5.2, madde 18).
+  - T3.3'te kapandı: TCKN'li iş ortağı `is_company = False` (`ov_demo`'da ölçüldü).
 - **VKN/TCKN sağlaması:** Çekirdekte var ve çalışıyor (§2). Eksikler:
   - Biçim yer tutucusu "11111111111 (NIN) or 2222222222 (VKN)": İngilizce kısaltma, Türkçesi yok.
   - Ülkenin `vat_label` alanı boş.
 - **MERSİS / ticaret sicil / şube no:** Alanlar var, biçim denetimi yok. MERSİS 16 hanedir. Etiketlerin Türkçesi boş.
+  - T3.3'te kapandı: MERSİS'te 16 hane denetleniyor; etiketler Türkçe ("MERSİS No", "Ticaret Sicil No", "Şube No"). Yer tutucu ve ülke etiketi de Türkçe.
 - **Vergi dairesi:** Veri tam (§2). Ek veri seti gerekmiyor; PLAN §4'teki "T3.1'de doğrulanır" notu kapanır.
 - **Adres:**
   - İlçe alanı ve verisi yok.
@@ -215,16 +222,16 @@ Mevzuat doğrulaması:
 | G13 | Damga vergisi oranlarının güncelliği doğrulanmadı | — | T3.2 — doğrulandı, değişiklik yok |
 | G14 | Vergi raporu beyanname düzeninde değil, "stopaj" terimi | Beyanname hazırlığı elle | T5.8 |
 | G15 | Damga vergisi raporu başlıkları ("Satış Vergisi") | Görünüm | T5.8 |
-| G16 | TCKN girilen gerçek kişi şirket sayılıyor (ölçüldü) | e-Belge alıcı türü, ad biçimi | T3.3 |
-| G17 | VKN/TCKN yer tutucusu İngilizce ("NIN"); ülkenin VKN etiketi boş | Görünüm | T3.3 |
-| G18 | MERSİS biçim denetimi yok; MERSİS/ticaret sicil/şube etiketleri çevrilmemiş | Hatalı MERSİS belgeye gider | T3.3 (denetim), T3.6 (çeviri) |
+| G16 | TCKN girilen gerçek kişi şirket sayılıyor (ölçüldü) | e-Belge alıcı türü, ad biçimi | T3.3 — kapandı |
+| G17 | VKN/TCKN yer tutucusu İngilizce ("NIN"); ülkenin VKN etiketi boş | Görünüm | T3.3 — kapandı |
+| G18 | MERSİS biçim denetimi yok; MERSİS/ticaret sicil/şube etiketleri çevrilmemiş | Hatalı MERSİS belgeye gider | T3.3 — kapandı (denetim ve çeviri) |
 | G19 | Adreste ilçe yok, il zorunlu değil, posta kodu zorunlu | e-Belge adres alanları | T3.4 |
 | G20 | TCMB kuru yok | Dövizli işlem elle | T3.5 |
 | G21 | Çeviri kapsamı: `l10n_tr` %33, paket modülleri %71–86 | Türkçe arayüzde İngilizce metin | T3.6 |
 | G22 | Yazıyla tutar "Lira", "Yalnız" öneki yok | Belge alışkanlığı | T3.7 |
 | G23 | Resmî tatil verisi yok | İş merkezi ve izin takvimi | T3.8 |
 | G24 | Saat dilimi varsayılanı (kullanıcıda tarayıcıdan) | Zamanlanmış işler ve belge saatleri | T3.2 — gerekmiyor: şirket dilimi ülkeden `Europe/Istanbul` (§3.5) |
-| G25 | `l10n_tr`'de tek test (satış iadesi) | Yerelleştirme hataları fark edilmiyor | T3.2–T3.4 testleri, T3.9 (T3.2: 9 test) |
+| G25 | `l10n_tr`'de tek test (satış iadesi) | Yerelleştirme hataları fark edilmiyor | T3.2–T3.4 testleri, T3.9 (T3.2: 9, T3.3: 10 test) |
 | G26 | Vergi daireleri: güncellik (kapanan/birleşen daireler) yalnız upstream'le gelir | e-Belge'de eski daire adı | T4.3 (e-Belge testleri); şimdilik ek veri yok |
 | G27 | Erken ödeme indirimi, kasa farkı ve cari yıl kârı için plan dışı 999 kodlu hesaplar (§3.6) | Tekdüzen dışı hesaplar, mizanda yabancı kalem | T3.2 — kapandı (611, 649, 679, 689, 590) |
 | G28 | Kira stopajı 191 İndirilecek KDV'ye kaydediliyor (§3.6) | Ödenecek vergi, indirilecek KDV görünüyor | T3.2 — kapandı (360'a kaydeden yeni vergiler; eskisi pasif) |
@@ -252,6 +259,10 @@ Mevzuat doğrulaması:
   - `odoo/tools/partner_identifiers.py`;
   - `odoo/addons/base/data/res.lang.csv`, `res_country_data.xml`, `res.country.state.csv`.
 - python-stdnum 1.19: `stdnum.tr.vkn`, `stdnum.tr.tckimlik`.
+- MERSİS numarası (16 hane; iç yapı yalnız ikincil kaynaklarda; T3.3):
+  - Ticaret Bakanlığı, ticaret sicili sık sorulan sorular: https://ticaret.gov.tr/ic-ticaret/sikca-sorulan-sorular/ticaret-sicili
+  - https://www.halkbank.com.tr/tr/blog/mersis-no-nedir
+  - https://www.parasut.com/blog/mersis-numarasi-nedir
 - Muhasebe Sistemi Uygulama Genel Tebliği (Sıra No: 1), Resmî Gazete 26.12.1992, 21447 mükerrer (Tekdüzen hesap planı). Tebliğin kendisine ulaşılamadı; atıf ikincil kaynaktan: https://www.alomaliye.com/2015/08/30/tek-duzen-hesap-plani/
 - Tekdüzen hesap planı listesi (ikincil, 480/481/523 doğrulaması): https://www.muhasebetr.com/tekduzenhesapplani
 - Muhasebe Sistemi Uygulama Genel Tebliği Sıra No 12 (enflasyon düzeltmesi hesapları: 178, 358, 502/503, 697; T3.2): https://www.alomaliye.com/2004/05/05/muhasebe-sistemi-uygulama-genel-tebligi-sira-no12/

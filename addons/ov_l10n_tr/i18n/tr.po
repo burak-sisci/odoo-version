@@ -13,16 +13,79 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid "16-digit number of the Central Registry System (MERSIS)."
+msgstr "Merkezi Sicil Kayıt Sistemi (MERSİS) numarası, 16 hane."
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_company.py:0
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid "2222222222 (VKN) or 11111111111 (TCKN)"
+msgstr "2222222222 (VKN) veya 11111111111 (TCKN)"
+
+#. module: ov_l10n_tr
 #: model:ir.model,name:ov_l10n_tr.model_account_chart_template
 msgid "Account Chart Template"
 msgstr "Hesap Planı Şablonu"
 
 #. module: ov_l10n_tr
-#: model:ir.module.module,shortdesc:base.module_ov_l10n_tr
-msgid "Turkish Accounting Corrections"
-msgstr "Türkiye Muhasebe Düzeltmeleri"
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid "Branch Number"
+msgstr "Şube No"
+
+#. module: ov_l10n_tr
+#: model:ir.model,name:ov_l10n_tr.model_res_company
+msgid "Company"
+msgstr "Şirket"
+
+#. module: ov_l10n_tr
+#: model:ir.model,name:ov_l10n_tr.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
 
 #. module: ov_l10n_tr
 #: model:ir.module.module,summary:base.module_ov_l10n_tr
-msgid "Corrects the names, accounts and taxes of the Turkish chart of accounts"
-msgstr "Türk hesap planındaki ad, hesap ve vergi hatalarını düzeltir"
+msgid ""
+"Corrects the Turkish chart of accounts and taxes; Turkish tax ID and "
+"registry numbers"
+msgstr ""
+"Türk hesap planını ve vergileri düzeltir; VKN/TCKN ve MERSİS kuralları"
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid "MERSIS Number"
+msgstr "MERSİS No"
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid ""
+"The tax ID [%(wrong_vat)s] is not valid. A VKN has 10 digits and a TCKN 11 "
+"digits."
+msgstr ""
+"VKN/TCKN [%(wrong_vat)s] geçerli değil. VKN 10, TCKN 11 hanelidir."
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid ""
+"The tax ID [%(wrong_vat)s] of %(name)s is not valid. A VKN has 10 digits and"
+" a TCKN 11 digits."
+msgstr ""
+"%(name)s için girilen VKN/TCKN [%(wrong_vat)s] geçerli değil. VKN 10, TCKN "
+"11 hanelidir."
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid "Trade Registry Number"
+msgstr "Ticaret Sicil No"
+
+#. module: ov_l10n_tr
+#: model:ir.module.module,shortdesc:base.module_ov_l10n_tr
+msgid "Turkey - Localization"
+msgstr "Türkiye Yerelleştirmesi"
