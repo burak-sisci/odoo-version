@@ -1,6 +1,6 @@
 # Kullanıcıdan Beklenenler
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 İlgili kararlar: D-003, D-015, D-021
 
 Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her şeyin** tek listesidir.
@@ -24,6 +24,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 9. **K16:** web istemcisinin adresi `/odoo` yerine `/app` oldu. Başka bir yol istersen iki sabiti değiştirmek yeter.
 10. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
 11. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
+12. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
 
 Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
 
@@ -70,7 +71,7 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Varsayım (otonom mesai 1, geri dönüşü kolay): teknik ad sayılır, marka sızıntısı testinin (T2.6) izin listesinde kalır.
   - Seçenekler: **A** — olduğu gibi kalsın · **B** — kendi önekimizle eş adlar eklensin, `ODOO.` eski kayıtlar için çalışmaya devam etsin · **C** — tamamen yeniden adlandırılsın, kayıtlı formüller dönüştürülsün.
   - Claude önerisi: şimdilik **A**; kalıcı marka adı belirlenince (T8.2) **B** yeniden değerlendirilir.
-  - Ne zaman: T2.6'dan önce ya da T8.2'de.
+  - Ne zaman: T8.2'de. T2.6'da varsayımla izin listesine yazıldı (`ov_brand/tests/brand_leak.py`).
 - [ ] K14 **Karar** — ürünün rengi ve simgesi (T2.2).
   - Ad artık kalıcı: Nexus (K3, D-014). Otonom mesai 1'deki geçici ad varsayımı (`OV ERP`) kalktı.
   - Neden: ekranlarda bir renk ve simge gerekiyor, ama logo tasarımı henüz yok.
@@ -104,6 +105,15 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor · **B** — hemen Paper Muncher · **C** — belge türüne göre ikisi.
   - Claude önerisi: **A**. Geçiş ölçütü: Paper Muncher'ın 1.0'a ulaşması ya da upstream'in varsayılanı yapması, ve Türkçe belgelerin (T3.7) onunla doğru çıkması. Ayrıntı `docs/research/pdf-engine.md`.
   - Ne zaman: T3.7'den önce. Barındırma kararında (D-013) sunucu arm64 olursa Paper Muncher kaynaktan derlenmeli.
+- [ ] K19 **Karar** — eski ürün adının metinlerde değiştirilme yöntemi (T2.6).
+  - Neden: upstream'de 500'den fazla çevrilebilir metin ve onların Türkçe çevirileri eski adı taşıyor. Yenileri her upstream güncellemesiyle gelir.
+  - Varsayım (otonom mesai 3, geri dönüşü kolay): **gösterimde değiştirme**. Kayıtlı metinler ve çeviri dosyaları değişmez; ad, kullanıcıya gösterilirken ürün adıyla değiştirilir, Türkçe ekler uydurulur ("Nexus'ta"). Sunucunun kod çevirisi işlevi modül yüklenirken sarmalanır; çekirdeğe dokunulmaz (D-010).
+  - Bedeli: önbelleğe alınmayan yüzeylerde (sunucu mesajları, e-posta şablonları) her gösterimde kısa bir metin denetimi. Dışa aktarılan çeviri dosyaları eski adı taşır.
+  - Seçenekler: **A** — gösterimde değiştirme kalsın · **B** — kendi çeviri dosyalarımızla metin metin değiştirme: upstream'in her güncellemesinde elle bakım ister, testin bulduğunu yine elle düzeltmek gerekir.
+  - Claude önerisi: **A**. Upstream'in yeni metinleri de kendiliğinden kapsanır; sızıntı testi kalanları yakalar.
+  - Aynı adımdaki küçük varsayımlar:
+    - botun e-posta adresi `bot@example.com` (upstream `odoobot@example.com`);
+    - yayıncının destek masasına yönlendiren cümleler (e-tablo hata mesajları) çıkarıldı. Destek adresimiz (`ov_brand.support_url`, K14) girilince oraya yönlendirme ayrı bir iş olarak eklenebilir.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

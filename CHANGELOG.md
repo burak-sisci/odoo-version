@@ -1,11 +1,76 @@
 # Değişiklik Günlüğü
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 
 Her adımın kaydı en üste, tarih başlığıyla eklenir. Bir karar değiştiğinde **eski metni ve değişiklik nedeni** buraya yazılır (DECISIONS.md yalnız güncel hali tutar).
 Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
+## 2026-11-03
+
+### Adım: marka sızıntısı testi ve metinlerde ürün adı (T2.6) — otonom mesai 3
+
+Otonom mesai 3 kullanıcının isteğiyle başladı. Kullanıcıyı gerektiren işler bekletilip mesai sonunda birlikte ele alınacak (kullanıcı, 2026-11-03). İlk iş mesai 2'den yerelde kalan T2.6'nın bitirilmesi.
+
+**Kod**
+- Yöntem (PLAN'ın bu görevde seçilmesini istediği "metin düzeyinde değiştirme"): **gösterimde değiştirme** (USER_TASKS K19 varsayımı). Kayıtlı metinler ve çeviri dosyaları değişmez; eski ad, kullanıcıya gösterilirken ürün adıyla değiştirilir. Çekirdeğe dokunulmadı (D-010).
+- `ov_brand/rebrand.py` (saf işlevler):
+  - Ad kuralı: "Odoo", "OdooBot" → ürün adı. Yayıncının şirket adı, ücretli sürüm, Studio, `Odoo.sh`, `Odoo Online`, posta eklentileri, sürüm numaraları, yollar ve teknik adlar değişmez.
+  - Türkçe ekler ürün adına uyar: kaynaştırma harfi ve ünlü uyumu ("Odoo'da" → "Nexus'ta", "Odoo'ya" → "Nexus'a", "OdooBot'u" → "Nexus'u"). Başka adlarla da denendi (Nova, Kelebek, Atlas, ÖRÜM).
+  - Örnek adresler `example.com`'a döner. Yayıncının destek masasına yönlendiren cümleler çıkarılır (e-tablo hata mesajları). HTML kaynaklarda yayıncının ana sayfasına giden bağlantı kalkar, metni kalır.
+  - Sunucunun kod çevirisi işlevi (`get_translation`) modül yüklenirken sarmalanır. Ürün adı veritabanı başına tutulur, istek iş parçacığının veritabanından okunur.
+- `ov_brand`, ortak gösterim noktaları:
+  - web istemcisi çevirileri: çevirisi olmayan İngilizce metinler istemciye gitmediği için modülün `.pot` dosyasından eklenir;
+  - alan adları, yardım metinleri, seçimler (önbellekli; modül lisans adları değişmez);
+  - görünümler ve QWeb şablonları: yalnız metinler ve görünen öznitelikler. İfadeler, betikler ve stiller değişmez; çeviri düzenleme kipinde de değişmez;
+  - eylem, grup, uygulama kategorisi ve modül kayıtlarının metinleri okunurken.
+  - Ürün adı (`ov_brand.name`) değişince şablon ve alan önbellekleri temizlenir.
+  - Erişim hakları formundaki yayıncı belge sitesi bağlantısı kaldırıldı.
+- `ov_brand_mail`:
+  - e-posta şablonlarının konu ve gövdesi işlenmeden önce; e-posta yazma penceresinin işlemeden kopyaladığı metinler (toplu e-posta);
+  - botun e-posta adresi `bot@example.com` (upstream `odoobot@example.com`). Botun karşılama mesajları kod çevirisi yoluyla değişti;
+  - güvenlik uyarısı e-postasındaki iki adımlı doğrulama bağlantısı (yayıncının belge sitesi) kaldırıldı, cümle kaldı;
+  - e-posta sunucusu ayarının, yayıncının barındırma hizmetini anlatan ipucu kaldırıldı;
+  - yazarı olmayan mesajların tarayıcı bildirimi ürünün simgesini taşır.
+- `ov_brand_account`: belge düzeni önizlemesindeki QR kodun ortasındaki yayıncı logosu.
+- T2.2'den kalan üç JS metni (barkod tarayıcı kamera izni, rapor işçileri uyarısı, güvensiz bağlam uyarısı) web istemcisi çevirileri yoluyla değişti.
+
+**Testler**
+- Sızıntı testi (`ov_brand_leak` etiketi; `ov_brand` ve `ov_brand_mail`): kurulu bütün modüllerde İngilizce ve Türkçe olarak sunucu ve istemci çevirileri, alanlar, görünümler, kayıtlar (eylemler, gruplar, kategoriler, modüller, menüler, bot), ana sayfalar (giriş, manifest, çevrimdışı, web istemcisi) ve e-posta şablonları.
+- İzin listesi gerekçeleriyle `ov_brand/tests/brand_leak.py`'de (envanter §10): e-tablo formül adları (K13), lisans adları, ücretli sürümün fiyat bağlantıları (yalnız yöneticiler görür), `remove_odoo_enterprise` adı, yer tutucu metin, gösterilmeyen şablonlar, geliştirici araçları, kendi ifadelerimiz.
+- Kural testleri: ad, korunan adlar, teknik adlar, örnek adresler, destek cümleleri, HTML bağlantıları, Türkçe ekler, görünüm ağacı; gösterim noktaları ve ürün adı değişikliği.
+- Sonuç (yerel): sekiz marka modülü ve `report_xlsx` birlikte 78 test, hepsi geçti (`ov_brand` 51, `ov_brand_mail` 11). `ov_brand` + MVP uygulamaları (`sale_management`, `purchase`, `stock`, `crm`, `mrp`, `mrp_subcontracting`, `maintenance`, `contacts`, `calendar`, `l10n_tr`) veritabanında 7 sızıntı testi geçti.
+- İlk taramanın bulduğu ve düzeltilenler: e-posta sunucusu ipucu, davet e-postasındaki yayıncı bağlantısı ve örnek adres (`yourcompany.odoo.com`), e-tablo destek cümleleri, `from_filter` yardımındaki örnek alan adı. 20.0 API farkları da düzeldi: `file_open` kodlama almıyor, önbellek temizliği `env.transaction.invalidate_ormcache` ile.
+- `ov_demo` güncellendi. Türkçe ölçüm: web istemcisi mesajlarında, menülerde ve eylem yardım metinlerinde 0 sızıntı; kayıtlı 15 eylem yardım metni bilerek upstream haliyle duruyor.
+
+**CI**
+- Modül testlerinden sonra yeni adım: `ov_brand` ve MVP uygulamaları (`MVP_APPS`) ayrı bir veritabanına kurulur, yalnız sızıntı testleri çalışır (M2 ölçütü).
+
+**Kararlar (USER_TASKS)**
+- K19 (yeni, varsayım A): gösterimde değiştirme. Aynı maddede botun e-posta adresi ve destek cümleleri.
+- K13: "Ne zaman" T8.2; T2.6'da varsayımla izin listesine yazıldı.
+
+**Belgeler**
+- PLAN.md (T2.6 `[x]`, sonuç; F2 6/7; şu anki görev T2.7), USER_TASKS.md (K19, §1), README.md, ARCHITECTURE.md (Marka satırı, CI), CLAUDE.md (sızıntı testi komutu), `docs/research/brand-inventory.md` (Sonuç, §3, §6, §7, §8, §9, §10, §11), `docs/research/pdf-engine.md` (T2.6 satırı), state.json (mesai 3, modül notları, ortam).
+
 ## 2026-10-19
+
+### Otonom mesai 2 — özet
+
+Mesai, T2.6 sürerken özeti yazılmadan kapandı (oturum bağlam sınırına ulaştı, ardından ara verildi). Özet, otonom mesai 3'ün başında yazıldı (2026-11-03).
+
+**Biten görevler (4):** T2.2 marka modülü `ov_brand` (mesai 1'den süren), T2.3 odoo.com bağlantılarının kesilmesi, T2.4 web istemcisi `/app` yolunda, T2.5 e-posta, rapor ve portal altbilgileri.
+
+**Kullanıcının isteğiyle:** kalıcı ad Nexus (K3) ve commit oturum satırı kararı (K11) kaydedildi; eski commit'lerdeki oturum bağlantısı satırları silindi (geçmiş yeniden yazıldı, tek force-push; K10'un kalan kısmı bekliyor).
+
+**Süren görev:** T2.6 marka sızıntısı testi. Kod yerelde kaldı; mesai 3'te bitti (yukarıda).
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** K15 çevrim içi hizmet modülleri, K16 `/app` yolu, K17 "Powered by" satırı, K18 PDF motoru. Hepsi geri dönüşü kolay varsayımlarla ilerledi. K14 marka adına göre güncellendi.
+
+**Onay bekleyen dışa dönük iş:** K10 (ilk iki commit'teki ortak yazar satırı, force-push gerekir), K9 (GitHub güvenlik özellikleri).
+
+**Yerelde kalanlar:** T2.6 kodu (commit edilmedi), geçici veritabanları `ov_brand_scan` ve `ov_test_ov_brand`. PostgreSQL bilgisayar yeniden başlayınca durdu; mesai 3'te başlatıldı.
 
 ### Adım: e-posta, rapor ve portal altbilgileri, bot, PDF motoru önerisi (T2.5) — otonom mesai 2
 

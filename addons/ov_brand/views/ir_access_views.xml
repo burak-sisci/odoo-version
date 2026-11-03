@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Link of the access rights form to the publisher's documentation -->
+    <record id="ir_access_form_view" model="ir.ui.view">
+        <field name="name">ir.access.form.ov_brand</field>
+        <field name="model">ir.access</field>
+        <field name="inherit_id" ref="base.ir_access_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//a[starts-with(@href, 'https://www.odoo.com/documentation')]" position="replace"/>
+        </field>
+    </record>
+
+</odoo>

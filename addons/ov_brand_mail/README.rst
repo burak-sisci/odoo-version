@@ -12,9 +12,15 @@ Neleri değiştirir
   kaldırılır; takibi bırakma bağlantısı kalır.
 * E-posta şablonlarındaki yayıncı logosu (ör. e-fatura bildirimleri) gönderilen
   e-postadan çıkarılır.
-* Otomatik mesajların yazarı ve sohbet botu ürünün adını ve simgesini taşır. Ürün adı
-  değişince bu ad da değişir.
+* Otomatik mesajların yazarı ve sohbet botu ürünün adını, simgesini ve örnek bir
+  e-posta adresini taşır. Ürün adı değişince bu ad da değişir.
 * Bağlantıyla paylaşılan sohbet kanalının sayfa başlığı ve simgesi.
+* E-posta şablonlarının konu ve gövdelerinde geçen eski ürün adı, gönderilen
+  e-postada ve e-posta yazma penceresinde ürünün adıyla değiştirilir. Şablonların
+  kayıtlı metni değişmez.
+* Güvenlik uyarısı e-postasındaki iki adımlı doğrulama bağlantısı (yayıncının belge
+  sitesi) kaldırılır; cümle kalır.
+* Yazarı olmayan mesajların tarayıcı bildirimleri ürünün simgesini taşır.
 
 Yayıncıya giden rapor
 =====================
@@ -24,9 +30,3 @@ adını, e-posta adresini ve telefonunu içerir. Modül kurulduğunda rapor hiç
 ve raporu hazırlayan zamanlanmış iş pasif olur.
 
 E-posta modülü kurulu olan her veritabanına kendiliğinden kurulur.
-
-Bilinen sınırlar
-================
-
-* Sohbet botunun karşılama mesajları botu eski adıyla anar; metinler ayrı bir adımda
-  değiştirilecek.

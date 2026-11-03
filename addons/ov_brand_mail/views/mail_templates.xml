@@ -25,6 +25,14 @@
         </xpath>
     </template>
 
+    <!-- Link of the security alert e-mail to the publisher's documentation on
+         two-factor authentication. The sentence stays, without the link. -->
+    <template id="account_security_alert" inherit_id="auth_totp_mail.account_security_alert">
+        <xpath expr="//a[starts-with(@href, 'https://www.odoo.com/documentation')]" position="attributes">
+            <attribute name="href"/>
+        </xpath>
+    </template>
+
     <!-- Page of the channels shared by link -->
     <template id="discuss_public_channel_template" inherit_id="mail.discuss_public_channel_template">
         <xpath expr="//title" position="attributes">

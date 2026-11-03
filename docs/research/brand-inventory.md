@@ -1,6 +1,6 @@
 # Marka İzleri Envanteri (Odoo 20.0 Community)
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 Araştırma tarihi: 2026-10-18
 İlgili kararlar: D-006, D-007, D-010, D-014 (DECISIONS.md)
 İlgili görev: T2.1 (PLAN.md); sonuçları kullanan görevler T2.2–T2.7
@@ -19,6 +19,7 @@ Araştırma tarihi: 2026-10-18
 > - T2.3 (2026-10-19, bitti): yayıncı garantisi kapandı; IAP ve `mysubscription` modülleri bağlı modülleriyle kaldırıldı; Enterprise reklamları, dokümantasyon bağlantıları, metin düzenleyicinin hizmetleri ve uygulama mağazası kapandı (§4).
 > - T2.4 (2026-10-19, bitti): web istemcisi `/app` yolunda (§5).
 > - T2.5 (2026-10-19, bitti): §6'daki e-posta, rapor ve portal yüzeyleri değişti. Web sitesi (MVP dışı) ve Factur-X (T4.x) kaldı.
+> - T2.6 (2026-11-03, bitti): §7'deki metinler ve kayıtlar gösterimde değiştiriliyor (USER_TASKS K19 varsayımı); sızıntı testi kurulu bütün modülleri İngilizce ve Türkçe tarıyor, MVP uygulamalarıyla CI'da çalışıyor. İzin listesi §10.
 > - Bu belge kontrol tarihindeki upstream commit'ini anlatır (`afbcf79d`). T2.6'daki otomatik test, upstream ilerledikçe yeni izleri yakalamak için var.
 
 ## 1. Soru ve kapsam
@@ -57,7 +58,7 @@ Kapsam:
 | Pencere varsayılan başlığı | `Odoo` | `core/dialog/dialog.js` | JS `patch()` |
 | Hata pencereleri | "Odoo Hatası", "Odoo Müşteri Hatası", "Odoo Ağ Hatası", "Odoo Sunucu Hatası", "Odoo Uyarısı" | `core/errors/error_dialogs.js` | JS `patch()` (başlıklar marka adından) |
 | Oturum süresi doldu bildirimi | "Odoo Session Expired" | `public/error_notifications.js` | JS `patch()` |
-| Diğer istemci mesajları | barkod tarayıcının kamera izni mesajı, güvensiz bağlam uyarısı (yalnız konsolda), rapor işçileri uyarısı | `core/barcode/barcode_video_scanner.js`, `start.js`, `webclient/actions/reports/utils.js` | Metinler yöntem gövdesinde; `patch()` bütün yöntemi kopyalamayı gerektirir. T2.2'de değişmedi, metin düzeyinde değişiklik T2.6'da |
+| Diğer istemci mesajları | barkod tarayıcının kamera izni mesajı, güvensiz bağlam uyarısı (yalnız konsolda), rapor işçileri uyarısı | `core/barcode/barcode_video_scanner.js`, `start.js`, `webclient/actions/reports/utils.js` | Metinler yöntem gövdesinde; `patch()` bütün yöntemi kopyalamayı gerektirir. T2.6'da web istemcisi çevirilerinde gösterimde değiştirildi (§7) |
 | Kullanıcı menüsü: Destek | `https://www.odoo.com/buy` | `web/models/ir_http.py` → `session.support_url` | `ir.http` oturum bilgisi override: marka destek adresi ya da öğe kaldırılır |
 | Kullanıcı menüsü: Aboneliğim | "My Subscription" | `mysubscription` (kendiliğinden kurulur) | T2.3 (§4.3) |
 | Ayarlar → "hakkında" | "Odoo 20.0 (Community Edition)", "Copyright © 2004 Odoo S.A. GNU LGPL Licensed" | `settings_form_view/widgets/res_config_edition.xml` | Owl şablon kalıtımı. Başlık marka adı ve sürümü olur. **Telif satırı kalır** (CLAUDE.md kural 2); yanına kendi AGPL notumuz eklenir |
@@ -169,8 +170,8 @@ Sonuç (T2.5, 2026-10-19):
 - Portal kenar çubuğu ve güvenlik sayfası: `ov_brand_portal`. Güvenlik sayfasında iki adımlı doğrulama modülünün eklediği ikinci bir belge bağlantısı çıktı; o da kaldırıldı.
 - Satın alma portalı: `ov_brand_purchase`. Fatura QR kodu ve şartlar ve koşullar örneği: `ov_brand_account`.
 - PDF başlığı ve sunucunun yazdığı PDF'lerin üst verisi: `ov_brand`. Upstream, birden çok kayıtlı raporu bölüp birleştirirken ve PDF/A'ya çevirirken dosyayı çekirdekteki yazıcı sınıfıyla yeniden yazıyor. Tek kayıtlık PDF'te motorun kendi üst verisi kalıyor (T3.7, `docs/research/pdf-engine.md`).
-- Bot (`base.partner_root`): adı ve simgesi marka (`ov_brand_mail`). Karşılama mesajlarındaki eski ad ve botun e-posta adresi T2.6'da.
-- Değişmeyenler: Factur-X üst verisi (T4.x), web sitesi (MVP dışı). MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama) T2.6'nın taramasında.
+- Bot (`base.partner_root`): adı ve simgesi marka (`ov_brand_mail`). Karşılama mesajlarındaki eski ad ve botun e-posta adresi T2.6'da değişti (§7).
+- Değişmeyenler: Factur-X üst verisi (T4.x), web sitesi (MVP dışı). MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama) o modüller eklenince T2.6'nın testiyle bulunur.
 
 ## 7. Çeviri metinleri ve veritabanı kayıtları (T2.6)
 
@@ -179,7 +180,19 @@ Sonuç (T2.5, 2026-10-19):
 - MVP denemesinde kurulu 97 modül: 30.549 metin; 40 modülde 253 metin.
   - En çok: `base` 30, `web` 23, `account` 21, `spreadsheet` 20, `mail` 18, `crm` 16, `stock` 16, `mail_plugin` 13, `mrp` 9, `purchase` 9, `mail_bot` 8, `digest` 7.
 - Bunların bir kısmı URL'dir (`odoo.com/documentation` vb.), bir kısmı ürün adıdır ("Odoo allows you to…"). Türkçe çeviriler (`tr.po`) adı çoğunlukla aynen taşıyor ("Odoo Hatası").
-- Yöntem: kendi modülümüzün çeviri dosyasıyla metin değiştirme (T3.6'da araştırılan yöntem) ya da ilgili JS/şablon override. T2.6 testi, kalanları bulur.
+- Yöntem önerisi (T2.1): kendi modülümüzün çeviri dosyasıyla metin değiştirme ya da ilgili JS/şablon override.
+
+Sonuç (T2.6, 2026-11-03): **gösterimde değiştirme** (USER_TASKS K19 varsayımı). Kayıtlı metinler ve çeviri dosyaları değişmez; eski ad kullanıcıya gösterilirken ürün adıyla değiştirilir (`ov_brand/rebrand.py`).
+- Yüzeyler ve noktaları:
+  - sunucunun kod çevirileri: `odoo.tools.translate.get_translation` modül yüklenirken sarmalanır; ürün adı veritabanı başına tutulur;
+  - web istemcisi çevirileri: `ir.http._get_translations_for_webclient`. Çevirisi olmayan İngilizce metinler istemciye hiç gitmediği için modülün `.pot` dosyasından eklenir;
+  - alan adları, yardım metinleri, seçimler: `ir.model.fields._get_fields_cached` (önbellekli). Modül lisans adları değişmez;
+  - görünümler ve QWeb şablonları (ekranlar, raporlar, e-posta düzenleri, sayfalar): `ir.ui.view._get_combined_archs`; yalnız metinler ve görünen öznitelikler, ifadeler ve betikler değil. Çeviri düzenleme kipinde değiştirilmez;
+  - kayıtlar: eylem, grup, uygulama kategorisi ve modül metinleri okunurken (`_read_format`);
+  - e-posta şablonları (konu, gövde) işlenmeden önce ve e-posta yazma penceresinin işlemeden kopyaladığı metinler (`ov_brand_mail`).
+- Kurallar: Türkçe ekler ürün adına uyar; yayıncının şirket adı, ücretli sürüm, sürüm numaraları, `Odoo.sh`, `Odoo Online`, posta eklentileri ve teknik adlar (yollar, `ODOO.` formülleri) değişmez; örnek adreslerde `example.com`; yayıncının destek masasına yönlendiren cümleler çıkarılır; e-posta şablonlarında yayıncının ana sayfasına giden bağlantının metni kalır, bağlantı kalkar.
+- Ürün adı değişince şablon ve alan önbellekleri temizlenir; sunucu mesajları her süreçte ilk sayfa yüklemesiyle yeni adı alır.
+- Ölçüm (2026-11-03, `ov_brand` + MVP uygulamaları, yerel): sızıntı testinin yedi yüzeyi (sunucu ve istemci çevirileri, alanlar, görünümler, kayıtlar, sayfalar, e-posta şablonları) iki dilde temiz; izin listesi dışında bulgu yok.
 
 **Veritabanı kayıtları (MVP denemesi):**
 - Etkin görünümlerde "Odoo" geçen 32 kayıt. Örnekler: `web.layout`, `web.login`, `web.login_layout`, `web.brand_promotion_message`, `web.report_layout`, `web.webclient_offline`, `mail.mail_notification_layout`, `digest.digest_mail_main`, `portal.portal_record_sidebar`, `account.report_invoice_document`, `purchase.portal_my_purchase_order`, `mail_plugin.app_auth`, `api_doc.docclient`.
@@ -191,11 +204,11 @@ Sonuç (T2.5, 2026-10-19):
 | Dosya | Nerede görünüyor | Görev |
 |---|---|---|
 | `web/static/img/favicon.ico` | sekme simgesi; veritabanı yöneticisi, herkese açık sohbet | T2.2 |
-| `web/static/img/odoo-icon-192x192.png`, `-512x512.png`, `odoo-icon-ios.png` | PWA ve iOS ana ekran | T2.2 |
+| `web/static/img/odoo-icon-192x192.png`, `-512x512.png`, `odoo-icon-ios.png` | PWA ve iOS ana ekran; yazarı olmayan mesajların tarayıcı bildirimi (192) | T2.2; bildirim T2.6 |
 | `web/static/img/logo.png` | `/web/binary/company_logo` yedeği: yalnız veritabanı yokken ve hata durumunda (şirket logosu yoksa `nologo.png`; varsayılan şirket logosu markasız "Your logo"), portal "Powered by" | T2.5 (portal) |
 | `web/static/img/logo2.png` | veritabanı yöneticisi | üretimde kapalı (`list_db = False`) |
 | `web/static/img/logo_inverse_white_206px.png` | e-Fatura bildirim e-postası | T2.5 |
-| `account/static/src/img/Odoo_logo_O.svg` | fatura QR kodu | T2.5 |
+| `account/static/src/img/Odoo_logo_O.svg` | fatura QR kodu; belge düzeni önizlemesi | T2.5; önizleme T2.6 |
 | `mail/static/src/img/odoobot.webp` | OdooBot avatarı | T2.5 |
 | `web/static/img/odoo_logo.svg` | POS, web sitesi yükleyicisi | MVP dışı |
 
@@ -212,14 +225,23 @@ Yöntem: dosyanın kendisi değiştirilmez (upstream'e dokunulmaz). Görseli kul
 | `sale_portal_debranding` | 19.0 | AGPL-3 | `sale` | Satış portalı | Kullanılmıyor (T2.5): satış portalı kenar çubuğunu `portal.portal_record_sidebar`'dan alıyor, `ov_brand_portal` kapsıyor |
 | `website_debranding` | 19.0 | LGPL-3 | `website` | Web sitesi | MVP dışı |
 
-Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uygulamalar ekranı). Telif bilgisi olduğu için değiştirilmez; Uygulamalar menüsü son kullanıcıdan T7.3'te gizlenir. `remove_odoo_enterprise`'ın adında "Odoo" da geçiyor ("Remove Odoo Enterprise"); T2.6'nın izin listesinde ele alınır.
+Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uygulamalar ekranı). Telif bilgisi olduğu için değiştirilmez; Uygulamalar menüsü son kullanıcıdan T7.3'te gizlenir. `remove_odoo_enterprise`'ın adında "Odoo" da geçiyor ("Remove Odoo Enterprise"); T2.6'nın izin listesinde (§10).
 
-## 10. Değiştirilmeyenler (T2.6 izin listesi önerisi)
+## 10. Değiştirilmeyenler (T2.6 izin listesi)
 
 - Lisans ve telif notları (CLAUDE.md kural 2): kaynak başlıkları, ayarlardaki "Copyright © Odoo S.A. … LGPL" satırı, manifestlerdeki yazar `Odoo S.A.` (Uygulamalar ekranında görünür).
 - Teknik adlar: `odoo` Python paketi, `@odoo/owl`, `odoo.define`, `o_` CSS sınıfları, `odoo-bin`, `release.product_name` (yalnız sunucu günlükleri ve veri klasörü adı, kullanıcıya görünmez).
 - `/web/webclient/version_info` JSON yanıtı: yalnız sürüm numarası, ad içermiyor.
 - E-tablo formül adları `ODOO.BALANCE`, `ODOO.PIVOT`, `ODOO.LIST` vb. (`spreadsheet`, `spreadsheet_account`). Formül yazan kullanıcı görür. Ancak kayıtlı panolar bu adları içeriyor; yeniden adlandırmak kayıtlı formülleri bozar. Varsayım: teknik ad sayılır, izin listesinde kalır (USER_TASKS K13).
+
+İzin listesi (T2.6) `addons/ov_brand/tests/brand_leak.py`'de, her satır gerekçesiyle. Yukarıdakilere ek olarak:
+- yayıncının şirket adı ve diğer ürünlerinin adları (Odoo S.A., ücretli sürüm, Studio, `Odoo.sh`, `Odoo Online`, posta eklentileri, sürüm numaraları): her yüzeyde;
+- modül lisans adları ("Odoo Proprietary License"): yasal ad;
+- ücretli sürümün fiyat bağlantıları: modül formu ve kartı, ödeme sağlayıcısı formu ve kartı, modül içe aktarma hatası, modülün kod satırı sayısı alanının yardımı (hiçbir görünümde yok). Ücretli modüller ve sağlayıcılar listelenmiyor (T2.3); yalnız yöneticiler görür;
+- `remove_odoo_enterprise` modülünün adı;
+- değer gelince yerine yazılan yer tutucu metin (`account.report_statement`: banka sahibinin adı);
+- gösterilmeyen şablonlar ve geliştirici araçları: özet e-postasının mobil bölümü (`ov_brand_digest` kaldırıyor), profil oluşturucu sayfası;
+- kendi ifadelerimiz: `ov_brand`'in giriş sayfasında başlığı upstream varsayılanıyla karşılaştıran ifadesi; API anahtarı örneğindeki ortam değişkeni adı.
 
 ## 11. Görevlere etkisi
 
@@ -227,5 +249,5 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 - **T2.3 (tamam):** §4. Yayıncı garantisi, IAP, `mysubscription`, Enterprise reklamları, dokümantasyon bağlantıları, metin düzenleyici ve uygulama mağazası. Gmail/Outlook uç durumu T2.7'de (§4.4).
 - **T2.4 (tamam):** §5.
 - **T2.5 (tamam):** §6; PDF motoru önerisi `docs/research/pdf-engine.md` (USER_TASKS K18).
-- **T2.6:** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) ve §10'daki izin listesi. §3'ten kalan üç JS metni.
+- **T2.6 (tamam):** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) gösterimde değiştiriliyor; §10'daki izin listesi testte. §3'ten kalan üç JS metni de bu yöntemle değişti.
 - **T2.7:** §4.2'deki test çatısı engelinin üstüne günlük denetimi ve tarayıcı ağ kaydı; §4.4'teki uç durum.

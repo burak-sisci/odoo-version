@@ -3,6 +3,9 @@ from odoo.tools import BinaryBytes, file_open
 
 from odoo.addons.ov_brand.tools import get_brand_name
 
+# Address of the bot, an example address like upstream's
+BOT_EMAIL = 'bot@example.com'
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -17,4 +20,9 @@ class ResPartner(models.Model):
             return
         with file_open('ov_brand/static/img/icon_512.png', 'rb') as icon:
             image = BinaryBytes(icon.read())
-        bot.sudo().write({'name': get_brand_name(self.env), 'image_1920': image})
+        bot.sudo().write({
+            'name': get_brand_name(self.env),
+            'image_1920': image,
+            # upstream gives it the address odoobot@example.com
+            'email': BOT_EMAIL,
+        })

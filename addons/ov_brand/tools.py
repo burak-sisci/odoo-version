@@ -1,5 +1,7 @@
 from urllib.parse import urlsplit, urlunsplit
 
+from odoo.addons.ov_brand.rebrand import set_database_brand
+
 BRAND_NAME_PARAM = 'ov_brand.name'
 SUPPORT_URL_PARAM = 'ov_brand.support_url'
 
@@ -25,7 +27,10 @@ UPSTREAM_WEB_PATH = '/odoo'
 
 def get_brand_name(env):
     """Return the product name users see, from the ``ov_brand.name`` system parameter."""
-    return env['ir.config_parameter'].sudo().get_str(BRAND_NAME_PARAM) or DEFAULT_BRAND_NAME
+    brand = env['ir.config_parameter'].sudo().get_str(BRAND_NAME_PARAM) or DEFAULT_BRAND_NAME
+    # Keep the name of the code translations up to date in every worker
+    set_database_brand(env.cr.dbname, brand)
+    return brand
 
 
 def get_support_url(env):

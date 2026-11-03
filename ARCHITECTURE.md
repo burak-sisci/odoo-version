@@ -1,6 +1,6 @@
 # Mimari
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 
 > **Durum: Hedef mimari.**
 > - Dayandığı Geçerli kararlar:
@@ -120,7 +120,7 @@ Kurallar:
 
 | Katman | Modül adı kalıbı | Görev | Lisans (D-016) |
 |---|---|---|---|
-| Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account`, `ov_brand_purchase`; sonra `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta, portal ve rapor altbilgileri, PDF başlığı ve üst verisi, botun adı, PWA manifest, kullanıcı menüsü bağlantıları; odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası) ve dokümantasyon bağlantılarının kapatılması. Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
+| Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account`, `ov_brand_purchase`; sonra `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta, portal ve rapor altbilgileri, PDF başlığı ve üst verisi, botun adı, PWA manifest, kullanıcı menüsü bağlantıları; altyapı metinlerindeki eski ürün adının gösterimde değiştirilmesi (T2.6, `ov_brand/rebrand.py`); odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası) ve dokümantasyon bağlantılarının kapatılması. Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
 | Türkiye temeli | `ov_l10n_tr`, `ov_l10n_tr_tcmb`, `ov_l10n_tr_mis_reports`, `ov_l10n_tr_check` … | Vergi/tevkifat eksikleri, VKN/TCKN, il/ilçe, TCMB kurları, belge çıktıları, Tekdüzen mali tablolar, çek/senet | AGPL-3. LGPL koddan türetilen kısım varsa (ör. `l10n_latam_check` uyarlaması) LGPL-3 |
 | e-Belge | `ov_l10n_tr_edi` (çekirdek), `ov_l10n_tr_edi_nilvera` (adaptör), `ov_l10n_tr_edispatch` … | UBL-TR üretimi, senaryolar, fatura tipleri, mükellef sorgulama, durum takibi; entegratör adaptörleri; sahte adaptör | **LGPL-3** (19.0 LGPL koddan türetildiği için, D-008/2) |
 | OCA portları | Orijinal OCA adları (`ports/oca/`) | Mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite kontrol … | Orijinal lisans (çoğu AGPL-3) |
@@ -191,10 +191,11 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - **Modül testleri** (`tests`): Ubuntu 24.04, Python 3.12, PostgreSQL 18 servisi.
     - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
     - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).
+    - Marka sızıntısı testi (T2.6): `ov_brand` ve MVP uygulamaları (`MVP_APPS`) ayrı bir veritabanına kurulur, yalnız `ov_brand_leak` etiketli testler çalışır (M2 ölçütü).
     - Elle çalıştırmada `modules` girdisindeki modüller (ör. upstream) ayrıca test edilir: Linux referans sonucu.
   - Önbellekler: alt modüllerin git nesneleri (upstream ve `vendor/` sabit commit'lerine göre; biri değişince son önbellek geri yüklenir, yalnız yeni commit'ler çekilir), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
   - Güvenlik: yalnız okuma yetkisi; eylemler commit SHA'sıyla sabit; gitleaks arşivi SHA-256 ile doğrulanır.
-  - Planlanan özel testler: marka sızıntısı, dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.
+  - Özel testler: marka sızıntısı (T2.6, çalışıyor). Planlananlar: dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.
 - Üretim Linux olduğu için CI aynı zamanda Linux uyumluluk testidir.
 
 ## 6. Sürüm yükseltme stratejisi

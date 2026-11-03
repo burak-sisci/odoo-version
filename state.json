@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-10-19",
+  "last_updated": "2026-11-03",
   "project": {
     "brand_name": "Nexus",
     "working_name": "odoo-version (depo adı ve geliştirme ortamı; yeniden adlandırma K5, T8.2)",
@@ -26,12 +26,12 @@
     "title": "Marka katmanı",
     "status": "in_progress"
   },
-  "current_task": "T2.6",
+  "current_task": "T2.7",
   "session": {
     "mode": "otonom",
-    "number": 2,
-    "started": "2026-10-19",
-    "note": "Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md"
+    "number": 3,
+    "started": "2026-11-03",
+    "note": "Otonom mesai kuralları D-021; sorular ve onaylar USER_TASKS.md. Kullanıcı gerektiren işler mesai sonunda birlikte ele alınacak (kullanıcı, 2026-11-03)"
   },
   "tasks_done": [
     "T0.1",
@@ -57,12 +57,13 @@
     "T2.2",
     "T2.3",
     "T2.4",
-    "T2.5"
+    "T2.5",
+    "T2.6"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Marka sızıntısı testi (T2.6)",
-    "Dış istek testi (T2.7)"
+    "Dış istek testi (T2.7)",
+    "l10n_tr (20.0) analizi (T3.1)"
   ],
   "decisions": [
     {
@@ -206,12 +207,12 @@
       "default_branch": "main",
       "remote": "origin"
     },
-    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi",
-    "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py); otonom mesai 1 sonunda durduruldu (python tools/pg.py start)",
+    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı testi (MVP_APPS, ov_test_mvp, --tags ov_brand_leak; T2.6)",
+    "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py); bilgisayar yeniden başlayınca elle başlatılır (python tools/pg.py start)",
     "node": null,
     "docker": null,
     "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + pylint-odoo 10.0.12 + pre-commit 4.7.0 + websocket-client 1.9.2",
-    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (öneri K18: üretimde wkhtmltopdf, Paper Muncher ikinci motor; CI'a T3.7'de); geçici DB'ler ov_brand_scan (T2.1/T2.2) ve ov_test_ov_brand (yalnız yerel)",
+    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (öneri K18: üretimde wkhtmltopdf, Paper Muncher ikinci motor; CI'a T3.7'de); geçici DB'ler ov_brand_scan (T2.1/T2.2), ov_test_ov_brand ve ov_test_mvp (T2.6 sızıntı testi; yalnız yerel)",
     "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)",
     "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests; Windows'ta kurulumdan önce test DB'sinin filestore dosyaları yazılabilir yapılır (Odoo ek dosyaları 0o444)",
     "lint": "pre-commit (yerel kanca kurulu): ruff (ruff.toml → upstream kural seti), pylint-odoo (.pylintrc, addons/), tools/check_modules.py, tools/check_docs.py; modül iskeleti tools/new_module.py; tools/check_secrets.py (.env değerleri); pylint-odoo'nun odoo-addons-relative-import denetimi kanca argümanıyla kapalı (ruff TID252 ile çelişiyor; modül içi içe aktarmalar mutlak)",
@@ -231,7 +232,7 @@
           "remove_odoo_enterprise"
         ],
         "task": "T2.2",
-        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5)"
+        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5); altyapı metinlerindeki eski ürün adı gösterimde değiştirilir (rebrand.py, T2.6, K19); marka sızıntısı testi (ov_brand_leak etiketi)"
       },
       {
         "module": "ov_brand_mail",
@@ -240,11 +241,12 @@
         "license": "AGPL-3",
         "depends": [
           "ov_brand",
-          "mail"
+          "mail",
+          "auth_totp_mail"
         ],
         "auto_install": true,
         "task": "T2.3",
-        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; e-postalarda 'Powered by' yok (K17), gömülü yayıncı logosu süzülür, herkese açık sohbet sayfası; bot marka adı ve simgesiyle, ov_brand.name ile eşitlenir (T2.5)"
+        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; e-postalarda 'Powered by' yok (K17), gömülü yayıncı logosu süzülür, herkese açık sohbet sayfası; bot marka adı ve simgesiyle, ov_brand.name ile eşitlenir (T2.5); e-posta şablonları ve yazma penceresinde eski ad gösterimde değiştirilir, botun e-postası bot@example.com, 2FA belge bağlantısı ve e-posta sunucusu ipucu kaldırıldı, tarayıcı bildirim simgesi (T2.6)"
       },
       {
         "module": "ov_brand_html_editor",
@@ -297,7 +299,7 @@
         ],
         "auto_install": true,
         "task": "T2.5",
-        "note": "fatura QR kodundaki yayıncı logosu ve şartlar ve koşullar örneğindeki yayıncı adı kaldırıldı"
+        "note": "fatura QR kodundaki yayıncı logosu ve şartlar ve koşullar örneğindeki yayıncı adı kaldırıldı; belge düzeni önizlemesindeki QR logosu (T2.6)"
       },
       {
         "module": "ov_brand_purchase",

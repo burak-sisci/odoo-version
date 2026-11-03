@@ -26,6 +26,26 @@ Neleri değiştirir
   gösterilmez.
 * Uygulamalar ekranı yayıncının uygulama mağazasına bağlanmaz: "Sektörler"
   süzgeci, "Tema Mağazası" ve "Üçüncü Taraf Uygulamaları" menüleri gizlenir.
+* Erişim hakları formundaki yayıncı belge sitesi bağlantısı gösterilmez.
+
+Metinlerdeki ürün adı
+=====================
+
+Altyapının metinlerinde geçen eski ürün adı, kullanıcıya gösterilirken ürünün
+adıyla değiştirilir: menüler ve eylemler, alan adları ve yardım metinleri, seçim
+listeleri, hata ve bilgi mesajları, ekranlar, raporlar, sayfalar, gruplar ve
+modül adları. İngilizce ve Türkçe dahil bütün diller için geçerlidir.
+
+* Türkçe ekler ürün adına uydurulur (ör. "...'ta", "...'un", "...'a").
+* Yayıncının şirket adı, ücretli sürümü, sürüm numaraları ve diğer ürünlerinin
+  adları değiştirilmez.
+* Örnek adreslerde yayıncının alan adı yerine ``example.com`` yazılır.
+* Kayıtlı metinler değişmez; değişiklik yalnız gösterimdedir. Kullanıcıların
+  girdiği veriler değiştirilmez.
+
+Bir sızıntı testi, kurulu bütün modüllerde kullanıcıya görünen metinleri İngilizce
+ve Türkçe olarak tarar; izin verilen istisnalar gerekçeleriyle testin yanında
+listelenir.
 
 Ayarlar
 =======
@@ -63,4 +83,6 @@ Bilinen sınırlar
 * Veritabanı yöneticisi veritabanı olmadan çalışır ve bu modülü görmez. Üretimde
   kapalı tutulur (``list_db = False``).
 * E-posta, rapor ve portal altbilgileri ayrı modüllerde ele alınır.
+* Ürün adı değiştirildiğinde ekranlar hemen güncellenir. Sunucu birden çok süreçle
+  çalışıyorsa sunucu tarafı mesajlar her süreçte ilk sayfa yüklemesiyle güncellenir.
 * SMS gönderimi için yerli bir sağlayıcıyla ayrı bir modül gerekir.

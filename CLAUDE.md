@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 
 Bu dosya, bu projede çalışan Claude (ve diğer AI ajanları) için çalışma talimatıdır. Belgeler Türkçe, kod İngilizce (D-009).
 
@@ -180,6 +180,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
   - Windows'ta Odoo 20.0'ın test sınıflarındaki filestore temizliği hataları (`setUpClass`/`tearDownClass` → `_gc_file_store_unsafe`) ayrı sayılır ve sonucu bozmaz. Referans sonuç Linux CI'dır (T1.10).
   - Windows'ta tarayıcı testleri ara sıra "Session Expired" ile düşebilir. Upstream'in oturum deposu, bir istek oturum dosyasını yeniden yazarken aynı anda okuyan isteğe boş oturum veriyor (Windows'ta dosya değişimi atomik değil). Test tek başına yeniden çalıştırılır (`--reuse --tags`); Linux CI etkilenmez (T2.4).
   - Testlerde raporlar PDF yerine HTML üretir (upstream davranışı). PDF'i zorlayan (`force_report_rendering`) ve motoru taklit etmeyen testler yerelde düşer; PDF denemeleri Linux CI'da (T3.7).
+  - Marka sızıntısı testi (T2.6): `python tools/run_tests.py ov_brand,<MVP_APPS> --db ov_test_mvp --tags ov_brand_leak`. Uygulama listesi `.github/workflows/ci.yml`'deki `MVP_APPS`. Bulunan sızıntı ya düzeltilir ya da gerekçesiyle `addons/ov_brand/tests/brand_leak.py` izin listesine yazılır.
   - Doğrudan Odoo ile: `.venv/Scripts/python upstream/odoo/odoo-bin -c odoo.conf -d <db> -i <modül> --test-enable --test-tags /<modül> --stop-after-init`
 - Yeni modül (T1.9): `python tools/new_module.py ov_<ad> [--title …] [--summary …] [--depends base,…] [--license LGPL-3]` → `addons/ov_<ad>/`, ardından `python tools/run_tests.py ov_<ad>`
 - Lint (T1.9): `.venv/Scripts/pre-commit run --all-files`

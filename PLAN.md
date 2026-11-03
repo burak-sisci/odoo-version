@@ -1,6 +1,6 @@
 # Plan ve İlerleme
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 İlgili kararlar: D-005, D-011, D-012, D-013, D-014, D-016, D-017, D-018, D-019, D-020, D-021
 
 Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip edilir.
@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.6 — Otomatik marka sızıntısı testi
+**Şu anki görev:** T2.7 — Dış istek testi
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 5/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 6/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 24/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 25/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -279,7 +279,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Değişen yerler (envanter §3): pencere başlığı, favicon, giriş ekranı ve bağlantı önizlemesi (Open Graph), PWA manifesti ve simgeleri, çevrimdışı sayfa, pencere ve hata başlıkları, kullanıcı menüsündeki destek bağlantısı, ayarlardaki "hakkında" alanı (Odoo S.A. telif satırı kalır).
   - Kapsam dışı: OdooBot adı ve avatarı `mail` modülüne bağlı, T2.5'e taşındı. Veritabanı yöneticisi veritabanı olmadan çalışır, veritabanına kurulan modüller ona ulaşamaz; üretimde `list_db = False` ile kapalıdır.
   - Sonuç: `addons/ov_brand` (AGPL-3; `web`, `base_setup`). Ürün adı `ov_brand.name` sistem parametresinden, varsayılan Nexus. Renk `#1f5f8b` ve "N" simgesi yer tutucu (K14). Tarayıcıdan tek uygulama olarak kurulumun manifesti de marka renginde. 12 test (ikisi tarayıcıda), Türkçe çeviri.
-  - Kalan üç JS metni T2.6'ya taşındı (aşağıda).
+  - Kalan üç JS metni T2.6'ya taşındı; orada değişti.
 - [x] T2.3 odoo.com bağlantılarının kesilmesi · M · C
   - Envanter §4. İlk iş yayıncı garantisi çağrısı.
   - IAP servisleri: SMS, iş ortağı otomatik tamamlama, aday zenginleştirme ve üretme. Modülleriyle kaldırılır (K15 varsayımı).
@@ -314,12 +314,18 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - `ov_brand`: PDF başlığı marka adı; sunucunun yazdığı PDF dosyalarında (bölünen, birleştirilen, PDF/A) `Creator/Producer` marka adı;
     - yeni köprü modüller, ilgili uygulamayla kendiliğinden kurulur: `ov_brand_portal` (belge kenar çubuğu, güvenlik sayfasındaki belge bağlantıları), `ov_brand_digest` (özet e-postasında "Sent by"/"Powered by", mobil uygulama tanıtımı, ipuçları; varsayılan özetin adı), `ov_brand_account` (fatura QR kodundaki logo, şartlar ve koşullar örneğindeki yayıncı adı), `ov_brand_purchase` (tedarikçi portalındaki reklam);
     - PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor (K18, `docs/research/pdf-engine.md`). Kurulum T3.7 (CI) ve T8.4'te;
-    - web sitesi altbilgileri MVP dışı (`ov_brand_website` sonra). Kalanlar T2.6'da.
-- [ ] T2.6 Otomatik marka sızıntısı testi · M · C
+    - web sitesi altbilgileri MVP dışı (`ov_brand_website` sonra). Kalanlar T2.6'da ele alındı.
+- [x] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
   - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları şimdilik izin listesinde (K13 varsayımı).
   - T2.5'ten kalanlar: botun karşılama mesajlarındaki eski ad (`mail_bot`) ve e-posta adresi (`odoobot@example.com`); MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi). Tek kayıtlık PDF'te motorun kendi üst verisi T3.7'de, Factur-X üst verisi T4.x'te.
   - T2.2'den kalanlar (envanter §3): barkod tarayıcının kamera izni mesajı, rapor işçileri uyarısı, güvensiz bağlam konsol uyarısı. Üçü de upstream yöntemlerinin gövdesinde çevrilebilir metin; `patch()` bütün yöntemi kopyalamayı gerektirir. Metin düzeyinde değiştirme yöntemi bu görevde seçilir.
+  - Sonuç: yöntem **gösterimde değiştirme** (K19 varsayımı, `ov_brand/rebrand.py`). Kayıtlı metinler ve çeviri dosyaları değişmez; eski ad kullanıcıya gösterilirken ürün adıyla değiştirilir. Çekirdeğe dokunulmadı (D-010):
+    - ortak noktalar: sunucunun kod çevirileri, web istemcisi çevirileri, alan adları, yardım metinleri ve seçimler, görünümler ve QWeb şablonları (ekranlar, raporlar, e-posta düzenleri, sayfalar), eylem, grup, uygulama kategorisi ve modül kayıtları, e-posta şablonları ve e-posta yazma penceresi (`ov_brand_mail`). Ürün adı değişince önbellekler temizlenir;
+    - Türkçe ekler ürün adına uyar ("Odoo'da" → "Nexus'ta"). Yayıncının şirket adı, ücretli sürüm, sürüm numaraları ve diğer ürünlerinin adları değişmez. Örnek adreslerde `example.com`. Yayıncının destek masasına yönlendiren cümleler (e-tablo hata mesajları) çıkarılır. E-posta şablonlarında yayıncının ana sayfasına giden bağlantı kalkar, metni kalır;
+    - T2.2'den kalan üç JS metni ve botun karşılama mesajları bu yöntemle değişti. Botun e-posta adresi `bot@example.com`. Tek tek değişenler: erişim hakları formundaki belge bağlantısı, güvenlik uyarısı e-postasındaki iki adımlı doğrulama bağlantısı, belge düzeni önizlemesindeki QR logosu, yazarsız mesajların tarayıcı bildirimi simgesi, e-posta sunucusu ayarında yayıncının barındırma hizmetini anlatan ipucu;
+    - sızıntı testi (`ov_brand_leak` etiketi): kurulu bütün modüllerde İngilizce ve Türkçe kod çevirileri, alanlar, görünümler, kayıtlar, ana sayfalar ve e-posta şablonları taranır. İzin listesi gerekçeleriyle `ov_brand/tests/brand_leak.py`'de (envanter §10). CI'da modül testlerinden sonra MVP uygulamalarıyla ayrı bir veritabanında çalışır (M2 ölçütü). Yerelde MVP veritabanında geçti;
+    - sınırlar: değişiklik yalnız gösterimde (dışa aktarılan çeviri dosyaları ve doğrudan veritabanı sorguları eski adı gösterir). Sunucu birden çok süreçle çalışıyorsa ad değişikliği sunucu mesajlarına her süreçte ilk sayfa yüklemesiyle geçer. MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi) o modüller eklenince aynı testle bulunur.
 - [ ] T2.7 Dış istek testi · S · C
   - Odoo test çatısı `requests` ile yapılan dış istekleri zaten engelliyor ve günlüğe yazıyor (envanter §4.2). Kapsamadıkları: kurulum ve zamanlanmış işler, tarayıcı testlerinde sayfanın kendi istekleri.
   - Testler sırasında dış HTTP istekleri kaydedilir; odoo.com alan adlarına istek = hata.

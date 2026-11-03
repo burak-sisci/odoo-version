@@ -3,6 +3,7 @@ import logging
 from odoo import api, models
 from odoo.exceptions import UserError
 
+from odoo.addons.ov_brand.models.rebranded_records import rebrand_values
 from odoo.addons.ov_brand.tools import ONLINE_SERVICE_MODULES
 
 _logger = logging.getLogger(__name__)
@@ -61,3 +62,7 @@ class IrModuleModule(models.Model):
 
     def button_immediate_install_app(self):
         raise UserError(self.env._("This product does not use the publisher's app store."))
+
+    def _read_format(self, fnames, load='_classic_read'):
+        values_list = super()._read_format(fnames, load)
+        return rebrand_values(self, values_list, ('shortdesc', 'display_name', 'summary', 'description_html'))

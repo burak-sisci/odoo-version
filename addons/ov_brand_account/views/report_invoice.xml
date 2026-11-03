@@ -7,4 +7,9 @@
         <xpath expr="//div[@id='payment_link_qrcode']//img[@id='qrcode_odoo_logo']" position="replace"/>
     </template>
 
+    <!-- Same logo in the QR code of the document layout preview -->
+    <template id="report_invoice_qr_code_preview" inherit_id="account.report_invoice_qr_code_preview">
+        <xpath expr="//img[@id='qrcode_odoo_logo']" position="replace"/>
+    </template>
+
 </odoo>

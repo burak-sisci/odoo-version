@@ -4,7 +4,8 @@ Fatura Markası
 
 Faturalardan ve muhasebe metinlerinden yayıncının adını ve logosunu kaldırır.
 
-* Fatura PDF'indeki QR kodların ortasındaki yayıncı logosu gösterilmez.
+* Fatura PDF'indeki QR kodların ortasındaki yayıncı logosu gösterilmez; belge
+  düzeni önizlemesindeki QR kodunda da.
 * Örnek satış şartları metnindeki yayıncı adı geçen not, yayıncının adı olmadan
   yeniden yazılır.
 

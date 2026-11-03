@@ -1,6 +1,6 @@
 # PDF Motoru
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 Araştırma tarihi: 2026-10-19
 İlgili kararlar: D-005, D-007, D-010 (DECISIONS.md); USER_TASKS K18
 İlgili görev: T2.5 (PLAN.md); sonuçları kullanan görevler T3.7, T8.4
@@ -74,4 +74,4 @@ Kaynaklar (erişim 2026-10-19):
 Uygulama yeri:
 - T3.7: CI'a iki motorun kurulumu, belgelerin PDF testleri.
 - T8.4: kurulum aracı seçilen motoru kurar; Paper Muncher seçilirse sunucunun amd64 olduğunu denetler.
-- T2.6: sızıntı taraması sunucunun yazdığı PDF üst verisini kapsar; motorun kendi üst verisi T3.7'de.
+- T2.6: sızıntı taraması rapor şablonlarını kapsar. Sunucunun yazdığı PDF üst verisini T2.5'in testleri denetler; motorun kendi üst verisi T3.7'de.

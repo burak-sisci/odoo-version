@@ -1,6 +1,6 @@
 # Nexus — Odoo Community tabanlı ERP
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 
 [![CI](https://github.com/burak-sisci/odoo-version/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/burak-sisci/odoo-version/actions/workflows/ci.yml)
 
@@ -27,7 +27,8 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - OCA düzeni hazır: resmî 20.0 depoları `vendor/oca/`, bizim 20.0 portlarımız `ports/oca/` (`tools/port_oca.py`, T1.11). İlk port: `report_xlsx`.
 - Kullanıcıya görünen Odoo izlerinin envanteri çıkarıldı (`docs/research/brand-inventory.md`, T2.1).
 - Marka modülleri: `ov_brand` ürün adını (Nexus), simgeleri, giriş ekranını ve hata pencerelerini değiştiriyor (T2.2). `ov_brand_mail` yayıncıya giden haftalık veritabanı raporunu kapatıyor; `ov_brand` yayıncının çevrim içi hizmet modüllerini (IAP, Aboneliğim), Enterprise reklamlarını, dokümantasyon bağlantılarını ve uygulama mağazasını kaldırıyor; `ov_brand_html_editor` metin düzenleyicinin yayıncı hizmetlerini kapatıyor (T2.3). Web istemcisi `/app` adresinde (T2.4). E-posta, portal, özet e-postası, fatura ve satın alma portalındaki yayıncı izleri, PDF başlığı ve üst verisi kaldırıldı; bot ürünün adını taşıyor (T2.5).
-- Sıradaki görev: otomatik marka sızıntısı testi (T2.6).
+- Altyapı metinlerindeki eski ürün adı gösterilirken Nexus'la değiştiriliyor; otomatik sızıntı testi kurulu bütün modülleri İngilizce ve Türkçe tarıyor, CI'da MVP uygulamalarıyla çalışıyor (T2.6).
+- Sıradaki görev: dış istek testi (T2.7).
 - Açık karar yok.
 
 ## Belgeler

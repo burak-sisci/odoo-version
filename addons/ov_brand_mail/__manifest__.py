@@ -7,12 +7,14 @@
     'depends': [
         'ov_brand',
         'mail',
+        'auth_totp_mail',
     ],
     'data': [
         'security/ir.access.csv',
         'data/ir_cron_data.xml',
         'data/res_partner_data.xml',
         'views/mail_templates.xml',
+        'views/res_config_settings_views.xml',
     ],
     'auto_install': True,
 }

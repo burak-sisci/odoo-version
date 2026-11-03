@@ -13,10 +13,12 @@
     'data': [
         'security/ir.access.csv',
         'views/webclient_templates.xml',
+        'views/ir_access_views.xml',
         'views/ir_module_views.xml',
         'views/report_templates.xml',
         'views/res_config_settings_views.xml',
     ],
+    'uninstall_hook': 'uninstall_hook',
     'assets': {
         'web._assets_primary_variables': [
             ('before', 'web/static/src/scss/primary_variables.scss', 'ov_brand/static/src/scss/primary_variables.scss'),
