@@ -22,11 +22,11 @@
     "module_author": "burak-sisci (varsayım, USER_TASKS K12)"
   },
   "phase": {
-    "id": "F2",
-    "title": "Marka katmanı",
-    "status": "in_progress"
+    "id": "F3",
+    "title": "Türkiye temel yerelleştirmesi",
+    "status": "not_started"
   },
-  "current_task": "T2.7",
+  "current_task": "T3.1",
   "session": {
     "mode": "otonom",
     "number": 3,
@@ -58,12 +58,13 @@
     "T2.3",
     "T2.4",
     "T2.5",
-    "T2.6"
+    "T2.6",
+    "T2.7"
   ],
   "blocked_on_user": [],
   "next_actions": [
-    "Dış istek testi (T2.7)",
-    "l10n_tr (20.0) analizi (T3.1)"
+    "l10n_tr (20.0) analizi (T3.1)",
+    "Temel yerelleştirme modülü ov_l10n_tr (T3.2)"
   ],
   "decisions": [
     {
@@ -207,7 +208,7 @@
       "default_branch": "main",
       "remote": "origin"
     },
-    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı testi (MVP_APPS, ov_test_mvp, --tags ov_brand_leak; T2.6)",
+    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı ve dış istek testleri (MVP_APPS, ov_test_mvp, --tags ov_brand_leak,ov_external; T2.6, T2.7); run_tests Odoo'yu tools/netguard.py ile çalıştırır, yayıncıya istek = FAILED (T2.7)",
     "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py); bilgisayar yeniden başlayınca elle başlatılır (python tools/pg.py start)",
     "node": null,
     "docker": null,
@@ -232,7 +233,7 @@
           "remove_odoo_enterprise"
         ],
         "task": "T2.2",
-        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5); altyapı metinlerindeki eski ürün adı gösterimde değiştirilir (rebrand.py, T2.6, K19); marka sızıntısı testi (ov_brand_leak etiketi)"
+        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5); altyapı metinlerindeki eski ürün adı gösterimde değiştirilir (rebrand.py, T2.6, K19); marka sızıntısı testi (ov_brand_leak etiketi); dış istek testi (ov_external etiketi, external_requests.py; zamanlanmış işler, ana sayfalar; T2.7)"
       },
       {
         "module": "ov_brand_mail",
@@ -242,11 +243,13 @@
         "depends": [
           "ov_brand",
           "mail",
-          "auth_totp_mail"
+          "auth_totp_mail",
+          "google_gmail",
+          "microsoft_outlook"
         ],
         "auto_install": true,
         "task": "T2.3",
-        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; e-postalarda 'Powered by' yok (K17), gömülü yayıncı logosu süzülür, herkese açık sohbet sayfası; bot marka adı ve simgesiyle, ov_brand.name ile eşitlenir (T2.5); e-posta şablonları ve yazma penceresinde eski ad gösterimde değiştirilir, botun e-postası bot@example.com, 2FA belge bağlantısı ve e-posta sunucusu ipucu kaldırıldı, tarayıcı bildirim simgesi (T2.6)"
+        "note": "yayıncı garantisi raporu gönderilmez, zamanlanmış işi pasif; e-postalarda 'Powered by' yok (K17), gömülü yayıncı logosu süzülür, herkese açık sohbet sayfası; bot marka adı ve simgesiyle, ov_brand.name ile eşitlenir (T2.5); e-posta şablonları ve yazma penceresinde eski ad gösterimde değiştirilir, botun e-postası bot@example.com, 2FA belge bağlantısı ve e-posta sunucusu ipucu kaldırıldı, tarayıcı bildirim simgesi (T2.6); kimlik bilgileri yoksa Gmail/Outlook belirteci yayıncının vekilinden istenmez, hata verilir (T2.7)"
       },
       {
         "module": "ov_brand_html_editor",

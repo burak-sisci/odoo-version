@@ -7,6 +7,30 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: dış istek testi (T2.7), marka katmanı (F2) tamam — otonom mesai 3
+
+**Kod**
+- `tools/netguard.py` (yeni): bir Python betiğini, yerel ağ dışındaki her ad çözümlemesinin kaydıyla çalıştırır (PEP 578 denetim kancası: `socket.getaddrinfo`, `gethostbyname`). Kitaplıktan bağımsızdır (`requests`, `urllib`, `http.client`, `smtplib`). Yayıncının alan adları (`odoo.com`, `odoocdn.com`, `odoo.sh` ve alt alanları) ayrıca reddedilir; CI yayıncıya hiç bağlanmaz. Kayıtta çağıran kod satırları da var.
+- `tools/run_tests.py`: Odoo'yu `netguard.py` ile çalıştırır (veritabanı açma, `ov_brand` ön kurulumu, testler). Günlükten test çatısının engellediği Python isteklerini ve tarayıcı isteklerini de okur. Çıktıda `external requests:` satırı bütün dış adresleri listeler. `ov_brand` kuruluysa yayıncıya giden istek `RESULT: FAILED` verir; değilse (upstream referans çalıştırmaları) yalnız listelenir.
+- `ov_brand/tests/external_requests.py` (yeni): test sınıflarına kayıt katmanı (`_request_handler`, `fetch_proxy`) ve `assertNoPublisherRequest`.
+- `ov_brand` testleri (`ov_external` etiketi): kayıt düzeneğinin kendisi (örnek bir dış adresle, Python'da ve tarayıcıda); bütün zamanlanmış işler (etkin ya da değil, test işlemi içinde birer kez); ana sayfalar tarayıcıda (giriş, ana ekran, Ayarlar, Uygulamalar; kuruluysa Sohbet ve portal).
+- `ov_brand_mail`: Gmail/Outlook hesabının kimlik bilgileri Ayarlar'dan silinmişse erişim belirteci yayıncının vekilinden istenmez. Yerine bilgilerin yeniden girilmesini isteyen bir hata (Türkçe çevirili) verilir. Envanter §4.4'teki uç durum ölçüldü ve gerçekti: upstream yöntemleri yenileme belirtecini `gmail.api.odoo.com` ve `outlook.api.odoo.com`'a gönderiyordu. `google_gmail` ve `microsoft_outlook`, `mail` ile kendiliğinden kurulduğu için `ov_brand_mail`'in bağımlılığı oldu (`auth_totp_mail` emsali). İki test.
+
+**Testler ve ölçüm**
+- `ov_brand` + MVP uygulamaları (`ov_test_mvp`, `ov_brand_leak,ov_external`): 13 test, hepsi geçti. 28 zamanlanmış iş çalıştı, hiçbiri hata vermedi; 6 sayfa açıldı. Kurulumda, işlerde, testlerde ve sayfalarda dış ad çözümlemesi yok, yayıncıya 0 istek. Tek dış adres testin kendi örneği (`example.com`).
+- Kanıt denetimi: koruyucu Odoo süreci içinde yayıncı adresini reddedip kaydediyor (Odoo kabuğunda denendi). Çalıştırıcının hata yolu örnek kayıtla denendi.
+- Sekiz modül birlikte (`ov_test_ci`): 84 test. İlk çalıştırmada portal sayfası (`/my`) web istemcisinin hazır işaretini beklediği için düştü; hazır koşulu sayfa türüne göre ayrıldı. Düzeltmeden sonra 84 testin hepsi geçti.
+- `ov_demo` güncellendi; Gmail/Outlook iletisi Türkçe ve İngilizce doğru.
+
+**CI**
+- MVP adımı artık `ov_external` etiketli testleri de çalıştırır (adı "Brand leak and external request tests with the MVP apps"). Bütün adımlarda yayıncıya giden istek sonucu bozar.
+
+**Faz**
+- F2 bitti (7/7). M2 ölçütleri: sızıntı testi CI'da geçiyor (T2.6), testlerde yayıncıya istek yok (bu adım; CI sonucu bu commit'le), ürün adı tek ayardan (T2.2). Sıradaki faz F3, ilk görev T3.1.
+
+**Belgeler**
+- PLAN.md (T2.7 `[x]` ve sonuç; F2 `[x]` 7/7; T2.3'teki uç durum notu; şu anki görev T3.1), ARCHITECTURE.md (araç ağacı, yerel testler, CI, özel testler, Marka satırı), README.md, CLAUDE.md (test komutları), `docs/COMPLIANCE.md` (§odoo.com'a veri gönderimi), `docs/research/brand-inventory.md` (§4.2 düzeltme ve sonuç, §4.4 sonuç, §4 T2.3 satırı, §11), modül README'leri (`ov_brand`, `ov_brand_mail`), state.json (faz F3, modül notları, CI).
+
 ### Adım: marka sızıntısı testi ve metinlerde ürün adı (T2.6) — otonom mesai 3
 
 Otonom mesai 3 kullanıcının isteğiyle başladı. Kullanıcıyı gerektiren işler bekletilip mesai sonunda birlikte ele alınacak (kullanıcı, 2026-11-03). İlk iş mesai 2'den yerelde kalan T2.6'nın bitirilmesi.

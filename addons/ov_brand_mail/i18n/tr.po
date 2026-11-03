@@ -18,6 +18,17 @@ msgid "Contact"
 msgstr "Kontak"
 
 #. module: ov_brand_mail
+#. odoo-python
+#: code:addons/ov_brand_mail/models/google_gmail_mixin.py:0
+#: code:addons/ov_brand_mail/models/microsoft_outlook_mixin.py:0
+msgid ""
+"The %(service)s credentials are missing in the Settings. Enter them, then "
+"connect the account again."
+msgstr ""
+"Ayarlar'da %(service)s kimlik bilgileri eksik. Bilgileri girin, ardından "
+"hesabı yeniden bağlayın."
+
+#. module: ov_brand_mail
 #: model:ir.model.fields,field_description:ov_brand_mail.field_ir_config_parameter__display_name
 #: model:ir.model.fields,field_description:ov_brand_mail.field_mail_render_mixin__display_name
 #: model:ir.model.fields,field_description:ov_brand_mail.field_publisher_warranty_contract__display_name

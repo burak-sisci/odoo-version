@@ -45,7 +45,8 @@ modül adları. İngilizce ve Türkçe dahil bütün diller için geçerlidir.
 
 Bir sızıntı testi, kurulu bütün modüllerde kullanıcıya görünen metinleri İngilizce
 ve Türkçe olarak tarar; izin verilen istisnalar gerekçeleriyle testin yanında
-listelenir.
+listelenir. Bir dış istek testi de kurulumda, zamanlanmış işlerde ve ana sayfalarda
+yayıncının alan adlarına istek gitmediğini denetler.
 
 Ayarlar
 =======

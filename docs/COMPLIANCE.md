@@ -1,6 +1,6 @@
 # Lisans, Marka ve Hukuki Uyum
 
-Son güncelleme: 2026-10-19
+Son güncelleme: 2026-11-03
 İlgili kararlar: D-006, D-007, D-008, D-014, D-015, D-016, D-019, D-020
 
 > Hukuki görüş değildir. Ticari satıştan önce avukat incelemesi yapılacaktır (PLAN T9.4).
@@ -52,7 +52,7 @@ Bu bir tersine mühendislik projesidir. Hedef **işlevi** yeniden üretmek, **ko
 
 - **e-Belge saklama:** asıl saklama Türkiye'de zorunlu; başkasının e-Belgesini saklamak GİB izni gerektirir (`research/e-fatura.md` §3).
 - **KVKK:** müşteri = veri sorumlusu, biz (SaaS) = veri işleyen. Yurt dışı sunucu → m.9 süreçleri (`research/hosting.md`).
-- **odoo.com'a veri gönderimi:** Community'de odoo.com'a veri gönderen bileşenler (yayıncı garantisi, IAP) ürünümüzde kapatılır veya kendi sağlayıcılarımızla değiştirilir (PLAN T2.3). Bu, otomatik testle denetlenir (PLAN T2.7). Müşteri verisi bizim bilgimiz dışında 3. tarafa gitmemelidir.
+- **odoo.com'a veri gönderimi:** Community'de odoo.com'a veri gönderen bileşenler (yayıncı garantisi, IAP) ürünümüzde kapatılır veya kendi sağlayıcılarımızla değiştirilir (PLAN T2.3). Bu, otomatik testle denetlenir (PLAN T2.7, çalışıyor: kurulum, zamanlanmış işler, testler ve ana sayfalar). Müşteri verisi bizim bilgimiz dışında 3. tarafa gitmemelidir.
   - Envanter (T2.1, `research/brand-inventory.md` §4): yayıncı garantisi haftada bir veritabanı kimliğini, kullanıcı sayılarını, kurulu uygulamaları ve şirketin adı, e-postası ve telefonunu şifresiz HTTP ile `services.odoo.com`'a gönderiyor; varsayılan olarak açık.
   - Yayıncı garantisi kapatıldı (T2.3, 2026-10-19): `ov_brand_mail` raporu hiç göndermez, zamanlanmış iş pasif.
   - IAP ve `mysubscription` modülleri kaldırıldı (T2.3, 2026-10-19; K15 varsayımı). Böylece iş ortağı otomatik tamamlama (yeni şirket kaydında şirket bilgisinin sorgulanması) ve aday zenginleştirme (adayların e-posta alan adları, günlük iş) da yok.

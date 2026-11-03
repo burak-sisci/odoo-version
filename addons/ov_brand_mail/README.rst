@@ -29,4 +29,13 @@ Bu rapor veritabanı kimliğini, kullanıcı sayılarını, kurulu uygulamaları
 adını, e-posta adresini ve telefonunu içerir. Modül kurulduğunda rapor hiç gönderilmez
 ve raporu hazırlayan zamanlanmış iş pasif olur.
 
+Gmail ve Outlook hesapları
+==========================
+
+Gmail ve Outlook hesapları, Ayarlar'a girilen kendi istemci kimliğiniz ve gizli
+anahtarınızla bağlanır. Bu bilgiler hesap bağlandıktan sonra silinirse oturum
+anahtarı yayıncının aracı sunucusundan istenmez (istense oturum yenileme anahtarı
+oraya gönderilirdi). Bunun yerine bilgilerin yeniden girilmesini isteyen bir hata
+gösterilir.
+
 E-posta modülü kurulu olan her veritabanına kendiliğinden kurulur.

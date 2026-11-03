@@ -124,12 +124,14 @@ jobs:
           echo "modules: $modules"
           python tools/run_tests.py "$modules" --db ov_test_ci -v
 
-      # M2 (T2.6): no brand leak with the apps of the first packages (PLAN.md §3);
-      # the ov_brand_* parts of these apps install with them.
-      - name: Brand leak test with the MVP apps
+      # M2 (T2.6, T2.7): no brand leak and no request to the publisher with the
+      # apps of the first packages (PLAN.md §3); the ov_brand_* parts of these
+      # apps install with them. The external request test runs all their
+      # scheduled jobs and opens the main pages.
+      - name: Brand leak and external request tests with the MVP apps
         env:
           MVP_APPS: sale_management,purchase,stock,crm,mrp,mrp_subcontracting,maintenance,contacts,calendar,l10n_tr
-        run: python tools/run_tests.py "ov_brand,$MVP_APPS" --db ov_test_mvp --tags ov_brand_leak -v
+        run: python tools/run_tests.py "ov_brand,$MVP_APPS" --db ov_test_mvp --tags ov_brand_leak,ov_external -v
 
       - name: Reference tests (manual run)
         if: github.event_name == 'workflow_dispatch' && inputs.modules != ''

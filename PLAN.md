@@ -21,13 +21,13 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T2.7 — Dış istek testi
+**Şu anki görev:** T3.1 — `l10n_tr` (20.0) analizi
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
-| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[~]` | 6/7 | 0 · 0 · 7 |
+| F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
 | F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[ ]` | 0/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 25/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 26/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -261,7 +261,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Portların lint'i: OCA'nın kod biçimi korunur; bizim lint denetimlerimiz yalnız `addons/` (T1.9).
   - Kabul: addons yolu üç kaynağı da içeriyor; örnek bir port kuruluyor.
 
-### F2 — Marka katmanı `[~]`
+### F2 — Marka katmanı `[x]`
 
 **Amaç:** kullanıcı hiçbir ekranda Odoo adını veya logosunu görmez; sistem odoo.com'a bağlanmaz (D-007).
 **Kabul (M2):**
@@ -294,7 +294,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - ayarlardaki odoo.com dokümantasyon bağlantıları ("?") gizli (`ov_brand`, JS `patch()`); kendi belge sitemiz hazır olunca ona yönlendirilir (T8.7);
     - metin düzenleyicinin yayıncı hizmetleri kapalı: Google Translate ile çeviri, çizim kitaplığı, yapay zekâ metni (`ov_brand_html_editor`; `html_editor` kurulu her veritabanına kendiliğinden kurulur). Sunucu uçları doğrudan çağrılsa da ağa çıkmadan hata döner;
     - uygulama mağazası kapalı (`ov_brand`, `base_import_module`): Uygulamalar ekranında "Sektörler" süzgeci yok, mağaza listesi ve indirme hiç çağrılmaz, "Tema Mağazası" ve "Üçüncü Taraf Uygulamaları" menüleri pasif;
-    - Gmail/Outlook vekili Community'de zaten kapalı (sürüm denetimi). Kalan uç durum T2.7'de denetlenir (envanter §4.4). `mail`'deki diğer dış istekler yayıncıya gitmiyor;
+    - Gmail/Outlook vekili Community'de zaten kapalı (sürüm denetimi). Kalan uç durum T2.7'de kapandı: kimlik bilgileri silinince belirteç vekilden istenmez (envanter §4.4). `mail`'deki diğer dış istekler yayıncıya gitmiyor;
     - kapanan özellikler (çeviri, yapay zekâ metni) ileride kendi sağlayıcımızla geri gelebilir; ihtiyaç doğarsa yeni görev.
 - [x] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
@@ -326,10 +326,16 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - T2.2'den kalan üç JS metni ve botun karşılama mesajları bu yöntemle değişti. Botun e-posta adresi `bot@example.com`. Tek tek değişenler: erişim hakları formundaki belge bağlantısı, güvenlik uyarısı e-postasındaki iki adımlı doğrulama bağlantısı, belge düzeni önizlemesindeki QR logosu, yazarsız mesajların tarayıcı bildirimi simgesi, e-posta sunucusu ayarında yayıncının barındırma hizmetini anlatan ipucu;
     - sızıntı testi (`ov_brand_leak` etiketi): kurulu bütün modüllerde İngilizce ve Türkçe kod çevirileri, alanlar, görünümler, kayıtlar, ana sayfalar ve e-posta şablonları taranır. İzin listesi gerekçeleriyle `ov_brand/tests/brand_leak.py`'de (envanter §10). CI'da modül testlerinden sonra MVP uygulamalarıyla ayrı bir veritabanında çalışır (M2 ölçütü). Yerelde MVP veritabanında geçti;
     - sınırlar: değişiklik yalnız gösterimde (dışa aktarılan çeviri dosyaları ve doğrudan veritabanı sorguları eski adı gösterir). Sunucu birden çok süreçle çalışıyorsa ad değişikliği sunucu mesajlarına her süreçte ilk sayfa yüklemesiyle geçer. MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi) o modüller eklenince aynı testle bulunur.
-- [ ] T2.7 Dış istek testi · S · C
+- [x] T2.7 Dış istek testi · S · C
   - Odoo test çatısı `requests` ile yapılan dış istekleri zaten engelliyor ve günlüğe yazıyor (envanter §4.2). Kapsamadıkları: kurulum ve zamanlanmış işler, tarayıcı testlerinde sayfanın kendi istekleri.
   - Testler sırasında dış HTTP istekleri kaydedilir; odoo.com alan adlarına istek = hata.
   - Envanter §4.4'teki Gmail/Outlook belirteç yenileme uç durumu da denetlenir.
+  - Sonuç: üç katmanlı kayıt; yayıncının alan adları (`odoo.com`, `odoocdn.com`, `odoo.sh` ve alt alanları) = hata:
+    - `tools/netguard.py`: `tools/run_tests.py` Odoo'yu bununla çalıştırır. Python'un denetim kancası (PEP 578) süreç başından itibaren yerel ağ dışındaki her ad çözümlemesini kaydeder: kurulum, zamanlanmış işler, testler ve `requests` dışı kitaplıklar (`urllib`, `smtplib`). Yayıncının alan adları ayrıca reddedilir; CI yayıncıya hiç bağlanmaz;
+    - çalıştırıcı günlükten test çatısının engellediği (Python) ve kendisinin yanıtladığı (tarayıcı) istekleri de okur. Bütün dış adresler listelenir; `ov_brand` kuruluysa yayıncıya giden istek sonucu `FAILED` yapar;
+    - testler (`ov_external` etiketi; `ov_brand`, `ov_brand_mail`): kayıt düzeneğinin kendisi (Python ve tarayıcıda örnek bir dış adresle), bütün zamanlanmış işler (etkin ya da değil, test işlemi içinde birer kez), ana sayfalar tarayıcıda (giriş, ana ekran, Ayarlar, Uygulamalar; kuruluysa Sohbet ve portal);
+    - Gmail/Outlook uç durumu gerçekti: kimlik bilgileri silinince upstream yenileme belirtecini `gmail.api.odoo.com` / `outlook.api.odoo.com`'a gönderiyordu (ölçüldü). `ov_brand_mail` artık bilgilerin yeniden girilmesini isteyen bir hata verir, ağa çıkmaz;
+    - ölçüm: MVP veritabanında 28 zamanlanmış iş çalıştı (hiçbiri hata vermedi). Kurulum, işler, testler ve sayfalarda yayıncıya 0 istek; tek dış adres testin kendi örneği (`example.com`). CI'da MVP adımı bu testleri de çalıştırır.
 
 ### F3 — Türkiye temel yerelleştirmesi `[ ]`
 

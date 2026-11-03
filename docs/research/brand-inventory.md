@@ -118,6 +118,8 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 - Odoo test çatısı `standard` etiketli testlerde `requests.Session.send`'i yamalıyor (`odoo/tests/common.py`, `_request_handler`). localhost dışındaki istekler `BlockedRequest` ile düşüyor ve günlüğe "Blocking un-mocked external HTTP request" yazılıyor.
 - Kapsamadıkları: test dışı kod yolu (kurulum, zamanlanmış işler), `urllib`/`http.client` ile yapılan istekler, tarayıcı testlerinde (tour) sayfanın kendisinin yaptığı istekler (ör. e-postadaki uzak görsel).
 - T2.7 için öneri: günlükteki bu satırları odoo.com alan adlarına göre ayıran bir denetim + tarayıcı testlerinde ağ isteklerinin kaydı.
+- Düzeltme (T2.7, 2026-11-03): 20.0'da tarayıcı testleri sayfanın bütün isteklerini zaten yakalıyor (`Fetch.requestPaused`); yerel olmayanlar `fetch_proxy`'ye gider ve günlüğe "External chrome request during tests" yazılır.
+- Sonuç (T2.7): günlük denetimi + iki kayıt: test sınıflarında `_request_handler` ve `fetch_proxy` (`ov_brand/tests/external_requests.py`), süreç düzeyinde `tools/netguard.py` (ad çözümlemesi, kurulum ve kitaplıktan bağımsız). Yayıncının alan adları: `odoo.com`, `odoocdn.com`, `odoo.sh` ve alt alanları. Ayrıntı PLAN.md T2.7.
 
 ### 4.3. Aboneliğim (`mysubscription`)
 
@@ -130,6 +132,7 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 
 - `google_gmail` ve `microsoft_outlook` kendi istemci kimliği girilmemişse yayıncının vekil sunucusunu kullanır. Vekille ilk bağlantı yalnız Enterprise sürümünde açılır (`release.version_info` denetimi); Community'de bağlanma düğmesi hata verir. Vekil bu yüzden fiilen kapalı.
 - Uç durum: kendi istemci kimliğiyle bağlanılıp sonra kimlik ve gizli anahtar Ayarlar'dan silinirse belirteç yenileme vekile (`gmail.api.odoo.com`, `outlook.api.odoo.com`) gider ve yenileme belirtecini gönderir. Yönetici hatası gerektiriyor; kod yazılmadı, T2.7'nin dış istek testinde denetlenir.
+- Sonuç (T2.7, 2026-11-03): uç durum ölçüldü, gerçek (upstream yöntemleri iki yayıncı alanına gidiyor). `ov_brand_mail` vekil çağrılarını (`_fetch_gmail_access_token_iap`, `_fetch_outlook_access_token_iap`) bilgilerin yeniden girilmesini isteyen bir hatayla değiştirir; ağa çıkılmaz. İki modül de `mail` ile kendiliğinden kurulduğu için `ov_brand_mail`'in bağımlılığı oldu.
 - `mail`'deki diğer dış istekler yayıncıya gitmiyor: görüntülü görüşme sunucusu (SFU) ve Twilio ICE sunucuları yalnız kullanıcı ayarlarsa çağrılır; bağlantı önizlemesi mesajdaki adresin kendisine gider.
 - Görüntülü görüşmeler varsayılan olarak Google'ın STUN sunucularını kullanır (tarayıcıdan). Veri değil bağlantı bilgisi (IP adresi) gider; KVKK notu COMPLIANCE.md'de.
 - Kontrol: 2026-10-19, upstream `afbcf79d`.
@@ -246,8 +249,8 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 ## 11. Görevlere etkisi
 
 - **T2.2 `ov_brand` (tamam):** §3, "Diğer istemci mesajları" satırı hariç. Marka adı tek ayardan okunur (F2 kabul ölçütü): `ov_brand.name` sistem parametresi, varsayılan Nexus. `web.web_app_name` eşitlenmedi: Genel Ayarlar'daki uygulama adı yalnız tarayıcıdan kurulan uygulamanın adıdır, boşsa marka adı kullanılır.
-- **T2.3 (tamam):** §4. Yayıncı garantisi, IAP, `mysubscription`, Enterprise reklamları, dokümantasyon bağlantıları, metin düzenleyici ve uygulama mağazası. Gmail/Outlook uç durumu T2.7'de (§4.4).
+- **T2.3 (tamam):** §4. Yayıncı garantisi, IAP, `mysubscription`, Enterprise reklamları, dokümantasyon bağlantıları, metin düzenleyici ve uygulama mağazası. Gmail/Outlook uç durumu T2.7'de kapandı (§4.4).
 - **T2.4 (tamam):** §5.
 - **T2.5 (tamam):** §6; PDF motoru önerisi `docs/research/pdf-engine.md` (USER_TASKS K18).
 - **T2.6 (tamam):** §7'deki üç kaynak (sayfalar, veritabanı kayıtları, çeviriler) gösterimde değiştiriliyor; §10'daki izin listesi testte. §3'ten kalan üç JS metni de bu yöntemle değişti.
-- **T2.7:** §4.2'deki test çatısı engelinin üstüne günlük denetimi ve tarayıcı ağ kaydı; §4.4'teki uç durum.
+- **T2.7 (tamam):** §4.2'deki test çatısı engelinin üstüne günlük denetimi, test sınıflarında ve süreç düzeyinde kayıt; §4.4'teki uç durum kapandı.

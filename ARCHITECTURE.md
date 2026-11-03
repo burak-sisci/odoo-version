@@ -63,6 +63,7 @@ odoo-version/
 │   ├── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
 │   ├── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
 │   ├── run_tests.py         # temiz veritabanında modül testleri, Windows gc hatalarını ayırır (T1.8)
+│   ├── netguard.py          # Odoo'yu dış ad çözümlemelerinin kaydıyla çalıştırır, yayıncı alanlarını reddeder (T2.7)
 │   ├── new_module.py        # addons/ altında yeni modül iskeleti (T1.9)
 │   ├── check_modules.py     # modüllerimizin proje kuralları: önek, lisans, sürüm, yazar, marka (T1.9)
 │   ├── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
@@ -120,7 +121,7 @@ Kurallar:
 
 | Katman | Modül adı kalıbı | Görev | Lisans (D-016) |
 |---|---|---|---|
-| Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account`, `ov_brand_purchase`; sonra `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta, portal ve rapor altbilgileri, PDF başlığı ve üst verisi, botun adı, PWA manifest, kullanıcı menüsü bağlantıları; altyapı metinlerindeki eski ürün adının gösterimde değiştirilmesi (T2.6, `ov_brand/rebrand.py`); odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası) ve dokümantasyon bağlantılarının kapatılması. Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
+| Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account`, `ov_brand_purchase`; sonra `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta, portal ve rapor altbilgileri, PDF başlığı ve üst verisi, botun adı, PWA manifest, kullanıcı menüsü bağlantıları; altyapı metinlerindeki eski ürün adının gösterimde değiştirilmesi (T2.6, `ov_brand/rebrand.py`); odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası, Gmail/Outlook vekili) ve dokümantasyon bağlantılarının kapatılması; dış istek testi (T2.7). Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
 | Türkiye temeli | `ov_l10n_tr`, `ov_l10n_tr_tcmb`, `ov_l10n_tr_mis_reports`, `ov_l10n_tr_check` … | Vergi/tevkifat eksikleri, VKN/TCKN, il/ilçe, TCMB kurları, belge çıktıları, Tekdüzen mali tablolar, çek/senet | AGPL-3. LGPL koddan türetilen kısım varsa (ör. `l10n_latam_check` uyarlaması) LGPL-3 |
 | e-Belge | `ov_l10n_tr_edi` (çekirdek), `ov_l10n_tr_edi_nilvera` (adaptör), `ov_l10n_tr_edispatch` … | UBL-TR üretimi, senaryolar, fatura tipleri, mükellef sorgulama, durum takibi; entegratör adaptörleri; sahte adaptör | **LGPL-3** (19.0 LGPL koddan türetildiği için, D-008/2) |
 | OCA portları | Orijinal OCA adları (`ports/oca/`) | Mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite kontrol … | Orijinal lisans (çoğu AGPL-3) |
@@ -180,6 +181,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - Veri klasörü `OV_HOME/odoo-data`. Tek süreç (`workers = 0`), yalnız `127.0.0.1`.
   - Demo veritabanı `ov_demo` (Türkçe, TR, `ov_brand` + `account` + `l10n_tr`).
 - **Yerel testler (T1.8):** `tools/run_tests.py` her çalıştırmada temiz test veritabanı açar (demo yok), ayrı HTTP portu (8079) kullanır. Windows'a özgü filestore temizliği hatalarını ayrı sayar; referans sonuç Linux CI'dır.
+  - Dış istekler (T2.7): Odoo `tools/netguard.py` ile çalışır. Yerel ağ dışındaki her ad çözümlemesi günlüğün yanına kaydedilir (`<db>.net.jsonl`), yayıncının alan adları reddedilir. Çalıştırıcı bunları ve günlükteki test çatısı kayıtlarını (Python ve tarayıcı istekleri) listeler; `ov_brand` kuruluysa yayıncıya giden istek sonucu bozar.
   - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur (T2.3). Kurulumu çevrim içi hizmet modüllerini kaldırıyor; modül kaldıran bir çalıştırmada Odoo `post_install` testlerini başlatmaz. Onunla gelen hedef modüller ikinci çalıştırmada güncellenir, testleri de çalışır.
 - **Lint ve commit öncesi denetimler (T1.9):** `.pre-commit-config.yaml` her commit'te çalışır; CI'da `pre-commit run --all-files` (T1.10).
   - `ruff.toml`: upstream `ruff.toml`'u genişletir; `upstream/`, `vendor/`, `ports/` hariç.
@@ -191,11 +193,11 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
   - **Modül testleri** (`tests`): Ubuntu 24.04, Python 3.12, PostgreSQL 18 servisi.
     - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
     - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).
-    - Marka sızıntısı testi (T2.6): `ov_brand` ve MVP uygulamaları (`MVP_APPS`) ayrı bir veritabanına kurulur, yalnız `ov_brand_leak` etiketli testler çalışır (M2 ölçütü).
+    - Marka sızıntısı ve dış istek testleri (T2.6, T2.7): `ov_brand` ve MVP uygulamaları (`MVP_APPS`) ayrı bir veritabanına kurulur, yalnız `ov_brand_leak` ve `ov_external` etiketli testler çalışır (M2 ölçütü).
     - Elle çalıştırmada `modules` girdisindeki modüller (ör. upstream) ayrıca test edilir: Linux referans sonucu.
   - Önbellekler: alt modüllerin git nesneleri (upstream ve `vendor/` sabit commit'lerine göre; biri değişince son önbellek geri yüklenir, yalnız yeni commit'ler çekilir), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
   - Güvenlik: yalnız okuma yetkisi; eylemler commit SHA'sıyla sabit; gitleaks arşivi SHA-256 ile doğrulanır.
-  - Özel testler: marka sızıntısı (T2.6, çalışıyor). Planlananlar: dış istek, UBL-TR doğrulama, çeviri kapsamı, kurulum.
+  - Özel testler: marka sızıntısı (T2.6) ve dış istek (T2.7), çalışıyor. Planlananlar: UBL-TR doğrulama, çeviri kapsamı, kurulum.
 - Üretim Linux olduğu için CI aynı zamanda Linux uyumluluk testidir.
 
 ## 6. Sürüm yükseltme stratejisi

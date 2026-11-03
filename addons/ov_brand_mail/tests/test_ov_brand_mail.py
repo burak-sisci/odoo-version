@@ -2,6 +2,7 @@ from unittest.mock import patch
 
 from lxml import etree, html
 
+from odoo.exceptions import UserError
 from odoo.tests import TransactionCase, tagged
 from odoo.tools import file_open
 
@@ -12,6 +13,7 @@ from odoo.addons.ov_brand.tests.brand_leak import (
     is_allowed,
     scan_arch,
 )
+from odoo.addons.ov_brand.tests.external_requests import ExternalRequestsMixin
 from odoo.addons.ov_brand.tools import (
     BRAND_NAME_PARAM,
     DEFAULT_BRAND_NAME,
@@ -143,3 +145,35 @@ class TestOvBrandMailLeak(TransactionCase):
                     if not is_allowed('mail_template', f'{key}.body_html'):
                         leaks.extend(f'{key}.body_html ({lang}): {leak[:200]}' for leak in scan_arch(body))
         self.assertFalse(leaks, "Brand leaks:\n" + "\n".join(sorted(set(leaks))))
+
+
+@tagged('post_install', '-at_install', 'ov_external')
+class TestOvBrandMailExternal(ExternalRequestsMixin, TransactionCase):
+    """External request test of the mail servers (T2.7, see ov_brand)."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        # An account connected with the credentials of the database, which were
+        # then removed from the Settings
+        cls.env['ir.config_parameter'].sudo().search([('key', 'in', [
+            'google_gmail_client_id', 'google_gmail_client_secret',
+            'microsoft_outlook_client_id', 'microsoft_outlook_client_secret',
+        ])]).unlink()
+        cls.server = cls.env['ir.mail_server'].create({
+            'name': 'Fictional server',
+            'smtp_host': 'smtp.example.com',
+            'smtp_user': 'sender@example.com',
+            'google_gmail_refresh_token': 'fictional-refresh-token',
+            'microsoft_outlook_refresh_token': 'fictional-refresh-token',
+        })
+
+    def test_gmail_refresh_without_credentials(self):
+        with self.assertRaisesRegex(UserError, 'Gmail credentials are missing'):
+            self.server._generate_oauth2_string('sender@example.com', self.server.google_gmail_refresh_token)
+        self.assertFalse(self.external_requests)
+
+    def test_outlook_refresh_without_credentials(self):
+        with self.assertRaisesRegex(UserError, 'Outlook credentials are missing'):
+            self.server._generate_outlook_oauth2_string('sender@example.com')
+        self.assertFalse(self.external_requests)

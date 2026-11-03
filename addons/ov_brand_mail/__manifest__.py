@@ -8,6 +8,8 @@
         'ov_brand',
         'mail',
         'auth_totp_mail',
+        'google_gmail',
+        'microsoft_outlook',
     ],
     'data': [
         'security/ir.access.csv',
