@@ -24,8 +24,10 @@ from fnmatch import fnmatchcase
 from odoo.addons.ov_brand.rebrand import VISIBLE_ATTRIBUTES, is_code
 
 ALLOWLIST = [
-    # Technical names: spreadsheet formulas (K13) and the variable of the MCP
-    # key example
+    # Technical names: spreadsheet formulas and the variable of the MCP key
+    # example. Formula names are not shown in Community, where spreadsheets
+    # only open as read-only dashboards; NEXUS.* aliases come with spreadsheet
+    # editing, the ODOO.* names stay for saved spreadsheets (K13).
     ('web', 'spreadsheet*:*ODOO.*', "Formula names of the spreadsheets (K13)"),
     ('python', 'spreadsheet*:*ODOO.*', "Formula names of the spreadsheets (K13)"),
     ('view', 'base.form_res_users_key_show', "Name of an environment variable in a code example"),

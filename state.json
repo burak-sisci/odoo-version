@@ -70,7 +70,7 @@
   "blocked_on_user": [],
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
-    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K9, K12–K23 (USER_TASKS.md §1)",
+    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K17–K23 (USER_TASKS.md §1)",
     "Türkçe çeviri: başka modüllerin çevirisini tamamlama yöntemi (araştırma notu PLAN T3.6), ölçüm aracı ve paket modüllerindeki eksikler (T3.6)",
     "Türkçe belge çıktıları (T3.7)"
   ],
@@ -241,7 +241,7 @@
           "remove_odoo_enterprise"
         ],
         "task": "T2.2",
-        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /app yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5); altyapı metinlerindeki eski ürün adı gösterimde değiştirilir (rebrand.py, T2.6, K19); marka sızıntısı testi (ov_brand_leak etiketi); dış istek testi (ov_external etiketi, external_requests.py; zamanlanmış işler, ana sayfalar; T2.7)"
+        "note": "ürün adı ov_brand.name (varsayılan Nexus), destek adresi ov_brand.support_url; renk ve simge yer tutucu (K14); çevrim içi hizmet modüllerini (iap, mysubscription) bağımlılarıyla kaldırır, arayüzden kurulmalarını engeller (T2.3, K15); dokümantasyon bağlantıları gizli, uygulama mağazası çağrılmaz (T2.3); web istemcisi /nexus yolunda, /odoo yönlendirilir (T2.4, K16); PDF başlığı ve sunucunun yazdığı PDF'lerde üretici adı (T2.5); altyapı metinlerindeki eski ürün adı gösterimde değiştirilir (rebrand.py, T2.6, K19); marka sızıntısı testi (ov_brand_leak etiketi); dış istek testi (ov_external etiketi, external_requests.py; zamanlanmış işler, ana sayfalar; T2.7)"
       },
       {
         "module": "ov_brand_mail",
@@ -270,7 +270,7 @@
         ],
         "auto_install": true,
         "task": "T2.3",
-        "note": "metin düzenleyicide Google Translate çevirisi, çizim kitaplığı ve yapay zekâ metni kapalı; sunucu uçları ağa çıkmadan hata döner; /app kayıt bağlantılarının önizlemesi (T2.4)"
+        "note": "metin düzenleyicide Google Translate çevirisi, çizim kitaplığı ve yapay zekâ metni kapalı; sunucu uçları ağa çıkmadan hata döner; /nexus kayıt bağlantılarının önizlemesi (T2.4, K16)"
       },
       {
         "module": "ov_brand_portal",

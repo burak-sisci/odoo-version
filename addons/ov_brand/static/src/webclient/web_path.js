@@ -5,12 +5,12 @@ import { Many2One } from "@web/views/fields/many2one/many2one";
 import { NavBar } from "@web/webclient/navbar/navbar";
 import { WebClient } from "@web/webclient/webclient";
 
-// The web client is served at /app instead of /odoo (T2.4, tools.py). The
+// The web client is served at /nexus instead of /odoo (T2.4, K16, tools.py). The
 // router keeps working with the upstream path; only the URLs users see change.
 // Links still built with /odoo work through a redirection of the server.
-export const WEB_PATH = "/app";
+export const WEB_PATH = "/nexus";
 const UPSTREAM_PATH = /^\/odoo(?=[/?#]|$)/;
-const OWN_PATH = /^\/app(?=[/?#]|$)/;
+const OWN_PATH = new RegExp(`^${WEB_PATH}(?=[/?#]|$)`);
 
 /**
  * Return the URL, a path, with the web client path in place of the upstream one.

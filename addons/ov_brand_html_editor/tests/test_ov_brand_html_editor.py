@@ -3,6 +3,8 @@ from unittest.mock import patch
 from odoo.tests import HttpCase, tagged
 from odoo.tests.common import JsonRpcException
 
+from odoo.addons.ov_brand.tools import WEB_PATH
+
 CONTROLLER = 'odoo.addons.html_editor.controllers.main'
 
 
@@ -58,7 +60,7 @@ class TestOvBrandHtmlEditor(HttpCase):
         # Not recognized, it would be fetched as an external page
         with patch(f'{CONTROLLER}.link_preview.get_link_preview_from_url', return_value=False) as fetch:
             result = self.make_jsonrpc_request('/html_editor/link_preview_internal', {
-                'preview_url': f'{self.base_url()}/app/res.partner/{partner.id}',
+                'preview_url': f'{self.base_url()}{WEB_PATH}/res.partner/{partner.id}',
             })
         self.assertEqual(result.get('display_name'), 'Preview Partner')
         fetch.assert_not_called()

@@ -7,6 +7,27 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Adım: web istemcisi `/nexus` yolunda (K16); e-tablo formül adları kararı (K13) — standart mesai
+
+**Kullanıcının kararları**
+- "k16: B. marka adı" (K16 seçenek B).
+- "k13: B. kendi ön ekimizle eş adlar eklensin." (K13 seçenek B). Ek sorulara yanıt: zaman "Düzenlemeyle", önek `NEXUS.`.
+
+**Kararlar**
+- K16: web istemcisi `/app` yerine `/nexus` yolunda. Eski metin: "Web istemcisi `/app` yolunda (K16 varsayımı)". Neden: kullanıcı ürün adını seçti.
+  - `/app` yönlendirilmiyor. Yalnız geliştirme ortamında kullanıldı; müşteriye ya da demoya çıkmadı.
+- K13: e-tablo formüllerine `NEXUS.` önekli eş adlar eklenecek; kayıtlı e-tablolar için `ODOO.` adları çalışmaya devam edecek, formül önerilerinde yalnız `NEXUS.` adları çıkacak. Eski metin: "teknik ad sayılır, izin listesinde kalır (K13 varsayımı)". Neden: kullanıcı seçeneği.
+  - Zaman: e-tablo düzenlemeyle birlikte (OCA `spreadsheet_oca` portu, MODULE_MATRIX). Bugün Community 20.0'da e-tablolar yalnız salt okunur pano olarak açılıyor (`mode: "dashboard"`); formül adı hiçbir ekranda görünmüyor. Bu yüzden şimdi kod yok, `ODOO.*` sızıntı testinin izin listesinde kalıyor.
+
+**Kod**
+- `ov_brand`: `WEB_PATH` `/nexus` (`tools.py` ve `web_path.js`).
+- Testler yolu sabitten okuyor (`test_web_path.py` tarayıcı adımları, `ov_brand_html_editor` önizleme testi); yol yeniden değişirse testlere dokunmak gerekmiyor.
+- README.rst'ler (`ov_brand`, `ov_brand_html_editor`) `/nexus`. `brand_leak.py` izin listesi açıklaması K13 kararına göre.
+- Doğrulama: `run_tests.py ov_brand,ov_brand_html_editor` 58 test, 0 hata.
+
+**Belgeler**
+- USER_TASKS.md (K13 ve K16 `[x]`, §1'den çıktı), PLAN.md (T2.4 sonucu, T2.6 izin listesi notu), docs/MODULE_MATRIX.md (e-tablo düzenleme satırı), docs/research/brand-inventory.md (§5, §10, baş not), README.md, state.json.
+
 ### Adım: örnek banka ekstrelerinde istenenler (K4) — standart mesai
 
 **Kullanıcının isteği:** "örnek banka ekstreleri ile ilgili tam olarak isteklerini user_task.md dosyasına yaz. örneğin, ekstreler hangi işlemlerin çıktısı olsun? buna göre gerekli araştırmayı yapacağım."

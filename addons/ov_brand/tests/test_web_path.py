@@ -1,3 +1,4 @@
+import json
 from urllib.parse import parse_qs, urlsplit
 
 from lxml import html
@@ -81,19 +82,19 @@ class TestOvBrandWebPath(HttpCase):
             self.assertEqual(self.url_open(path).status_code, 200)
 
     def test_web_path_js(self):
-        self.browser_js('/odoo/action-base.action_res_users', """
+        self.browser_js('/odoo/action-base.action_res_users', f'const WEB_PATH = {json.dumps(WEB_PATH)};' + """
             const { router } = odoo.loader.modules.get("@web/core/browser/router");
-            if (!location.pathname.startsWith("/app/")) {
+            if (!location.pathname.startsWith(`${WEB_PATH}/`)) {
                 throw new Error(`unexpected path: ${location.pathname}`);
             }
             if (!router.current.action) {
                 throw new Error("the router did not read the action from the URL");
             }
-            if (router.stateToUrl({ action: "settings" }) !== "/app/settings") {
+            if (router.stateToUrl({ action: "settings" }) !== `${WEB_PATH}/settings`) {
                 throw new Error(`unexpected URL: ${router.stateToUrl({ action: "settings" })}`);
             }
             const hrefs = [...document.querySelectorAll(".o_navbar a[href]")].map((a) => a.getAttribute("href"));
-            if (!hrefs.some((href) => href.startsWith("/app/")) || hrefs.some((href) => href.startsWith("/odoo"))) {
+            if (!hrefs.some((href) => href.startsWith(`${WEB_PATH}/`)) || hrefs.some((href) => href.startsWith("/odoo"))) {
                 throw new Error(`unexpected menu links: ${hrefs}`);
             }
             // An internal link with the upstream path opens in place, without reloading the page
@@ -104,7 +105,7 @@ class TestOvBrandWebPath(HttpCase):
             link.click();
             const start = Date.now();
             const interval = setInterval(() => {
-                if (location.pathname === "/app/settings" && document.querySelector(".o_setting_right_pane")) {
+                if (location.pathname === `${WEB_PATH}/settings` && document.querySelector(".o_setting_right_pane")) {
                     clearInterval(interval);
                     if (!window.ovNotReloaded) {
                         console.error("the page was reloaded");

@@ -18,10 +18,10 @@ IMG_PATH = '/ov_brand/static/img'
 # mining, postal mail, the subscription page.
 ONLINE_SERVICE_MODULES = ('iap', 'mysubscription')
 
-# Path of the web client (T2.4). Upstream serves it at /odoo; ov_brand serves it
-# here and redirects the upstream path, which the links built by the server
-# still use. Same value in static/src/webclient/web_path.js.
-WEB_PATH = '/app'
+# Path of the web client (T2.4), the product name (K16). Upstream serves it at
+# /odoo; ov_brand serves it here and redirects the upstream path, which the links
+# built by the server still use. Same value in static/src/webclient/web_path.js.
+WEB_PATH = '/nexus'
 UPSTREAM_WEB_PATH = '/odoo'
 
 

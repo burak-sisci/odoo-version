@@ -299,11 +299,11 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
 - [x] T2.4 `/odoo` URL yolu için modül düzeyinde çözüm · M · C
   - Controller override + JS yönlendirici `patch()` ile markadan bağımsız bir yol; eski yoldan yönlendirme.
   - Modülle çözülemezse kullanıcıya yeni karar olarak getirilir (D-010).
-  - Sonuç: modülle çözüldü (`ov_brand`), çekirdeğe dokunulmadı. Web istemcisi `/app` yolunda (K16 varsayımı):
-    - sunucu `/app`'i sunar, `/odoo` ve altındaki her adresi sorgusuyla birlikte `/app`'e yönlendirir. Sunucunun hâlâ `/odoo` ile ürettiği bağlantılar (e-posta, bildirim, yönlendirme) ve kayıtlı yer imleri çalışır;
+  - Sonuç: modülle çözüldü (`ov_brand`), çekirdeğe dokunulmadı. Web istemcisi `/nexus` yolunda (K16 kararı, 2026-11-03; önce `/app`):
+    - sunucu `/nexus`'u sunar, `/odoo` ve altındaki her adresi sorgusuyla birlikte `/nexus`'a yönlendirir. Sunucunun hâlâ `/odoo` ile ürettiği bağlantılar (e-posta, bildirim, yönlendirme) ve kayıtlı yer imleri çalışır;
     - JS yönlendiricide yalnız URL dönüşümleri yamalı (`router.stateToUrl`/`urlToState`), iç durum `/odoo` ile çalışmaya devam eder. `/odoo` bağlantılarına tıklamak da sayfayı yenilemeden açılır;
-    - giriş sonrası yönlendirme, giriş sayfasının bağlantı önizlemesi, tarayıcıdan kurulan uygulamanın kapsamı ve kısayolları, service worker ve çevrimdışı sayfa `/app`'te. Menü ve ilişki alanı bağlantıları da `/app` gösterir;
-    - sınır: upstream'in diğer JS bağlantıları ve sunucunun ürettiği adresler `/odoo` ile kalır, yönlendirmeyle `/app`'e varır; fareyle üzerine gelince `/odoo` görünebilir. Web sitesi modülünün düzenleyicisi `/odoo` varsayıyor (MVP dışı). Envanter §5.
+    - giriş sonrası yönlendirme, giriş sayfasının bağlantı önizlemesi, tarayıcıdan kurulan uygulamanın kapsamı ve kısayolları, service worker ve çevrimdışı sayfa `/nexus`'ta. Menü ve ilişki alanı bağlantıları da `/nexus` gösterir;
+    - sınır: upstream'in diğer JS bağlantıları ve sunucunun ürettiği adresler `/odoo` ile kalır, yönlendirmeyle `/nexus`'a varır; fareyle üzerine gelince `/odoo` görünebilir. Web sitesi modülünün düzenleyicisi `/odoo` varsayıyor (MVP dışı). Envanter §5.
 - [x] T2.5 E-posta, rapor, portal ve web sitesi altbilgileri · M · C
   - "Powered by" ifadeleri, e-posta şablonları, PDF rapor düzenleri (`ov_brand_mail`, `ov_brand_website`).
   - Envanter §6: fatura QR kodunun ortasındaki Odoo logosu, PDF üst verisi (`Creator/Producer`), satın alma portalındaki tanıtım bölümü, özet e-postasının odoo.com'dan yüklenen görseli.
@@ -317,7 +317,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - web sitesi altbilgileri MVP dışı (`ov_brand_website` sonra). Kalanlar T2.6'da ele alındı.
 - [x] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
-  - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları şimdilik izin listesinde (K13 varsayımı).
+  - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları izin listesinde; `NEXUS.*` eş adları e-tablo düzenlemeyle gelir (K13).
   - T2.5'ten kalanlar: botun karşılama mesajlarındaki eski ad (`mail_bot`) ve e-posta adresi (`odoobot@example.com`); MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi). Tek kayıtlık PDF'te motorun kendi üst verisi T3.7'de, Factur-X üst verisi T4.x'te.
   - T2.2'den kalanlar (envanter §3): barkod tarayıcının kamera izni mesajı, rapor işçileri uyarısı, güvensiz bağlam konsol uyarısı. Üçü de upstream yöntemlerinin gövdesinde çevrilebilir metin; `patch()` bütün yöntemi kopyalamayı gerektirir. Metin düzeyinde değiştirme yöntemi bu görevde seçilir.
   - Sonuç: yöntem **gösterimde değiştirme** (K19 varsayımı, `ov_brand/rebrand.py`). Kayıtlı metinler ve çeviri dosyaları değişmez; eski ad kullanıcıya gösterilirken ürün adıyla değiştirilir. Çekirdeğe dokunulmadı (D-010):

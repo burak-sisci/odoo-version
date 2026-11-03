@@ -88,7 +88,7 @@ OCA modülleri D-019'a göre: resmî 20.0 sürümü varsa `vendor/oca/`, yoksa 1
 | Dokümanlar (Documents) | OCA port | dms (7/1/0) | LGPL-3 (`dms`) | P2 | plan |
 | Abonelik (Subscriptions) | OCA port | contract (34/12/0) | AGPL-3 (`contract`) | P2 | plan |
 | Zaman çizelgesi ızgarası / onay | OCA port | timesheet (34/17/0) | doğrulanmadı | P3 | plan |
-| Spreadsheet düzenleme (BI) | OCA port | spreadsheet (5/4/0) | AGPL-3 (`spreadsheet_oca`) | P3 | plan |
+| Spreadsheet düzenleme (BI); formüllerde `NEXUS.*` eş adları (K13) | OCA port | spreadsheet (5/4/0) | AGPL-3 (`spreadsheet_oca`) | P3 | plan |
 | Bilgi Bankası (Knowledge) | OCA port | knowledge (15/11/0) | AGPL-3 (`document_page`) | P3 | plan |
 | e-İmza (Sign) | OCA port | sign (4/1/0) | AGPL-3 (`sign_oca`) | P3 | plan |
 | Saha Servisi (Field Service) | OCA port | field-service (39/34/0) | AGPL-3 (`fieldservice`) | P3 | plan |

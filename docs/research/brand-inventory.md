@@ -17,7 +17,7 @@ Araştırma tarihi: 2026-10-18
 > - Müşteriye giden belgelerde de iz var: faturadaki QR kodun ortasında Odoo logosu, PDF üst verisinde `Creator/Producer: Odoo`, e-posta altbilgisinde "Powered by Odoo" (§6).
 > - T2.2 (2026-10-19): §3'teki web istemcisi yüzeyleri `ov_brand` ile değişti. Kalan üç JS metni T2.6'da (§3).
 > - T2.3 (2026-10-19, bitti): yayıncı garantisi kapandı; IAP ve `mysubscription` modülleri bağlı modülleriyle kaldırıldı; Enterprise reklamları, dokümantasyon bağlantıları, metin düzenleyicinin hizmetleri ve uygulama mağazası kapandı (§4).
-> - T2.4 (2026-10-19, bitti): web istemcisi `/app` yolunda (§5).
+> - T2.4 (2026-10-19, bitti): web istemcisi `/nexus` yolunda (§5; K16 kararıyla 2026-11-03'te `/app`'ten değişti).
 > - T2.5 (2026-10-19, bitti): §6'daki e-posta, rapor ve portal yüzeyleri değişti. Web sitesi (MVP dışı) ve Factur-X (T4.x) kaldı.
 > - T2.6 (2026-11-03, bitti): §7'deki metinler ve kayıtlar gösterimde değiştiriliyor (USER_TASKS K19 varsayımı); sızıntı testi kurulu bütün modülleri İngilizce ve Türkçe tarıyor, MVP uygulamalarıyla CI'da çalışıyor. İzin listesi §10.
 > - Bu belge kontrol tarihindeki upstream commit'ini anlatır (`afbcf79d`). T2.6'daki otomatik test, upstream ilerledikçe yeni izleri yakalamak için var.
@@ -143,7 +143,7 @@ Kurulu sütunu MVP denemesindeki durumu gösterir (§2).
 - PWA manifesti: `scope` ve `start_url` = `/odoo`, paylaşım hedefi `/odoo?share_target=trigger`.
 - Çevrimdışı sayfa `/odoo/offline`.
 - Yöntem T2.4'te: controller override + JS yönlendirici `patch()`; eski yoldan yönlendirme.
-- Sonuç (T2.4, 2026-10-19): `ov_brand` web istemcisini `/app`'te sunar (USER_TASKS K16). Ayrıntı PLAN.md T2.4 ve CHANGELOG.
+- Sonuç (T2.4, 2026-10-19): `ov_brand` web istemcisini `/nexus`'ta sunar (USER_TASKS K16, 2026-11-03; önce `/app`). Ayrıntı PLAN.md T2.4 ve CHANGELOG.
   - Yamalanan yüzeyler: sunucuda `Home.web_client` (yönlendirme), `_login_redirect`, `web_login` (bağlantı önizlemesi), PWA manifesti, service worker (`Service-Worker-Allowed`, betikteki yollar), çevrimdışı sayfa; JS'te `router.stateToUrl`/`urlToState`, iç bağlantı tıklamaları, service worker kaydı, `NavBar.getMenuItemHref`, `Many2One.linkHref`; düzenleyicinin iç bağlantı önizlemesi (`ov_brand_html_editor`).
   - `/odoo` ile kalanlar (yönlendirmeyle çalışır): upstream'in ~80 Python ve ~40 JS dosyasında ürettiği adresler (e-posta bağlantıları, `window.location` atamaları, şablonlardaki `href`). Kullanıcı yalnız fareyle üzerine gelince görebilir. Komut paletindeki menü bağlantıları (`menu_helpers.js`, modül düzeyinde fonksiyon) da böyle.
   - `/odoo` varsayan, yamalanmayan mantık: `mail`'in küçük ekranda sohbet penceresini katlaması, veritabanı yükleme hatasında `?db=` temizliği (`odoo/http/router.py`), web sitesi düzenleyicisi (MVP dışı).
@@ -235,7 +235,7 @@ Not: OCA modüllerinin kendisi kullanıcıya "OCA" yazar adıyla görünür (Uyg
 - Lisans ve telif notları (CLAUDE.md kural 2): kaynak başlıkları, ayarlardaki "Copyright © Odoo S.A. … LGPL" satırı, manifestlerdeki yazar `Odoo S.A.` (Uygulamalar ekranında görünür).
 - Teknik adlar: `odoo` Python paketi, `@odoo/owl`, `odoo.define`, `o_` CSS sınıfları, `odoo-bin`, `release.product_name` (yalnız sunucu günlükleri ve veri klasörü adı, kullanıcıya görünmez).
 - `/web/webclient/version_info` JSON yanıtı: yalnız sürüm numarası, ad içermiyor.
-- E-tablo formül adları `ODOO.BALANCE`, `ODOO.PIVOT`, `ODOO.LIST` vb. (`spreadsheet`, `spreadsheet_account`). Formül yazan kullanıcı görür. Ancak kayıtlı panolar bu adları içeriyor; yeniden adlandırmak kayıtlı formülleri bozar. Varsayım: teknik ad sayılır, izin listesinde kalır (USER_TASKS K13).
+- E-tablo formül adları `ODOO.BALANCE`, `ODOO.PIVOT`, `ODOO.LIST` vb. (`spreadsheet`, `spreadsheet_account`). Formül yazan kullanıcı görür. Ancak kayıtlı panolar bu adları içeriyor; yeniden adlandırmak kayıtlı formülleri bozar. Karar (USER_TASKS K13, 2026-11-03): `NEXUS.` önekli eş adlar e-tablo düzenlemeyle (OCA `spreadsheet_oca`) eklenecek; kayıtlı formüller için `ODOO.` adları çalışmaya devam edecek. Bugün Community'de formül adı görünmediği için izin listesinde kalır.
 
 İzin listesi (T2.6) `addons/ov_brand/tests/brand_leak.py`'de, her satır gerekçesiyle. Yukarıdakilere ek olarak:
 - yayıncının şirket adı ve diğer ürünlerinin adları (Odoo S.A., ücretli sürüm, Studio, `Odoo.sh`, `Odoo Online`, posta eklentileri, sürüm numaraları): her yüzeyde;

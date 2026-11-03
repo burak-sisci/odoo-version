@@ -17,18 +17,16 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 2. **K1:** GitHub Student Developer Pack başvurusu. Onay süreci uzayabildiği için erken başvurmak iyi olur.
 3. **K9:** GitHub güvenlik özellikleri (ücretsiz). Onay verirsen Claude açar.
 4. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
-5. **K13:** e-tablo formüllerindeki `ODOO.` öneki. Şimdilik teknik ad sayıldı, değişmiyor.
-6. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
-7. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
-8. **K16:** web istemcisinin adresi `/odoo` yerine `/app` oldu. Başka bir yol istersen iki sabiti değiştirmek yeter.
-9. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
-10. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
-11. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
-12. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
-13. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
-14. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
-15. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
-16. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
+5. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
+6. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
+7. **K17:** e-posta ve portal altlarındaki "Powered by" satırları kaldırıldı; yerine ürün adı yazılmadı.
+8. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
+9. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
+10. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
+11. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
+12. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
+13. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
+14. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
 
 Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
 
@@ -104,12 +102,10 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — `burak-sisci` kalsın · **B** — adın soyadın · **C** — marka adı `Nexus` (K3).
   - Claude önerisi: **C**, marka belirlendi. Onay verirsen manifestler ve denetim aracı birlikte güncellenir.
   - Ne zaman: ilk dış demodan önce (F7).
-- [ ] K13 **Karar** — e-tablo formül adlarındaki `ODOO.` öneki (`ODOO.BALANCE`, `ODOO.PIVOT`, `ODOO.LIST` vb.).
-  - Neden: panolarda ve e-tablolarda formül yazan kullanıcı bu adları görür. Ama kayıtlı panolar bu adları içeriyor; değiştirmek kayıtlı formülleri bozar (`docs/research/brand-inventory.md` §10).
-  - Varsayım (otonom mesai 1, geri dönüşü kolay): teknik ad sayılır, marka sızıntısı testinin (T2.6) izin listesinde kalır.
-  - Seçenekler: **A** — olduğu gibi kalsın · **B** — kendi önekimizle eş adlar eklensin, `ODOO.` eski kayıtlar için çalışmaya devam etsin · **C** — tamamen yeniden adlandırılsın, kayıtlı formüller dönüştürülsün.
-  - Claude önerisi: şimdilik **A**; kalıcı marka adı belirlenince (T8.2) **B** yeniden değerlendirilir.
-  - Ne zaman: T8.2'de. T2.6'da varsayımla izin listesine yazıldı (`ov_brand/tests/brand_leak.py`).
+- [x] K13 **Karar** — e-tablo formül adlarındaki `ODOO.` öneki: **B — `NEXUS.` önekli eş adlar** (kullanıcı, 2026-11-03).
+  - `NEXUS.BALANCE`, `NEXUS.LIST` gibi eş adlar eklenecek; kayıtlı e-tablolardaki `ODOO.` adları çalışmaya devam edecek. Formül yazan kullanıcıya yalnız `NEXUS.` adları önerilecek.
+  - Zaman: e-tablo düzenlemeyle birlikte (OCA `spreadsheet_oca` portu, `docs/MODULE_MATRIX.md`). Bugün Community'de e-tablolar yalnız salt okunur panolarda açılıyor; formül adı hiçbir ekranda görünmüyor. O zamana kadar `ODOO.` adları sızıntı testinin (T2.6) izin listesinde.
+  - Formül adları kayıtlı e-tablolarda saklanır: ad değişirse (R17) `NEXUS.` adları da eş ad olarak çalışmaya devam etmek zorunda.
 - [ ] K14 **Karar** — ürünün rengi ve simgesi (T2.2).
   - Ad artık kalıcı: Nexus (K3, D-014). Otonom mesai 1'deki geçici ad varsayımı (`OV ERP`) kalktı.
   - Neden: ekranlarda bir renk ve simge gerekiyor, ama logo tasarımı henüz yok.
@@ -125,12 +121,10 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Claude önerisi: **A**. Gizlemede upstream'in her yeni sürümünde yeni bir çağrıyı kaçırma riski var; kaldırınca kod hiç yüklenmiyor (KVKK, T2.7).
   - Sonucu: upstream `sms` modülü `iap`'ye bağlı. Yerli bir SMS sağlayıcısı ya bu bağımlılık olmadan yazılır ya da bu karar yeniden açılır.
   - Ne zaman: SMS ya da şirket bilgisi otomatik doldurma ihtiyacı doğduğunda. Yerli kaynak: e-Belge mükellef sorgulaması VKN'den unvanı verir (T4.3, T4.5).
-- [ ] K16 **Karar** — web istemcisinin adres yolu (T2.4).
-  - Neden: upstream web istemcisini `/odoo` yolunda sunuyor; adres çubuğunda görünür (D-007).
-  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. `/app` markadan bağımsız; ad değişse (R17) yol değişmez. `/odoo` adresleri `/app`'e yönlendirilir.
-  - Seçenekler: **A** — `/app` · **B** — marka adı (`/nexus`) · **C** — başka bir yol.
-  - Claude önerisi: **A**. Değer `ov_brand`'de iki sabitte (`tools.py` ve `web_path.js`). Müşteriye çıktıktan sonra değiştirmek eski bağlantılar için bir yönlendirme daha gerektirir.
-  - Ne zaman: ilk dış demodan önce (F7).
+- [x] K16 **Karar** — web istemcisinin adres yolu: **B — marka adı, `/nexus`** (kullanıcı, 2026-11-03).
+  - `ov_brand` web istemcisini `/nexus`'ta sunar; `/odoo` adresleri sorgusuyla birlikte oraya yönlendirilir (T2.4). Değer iki sabitte: `tools.py` ve `web_path.js`.
+  - T2.4'ten beri kullanılan `/app` yalnız geliştirme ortamında kullanıldığı için yönlendirilmiyor.
+  - Ad değişirse (R17) yol da değişir; müşterideki eski bağlantılar için bir yönlendirme daha gerekir.
 - [ ] K17 **Karar** — müşteriye giden e-posta ve sayfalarda "Powered by" satırı (T2.5).
   - Neden: upstream bildirim e-postalarının, özet e-postasının ve portal belgelerinin altına "Powered by Odoo" ve yayıncının bağlantısını koyuyor (D-007).
   - Varsayım (otonom mesai 2, geri dönüşü kolay): **A** uygulandı. Satırlar kaldırıldı; takibi bırakma ve abonelikten çıkma bağlantıları kaldı.
