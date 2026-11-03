@@ -28,7 +28,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 13. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
 14. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
 
-Otonom mesai 1 bitti (2026-10-18). Özeti CHANGELOG.md'de, "Otonom mesai 1 — özet".
+Otonom mesai 3 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 3 — özet". Yeni maddeler: K19, K20, K21.
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 

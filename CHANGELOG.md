@@ -7,6 +7,38 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-03
 
+### Otonom mesai 3 — özet
+
+Mesai, kullanıcının isteğiyle T3.3'ten sonra kapandı (2026-11-03). Kullanıcı gerektiren işler mesai boyunca bekletildi; mesai sonunda birlikte ele alınacak.
+
+**Biten görevler (5):**
+- T2.6 marka sızıntısı testi (mesai 2'den süren);
+- T2.7 dış istek testi; marka katmanı (F2) ve **M2 Markasız çekirdek** tamamlandı;
+- T3.1 upstream `l10n_tr` analizi (26 eksik, her biri bir göreve bağlı);
+- T3.2 `ov_l10n_tr`: Türk hesap planı ve vergi düzeltmeleri;
+- T3.3 VKN / TCKN: kişi/şirket ayrımı, Türkçe etiketler, MERSİS denetimi.
+
+**İlerleme:** toplam 29/114 görev; F3 3/9. Sıradaki C görevi T3.4 (il/ilçe adres yapısı), başlanmadı.
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** hepsi geri dönüşü kolay varsayımlarla ilerledi.
+- K19: metinlerdeki eski ürün adı gösterimde değiştiriliyor (T2.6).
+- K20: Türk hesap planındaki hesap eşlemeleri; mali müşavire üç soru (T3.2).
+- K21: TCKN'li iş ortağı gerçek kişi; MERSİS'te yalnız 16 hane denetimi (T3.3).
+
+**Onay bekleyen dışa dönük iş:** K10 (ilk iki commit'teki ortak yazar satırı, force-push gerekir), K9 (GitHub güvenlik özellikleri), K5 (yayınlar; şimdilik iş yok).
+
+**Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
+
+**CI:** T3.3 commit'i (`da141d5`) Linux'ta geçti: bütün modüllerle 104 test, MVP uygulamalarıyla marka sızıntısı ve dış istek testi 13 test; yayıncıya istek yok. Yereldeki birleşik çalıştırma PostgreSQL kapandığı için yarım kaldı (T3.3 kaydı).
+
+**Yerelde kalanlar:**
+- PostgreSQL kapalı: 10:27'de bir Ctrl+C olayıyla kapandı (T3.3 kaydı). Sonraki mesaide `python tools/pg.py start`.
+- `ov_demo` güncel: `ov_l10n_tr` 20.0.1.1.0.
+- Geçici veritabanları: `ov_brand_scan` (T2.3 denemeleri; silinmesi bir önceki özette mesai sonuna bırakılmıştı, PostgreSQL kapalı olduğu için silinmedi) ve `ov_test_*` test veritabanları (`tools/run_tests.py` her çalıştırmada yeniden kurar).
+- Commit edilmemiş iş yok.
+
 ### Adım: VKN / TCKN doğrulama, kişi/şirket ayrımı ve MERSİS (T3.3) — otonom mesai 3
 
 **Kod**
