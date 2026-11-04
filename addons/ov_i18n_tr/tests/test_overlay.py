@@ -21,6 +21,12 @@ PYTHON_VALUE = '%(action_name)s, %(model_name)s için geçerli bir işlem değil
 CORRECTIONS = [
     # upstream: 'Sil' (delete) on the button that only discards the changes
     (('web', 'html_editor', 'spreadsheet'), 'Discard', 'Vazgeç'),
+    # upstream machine translations: 'Şal' (shawl), 'Donmak' (to freeze, intransitive),
+    # 'Maç bitmek üzere' (the game is about to end), 'kulüp kıyafeti' (club outfit)
+    (('spreadsheet',), 'Wrap', 'Kaydırma'),
+    (('spreadsheet',), 'Freeze', 'Dondur'),
+    (('spreadsheet',), 'Match to end', 'Metin sonunu eşleşme say'),
+    (('web',), 'club suit', 'sinek (iskambil)'),
 ]
 
 

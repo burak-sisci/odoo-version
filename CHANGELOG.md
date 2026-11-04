@@ -7,6 +7,25 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `spreadsheet` çevirisi ve makine çevirisi hataları (T3.6, 7. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `spreadsheet` 467 eksik terim; 2.468/2.468 tam. Paket kapsamı %90,31 → %91,89; eksik 2.860 → 2.393.
+  - Kapsam: grafik önerileri ve açıklamaları, adlandırılmış aralıklar, sayfa kilitleme, yazdırma, istatistik işlevlerinin (T.TEST, SKEW, KURT, GEOMEAN …) açıklamaları ve hata iletileri, pivot gösterim biçimleri.
+  - Bağlantıyla bölünmüş cümle ("Automatic evaluation is disabled. Press [here] or F9 to recalculate.") Türkçe söz dizimine göre üç parçaya dağıtıldı: "… Yeniden hesaplamak için [buraya] tıklayın veya F9'a basın."
+- Upstream düzeltmeleri (makine çevirisi hataları), 19 terim:
+  - `spreadsheet`: "Wrap" → "Şal" (giysi) ve "Clip" → "Klips" yerine "Kaydırma", "Kırpma"; "Freeze"/"Unfreeze" → "Donmak"/"Çözme" yerine "Dondur"/"Dondurmayı kaldır"; "All matches", "First match" → "Tüm maçlar", "İlk maç" yerine "eşleşme"; "Match to end" → "Maç bitmek üzere" yerine "Metin sonunu eşleşme say"; ölçü → "önlem" (2 terim); "… copied to clipboard" → "Panoya kopyalanan …" (ad öbeği) yerine "… panoya kopyalandı" (4 terim).
+  - `web` emoji adları: iskambil renkleri "kulüp kıyafeti", "elmas takım elbise", "kalp takım elbise", "maça takım elbise" yerine "sinek", "karo", "kupa", "maça".
+  - Tarama yöntemi: bütün upstream `tr.po` dosyalarında şüpheli sözcükler (maç, şal, donmak, önlem, "panoya kopyalanan") arandı; "önlemek" (to prevent) gibi doğru kullanımlar elendi. `html_editor`'deki "Panoya kopyalanan çapa" sıradaki `html_editor` partisinde ele alınacak.
+- Düzeltme tablosu (`CORRECTIONS`) 4 terim büyüdü: "Wrap", "Freeze", "Match to end", "club suit". Mutasyon denemesi: `spreadsheet.po`'da "Wrap" yeniden "Şal" yapılınca `test_corrections` (`module='spreadsheet', src='Wrap'`) düştü; dosya geri yüklendi, `ov_i18n_tr` 12/12.
+- `check` 11 dosya, 0 sorun. CI kapsam eşiği `--min 90.1` → `91.7`.
+
+**Kararlar**
+- K24'e hesap tablosu terimleri eklendi.
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme, düzeltmeler, sıradaki modüller, testler), USER_TASKS.md (K24), README.md, state.json.
+
 ### Adım: `base` çevirisi (T3.6, 6. adım) — otonom mesai 6
 
 **Kod**

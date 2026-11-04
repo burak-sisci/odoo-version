@@ -1608,9 +1608,27 @@ msgstr ""
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "club suit"
+msgstr "sinek (iskambil)"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
 msgid "day"
 msgstr "gün"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "diamond suit"
+msgstr "karo (iskambil)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "heart suit"
+msgstr "kupa (iskambil)"
 
 #. module: web
 #. odoo-javascript
@@ -1659,6 +1677,12 @@ msgstr "r"
 #: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
 msgid "s"
 msgstr "sn"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "spade suit"
+msgstr "maça (iskambil)"
 
 #. module: web
 #. odoo-python
