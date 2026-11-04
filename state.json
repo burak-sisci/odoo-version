@@ -28,10 +28,11 @@
   },
   "current_task": "T3.6",
   "session": {
-    "mode": "otonom",
+    "mode": "standart",
     "number": 6,
     "started": "2026-11-04",
-    "note": "Otonom mesai 6: T3.6'dan (sırada web) PLAN sırasıyla C görevleri."
+    "ended": "2026-11-04",
+    "note": "Otonom mesai 6 bitti (kullanıcının isteğiyle): T3.6 5.-11. adımlar, kapsam %87,74 -> %95,95. Özet CHANGELOG.md'de."
   },
   "tasks_done": [
     "T0.1",
@@ -70,7 +71,7 @@
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K24 (USER_TASKS.md §1)",
-    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail, web arayüzü, base, spreadsheet, product, calendar, html_editor, account_edi_ubl_cii, crm, payment, account_payment ve sale_management tamam, Discard → Vazgeç, spreadsheet makine çevirisi hataları, varsayılan satış koşulları, vergi doğuşu, CRM atama filtresi ve ödeme tahsilatı düzeltildi (%95,05, kapı ölçütü geçildi); sırada portal, resource, sale_stock, stock_account, purchase_stock; web simge arama etiketleri (659) en sonda; CI eşiği her partide yükseltilir)",
+    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail, web arayüzü, base, spreadsheet, product, calendar, html_editor, account_edi_ubl_cii, crm, payment, account_payment, sale_management, portal, resource, sale_stock, stock_account ve purchase_stock tamam, Discard → Vazgeç, spreadsheet makine çevirisi hataları, varsayılan satış koşulları, vergi doğuşu, CRM atama filtresi, ödeme tahsilatı ve Incoterm (Teslim Şekli) düzeltildi (%95,95, kapı ölçütü geçildi); sırada spreadsheet_dashboard, base_import, sale_margin, mail_plugin; web simge arama etiketleri (659) en sonda; CI eşiği her partide yükseltilir)",
     "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [

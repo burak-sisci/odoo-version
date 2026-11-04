@@ -11,6 +11,33 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. module: account
+#: model:ir.module.module,description:base.module_account
+msgid ""
+"\n"
+"Invoicing & Payments\n"
+"====================\n"
+"The specific and easy-to-use Invoicing system in Odoo allows you to keep "
+"track of your accounting, even when you are not an accountant. It provides "
+"an easy way to follow up on your vendors and customers.\n"
+"\n"
+"You could use this simplified accounting in case you work with an "
+"(external) account to keep your books, and you still want to keep track of "
+"payments. This module also offers you an easy method of registering "
+"payments, without having to encode complete abstracts of account.\n"
+msgstr ""
+"\n"
+"Faturalama ve Ödemeler\n"
+"======================\n"
+"Odoo'daki özel ve kullanımı kolay faturalama sistemi, muhasebeci olmasanız "
+"bile muhasebenizi takip etmenizi sağlar. Tedarikçi ve müşteri takibini "
+"kolay bir şekilde yapmanıza olanak tanır.\n"
+"\n"
+"Muhasebenizi dışarıdan bir uzmanla yürütüyorsanız ancak yine de ödemeleri "
+"takip etmek istiyorsanız bu basitleştirilmiş muhasebe sistemini "
+"kullanabilirsiniz. Ayrıca bu modül, hesap özetlerini tamamen kodlamadan "
+"ödeme kaydı yapmanızı sağlayan kolay bir yöntem sunar.\n"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment__reconciled_statement_lines_count
 msgid "# Reconciled Bank Transactions"
 msgstr "# Denkleştirilmiş Banka İşlemleri"
@@ -398,6 +425,11 @@ msgid "<span>Not Subject to VAT</span>"
 msgstr "<span>KDV'ye Tabi Değil</span>"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Incoterm</strong>"
+msgstr "<strong>Teslim Şekli</strong>"
+
+#. module: account
 #. odoo-python
 #: code:addons/account/models/account_bank_statement.py:0
 msgid ""
@@ -731,6 +763,14 @@ msgstr ""
 "yasal hesapları etkilemeden ayırmanızı sağlar."
 
 #. module: account
+#: model:ir.model.fields,help:account.field_account_incoterms__active
+msgid ""
+"By unchecking the active field, you may hide an INCOTERM you will not use."
+msgstr ""
+"Etkin alanının işaretini kaldırarak kullanmayacağınız bir teslim şeklini "
+"silmeden gizleyebilirsiniz."
+
+#. module: account
 #: model:account.tax,name:account.22_account_tax_us_demo_ca_alameda
 msgid "CA Alameda County 4.25%"
 msgstr "CA Alameda County %4,25"
@@ -961,6 +1001,11 @@ msgid "Countries for which the company has a Tax ID"
 msgstr "Şirketin vergi kimlik numarasına sahip olduğu ülkeler"
 
 #. module: account
+#: model_terms:ir.actions.act_window,help:account.action_incoterms_tree
+msgid "Create a new incoterm"
+msgstr "Yeni bir teslim şekli oluşturun"
+
+#. module: account
 #: model_terms:ir.actions.act_window,help:account.action_account_matching_rules
 msgid "Create a new matching rule"
 msgstr "Yeni bir eşleştirme kuralı oluşturun"
@@ -1059,6 +1104,22 @@ msgstr "Günlük"
 #: model:ir.model.fields,field_description:account.field_account_journal__default_account_active
 msgid "Default Account Active"
 msgstr "Varsayılan Hesap Etkin"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Default Incoterm"
+msgstr "Varsayılan Teslim Şekli"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Default Incoterm of your company"
+msgstr "Şirketinizin varsayılan teslim şekli"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__incoterm_id
+#: model:ir.model.fields,field_description:account.field_res_config_settings__incoterm_id
+msgid "Default incoterm"
+msgstr "Varsayılan teslim şekli"
 
 #. module: account
 #. odoo-python
@@ -1402,6 +1463,53 @@ msgid "Incorrect ending balance, expected %s"
 msgstr "Kapanış bakiyesi hatalı, beklenen: %s"
 
 #. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_incoterm_id
+#: model:ir.model.fields,field_description:account.field_account_move__invoice_incoterm_id
+msgid "Incoterm"
+msgstr "Teslim Şekli"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__incoterm_location
+#: model:ir.model.fields,field_description:account.field_account_move__incoterm_location
+msgid "Incoterm Location"
+msgstr "Teslim Şekli Yeri"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_incoterms__code
+msgid "Incoterm Standard Code"
+msgstr "Teslim Şekli (Incoterms) Standart Kodu"
+
+#. module: account
+#: model:ir.actions.act_window,name:account.action_incoterms_tree
+#: model:ir.model,name:account.model_account_incoterms
+#: model:ir.ui.menu,name:account.menu_action_incoterm_open
+#: model_terms:ir.ui.view,arch_db:account.account_incoterms_form
+#: model_terms:ir.ui.view,arch_db:account.account_incoterms_view_search
+#: model_terms:ir.ui.view,arch_db:account.view_incoterms_tree
+msgid "Incoterms"
+msgstr "Teslim Şekilleri"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_incoterms__name
+msgid ""
+"Incoterms are series of sales terms. They are used to divide transaction "
+"costs and responsibilities between buyer and seller and reflect "
+"state-of-the-art transportation practices."
+msgstr ""
+"Teslim şekilleri (Incoterms) bir dizi satış koşuludur. İşlem maliyetlerini "
+"ve sorumlulukları alıcı ile satıcı arasında paylaştırır, güncel taşımacılık "
+"uygulamalarını yansıtır."
+
+#. module: account
+#: model_terms:ir.actions.act_window,help:account.action_incoterms_tree
+msgid ""
+"Incoterms are used to divide transaction costs and responsibilities between "
+"buyer and seller."
+msgstr ""
+"Teslim şekilleri (Incoterms), işlem maliyetlerini ve sorumlulukları alıcı "
+"ile satıcı arasında paylaştırmak için kullanılır."
+
+#. module: account
 #. odoo-javascript
 #. odoo-python
 #: code:addons/account/report/account_stock_valuation_report.py:0
@@ -1458,6 +1566,12 @@ msgstr "Envanter Değişimi"
 #: code:addons/account/static/src/components/many2x_tax_tags/tax_tag_popover.xml:0
 msgid "Invoice :"
 msgstr "Fatura :"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_incoterm_placeholder
+#: model:ir.model.fields,field_description:account.field_account_move__invoice_incoterm_placeholder
+msgid "Invoice Incoterm Placeholder"
+msgstr "Fatura Teslim Şekli Yer Tutucusu"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.ir_actions_report_form_inherit_account

@@ -50,6 +50,14 @@ RECORD_CORRECTIONS = [
     ('payment', 'Contact', 'Web sitesi yöneticisiyle'),
     # upstream: "Ödeme Token'ı kaydet" (save the payment token), a field label
     ('account_payment', 'Saved Payment Token', 'Kayıtlı Ödeme Belirteci'),
+    # upstream: 'Varsayılan Inkoterm', Incoterm had four spellings; one term everywhere
+    ('account', 'Default Incoterm', 'Varsayılan Teslim Şekli'),
+    # upstream: 'Bugün Ücretsiz Miktar' (free of charge), the quantity free to use
+    ('sale_stock', 'Free Qty Today', 'Bugünkü Boş Stok'),
+    # upstream: 'Öngörülen Sayı' (an issue of a magazine)
+    ('purchase_stock', 'Forecasted Issue', 'Öngörülen Sorun'),
+    # upstream: 'ile ilgili' (about), the mail line '5 Units of <product> ordered instead of 10 Units'
+    ('purchase_stock', 'of', 'miktarında'),
 ]
 
 

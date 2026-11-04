@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from po_coverage import problems  # noqa: E402
+from po_coverage import problems, underline_problems  # noqa: E402
 
 
 class TestProblems(unittest.TestCase):
@@ -69,6 +69,13 @@ class TestProblems(unittest.TestCase):
     def test_title_underline(self):
         self.assertAccepted("Title\n=====\n", "Başlık\n======\n")
         self.assertRejected("Title\n=====\n", "Uzun Başlık\n=====\n", "title underline")
+
+    def test_title_underline_alone(self):
+        # also applied to upstream description translations, whose other problems are not checked
+        self.assertEqual(underline_problems("\nBaşlık\n======\n\nMetin\n"), [])
+        # upstream 'account': a trailing space made the title one longer than its underline
+        self.assertTrue(underline_problems("\nFaturalama ve Ödemeler \n======================\n"))
+        self.assertEqual(underline_problems("a\n---\nb\n------\n"), [])
 
 
 if __name__ == "__main__":

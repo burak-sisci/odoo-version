@@ -28,7 +28,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 13. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
 14. **K24:** Türkçe çeviri eksikleri ayrı bir modülle (`ov_i18n_tr`) tamamlanıyor; modül kurulurken hatalı upstream çevirilerinin yerine geçiyor. Terim tercihlerin varsa K24'e yazabilirsin.
 
-Otonom mesai 5 bitti (2026-11-04). Özeti CHANGELOG.md'de, "Otonom mesai 5 — özet". Yeni madde: K24 (çeviri yöntemi ve terim tercihleri; 14. madde).
+Otonom mesai 6 bitti (2026-11-04). Özeti CHANGELOG.md'de, "Otonom mesai 6 — özet". Yeni madde yok; K24'e terim tercihleri eklendi (14. madde). Türkçe çeviri kapı ölçütünü geçti (%95,95).
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
@@ -219,6 +219,8 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
     - CRM (`crm`): Lead → Aday, Opportunity → Fırsat, Pipeline → fırsat havuzu (upstream gibi). Aday dağıtımı (rotation) → dağıtım: "Her zaman dağıtımda", "Dağıtımda, sınırlı", "Dağıtım dışında". Atama "domain"ı → filtre ("Atama Filtresi", "Öncelik koşulu", "Atama koşulu"). Duplicate → mükerrer. Contacts → Kişiler (upstream gibi).
     - Ödeme (`payment`, `account_payment`): capture → tahsil/tahsilat ("Elle Tahsilat", "İşlemi Tahsil Et"; upstream'in "yakalama"sı yerine), token → belirteç, live mode → canlı mod, post-processing → son işleme. Sağlayıcı ve marka adları (Stripe, PayU, Toss Payments) çevrilmez.
     - Teklif şablonları (`sale_management`): Optional → İsteğe Bağlı, Section → Bölüm, Collapse Prices/Composition → Fiyatları/Bileşenleri Gizle (upstream gibi), Share (şirketler arası) → Paylaşımlı.
+    - Portal ve kaynak takvimi (`portal`, `resource`): Contact → Kişi (upstream'in "Kontak"ı yerine), Your contact → İlgili kişiniz, çalışma takviminin satırı (attendance) → çalışma saati, Repeat every → Tekrar aralığı, Absence → Devamsızlık.
+    - Satış/satın alma–stok (`sale_stock`, `stock_account`, `purchase_stock`): Incoterm → Teslim Şekli (gümrükteki karşılığı; upstream'deki "Teslimat Koşulu", "İncoterm", "Inkoterm" yerine, `account` ve `sale`'de de), Return → İade, Receipt → Alım (upstream gibi), COGS → SMM, Free Qty → Boş Stok, Suggest (satın alma önerisi) → Öneri, Inventory → Stok (upstream gibi).
     - Simge seçicinin arama etiketleri (`web`, 659 terim) en sona bırakıldı. Yalnız simge aramasını etkiliyorlar, İngilizce arama zaten çalışıyor. Çevrildiklerinde her simgeye küçük harfli kısa bir Türkçe anahtar sözcük listesi yazılacak; İngilizce eş anlamlıların hepsi karşılanmayacak.
   - Seçenekler: **A** — varsayımlar kalsın · **B** — modül kurulurken var olan çevirilere dokunulmasın, yalnız eksikler tamamlansın · **C** — "Odoo" geçen metinlerin çevirisinde doğrudan "Nexus" yazılsın · **D** — başka bir düzen.
   - Claude önerisi: **A**. Kurulumda üzerine yazma, hatalı upstream çevirilerinin (ör. "Sil") önceden kurulmuş veritabanlarında da düzelmesini sağlıyor; yeni müşteride zaten ilk kurulumdur.

@@ -384,12 +384,39 @@ def problems(msgid, msgstr):
             found.append(f"{edge} line break differs")
     if "Odoo" in msgstr and "Odoo" not in msgid:
         found.append("product name added")
-    # reStructuredText titles (module descriptions): the underline is as long as the title
-    lines = msgstr.split("\n")
-    for previous, line in itertools.pairwise(lines):
+    found += underline_problems(msgstr)
+    return found
+
+
+def underline_problems(text):
+    """reStructuredText titles (module descriptions): the underline is as long as the title.
+
+    A shorter one is a docutils warning, shown as a box on the Apps screen.
+    """
+    found = []
+    for previous, line in itertools.pairwise(text.split("\n")):
         if (UNDERLINE_RE.fullmatch(line) and previous.strip() and not UNDERLINE_RE.fullmatch(previous)
                 and len(line) < len(previous)):
             found.append(f"title underline shorter than {previous[:30]!r}")
+    return found
+
+
+def upstream_description_problems():
+    """Upstream translations of module descriptions the overlay does not replace, checked for
+    title underlines (the other rules are not applied to upstream translations)."""
+    found = []
+    for name, path in measured_modules().items():
+        extra = overlay(name)
+        done_up = upstream_translations(path)
+        seen = set()
+        for entry in template(name, path):
+            if entry.msgid in seen or not any("ir.module.module,description" in ref for ref in entry.references):
+                continue
+            seen.add(entry.msgid)
+            if entry.msgid in extra and extra[entry.msgid].msgstr:
+                continue
+            found += [f"{name} (upstream description): {p}, replace it in the overlay"
+                      for p in underline_problems(done_up.get(entry.msgid, ""))]
     return found
 
 
@@ -517,6 +544,7 @@ def cmd_check(args):
             if entry.comments != source.comments:
                 errors.append(f"{label}: comments differ from {name}.pot (run `sync`)")
             errors += [f"{label}: {p}" for p in problems(entry.msgid, entry.msgstr)]
+    errors += upstream_description_problems()
     for error in errors:
         print(error)
     print(f"overlay: {len(list(OVERLAY_DIR.glob('*.po')))} files, {len(errors)} problems")

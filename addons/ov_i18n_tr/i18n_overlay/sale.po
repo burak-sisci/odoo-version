@@ -1355,6 +1355,11 @@ msgstr ""
 "                </strong>"
 
 #. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
+msgid "<strong>Incoterm</strong>"
+msgstr "<strong>Teslim Şekli</strong>"
+
+#. module: sale
 #: model:ir.model,name:sale.model_res_groups
 msgid "Access Groups"
 msgstr "Erişim Grupları"
@@ -1692,6 +1697,20 @@ msgid ""
 msgstr ""
 "Fiyat listesini değiştirirseniz tüm sipariş satırlarının fiyatları buna "
 "göre güncellenir."
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_res_partner__incoterm_id
+#: model:ir.model.fields,field_description:sale.field_res_users__incoterm_id
+#: model:ir.model.fields,field_description:sale.field_sale_order__incoterm
+msgid "Incoterm"
+msgstr "Teslim Şekli"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_res_partner__incoterm_location
+#: model:ir.model.fields,field_description:sale.field_res_users__incoterm_location
+#: model:ir.model.fields,field_description:sale.field_sale_order__incoterm_location
+msgid "Incoterm Location"
+msgstr "Teslim Şekli Yeri"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__invoice_overages

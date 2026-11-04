@@ -7,6 +7,57 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Otonom mesai 6 — özet
+
+Mesai, kullanıcının isteğiyle T3.6 sürerken kapandı (2026-11-04). Elde olan `purchase_stock` bitirilip kaydedildi.
+
+**Biten görev:** yok. T3.6 Türkçe çeviri `[~]` sürüyor; kapı ölçütü (%95) 10. adımda geçildi, mesai sonunda %95,95.
+
+**İlerleme:** toplam 31/114 görev; F3 5/9. T3.6'da yedi adım:
+5. `web` arayüz metinleri; "Discard" → "Sil" yerine "Vazgeç".
+6. `base` (kullanıcılar, erişim yetkileri, şirket, banka).
+7. `spreadsheet`; makine çevirisi hataları ("Şal", "Donmak").
+8. `product` ve `calendar` (müşteriye giden beş e-posta).
+9. `html_editor` ve `account_edi_ubl_cii`; varsayılan satış koşulları ve vergi doğuşu.
+10. `crm`, `payment`, `account_payment`, `sale_management`; kapı ölçütü geçildi.
+11. `portal`, `resource`, `sale_stock`, `stock_account`, `purchase_stock`; Incoterm terimi birleştirildi, tanıtım başlık çizgisi denetimi.
+
+Paket kapsamı %87,74 → %95,95. Eksik 3.619 → 1.195 (2.424 terim çevrildi). CI eşiği her adımda yükseldi: 87.6 → 95.7.
+
+**Yarım kalan:** T3.6'da sırada küçük modüller (`spreadsheet_dashboard` 50, `base_import` 28, `sale_margin` 28, `mail_plugin` 26, …). En sonda `web` simge seçicisinin arama etiketleri (659). Öneri: küçük modüller bitince T3.6 kapatılır; simge etiketleri ve upstream güncellemesinden sonraki eşitleme sürekli işe alınır.
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** yeni madde yok. K24'e terim tercihleri eklendi (CRM, ödeme, teklif şablonları, portal, kaynak takvimi, stok bağlantıları; Incoterm → Teslim Şekli). Hepsi geri dönüşü kolay varsayımlar.
+
+**Onay bekleyen dışa dönük iş:** yeni onay yok. K9 (GitHub güvenlik özellikleri) duruyor.
+
+**Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
+
+**CI:** 5.–10. adımların commit'leri (`5f62eaf` … `9b029f8`) Linux'ta geçti. Yerelde `ov_i18n_tr` 13/13.
+
+### Adım: `portal`, `resource`, `sale_stock`, `stock_account` ve `purchase_stock` çevirileri; Incoterm terimi birleştirildi (T3.6, 11. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `portal` 55 eksik terim (252/252), `resource` 72 (166/166), `sale_stock` 56 (163/163), `stock_account` 43 (161/161), `purchase_stock` 39 (214/214). Paket kapsamı %95,05 → %95,95; eksik 1.460 → 1.195.
+  - `portal`: hesap ve adres formu, API anahtarı oluşturma (Python örnek satırları olduğu gibi), belge paylaşma. `resource`: çalışma takvimleri (sabit/değişken/tanımsız), yinelemeler.
+  - `sale_stock`: portaldan iade talebi (iade nedenleri, iade etiketi), teslim süresi ayarları. `stock_account`: maliyet güncelleme iletileri, SMM, değerleme düzeltmeleri. `purchase_stock`: satın alma önerisi paneli (referans dönemleri), alım istisnası e-postası.
+  - Uygulamalar ekranındaki tanıtımlar (`portal`, `resource`, `sale_stock`, `stock_account`) çevrildi.
+- Upstream düzeltmeleri (64 terim, ayrıca 3 modül tanıtımı):
+  - Incoterm dört biçimde geçiyordu ("Teslimat Koşulu", "İncoterm", "Inkoterm", "inceoterm"); "Teslim Şekli" oldu, 19 terim (`account`, `sale`, `sale_stock`, `purchase`). `purchase_stock`'taki iki eski terim artık `.pot`'ta yok, atlandı.
+  - `sale_stock` 8, `stock_account` 9, `purchase_stock` 21 terim: "adresinden" (from), "hamle" (move), "Gönder" (Suggest), "Öngörülen Sayı" (Forecasted Issue), "Bugün Ücretsiz Miktar" (Free Qty Today), bozuk yardım metinleri; satın alma istisna e-postasının parça sırası.
+  - `portal` 5 terim ("Kontak" → "Kişi"), `calendar` 2 terim, `resource` 1 eski terim (`.pot`'ta yok, atlandı).
+- Tanıtımların başlık çizgileri: `tools/po_coverage.py check`, upstream'in çevirip katmanın değiştirmediği modül tanıtımlarında başlıktan kısa çizgiyi hata sayıyor (docutils bunu Uygulamalar ekranında uyarı kutusu olarak gösteriyor). Kural `underline_problems()` olarak ayrıldı; araç testi eklendi (9 test).
+  - Ölçüm: paket tanıtımları Odoo'nun ayarlarıyla docutils'ten geçirildi. Uyarı veren 3 tanıtım (`account`, `account_edi_ubl_cii`, `stock_account`) katmanda düzeltildi; sonra 0. `check` de aynı iki upstream tanıtımını bulmuştu (kural ile gerçek işleme aynı sonucu veriyor).
+- Testler: `ov_i18n_tr` 13 geçti; kayıt metni düzeltme tablosuna 4 satır (`account` teslim şekli, `sale_stock` boş stok, `purchase_stock` öngörülen sorun ve e-posta parçası "of").
+- `check` 23 dosya, 0 sorun. CI kapsam eşiği `--min 94.8` → `95.7`.
+
+**Kararlar**
+- K24'e portal, kaynak takvimi ve satış/satın alma–stok terimleri eklendi (Incoterm → Teslim Şekli).
+
+**Belgeler**
+- PLAN.md (T3.6 durum, ilerleme, düzeltmeler, tanıtım denetimi, sıradaki modüller, testler), USER_TASKS.md (K24, §1), README.md, state.json (mesai sonu).
+
 ### Adım: `crm`, `payment`, `account_payment` ve `sale_management` çevirileri; paket %95'i geçti (T3.6, 10. adım) — otonom mesai 6
 
 **Kod**

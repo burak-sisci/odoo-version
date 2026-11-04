@@ -305,6 +305,12 @@ msgid "Fully Received"
 msgstr "Tamamen Teslim Alındı"
 
 #. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order__incoterm_id
+#: model_terms:ir.ui.view,arch_db:purchase.view_partner_property_form
+msgid "Incoterm"
+msgstr "Teslim Şekli"
+
+#. module: purchase
 #: model:ir.model.fields,field_description:purchase.field_purchase_order__incoterm_location
 #: model_terms:ir.ui.view,arch_db:purchase.view_partner_property_form
 msgid "Incoterm Location"

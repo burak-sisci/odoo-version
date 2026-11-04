@@ -1,0 +1,374 @@
+# Turkish translations of the stock_account module completing upstream's (ov_i18n_tr, T3.6).
+# Read after stock_account/i18n/tr.po. The comments come from stock_account.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: stock_account
+#: model:ir.module.module,description:base.module_stock_account
+msgid ""
+"\n"
+"WMS Accounting module\n"
+"======================\n"
+"This module makes the link between the 'stock' and 'account' modules and "
+"allows you to create accounting entries to value your stock movements\n"
+"\n"
+"Key Features\n"
+"------------\n"
+"* Stock Valuation (periodical or automatic)\n"
+"* Invoice from Picking\n"
+"\n"
+"Dashboard / Reports for Warehouse Management includes:\n"
+"------------------------------------------------------\n"
+"* Stock Inventory Value at given date (support dates in the past)\n"
+msgstr ""
+"\n"
+"Depo yönetimi muhasebe modülü\n"
+"=============================\n"
+"Bu modül stok ve muhasebe modüllerini birbirine bağlar; stok "
+"hareketlerinizi değerlemek için muhasebe kayıtları oluşturmanızı sağlar.\n"
+"\n"
+"Öne çıkan özellikler\n"
+"--------------------\n"
+"* Stok değerleme (dönemsel veya otomatik)\n"
+"* Transferden fatura\n"
+"\n"
+"Depo yönetimi panoları ve raporları:\n"
+"------------------------------------\n"
+"* Belirli bir tarihteki stok değeri (geçmiş tarihler de desteklenir)\n"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_lot.py:0
+msgid ""
+"%(lot)s cost update from %(old_value)s to %(new_value)s for %(quantity)s by "
+"%(user)s"
+msgstr ""
+"%(lot)s maliyeti %(user)s tarafından %(quantity)s için %(old_value)s "
+"değerinden %(new_value)s değerine güncellendi"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/product_value.py:0
+msgid ""
+"%(move)s cost update from %(old_value)s to %(new_value)s for %(quantity)s "
+"by %(user)s"
+msgstr ""
+"%(move)s maliyeti %(user)s tarafından %(quantity)s için %(old_value)s "
+"değerinden %(new_value)s değerine güncellendi"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid "%(quantity)s %(uom)s at product's cost"
+msgstr "ürün maliyetinden %(quantity)s %(uom)s"
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.view_move_form
+msgid "<span class=\"o_stat_text\">Product Value</span>"
+msgstr "<span class=\"o_stat_text\">Ürün Değeri</span>"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid ""
+"A lot/serial number is required for product '%s' as it has lot valuation "
+"enabled."
+msgstr ""
+"'%s' ürününde lot bazında değerleme etkin olduğu için lot/seri numarası "
+"zorunludur."
+
+#. module: stock_account
+#: model:ir.model,name:stock_account.model_res_groups
+msgid "Access Groups"
+msgstr "Erişim Grupları"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__account_move_id
+msgid "Account Move"
+msgstr "Yevmiye Kaydı"
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_stock_move__cogs_aml_ids
+msgid "Account move lines using this move in order to compute their COGS"
+msgstr "SMM'sini hesaplamak için bu hareketi kullanan yevmiye kalemleri"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid "Adjust Valuation: %(product)s"
+msgstr "Değerlemeyi Ayarla: %(product)s"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__adjustment
+msgid "Adjustment"
+msgstr "Düzeltme"
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.product_value_search_view
+msgid "Adjustments"
+msgstr "Düzeltmeler"
+
+#. module: stock_account
+#: model:ir.model,name:stock_account.model_account_analytic_plan
+msgid "Analytic Plan"
+msgstr "Analitik Plan"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_stock_move__cogs_aml_ids
+msgid "COGS lines"
+msgstr "SMM satırları"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_account_move_line__cogs_move_ids
+msgid "COGS stock moves"
+msgstr "SMM stok hareketleri"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_account_bank_statement_line__closing_datetime
+#: model:ir.model.fields,field_description:stock_account.field_account_move__closing_datetime
+msgid "Closing Date"
+msgstr "Kapanış Tarihi"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/product.py:0
+msgid ""
+"Cost update from %(old_value)s to %(new_value)s for %(quantity)s by %(user)s"
+msgstr ""
+"Maliyet %(user)s tarafından %(quantity)s için %(old_value)s değerinden "
+"%(new_value)s değerine güncellendi"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_res_config_settings__group_lot_on_invoice
+msgid "Display Lots & Serial Numbers on Invoices"
+msgstr "Faturalarda Lot/Seri Numaralarını Göster"
+
+#. module: stock_account
+#: model:res.groups,name:stock_account.group_lot_on_invoice
+msgid "Display Serial & Lot Number on Invoices"
+msgstr "Faturalarda Lot/Seri Numaralarını Göster"
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.product_value_list_view
+msgid "Done By"
+msgstr "Yapan"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/product_value.py:0
+msgid "For %(quantity)s %(uom)s (%(price_unit)s per %(uom)s)"
+msgstr "%(quantity)s %(uom)s için (%(uom)s başına %(price_unit)s)"
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_stock_move__order_partner_id
+msgid ""
+"If the move originates from a document from another company, contains that "
+"company's partner, otherwise the move's partner."
+msgstr ""
+"Hareket başka bir şirketin belgesinden geliyorsa o şirketin iş ortağını, "
+"gelmiyorsa hareketin iş ortağını içerir."
+
+#. module: stock_account
+#: model:ir.model,name:stock_account.model_stock_location
+msgid "Inventory Location"
+msgstr "Stok Konumu"
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_account_move_line__cogs_move_ids
+msgid "Inventory moves used to compute COGS values."
+msgstr "SMM değerlerini hesaplamak için kullanılan stok hareketleri."
+
+#. module: stock_account
+#: model:ir.module.module,summary:base.module_stock_account
+msgid "Inventory, Logistic, Valuation, Accounting"
+msgstr "Stok, Lojistik, Değerleme, Muhasebe"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_stock_move__invoice_line_ids
+msgid "Invoice Line"
+msgstr "Fatura Satırı"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_stock_avco_report__justification
+msgid "Justification"
+msgstr "Gerekçe"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__new_cost
+msgid "New Unit Cost"
+msgstr "Yeni Birim Maliyet"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__new_value
+#: model_terms:ir.ui.view,arch_db:stock_account.product_value_form_view
+msgid "New Value"
+msgstr "Yeni Değer"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__old_cost
+msgid "Old Unit Cost"
+msgstr "Eski Birim Maliyet"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__old_value
+msgid "Old Value"
+msgstr "Eski Değer"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid "Only is set (= True) is supported in search for remaining_qty."
+msgstr "remaining_qty aramasında yalnız \"ayarlı\" (= True) koşulu desteklenir."
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_stock_move__origin_company_id
+msgid ""
+"Only set if the move is generated from a document belonging to another "
+"company"
+msgstr ""
+"Yalnız hareket başka bir şirkete ait bir belgeden oluşturulduysa doldurulur"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_stock_move__order_partner_id
+msgid "Order Partner"
+msgstr "Sipariş İş Ortağı"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_stock_move__origin_company_id
+msgid "Origin Company"
+msgstr "Kaynak Şirket"
+
+#. module: stock_account
+#: model:ir.model,name:stock_account.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Ürün Hareketleri (Stok Hareket Satırı)"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid ""
+"Product should be passed as an argument in order to get the unit price for "
+"moves in a kit."
+msgstr ""
+"Kit içindeki hareketlerin birim fiyatını almak için ürün bağımsız değişken "
+"olarak verilmelidir."
+
+#. module: stock_account
+#: model:ir.model,name:stock_account.model_stock_quant
+msgid "Quant"
+msgstr "Miktar"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__quantity
+msgid "Quantity"
+msgstr "Miktar"
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.view_move_search
+msgid "Remaining"
+msgstr "Kalan"
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_product_value__product_tracking
+msgid ""
+"Technical field holding the tracking method. False on a storable product "
+"means it's tracked by quantity only."
+msgstr ""
+"İzleme yöntemini tutan teknik alan. Stoklanabilir bir üründe False, ürünün "
+"yalnız miktarla izlendiği anlamına gelir."
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.stock_move_view_list
+msgid "Total"
+msgstr "Toplam"
+
+#. module: stock_account
+#: model:ir.model.fields,field_description:stock_account.field_product_value__product_tracking
+msgid "Tracking Method"
+msgstr "İzleme Yöntemi"
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_stock_move__to_refund
+msgid ""
+"Trigger a decrease of the delivered/received quantity in the associated "
+"Sale Order/Purchase Order"
+msgstr ""
+"İlişkili satış veya satın alma siparişinde teslim edilen/alınan miktarın "
+"azaltılmasını tetikler"
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.product_product_stock_tree_inherit_stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.stock_avco_report_view_list
+#: model_terms:ir.ui.view,arch_db:stock_account.stock_move_view_list_valuation
+msgid "Unit Cost"
+msgstr "Birim Maliyet"
+
+#. module: stock_account
+#: model:ir.actions.act_window,name:stock_account.product_value_list_action
+#: model:ir.ui.menu,name:stock_account.valuation_adjustments_menu
+msgid "Valuation Adjustments"
+msgstr "Değerleme Düzeltmeleri"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid "Value from previous move %(references)s"
+msgstr "Önceki hareketten gelen değer %(references)s"
+
+#. module: stock_account
+#: model:ir.model.fields,help:stock_account.field_stock_lot__standard_price
+msgid ""
+"Value of the lot (automatically computed in AVCO).\n"
+"        Used to value the product when the purchase cost is not known (e.g. "
+"inventory adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+"Lotun değeri (AVCO'da otomatik hesaplanır).\n"
+"        Satın alma maliyeti bilinmediğinde ürüne değer biçmek için "
+"kullanılır (ör. envanter düzeltmesi).\n"
+"        Satış siparişlerinde kâr marjını hesaplamak için kullanılır."
+
+#. module: stock_account
+#: model_terms:ir.ui.view,arch_db:stock_account.product_value_list_view
+msgid "View Account Move"
+msgstr "Yevmiye Kaydını Görüntüle"
+
+#. module: stock_account
+#: model:ir.module.module,shortdesc:base.module_stock_account
+msgid "WMS Accounting"
+msgstr "Stok Muhasebesi"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_move.py:0
+msgid "You can only adjust valuation for one move at a time."
+msgstr "Değerlemeyi bir seferde yalnızca bir hareket için ayarlayabilirsiniz."
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/product.py:0
+msgid ""
+"You cannot enable lot valuation because the following products have on-hand "
+"quantities without a lot/serial number:\n"
+"%s"
+msgstr ""
+"Lot bazında değerleme etkinleştirilemez; şu ürünlerin lot/seri numarası "
+"olmayan eldeki miktarları var:\n"
+"%s"
+
+#. module: stock_account
+#. odoo-python
+#: code:addons/stock_account/models/stock_picking.py:0
+msgid ""
+"You cannot modify the scheduled date of operation %s because it falls "
+"within a locked fiscal period."
+msgstr ""
+"%s işleminin planlanan tarihi kilitli bir mali döneme denk geldiği için "
+"değiştirilemez."
