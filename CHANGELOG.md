@@ -7,6 +7,21 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `product` ve `calendar` çevirileri (T3.6, 8. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `product` 219 eksik terim (873/873), `calendar` 152 (527/527). Paket kapsamı %91,89 → %93,15; eksik 2.393 → 2.022.
+  - `product`: ambalaj ve paketleme, nitelikler ve varyantlar, fiyat listesi kuralları, kombo ürünler, stok miktarı alanları, modül açıklaması (reStructuredText; docutils uyarısız). ZPL etiket kodları (`^XA` …) çevrilmedi.
+  - `calendar`: takvim paylaşımı (birincil takvim, erişim rolü, abonelikten çıkma), senkronizasyon durumları, etkinlik arşivleme/silme sihirbazı, taslak etkinlikler, modül açıklaması.
+  - `calendar`'ın beş müşteri e-postası (davet, tarih değişikliği, güncelleme, hatırlatma, iptal) upstream'de hiç çevrilmemişti; Türkçe müşteriye İngilizce gidiyordu. Etiketlerin arasındaki 73 metin parçası çevrildi; etiketler ve QWeb ifadeleri aynı kaldı. Parçalar Türkçe söz dizimine göre yeniden kuruldu (ör. "Your meeting <ad> has been booked." → "<ad> toplantınız planlandı.").
+- `check` 13 dosya, 0 sorun; `ov_i18n_tr` 12/12. CI kapsam eşiği `--min 91.7` → `92.9`.
+
+**Kararlar**
+- K24'e ürün ve takvim terimleri eklendi.
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme, sıradaki modüller, e-posta şablonu yöntemi), USER_TASKS.md (K24), README.md, state.json.
+
 ### Adım: `spreadsheet` çevirisi ve makine çevirisi hataları (T3.6, 7. adım) — otonom mesai 6
 
 **Kod**
