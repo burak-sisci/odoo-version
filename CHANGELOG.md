@@ -7,6 +7,49 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Otonom mesai 5 — özet
+
+Mesai, kullanıcının isteğiyle T3.6 sürerken kapandı (2026-11-04). Elde olan `mail` partisi bitirilip kaydedildi.
+
+**Biten görev:** yok. T3.6 Türkçe çeviri `[~]` sürüyor; kapı ölçütü %95, ulaşılan %87,74.
+
+**İlerleme:** toplam 31/114 görev; F3 5/9. T3.6'da dört adım:
+1. Çeviri katmanı `ov_i18n_tr` ve ölçüm aracı `tools/po_coverage.py`. Hatalı upstream çevirileri kurulumda düzeltiliyor.
+2. `account`, `sale`, `purchase` tam. `{{ … }}` ifade denetimi Python AST'siyle yapılıyor; araç testleri (`tools/tests`) eklendi.
+3. `stock`, `mrp` tam.
+4. `mail` tam.
+
+Paket kapsamı %81,11 → %87,74. Eksik 5.576 → 3.619 (1.957 terim çevrildi). CI eşiği her partide yükseldi: 81.1 → 87.6.
+
+**Yarım kalan:** T3.6'da sırada `web` (928 eksik), `base`, `spreadsheet`, `product`, `calendar`, `html_editor`. `web`'deki "Discard" → "Sil" upstream hatası henüz düzeltilmedi ("Vazgeç" olacak). Sıra ve sayılar PLAN.md'deki T3.6 ilerleme notunda.
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** K24 — çevirinin tamamlanma yöntemi ve terim tercihleri (muhasebe, stok/üretim, mesajlaşma). Geri dönüşü kolay varsayımlarla ilerledi.
+
+**Onay bekleyen dışa dönük iş:** yeni onay yok. K9 (GitHub güvenlik özellikleri) duruyor.
+
+**Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
+
+**CI:**
+- `73e30e4` düştü: `test_module_name` CI'da `account` kurulu geldiği için başarısız oldu. `2d55aa6`'da düzeltildi.
+- `2d55aa6` ve `56a760b` Linux'ta geçti.
+- Yerelde `ov_i18n_tr` 11/11 geçti.
+
+### Adım: `mail` çevirisi (T3.6, 4. adım) — otonom mesai 5
+
+**Kod**
+- Çeviriler: `mail` 735 terim (2.519/2.519). Hepsi eksik tamamlama. Paket kapsamı %85,25 → %87,74; eksik 4.354 → 3.619.
+  - Davet e-postası parçaları, cümle sırası şablondaki sabit ifade yerlerine göre kuruldu. Bunlar takipçi daveti ("… sizi takipçi olarak ekledi") ile aktivite ataması ("… size aşağıdaki aktiviteyi atadı. Belge: …").
+  - Modül açıklaması reStructuredText olarak docutils'le uyarısız işlendi.
+- CI kapsam eşiği `--min 85.1` → `87.6`.
+
+**Kararlar**
+- K24'e mesajlaşma terim tercihleri eklendi (varsayım): Thread → Konu, Call → Arama, Bookmark → Yer İşareti, Chatter → Mesaj akışı, Artifact → Çıktı.
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme ve sıradaki modüller), USER_TASKS.md (K24, §1), README.md, state.json (oturum `standart`).
+
 ### Adım: `stock` ve `mrp` çevirileri (T3.6, 3. adım) — otonom mesai 5
 
 **Kod**

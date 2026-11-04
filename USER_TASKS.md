@@ -28,7 +28,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 13. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
 14. **K24:** Türkçe çeviri eksikleri ayrı bir modülle (`ov_i18n_tr`) tamamlanıyor; modül kurulurken hatalı upstream çevirilerinin yerine geçiyor. Terim tercihlerin varsa K24'e yazabilirsin.
 
-Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
+Otonom mesai 5 bitti (2026-11-04). Özeti CHANGELOG.md'de, "Otonom mesai 5 — özet". Yeni madde: K24 (çeviri yöntemi ve terim tercihleri; 14. madde).
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
@@ -208,6 +208,7 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
     - Terimler upstream'in yerleşik Türkçe karşılıklarıyla tutarlı tutulur (ör. Contact → Kontak, Journal Entry → Yevmiye Kaydı); upstream'in kendi içinde tutarsız olduğu yerde en yaygın karşılık seçilir.
     - Muhasebe terimleri (`account`): Credit Note → İade Faturası, Tax Return → Vergi Beyannamesi (upstream'de yer yer "Vergi İadesi", yanlış), Suspense Account → Geçici Hesap, Reconcile → Denkleştirme, hash → özetlenmiş (hash), Accrued Expenses/Income → Gider/Gelir Tahakkukları, Furniture & Fixtures → Demirbaşlar, leasehold improvements → Özel Maliyetler.
     - Stok ve üretim terimleri (`stock`, `mrp`): Batch → Parti, Wave → Dalga, Backorder → Kalan Teslimat, Replenishment → İkmal, Scrap → Hurda, Picking → Toplama, Reserve → Ayır, Forecasted → Öngörülen, Bill of Materials → Ürün Reçetesi, Work Center → İş Merkezi, Work Order → İş Emri, Shop Floor → Üretim Alanı, Unbuild → Parçalama. Etiket yazıcısı (ZPL) metinleri Türkçe harfsiz yazıldı ("Paket Tarihi:", "Barkod yok"): yazıcının yerleşik yazı tipi Türkçe harfleri basmayabilir.
+    - Mesajlaşma terimleri (`mail`): Thread → Konu, Call → Arama, Poll → Anket, Bookmark → Yer İşareti, Favorites → Favoriler, Chatter → Mesaj akışı, Canned Response → Hazır Yanıt, Cc → Bilgi (Cc), Transcription → Metne döküm, Artifact (arama kaydı ve dökümü) → Çıktı.
   - Seçenekler: **A** — varsayımlar kalsın · **B** — modül kurulurken var olan çevirilere dokunulmasın, yalnız eksikler tamamlansın · **C** — "Odoo" geçen metinlerin çevirisinde doğrudan "Nexus" yazılsın · **D** — başka bir düzen.
   - Claude önerisi: **A**. Kurulumda üzerine yazma, hatalı upstream çevirilerinin (ör. "Sil") önceden kurulmuş veritabanlarında da düzelmesini sağlıyor; yeni müşteride zaten ilk kurulumdur.
   - Ne zaman: acil değil; F9 pilotundan önce. Terim tercihlerin varsa (ör. "Kontak" yerine "Kişi") liste olarak verebilirsin.
