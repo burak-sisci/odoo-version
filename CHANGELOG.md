@@ -7,6 +7,23 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `base` çevirisi (T3.6, 6. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `base` 494 terim (490 eksik + 4 düzeltme); 3.555/3.555 tam. Paket kapsamı %88,65 → %90,31; eksik 3.350 → 2.860.
+  - Kapsam: kullanıcı formu, erişim yetkileri ve grup ekranları, sunucu işlemi formu, para birimi, banka hesabı, ülkelere göre şirket kimlik numaralarının adları ve örnekleri, ORM hata iletileri, demo şirketin fatura koşulları.
+  - Upstream düzeltmesi: erişim hatasındaki işlem adları "oluşturun", "oku", "yazmak" diye karışık çevrilmişti; hepsi ad biçiminde ("oluşturma", "okuma", "yazma", "silme"). Hata cümlesi de ardından gelen kayıt listesine bağlandı ("… kullanıcısının şu kayıtlar için 'okuma' erişimi yok:").
+  - Örnek kimlik numaralarında "or" → "veya"; "NIN" örneği TCKN olarak yazıldı.
+- Doğrulama: `check` 11 dosya, 0 sorun; `ov_i18n_tr` 12/12 (gerçek çeviri dosyalarının Odoo okuyucusuyla okunması `base`'in kod metinlerini de karşılaştırıyor).
+- CI kapsam eşiği `--min 88.5` → `90.1`.
+- `471ad34`'ün CI'ı GitHub kesintisi bitince çalıştı ve geçti.
+
+**Kararlar**
+- K24'e `base` terimleri eklendi (Erişim Yetkisi, Kısıtlama/İzin, Kapsam, Sınırlı Kullanıcı, Kapsanan/Kapsayan Grup, Genel Kullanıcı, Takas Numarası; işlem adları).
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme, düzeltme, sıradaki modüller), USER_TASKS.md (K24), README.md, state.json.
+
 ### Adım: `web` arayüz metinleri ve "Discard" düzeltmesi (T3.6, 5. adım) — otonom mesai 6
 
 **Kod**

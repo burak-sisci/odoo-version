@@ -70,7 +70,7 @@
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K24 (USER_TASKS.md §1)",
-    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail ve web arayüzü tamam, Discard → Vazgeç düzeltildi (%88,65); sırada base, spreadsheet, product, calendar, html_editor; web simge arama etiketleri (659) en sonda; CI eşiği her partide yükseltilir)",
+    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail, web arayüzü ve base tamam, Discard → Vazgeç düzeltildi (%90,31); sırada spreadsheet, product, calendar, html_editor, account_edi_ubl_cii, crm; web simge arama etiketleri (659) en sonda; CI eşiği her partide yükseltilir)",
     "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [

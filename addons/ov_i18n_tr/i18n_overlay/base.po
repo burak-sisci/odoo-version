@@ -1,0 +1,3334 @@
+# Turkish translations of the base module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base/i18n/tr.po. The comments come from base.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_users_apikeys_description__scope
+msgid ""
+"\n"
+"        A token with scope 'A' can only be used for endpoints requiring a "
+"bearer token of scope 'A' and\n"
+"        can't be used for endpoints requiring any other scope than 'A'.\n"
+"        "
+msgstr ""
+"\n"
+"        'A' kapsamlı bir belirteç yalnızca 'A' kapsamlı taşıyıcı belirteç "
+"(bearer token) isteyen uç noktalarda kullanılabilir;\n"
+"        'A' dışında bir kapsam isteyen uç noktalarda kullanılamaz.\n"
+"        "
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"\n"
+"Example: %(example)s"
+msgstr ""
+"\n"
+"Örnek: %(example)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"\n"
+"User: %(user)s\n"
+"Groups: %(allowed_groups_msg)s"
+msgstr ""
+"\n"
+"Kullanıcı: %(user)s\n"
+"Gruplar: %(allowed_groups_msg)s"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid "# Records"
+msgstr "# Kayıt"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields.py:0
+msgid "(Record: %(record)s, User: %(user)s)"
+msgstr "(Kayıt: %(record)s, Kullanıcı: %(user)s)"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"- Only a root company can be set on “%(record)s”. Currently set to "
+"“%(company)s”"
+msgstr ""
+"- “%(record)s” için yalnızca bir ana şirket ayarlanabilir. Şu anki değer: "
+"“%(company)s”"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"- Record is company “%(company)s” while “%(field)s” (%(fname)s: %(values)s) "
+"belongs to another company."
+msgstr ""
+"- Kayıt “%(company)s” şirketi, ancak “%(field)s” (%(fname)s: %(values)s) "
+"başka bir şirkete ait."
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"- “%(record)s” belongs to company “%(company)s” while “%(field)s” "
+"(%(fname)s: %(values)s) belongs to another company."
+msgstr ""
+"- “%(record)s” “%(company)s” şirketine ait, ancak “%(field)s” (%(fname)s: "
+"%(values)s) başka bir şirkete ait."
+
+#. module: base
+#: model:website,contact_us_link_url:base.default_website
+msgid "/contactus"
+msgstr "/contactus"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "0123456789016 or 1234545678781 [13 digits]"
+msgstr "0123456789016 veya 1234545678781 [13 hane]"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "1-01-85004-3 or 101850043"
+msgstr "1-01-85004-3 veya 101850043"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"10XXXXXXXXY or 20XXXXXXXXY or 15XXXXXXXXY or 16XXXXXXXXY or 17XXXXXXXXY"
+msgstr ""
+"10XXXXXXXXY veya 20XXXXXXXXY veya 15XXXXXXXXY veya 16XXXXXXXXY veya "
+"17XXXXXXXXY"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "11111111111 (NIN) or 2222222222 (VKN)"
+msgstr "11111111111 (TCKN) veya 2222222222 (VKN)"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "123-45-67890 or 1234567890"
+msgstr "123-45-67890 veya 1234567890"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "1234567 or 1234567-8 or 12345-1234567-8"
+msgstr "1234567 veya 1234567-8 veya 12345-1234567-8"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"12345678 or UA12345678 (EDRPOU), 1234567890 (RNOPP) or 123456789012 (IPN)"
+msgstr ""
+"12345678 veya UA12345678 (EDRPOU), 1234567890 (RNOPP) veya 123456789012 "
+"(IPN)"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "123456782 or 123456782RT0001"
+msgstr "123456782 veya 123456782RT0001"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "123456789 (TIN) or 12345678901234 (PINFL)"
+msgstr "123456789 (TIN) veya 12345678901234 (PINFL)"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "1792060346001 or 1792060346"
+msgstr "1792060346001 veya 1792060346"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "3002707692 [Tax identification number]"
+msgstr "3002707692 [Vergi kimlik numarası]"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "310175397400003 [Fifteen digits, first and last digits should be \"3\"]"
+msgstr "310175397400003 [On beş hane; ilk ve son hane \"3\" olmalı]"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "49-098-576 or 49098576"
+msgstr "49-098-576 veya 49098576"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "700 Number"
+msgstr "700 Numarası"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "<i class=\"oi d-none d-md-block\" data-icon=\"luggage\" title=\"Position\"/>"
+msgstr "<i class=\"oi d-none d-md-block\" data-icon=\"luggage\" title=\"Pozisyon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_users_simple_form
+msgid ""
+"<i class=\"oi d-none d-md-inline-flex\" data-icon=\"business\" title=\"Company\"/>"
+msgstr ""
+"<i class=\"oi d-none d-md-inline-flex\" data-icon=\"business\" title=\"Şirket\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid ""
+"<i class=\"oi oi-filled d-none d-md-block\" data-icon=\"mail\" title=\"Email\"/>"
+msgstr ""
+"<i class=\"oi oi-filled d-none d-md-block\" data-icon=\"mail\" title=\"E-posta\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid ""
+"<i class=\"oi oi-filled d-none d-md-block\" data-icon=\"mail\" title=\"Login / "
+"Email\" invisible=\"login != email\"/>\n"
+"                                    <i class=\"oi d-none d-md-block\" "
+"data-icon=\"key\" title=\"Login\" invisible=\"login == email\"/>"
+msgstr ""
+"<i class=\"oi oi-filled d-none d-md-block\" data-icon=\"mail\" title=\"Kullanıcı "
+"adı / E-posta\" invisible=\"login != email\"/>\n"
+"                                    <i class=\"oi d-none d-md-block\" "
+"data-icon=\"key\" title=\"Kullanıcı adı\" invisible=\"login == email\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid ""
+"<i class=\"oi oi-filled d-none d-md-block\" data-icon=\"phone\" title=\"Phone\"/>"
+msgstr ""
+"<i class=\"oi oi-filled d-none d-md-block\" data-icon=\"phone\" "
+"title=\"Telefon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_users_simple_form
+msgid ""
+"<i class=\"oi oi-filled d-none d-md-inline-flex\" data-icon=\"mail\" "
+"title=\"Email\"/>"
+msgstr ""
+"<i class=\"oi oi-filled d-none d-md-inline-flex\" data-icon=\"mail\" "
+"title=\"E-posta\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_users_simple_form
+msgid ""
+"<i class=\"oi oi-filled d-none d-md-inline-flex\" data-icon=\"phone\" "
+"title=\"Phone\"/>"
+msgstr ""
+"<i class=\"oi oi-filled d-none d-md-inline-flex\" data-icon=\"phone\" "
+"title=\"Telefon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_res_users_kanban
+msgid ""
+"<i class=\"oi oi-filled me-1\" data-icon=\"mail\" role=\"img\" "
+"aria-label=\"Login\"/>"
+msgstr ""
+"<i class=\"oi oi-filled me-1\" data-icon=\"mail\" role=\"img\" "
+"aria-label=\"Kullanıcı adı\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_res_users_kanban
+msgid ""
+"<i class=\"oi oi-filled\" data-icon=\"circle\" role=\"img\" aria-label=\"Invalid\" "
+"title=\"Invalid\"/>"
+msgstr ""
+"<i class=\"oi oi-filled\" data-icon=\"circle\" role=\"img\" aria-label=\"Geçersiz\" "
+"title=\"Geçersiz\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_res_users_kanban
+msgid ""
+"<i class=\"oi oi-filled\" data-icon=\"circle\" role=\"img\" aria-label=\"Ok\" "
+"title=\"Ok\"/>"
+msgstr ""
+"<i class=\"oi oi-filled\" data-icon=\"circle\" role=\"img\" aria-label=\"Tamam\" "
+"title=\"Tamam\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.res_partner_kanban_view
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "<i class=\"oi oi-fw me-1\" data-icon=\"location_on\" title=\"Location\"/>"
+msgstr "<i class=\"oi oi-fw me-1\" data-icon=\"location_on\" title=\"Konum\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "<i class=\"oi oi-fw me-1\" data-icon=\"luggage\" title=\"Position\"/>"
+msgstr "<i class=\"oi oi-fw me-1\" data-icon=\"luggage\" title=\"Pozisyon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid ""
+"<i class=\"oi oi-fw o_button_icon\" data-icon=\"east\"/>\n"
+"                                Access rights documentation"
+msgstr ""
+"<i class=\"oi oi-fw o_button_icon\" data-icon=\"east\"/>\n"
+"                                Erişim yetkileri belgeleri"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
+msgid ""
+"<i class=\"oi oi-fw oi-filled d-none d-md-inline-flex\" data-icon=\"mail\" "
+"title=\"Email\"/>"
+msgstr ""
+"<i class=\"oi oi-fw oi-filled d-none d-md-inline-flex\" data-icon=\"mail\" "
+"title=\"E-posta\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
+msgid ""
+"<i class=\"oi oi-fw oi-filled d-none d-md-inline-flex\" data-icon=\"phone\" "
+"title=\"Phone\"/>"
+msgstr ""
+"<i class=\"oi oi-fw oi-filled d-none d-md-inline-flex\" data-icon=\"phone\" "
+"title=\"Telefon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.res_partner_kanban_view
+msgid ""
+"<i class=\"oi oi-fw oi-filled me-1 text-muted\" data-icon=\"mail\" "
+"title=\"Email\"/>"
+msgstr ""
+"<i class=\"oi oi-fw oi-filled me-1 text-muted\" data-icon=\"mail\" "
+"title=\"E-posta\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.res_partner_kanban_view
+msgid ""
+"<i class=\"oi oi-fw oi-filled me-1 text-muted\" data-icon=\"phone\" "
+"title=\"Phone\"/>"
+msgstr ""
+"<i class=\"oi oi-fw oi-filled me-1 text-muted\" data-icon=\"phone\" "
+"title=\"Telefon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_res_company_kanban
+msgid "<i class=\"oi oi-fw oi-filled me-1\" data-icon=\"mail\" title=\"Email\"/>"
+msgstr "<i class=\"oi oi-fw oi-filled me-1\" data-icon=\"mail\" title=\"E-posta\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_res_company_kanban
+msgid "<i class=\"oi oi-fw oi-filled me-1\" data-icon=\"phone\" title=\"Phone\"/>"
+msgstr "<i class=\"oi oi-fw oi-filled me-1\" data-icon=\"phone\" title=\"Telefon\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+msgid "<i class=\"oi pe-2\" data-icon=\"warning\" title=\"Warning\"/>"
+msgstr "<i class=\"oi pe-2\" data-icon=\"warning\" title=\"Uyarı\"/>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_kanban_view
+msgid "<span class=\"me-1\">For</span>"
+msgstr "<span class=\"me-1\">Grup:</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_kanban_view
+msgid "<span class=\"me-1\">On</span>"
+msgstr "<span class=\"me-1\">Model:</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+msgid ""
+"<span invisible=\"evaluation_type != 'value' or value_field_to_show != "
+"'x2many'\">by</span>"
+msgstr ""
+"<span invisible=\"evaluation_type != 'value' or value_field_to_show != "
+"'x2many'\">işlem:</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+msgid ""
+"<span invisible=\"evaluation_type != 'value' or value_field_to_show == "
+"'x2many'\">to</span>\n"
+"                                <span invisible=\"evaluation_type != "
+"'sequence'\">with</span>"
+msgstr ""
+"<span invisible=\"evaluation_type != 'value' or value_field_to_show == "
+"'x2many'\">değer:</span>\n"
+"                                <span invisible=\"evaluation_type != "
+"'sequence'\">seri:</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid ""
+"<span invisible=\"impacted_application_count == 1\"> apps</span><span "
+"invisible=\"impacted_application_count &gt; 1\"> app</span>"
+msgstr ""
+"<span invisible=\"impacted_application_count == 1\"> uygulama</span><span "
+"invisible=\"impacted_application_count &gt; 1\"> uygulama</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid ""
+"<span invisible=\"impacted_module_count == 1\"> modules</span><span "
+"invisible=\"impacted_module_count &gt; 1\"> module</span>"
+msgstr ""
+"<span invisible=\"impacted_module_count == 1\"> modül</span><span "
+"invisible=\"impacted_module_count &gt; 1\"> modül</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid ""
+"<span invisible=\"model_count == 1\"> models</span><span "
+"invisible=\"model_count &gt; 1\"> model</span>"
+msgstr ""
+"<span invisible=\"model_count == 1\"> model</span><span "
+"invisible=\"model_count &gt; 1\"> model</span>"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid "<span> days</span>"
+msgstr "<span> gün</span>"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner_bank__clearing_number
+msgid ""
+"A clearing number (or routing number) refers to a bank, branch, or location "
+"and is used by domestic money transfer protocols (from/to bank accounts in "
+"the same country)."
+msgstr ""
+"Takas numarası (routing number) bir bankayı, şubeyi veya yeri gösterir; "
+"yurt içi para transferi protokollerinde (aynı ülkedeki banka hesapları "
+"arasında) kullanılır."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid ""
+"A restriction is an access rights without group that is globally applied    "
+"                                         and that cannot be bypassed. A "
+"permission is an access right associated with a group                       "
+"                      that is constrained by their domain and the "
+"restrictions"
+msgstr ""
+"Kısıtlama, gruba bağlı olmayan ve her yerde uygulanan, atlanamayan bir "
+"erişim yetkisidir. İzin ise bir gruba bağlı erişim yetkisidir;              "
+"                               etki alanı ve kısıtlamalarla sınırlanır"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "A00012345"
+msgstr "A00012345"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "ACN"
+msgstr "ACN"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_groups__access_count
+msgid "Access Count"
+msgstr "Erişim Sayısı"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_search_view
+msgid "Access Right"
+msgstr "Erişim Yetkisi"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_groups.py:0
+#: model:ir.model.fields,field_description:base.field_res_groups__access_ids
+msgid "Access Rules"
+msgstr "Erişim Kuralları"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid "Access name..."
+msgstr "Erişim adı..."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid ""
+"Access rights without group apply global restrictions that cannot be "
+"bypassed.<br/>\n"
+"                            Access rights associated with a group grant "
+"permissions. These are constrained by their domain and the restrictions."
+msgstr ""
+"Gruba bağlı olmayan erişim yetkileri, atlanamayan genel kısıtlamalar "
+"uygular.<br/>\n"
+"                            Gruba bağlı erişim yetkileri izin verir. Bu "
+"izinler etki alanı ve kısıtlamalarla sınırlanır."
+
+#. module: base
+#: model:res.groups,comment:base.group_user
+msgid "Access to the home menu with limited access"
+msgstr "Ana menüye sınırlı erişim"
+
+#. module: base
+#: model:res.groups,comment:base.group_user_regular
+msgid "Access to the home menu with regular access"
+msgstr "Ana menüye normal erişim"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid "Accesses with domain can not be applied on model Access itself."
+msgstr "Etki alanlı erişimler Erişim modelinin kendisine uygulanamaz."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner_bank__holder_name
+msgid ""
+"Account holder name in case it is different than the name of the partner."
+msgstr "İş ortağının adından farklıysa hesap sahibinin adı."
+
+#. module: base
+#: model_terms:res.partner,website_description:base.res_partner_2
+#: model_terms:res.partner,website_description:base.res_partner_4
+msgid ""
+"Acme Corporation designs, develops, integrates and supports HR and Supply\n"
+"                Chain processes in order to make our customers more "
+"productive,\n"
+"                responsive and profitable."
+msgstr ""
+"Acme Corporation, müşterilerimizi daha verimli, hızlı tepki veren ve kârlı "
+"kılmak için\n"
+"                İK ve Tedarik Zinciri süreçleri tasarlar, geliştirir, "
+"entegre eder ve destekler."
+
+#. module: base
+#: model:res.partner,website_short_description:base.res_partner_2
+#: model:res.partner,website_short_description:base.res_partner_4
+msgid ""
+"Acme Corporation designs, develops, integrates and supports HR and Supply "
+"Chain processes in order to make our customers more productive, responsive "
+"and profitable."
+msgstr ""
+"Acme Corporation, müşterilerimizi daha verimli, hızlı tepki veren ve kârlı "
+"kılmak için İK ve Tedarik Zinciri süreçleri tasarlar, geliştirir, entegre "
+"eder ve destekler."
+
+#. module: base
+#: model_terms:res.partner,website_description:base.res_partner_2
+#: model_terms:res.partner,website_description:base.res_partner_4
+msgid ""
+"Acme Corporation integrates ERP for Global Companies and supports PME\n"
+"                with Open Sources software to manage their businesses. Our\n"
+"                consultants are experts in the following areas:"
+msgstr ""
+"Acme Corporation, küresel şirketler için ERP entegrasyonu yapar ve "
+"KOBİ'lerin\n"
+"                işlerini açık kaynak yazılımla yönetmelerine destek olur. "
+"Danışmanlarımız\n"
+"                şu alanlarda uzmandır:"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Add to the 'Print' menu"
+msgstr "'Yazdır' menüsüne ekle"
+
+#. module: base
+#: model:res.partner,website_short_description:base.res_partner_address_31
+msgid "Addison Olson is a mighty sales representative at Acme Corporation."
+msgstr "Addison Olson, Acme Corporation'da güçlü bir satış temsilcisidir."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_company__additional_identifiers
+#: model:ir.model.fields,field_description:base.field_res_partner__additional_identifiers
+#: model:ir.model.fields,field_description:base.field_res_users__additional_identifiers
+msgid "Additional Identifiers"
+msgstr "Ek Kimlik Numaraları"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__address
+#: model:ir.model.fields,field_description:base.field_res_users__address
+msgid "Address (without name)"
+msgstr "Adres (ad olmadan)"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__address_inline
+#: model:ir.model.fields,field_description:base.field_res_users__address_inline
+msgid "Address inline (without name)"
+msgstr "Tek satır adres (ad olmadan)"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_country_state__name
+msgid ""
+"Administrative divisions of a country. E.g. Fed. State, Department, Canton"
+msgstr "Bir ülkenin idari bölümleri. Ör. eyalet, il, kanton"
+
+#. module: base
+#: model_terms:res.company,invoice_terms_html:base.demo_company_id
+msgid ""
+"All our contractual relations will be governed exclusively by Indonesia law."
+msgstr "Tüm sözleşme ilişkilerimiz yalnızca Endonezya hukukuna tabidir."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_model_fields__allowed_index_types
+msgid "Allowed Index Types"
+msgstr "İzin Verilen Dizin Türleri"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid ""
+"An error occurred while evaluating the domain:\n"
+"%(error)s"
+msgstr ""
+"Etki alanı değerlendirilirken bir hata oluştu:\n"
+"%(error)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"Another model is using the record you are trying to delete.\n"
+"\n"
+"The troublemaker is: %(model_display)s\n"
+"Thanks to the following constraint: %(field_display)s\n"
+"How about archiving the record instead?"
+msgstr ""
+"Silmeye çalıştığınız kaydı başka bir model kullanıyor.\n"
+"\n"
+"Sorunun kaynağı: %(model_display)s\n"
+"İlgili kısıt: %(field_display)s\n"
+"Kaydı silmek yerine arşivlemeye ne dersiniz?"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.action_view_base_module_upgrade
+#: model:ir.ui.menu,name:base.menu_view_base_module_upgrade
+msgid "Apply Schedule Upgrades"
+msgstr "Planlanan Yükseltmeleri Uygula"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__attachment
+msgid "Attachment Name"
+msgstr "Ek Adı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Australian Company Number."
+msgstr "Avustralya Şirket Numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Austrian company ID number (UID)."
+msgstr "Avusturya şirket kimlik numarası (UID)."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_company__available_additional_identifiers_metadata
+#: model:ir.model.fields,field_description:base.field_res_partner__available_additional_identifiers_metadata
+#: model:ir.model.fields,field_description:base.field_res_users__available_additional_identifiers_metadata
+msgid "Available Additional Identifiers Metadata"
+msgstr "Kullanılabilir Ek Kimlik Üst Verileri"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_users_apikeys_description__available_scopes_count
+msgid "Available Scopes Count"
+msgstr "Kullanılabilir Kapsam Sayısı"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_model_fields__index__btree
+msgid "B-tree"
+msgstr "B-tree"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_model_fields__index__btree_not_null
+msgid "B-tree, excluding nulls"
+msgstr "B-tree, boş değerler hariç"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "BCE/KBO"
+msgstr "BCE/KBO"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner_bank__bank_bic
+msgid "BIC/SWIFT"
+msgstr "BIC/SWIFT"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0 model:res.country,vat_label:base.hk
+msgid "BRN"
+msgstr "BRN"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner_bank.py:0
+msgid "BSB is not valid (expected format is \"NNN-NNN\"). Please rectify."
+msgstr "BSB geçerli değil (beklenen biçim \"NNN-NNN\"). Lütfen düzeltin."
+
+#. module: base
+#: model:ir.model,name:base.model_res_partner_bank
+msgid "Bank Account"
+msgstr "Banka Hesabı"
+
+#. module: base
+#: model:ir.model,name:base.model_clearing_label
+msgid "Bank Account Clearing Number Label"
+msgstr "Banka Hesabı Takas Numarası Etiketi"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner_bank.py:0
+msgid "Bank Code length must be 3."
+msgstr "Banka kodu 3 karakter olmalıdır."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner_bank__bank_bic
+msgid ""
+"Bank Identifier Code for international wires in the format Bank Code (4 "
+"letters) + Country Code (2 letters) + Location Code (2 letters/numbers) + "
+"Optional Branch Code (3 letters/numbers)."
+msgstr ""
+"Uluslararası havaleler için Banka Tanımlayıcı Kodu. Biçim: banka kodu (4 "
+"harf) + ülke kodu (2 harf) + yer kodu (2 harf/rakam) + isteğe bağlı şube "
+"kodu (3 harf/rakam)."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_bank_form
+msgid "Bank Information"
+msgstr "Banka Bilgileri"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner_bank.py:0
+msgid "Bank SARIE ID must consist of 4 upper case English letter."
+msgstr "Banka SARIE kimliği 4 büyük İngilizce harften oluşmalıdır."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner_bank__account_type
+msgid ""
+"Bank account type: Normal, IBAN, CLABE, or other from localization. "
+"Inferred from the bank account number."
+msgstr ""
+"Banka hesabı türü: normal, IBAN, CLABE veya yerelleştirmeden gelen başka "
+"bir tür. Banka hesap numarasından çıkarılır."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_currency_form
+msgid "Base Currency"
+msgstr "Temel Para Birimi"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_currency_form
+msgid "Base/Unit"
+msgstr "Temel/Birim"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Belgian Crossroads Bank for Enterprises number."
+msgstr ""
+"Belçika Kurumlar Kavşak Bankası (Crossroads Bank for Enterprises) numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Belgian national identification number."
+msgstr "Belçika ulusal kimlik numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid ""
+"Blame the following accesses:\n"
+"%s"
+msgstr ""
+"Sorumlu erişimler:\n"
+"%s"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__bold
+msgid "Bold"
+msgstr "Kalın"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__boxed
+msgid "Boxed"
+msgstr "Çerçeveli"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Branch Code"
+msgstr "Şube Kodu"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Branch Number"
+msgstr "Şube Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Branch Number of your company, leave empty for headquarters."
+msgstr "Şirketinizin şube numarası; merkez için boş bırakın."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Brazilian company identification number. 14 digits."
+msgstr "Brezilya şirket kimlik numarası. 14 hane."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_device__browser_language
+#: model:ir.model.fields,field_description:base.field_res_session__browser_language
+msgid "Browser Language"
+msgstr "Tarayıcı Dili"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_device__browser_version
+#: model:ir.model.fields,field_description:base.field_res_session__browser_version
+msgid "Browser Version"
+msgstr "Tarayıcı Sürümü"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Brønnøysund nr"
+msgstr "Brønnøysund no"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__bubble
+msgid "Bubble"
+msgstr "Balon"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Business ID"
+msgstr "İşletme Kimliği"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Business ID (Y-tunnus)."
+msgstr "İşletme kimliği (Y-tunnus)."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Business Registration Number."
+msgstr "Ticaret Sicil Numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "CHE-123.456.788 TVA or CHE-123.456.788 MWST or CHE-123.456.788 IVA"
+msgstr "CHE-123.456.788 TVA veya CHE-123.456.788 MWST veya CHE-123.456.788 IVA"
+
+#. module: base
+#. odoo-python
+#: code:addons/bank_account_number.py:0
+msgid "CLABE should be a string of 18 digits."
+msgstr "CLABE 18 haneli bir sayı olmalıdır."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0 model:res.country,vat_label:base.br
+msgid "CNPJ"
+msgstr "CNPJ"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "CVR"
+msgstr "CVR"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "Cannot grab a lock on records"
+msgstr "Kayıtlar kilitlenemiyor"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_attachment.py:0
+msgid "Cannot search, too many attachments"
+msgstr "Arama yapılamıyor, çok fazla ek var"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "Cannot update a record without specifying its id or xml_id"
+msgstr "Kimliği veya xml_id'si belirtilmeden bir kayıt güncellenemez"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_ui_view__type__card
+msgid "Card"
+msgstr "Kart"
+
+#. module: base
+#: model_terms:res.company,invoice_terms_html:base.demo_company_id
+msgid ""
+"Certain countries apply withholding at source on the amount of invoices, in "
+"accordance with their internal legislation. Any withholding at source will "
+"be paid by the client to the tax authorities. Under no circumstances can ID "
+"Company become involved in costs related to a country's legislation. The "
+"amount of the invoice will therefore be due to ID Company in its entirety "
+"and does not include any costs relating to the legislation of the country "
+"in which the client is located."
+msgstr ""
+"Bazı ülkeler, iç mevzuatları gereği fatura tutarı üzerinden kaynakta "
+"kesinti uygular. Kaynakta yapılan her kesinti müşteri tarafından vergi "
+"idaresine ödenir. ID Company hiçbir koşulda bir ülkenin mevzuatından doğan "
+"masraflara katlanmaz. Bu nedenle fatura tutarının tamamı ID Company'ye "
+"ödenir; tutar, müşterinin bulunduğu ülkenin mevzuatından doğan hiçbir "
+"masrafı içermez."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Citizen Identification"
+msgstr "Vatandaşlık Kimliği"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner_bank__clearing_label_id
+msgid "Clearing Label"
+msgstr "Takas Etiketi"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__column
+msgid "Column"
+msgstr "Sütun"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Commercial Registration Number"
+msgstr "Ticaret Sicil Numarası"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__compact
+msgid "Compact"
+msgstr "Sıkışık"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_currency_rate__company_currency_id
+msgid "Company Currency"
+msgstr "Şirket Para Birimi"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "Company Employer"
+msgstr "İşveren Şirket"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Company identification number"
+msgstr "Şirket kimlik numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_qweb_fields.py:0
+msgid ""
+"Company used for the original currency (only used for t-out). By default "
+"use the user company"
+msgstr ""
+"Asıl para birimi için kullanılan şirket (yalnızca t-out için). Varsayılan: "
+"kullanıcının şirketi"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__contact_address_inline
+#: model:ir.model.fields,field_description:base.field_res_users__contact_address_inline
+msgid "Complete Address inline"
+msgstr "Tam Adres (tek satır)"
+
+#. module: base
+#: model:ir.model,name:base.model_ir_actions_todo
+msgid "Configuration Wizard"
+msgstr "Yapılandırma Sihirbazı"
+
+#. module: base
+#: model:res.company,free_order_label:base.demo_company_id
+#: model:res.company,free_order_label:base.main_company
+msgid "Confirm Order"
+msgstr "Siparişi Onayla"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Consumer Identification"
+msgstr "Tüketici Kimliği"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_relational.py:0
+msgid ""
+"Couldn't generate a company-dependent domain for field %s. The model "
+"doesn't have a 'company_id' or 'company_ids' field, and isn't "
+"company-dependent either."
+msgstr ""
+"%s alanı için şirkete bağlı bir etki alanı oluşturulamadı. Modelde "
+"'company_id' veya 'company_ids' alanı yok ve model şirkete bağlı da değil."
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__cd
+msgid "Create, Delete"
+msgstr "Oluşturma, Silme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__cr
+msgid "Create, Read"
+msgstr "Oluşturma, Okuma"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__crd
+msgid "Create, Read, Delete"
+msgstr "Oluşturma, Okuma, Silme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__cru
+msgid "Create, Read, Update"
+msgstr "Oluşturma, Okuma, Güncelleme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__crud
+msgid "Create, Read, Update, Delete"
+msgstr "Oluşturma, Okuma, Güncelleme, Silme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__cu
+msgid "Create, Update"
+msgstr "Oluşturma, Güncelleme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__cud
+msgid "Create, Update, Delete"
+msgstr "Oluşturma, Güncelleme, Silme"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Croatian company ID number."
+msgstr "Hırvatistan şirket kimlik numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_cron.py:0
+msgid ""
+"Cron job %(name)s (%(id)s) is failing and will be deactivated if you don't "
+"take action. More information can be found in the server logs around "
+"%(time)s."
+msgstr ""
+"%(name)s (%(id)s) zamanlanmış işi başarısız oluyor; bir işlem yapmazsanız "
+"devre dışı bırakılacak. Ayrıntılar %(time)s civarındaki sunucu "
+"günlüklerinde."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_device__is_current
+#: model:ir.model.fields,field_description:base.field_res_session__is_current
+msgid "Current"
+msgstr "Geçerli"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+#: model_terms:ir.ui.view,arch_db:base.view_model_form
+msgid "Customize"
+msgstr "Özelleştir"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Czech business identification number (IČO)."
+msgstr "Çekya işletme kimlik numarası (IČO)."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "DE123456788 or 12/345/67890"
+msgstr "DE123456788 veya 12/345/67890"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "DUNS"
+msgstr "DUNS"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Danish Central Business Register number."
+msgstr "Danimarka Merkezi İşletme Sicili numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Danish tax entity number (SE-nummer)."
+msgstr "Danimarka vergi birimi numarası (SE-nummer)."
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_services_databases
+msgid "Databases"
+msgstr "Veritabanları"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_qweb_fields.py:0
+msgid ""
+"Date used for the original currency (only used for t-out). by default use "
+"the current date."
+msgstr ""
+"Asıl para birimi için kullanılan tarih (yalnızca t-out için). Varsayılan: "
+"bugünün tarihi."
+
+#. module: base
+#: model:ir.model,name:base.model_ir_default
+msgid "Default Value"
+msgstr "Varsayılan Değer"
+
+#. module: base
+#: model:res.groups,name:base.default_user_group
+msgid "Default access for new light users"
+msgstr "Yeni sınırlı kullanıcılar için varsayılan erişim"
+
+#. module: base
+#: model:res.groups,name:base.default_user_regular_group
+msgid "Default access for new regular users"
+msgstr "Yeni normal kullanıcılar için varsayılan erişim"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Defined in the general settings"
+msgstr "Genel ayarlarda tanımlanır"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid ""
+"Defines the number of days the API keys will be alive for users in this "
+"group"
+msgstr ""
+"Bu gruptaki kullanıcıların API anahtarlarının kaç gün geçerli olacağını "
+"belirler"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+msgid ""
+"Deleting the public user is not allowed. Deleting this profile will "
+"compromise critical functionalities."
+msgstr ""
+"Genel (public) kullanıcı silinemez. Bu profili silmek kritik işlevleri "
+"bozar."
+
+#. module: base
+#: model:ir.model,name:base.model_res_device
+#: model:ir.model.fields,field_description:base.field_res_session__device_ids
+msgid "Device"
+msgstr "Cihaz"
+
+#. module: base
+#: model:res.partner,website_short_description:base.res_partner_address_3
+msgid "Douglas Fletcher is a mighty functional consultant at Acme Corporation"
+msgstr ""
+"Douglas Fletcher, Acme Corporation'da güçlü bir fonksiyonel danışmandır"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Dun & Bradstreet unique 9-digit business identifier."
+msgstr "Dun & Bradstreet'in 9 haneli benzersiz işletme kimliği."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+#: model_terms:ir.ui.view,arch_db:base.view_model_form
+msgid "Duplicate this access to customize it"
+msgstr "Özelleştirmek için bu erişimi çoğaltın"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Dutch Chamber of Commerce registration number."
+msgstr "Hollanda Ticaret Odası kayıt numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Dutch government Organisation Identification Number."
+msgstr "Hollanda devlet kurumu kimlik numarası."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_website__domain
+msgid "E.g. https://www.mydomain.com"
+msgstr "Ör. https://www.mydomain.com"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "EAN/GLN"
+msgstr "EAN/GLN"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Electronic address for French e-invoicing platforms (PDP/PPF)."
+msgstr "Fransız e-fatura platformları (PDP/PPF) için elektronik adres."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
+msgid ""
+"Enter a description of and purpose for the key. <strong>it will be the only "
+"way to identify the key once created</strong>"
+msgstr ""
+"Anahtarın açıklamasını ve amacını girin. <strong>Oluşturulduktan sonra "
+"anahtarı tanımanın tek yolu bu olacak</strong>"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Estonian business registry code."
+msgstr "Estonya ticaret sicil kodu."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid ""
+"Example: '219999830019' (format: 12 digits, all numbers, valid check digit)"
+msgstr ""
+"Örnek: '219999830019' (biçim: 12 hane, yalnız rakam, geçerli denetim hanesi)"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_currency_rate__rate
+msgid ""
+"Exchange rate expressed as reference-currency units per 1 unit of this "
+"currency"
+msgstr ""
+"Bu para biriminin 1 birimi karşılığında referans para birimi cinsinden kur"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_currency_rate__inverse_company_rate
+msgid "Exchange rate from the company currency to this currency"
+msgstr "Şirket para biriminden bu para birimine kur"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_binary.py:0
+msgid "Expected singleton: %(record)s"
+msgstr "Tek kayıt bekleniyordu: %(record)s"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_act_url__explanation
+#: model:ir.model.fields,field_description:base.field_ir_actions_act_window__explanation
+#: model:ir.model.fields,field_description:base.field_ir_actions_act_window_close__explanation
+#: model:ir.model.fields,field_description:base.field_ir_actions_actions__explanation
+#: model:ir.model.fields,field_description:base.field_ir_actions_client__explanation
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__explanation
+#: model:ir.model.fields,field_description:base.field_ir_actions_server__explanation
+#: model:ir.model.fields,field_description:base.field_ir_cron__explanation
+#: model:ir.model.fields,field_description:base.field_ir_model__explanation
+#: model_terms:ir.ui.view,arch_db:base.action_view
+#: model_terms:ir.ui.view,arch_db:base.view_client_action_form
+#: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+msgid "Explanation"
+msgstr "Açıklama"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_relational.py:0
+msgid "Failed to write field %s"
+msgstr "%s alanı yazılamadı"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid ""
+"Field \"%(field_name)s\" in related path \"%(related_field)s\" is not "
+"searchable. Non-searchable fields cannot be used in related fields."
+msgstr ""
+"\"%(related_field)s\" ilişkili yolundaki \"%(field_name)s\" alanı aranabilir "
+"değil. Aranamayan alanlar ilişkili alanlarda kullanılamaz."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_binary.py:0
+msgid ""
+"Field “%(field)s” is type “%(field_type)s” but it is only possible to "
+"stream Binary or Image fields."
+msgstr ""
+"“%(field)s” alanının türü “%(field_type)s”; yalnızca İkili (Binary) veya "
+"Görsel alanlar akış olarak gönderilebilir."
+
+#. module: base
+#: model:res.partner,website_short_description:base.res_partner_address_4
+msgid "Floyd Steward is a mighty analyst at Acme Corporation."
+msgstr "Floyd Steward, Acme Corporation'da güçlü bir analisttir."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_model_fields__relation_model_field
+msgid ""
+"For many2one_reference fields, the field that stores the technical name of "
+"the target model"
+msgstr ""
+"many2one_reference alanlarında hedef modelin teknik adını saklayan alan"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_model_fields__relation_field
+msgid ""
+"For one2many fields, the field on the target model that implements the "
+"opposite many2one relationship"
+msgstr ""
+"one2many alanlarında, hedef modelde karşı many2one ilişkisini kuran alan"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "France FRCTC Electronic Address"
+msgstr "Fransa FRCTC Elektronik Adresi"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "France Register of legal persons"
+msgstr "Fransa Tüzel Kişiler Sicili"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "French 14-digit establishment identification number (SIREN + NIC)."
+msgstr "Fransız 14 haneli işyeri kimlik numarası (SIREN + NIC)."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "French 9-digit business identification number."
+msgstr "Fransız 9 haneli işletme kimlik numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "French national identification number (NIR)."
+msgstr "Fransız ulusal kimlik numarası (NIR)."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_search_view
+msgid "Full"
+msgstr "Tam"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "GB123456782 or XI123456782"
+msgstr "GB123456782 veya XI123456782"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "GCC ID"
+msgstr "GCC Kimliği"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "GCC ID Number"
+msgstr "GCC Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "GEBA"
+msgstr "GEBA"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "GODE561231GR8"
+msgstr "GODE561231GR8"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__attachment_use
+msgid "Generate new file each time the report is printed"
+msgstr "Rapor her yazdırıldığında yeni dosya oluştur"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "German Commercial Register (Handelsregister) number."
+msgstr "Alman Ticaret Sicili (Handelsregister) numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "German Electronic Business Address."
+msgstr "Alman Elektronik İşletme Adresi."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Global Location Number, used to identify parties and locations."
+msgstr ""
+"Küresel Konum Numarası (GLN); tarafları ve yerleri tanımlamak için "
+"kullanılır."
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_properties.py:0
+msgid "Grouping by HTML properties is not supported."
+msgstr "HTML özelliklerine göre gruplama desteklenmiyor."
+
+#. module: base
+#: model_terms:ir.actions.act_window,help:base.action_res_groups
+msgid ""
+"Groups allow centralize and manage user access rights.<br>\n"
+"                    Define which models, menus and views the users can "
+"interact with,\n"
+"                    or enforce strict record-level security rules."
+msgstr ""
+"Gruplar, kullanıcı erişim yetkilerini tek yerden yönetmenizi sağlar.<br>\n"
+"                    Kullanıcıların hangi modeller, menüler ve görünümlerle "
+"çalışabileceğini belirleyin\n"
+"                    veya kayıt düzeyinde sıkı güvenlik kuralları uygulayın."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "HRB Nr"
+msgstr "HRB No"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "HU12345676 or 12345678-1-11 or 8071592153"
+msgstr "HU12345676 veya 12345678-1-11 veya 8071592153"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_company__has_vat
+#: model:ir.model.fields,field_description:base.field_res_partner__has_vat
+#: model:ir.model.fields,field_description:base.field_res_users__has_vat
+msgid "Has Tax ID"
+msgstr "Vergi Numarası Var"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner_bank__holder_name
+msgid "Holder Name"
+msgstr "Hesap Sahibi Adı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Hungarian Tax ID"
+msgstr "Macaristan Vergi Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Hungarian company ID number."
+msgstr "Macaristan şirket kimlik numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "ICE"
+msgstr "ICE"
+
+#. module: base
+#: model_terms:res.company,invoice_terms_html:base.demo_company_id
+msgid ""
+"ID Company undertakes to do its best to supply performant services in due "
+"time in accordance with the agreed timeframes. However, none of its "
+"obligations can be considered as being an obligation to achieve results. ID "
+"Company cannot under any circumstances, be required by the client to appear "
+"as a third party in the context of any claim for damages filed against the "
+"client by an end consumer."
+msgstr ""
+"ID Company, kararlaştırılan süreler içinde zamanında ve nitelikli hizmet "
+"sunmak için elinden geleni yapar. Ancak yükümlülüklerinin hiçbiri sonuç "
+"yükümlülüğü sayılamaz. Müşteri, son tüketicinin kendisine karşı açtığı bir "
+"tazminat davasında ID Company'nin üçüncü taraf olarak yer almasını hiçbir "
+"koşulda isteyemez."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "IIN"
+msgstr "IIN"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "IVA"
+msgstr "IVA"
+
+#. module: base
+#: model_terms:res.company,invoice_terms_html:base.demo_company_id
+msgid ""
+"If a payment is still outstanding more than sixty (60) days after the due "
+"payment date, ID Company reserves the right to call on the services of a "
+"debt recovery company. All legal expenses will be payable by the client."
+msgstr ""
+"Bir ödeme, vade tarihinden sonra altmış (60) günden fazla gecikirse ID "
+"Company bir alacak tahsil şirketinin hizmetlerine başvurma hakkını saklı "
+"tutar. Tüm yasal masraflar müşteriye aittir."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid ""
+"If you are trying to input a European number, this is the expected format: "
+msgstr "Avrupa numarası girmeye çalışıyorsanız beklenen biçim şudur: "
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_module_uninstall__impacted_application_count
+msgid "Impacted Application Count"
+msgstr "Etkilenen Uygulama Sayısı"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_module_uninstall__impacted_module_count
+msgid "Impacted Module Count"
+msgstr "Etkilenen Modül Sayısı"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_module_uninstall__impacted_application_ids
+msgid "Impacted applications"
+msgstr "Etkilenen uygulamalar"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_groups__implied_by_count
+msgid "Implied By Count"
+msgstr "Kapsayan Grup Sayısı"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_groups__implied_count
+msgid "Implied Count"
+msgstr "Kapsanan Grup Sayısı"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_search
+msgid "Implied Group"
+msgstr "Kapsanan Grup"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_search
+msgid "Implying Group"
+msgstr "Kapsayan Grup"
+
+#. module: base
+#: model_terms:res.company,invoice_terms_html:base.demo_company_id
+msgid ""
+"In order for it to be admissible, ID Company must be notified of any claim "
+"by means of a letter sent by recorded delivery to its registered office "
+"within 8 days of the delivery of the goods or the provision of the services."
+msgstr ""
+"Kabul edilebilmesi için her türlü itiraz, malların tesliminden veya "
+"hizmetlerin sunulmasından itibaren 8 gün içinde ID Company'nin kayıtlı "
+"merkezine iadeli taahhütlü mektupla bildirilmelidir."
+
+#. module: base
+#: model:res.groups,comment:base.group_everyone
+msgid "Includes all users. This makes group restrictions more convenient."
+msgstr "Tüm kullanıcıları kapsar. Bu, grup kısıtlamalarını kolaylaştırır."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid ""
+"Inconsistent values: model=%(model)s does not match model_id=%(model_id)s."
+msgstr ""
+"Tutarsız değerler: model=%(model)s, model_id=%(model_id)s ile eşleşmiyor."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_model_fields__index
+msgid "Index"
+msgstr "Dizin"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_groups__share
+msgid ""
+"Indicates that the group is used external data sharing prupose (e.g., "
+"portal access to specific records)"
+msgstr ""
+"Grubun dış veri paylaşımı amacıyla kullanıldığını gösterir (ör. belirli "
+"kayıtlara portal erişimi)"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_ui_view.py:0
+msgid ""
+"Inherited view cannot have '%(attr)s' defined on the record. Use '%(attr)s' "
+"attributes inside the view definition"
+msgstr ""
+"Devralınan görünümde '%(attr)s' kayıt üzerinde tanımlanamaz. '%(attr)s' "
+"özniteliklerini görünüm tanımının içinde kullanın"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid "Invalid domain %(domain)s: %(error)s"
+msgstr "Geçersiz etki alanı %(domain)s: %(error)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"Invalid identifier: %(identifier_value)s%(identifier_label)s.%(example)s"
+msgstr ""
+"Geçersiz kimlik numarası: "
+"%(identifier_value)s%(identifier_label)s.%(example)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+msgid "Invalid user group."
+msgstr "Geçersiz kullanıcı grubu."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_default.py:0
+msgid ""
+"Invalid value in Default Value field. Expected type '%(field_type)s' for "
+"'%(model_name)s.%(field_name)s'."
+msgstr ""
+"Varsayılan Değer alanında geçersiz değer. '%(model_name)s.%(field_name)s' "
+"için beklenen tür: '%(field_type)s'."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Iqama ID Number"
+msgstr "Iqama Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Iqama Number"
+msgstr "Iqama Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Ireland Personal Public Service Number."
+msgstr "İrlanda Kişisel Kamu Hizmeti Numarası."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_access__is_standard
+msgid "Is Standard"
+msgstr "Standart mı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "IČO"
+msgstr "IČO"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Japanese corporate number (Specified Subject to Tax)."
+msgstr "Japon kurumsal numarası (vergiye tabi)."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "KVK"
+msgstr "KVK"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid "Keep track of what this access right does and why it exists..."
+msgstr "Bu erişim yetkisinin ne yaptığını ve neden var olduğunu not edin..."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid "Keep track of what this groups does and why it exists..."
+msgstr "Bu grubun ne yaptığını ve neden var olduğunu not edin..."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Keep track of what this report action does and why it exists..."
+msgstr "Bu rapor eyleminin ne yaptığını ve neden var olduğunu not edin..."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_res_groups_privilege_form
+msgid "Keep track of what this scope does and why it exists..."
+msgstr "Bu kapsamın ne yaptığını ve neden var olduğunu not edin..."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_access__kind
+msgid "Kind"
+msgstr "Tür"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "LEI"
+msgstr "LEI"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_groups_privilege__placeholder
+msgid ""
+"Label displayed when the user does not belong of any group of that scope."
+msgstr "Kullanıcı o kapsamdaki hiçbir gruba ait değilse gösterilen etiket."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_currency__rate_date
+msgid "Last Rate Update"
+msgstr "Son Kur Güncellemesi"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__partner_latitude
+#: model:ir.model.fields,field_description:base.field_res_users__partner_latitude
+msgid "Latitude"
+msgstr "Enlem"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Latvian unified registration number."
+msgstr "Letonya birleşik kayıt numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Legal Entity Identifier"
+msgstr "Tüzel Kişi Tanımlayıcısı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Leitweg-ID"
+msgstr "Leitweg-ID"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__light
+msgid "Light"
+msgstr "Açık"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_users__role__group_user
+msgid "Light User"
+msgstr "Sınırlı Kullanıcı"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+msgid "Limit of %s API keys is reached for programmatic creation"
+msgstr "Programla oluşturma için %s API anahtarı sınırına ulaşıldı"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__linked_view_ids
+msgid "Linked View"
+msgstr "Bağlı Görünüm"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__linked_view_count
+msgid "Linked View Count"
+msgstr "Bağlı Görünüm Sayısı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Lithuanian legal entity code (JAK)."
+msgstr "Litvanya tüzel kişi kodu (JAK)."
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_point_of_sale_localizations
+#: model:ir.module.category,name:base.module_category_website_sale_localizations
+msgid "Localizations"
+msgstr "Yerelleştirmeler"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__partner_longitude
+#: model:ir.model.fields,field_description:base.field_res_users__partner_longitude
+msgid "Longitude"
+msgstr "Boylam"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Luxembourg business registry number."
+msgstr "Lüksemburg ticaret sicil numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "MHRSD License"
+msgstr "MHRSD Lisansı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "MHRSD License Number"
+msgstr "MHRSD Lisans Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "MISA License"
+msgstr "MISA Lisansı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "MISA License Number"
+msgstr "MISA Lisans Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "MOMRAH License"
+msgstr "MOMRAH Lisansı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "MOMRAH License Number"
+msgstr "MOMRAH Lisans Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Malaysian company registration number."
+msgstr "Malezya şirket sicil numarası."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid "Manage Scopes"
+msgstr "Kapsamları Yönet"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Mauritian Business Registration Number."
+msgstr "Mauritius İşletme Sicil Numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Mersis Number"
+msgstr "MERSİS Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/template_inheritance.py:0
+msgid "Missing 'expr' attribute in xpath specification"
+msgstr "xpath tanımında 'expr' özniteliği eksik"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "Missing required field %(field_display)s for model %(model_display)s"
+msgstr "%(model_display)s modeli için zorunlu %(field_display)s alanı eksik"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_module_uninstall__model_count
+msgid "Model Count"
+msgstr "Model Sayısı"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_module_uninstall__model_ids
+msgid "Models to be deleted"
+msgstr "Silinecek modeller"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"Moroccan joint business identifier (Identifiant Commun de l'Entreprise)."
+msgstr "Fas ortak işletme kimliği (Identifiant Commun de l'Entreprise)."
+
+#. module: base
+#: model:res.country,vat_label:base.ci
+msgid "NCC"
+msgstr "NCC"
+
+#. module: base
+#: model:res.country,vat_label:base.id
+msgid "NPWP/NIK"
+msgstr "NPWP/NIK"
+
+#. module: base
+#: model:res.country,vat_label:base.mz
+msgid "NUIT"
+msgstr "NUIT"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "NZBN"
+msgstr "NZBN"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "Name (company or person)"
+msgstr "Ad (şirket veya kişi)"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Name in the 'Print' menu..."
+msgstr "'Yazdır' menüsündeki ad..."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "National ID"
+msgstr "Ulusal Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "Need groupby or aggregates."
+msgstr "Gruplama (groupby) veya toplama (aggregates) gerekli."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "New Zealand Business Number."
+msgstr "Yeni Zelanda İşletme Numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_groups_privilege.py:0
+#: model:res.groups.privilege,placeholder:base.res_groups_privilege_contact
+#: model:res.groups.privilege,placeholder:base.res_groups_privilege_export
+msgid "No"
+msgstr "Yok"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_groups_privilege__placeholder
+msgid "No group label"
+msgstr "Grup yok etiketi"
+
+#. module: base
+#: model_terms:ir.actions.act_window,help:base.action_res_groups
+msgid "No groups found. Let's create one!"
+msgstr "Grup bulunamadı. Bir tane oluşturalım!"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_relational.py:0
+msgid "No inverse field \"%(inverse_field)s\" found for \"%(comodel)s\""
+msgstr "\"%(comodel)s\" için \"%(inverse_field)s\" ters alanı bulunamadı"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_binary.py:0
+msgid ""
+"No record found for xmlid=%(xmlid)s, res_model=%(res_model)s, id=%(res_id)s"
+msgstr ""
+"xmlid=%(xmlid)s, res_model=%(res_model)s, id=%(res_id)s için kayıt "
+"bulunamadı"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid "No scope"
+msgstr "Kapsam yok"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_sequence.py:0
+msgid "Non-ASCII characters in %s"
+msgstr "%s içinde ASCII dışı karakterler var"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Norwegian Register of Legal Entities (Brønnøysund Register Center)"
+msgstr "Norveç Tüzel Kişiler Sicili (Brønnøysund Sicil Merkezi)"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_actions_report.py:0
+msgid ""
+"Not enough workers to generate the PDF. Please try another engine or "
+"upgrade your setup."
+msgstr ""
+"PDF oluşturmak için yeterli işçi süreç yok. Lütfen başka bir motor deneyin "
+"veya kurulumunuzu yükseltin."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "Note: the expected format is %(expected_format)s"
+msgstr "Not: beklenen biçim %(expected_format)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid ""
+"Note: this might be a multi-company issue. Switching company may help - in "
+"Odoo, not in real life!"
+msgstr ""
+"Not: Bu bir çoklu şirket sorunu olabilir. Şirket değiştirmek işe "
+"yarayabilir - Odoo'da, gerçek hayatta değil!"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__font__noto_sans_mono
+msgid "Noto Sans Mono"
+msgstr "Noto Sans Mono"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "OB"
+msgstr "OB"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "OB-number cannot be computed from the VAT for sole proprietorships."
+msgstr "Şahıs işletmelerinde OB numarası KDV numarasından hesaplanamaz."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "OIN"
+msgstr "OIN"
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_supply_chain_obox
+msgid "Obox"
+msgstr "Obox"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__active
+msgid ""
+"Only active accesses are taken into account when checking access rights."
+msgstr ""
+"Erişim yetkileri denetlenirken yalnızca etkin erişimler dikkate alınır."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid "Only stored fields with a database column can be indexed."
+msgstr "Yalnızca veritabanı sütunu olan saklanan alanlar dizinlenebilir."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_access__operation
+msgid "Operation"
+msgstr "İşlem"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+#: model_terms:ir.ui.view,arch_db:base.ir_access_search_view
+msgid "Operations"
+msgstr "İşlemler"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Other ID"
+msgstr "Diğer Kimlik"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Other ID Number"
+msgstr "Diğer Kimlik Numarası"
+
+#. module: base
+#: model_terms:res.company,invoice_terms_html:base.demo_company_id
+msgid ""
+"Our invoices are payable within 21 working days, unless another payment "
+"timeframe is indicated on either the invoice or the order. In the event of "
+"non-payment by the due date, ID Company reserves the right to request a "
+"fixed interest payment amounting to 10% of the sum remaining due. ID "
+"Company will be authorized to suspend any provision of services without "
+"prior warning in the event of late payment."
+msgstr ""
+"Faturalarımız, faturada veya siparişte başka bir ödeme süresi "
+"belirtilmedikçe 21 iş günü içinde ödenir. Vade tarihine kadar ödeme "
+"yapılmazsa ID Company, kalan tutarın yüzde 10'u kadar sabit faiz talep etme "
+"hakkını saklı tutar. Gecikmeli ödemede ID Company, önceden haber "
+"vermeksizin hizmet sunumunu askıya alabilir."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "PPSN"
+msgstr "PPSN"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"Pakistani Computerized National Identity Card number (CNIC), 13 digits."
+msgstr "Pakistan bilgisayarlı ulusal kimlik kartı numarası (CNIC), 13 hane."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__paperformat_id
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_search_view
+msgid "Paper Size"
+msgstr "Kâğıt Boyutu"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "Parent Name is required at this point"
+msgstr "Bu aşamada üst kaydın adı gereklidir"
+
+#. module: base
+#: model:ir.model,name:base.model_res_partner_category
+msgid "Partner Tag"
+msgstr "İş Ortağı Etiketi"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Passport"
+msgstr "Pasaport"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Passport ID"
+msgstr "Pasaport Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Passport number."
+msgstr "Pasaport numarası."
+
+#. module: base
+#: model:res.company,pay_now_label:base.demo_company_id
+#: model:res.company,pay_now_label:base.main_company
+msgid "Pay now"
+msgstr "Şimdi öde"
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_accounting_payment_custom
+msgid "Payment Custom"
+msgstr "Özel Ödeme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__kind__permission
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid "Permission"
+msgstr "İzin"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Peruvian unique taxpayer registry number (RUC)."
+msgstr "Peru tekil vergi mükellefi sicil numarası (RUC)."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner_bank.py:0
+msgid ""
+"Please add your own bank account manually: %(account_number)s (%(partner)s)"
+msgstr ""
+"Lütfen kendi banka hesabınızı elle ekleyin: %(account_number)s (%(partner)s)"
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_point_of_sale
+msgid "Point of sale"
+msgstr "Satış noktası"
+
+#. module: base
+#: model:ir.model,name:base.model_ir_profile
+msgid "Profiling Result"
+msgstr "Profil Oluşturma Sonucu"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+msgid "Programmatic API keys are not enabled"
+msgstr "Programla API anahtarı oluşturma etkin değil"
+
+#. module: base
+#: model:ir.model,name:base.model_ir_cron_progress
+msgid "Progress of Scheduled Action"
+msgstr "Planlanmış İşlemin İlerlemesi"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_server__property_selection
+#: model:ir.model.fields,field_description:base.field_ir_cron__property_selection
+msgid "Property Selection"
+msgstr "Özellik Seçimi"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_server__update_property
+#: model:ir.model.fields,field_description:base.field_ir_cron__update_property
+msgid "Property to Update"
+msgstr "Güncellenecek Özellik"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_model_form
+msgid "Provide a verbose explanation of the model's purpose..."
+msgstr "Modelin amacını ayrıntılı açıklayın..."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_website__user_id
+msgid "Public User"
+msgstr "Genel Kullanıcı"
+
+#. module: base
+#: model:res.groups,comment:base.group_public
+msgid ""
+"Public users have specific access rights (such as record rules and "
+"restricted menus).\n"
+"                They usually do not belong to the usual Odoo groups.\n"
+"                This makes group restrictions more convenient."
+msgstr ""
+"Genel kullanıcıların kendine özgü erişim yetkileri vardır (kayıt kuralları "
+"ve kısıtlı menüler gibi).\n"
+"                Genellikle olağan Odoo gruplarına ait değildirler.\n"
+"                Bu, grup kısıtlamalarını kolaylaştırır."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_website__domain_punycode
+msgid "Punycode Domain"
+msgstr "Punycode Alan Adı"
+
+#. module: base
+#: model:ir.model,name:base.model_ir_qweb_field_one2many
+msgid "Qweb field one2many"
+msgstr "QWeb one2many alanı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "RC123456"
+msgstr "RC123456"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "RO1234567897 or 8001011234567 or 9000123456789"
+msgstr "RO1234567897 veya 8001011234567 veya 9000123456789"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_users_apikeys_description__scope__rpc
+msgid "RPC"
+msgstr "RPC"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__rd
+msgid "Read, Delete"
+msgstr "Okuma, Silme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__ru
+msgid "Read, Update"
+msgstr "Okuma, Güncelleme"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__rud
+msgid "Read, Update, Delete"
+msgstr "Okuma, Güncelleme, Silme"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_binary.py:0
+msgid "Record has no field “%s”"
+msgstr "Kayıtta “%s” alanı yok"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Registrikood"
+msgstr "Registrikood"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__child_ids
+#: model:ir.model.fields,field_description:base.field_res_users__child_ids
+msgid "Related Contacts"
+msgstr "İlgili Kişiler"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_model_fields__relation_model_field
+msgid "Relation Model Field"
+msgstr "İlişki Modeli Alanı"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Remove from the 'Print' menu"
+msgstr "'Yazdır' menüsünden kaldır"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.ir_action_report
+#: model:ir.ui.menu,name:base.menu_ir_action_report
+msgid "Report Actions"
+msgstr "Rapor Eylemleri"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_attachment__res_access_read
+msgid "Res Access Read"
+msgstr "Kaynak Kaydı Okuma Erişimi"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_attachment__res_access_write
+msgid "Res Access Write"
+msgstr "Kaynak Kaydı Yazma Erişimi"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__kind__restriction
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid "Restriction"
+msgstr "Kısıtlama"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid "Restriction globally applied"
+msgstr "Her yerde uygulanan kısıtlama"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.ir_access_form_view
+msgid ""
+"Restrictions are combined together with a logical AND operator.<br/>\n"
+"                            Permissions are combined together with a "
+"logical OR operator.<br/>\n"
+"                            If a user belongs to several groups, the "
+"permissions are combined with a logical OR operator."
+msgstr ""
+"Kısıtlamalar mantıksal VE (AND) işleciyle birleştirilir.<br/>\n"
+"                            İzinler mantıksal VEYA (OR) işleciyle "
+"birleştirilir.<br/>\n"
+"                            Kullanıcı birden çok gruba aitse izinler "
+"mantıksal VEYA işleciyle birleştirilir."
+
+#. module: base
+#: model:res.groups,name:base.group_everyone
+msgid "Role / Everyone"
+msgstr "Rol / Herkes"
+
+#. module: base
+#: model:res.groups,name:base.group_user
+msgid "Role / Light User"
+msgstr "Rol / Sınırlı Kullanıcı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Routing ID for invoicing German public authorities."
+msgstr "Alman kamu kurumlarına fatura kesmek için yönlendirme kimliği."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner_bank.py:0
+msgid "Routing Number should only contain numbers (maximum 9 digits)."
+msgstr "Yönlendirme numarası yalnızca rakamlardan oluşmalıdır (en çok 9 hane)."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "SE"
+msgstr "SE"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "SIREN"
+msgstr "SIREN"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "SIRET"
+msgstr "SIRET"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "SST"
+msgstr "SST"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia 700 Number"
+msgstr "Suudi Arabistan 700 Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia Commercial Registration Number"
+msgstr "Suudi Arabistan Ticaret Sicil Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia GCC ID Number"
+msgstr "Suudi Arabistan GCC Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia Iqama ID Number"
+msgstr "Suudi Arabistan Iqama Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia MHRSD License Number"
+msgstr "Suudi Arabistan MHRSD Lisans Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia MISA License Number"
+msgstr "Suudi Arabistan MISA Lisans Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia MOMRAH License Number"
+msgstr "Suudi Arabistan MOMRAH Lisans Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia National ID Number"
+msgstr "Suudi Arabistan Ulusal Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia Other ID Number"
+msgstr "Suudi Arabistan Diğer Kimlik Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia Passport ID Number"
+msgstr "Suudi Arabistan Pasaport Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Saudi Arabia Tax Identification Number"
+msgstr "Suudi Arabistan Vergi Kimlik Numarası"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__save_as_attachment
+msgid "Save As Attachment"
+msgstr "Ek Olarak Kaydet"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Save as attachment"
+msgstr "Ek olarak kaydet"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.action_res_groups_privilege
+#: model:ir.ui.menu,name:base.menu_action_res_groups_privilege
+msgid "Scopes"
+msgstr "Kapsamlar"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+msgid "Select Field:"
+msgstr "Alan Seçin:"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
+msgid "Select a scope"
+msgstr "Bir kapsam seçin"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_device__session_identifier
+#: model:ir.model.fields,field_description:base.field_res_session__session_identifier
+msgid "Session identifier"
+msgstr "Oturum kimliği"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Set a technical name to call the report in the code"
+msgstr "Raporu kodda çağırmak için teknik bir ad belirleyin"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Set the name of the file that will be saved on the computer"
+msgstr "Bilgisayara kaydedilecek dosyanın adını belirleyin"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_groups_form
+msgid "Sets in which scope this group appears on the users access rights page"
+msgstr ""
+"Bu grubun, kullanıcıların erişim yetkileri sayfasında hangi kapsamda "
+"görüneceğini belirler"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner_bank__show_clearing_number
+msgid "Show Clearing Number"
+msgstr "Takas Numarasını Göster"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Singapore Unique Entity Number."
+msgstr "Singapur Tekil Kuruluş Numarası."
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"Skipping a company check for model %(model_name)s. Its fields "
+"%(field_names)s are set as company-dependent, but the model doesn't have a "
+"`company_id` or `company_ids` field!"
+msgstr ""
+"%(model_name)s modeli için şirket denetimi atlanıyor. %(field_names)s "
+"alanları şirkete bağlı olarak ayarlanmış, ancak modelde `company_id` veya "
+"`company_ids` alanı yok!"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Slovak company identification number (IČO)."
+msgstr "Slovakya şirket kimlik numarası (IČO)."
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_textual.py:0
+msgid "Some of the languages are not active: %s"
+msgstr "Bazı diller etkin değil: %s"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_textual.py:0
+msgid "Some of the translations are False: %s"
+msgstr "Bazı çeviriler False: %s"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_config_parameter__value
+msgid ""
+"Stringified Python variable value. Supported types: str, bool, int, float. "
+"Blank means undefined."
+msgstr ""
+"Metne dönüştürülmüş Python değişken değeri. Desteklenen türler: str, bool, "
+"int, float. Boş bırakmak tanımsız demektir."
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__res_company__report_tables_id__striped
+msgid "Striped"
+msgstr "Çizgili"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
+msgid "Subject to VAT"
+msgstr "KDV'ye Tabi"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Swedish organization number (Organisationsnummer)."
+msgstr "İsveç kuruluş numarası (Organisationsnummer)."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Swiss company identification number (UIDB)."
+msgstr "İsviçre şirket kimlik numarası (UIDB)."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "TKU"
+msgstr "TKU"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_company__report_tables_id
+msgid "Table Design"
+msgstr "Tablo Tasarımı"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Tax Identification Number"
+msgstr "Vergi Kimlik Numarası"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_company__has_vat
+#: model:ir.model.fields,help:base.field_res_partner__has_vat
+#: model:ir.model.fields,help:base.field_res_users__has_vat
+msgid ""
+"Technical field indicating whether the Tax ID is not a placeholder.Returns "
+"False for placeholder values such as '/', 'NA', 'na', or an empty string."
+msgstr ""
+"Vergi numarasının yer tutucu olmadığını gösteren teknik alan. '/', 'NA', "
+"'na' gibi yer tutucu değerlerde veya boş metinde False döner."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "Template for Contacts"
+msgstr "Kişiler İçin Şablon"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_sequence.py:0
+msgid ""
+"The %(field)s %(value)s contains non-ASCII characters. Names generated by "
+"this sequence may be printed as Code128 barcodes in reports, which only "
+"support ASCII characters."
+msgstr ""
+"%(field)s %(value)s ASCII dışı karakterler içeriyor. Bu seriyle üretilen "
+"adlar raporlarda yalnız ASCII karakterleri destekleyen Code128 barkoduyla "
+"basılabilir."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid ""
+"The %(vat_label)s number [%(wrong_vat)s] does not seem to be valid. "
+"%(expected_note)s"
+msgstr ""
+"%(vat_label)s numarası [%(wrong_vat)s] geçerli görünmüyor. %(expected_note)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid ""
+"The %(vat_label)s number [%(wrong_vat)s] for %(record_label)s does not seem "
+"to be valid. %(expected_note)s"
+msgstr ""
+"%(record_label)s için %(vat_label)s numarası [%(wrong_vat)s] geçerli "
+"görünmüyor. %(expected_note)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid ""
+"The 5-digit branch code as registered with the Revenue Department. Leave "
+"empty for Head Office."
+msgstr "Gelir İdaresine kayıtlı 5 haneli şube kodu. Merkez için boş bırakın."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
+msgid ""
+"The API key will only be valid for the selected scope and can't be used for "
+"other scopes."
+msgstr ""
+"API anahtarı yalnızca seçilen kapsamda geçerlidir; başka kapsamlarda "
+"kullanılamaz."
+
+#. module: base
+#. odoo-python
+#: code:addons/bank_account_number.py:0
+msgid ""
+"The IBAN does not seem to be correct. You should have entered something "
+"like this %s\n"
+"Where B = National bank code, S = Branch code, C = Account No, k = Check "
+"digit"
+msgstr ""
+"IBAN doğru görünmüyor. Şuna benzer bir değer girmelisiniz: %s\n"
+"B = ulusal banka kodu, S = şube kodu, C = hesap no, k = denetim hanesi"
+
+#. module: base
+#. odoo-python
+#: code:addons/bank_account_number.py:0
+msgid "The IBAN is invalid, it should begin with the country code"
+msgstr "IBAN geçersiz; ülke koduyla başlamalıdır"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_textual.py:0
+msgid ""
+"The field value you're saving (%(model)s %(field)s)(%(record)s) includes "
+"content that is restricted for security reasons. It is possible that "
+"someone with higher privileges previously modified it, and you are "
+"therefore not able to modify it yourself while preserving the content."
+msgstr ""
+"Kaydettiğiniz alan değeri (%(model)s %(field)s)(%(record)s) güvenlik "
+"nedeniyle kısıtlanmış içerik barındırıyor. Daha yüksek yetkili biri onu "
+"daha önce değiştirmiş olabilir; bu yüzden içeriği koruyarak kendiniz "
+"değiştiremezsiniz."
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "The following languages are not activated: %(missing_names)s"
+msgstr "Şu diller etkinleştirilmemiş: %(missing_names)s"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_model_fields__index
+msgid ""
+"The kind of database index requested for this field. B-tree indexes support "
+"equality and range searches; excluding nulls makes the index smaller when "
+"most values are empty; trigram indexes speed up text pattern searches. "
+"Leaving this empty does not remove an index that already exists."
+msgstr ""
+"Bu alan için istenen veritabanı dizini türü. B-tree dizinler eşitlik ve "
+"aralık aramalarını destekler; değerlerin çoğu boşsa boş değerleri hariç "
+"tutmak dizini küçültür; trigram dizinler metin kalıbı aramalarını "
+"hızlandırır. Bunu boş bırakmak var olan bir dizini kaldırmaz."
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_textual.py:0
+msgid ""
+"The non translatable content of the written value are not consistent: %s"
+msgstr "Yazılan değerin çevrilemeyen içeriği tutarlı değil: %s"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__domain
+msgid "The operations will only be allowed for records in this domain"
+msgstr "İşlemlere yalnızca bu etki alanındaki kayıtlar için izin verilir"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_actions_report.py:0
+msgid "The pdf engine on this system is not working."
+msgstr "Bu sistemdeki PDF motoru çalışmıyor."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+msgid ""
+"The provided API key is invalid or does not belong to the current user."
+msgstr "Verilen API anahtarı geçersiz veya geçerli kullanıcıya ait değil."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+msgid "The provided API key is invalid."
+msgstr "Verilen API anahtarı geçersiz."
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"The record %(xml_id)s has the module prefix %(module_name)s. This is the "
+"part before the '.' in the external id. Because the prefix refers to an "
+"existing module, the record would be deleted when the module is upgraded. "
+"Use either no prefix and no dot or a prefix that isn't an existing module. "
+"For example, __import__, resulting in the external id "
+"__import__.%(record_id)s."
+msgstr ""
+"%(xml_id)s kaydı %(module_name)s modül önekini taşıyor. Önek, dış kimlikte "
+"'.' işaretinden önceki kısımdır. Önek var olan bir modülü gösterdiği için "
+"kayıt, modül yükseltildiğinde silinir. Ya önek ve nokta kullanmayın ya da "
+"var olan bir modülün adı olmayan bir önek kullanın. Örneğin __import__; dış "
+"kimlik __import__.%(record_id)s olur."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser, PDF means the report will be generated and downloaded by the user."
+msgstr ""
+"Oluşturulacak raporun türü; her türün kendi oluşturma yöntemi vardır. HTML, "
+"raporun doğrudan tarayıcınızda açılacağı; PDF, raporun oluşturulup "
+"kullanıcı tarafından indirileceği anlamına gelir."
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"The value for %(field_display)s already exists.\n"
+"\n"
+"Detail: %(detail)s\n"
+msgstr ""
+"%(field_display)s için bu değer zaten var.\n"
+"\n"
+"Ayrıntı: %(detail)s\n"
+
+#. module: base
+#. odoo-python
+#: code:addons/bank_account_number.py:0
+msgid "There is no IBAN code."
+msgstr "IBAN kodu yok."
+
+#. module: base
+#. odoo-python
+#: code:addons/bank_account_number.py:0
+msgid "This CLABE does not pass the checksum check, please verify it."
+msgstr "Bu CLABE denetim toplamı kontrolünden geçmiyor, lütfen doğrulayın."
+
+#. module: base
+#. odoo-python
+#: code:addons/bank_account_number.py:0
+msgid "This IBAN does not pass the validation check, please verify it."
+msgstr "Bu IBAN doğrulama kontrolünden geçmiyor, lütfen doğrulayın."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_groups.py:0
+msgid "This makes a group imply two disjoint groups."
+msgstr "Bu, bir grubun birbirini dışlayan iki grubu kapsamasına yol açar."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid ""
+"This seems to be a multi-company issue, but you do not have access to the "
+"proper company to access the record anyhow."
+msgstr ""
+"Bu bir çoklu şirket sorunu gibi görünüyor, ancak kayda erişmek için gereken "
+"şirkete zaten erişiminiz yok."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid ""
+"This seems to be a multi-company issue, you might be able to access the "
+"record by switching to the company: %s."
+msgstr ""
+"Bu bir çoklu şirket sorunu gibi görünüyor; şu şirkete geçerek kayda "
+"erişebilirsiniz: %s."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid "This will remove:"
+msgstr "Şunlar kaldırılacak:"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "To avoid a mess, no company crossover is allowed!"
+msgstr "Karışıklığı önlemek için şirketler arası çaprazlamaya izin verilmez!"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "To explicitly indicate no (valid) VAT, use '/', 'na' or 'NA' instead. "
+msgstr ""
+"Geçerli bir KDV numarası olmadığını açıkça belirtmek için '/', 'na' veya "
+"'NA' kullanın. "
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "Trade Registry Number"
+msgstr "Ticaret Sicil Numarası"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid "Translated fields only support trigram indexes."
+msgstr "Çevrilebilir alanlar yalnızca trigram dizinlerini destekler."
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+msgid ""
+"Translations %(translations)s for field %(field)s has None value for "
+"language '%(language)s'"
+msgstr ""
+"%(field)s alanının %(translations)s çevirilerinde '%(language)s' dili için "
+"değer None"
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+msgid ""
+"Translations %(translations)s for field %(field)s has invalid language "
+"'%(language)s'"
+msgstr ""
+"%(field)s alanının %(translations)s çevirilerinde geçersiz dil var: "
+"'%(language)s'"
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+msgid ""
+"Translations %(translations)s for field %(field)s has technical language "
+"%(technical_language)s but not corresponding language '%(language)s'"
+msgstr ""
+"%(field)s alanının %(translations)s çevirilerinde %(technical_language)s "
+"teknik dili var, ancak karşılığı olan '%(language)s' dili yok"
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+msgid ""
+"Translations %(translations)s for field %(field)s have different structures"
+msgstr "%(field)s alanının %(translations)s çevirilerinin yapıları farklı"
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+msgid "Translations %(translations)s for field %(field)s must have 'en_US'"
+msgstr "%(field)s alanının %(translations)s çevirilerinde 'en_US' bulunmalıdır"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"Translations for model translated fields only accept falsy values and str"
+msgstr ""
+"Model çevirili alanlarının çevirileri yalnızca boş (falsy) değerleri ve str "
+"kabul eder"
+
+#. module: base
+#: model:ir.model,name:base.model_ir_cron_trigger
+msgid "Triggered Action"
+msgstr "Tetiklenen İşlem"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_model_fields__index__trigram
+msgid "Trigram"
+msgstr "Trigram"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid ""
+"Trigram indexes are only supported on stored Char, Text, and HTML fields."
+msgstr ""
+"Trigram dizinleri yalnızca saklanan Char, Text ve HTML alanlarında "
+"desteklenir."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_model.py:0
+msgid "Trigram indexes require the PostgreSQL pg_trgm extension."
+msgstr "Trigram dizinleri PostgreSQL pg_trgm uzantısını gerektirir."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_bank_form
+msgid "Trust bank account"
+msgstr "Banka hesabını güvenilir yap"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "UEN"
+msgstr "UEN"
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "UIDB"
+msgstr "UIDB"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_attachment.py:0
+msgid "URL attachment (%s) shouldn't be migrated to local."
+msgstr "URL eki (%s) yerele taşınmamalı."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid ""
+"Uh-oh! Looks like you have stumbled upon some top-secret records.\n"
+"\n"
+"Sorry, %(user)s doesn't have '%(operation)s' access to:"
+msgstr ""
+"Eyvah! Görünüşe göre çok gizli kayıtlara denk geldiniz.\n"
+"\n"
+"Üzgünüz, %(user)s kullanıcısının şu kayıtlar için '%(operation)s' erişimi "
+"yok:"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "Uh-oh! You’ve got some company inconsistencies here:"
+msgstr "Eyvah! Burada bazı şirket tutarsızlıkları var:"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"Unable to delete %(record)s because it is used as the default value of "
+"%(field)s"
+msgstr ""
+"%(record)s silinemiyor, çünkü %(field)s alanının varsayılan değeri olarak "
+"kullanılıyor"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_actions_report.py:0
+msgid ""
+"Unable to find the pdf engine on this system. The PDF can not be created."
+msgstr "Bu sistemde PDF motoru bulunamadı. PDF oluşturulamıyor."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid "Uninstallation"
+msgstr "Kaldırma"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
+msgid ""
+"Uninstalling modules can be risky. We recommend to try it on a testing "
+"environment first."
+msgstr ""
+"Modül kaldırmak riskli olabilir. Önce bir test ortamında denemenizi "
+"öneririz."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_currency_form
+msgid "Unit/Base"
+msgstr "Birim/Temel"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "Unknown error during import: %(error_type)s: %(error_message)s"
+msgstr ""
+"İçe aktarma sırasında bilinmeyen hata: %(error_type)s: %(error_message)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/domains.py:0
+msgid "Unsupported operator on %(field_label)s %(model_label)s in %(domain)s"
+msgstr ""
+"%(domain)s içinde %(model_label)s %(field_label)s için desteklenmeyen işleç"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_access__operation__ud
+msgid "Update, Delete"
+msgstr "Güncelleme, Silme"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_properties.py:0
+msgid ""
+"Updating records with different property fields definitions is not "
+"supported. Update by separate definition instead."
+msgstr ""
+"Farklı özellik alanı tanımlarına sahip kayıtları birlikte güncellemek "
+"desteklenmiyor. Her tanım için ayrı güncelleyin."
+
+#. module: base
+#: model:ir.model,name:base.model_res_users_apikeys
+msgid "User API Key"
+msgstr "Kullanıcı API Anahtarı"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_device__user_agent
+#: model:ir.model.fields,field_description:base.field_res_device_log__user_agent
+#: model:ir.model.fields,field_description:base.field_res_session__user_agent
+msgid "User Agent"
+msgstr "Kullanıcı Aracısı (User Agent)"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.action_user_session
+#: model:ir.ui.menu,name:base.menu_action_user_session
+msgid "User Sessions"
+msgstr "Kullanıcı Oturumları"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_users__session_ids
+msgid "User sessions"
+msgstr "Kullanıcı oturumları"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_groups__implied_by_ids
+msgid "Users in implying groups are implicitly part of the current group"
+msgstr "Kapsayan gruplardaki kullanıcılar örtük olarak bu grubun da üyesidir"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_groups__implied_ids
+msgid "Users in the current group are implicitly part of the implied groups"
+msgstr "Bu gruptaki kullanıcılar örtük olarak kapsanan grupların da üyesidir"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_groups__disjoint_ids
+msgid ""
+"Users in the current group cannot be added in disjoint groups. For example, "
+"a user cannot be in the \"Internal\" and \"Portal\" groups at the same time."
+msgstr ""
+"Bu gruptaki kullanıcılar birbirini dışlayan gruplara eklenemez. Örneğin bir "
+"kullanıcı aynı anda hem \"Dahili\" hem \"Portal\" grubunda olamaz."
+
+#. module: base
+#. odoo-python
+#: code:addons/partner_identifiers.py:0
+msgid "VAT Registry (VAT ID)"
+msgstr "KDV Sicili (KDV Numarası)"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_currency_rate__company_rate
+msgid "Value of 1 unit of this currency in the company currency"
+msgstr "Bu para biriminin 1 biriminin şirket para birimindeki değeri"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_model__explanation
+msgid "Verbose description of what is this model for"
+msgstr "Bu modelin ne için olduğunun ayrıntılı açıklaması"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_actions_act_url__explanation
+#: model:ir.model.fields,help:base.field_ir_actions_act_window__explanation
+#: model:ir.model.fields,help:base.field_ir_actions_act_window_close__explanation
+#: model:ir.model.fields,help:base.field_ir_actions_actions__explanation
+#: model:ir.model.fields,help:base.field_ir_actions_client__explanation
+#: model:ir.model.fields,help:base.field_ir_actions_report__explanation
+#: model:ir.model.fields,help:base.field_ir_actions_server__explanation
+#: model:ir.model.fields,help:base.field_ir_cron__explanation
+msgid "Verbose description of what this action actually does"
+msgstr "Bu eylemin ne yaptığının ayrıntılı açıklaması"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_ui_view__technical_usage
+msgid "View's Technical Usage"
+msgstr "Görünümün Teknik Kullanımı"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Visible to all groups"
+msgstr "Tüm gruplara görünür"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Visible to all records"
+msgstr "Tüm kayıtlara görünür"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_website__domain
+msgid "Website Domain"
+msgstr "Web Sitesi Alan Adı"
+
+#. module: base
+#: model:ir.model.constraint,message:base.constraint_website_domain_unique
+msgid "Website Domain should be unique."
+msgstr "Web sitesi alan adı benzersiz olmalıdır."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_website__name
+msgid "Website Name"
+msgstr "Web Sitesi Adı"
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_website_sale
+msgid "Website Sale"
+msgstr "Web Sitesi Satışı"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__is_standard
+msgid "Whether the access is defined by a module"
+msgstr "Erişimin bir modül tarafından tanımlanıp tanımlanmadığı"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_actions_report__save_as_attachment
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "Whether the report is saved as attachment when it is printed"
+msgstr "Rapor yazdırıldığında ek olarak kaydedilip kaydedilmediği"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__for_create
+msgid "Whether this access record applies for operation 'create'"
+msgstr ""
+"Bu erişim kaydının 'create' (oluşturma) işlemi için geçerli olup olmadığı"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__for_read
+msgid "Whether this access record applies for operation 'read'"
+msgstr "Bu erişim kaydının 'read' (okuma) işlemi için geçerli olup olmadığı"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__for_unlink
+msgid "Whether this access record applies for operation 'unlink'"
+msgstr "Bu erişim kaydının 'unlink' (silme) işlemi için geçerli olup olmadığı"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__for_write
+msgid "Whether this access record applies for operation 'write'"
+msgstr "Bu erişim kaydının 'write' (yazma) işlemi için geçerli olup olmadığı"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__kind
+msgid ""
+"Whether this record adds (permission) or restricts (restriction) access to "
+"the given model"
+msgstr ""
+"Bu kayıt, verilen modele erişim mi ekler (izin) yoksa erişimi mi kısıtlar "
+"(kısıtlama)"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_ir_access__operation
+msgid "Which operation(s) this access applies to, a subset of 'crud'."
+msgstr ""
+"Bu erişimin hangi işlem(ler)e uygulandığı; 'crud' harflerinin bir alt "
+"kümesi."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.report_irmodeloverview
+msgid "X"
+msgstr "X"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+#: code:addons/partner_identifiers.py:0
+msgid "XXXXXXXXX [9 digits] and it should respect the Luhn algorithm checksum"
+msgstr "XXXXXXXXX [9 hane]; Luhn algoritması denetim toplamına uymalıdır"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"You are creating a loop in your '%s' records. A record cannot be a child of "
+"itself or one of its own sub-items. Please select a different parent."
+msgstr ""
+"'%s' kayıtlarınızda bir döngü oluşturuyorsunuz. Bir kayıt kendisinin veya "
+"kendi alt öğelerinden birinin altında olamaz. Lütfen farklı bir üst kayıt "
+"seçin."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_company__vat
+#: model:ir.model.fields,help:base.field_res_partner__vat
+#: model:ir.model.fields,help:base.field_res_users__vat
+msgid "You can use '/' to indicate that the customer has no Tax ID."
+msgstr ""
+"Müşterinin vergi numarası olmadığını belirtmek için '/' kullanabilirsiniz."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_attachment.py:0
+msgid ""
+"You cannot attach an attachment to itself.\n"
+"Attachment %(record)s cannot have res_id: %(res_id)s"
+msgstr ""
+"Bir eki kendisine ekleyemezsiniz.\n"
+"%(record)s ekinin res_id değeri %(res_id)s olamaz"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"You cannot delete %(to_delete_record)s, as it is used by "
+"%(on_restrict_record)s"
+msgstr ""
+"%(to_delete_record)s silinemez, çünkü %(on_restrict_record)s tarafından "
+"kullanılıyor"
+
+#. module: base
+#. odoo-python
+#: code:addons/fields_properties.py:0
+msgid ""
+"You cannot use “%(property_name)s” because the linked “%(model_name)s” "
+"model doesn't exist or is invalid"
+msgstr ""
+"“%(property_name)s” kullanılamaz, çünkü bağlı “%(model_name)s” modeli yok "
+"veya geçersiz"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid ""
+"You do not have enough rights to access the field \"%(field)s\" on "
+"%(document_kind)s (%(document_model)s). Please contact your system "
+"administrator.\n"
+"\n"
+"Operation: %(operation)s"
+msgstr ""
+"%(document_kind)s (%(document_model)s) üzerindeki \"%(field)s\" alanına "
+"erişmek için yeterli yetkiniz yok. Lütfen sistem yöneticinize başvurun.\n"
+"\n"
+"İşlem: %(operation)s"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner_bank.py:0
+msgid "Zengin Branch Code must consist of 3 digits."
+msgstr "Zengin şube kodu 3 haneden oluşmalıdır."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "address"
+msgstr "adres"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid "create"
+msgstr "oluşturma"
+
+#. module: base
+#. odoo-python
+#: code:addons/models.py:0
+msgid "custom field access rules"
+msgstr "özel alan erişim kuralları"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid "delete"
+msgstr "silme"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "e.g. 'report ' + (object.name) + '.pdf'"
+msgstr "ör. 'rapor ' + (object.name) + '.pdf'"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_bank_form
+msgid "e.g. Bank of America"
+msgstr "ör. Örnek Bank A.Ş."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_simple_form
+msgid "e.g. Lumber Inc or Brandon Freeman"
+msgstr "ör. Kereste A.Ş. veya Brandon Freeman"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_model_form
+msgid "e.g. Sales Order"
+msgstr "ör. Satış Siparişi"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
+msgid "e.g. module_name.report_name"
+msgstr "ör. module_name.report_name"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "either 11 digits for CPF or 14 characters for CNPJ"
+msgstr "CPF için 11 hane veya CNPJ için 14 karakter"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_partner.py:0
+msgid "partner%s"
+msgstr "iş ortağı%s"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_actions_server__value_field_to_show__property_selection
+msgid "property_selection"
+msgstr "property_selection"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid "read"
+msgstr "okuma"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_access.py:0
+msgid "write"
+msgstr "yazma"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid "x"
+msgstr "x"
+
+#. module: base
+#: model:ir.model.fields.selection,name:base.selection__ir_actions_server__value_field_to_show__x2many
+msgid "x2many"
+msgstr "x2many"
