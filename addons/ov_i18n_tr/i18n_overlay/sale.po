@@ -1574,6 +1574,14 @@ msgid "Delivered (%)"
 msgstr "Teslim Edilen (%)"
 
 #. module: sale
+#. odoo-javascript
+#: code:addons/sale/static/src/js/combo_configurator_dialog/combo_configurator_dialog.xml:0
+#: code:addons/sale/static/src/js/product_configurator_dialog/product_configurator_dialog.xml:0
+#: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_company__display_product_images_on_so
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__display_product_images_on_so
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form

@@ -17,6 +17,12 @@ FIXTURES = Path(__file__).resolve().parent / 'overlay'
 PYTHON_SOURCE = '%(action_name)s is not a valid action on %(model_name)s'
 PYTHON_VALUE = '%(action_name)s, %(model_name)s için geçerli bir işlem değil (ov test)'
 
+# Upstream mistranslations of web terms that the overlay corrects: (modules, source, translation)
+CORRECTIONS = [
+    # upstream: 'Sil' (delete) on the button that only discards the changes
+    (('web', 'html_editor', 'spreadsheet'), 'Discard', 'Vazgeç'),
+]
+
 
 def forget_code_translations():
     code_translations.python_translations.clear()
@@ -158,3 +164,12 @@ class TestOverlayFiles(TransactionCase):
                         actual = {message['id']: message['string'] for message in messages}
                     for src, value in expected.items():
                         self.assertEqual(actual.get(src), value, f'{kind} term of {module}: {src!r}')
+
+    def test_corrections(self):
+        forget_code_translations()
+        for modules, src, value in CORRECTIONS:
+            for module in modules:
+                with self.subTest(module=module, src=src):
+                    messages = code_translations.get_web_translations(module, 'tr_TR')['messages']
+                    actual = {message['id']: message['string'] for message in messages}
+                    self.assertEqual(actual.get(src), value)

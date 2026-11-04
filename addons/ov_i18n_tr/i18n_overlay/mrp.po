@@ -430,6 +430,12 @@ msgstr ""
 "- Teorik süreye göre: maliyet tahmini süreye ve maliyetlere göre hesaplanır."
 
 #. module: mrp
+#: model_terms:ir.ui.view,arch_db:mrp.view_mrp_consumption_warning_form
+#: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_split_form
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
 msgid "Edit Serial Numbers"
 msgstr "Seri Numaralarını Düzenle"

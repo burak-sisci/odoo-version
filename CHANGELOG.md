@@ -7,6 +7,25 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `web` arayüz metinleri ve "Discard" düzeltmesi (T3.6, 5. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `web` 270 terim; arayüz metinleri tam (4.519/5.178). Paket kapsamı %87,74 → %88,65; eksik 3.619 → 3.350.
+  - Upstream düzeltmesi: "Discard" düğmesi "Sil" (silme) diye çevrilmişti, kaydı sileceği izlenimini veriyordu. 7 modülde "Vazgeç" oldu (`web`, `html_editor`, `spreadsheet`, `sale`, `mrp`, `stock`, `mail`); `mail`'deki "Discard editing" de "Düzenlemeden vazgeç".
+  - Fatura düzeni önizlemesindeki örnek ürün metinleri Türkçe; tutarlar, şirket adı ve adres örneği aynı kaldı.
+  - Emoji arama anahtar sözcüklerindeki tek harfler (kan grubu düğmeleri) ve Japonca karakterler olduğu gibi kopyalandı.
+  - `web` modül açıklamasında reStructuredText başlık çizgisi başlıktan bir karakter kısa yazılmıştı; denetim aracı yakaladı, düzeltildi.
+- Yeni test `TestOverlayFiles.test_corrections`: upstream düzeltmelerinin tablosu (`CORRECTIONS`) Odoo'nun okuduğu çevirilerle karşılaştırılıyor. Yerine "Sil" geri yazıldığında `web` alt testi düşüyor, düzeltmeyle geçiyor; `ov_i18n_tr` 12/12.
+- Ertelenen: `web`'in 659 simge arama etiketi (`web/icons.py`). Upstream'in simge araması İngilizce etiketlere de bakıyor (`html_editor/tools.py`, `search_icons`); çeviri yalnız Türkçe aramayı ekler.
+- CI kapsam eşiği `--min 87.6` → `88.5`.
+- Önceki commit'in (`471ad34`) CI'ı GitHub Actions kesintisi yüzünden kuyrukta bekliyor ("Incident with Actions and Pages", githubstatus.com).
+
+**Kararlar**
+- K24'e varsayım eklendi: simge arama etiketleri en sona; çevrildiklerinde her simgeye küçük harfli kısa bir Türkçe anahtar sözcük listesi yazılacak.
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme, düzeltme, sıradaki modüller, testler), USER_TASKS.md (K24), README.md, state.json (otonom mesai 6).
+
 ### Otonom mesai 5 — özet
 
 Mesai, kullanıcının isteğiyle T3.6 sürerken kapandı (2026-11-04). Elde olan `mail` partisi bitirilip kaydedildi.

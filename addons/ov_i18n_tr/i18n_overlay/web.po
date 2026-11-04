@@ -1,0 +1,1805 @@
+# Turkish translations of the web module completing upstream's (ov_i18n_tr, T3.6).
+# Read after web/i18n/tr.po. The comments come from web.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: web
+#: model:ir.module.module,description:base.module_web
+msgid ""
+"\n"
+"Odoo Web core module.\n"
+"========================\n"
+"\n"
+"This module provides the core of the Odoo Web Client.\n"
+msgstr ""
+"\n"
+"Odoo Web çekirdek modülü.\n"
+"=========================\n"
+"\n"
+"Bu modül Odoo Web İstemcisinin çekirdeğini sağlar.\n"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/debug_items.xml:0
+msgid "# Lines"
+msgstr "# Satır"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/model/relational_model/utils.js:0
+msgid "%s Records"
+msgstr "%s Kayıt"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/calendar/calendar_controller.js:0
+#: code:addons/web/static/src/views/calendar/calendar_schedule_section/calendar_schedule_section.js:0
+#: code:addons/web/static/src/views/calendar/calendar_side_panel/calendar_side_panel.js:0
+msgid "%s to schedule"
+msgstr "planlanacak %s"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid "<span class=\"text-nowrap\">$ 3,613.50</span>"
+msgstr "<span class=\"text-nowrap\">$ 3,613.50</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span class=\"text-nowrap\">$ <span "
+"class=\"oe_currency_value\">1,400.00</span></span>"
+msgstr ""
+"<span class=\"text-nowrap\">$ <span "
+"class=\"oe_currency_value\">1,400.00</span></span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span class=\"text-nowrap\">$ <span "
+"class=\"oe_currency_value\">240.00</span></span>"
+msgstr ""
+"<span class=\"text-nowrap\">$ <span "
+"class=\"oe_currency_value\">240.00</span></span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid "<span class=\"text-nowrap\">12.00</span>"
+msgstr "<span class=\"text-nowrap\">12.00</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid "<span class=\"text-nowrap\">70.00</span>"
+msgstr "<span class=\"text-nowrap\">70.00</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span class=\"w-100 o_force_ltr\" itemprop=\"streetAddress\">77 Santa Barbara\n"
+"                                Rd<br/>Pleasant Hill CA 94523<br/>United "
+"States</span>"
+msgstr ""
+"<span class=\"w-100 o_force_ltr\" itemprop=\"streetAddress\">77 Santa Barbara\n"
+"                                Rd<br/>Pleasant Hill CA 94523<br/>Amerika "
+"Birleşik Devletleri</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.config_speedscope_index
+msgid ""
+"<span id=\"temporal_warning\" class=\"alert alert-warning\" "
+"style=\"display:none\"><b>Warning:</b> Temporal mode will merge all "
+"samples.<br/>It can lead to partially invalid result in case of concurrent "
+"profiles.<br/>Use with caution </span>"
+msgstr ""
+"<span id=\"temporal_warning\" class=\"alert alert-warning\" "
+"style=\"display:none\"><b>Uyarı:</b> Zamansal mod tüm örnekleri "
+"birleştirir.<br/>Eşzamanlı profillerde kısmen geçersiz sonuca yol "
+"açabilir.<br/>Dikkatli kullanın </span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid "<span itemprop=\"name\">Acme Corporation</span>"
+msgstr "<span itemprop=\"name\">Acme Corporation</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span>\n"
+"                                        Chair floor protection<br/>\n"
+"                                        Office chairs can harm your floor: "
+"protect it\n"
+"                                    </span>"
+msgstr ""
+"<span>\n"
+"                                        Sandalye zemin koruyucusu<br/>\n"
+"                                        Ofis sandalyeleri zemine zarar "
+"verebilir: zemini koruyun\n"
+"                                    </span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span>\n"
+"                                        [FURN_7777] Office Chair<br/>\n"
+"                                        Comfortable yellow chair for daily "
+"work\n"
+"                                    </span>"
+msgstr ""
+"<span>\n"
+"                                        [FURN_7777] Ofis Sandalyesi<br/>\n"
+"                                        Günlük çalışma için rahat sarı "
+"sandalye\n"
+"                                    </span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span>\n"
+"                                        [FURN_8999] Three-Seat Sofa<br/>\n"
+"                                        Three Seater Sofa with Lounger in "
+"Steel Grey Colour\n"
+"                                    </span>"
+msgstr ""
+"<span>\n"
+"                                        [FURN_8999] Üçlü Kanepe<br/>\n"
+"                                        Çelik gri renkte, uzanma bölümlü "
+"üçlü kanepe\n"
+"                                    </span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid "<span>$ <span class=\"oe_currency_value\">24,090.00</span></span>"
+msgstr "<span>$ <span class=\"oe_currency_value\">24,090.00</span></span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid "<span>20.00</span>"
+msgstr "<span>20.00</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span>Invoice</span>\n"
+"                <span>INV/2023/00003</span>"
+msgstr ""
+"<span>Fatura</span>\n"
+"                <span>INV/2023/00003</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<span>[FURN_8220] Four Person Desk<br/>\n"
+"                                    Four person modern office "
+"workstation</span>"
+msgstr ""
+"<span>[FURN_8220] Dört Kişilik Masa<br/>\n"
+"                                    Dört kişilik modern ofis çalışma "
+"istasyonu</span>"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
+msgid ""
+"<strong class=\"text-nowrap\">\n"
+"                                                    $ <span "
+"class=\"oe_currency_value\">27,703.50</span>\n"
+"                                                </strong>"
+msgstr ""
+"<strong class=\"text-nowrap\">\n"
+"                                                    $ <span "
+"class=\"oe_currency_value\">27,703.50</span>\n"
+"                                                </strong>"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "A"
+msgstr "A"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/actions/action_plugin.js:0
+msgid ""
+"A popup window has been blocked. You may need to change your browser "
+"settings to allow popup windows for this page. You can also copy the link "
+"and paste it in a new tab."
+msgstr ""
+"Bir açılır pencere engellendi. Bu sayfada açılır pencerelere izin vermek "
+"için tarayıcı ayarlarınızı değiştirmeniz gerekebilir. Bağlantıyı kopyalayıp "
+"yeni bir sekmeye de yapıştırabilirsiniz."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/session/check_identity.xml:0
+msgid "Active"
+msgstr "Etkin"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_definition.js:0
+msgid "Add Property Field"
+msgstr "Özellik Alanı Ekle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "All apps"
+msgstr "Tüm uygulamalar"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/file_upload/file_upload_service.js:0
+msgid "An error occurred while uploading."
+msgstr "Yükleme sırasında bir hata oluştu."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/notification_alert_dialog/notification_alert_dialog.xml:0
+msgid "Animated illustration showing toggles for permissions"
+msgstr "İzin anahtarlarını gösteren hareketli çizim"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.js:0
+msgid "Apply changes"
+msgstr "Değişiklikleri uygula"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/translation/translation_model.js:0
+msgid "Apply to all languages"
+msgstr "Tüm dillere uygula"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Apps"
+msgstr "Uygulamalar"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Apps tested:"
+msgstr "Denenen uygulamalar:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Archived"
+msgstr "Arşivlendi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Are you sure that you want to discard the changes you made offline?"
+msgstr ""
+"Çevrim dışıyken yaptığınız değişikliklerden vazgeçmek istediğinize emin "
+"misiniz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "B"
+msgstr "B"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/debug_items.xml:0
+msgid "Billable"
+msgstr "Faturalanabilir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/utils/binary.js:0
+msgid "Bytes|kB|MB|GB|TB|PB|EB|ZB|YB"
+msgstr "Bayt|kB|MB|GB|TB|PB|EB|ZB|YB"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "C"
+msgstr "C"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar/offline_search_bar.xml:0
+msgid "Can't remove that search"
+msgstr "Bu arama kaldırılamıyor"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/kanban/kanban_record.js:0
+msgid "Card: no action for type: %(type)s"
+msgstr "Kart: %(type)s türü için işlem yok"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.xml:0
+msgid "Changes:"
+msgstr "Değişiklikler:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_picker.xml:0
+#: code:addons/web/static/src/search/search_bar/offline_search_bar.xml:0
+msgid "Clear search"
+msgstr "Aramayı temizle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/notification_alert_dialog/notification_alert_dialog.js:0
+msgid "Click the %(icon)s page info icon in your browser's address bar."
+msgstr ""
+"Tarayıcınızın adres çubuğundaki %(icon)s sayfa bilgisi simgesine tıklayın."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.xml:0
+msgid "Click to check connection and Sync"
+msgstr "Bağlantıyı denetleyip eşitlemek için tıklayın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/list/list_renderer.xml:0
+msgid "Click to collapse all groups"
+msgstr "Tüm grupları daraltmak için tıklayın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/list/list_renderer.xml:0
+msgid "Click to edit the row"
+msgstr "Satırı düzenlemek için tıklayın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/list/list_renderer.xml:0
+msgid "Click to expand all groups"
+msgstr "Tüm grupları genişletmek için tıklayın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tags_list/tags_list.xml:0
+msgid "Click to show more"
+msgstr "Daha fazlasını göstermek için tıklayın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "ClickBot"
+msgstr "ClickBot"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "ClickBot ✓"
+msgstr "ClickBot ✓"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "ClickBot ✗"
+msgstr "ClickBot ✗"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags_color_dot/many2many_tags_color_dot_field.js:0
+msgid "Color dot tags"
+msgstr "Renk noktalı etiketler"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.check_identity
+msgid "Confirm access"
+msgstr "Erişimi onayla"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/debug/debug_menu_items.xml:0
+msgid "Copy Arch"
+msgstr "Yapıyı Kopyala"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/debug_items.js:0
+msgid "Count LoC"
+msgstr "Kod Satırlarını Say"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/debug_items.js:0
+msgid "Count lines of code (%s billable)"
+msgstr "Kod satırlarını say (%s faturalanabilir)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/select_create_dialog.xml:0
+msgid "Create New"
+msgstr "Yeni Oluştur"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Created"
+msgstr "Oluşturuldu"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.xml:0
+msgid "Custom Date..."
+msgstr "Özel Tarih..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/datetime/datetime_picker.xml:0
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "Date range"
+msgstr "Tarih aralığı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+msgid "Default Icon"
+msgstr "Varsayılan Simge"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags/many2many_tags_field.js:0
+msgid ""
+"Defines the behavior when a tag is clicked. 'Edit color' requires a color "
+"field"
+msgstr ""
+"Bir etikete tıklanınca ne olacağını belirler. 'Rengi düzenle' bir renk "
+"alanı gerektirir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Delete the template"
+msgstr "Şablonu sil"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Deleted"
+msgstr "Silindi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/switch_company_menu/switch_company_menu.js:0
+msgid "Deselect all"
+msgstr "Tüm seçimleri kaldır"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/phone/phone_field.js:0
+msgid "Dial Field"
+msgstr "Arama Alanı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/debug/debug_menu_items.js:0
+msgid "Disable RPC Cache"
+msgstr "RPC Önbelleğini Kapat"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.xml:0
+msgid "Disabled due to invalid configuration"
+msgstr "Geçersiz yapılandırma nedeniyle devre dışı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/confirmation_dialog/confirmation_dialog.js:0
+#: code:addons/web/static/src/core/domain_selector_dialog/domain_selector_dialog.js:0
+#: code:addons/web/static/src/core/errors/error_dialogs.xml:0
+#: code:addons/web/static/src/core/expression_editor_dialog/expression_editor_dialog.xml:0
+#: code:addons/web/static/src/core/signature/signature_dialog.xml:0
+#: code:addons/web/static/src/search/search_model.js:0
+#: code:addons/web/static/src/views/fields/dynamic_placeholder_popover.xml:0
+#: code:addons/web/static/src/views/fields/properties/property_definition.xml:0
+#: code:addons/web/static/src/views/fields/relational_utils.xml:0
+#: code:addons/web/static/src/views/fields/translation/translation_components.xml:0
+#: code:addons/web/static/src/views/form/form_controller.xml:0
+#: code:addons/web/static/src/views/kanban/kanban_cover_image_dialog.xml:0
+#: code:addons/web/static/src/views/list/list_confirmation_dialog.xml:0
+#: code:addons/web/static/src/views/list/list_controller.xml:0
+#: code:addons/web/static/src/views/view_button/view_button.js:0
+#: code:addons/web/static/src/views/view_components/multi_create_popover.xml:0
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+#: code:addons/web/static/src/webclient/settings_form_view/fields/upgrade_dialog.xml:0
+#: code:addons/web/static/src/webclient/settings_form_view/settings_confirmation_dialog.xml:0
+#: code:addons/web/static/src/webclient/switch_company_menu/switch_company_menu.xml:0
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Discard offline change"
+msgstr "Çevrim dışı değişiklikten vazgeç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.xml:0
+msgid "Discard offline changes"
+msgstr "Çevrim dışı değişikliklerden vazgeç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/phone/phone_field.js:0
+msgid "Display action buttons"
+msgstr "İşlem düğmelerini göster"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar/search_bar_toggler.xml:0
+msgid "Display search bar"
+msgstr "Arama çubuğunu göster"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+#: code:addons/web/static/src/views/fields/badges_selection/badges_selection_field.js:0
+msgid "Displays a dropdown if the badge count is higher than this value."
+msgstr "Rozet sayısı bu değerden büyükse açılır liste gösterir."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
+msgid "Displays a warning icon for dates in the future or in the past."
+msgstr "Gelecekteki veya geçmişteki tarihler için uyarı simgesi gösterir."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags_color_dot/many2many_tags_color_dot_field.js:0
+msgid "Dot color field"
+msgstr "Nokta rengi alanı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/calendar/calendar_side_panel/calendar_side_panel.xml:0
+msgid "Drop here to unschedule"
+msgstr "Planlamayı kaldırmak için buraya bırakın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/model/relational_model/dynamic_list.js:0
+msgid "Duplicate Records"
+msgstr "Kayıtları Çoğalt"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags/many2many_tags_field.js:0
+msgid "Edit color"
+msgstr "Rengi düzenle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Edit template name and/or fields"
+msgstr "Şablon adını ve/veya alanlarını düzenle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Edited"
+msgstr "Düzenlendi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/debug/debug_menu_items.js:0
+msgid "Enable RPC Cache"
+msgstr "RPC Önbelleğini Aç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/notification_alert_dialog/notification_alert_dialog.xml:0
+msgid "Enable notifications."
+msgstr "Bildirimleri etkinleştirin."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/offline/offline_plugin.js:0
+msgid "Error"
+msgstr "Hata"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Errors:"
+msgstr "Hatalar:"
+
+#. module: web
+#. odoo-python
+#: code:addons/web/controllers/export.py:0
+msgid "Excel Workbook (.xlsx)"
+msgstr "Excel Çalışma Kitabı (.xlsx)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+msgid "Fallback icon if co-model's field doesn't contain an icon"
+msgstr "İlişkili modelin alanında simge yoksa kullanılacak yedek simge"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/custom_favorite_item/custom_favorite_item.xml:0
+msgid "Filter name"
+msgstr "Filtre adı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Filters:"
+msgstr "Filtreler:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_picker.js:0
+msgid "Find the perfect emoji"
+msgstr "En uygun emojiyi bulun"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/list/list_confirmation_dialog.js:0
+msgid ""
+"For example, if the date is %(today)s and you enter \"+=2d\", \n"
+"            it will be updated to %(future)s."
+msgstr ""
+"Örneğin tarih %(today)s iken \"+=2d\" girerseniz \n"
+"            tarih %(future)s olarak güncellenir."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/session/check_identity.xml:0
+msgid "Forgot password?"
+msgstr "Parolanızı mı unuttunuz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Format"
+msgstr "Biçim"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/phone/phone_field.js:0
+msgid "Formatted Field"
+msgstr "Biçimlendirilmiş Alan"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
+msgid "Future date"
+msgstr "Gelecek tarih"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/graph/graph_controller.xml:0
+msgid "Graph actions"
+msgstr "Grafik işlemleri"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/model/relational_model/record.js:0
+msgid ""
+"Heads up! Your recent changes are too large to save automatically. Please "
+"click the %(uploadIcon)s button now to ensure your work is saved before you "
+"exit this tab."
+msgstr ""
+"Dikkat! Son değişiklikleriniz kendiliğinden kaydedilemeyecek kadar büyük. "
+"Bu sekmeden çıkmadan önce çalışmanızın kaydedilmesi için lütfen şimdi "
+"%(uploadIcon)s düğmesine tıklayın."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/model/relational_model/record.js:0
+msgid ""
+"Heads up! Your recent changes cannot be saved automatically while you are "
+"offline. Please click the %(uploadIcon)s button now to ensure your work is "
+"saved before you exit this tab."
+msgstr ""
+"Dikkat! Çevrim dışıyken son değişiklikleriniz kendiliğinden kaydedilemiyor. "
+"Bu sekmeden çıkmadan önce çalışmanızın kaydedilmesi için lütfen şimdi "
+"%(uploadIcon)s düğmesine tıklayın."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/switch_company_menu/switch_company_item.js:0
+msgid "Hide %s content."
+msgstr "%s içeriğini gizle."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/password/password_field.js:0
+msgid "Hide value"
+msgstr "Değeri gizle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/float_time/float_time_field.js:0
+msgid "Hours"
+msgstr "Saat"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.js:0
+msgid "How about archiving it instead?"
+msgstr "Bunun yerine arşivlemeye ne dersiniz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.js:0
+msgid "How about archiving them instead?"
+msgstr "Bunun yerine arşivlemeye ne dersiniz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/share_target/share_target_item.xml:0
+msgid "In Company"
+msgstr "Şirket"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "Last 365 days"
+msgstr "Son 365 gün"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Light"
+msgstr "Hafif"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.js:0
+msgid "Link copied to clipboard"
+msgstr "Bağlantı panoya kopyalandı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/calendar/calendar_schedule_section/calendar_schedule_section.xml:0
+msgid "Load More"
+msgstr "Daha Fazla Yükle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/loading_indicator/loading_indicator.xml:0
+msgid "Loading…"
+msgstr "Yükleniyor…"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Logger"
+msgstr "Günlük"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.login_successful
+msgid "Logout"
+msgstr "Oturumu Kapat"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "M"
+msgstr "M"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/gauge/gauge_field.js:0
+msgid "Max tooltip"
+msgstr "Azami değer ipucu"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+#: code:addons/web/static/src/views/fields/badges_selection/badges_selection_field.js:0
+msgid "Maximum Visible Badges"
+msgstr "Görünür Rozet Sayısı Üst Sınırı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags/many2many_tags_field.js:0
+msgid "Maximum Visible Tags"
+msgstr "Görünür Etiket Sayısı Üst Sınırı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags/many2many_tags_field.js:0
+msgid ""
+"Maximum number of tags to display before showing a counter. Set to 0 to "
+"always show all tags."
+msgstr ""
+"Sayaç gösterilmeden önce gösterilecek en çok etiket sayısı. Tüm etiketleri "
+"her zaman göstermek için 0 girin."
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.config_speedscope_index
+msgid "Memory (heuristic)"
+msgstr "Bellek (tahmini)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Menus"
+msgstr "Menüler"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Menus tested:"
+msgstr "Denenen menüler:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/float/float_field.js:0
+msgid "Minimum Digits"
+msgstr "En Az Basamak"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/float_time/float_time_field.js:0
+msgid "Minutes"
+msgstr "Dakika"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_processor.js:0
+msgid "Missing record"
+msgstr "Eksik kayıt"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/record_selectors/multi_record_selector.js:0
+#: code:addons/web/static/src/core/tree_editor/tree_editor_autocomplete.js:0
+msgid "Missing record (ID: %s)"
+msgstr "Eksik kayıt (Kimlik: %s)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/multi_drag.js:0
+msgid "Move %(count)s records"
+msgstr "%(count)s kaydı taşı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/debug_items.xml:0
+msgid "Name"
+msgstr "Ad"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+msgid "Name of the co-model's field that contains the icon class."
+msgstr "İlişkili modelde simge sınıfını tutan alanın adı."
+
+#. module: web
+#. odoo-python
+#: code:addons/web/models/models.py:0
+msgid "Need at least one item to groupby"
+msgstr "Gruplamak için en az bir öge gerekir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar/search_bar.xml:0
+msgid "Next period"
+msgstr "Sonraki dönem"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.js:0
+msgid "No changes to apply"
+msgstr "Uygulanacak değişiklik yok"
+
+#. module: web
+#. odoo-python
+#: code:addons/web/controllers/pivot.py:0
+msgid "No data to export"
+msgstr "Dışa aktarılacak veri yok"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_picker.xml:0
+msgid "No emojis match your search"
+msgstr "Aramanıza uyan emoji yok"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
+msgid "No warning"
+msgstr "Uyarı yok"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.js:0
+msgid "Non-deletable records"
+msgstr "Silinemeyen kayıtlar"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.js:0
+msgid ""
+"Not possible to delete all the records because some are used in "
+"%(model_name)s"
+msgstr ""
+"Bazıları %(model_name)s içinde kullanıldığı için kayıtların tümü silinemiyor"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.js:0
+msgid "Not possible to delete the record because it is used in %(model_name)s"
+msgstr "Kayıt %(model_name)s içinde kullanıldığı için silinemiyor"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/calendar/calendar_controller.js:0
+#: code:addons/web/static/src/views/calendar/calendar_schedule_section/calendar_schedule_section.js:0
+#: code:addons/web/static/src/views/calendar/calendar_side_panel/calendar_side_panel.js:0
+msgid "Nothing to schedule"
+msgstr "Planlanacak bir şey yok"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/float_time/float_time_field.js:0
+msgid "Numeric"
+msgstr "Sayısal"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "O"
+msgstr "O"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/offline/offline_plugin.js:0
+msgid "Offline features not available in a non-secure context"
+msgstr "Çevrim dışı özellikler güvenli olmayan bağlamda kullanılamaz"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.xml:0
+msgid "On"
+msgstr "Tarih:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags/many2many_tags_field.js:0
+msgid "On tag click"
+msgstr "Etikete tıklanınca"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.xml:0
+msgid "Oops"
+msgstr "Hay aksi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags/many2many_tags_field.js:0
+msgid "Open form"
+msgstr "Formu aç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags_color_dot/many2many_tags_color_dot_field.js:0
+msgid "Open form on tag click"
+msgstr "Etikete tıklanınca formu aç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_panel/search_panel.xml:0
+msgid "Open sidebar"
+msgstr "Kenar çubuğunu aç"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "P"
+msgstr "P"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.external_layout_footer_content
+msgid "Page 1 / 1"
+msgstr "Sayfa 1 / 1"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
+msgid "Past date"
+msgstr "Geçmiş tarih"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/notification_alert_dialog/notification_alert_dialog.xml:0
+msgid "Permissions Toggle"
+msgstr "İzin Anahtarı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/notification_alert_dialog/notification_alert_dialog.xml:0
+msgid "Permissions Toggle - Animated illustration"
+msgstr "İzin Anahtarı - Hareketli çizim"
+
+#. module: web
+#. odoo-python
+#: code:addons/web/controllers/export.py:0
+msgid "Plain Text (.csv)"
+msgstr "Düz Metin (.csv)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar/search_bar.xml:0
+msgid "Previous period"
+msgstr "Önceki dönem"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/properties_definition_field.js:0
+msgid "Properties Definition"
+msgstr "Özellik Tanımı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/properties_definition_field.js:0
+msgid "Property 1"
+msgstr "Özellik 1"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_selection.js:0
+msgid "Property Field Name"
+msgstr "Özellik Alanı Adı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_selection.js:0
+msgid "Property Model Name"
+msgstr "Özellik Modeli Adı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/widgets/notification_alert/notification_alert.xml:0
+msgid ""
+"Push notifications are blocked. Enable them in your browser settings to "
+"stay updated when you're away."
+msgstr ""
+"Anlık bildirimler engelli. Uzaktayken gelişmelerden haberdar olmak için "
+"tarayıcı ayarlarınızdan açın."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "R"
+msgstr "R"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/confirmation_dialog/confirmation_dialog.js:0
+msgid ""
+"Ready to make your record disappear into thin air? Are you sure? It will be "
+"gone forever!\n"
+"    \n"
+"Think twice before you click that 'Delete' button!"
+msgstr ""
+"Kaydınızı bir anda yok etmeye hazır mısınız? Emin misiniz? Kalıcı olarak "
+"silinecek!\n"
+"    \n"
+"'Sil' düğmesine basmadan önce iki kez düşünün!"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.xml:0
+msgid "Records:"
+msgstr "Kayıtlar:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+msgid "Related Icon Field"
+msgstr "İlişkili Simge Alanı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/field_tooltip.xml:0
+msgid "Related:"
+msgstr "İlişkili:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "Relative range"
+msgstr "Göreli aralık"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/kanban/kanban_cover_image_dialog.xml:0
+msgid "Remove Cover"
+msgstr "Kapak Resmini Kaldır"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/binary/binary_field.xml:0
+msgid "Replace current file"
+msgstr "Geçerli dosyanın yerine koy"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/offline_action_helper.xml:0
+msgid "Reset Filters"
+msgstr "Filtreleri Sıfırla"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/password/password_field.js:0
+msgid "Reveal value"
+msgstr "Değeri göster"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_loader.js:0
+msgid "Run ClickBot…"
+msgstr "ClickBot'u Çalıştır…"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/form/form_controller.js:0
+msgid "Save Properties"
+msgstr "Özellikleri Kaydet"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Save as export template"
+msgstr "Dışa aktarma şablonu olarak kaydet"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/custom_favorite_item/custom_favorite_item.xml:0
+msgid "Save search"
+msgstr "Aramayı kaydet"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/translation/translation_button.js:0
+msgid "Save this record and its parent to translate"
+msgstr "Çevirmek için bu kaydı ve üst kaydını kaydedin"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/reference/reference_field.js:0
+msgid "Search a record..."
+msgstr "Kayıt arayın..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Search fields"
+msgstr "Alanlarda ara"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/float_time/float_time_field.js:0
+msgid "Seconds"
+msgstr "Saniye"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/reference/reference_field.js:0
+msgid "Select a model..."
+msgstr "Bir model seçin..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Select a template..."
+msgstr "Bir şablon seçin..."
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.config_speedscope_index
+msgid "Separated (one per tab)"
+msgstr "Ayrı (her sekmede bir)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/priority/priority_field.js:0
+msgid "Set %(tooltipLabel)s: %(label)s"
+msgstr "%(tooltipLabel)s ayarla: %(label)s"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags_color_dot/many2many_tags_color_dot_field.js:0
+msgid "Set a char field that colors the dot on the tag."
+msgstr "Etiketteki noktayı renklendiren bir metin alanı belirleyin."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Set the template name..."
+msgstr "Şablon adını girin..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.js:0
+msgid "Share"
+msgstr "Paylaş"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/burger_menu/burger_menu.xml:0
+msgid "Share URL"
+msgstr "URL'yi Paylaş"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.js:0
+msgid "Share the current view"
+msgstr "Geçerli görünümü paylaş"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_model.js:0
+msgid "Shared filters couldn't be applied"
+msgstr "Paylaşılan filtreler uygulanamadı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/switch_company_menu/switch_company_item.js:0
+msgid "Show %s content."
+msgstr "%s içeriğini göster."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_definition.js:0
+msgid "Signature"
+msgstr "İmza"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/datetime/datetime_picker.xml:0
+msgid "Single date"
+msgstr "Tek tarih"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Start"
+msgstr "Başlat"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Stop"
+msgstr "Durdur"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/control_panel/control_panel.xml:0
+msgid "Switch view"
+msgstr "Görünümü değiştir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Sync issues"
+msgstr "Eşitleme sorunları"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Syncing"
+msgstr "Eşitleniyor"
+
+#. module: web
+#: model:ir.model.fields,field_description:web.field_base_document_layout__report_tables_id
+msgid "Table Design"
+msgstr "Tablo Tasarımı"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.view_base_document_layout
+msgid "Tables"
+msgstr "Tablolar"
+
+#. module: web
+#: model_terms:ir.ui.view,arch_db:web.config_speedscope_index
+msgid "Temporal (experimental)"
+msgstr "Zamansal (deneysel)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Testing:"
+msgstr "Deneniyor:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_arch_parser.js:0
+msgid ""
+"The autocomplete value for %(field)s has not been found: the record with id "
+"%(id)s doesn't seem to exist"
+msgstr ""
+"%(field)s için otomatik tamamlama değeri bulunamadı: %(id)s kimlikli kayıt "
+"yok gibi görünüyor"
+
+#. module: web
+#. odoo-python
+#: code:addons/web/models/models.py:0
+msgid "The operation cannot be completed: %s"
+msgstr "İşlem tamamlanamıyor: %s"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.js:0
+msgid "The request sent to the server was too large"
+msgstr "Sunucuya gönderilen istek çok büyüktü"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/offline_action_helper.xml:0
+msgid "There is no data to display offline for the given filters"
+msgstr "Verilen filtrelerle çevrim dışı gösterilecek veri yok"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/utils/dates.js:0
+msgid "This Month"
+msgstr "Bu Ay"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/utils/dates.js:0
+msgid "This Quarter"
+msgstr "Bu Çeyrek"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/utils/dates.js:0
+msgid "This Week"
+msgstr "Bu Hafta"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/utils/dates.js:0
+msgid "This Year"
+msgstr "Bu Yıl"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
+msgid "This date is in the past"
+msgstr "Bu tarih geçmişte"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/profiling/profiling_item.xml:0
+msgid "Time Limit (seconds)"
+msgstr "Süre Sınırı (saniye)"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Time:"
+msgstr "Süre:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/calendar/calendar_controller.xml:0
+msgid "Toggle Side Panel"
+msgstr "Yan Paneli Aç/Kapat"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/translation/translation_components.js:0
+msgid "Translate"
+msgstr "Çevir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/translation/translation_button.js:0
+msgid "Translate \"%s\""
+msgstr "\"%s\" metnini çevir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/translation/translation_components.xml:0
+msgid "Translate into"
+msgstr "Çevrilecek dil"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/session/check_identity.xml:0
+msgid "Trouble signing in?"
+msgstr "Giriş yapmakta sorun mu yaşıyorsunuz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/actions/reports/utils.js:0
+msgid ""
+"Unable to find the PDF engine on this system. The report will be shown in "
+"html."
+msgstr "Bu sistemde PDF motoru bulunamadı. Rapor HTML olarak gösterilecek."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Unarchived"
+msgstr "Arşivden çıkarıldı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/float_time/float_time_field.js:0
+msgid "Unit"
+msgstr "Birim"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/badges_many2one/badges_many2one_field.js:0
+#: code:addons/web/static/src/views/fields/badges_selection/badges_selection_field.js:0
+msgid "Unlimited"
+msgstr "Sınırsız"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
+msgid "Updatable fields only"
+msgstr "Yalnız güncellenebilir alanlar"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_definition.js:0
+msgid "Update Property Field"
+msgstr "Özellik Alanını Güncelle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/kanban/kanban_cover_image_dialog.xml:0
+msgid "Upload New"
+msgstr "Yeni Yükle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/list/list_confirmation_dialog.js:0
+msgid ""
+"Use the operators \"+=\", \"-=\" to update the current date by days (%(days)s), "
+"\n"
+"            weeks (%(weeks)s), months (%(months)s), years (%(years)s), "
+"hours (%(hours)s), \n"
+"            minutes (%(minutes)s) and seconds (%(seconds)s)."
+msgstr ""
+"Geçerli tarihi gün (%(days)s), hafta (%(weeks)s), ay (%(months)s), yıl "
+"(%(years)s), \n"
+"            saat (%(hours)s), dakika (%(minutes)s) ve saniye (%(seconds)s) "
+"olarak güncellemek için \n"
+"            \"+=\", \"-=\" işleçlerini kullanın."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/session/check_identity.xml:0
+msgid "Use your password"
+msgstr "Parolanızı kullanın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/debug_items.js:0
+msgid "User customization"
+msgstr "Kullanıcı özelleştirmesi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/session/check_identity.xml:0
+msgid "Verify your identity"
+msgstr "Kimliğinizi doğrulayın"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/errors/error_dialogs.xml:0
+msgid "View non-deletable records"
+msgstr "Silinemeyen kayıtları görüntüle"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "Views:"
+msgstr "Görünümler:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/notification_alert_dialog/notification_alert_dialog.xml:0
+msgid "Want to stay updated with notifications?"
+msgstr "Bildirimlerle gelişmelerden haberdar olmak ister misiniz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.js:0
+msgid "Warning: Link copied to clipboard might be too long for some browsers"
+msgstr ""
+"Uyarı: Panoya kopyalanan bağlantı bazı tarayıcılar için fazla uzun olabilir"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_model.js:0
+msgid "Warning: Not all shared filters applied"
+msgstr "Uyarı: Paylaşılan filtrelerin tümü uygulanmadı"
+
+#. module: web
+#: model:ir.module.module,shortdesc:base.module_web
+msgid "Web"
+msgstr "Web"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/l10n/dates.js:0
+msgid "Week %(week)s, %(startDate)s - %(endDate)s"
+msgstr "%(week)s. Hafta, %(startDate)s - %(endDate)s"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/offline_systray/offline_systray.js:0
+msgid "Working offline"
+msgstr "Çevrim dışı çalışılıyor"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/model/relational_model/dynamic_list.js:0
+msgid ""
+"You are about to create a copy of every selected record.\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Seçilen her kaydın bir kopyasını oluşturmak üzeresiniz.\n"
+"Devam etmek istediğinize emin misiniz?"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/start.js:0
+msgid ""
+"You are currently using a non-secure context. As a result, some Odoo "
+"features may be unavailable or function improperly. For more information, "
+"please visit: "
+"https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Secure_Contexts"
+msgstr ""
+"Şu anda güvenli olmayan bir bağlamda çalışıyorsunuz. Bu nedenle bazı Odoo "
+"özellikleri kullanılamayabilir veya düzgün çalışmayabilir. Ayrıntılı bilgi "
+"için: "
+"https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Secure_Contexts"
+
+#. module: web
+#: model:ir.model.fields,help:web.field_base_document_layout__vat
+msgid "You can use '/' to indicate that the customer has no Tax ID."
+msgstr ""
+"Müşterinin vergi numarası olmadığını belirtmek için '/' kullanabilirsiniz."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/search/search_bar_menu/search_bar_menu.js:0
+msgid ""
+"You can use the link below to share the current view with its filters: \n"
+"\n"
+" %(url)s"
+msgstr ""
+"Geçerli görünümü filtreleriyle paylaşmak için aşağıdaki bağlantıyı "
+"kullanabilirsiniz: \n"
+"\n"
+" %(url)s"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/actions/reports/utils.js:0
+msgid ""
+"You should upgrade your version of the PDF engine in order to get a correct "
+"render it."
+msgstr "Doğru görüntü almak için PDF motorunuzun sürümünü yükseltmelisiniz."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/actions/reports/utils.js:0
+msgid ""
+"Your installation of PDF engine seems to be broken, check with the "
+"administrator. The report will be shown in html."
+msgstr ""
+"PDF motoru kurulumunuz bozuk görünüyor, yöneticinize danışın. Rapor HTML "
+"olarak gösterilecek."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "day"
+msgstr "gün"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "i"
+msgstr "i"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "month"
+msgstr "ay"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "o"
+msgstr "o"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "offline"
+msgstr "çevrim dışı"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_components/multi_currency_popover.xml:0
+msgid "on"
+msgstr "tarih:"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "online"
+msgstr "çevrim içi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "r"
+msgstr "r"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/webclient/clickbot/clickbot_overlay.xml:0
+msgid "s"
+msgstr "sn"
+
+#. module: web
+#. odoo-python
+#: code:addons/web/models/models.py:0
+msgid "this record is used by %(model_name)s"
+msgstr "bu kayıt %(model_name)s tarafından kullanılıyor"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_tags_avatar/many2many_tags_avatar_field.xml:0
+msgid "this.props.placeholder"
+msgstr "this.props.placeholder"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "v"
+msgstr "v"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "week"
+msgstr "hafta"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/view_components/multi_currency_popover.xml:0
+msgid "without currency"
+msgstr "para birimi olmadan"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "x"
+msgstr "x"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/tree_editor/tree_editor_components.js:0
+msgid "year"
+msgstr "yıl"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/kanban/kanban_renderer.xml:0
+msgid "yet, let's create some!"
+msgstr "yok, birkaç tane oluşturalım!"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "サ"
+msgstr "サ"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "割"
+msgstr "割"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "可"
+msgstr "可"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "合"
+msgstr "合"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "営"
+msgstr "営"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "得"
+msgstr "得"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "指"
+msgstr "指"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "月"
+msgstr "月"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "有"
+msgstr "有"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "満"
+msgstr "満"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "無"
+msgstr "無"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "申"
+msgstr "申"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "祝"
+msgstr "祝"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "禁"
+msgstr "禁"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "秘"
+msgstr "秘"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
+msgid "空"
+msgstr "空"

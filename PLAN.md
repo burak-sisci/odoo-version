@@ -428,10 +428,12 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Kuralların testi `tools/tests/test_po_coverage.py` (8 test); pre-commit ve CI'da çalışır.
       - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95.
     - Başlangıç (2026-11-04): 83 modül, 29.518 terim, %81,11 çevrili, 5.576 eksik. %95 için yaklaşık 4.100 terim gerekiyor.
-    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105), `stock` 1.919/1.919 (288), `mrp` 1.167/1.167 (209), `mail` 2.519/2.519 (735). Paket %87,74, 3.619 eksik.
-      - Sırada (eksik): `web` 928 (formdaki "Discard" → "Sil" düzeltmesi dahil), `base` 490, `spreadsheet` 467, `product` 219, `calendar` 152, `html_editor` 152, `account_edi_ubl_cii` 116, `crm` 109.
+    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105), `stock` 1.919/1.919 (288), `mrp` 1.167/1.167 (209), `mail` 2.519/2.519 (735), `web` 4.519/5.178 (270; arayüz metinleri tam). Paket %88,65, 3.350 eksik.
+      - Upstream düzeltmesi: "Discard" düğmesi "Sil" (silme) diye çevrilmişti; 7 modülde "Vazgeç" (`web`, `html_editor`, `spreadsheet`, `sale`, `mrp`, `stock`, `mail`). Kalıcı test: `ov_i18n_tr` testlerindeki düzeltme tablosu (`CORRECTIONS`).
+      - `web`'de kalan 659 terim simge seçicinin arama etiketleri (`web/icons.py`), en sona bırakıldı. Yalnız simge aramasını etkiliyorlar; upstream'in araması İngilizce etiketlere de baktığı için İngilizce arama çalışıyor.
+      - Sırada (eksik): `base` 490, `spreadsheet` 467, `product` 219, `calendar` 152, `html_editor` 152, `account_edi_ubl_cii` 116, `crm` 109, `payment` 90, `sale_management` 79, `resource` 72.
       - Uzun e-posta şablonları etiketlerin arasındaki metin parçaları çevrilerek yazıldı; etiketler ve QWeb ifadeleri olduğu gibi kalır (denetim bunu doğrular).
-    - Testler: `ov_i18n_tr` 11 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması).
+    - Testler: `ov_i18n_tr` 12 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin tablosu).
     - Varsayımlar: `USER_TASKS.md` K24.
 - [ ] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.

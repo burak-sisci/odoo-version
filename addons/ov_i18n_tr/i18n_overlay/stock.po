@@ -618,6 +618,15 @@ msgid "Detailed Moves"
 msgstr "Ayrıntılı Hareketler"
 
 #. module: stock
+#. odoo-javascript
+#: code:addons/stock/static/src/widgets/lots_dialog.xml:0
+#: model_terms:ir.ui.view,arch_db:stock.stock_warn_insufficient_qty_scrap_form_view
+#: model_terms:ir.ui.view,arch_db:stock.view_stock_replenishment_info
+#: model_terms:ir.ui.view,arch_db:stock.view_zero_demand_confirmation
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: stock
 #: model:res.groups,name:stock.group_stock_picking_batch
 msgid "Enable Batch, Wave and Cluster Transfers"
 msgstr "Parti, Dalga ve Küme Transferlerini Etkinleştir"

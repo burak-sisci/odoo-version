@@ -28,11 +28,10 @@
   },
   "current_task": "T3.6",
   "session": {
-    "mode": "standart",
-    "number": 5,
+    "mode": "otonom",
+    "number": 6,
     "started": "2026-11-04",
-    "ended": "2026-11-04",
-    "note": "Otonom mesai 5 kullanıcının isteğiyle T3.6 sürerken kapandı (paket %87,74); özeti CHANGELOG.md. Bekleyen kullanıcı işleri USER_TASKS.md §1 (K24 yeni)."
+    "note": "Otonom mesai 6: T3.6'dan (sırada web) PLAN sırasıyla C görevleri."
   },
   "tasks_done": [
     "T0.1",
@@ -71,7 +70,7 @@
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K24 (USER_TASKS.md §1)",
-    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail tamam (%87,74); sırada web (Discard → Vazgeç düzeltmesi dahil), base, spreadsheet, product, calendar, html_editor; CI eşiği her partide yükseltilir)",
+    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail ve web arayüzü tamam, Discard → Vazgeç düzeltildi (%88,65); sırada base, spreadsheet, product, calendar, html_editor; web simge arama etiketleri (659) en sonda; CI eşiği her partide yükseltilir)",
     "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [

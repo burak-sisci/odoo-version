@@ -34,7 +34,7 @@ Odoo Community 20.0 (LGPL-3) üzerine kurulan, **kendi markamızla** ürün ve/v
 - `ov_l10n_tr` kimlik numaralarını Türkiye kurallarıyla ele alıyor: TCKN'li iş ortağı gerçek kişi, VKN'li iş ortağı şirket; VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS numarasında 16 hane denetleniyor (T3.3).
 - `ov_l10n_tr` adreslere 81 ilin 973 ilçesini ekledi (İçişleri Bakanlığı envanteri): ilçe seçilince il dolar, il seçiliyse liste o ille sınırlı; portal ve e-ticaret formunda da. İl zorunlu, posta kodu isteğe bağlı; adres "34710 Kadıköy/İstanbul" biçiminde (T3.4).
 - `ov_l10n_tr_tcmb` Merkez Bankası (TCMB) döviz kurlarını her iş günü kendiliğinden alıyor: kur türü seçilebiliyor (döviz/efektif, alış/satış), kaçırılan günler tamamlanıyor, geçmiş kurlar ayarlardan aktarılıyor (T3.5).
-- `ov_i18n_tr` upstream'in Türkçe çevirisindeki eksikleri tamamlıyor, hatalı çevirileri düzeltiyor; kapsam her commit'te ölçülüyor ve CI'da eşikle korunuyor. Paket modüllerinde %81'den %87,7'ye; muhasebe, satış, satın alma, stok, üretim ve mesajlaşma tam (T3.6, sürüyor).
+- `ov_i18n_tr` upstream'in Türkçe çevirisindeki eksikleri tamamlıyor, hatalı çevirileri düzeltiyor; kapsam her commit'te ölçülüyor ve CI'da eşikle korunuyor. Paket modüllerinde %81'den %88,7'ye; muhasebe, satış, satın alma, stok, üretim, mesajlaşma ve web istemcisinin arayüz metinleri tam. Formlardaki "Discard" düğmesi artık "Sil" değil "Vazgeç" (T3.6, sürüyor).
 - Açık karar yok.
 
 ## Belgeler
