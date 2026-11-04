@@ -27,6 +27,21 @@ CORRECTIONS = [
     (('spreadsheet',), 'Freeze', 'Dondur'),
     (('spreadsheet',), 'Match to end', 'Metin sonunu eşleşme say'),
     (('web',), 'club suit', 'sinek (iskambil)'),
+    # upstream: 'Kabul Et' (accept, a button) where the sentence lists the supported sources
+    (('html_editor',), 'Accepts', 'Desteklenenler:'),
+]
+
+# Upstream mistranslations of record terms (fields, views, selections): (module, source, translation)
+RECORD_CORRECTIONS = [
+    # upstream: 'Yanlızca Vergiden Muaf Satırlar' (only the tax exempt lines), the opposite
+    ('account', 'Only Tax Exigible Lines', 'Yalnızca Vergisi Doğmuş Satırlar'),
+    # upstream: 'Vergi Münhasırlığı' (tax exclusivity)
+    ('account', 'Tax Exigibility', 'Vergi Doğuşu'),
+    # default terms and conditions, upstream: '... münhasıran tarafından yönetilecektir <country> kanun.'
+    ('account', 'law.', 'hukukuna tabidir.'),
+    # upstream: an unrelated sentence (fill in the EAS code)
+    ('account_edi_ubl_cii', 'VATEX-EU-132 - Exempt based on article 132 of Council Directive 2006/112/EC',
+     "VATEX-EU-132 - 2006/112/EC sayılı AB Konsey Direktifi'nin 132. maddesi uyarınca muaf"),
 ]
 
 
@@ -179,3 +194,11 @@ class TestOverlayFiles(TransactionCase):
                     messages = code_translations.get_web_translations(module, 'tr_TR')['messages']
                     actual = {message['id']: message['string'] for message in messages}
                     self.assertEqual(actual.get(src), value)
+
+    def test_record_corrections(self):
+        for module, src, value in RECORD_CORRECTIONS:
+            path = str(tools.OVERLAY_DIR / f'{module}.po')
+            with self.subTest(module=module, src=src), file_open(path, 'rb') as fileobj:
+                rows = translation_file_reader(fileobj, fileformat='po')
+                actual = {row['src']: row['value'] for row in rows if row['type'] != 'code'}
+                self.assertEqual(actual.get(src), value)

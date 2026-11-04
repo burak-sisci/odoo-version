@@ -7,6 +7,27 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `html_editor` ve `account_edi_ubl_cii` çevirileri; satış koşulları ve vergi doğuşu düzeltmeleri (T3.6, 9. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `html_editor` 152 eksik terim (477/477), `account_edi_ubl_cii` 116 (355/355). Paket kapsamı %93,15 → %94,06; eksik 2.022 → 1.754.
+  - `html_editor`: araç çubuğu ve kısayollar, tablo menüsü, renk ve degrade seçici, video ve beyaz tahta yerleştirme, dinamik alanlar, sürüm geçmişi, çeviri penceresi. Sürüm geçmişinde kullanıcı adının ardından gelen parça (" adlı kullanıcının açıklaması —") boşlukla başlıyor: Owl, kaynak metnin çevresindeki boşluğu koruyup çeviriyi araya koyuyor (`owl.js` `translate()`).
+  - `account_edi_ubl_cii`: EN 16931 doğrulama iletileri (IBR kuralları), yönlendirme (Peppol) alanları, KDV muafiyet nedenleri (AB direktifi ve Fransa CGI maddeleri, upstream'in "… maddesi … bendi uyarınca muaf" biçimiyle). PDF/A-3 üst verisindeki uygunluk düzeyi "A" çevrilmedi (çevrilirse e-fatura PDF'i bozulur).
+- Upstream düzeltmeleri:
+  - `account` varsayılan satış koşulları (faturada ve genel koşullar sayfasında): makine çevirisi, şirket adıyla bölünmüş cümleler bozuktu ("… 10% of tutarında sabit faiz …", "borç kurtarma şirketi", "… isteilemez", "Tüm sözleşme ilişkilerimiz münhasıran tarafından yönetilecektir Türkiye kanun."). 16 parça yeniden yazıldı. Ölçüm: `ov_demo`'da şablon önce upstream çevirisiyle, sonra çevirimizle kurgusal şirketle ("Örnek Mobilya A.Ş.") basıldı, 17 cümle okundu (işlem geri alındı).
+  - `account` vergi doğuşu: "Only Tax Exigible Lines" → "Yanlızca Vergiden Muaf Satırlar" (ters anlam) yerine "Yalnızca Vergisi Doğmuş Satırlar"; "Tax Exigibility" → "Vergi Münhasırlığı" yerine "Vergi Doğuşu"; 4 terim.
+  - `account_edi_ubl_cii`: VATEX-EU-132 → ilgisiz cümle ("Lütfen EAS kodunu ve Katılımcı Kimlik kodunu doldurun."); VATEX-EU-148-G'de direktif numarası eksik, "mddesine".
+  - `html_editor`: "Accepts" → "Kabul Et" (desteklenen kaynakları sayan cümle) yerine "Desteklenenler:"; "videos" → "videoları".
+  - Tarama: bütün upstream `tr.po`'larda "exigib" ve "münhasır" arandı; "Panoya kopyalanan çapa" `html_builder`'de, paket dışında (dokunulmadı).
+- Testler: `ov_i18n_tr` 13 (yeni `test_record_corrections`: kayıt metinlerindeki düzeltmeler, 4 terim). Düzeltme tablosuna "Accepts" eklendi. Mutasyon denemeleri: "Accepts" yeniden "Kabul Et" ve "Only Tax Exigible Lines" yeniden upstream çevirisi yapılınca ilgili test düştü; dosyalar geri yüklendi.
+- `check` 14 dosya, 0 sorun. CI kapsam eşiği `--min 92.9` → `93.8`.
+
+**Kararlar**
+- K24'e metin düzenleyici, e-fatura ve vergi doğuşu terimleri eklendi.
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme, düzeltmeler, sıradaki modüller, testler), USER_TASKS.md (K24), README.md, state.json.
+
 ### Adım: `product` ve `calendar` çevirileri (T3.6, 8. adım) — otonom mesai 6
 
 **Kod**

@@ -581,9 +581,20 @@ msgid "Add..."
 msgstr "Ekle..."
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid "All our contractual relations will be governed exclusively by"
+msgstr "Tüm sözleşme ilişkilerimiz yalnızca"
+
+#. module: account
 #: model:ir.model.fields,help:account.field_account_secure_entries_wizard__unreconciled_bank_statement_line_ids
 msgid "All unreconciled bank transactions before the selected date."
 msgstr "Seçilen tarihten önceki tüm denkleştirilmemiş banka işlemleri."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__always_tax_exigible
+#: model:ir.model.fields,field_description:account.field_account_move__always_tax_exigible
+msgid "Always Tax Exigible"
+msgstr "Vergi Her Zaman Doğmuş"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_report_line__foldability__always_unfolded
@@ -796,6 +807,17 @@ msgstr "Nakit Akışı Analizi"
 #: model:ir.model.fields,field_description:account.field_product_product__catalog_is_in_selected_section
 msgid "Catalog Is In Selected Section"
 msgstr "Katalog Seçili Bölümde"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"Certain countries apply withholding at source on the amount of invoices, in "
+"accordance with their internal legislation. Any withholding at source will "
+"be paid by the client to the tax authorities. Under no circumstances can"
+msgstr ""
+"Bazı ülkeler, iç mevzuatları gereği fatura tutarları üzerinden kaynakta "
+"kesinti (stopaj) uygular. Kaynakta yapılan her türlü kesinti müşteri "
+"tarafından vergi dairesine ödenir."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__clearing_label_id
@@ -1317,6 +1339,13 @@ msgid "Holder Name"
 msgstr "Hesap Sahibinin Adı"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"If a payment is still outstanding more than sixty (60) days after the due "
+"payment date,"
+msgstr "Bir ödeme, vade tarihinden itibaren altmış (60) günden fazla gecikirse"
+
+#. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
 msgid ""
 "If you are not subject to VAT, you will have no sale taxes and only non "
@@ -1341,6 +1370,13 @@ msgstr "Yevmiyede"
 #: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__payment_tolerance_type__amount
 msgid "In amount"
 msgstr "Tutar olarak"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid "In order for it to be admissible,"
+msgstr ""
+"Geçerli sayılabilmesi için her türlü talep, malların tesliminden veya "
+"hizmetin sunulmasından itibaren 8 gün içinde"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__payment_tolerance_type__percentage
@@ -1672,6 +1708,11 @@ msgid "Only Accounting managers can create foreign taxes."
 msgstr "Yabancı vergileri yalnız muhasebe yöneticileri oluşturabilir."
 
 #. module: account
+#: model:ir.model.fields,field_description:account.field_account_report__only_tax_exigible
+msgid "Only Tax Exigible Lines"
+msgstr "Yalnızca Vergisi Doğmuş Satırlar"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line__statement_line_id
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_form
 msgid "Originator Bank Transaction"
@@ -1682,6 +1723,16 @@ msgstr "Kaynak Banka İşlemi"
 #: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.js:0
 msgid "Other Stock Variation"
 msgstr "Diğer Stok Değişimi"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"Our invoices are payable within 21 working days, unless another payment "
+"timeframe is indicated on either the invoice or the order. In the event of "
+"non-payment by the due date,"
+msgstr ""
+"Fatura veya siparişte başka bir ödeme süresi belirtilmedikçe faturalarımız "
+"21 iş günü içinde ödenir. Vade tarihine kadar ödeme yapılmazsa"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_payment_search
@@ -2242,6 +2293,11 @@ msgid "Tax Excl."
 msgstr "Vergi Hariç"
 
 #. module: account
+#: model:ir.model.fields,field_description:account.field_account_tax__tax_exigibility
+msgid "Tax Exigibility"
+msgstr "Vergi Doğuşu"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_fiscal_position__vat_required
 msgid "Tax ID required"
 msgstr "Vergi kimlik numarası gerekli"
@@ -2250,6 +2306,16 @@ msgstr "Vergi kimlik numarası gerekli"
 #: model:ir.model.fields.selection,name:account.selection__account_move__document_tax_mode__tax_included
 msgid "Tax Incl."
 msgstr "Vergi Dahil"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+msgid ""
+"Taxes exigible on payment and on invoice cannot be mixed on the same "
+"journal item if they share some tag."
+msgstr ""
+"Ödemede doğan ve faturada doğan vergiler, ortak bir etiketleri varsa aynı "
+"yevmiye kaleminde birlikte kullanılamaz."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_setup_bank_manual_config__phishing_warnings
@@ -2331,6 +2397,19 @@ msgid ""
 msgstr ""
 "\"%(name)s\" nakit yuvarlama yönteminde kâr/zarar hesapları tanımlı değil, bu "
 "yüzden yuvarlama satırı eklenemez."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"The client explicitly waives its own standard terms and conditions, even if "
+"these were drawn up after these standard terms and conditions of sale. In "
+"order to be valid, any derogation must be expressly agreed to in advance in "
+"writing."
+msgstr ""
+"Müşteri, bu standart satış koşullarından sonra düzenlenmiş olsalar bile "
+"kendi standart koşullarından açıkça feragat eder. Bu koşullardan herhangi "
+"bir sapmanın geçerli olması için önceden yazılı olarak açıkça kabul "
+"edilmesi gerekir."
 
 #. module: account
 #. odoo-python
@@ -2814,6 +2893,11 @@ msgid "You do not have access to the Accounting Dashboard."
 msgstr "Muhasebe Panosuna erişiminiz yok."
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid "You should update this document to reflect your T&amp;C."
+msgstr "Bu belgeyi kendi satış koşullarınıza göre güncellemelisiniz."
+
+#. module: account
 #: model_terms:ir.ui.view,arch_db:account.validate_account_move_view
 msgid "amounts for"
 msgstr "tutarları olağan aralığın dışında olan kontaklar:"
@@ -2823,6 +2907,25 @@ msgstr "tutarları olağan aralığın dışında olan kontaklar:"
 #: code:addons/account/static/src/components/invoice_guide/invoice_guide.xml:0
 msgid "and"
 msgstr "ve"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"become involved in costs related to a country's legislation. The amount of "
+"the invoice will therefore be due to"
+msgstr ""
+"hiçbir koşulda bir ülkenin mevzuatından doğan masraflara katlanmaz. Bu "
+"nedenle fatura tutarının tamamı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"cannot under any circumstances, be required by the client to appear as a "
+"third party in the context of any claim for damages filed against the "
+"client by an end consumer."
+msgstr ""
+"müşteri tarafından, son tüketicinin müşteriye karşı açtığı herhangi bir "
+"tazminat davasında hiçbir koşulda üçüncü taraf olarak davaya dahil edilemez."
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.validate_account_move_view
@@ -2855,6 +2958,66 @@ msgstr ".<br/>"
 #: model_terms:ir.ui.view,arch_db:account.portal_my_journal_mail_notifications
 msgid "from invoice notifications."
 msgstr "adresi artık fatura bildirimi almayacak."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"in its entirety and does not include any costs relating to the legislation "
+"of the country in which the client is located."
+msgstr ""
+"tarafından eksiksiz tahsil edilir ve müşterinin bulunduğu ülkenin "
+"mevzuatından doğan hiçbir masrafı içermez."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid "law."
+msgstr "hukukuna tabidir."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"must be notified of any claim by means of a letter sent by recorded "
+"delivery to its registered office within 8 days of the delivery of the "
+"goods or the provision of the services."
+msgstr ""
+"şirketinin kayıtlı merkez adresine iadeli taahhütlü mektupla "
+"bildirilmelidir."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"reserves the right to call on the services of a debt recovery company. All "
+"legal expenses will be payable by the client."
+msgstr ""
+"bir alacak tahsilat şirketinin hizmetlerine başvurma hakkına sahiptir. Tüm "
+"yasal masraflar müşteriye aittir."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"reserves the right to request a fixed interest payment amounting to 10% of "
+"the sum remaining due."
+msgstr "kalan borcun %10'u tutarında sabit faiz talep etme hakkına sahiptir."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"undertakes to do its best to supply performant services in due time in "
+"accordance with the agreed timeframes. However, none of its obligations can "
+"be considered as being an obligation to achieve results."
+msgstr ""
+"kararlaştırılan sürelere uygun olarak zamanında ve nitelikli hizmet sunmak "
+"için elinden geleni yapmayı taahhüt eder. Ancak yükümlülüklerinden hiçbiri "
+"sonuç yükümlülüğü olarak değerlendirilemez."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions
+msgid ""
+"will be authorized to suspend any provision of services without prior "
+"warning in the event of late payment."
+msgstr ""
+"geç ödeme durumunda hizmet sunumunu önceden bildirimde bulunmaksızın "
+"durdurmaya yetkilidir."
 
 #. module: account
 #: model:mail.template,subject:account.mail_template_data_payment_receipt
