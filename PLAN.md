@@ -415,7 +415,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Ölçüm aracı `tools/po_coverage.py`; CI'da eşik.
   - Paket modüllerindeki eksikler çevrilir. Öncelik: `l10n_tr` (%33), `account`, `sale`, `purchase`, `stock`, `mrp`, `mail`, `web`.
   - Upstream'e çeviri katkısı isteğe bağlı ve kullanıcı onayıyla (K8).
-  - **Durum (2026-11-04, otonom mesai 5):** yöntem ve ölçüm hazır, çeviri sürüyor.
+  - **Durum (2026-11-04, otonom mesai 6):** yöntem ve ölçüm hazır; paket %95,05 ile kapı ölçütünü (§2.6, 4. madde) geçti, çeviri sürüyor.
     - Yöntem: `ov_i18n_tr` (LGPL-3, her veritabanına kendiliğinden kurulur). Upstream modülünün çevirisi `i18n_overlay/<modül>.po`'da; upstream'in `tr.po`'sundan sonra, aynı içe aktarmada okunur, aynı metin için bizimki geçerli olur.
       - Kod metinleri (`_()`, `_t`): `odoo.tools.translate.get_po_paths` sarılır (süreç geneli, kod çevirilerinin veritabanı yok).
       - Kayıt metinleri ve modül adları: aynı işlev `ir.module.module`'de ve manifest okuyucusunda adıyla içe aktarılmış; yalnız bu modülün `_load_module_terms` ve `_load_non_installed_modules_manifest_terms` yöntemleri çalışırken çeviri dosyamızı ekler. Modülün kurulu olmadığı veritabanı etkilenmez.
@@ -428,7 +428,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Kuralların testi `tools/tests/test_po_coverage.py` (8 test); pre-commit ve CI'da çalışır.
       - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95.
     - Başlangıç (2026-11-04): 83 modül, 29.518 terim, %81,11 çevrili, 5.576 eksik. %95 için yaklaşık 4.100 terim gerekiyor.
-    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105), `stock` 1.919/1.919 (288), `mrp` 1.167/1.167 (209), `mail` 2.519/2.519 (735), `web` 4.519/5.178 (270; arayüz metinleri tam), `base` 3.555/3.555 (494), `spreadsheet` 2.468/2.468 (483), `product` 873/873 (219), `calendar` 527/527 (152), `html_editor` 477/477 (155), `account_edi_ubl_cii` 355/355 (118). Paket %94,06, 1.754 eksik.
+    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105), `stock` 1.919/1.919 (288), `mrp` 1.167/1.167 (209), `mail` 2.519/2.519 (735), `web` 4.519/5.178 (270; arayüz metinleri tam), `base` 3.555/3.555 (494), `spreadsheet` 2.468/2.468 (483), `product` 873/873 (219), `calendar` 527/527 (152), `html_editor` 477/477 (155), `account_edi_ubl_cii` 355/355 (118), `crm` 747/747 (125), `payment` 395/395 (111), `account_payment` 129/129 (23), `sale_management` 144/144 (79). Paket %95,05, 1.460 eksik.
       - Upstream düzeltmesi: "Discard" düğmesi "Sil" (silme) diye çevrilmişti; 7 modülde "Vazgeç" (`web`, `html_editor`, `spreadsheet`, `sale`, `mrp`, `stock`, `mail`). Kalıcı test: `ov_i18n_tr` testlerindeki düzeltme tablosu (`CORRECTIONS`).
       - `web`'de kalan 659 terim simge seçicinin arama etiketleri (`web/icons.py`), en sona bırakıldı. Yalnız simge aramasını etkiliyorlar; upstream'in araması İngilizce etiketlere de baktığı için İngilizce arama çalışıyor.
       - Upstream düzeltmesi (`base`): erişim hatasındaki işlem adları "oluşturun", "oku", "yazmak" diye karışık çevrilmişti; "oluşturma", "okuma", "yazma", "silme" oldu. Cümle de listelenen kayıtlara bağlandı ("… şu kayıtlar için 'okuma' erişimi yok:").
@@ -438,11 +438,16 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Vergi doğuşu (exigibility): "Only Tax Exigible Lines" → "Yanlızca Vergiden Muaf Satırlar" (ters anlam, vergi raporu seçeneği), "Tax Exigibility" → "Vergi Münhasırlığı"; 4 terim.
         - KDV muafiyet nedeni VATEX-EU-132 ilgisiz bir cümleyle ("Lütfen EAS kodunu … doldurun.") çevrilmişti; VATEX-EU-148-G'de direktif numarası eksikti.
         - Video ve beyaz tahta penceresinde desteklenen kaynakları sayan "Accepts" → "Kabul Et" (düğme komutu); "Desteklenenler:" oldu.
-      - Sırada (eksik): `crm` 109, `payment` 90, `sale_management` 79, `resource` 72, `sale_stock` 56, `portal` 55, `spreadsheet_dashboard` 50, `stock_account` 43, `purchase_stock` 39.
+      - Upstream düzeltmesi (`crm`, `payment`, `account_payment`, `sale`):
+        - CRM'de ekiplerin ve satış temsilcilerinin aday filtresi ("domain") "alan adı" (internet alan adı) diye çevrilmişti: "Atama Alan Adı", "… alan adıyla eşleşmemektedir". Filtre oldu. Yer tutucuya yapışmış aday iletileri ("%(assigned)sadaylar", "%(duplicates)sçift adaylar", "%(source_name)sden") ve "Lead Generation" → "Adayı Oluşturma" düzeltildi; 16 terim.
+        - Ödemede yetkilendirilen tutarın tahsili ("capture") "yakalama" diye çevrilmişti ("Manuel Yakalama", "İşlem Yakala"); iki uyarı bozuktu ("lütfen bekleyin işleme alınması için ."), tahsil sınırı "%s adresinden büyük olamaz" diyordu. "Tahsil/tahsilat" oldu; 24 terim, 3 modül.
+        - Ödeme belirteci (token) upstream'de üç ayrı karşılıkla geçiyordu (token, jeton, belirteç); yeni ve düzeltilen metinlerde "belirteç". "Ödeme Token'ı kaydet" (alan adı, emir kipinde) → "Kayıtlı Ödeme Belirteci". Ödeme yöntemi bulunamayınca çıkan "Contact" bağlantısı "Kontak" → "Web sitesi yöneticisiyle … iletişime geçin.".
+      - Sırada (eksik): `resource` 72, `sale_stock` 56, `portal` 55, `spreadsheet_dashboard` 50, `stock_account` 43, `purchase_stock` 39, `sale_margin` 28, `base_import` 28.
       - Uzun e-posta şablonları etiketlerin arasındaki metin parçaları çevrilerek yazıldı; etiketler ve QWeb ifadeleri olduğu gibi kalır (denetim bunu doğrular).
         - Türkçe söz dizimi için parça yeniden kurulur, gerekirse boş bırakılır. Ör. takvim davetinde "Your meeting <ad> has been booked." → "<ad> toplantınız planlandı.".
-        - `calendar`'ın beş müşteri e-postası (davet, tarih değişikliği, güncelleme, hatırlatma, iptal) upstream'de hiç çevrilmemişti; müşteriye İngilizce gidiyordu.
-    - Testler: `ov_i18n_tr` 13 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin iki tablosu: web metinleri 6 terim/4 modül, kayıt metinleri 4 terim/2 modül).
+        - `calendar`'ın beş müşteri e-postası (davet, tarih değişikliği, güncelleme, hatırlatma, iptal) upstream'de hiç çevrilmemişti; müşteriye İngilizce gidiyordu. `crm`'in müşteriye giden karşılama e-postası da aynı yolla çevrildi.
+        - Uygulamalar ekranındaki uzun modül tanıtımları (reStructuredText; `crm`, `sale_management`) metin dosyası olarak yazılıp başlık çizgileri başlık uzunluğuna göre üretildi.
+    - Testler: `ov_i18n_tr` 13 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin iki tablosu: web metinleri 6 terim/4 modül, kayıt metinleri 8 terim/5 modül).
     - Varsayımlar: `USER_TASKS.md` K24.
 - [ ] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.

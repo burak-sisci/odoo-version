@@ -1,0 +1,1058 @@
+# Turkish translations of the crm module completing upstream's (ov_i18n_tr, T3.6).
+# Read after crm/i18n/tr.po. The comments come from crm.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid "%(assigned)s leads allocated among %(team_count)s teams."
+msgstr "%(assigned)s aday %(team_count)s ekibe dağıtıldı."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid "%(assigned)s leads allocated to %(team_name)s team."
+msgstr "%(assigned)s aday %(team_name)s ekibine dağıtıldı."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+msgid "%(attach_name)s (from %(lead_name)s)"
+msgstr "%(attach_name)s (kaynak: %(lead_name)s)"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/wizard/crm_lead_to_opportunity_mass.py:0
+msgid "%(converted_count)s leads have been converted"
+msgstr "%(converted_count)s aday dönüştürüldü"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid "%(duplicates)s duplicates leads have been merged."
+msgstr "%(duplicates)s mükerrer aday birleştirildi."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid ""
+"%(members_assigned)s leads assigned among %(member_count)s salespersons."
+msgstr "%(members_assigned)s aday %(member_count)s satış temsilcisine atandı."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/wizard/crm_lead_to_opportunity_mass.py:0
+msgid "1 lead has been converted"
+msgstr "1 aday dönüştürüldü"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.sales_team_form_view_in_crm
+msgid ""
+"<i class=\"oi\" data-icon=\"warning\" title=\"Exceeded\" invisible=\"not "
+"lead_all_assigned_month_exceeded\"/>"
+msgstr ""
+"<i class=\"oi\" data-icon=\"warning\" title=\"Sınır aşıldı\" invisible=\"not "
+"lead_all_assigned_month_exceeded\"/>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_member_view_form
+msgid "<span class=\"me-1\"> of </span>"
+msgstr "<span class=\"me-1\"> - 30 günde en fazla </span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "<span class=\"mx-3 mb-1\" invisible=\"type == 'lead'\"> at</span>"
+msgstr "<span class=\"mx-3 mb-1\" invisible=\"type == 'lead'\"> -</span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.sales_team_form_view_in_crm
+msgid "<span class=\"o_stat_text\">Opportunities</span>"
+msgstr "<span class=\"o_stat_text\">Fırsatlar</span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid ""
+"<span invisible=\"name != 'convert'\">\n"
+"                        Potential duplicates found. Use \"Convert &amp; "
+"Merge with duplicates\" to clean your data before converting.\n"
+"                    </span>\n"
+"                    <span invisible=\"name != 'convert_and_merge'\">\n"
+"                        Convert the selected Leads to Opportunities and "
+"merge all duplicates listed below.\n"
+"                    </span>"
+msgstr ""
+"<span invisible=\"name != 'convert'\">\n"
+"                        Olası mükerrer kayıtlar bulundu. Dönüştürmeden önce "
+"verilerinizi temizlemek için \"Dönüştür ve Fırsatlarla Birleştir\" seçeneğini "
+"kullanın.\n"
+"                    </span>\n"
+"                    <span invisible=\"name != 'convert_and_merge'\">\n"
+"                        Seçili adayları fırsatlara dönüştürün ve aşağıda "
+"listelenen bütün mükerrer kayıtları birleştirin.\n"
+"                    </span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "<span> %</span>"
+msgstr "<span> %</span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_member_view_form
+msgid "<span> leads per 30 days </span>"
+msgstr "<span> aday </span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "<span>%</span>"
+msgstr "<span>%</span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.sales_team_form_view_in_crm
+msgid "<span>@</span>"
+msgstr "<span>@</span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid ""
+"<span>Periodically assign leads based on priorities and "
+"filters.</span><br/>\n"
+"                                <span invisible=\"not "
+"crm_use_auto_assignment\">\n"
+"                                    All sales teams will use this setting "
+"by default.\n"
+"                                </span>"
+msgstr ""
+"<span>Adayları önceliklere ve filtrelere göre düzenli aralıklarla "
+"atayın.</span><br/>\n"
+"                                <span invisible=\"not "
+"crm_use_auto_assignment\">\n"
+"                                    Bütün satış ekipleri varsayılan olarak "
+"bu ayarı kullanır.\n"
+"                                </span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_stage_form
+msgid "<span>days</span>"
+msgstr "<span>gün</span>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "<span>~ </span>"
+msgstr "<span>~ </span>"
+
+#. module: crm
+#: model:mail.template,body_html:crm.mail_template_demo_crm_lead
+msgid ""
+"<t>\n"
+"Hi <t t-out=\"object.partner_id and object.partner_id.name or ''\">Acme "
+"Corporation</t>,<br/><br/>\n"
+"Welcome to <t t-out=\"object.company_id.name or ''\">My Company (San "
+"Francisco)</t>.\n"
+"It's great to meet you! Now that you're on board, you'll discover what <t "
+"t-out=\"object.company_id.name or ''\">My Company (San Francisco)</t> has to "
+"offer. My name is <t t-out=\"object.user_id.name or ''\">Marc Demo</t> and "
+"I'll help you get the most out of Odoo. Could we plan a quick demo "
+"soon?<br/>\n"
+"Feel free to reach out at any time!<br/><br/>\n"
+"Best,<br/>\n"
+"<t t-if=\"object.user_id\">\n"
+"    <b><t t-out=\"object.user_id.name or ''\">Marc Demo</t></b>\n"
+"    <br/>Email: <t t-out=\"object.user_id.email or "
+"''\">mark.brown23@example.com</t>\n"
+"    <br/>Phone: <t t-out=\"object.user_id.phone or ''\">+1 650-123-4567</t>\n"
+"</t>\n"
+"<t t-else=\"\">\n"
+"    <t t-out=\"object.company_id.name or ''\">My Company (San Francisco)</t>\n"
+"</t>\n"
+"        </t>"
+msgstr ""
+"<t>\n"
+"Merhaba <t t-out=\"object.partner_id and object.partner_id.name or ''\">Acme "
+"Corporation</t>,<br/><br/>\n"
+" <t t-out=\"object.company_id.name or ''\">My Company (San Francisco)</t> "
+"ailesine hoş geldiniz. Tanıştığımıza çok sevindim! Artık aramızda "
+"olduğunuza göre <t t-out=\"object.company_id.name or ''\">My Company (San "
+"Francisco)</t> olarak size neler sunduğumuzu keşfedeceksiniz. Benim adım <t "
+"t-out=\"object.user_id.name or ''\">Marc Demo</t> ve Odoo'dan en iyi şekilde "
+"yararlanmanız için size yardımcı olacağım. Yakında kısa bir tanıtım "
+"toplantısı planlayabilir miyiz?<br/>\n"
+"Bana dilediğiniz zaman ulaşabilirsiniz!<br/><br/>\n"
+"Saygılarımla,<br/>\n"
+"<t t-if=\"object.user_id\">\n"
+"    <b><t t-out=\"object.user_id.name or ''\">Marc Demo</t></b>\n"
+"    <br/>E-posta: <t t-out=\"object.user_id.email or "
+"''\">mark.brown23@example.com</t>\n"
+"    <br/>Telefon: <t t-out=\"object.user_id.phone or ''\">+1 650-123-4567</t>\n"
+"</t>\n"
+"<t t-else=\"\">\n"
+"    <t t-out=\"object.company_id.name or ''\">My Company (San Francisco)</t>\n"
+"</t>\n"
+"        </t>"
+
+#. module: crm
+#: model:ir.model,name:crm.model_res_groups
+msgid "Access Groups"
+msgstr "Erişim Grupları"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Access request for \"%s\""
+msgstr "\"%s\" için erişim talebi"
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_team__assignment_domain
+msgid ""
+"Additional filter domain when fetching unassigned leads to allocate to the "
+"team."
+msgstr "Ekibe dağıtılacak atanmamış adaylar alınırken uygulanan ek filtre."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/team_switcher/team_switcher.js:0
+msgid "All Teams"
+msgstr "Bütün Ekipler"
+
+#. module: crm
+#: model:ir.model.fields.selection,name:crm.selection__crm_team_member__assignment_rules__unlimited
+msgid "Always in rotation"
+msgstr "Her zaman dağıtımda"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+msgid ""
+"As you are a member of no Sales Team, you are showed the entire "
+"Pipeline.<br/>"
+msgstr ""
+"Hiçbir satış ekibinin üyesi olmadığınız için bütün fırsat havuzu "
+"gösteriliyor.<br/>"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.xml:0
+msgid "Ask your Team Leader to get access"
+msgstr "Erişim için ekip liderinize başvurun"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__assignment_domain
+#: model:ir.model.fields,field_description:crm.field_crm_team_member__assignment_domain
+msgid "Assignment Domain"
+msgstr "Atama Filtresi"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid "Assignment domain for team %(team)s is incorrectly formatted"
+msgstr "%(team)s ekibinin atama filtresi hatalı biçimlendirilmiş"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team_member__assignment_rules
+msgid "Auto-Assignment Rules"
+msgstr "Otomatik Atama Kuralları"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Bring Odoo into your inbox:"
+msgstr "Odoo'yu gelen kutunuza getirin:"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_recurring_plan
+msgid "CRM Recurring Revenue Plan"
+msgstr "CRM Yinelenen Gelir Planı"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_stage
+msgid "CRM Stage"
+msgstr "CRM Aşaması"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/js/tours/crm.js:0
+msgid ""
+"Click on the breadcrumbs to go back to your Pipeline. Odoo will save all "
+"your changes as you navigate."
+msgstr ""
+"Fırsat havuzunuza dönmek için üstteki gezinme yolunu kullanın. Odoo, siz "
+"gezinirken bütün değişikliklerinizi kaydeder."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Connect to Gmail or Outlook accounts."
+msgstr "Gmail veya Outlook hesaplarına bağlanın."
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Convert"
+msgstr "Dönüştür"
+
+#. module: crm
+#: model:ir.model.fields.selection,name:crm.selection__crm_lead2opportunity_partner_mass__name__convert_and_merge
+msgid "Convert & Merge with Opportunities"
+msgstr "Dönüştür ve Fırsatlarla Birleştir"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "Convert into an Opportunity to see it in your Pipeline"
+msgstr "Fırsat havuzunuzda görmek için fırsata dönüştürün"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Create Contacts, Leads, Tickets, Projects and Tasks."
+msgstr "Kişi, aday, destek talebi, proje ve görev oluşturun."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/js/tours/crm.js:0
+msgid "Create your new contact."
+msgstr "Yeni kişinizi oluşturun."
+
+#. module: crm
+#: model:ir.model,name:crm.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "Mesajlaşma Kanalı"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid "Display your partners on a dedicated website page."
+msgstr ""
+"İş ortaklarınızı web sitesinde kendilerine ayrılmış bir sayfada gösterin."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Do you want to install the \"%(module_name)s\" App?"
+msgstr "\"%(module_name)s\" uygulamasını kurmak istiyor musunuz?"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.sales_team_form_view_in_crm
+msgid "Domain"
+msgstr "Filtre"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner_mass__duplicated_lead_ids
+msgid "Duplicated Lead"
+msgstr "Mükerrer Aday"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner_mass__duplicated_lead_ids_domain
+msgid "Duplicated Lead Ids Domain"
+msgstr "Mükerrer Aday Kimlikleri Filtresi"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Email Marketing"
+msgstr "E-posta Pazarlama"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner_mass__force_assignment
+msgid "Even if assigned"
+msgstr "Atanmış olsa bile"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid "Every"
+msgstr "Her"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Failed to install \"%(module_name)s\""
+msgstr "\"%(module_name)s\" kurulamadı"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Find any Odoo record without leaving your inbox."
+msgstr "Gelen kutunuzdan çıkmadan herhangi bir Odoo kaydını bulun."
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_stage_form
+msgid "Fold by Default"
+msgstr "Varsayılan Olarak Katlanmış"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+msgid "From %(source_name)s"
+msgstr "Kaynak: %(source_name)s"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.xml:0
+msgid "Generate"
+msgstr "Aday Üret"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Generate leads from Outlook & Gmail"
+msgstr "Outlook ve Gmail'den aday üretin"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Get it for Gmail"
+msgstr "Gmail için edinin"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Get it for Outlook"
+msgstr "Outlook için edinin"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Get our Mail Plugins!"
+msgstr "E-posta eklentilerimizi edinin!"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_member_view_form
+msgid "Give priority if"
+msgstr "Öncelik koşulu"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Gmail"
+msgstr "Gmail"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Import leads from CSV"
+msgstr "CSV'den aday içe aktar"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Import leads from a CSV or Excel file"
+msgstr "Adayları CSV veya Excel dosyasından içe aktarın"
+
+#. module: crm
+#: model:ir.model.fields.selection,name:crm.selection__crm_team_member__assignment_rules__limited
+msgid "In rotation, with a limit"
+msgstr "Dağıtımda, sınırlı"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/webclient/share_target/crm_share_target_item.xml:0
+msgid "In sales team"
+msgstr "Satış ekibinde"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Install request for \"%s\""
+msgstr "\"%s\" için kurulum talebi"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Installing \"%(module_name)s\""
+msgstr "\"%(module_name)s\" kuruluyor"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+msgid "Keep current team"
+msgstr "Mevcut ekibi koru"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Keep current teams"
+msgstr "Mevcut ekipleri koru"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+msgid "Keep current user"
+msgstr "Mevcut kullanıcıyı koru"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Keep current users"
+msgstr "Mevcut kullanıcıları koru"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid "Lead Generation"
+msgstr "Aday Üretimi"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Lead Sourcing"
+msgstr "Aday Kaynakları"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_creation_message
+msgid "Lead/Opportunity created<br/>"
+msgstr "Aday/Fırsat oluşturuldu<br/>"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/wizard/crm_merge_opportunities.py:0
+msgid "Leads merged"
+msgstr "Adaylar birleştirildi"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Leads/Opportunities to merge"
+msgstr "Birleştirilecek Adaylar/Fırsatlar"
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_lead2opportunity_partner_mass__link_to_matching_customer
+msgid ""
+"Link these opportunities to customers by either finding a match or creating "
+"a new one."
+msgstr ""
+"Bu fırsatları, eşleşen bir müşteri bularak ya da yenisini oluşturarak "
+"müşterilere bağlayın."
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner_mass__link_to_matching_customer
+msgid "Link to matching customers"
+msgstr "Eşleşen müşterilere bağla"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Mail plugins"
+msgstr "E-posta eklentileri"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/team_switcher/team_switcher.xml:0
+msgid "Manage Teams"
+msgstr "Ekipleri Yönet"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid ""
+"Manage members or partners. Members get levels and pricelists, partners "
+"allow lead assignment and commission plans."
+msgstr ""
+"Üyeleri veya iş ortaklarını yönetin. Üyelere seviye ve fiyat listesi "
+"verilir; iş ortaklarıyla aday ataması ve komisyon planları kullanılabilir."
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_lead__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Material Symbols simgesi, ör. checklist"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__lead_all_assigned_month_exceeded
+msgid "Maximum Leads To Assign"
+msgstr "Atanacak En Fazla Aday"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team_member.py:0
+msgid ""
+"Member assignment domain for user %(user)s and team %(team)s is incorrectly "
+"formatted"
+msgstr ""
+"%(user)s kullanıcısının %(team)s ekibindeki üye atama filtresi hatalı "
+"biçimlendirilmiş"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_opportunities_filter
+msgid "My Opportunities"
+msgstr "Fırsatlarım"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid ""
+"No allocated leads to %(team_name)s team and its salespersons because no "
+"unassigned lead matches its domain."
+msgstr ""
+"Atanmamış adayların hiçbiri %(team_name)s ekibinin filtresiyle eşleşmediği "
+"için ekibe ve satış temsilcilerine aday dağıtılmadı."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid ""
+"No lead assigned to salespersons because no unassigned lead matches their "
+"domains."
+msgstr ""
+"Atanmamış adayların hiçbiri satış temsilcilerinin filtreleriyle eşleşmediği "
+"için kimseye aday atanmadı."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid ""
+"No new lead allocated to %(team_name)s team because no unassigned lead "
+"matches its domain."
+msgstr ""
+"Atanmamış adayların hiçbiri %(team_name)s ekibinin filtresiyle eşleşmediği "
+"için ekibe yeni aday dağıtılmadı."
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_team.py:0
+msgid ""
+"No new lead allocated to the teams because no lead match their domains."
+msgstr ""
+"Hiçbir aday ekiplerin filtreleriyle eşleşmediği için ekiplere yeni aday "
+"dağıtılmadı."
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__opportunity_count
+msgid "Number of assigned opportunities"
+msgstr "Atanan fırsat sayısı"
+
+#. module: crm
+#: model:ir.module.module,description:base.module_crm
+msgid ""
+"Odoo CRM\n"
+"--------\n"
+"\n"
+"Boost sales productivity, improve win rates, grow revenue with the Odoo\n"
+"<a href=\"https://www.odoo.com/app/crm\">Open Source CRM</a>.\n"
+"\n"
+"Manage your sales funnel with no effort. Attract leads, follow-up on phone\n"
+"calls and meetings. Analyse the quality of your leads to make informed\n"
+"decisions and save time by integrating emails directly into the "
+"application.\n"
+"\n"
+"Your Sales Funnel, The Way You Like It\n"
+"--------------------------------------\n"
+"\n"
+"Track your opportunities pipeline with the revolutionary kanban view. Work\n"
+"inside your sales funnel and get instant visual information about next "
+"actions,\n"
+"new messages, top opportunities and expected revenues.\n"
+"\n"
+"Lead Management Made Easy\n"
+"-------------------------\n"
+"\n"
+"Create leads automatically from incoming emails. Analyse leads efficiency "
+"and\n"
+"compare performance by campaigns, channels or Sales Team.\n"
+"\n"
+"Find duplicates, merge leads and assign them to the right salesperson in "
+"one\n"
+"operation. Spend less time on administration and more time on qualifying "
+"leads.\n"
+"\n"
+"Organize Your Opportunities\n"
+"---------------------------\n"
+"\n"
+"Get your opportunities organized to stay focused on the best deals. Manage "
+"all\n"
+"your customer interactions from the opportunity like emails, phone calls,\n"
+"internal notes, meetings and quotations.\n"
+"\n"
+"Follow opportunities that interest you to get notified upon specific "
+"events:\n"
+"deal won or lost, stage changed, new customer demand, etc.\n"
+"\n"
+"Email Integration and Automation\n"
+"--------------------------------\n"
+"\n"
+"Work with the email applications you already use every day. Whether your\n"
+"company uses Microsoft Outlook or Gmail, no one needs to change the way "
+"they\n"
+"work, so everyone stays productive.\n"
+"\n"
+"Route, sort and filter incoming emails automatically. Odoo CRM handles "
+"incoming\n"
+"emails and route them to the right opportunities or Sales Team. New leads "
+"are\n"
+"created on the fly and interested salespersons are notified automatically.\n"
+"\n"
+"Collaborative Agenda\n"
+"--------------------\n"
+"\n"
+"Schedule your meetings and phone calls using the integrated calendar. You "
+"can\n"
+"see your agenda and your colleagues' in one view. As a manager, it's easy "
+"to\n"
+"see what your team is busy with.\n"
+"\n"
+"Lead Automation and Marketing Campaigns\n"
+"---------------------------------------\n"
+"\n"
+"Drive performance by automating tasks with Odoo <a "
+"href=\"https://www.odoo.com/app/crm\">CRM</a>.\n"
+"\n"
+"Use our marketing campaigns to automate lead acquisition, follow ups and\n"
+"promotions. Define automation rules (e.g. ask a salesperson to call, send "
+"an\n"
+"email, ...) based on triggers (no activity since 20 days, answered a\n"
+"promotional email, etc.)\n"
+"\n"
+"Optimize campaigns from lead to close, on every channel. Make smarter "
+"decisions\n"
+"about where to invest and show the impact of your marketing activities on "
+"your\n"
+"company's bottom line.\n"
+"\n"
+"Customize Your Sales Cycle\n"
+"--------------------------\n"
+"\n"
+"Customize your sales cycle by configuring sales stages that perfectly fit "
+"your\n"
+"sales approach. Control statistics to get accurate forecasts to improve "
+"your\n"
+"sales performance at every stage of your customer relationship.\n"
+"\n"
+"Drive Engagement with Gamification\n"
+"----------------------------------\n"
+"\n"
+"### Leverage your team's natural desire for competition\n"
+"\n"
+"Reinforce good habits and improve win rates with real-time recognition and\n"
+"rewards inspired by [game "
+"mechanics](http://en.wikipedia.org/wiki/Gamification).\n"
+"Align Sales Teams around clear business objectives with challenges, "
+"personal\n"
+"objectives and team leader boards.\n"
+"\n"
+"### Leaderboards\n"
+"\n"
+"Promote leaders and competition amongst Sales Team with performance ratios.\n"
+"\n"
+"### Personal Objectives\n"
+"\n"
+"Assign clear goals to users to align them with the company objectives.\n"
+"\n"
+"### Team Targets\n"
+"\n"
+"Compare revenues with forecasts and budgets in real time.\n"
+"\n"
+msgstr ""
+"Odoo CRM\n"
+"--------\n"
+"\n"
+"Odoo <a href=\"https://www.odoo.com/app/crm\">Açık Kaynak CRM</a> ile satış\n"
+"verimliliğinizi artırın, kazanma oranlarınızı yükseltin, gelirinizi "
+"büyütün.\n"
+"\n"
+"Satış hunisini zahmetsizce yönetin. Aday çekin, telefon görüşmelerini ve\n"
+"toplantıları takip edin. Bilinçli kararlar vermek için adaylarınızın "
+"kalitesini\n"
+"analiz edin; e-postaları doğrudan uygulamaya bağlayarak zaman kazanın.\n"
+"\n"
+"Satış Huniniz, İstediğiniz Gibi\n"
+"-------------------------------\n"
+"\n"
+"Fırsat havuzunuzu yenilikçi kanban görünümüyle takip edin. Satış hunisinin\n"
+"içinde çalışın; sonraki adımlar, yeni mesajlar, en iyi fırsatlar ve "
+"beklenen\n"
+"gelirler hakkında anında görsel bilgi edinin.\n"
+"\n"
+"Kolay Aday Yönetimi\n"
+"-------------------\n"
+"\n"
+"Gelen e-postalardan otomatik olarak aday oluşturun. Adayların verimliliğini\n"
+"analiz edin, performansı kampanyaya, kanala veya satış ekibine göre\n"
+"karşılaştırın.\n"
+"\n"
+"Mükerrer kayıtları bulun, adayları birleştirin ve tek işlemle doğru satış\n"
+"temsilcisine atayın. Yönetim işlerine daha az, adayları nitelemeye daha çok\n"
+"zaman ayırın.\n"
+"\n"
+"Fırsatlarınızı Düzenleyin\n"
+"-------------------------\n"
+"\n"
+"En iyi anlaşmalara odaklanmak için fırsatlarınızı düzenli tutun. "
+"E-postalar,\n"
+"telefon görüşmeleri, iç notlar, toplantılar ve teklifler gibi bütün müşteri\n"
+"etkileşimlerinizi fırsatın üzerinden yönetin.\n"
+"\n"
+"İlgilendiğiniz fırsatları takip edin; anlaşmanın kazanılması veya "
+"kaybedilmesi,\n"
+"aşama değişikliği, yeni müşteri talebi gibi olaylarda bildirim alın.\n"
+"\n"
+"E-posta Entegrasyonu ve Otomasyon\n"
+"---------------------------------\n"
+"\n"
+"Her gün kullandığınız e-posta uygulamalarıyla çalışın. Şirketiniz ister\n"
+"Microsoft Outlook ister Gmail kullansın, kimsenin çalışma biçimini "
+"değiştirmesi\n"
+"gerekmez; herkes verimli kalır.\n"
+"\n"
+"Gelen e-postaları otomatik olarak yönlendirin, sıralayın ve filtreleyin. "
+"Odoo CRM\n"
+"gelen e-postaları işler ve doğru fırsatlara veya satış ekiplerine "
+"yönlendirir.\n"
+"Yeni adaylar anında oluşturulur, ilgili satış temsilcilerine otomatik "
+"olarak\n"
+"bildirim gider.\n"
+"\n"
+"Ortak Ajanda\n"
+"------------\n"
+"\n"
+"Toplantılarınızı ve telefon görüşmelerinizi entegre takvimle planlayın. "
+"Kendi\n"
+"ajandanızı ve iş arkadaşlarınızınkini tek görünümde görebilirsiniz. "
+"Yönetici\n"
+"olarak ekibinizin neyle meşgul olduğunu kolayca görürsünüz.\n"
+"\n"
+"Aday Otomasyonu ve Pazarlama Kampanyaları\n"
+"-----------------------------------------\n"
+"\n"
+"Odoo <a href=\"https://www.odoo.com/app/crm\">CRM</a> ile görevleri "
+"otomatikleştirerek performansınızı artırın.\n"
+"\n"
+"Aday edinme, takip ve promosyonları otomatikleştirmek için pazarlama\n"
+"kampanyalarımızı kullanın. Tetikleyicilere (20 gündür aktivite olmaması, "
+"bir\n"
+"promosyon e-postasının yanıtlanması vb.) bağlı otomasyon kuralları (ör. bir\n"
+"satış temsilcisinden arama yapmasını istemek, e-posta göndermek...) "
+"tanımlayın.\n"
+"\n"
+"Kampanyaları adaydan satışa kadar her kanalda iyileştirin. Nereye yatırım\n"
+"yapacağınız konusunda daha akıllı kararlar verin, pazarlama "
+"faaliyetlerinizin\n"
+"şirketinizin kârına etkisini gösterin.\n"
+"\n"
+"Satış Döngünüzü Özelleştirin\n"
+"----------------------------\n"
+"\n"
+"Satış yaklaşımınıza tam uyan satış aşamaları tanımlayarak satış döngünüzü\n"
+"özelleştirin. Müşteri ilişkisinin her aşamasında satış performansınızı\n"
+"iyileştirmek için istatistikleri izleyin ve doğru tahminler elde edin.\n"
+"\n"
+"Oyunlaştırmayla Katılımı Artırın\n"
+"--------------------------------\n"
+"\n"
+"### Ekibinizin doğal rekabet isteğinden yararlanın\n"
+"\n"
+"[Oyun mekaniklerinden](http://en.wikipedia.org/wiki/Gamification) esinlenen\n"
+"anlık takdir ve ödüllerle iyi alışkanlıkları pekiştirin, kazanma oranlarını\n"
+"yükseltin. Satış ekiplerini meydan okumalar, kişisel hedefler ve ekip\n"
+"sıralamalarıyla net iş hedefleri etrafında buluşturun.\n"
+"\n"
+"### Sıralama Tabloları\n"
+"\n"
+"Performans oranlarıyla satış ekipleri arasında öne çıkanları gösterin, "
+"rekabeti\n"
+"teşvik edin.\n"
+"\n"
+"### Kişisel Hedefler\n"
+"\n"
+"Kullanıcılara net hedefler vererek onları şirketin hedefleriyle uyumlu hale "
+"getirin.\n"
+"\n"
+"### Ekip Hedefleri\n"
+"\n"
+"Gelirleri tahminler ve bütçelerle anlık olarak karşılaştırın.\n"
+"\n"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_member_view_form
+msgid "Only assign if"
+msgstr "Atama koşulu"
+
+#. module: crm
+#: model:ir.model.fields.selection,name:crm.selection__crm_team_member__assignment_rules__opt-out
+msgid "Out of rotation"
+msgstr "Dağıtım dışında"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Outlook"
+msgstr "Outlook"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_res_config_settings__module_website_partnership
+msgid "Partners Website Page"
+msgstr "İş Ortakları Web Sayfası"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__assignment_optout
+msgid "Pause auto assignment"
+msgstr "Otomatik atamayı duraklat"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Preview records and open their forms in one click."
+msgstr "Kayıtları önizleyin, formlarını tek tıkla açın."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Qualify leads with a Survey"
+msgstr "Adayları anketle niteleyin"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+msgid "Reassign To"
+msgstr "Yeniden Ata"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "Reference"
+msgstr "Referans"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_stage_form
+msgid "Rotting in"
+msgstr "İşlemsiz bekleme sınırı"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Save emails and attachments directly to Odoo."
+msgstr "E-postaları ve ekleri doğrudan Odoo'ya kaydedin."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Search in our directory of 580M+ entities"
+msgstr "580 milyonu aşkın kuruluşluk dizinimizde arayın"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "Select or create a contact..."
+msgstr "Kişi seçin veya oluşturun..."
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Send an email and get leads from replies"
+msgstr "E-posta gönderin, yanıtlardan aday edinin"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__show_assignment_max
+msgid "Show Assignment Max"
+msgstr "Atama Sınırını Göster"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_stage_form
+msgid "Show to all teams"
+msgstr "Bütün ekiplere göster"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/wizard/crm_merge_opportunities.py:0
+msgid "Something went wrong, please try again later"
+msgstr "Bir sorun oluştu, lütfen daha sonra tekrar deneyin"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Survey"
+msgstr "Anket"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/views/crm_search_model.js:0
+msgid "Team"
+msgstr "Ekip"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+msgid "Template for Leads & Opportunities"
+msgstr "Aday ve Fırsat Şablonu"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/promote_mail_plugins_dialog/promote_mail_plugins_dialog.xml:0
+msgid "Tired of copy-pasting emails?"
+msgstr "E-postaları kopyalayıp yapıştırmaktan bıktınız mı?"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_list_simplified
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Title"
+msgstr "Başlık"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+msgid ""
+"To work with the CRM, you should <a name=\"%d\" type=\"action\" "
+"tabindex=\"-1\">join a Team.</a>"
+msgstr ""
+"CRM ile çalışmak için <a name=\"%d\" type=\"action\" tabindex=\"-1\">bir ekibe "
+"katılmalısınız.</a>"
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+msgid "To work with the CRM, you should be added to a Team."
+msgstr "CRM ile çalışmak için bir ekibe eklenmeniz gerekir."
+
+#. module: crm
+#: model:ir.module.module,summary:base.module_crm
+msgid "Track leads and close opportunities"
+msgstr "Adayları takip edin, fırsatları sonuçlandırın"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/components/lead_generation_dropdown/lead_generation_dropdown.js:0
+msgid "Turn visitors into leads via a form"
+msgstr "Ziyaretçileri bir formla adaya dönüştürün"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_lead__utm_reference
+msgid "UTM Reference"
+msgstr "UTM Referansı"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_stage_form
+msgid "What are the requirements to move an opportunity to this stage?"
+msgstr "Bir fırsatın bu aşamaya geçmesi için gereken koşullar nelerdir?"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/views/crm_kanban/crm_column_progress.js:0
+msgid "Without activities scheduled"
+msgstr "Planlanmış aktivitesi olmayanlar"
+
+#. module: crm
+#. odoo-javascript
+#: code:addons/crm/static/src/js/tours/crm.js:0
+msgid ""
+"You can make your opportunity advance through your pipeline by clicking on "
+"stages here. Try sending it to the next stage!"
+msgstr ""
+"Buradaki aşamalara tıklayarak fırsatınızı havuzda ilerletebilirsiniz. Bir "
+"sonraki aşamaya göndermeyi deneyin!"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_member_view_form
+msgid "assigned)"
+msgstr "atandı)"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "at"
+msgstr "-"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "e.g. (555) 555-0199"
+msgstr "ör. (555) 555-0199"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_stage_form
+msgid "e.g. Qualification"
+msgstr "ör. Yeterlilik"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+msgid "e.g. john.doe@email.com"
+msgstr "ör. ahmet.yilmaz@ornek.com"

@@ -7,6 +7,26 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `crm`, `payment`, `account_payment` ve `sale_management` çevirileri; paket %95'i geçti (T3.6, 10. adım) — otonom mesai 6
+
+**Kod**
+- Çeviriler: `crm` 109 eksik terim (747/747), `payment` 90 (395/395), `account_payment` 16 (129/129), `sale_management` 79 (144/144). Paket kapsamı %94,06 → %95,05; eksik 1.754 → 1.460. Kapı ölçütü (PLAN §2.6, 4. madde: ≥ %95) sağlandı.
+  - `crm`: aday dağıtımı (rotasyon) ve atama kuralları, toplu dönüştürme ve birleştirme sihirbazları, aday üretme menüsü, e-posta eklentileri. Müşteriye giden karşılama e-postası metin parçalarıyla çevrildi ("Welcome to <şirket>." → "<şirket> ailesine hoş geldiniz."). Uygulamalar ekranındaki uzun tanıtım metni (reStructuredText) çevrildi.
+  - Formdaki parçalı cümleler Türkçe söz dizimine göre kuruldu: "[Dağıtımda, sınırlı] - 30 günde en fazla [30] aday (5 atandı)", Stripe kurulum düğmesi "Yeni [Stripe] hesabı aç".
+  - `payment`: sağlayıcı ayarları, canlı/test modu, işlem işleme ve son işleme adımları, belirteçler. `account_payment`: portalda iki kez ödeme uyarısı ("Bu faturaya [tutar] tutarında ödeme zaten yapıldı …").
+  - `sale_management`: teklif şablonları, bölüm şablonları, isteğe bağlı satırlar; demo şablonundaki ürün ve bölüm adları (açık ofis yenileme, toplantı odası).
+- Upstream düzeltmeleri (45 terim):
+  - `crm`: aday filtresi ("domain") "alan adı" diye çevrilmişti (9 terim); yer tutucuya yapışan iletiler ("%(assigned)sadaylar", "%(duplicates)sçift adaylar", "%(source_name)sden"); "Lead Generation" → "Adayı Oluşturma". 16 terim.
+  - `payment`, `account_payment`, `sale`: "capture" (yetkilendirilen tutarın tahsili) → "yakalama"; iki uyarı metni bozuk, tahsil sınırı "%s adresinden". "Tahsil/tahsilat" oldu; 24 terim. Belirteç (token) için upstream'deki üç ayrı karşılık yerine "belirteç" (4 terim); "Contact" bağlantısı → "Kontak".
+- Testler: `ov_i18n_tr` 13; kayıt metni düzeltme tablosuna 4 satır (`crm` atama filtresi, `payment` elle tahsilat ve iletişim bağlantısı, `account_payment` kayıtlı belirteç). Mutasyon denemesi: "Atama Filtresi" yeniden "Atama Alan Adı" yapılınca ilgili alt test düştü; dosya geri yüklendi.
+- `check` 18 dosya, 0 sorun. CI kapsam eşiği `--min 93.8` → `94.8`.
+
+**Kararlar**
+- K24'e CRM, ödeme ve teklif şablonu terimleri eklendi.
+
+**Belgeler**
+- PLAN.md (T3.6 durum, ilerleme, düzeltmeler, sıradaki modüller, testler), USER_TASKS.md (K24), README.md, state.json.
+
 ### Adım: `html_editor` ve `account_edi_ubl_cii` çevirileri; satış koşulları ve vergi doğuşu düzeltmeleri (T3.6, 9. adım) — otonom mesai 6
 
 **Kod**

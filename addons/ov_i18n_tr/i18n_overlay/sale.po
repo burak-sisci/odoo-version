@@ -1521,6 +1521,11 @@ msgid "Cannot close %(orders_name)s: must be in 'Sales Order' state."
 msgstr "%(orders_name)s kapatılamıyor: 'Satış Siparişi' durumunda olmalı."
 
 #. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.view_order_form
+msgid "Capture Transaction"
+msgstr "İşlemi Tahsil Et"
+
+#. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form_sale_inherit
 msgid "Client's most used account"
 msgstr "Müşterinin en çok kullandığı hesap"

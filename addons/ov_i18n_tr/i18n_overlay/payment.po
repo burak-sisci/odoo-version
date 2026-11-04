@@ -1,0 +1,702 @@
+# Turkish translations of the payment module completing upstream's (ov_i18n_tr, T3.6).
+# Read after payment/i18n/tr.po. The comments come from payment.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_capture_wizard_view_form
+msgid ""
+"<i class=\"oi oe_inline\" data-icon=\"info\" invisible=\"support_partial_capture "
+"!= 'full_only'\" title=\"Some of the transactions you intend to capture can "
+"only be captured in full. Handle the transactions individually to capture a "
+"partial amount.\"/>"
+msgstr ""
+"<i class=\"oi oe_inline\" data-icon=\"info\" invisible=\"support_partial_capture "
+"!= 'full_only'\" title=\"Tahsil etmek istediğiniz işlemlerin bazıları "
+"yalnızca tam tutarla tahsil edilebilir. Kısmi tutar tahsil etmek için "
+"işlemleri tek tek ele alın.\"/>"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.amount_input
+msgid "<small>Amount</small>"
+msgstr "<small>Tutar</small>"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid ""
+"<span invisible=\"is_live\" class=\"badge rounded-pill text-bg-warning fs-6\">\n"
+"                            Test Mode\n"
+"                        </span>"
+msgstr ""
+"<span invisible=\"is_live\" class=\"badge rounded-pill text-bg-warning fs-6\">\n"
+"                            Test Modu\n"
+"                        </span>"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "<strong>No payment methods are available</strong>"
+msgstr "<strong>Kullanılabilir ödeme yöntemi yok</strong>"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "<strong>No payment providers are configured</strong>"
+msgstr "<strong>Yapılandırılmış ödeme sağlayıcısı yok</strong>"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_capture_wizard_view_form
+msgid ""
+"<strong>Warning!</strong> There is a partial capture pending. Please wait a\n"
+"                    moment for it to be processed. Check your payment "
+"provider configuration if\n"
+"                    the capture is still pending after a few minutes."
+msgstr ""
+"<strong>Uyarı!</strong> Bekleyen bir kısmi tahsilat var. İşlenmesi için "
+"lütfen\n"
+"                    biraz bekleyin. Tahsilat birkaç dakika sonra hâlâ "
+"bekliyorsa ödeme sağlayıcınızın\n"
+"                    yapılandırmasını kontrol edin."
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_capture_wizard_view_form
+msgid ""
+"<strong>Warning!</strong> You can not capture a negative amount nor more\n"
+"                    than"
+msgstr ""
+"<strong>Uyarı!</strong> Negatif bir tutar tahsil edilemez; tahsil "
+"edilebilecek en yüksek tutar"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid ""
+"<strong>Warning:</strong> Creating a payment provider from scratch is not\n"
+"                        supported; please use the <em>Duplicate</em> action "
+"instead."
+msgstr ""
+"<strong>Uyarı:</strong> Sıfırdan ödeme sağlayıcısı oluşturmak desteklenmez;\n"
+"                        bunun yerine <em>Çoğalt</em> işlemini kullanın."
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "Account"
+msgstr "hesabı aç"
+
+#. module: payment
+#: model:ir.actions.server,name:payment.action_add_payment_method
+msgid "Add a Payment Method"
+msgstr "Ödeme Yöntemi Ekle"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "All Countries"
+msgstr "Bütün Ülkeler"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "All Currencies"
+msgstr "Bütün Para Birimleri"
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_method__allow_amount_selection
+msgid "Allow splitting payments across several payment methods."
+msgstr "Ödemenin birden fazla ödeme yöntemine bölünmesine izin verir."
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_capture_wizard__captured_amount
+msgid "Already Captured"
+msgstr "Tahsil Edilmiş"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_method__allow_amount_selection
+msgid "Amount Selection"
+msgstr "Tutar Seçimi"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_capture_wizard__amount_to_capture
+msgid "Amount To Capture"
+msgstr "Tahsil Edilecek Tutar"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid ""
+"Are you sure you want to void the authorized transaction? This              "
+"                    action can't be undone."
+msgstr ""
+"Yetkilendirilmiş işlemi geçersiz kılmak istediğinizden emin misiniz? Bu "
+"işlem geri alınamaz."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+#: model_terms:ir.ui.view,arch_db:payment.payment_capture_wizard_view_form
+msgid "Capture"
+msgstr "Tahsil Et"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__capture_manually
+#: model:ir.model.fields,field_description:payment.field_payment_transaction__capture_manually
+msgid "Capture Amount Manually"
+msgstr "Tutarı Elle Tahsil Et"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid "Capture Transaction"
+msgstr "İşlemi Tahsil Et"
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_provider__capture_manually
+#: model:ir.model.fields,help:payment.field_payment_transaction__capture_manually
+msgid ""
+"Capture the amount from Odoo, when the delivery is completed. Use this if "
+"you want to charge your customers cards only when you are sure you can ship "
+"the goods to them."
+msgstr ""
+"Tutarı, teslimat tamamlandığında Odoo'dan tahsil edin. Müşterilerinizin "
+"kartından yalnızca ürünleri gönderebileceğinizden emin olduğunuzda ödeme "
+"almak istiyorsanız bunu kullanın."
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_transaction__child_transaction_count
+msgid "Child Transaction Count"
+msgstr "Alt İşlem Sayısı"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "Connect"
+msgstr "Bağlan:"
+
+#. module: payment
+#: model:ir.model,name:payment.model_res_partner
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "Contact"
+msgstr "Web sitesi yöneticisiyle"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "Create"
+msgstr "Yeni"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_data_form
+#: model_terms:ir.ui.view,arch_db:payment.payment_data_list
+msgid "Created On"
+msgstr "Oluşturulma Tarihi"
+
+#. module: payment
+#: model:payment.provider,name:payment.payment_provider_ecpay
+msgid "ECPay"
+msgstr "ECPay"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_data__error_traceback
+msgid "Error Traceback"
+msgstr "Hata Ayrıntısı"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Express checkout not supported"
+msgstr "Hızlı ödeme desteklenmiyor"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_data__errored
+msgid "Failed"
+msgstr "Başarısız"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "Find a Payment Provider"
+msgstr "Ödeme Sağlayıcısı Bul"
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_provider__is_live
+msgid ""
+"If live mode is disabled, a fake payment is processed through a test "
+"payment interface. This mode is advised when setting up the provider."
+msgstr ""
+"Canlı mod kapalıysa ödeme, sahte bir test ödeme arayüzü üzerinden işlenir. "
+"Sağlayıcıyı kurarken bu mod önerilir."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Incompatible country"
+msgstr "Uyumsuz ülke"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Incompatible currency"
+msgstr "Uyumsuz para birimi"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Incompatible website"
+msgstr "Uyumsuz web sitesi"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_res_config_settings__installed_provider_id
+msgid "Installed Provider"
+msgstr "Kurulu Sağlayıcı"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_capture_wizard__is_amount_to_capture_valid
+msgid "Is Amount To Capture Valid"
+msgstr "Tahsil Edilecek Tutar Geçerli mi"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__is_live
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_kanban
+msgid "Live"
+msgstr "Canlı"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__image_128
+msgid "Logo"
+msgstr "Logo"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_method__support_manual_capture
+msgid "Manual Capture"
+msgstr "Elle Tahsilat"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__support_manual_capture
+msgid "Manual Capture Supported"
+msgstr "Elle Tahsilat Destekleniyor"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Manual capture not supported"
+msgstr "Elle tahsilat desteklenmiyor"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+msgid "Manually confirmed by the user."
+msgstr "Kullanıcı tarafından elle onaylandı."
+
+#. module: payment
+#: model:ir.actions.server,name:payment.action_confirm_payment_transaction
+msgid "Mark as Confirmed"
+msgstr "Onaylandı Olarak İşaretle"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_capture_wizard__available_amount
+msgid "Maximum Capture Allowed"
+msgstr "İzin Verilen En Yüksek Tahsilat"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_token_form
+#: model_terms:ir.ui.view,arch_db:payment.payment_token_list
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_list
+msgid "Method"
+msgstr "Yöntem"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__minimum_amount
+msgid "Minimum Amount"
+msgstr "En Düşük Tutar"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Minimum or maximum amount exceeded"
+msgstr "En düşük veya en yüksek tutar sınırı aşıldı"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid "Operations"
+msgstr "Alt İşlemler"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "Options"
+msgstr "Seçenekler"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "Others"
+msgstr "Diğer"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_res_company__pay_later_label
+msgid "Pay Later Label"
+msgstr "Sonra Öde Etiketi"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_res_company__pay_now_label
+msgid "Pay Now Label"
+msgstr "Şimdi Öde Etiketi"
+
+#. module: payment
+#: model:payment.provider,name:payment.payment_provider_pay_on_invoice
+msgid "Pay on Invoice"
+msgstr "Fatura ile Öde"
+
+#. module: payment
+#: model:payment.provider,name:payment.payment_provider_payu
+msgid "PayU"
+msgstr "PayU"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_data__payload
+msgid "Payload"
+msgstr "Veri Yükü"
+
+#. module: payment
+#: model:ir.model,name:payment.model_payment_capture_wizard
+msgid "Payment Capture Wizard"
+msgstr "Ödeme Tahsilat Sihirbazı"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_transaction__payment_data_count
+msgid "Payment Data Count"
+msgstr "Ödeme Verisi Sayısı"
+
+#. module: payment
+#: model:ir.module.module,shortdesc:base.module_payment
+msgid "Payment Engine"
+msgstr "Ödeme Altyapısı"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_provider.py:0
+msgid "Payment History"
+msgstr "Ödeme Geçmişi"
+
+#. module: payment
+#. odoo-javascript
+#: code:addons/payment/static/src/interactions/payment_form.js:0
+msgid "Payment method unavailable"
+msgstr "Ödeme yöntemi kullanılamıyor"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Payment method with duplicate code"
+msgstr "Aynı koda sahip ödeme yöntemi"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+msgid ""
+"Payment transactions should not be updated directly. Either use _record() "
+"to queue payment data for processing, or pass payment_safe_write=True to "
+"the context after ensuring that the update can tolerate a rollback."
+msgstr ""
+"Ödeme işlemleri doğrudan güncellenmemelidir. Ödeme verisini işlenmek üzere "
+"kuyruğa almak için _record() kullanın ya da güncellemenin geri almaya "
+"dayanabileceğinden emin olduktan sonra bağlama payment_safe_write=True "
+"geçirin."
+
+#. module: payment
+#: model:ir.actions.server,name:payment.post_processing_cron_ir_actions_server
+msgid "Payment: Run Post-processing"
+msgstr "Ödeme: Son İşlemeyi Çalıştır"
+
+#. module: payment
+#: model:ir.actions.server,name:payment.processing_cron_ir_actions_server
+msgid "Payment: Run Processing"
+msgstr "Ödeme: İşlemeyi Çalıştır"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+#: model:ir.model.fields,field_description:payment.field_payment_transaction__payment_data_ids
+#: model_terms:ir.ui.view,arch_db:payment.payment_data_form
+#: model_terms:ir.ui.view,arch_db:payment.payment_data_list
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid "Pending Updates"
+msgstr "Bekleyen Güncellemeler"
+
+#. module: payment
+#: model:ir.model,name:payment.model_payment_data
+msgid "Pending payment data payload to process"
+msgstr "İşlenmeyi bekleyen ödeme verisi yükü"
+
+#. module: payment
+#. odoo-javascript
+#: code:addons/payment/static/src/interactions/payment_form.js:0
+msgid "Please choose another payment method."
+msgstr "Lütfen başka bir ödeme yöntemi seçin."
+
+#. module: payment
+#: model_terms:payment.provider,pending_msg:payment.payment_provider_transfer
+msgid "Please find the payment details below."
+msgstr "Ödeme ayrıntılarını aşağıda bulabilirsiniz."
+
+#. module: payment
+#: model:ir.model,name:payment.model_portal_entry
+msgid "Portal Entry"
+msgstr "Portal Girişi"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid "Post-process"
+msgstr "Son İşlemeyi Yap"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid "Post-processed"
+msgstr "Son İşleme Yapıldı"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__primary_payment_method_ids
+msgid "Primary Payment Methods"
+msgstr "Birincil Ödeme Yöntemleri"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__processed_amount
+msgid "Processed Amount"
+msgstr "İşlenen Tutar"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "Restrictions"
+msgstr "Kısıtlamalar"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_transaction_form
+msgid "Run the post-processing step for this transaction."
+msgstr "Bu işlem için son işleme adımını çalıştırır."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/wizards/payment_capture_wizard.py:0
+msgid ""
+"Some of the transactions you intend to capture can only be captured in "
+"full. Handle the transactions individually to capture a partial amount."
+msgstr ""
+"Tahsil etmek istediğiniz işlemlerin bazıları yalnızca tam tutarla tahsil "
+"edilebilir. Kısmi tutar tahsil etmek için işlemleri tek tek ele alın."
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_capture_wizard__support_partial_capture
+msgid "Support Partial Capture"
+msgstr "Kısmi Tahsilat Desteği"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_kanban
+msgid "Test"
+msgstr "Test"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/wizards/payment_capture_wizard.py:0
+msgid "The amount to capture must be positive and cannot be superior to %s."
+msgstr "Tahsil edilecek tutar pozitif olmalı ve %s tutarını aşmamalıdır."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_method.py:0
+msgid ""
+"The following payment methods cannot be enabled because their payment "
+"provider has manual capture activated: %s"
+msgstr ""
+"Ödeme sağlayıcılarında elle tahsilat etkin olduğu için şu ödeme yöntemleri "
+"etkinleştirilemez: %s"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_provider.py:0
+msgid ""
+"The following payment methods must be disabled in order to enable manual "
+"capture: %s"
+msgstr ""
+"Elle tahsilatı etkinleştirmek için şu ödeme yöntemlerinin devre dışı "
+"bırakılması gerekir: %s"
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_res_company__pay_later_label
+msgid ""
+"The label to be displayed on the payment buttons for 'Pay Later' payment "
+"methods."
+msgstr ""
+"'Sonra Öde' ödeme yöntemlerinin ödeme düğmelerinde gösterilecek etiket."
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_res_company__pay_now_label
+msgid ""
+"The label to be displayed on the payment buttons for 'Pay Now' payment "
+"methods."
+msgstr ""
+"'Şimdi Öde' ödeme yöntemlerinin ödeme düğmelerinde gösterilecek etiket."
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_provider__minimum_amount
+msgid ""
+"The minimum payment amount that this payment provider is available for. "
+"Leave blank to make it available for any payment amount."
+msgstr ""
+"Bu ödeme sağlayıcısının kullanılabileceği en düşük ödeme tutarı. Her "
+"tutarda kullanılabilmesi için boş bırakın."
+
+#. module: payment
+#: model:ir.module.module,summary:base.module_payment
+msgid "The payment engine used by payment provider modules."
+msgstr "Ödeme sağlayıcı modüllerinin kullandığı ödeme altyapısı."
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_method__support_manual_capture
+msgid "The payment is authorized and captured in two steps instead of one."
+msgstr "Ödeme tek adım yerine iki adımda yetkilendirilir ve tahsil edilir."
+
+#. module: payment
+#: model:ir.model.constraint,message:payment.constraint_payment_method_provider_id_code_uniq
+msgid "The provider already has a payment method with this code."
+msgstr "Sağlayıcının bu koda sahip bir ödeme yöntemi zaten var."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+msgid "The provider must not be archived to make a request."
+msgstr "İstek yapabilmek için sağlayıcı arşivlenmiş olmamalıdır."
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_method__provider_id
+msgid "The provider supporting this payment method."
+msgstr "Bu ödeme yöntemini destekleyen sağlayıcı."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_provider.py:0
+msgid ""
+"This action will also archive %s tokens that are registered with this "
+"provider."
+msgstr "Bu işlem, bu sağlayıcıya kayıtlı %s belirteci de arşivleyecek."
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_provider__allow_tokenization
+msgid ""
+"This controls whether customers can save their payment methods as payment "
+"tokens. A payment token is an anonymous link to the payment method details "
+"saved in the provider's database, allowing the customer to reuse it for a "
+"next purchase."
+msgstr ""
+"Müşterilerin ödeme yöntemlerini ödeme belirteci olarak kaydedip "
+"kaydedemeyeceğini belirler. Ödeme belirteci, sağlayıcının veritabanında "
+"saklanan ödeme yöntemi bilgilerine giden anonim bir bağlantıdır; müşteri "
+"bunu sonraki alışverişinde yeniden kullanabilir."
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_token_form
+#: model_terms:ir.ui.view,arch_db:payment.payment_token_list
+msgid "Token"
+msgstr "Belirteç"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__token_count
+msgid "Token Count"
+msgstr "Belirteç Sayısı"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Tokenization not supported"
+msgstr "Belirteçle kaydetme desteklenmiyor"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/const.py:0
+msgid "Tokenization without payment no supported"
+msgstr "Ödeme olmadan belirteçle kaydetme desteklenmiyor"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "Tokens"
+msgstr "Belirteçler"
+
+#. module: payment
+#: model:payment.provider,name:payment.payment_provider_toss_payments
+msgid "Toss Payments"
+msgstr "Toss Payments"
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_provider__transaction_count
+msgid "Transaction Count"
+msgstr "İşlem Sayısı"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_provider_form
+msgid "Transactions"
+msgstr "İşlemler"
+
+#. module: payment
+#: model:ir.model.fields,help:payment.field_payment_capture_wizard__support_partial_capture
+msgid ""
+"Whether each of the transactions' provider supports the partial capture."
+msgstr ""
+"İşlemlerin her birinin sağlayıcısının kısmi tahsilatı destekleyip "
+"desteklemediği."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_token.py:0
+msgid ""
+"You can't unarchive tokens linked to inactive payment methods or archived "
+"providers."
+msgstr ""
+"Etkin olmayan ödeme yöntemlerine veya arşivlenmiş sağlayıcılara bağlı "
+"belirteçler arşivden çıkarılamaz."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_provider.py:0
+msgid ""
+"You cannot delete the payment provider %s; archive or uninstall it instead."
+msgstr ""
+"%s ödeme sağlayıcısını silemezsiniz; bunun yerine arşivleyin veya kaldırın."
+
+#. module: payment
+#: model_terms:payment.provider,done_msg:payment.payment_provider_pay_on_invoice
+msgid "Your order is confirmed, you will receive your invoice shortly."
+msgstr "Siparişiniz onaylandı, faturanız kısa süre içinde gönderilecek."
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.payment_status
+msgid "Your payment is being processed."
+msgstr "Ödemeniz işleniyor."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+msgid "Your payment method has not been saved yet."
+msgstr "Ödeme yönteminiz henüz kaydedilmedi."
+
+#. module: payment
+#: model:ir.model.fields,field_description:payment.field_payment_transaction__partner_zip
+msgid "Zip Code"
+msgstr "Posta Kodu"
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+msgid "source_transaction_id"
+msgstr "source_transaction_id"
+
+#. module: payment
+#: model_terms:ir.ui.view,arch_db:payment.no_pms_available_warning
+msgid "the website administrator."
+msgstr "iletişime geçin."
+
+#. module: payment
+#. odoo-python
+#: code:addons/payment/models/payment_transaction.py:0
+msgid "transaction_id"
+msgstr "transaction_id"
+
+#. module: payment
+#: model:ir.model,name:payment.model_ir_websocket
+msgid "websocket message handling"
+msgstr "websocket ileti işleme"

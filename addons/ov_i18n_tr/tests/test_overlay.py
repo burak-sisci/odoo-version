@@ -42,6 +42,14 @@ RECORD_CORRECTIONS = [
     # upstream: an unrelated sentence (fill in the EAS code)
     ('account_edi_ubl_cii', 'VATEX-EU-132 - Exempt based on article 132 of Council Directive 2006/112/EC',
      "VATEX-EU-132 - 2006/112/EC sayılı AB Konsey Direktifi'nin 132. maddesi uyarınca muaf"),
+    # upstream: 'Atama Alan Adı' (an internet domain name), the filter of the leads a team gets
+    ('crm', 'Assignment Domain', 'Atama Filtresi'),
+    # upstream: 'Manuel Yakalama' (catching), the capture of an authorized payment
+    ('payment', 'Manual Capture', 'Elle Tahsilat'),
+    # upstream: 'Kontak' (an electrical contact), the link of '... the website administrator.'
+    ('payment', 'Contact', 'Web sitesi yöneticisiyle'),
+    # upstream: "Ödeme Token'ı kaydet" (save the payment token), a field label
+    ('account_payment', 'Saved Payment Token', 'Kayıtlı Ödeme Belirteci'),
 ]
 
 

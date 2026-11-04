@@ -1,0 +1,158 @@
+# Turkish translations of the account_payment module completing upstream's (ov_i18n_tr, T3.6).
+# Read after account_payment/i18n/tr.po. The comments come from account_payment.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: account_payment
+#: model_terms:ir.ui.view,arch_db:account_payment.payment_transaction_form
+msgid "Accounting"
+msgstr "Muhasebe"
+
+#. module: account_payment
+#: model_terms:ir.ui.view,arch_db:account_payment.payment_provider_form
+msgid "All Pricelists"
+msgstr "Bütün Fiyat Listeleri"
+
+#. module: account_payment
+#: model_terms:ir.ui.view,arch_db:account_payment.portal_invoice_payment
+msgid "Amount of"
+msgstr "Bu faturaya"
+
+#. module: account_payment
+#: model:ir.model,name:account_payment.model_account_bank_statement_line
+msgid "Bank Transaction"
+msgstr "Banka İşlemi"
+
+#. module: account_payment
+#: model_terms:ir.ui.view,arch_db:account_payment.account_invoice_view_form_inherit_payment
+msgid "Capture Transaction"
+msgstr "İşlemi Tahsil Et"
+
+#. module: account_payment
+#: model:ir.module.module,summary:base.module_account_payment
+msgid ""
+"Enable customers to pay invoices on the portal and post payments when "
+"transactions are processed."
+msgstr ""
+"Müşterilerin faturaları portalda ödemesine ve işlemler işlendiğinde "
+"ödemelerin kaydedilmesine olanak tanır."
+
+#. module: account_payment
+#: model:ir.model.fields,help:account_payment.field_account_payment__payment_token_id
+msgid ""
+"Note that only tokens from providers allowing to capture the amount are "
+"available."
+msgstr ""
+"Yalnızca tutarın tahsil edilmesine izin veren sağlayıcıların belirteçleri "
+"kullanılabilir."
+
+#. module: account_payment
+#: model:ir.model.fields,help:account_payment.field_account_payment_register__payment_token_id
+msgid ""
+"Note that tokens from providers set to only authorize transactions (instead "
+"of capturing the amount) are not available."
+msgstr ""
+"İşlemleri yalnızca yetkilendirecek (tutarı tahsil etmeyecek) şekilde "
+"ayarlanmış sağlayıcıların belirteçleri kullanılamaz."
+
+#. module: account_payment
+#: model:ir.ui.menu,name:account_payment.payment_provider_menu
+msgid "Online Payments"
+msgstr "Çevrim İçi Ödemeler"
+
+#. module: account_payment
+#: model:ir.model.fields,help:account_payment.field_payment_provider__available_pricelist_ids
+msgid ""
+"Only allow this payment provider when the partner's pricelist matches one "
+"of these."
+msgstr ""
+"Bu ödeme sağlayıcısına yalnızca iş ortağının fiyat listesi bunlardan "
+"biriyle eşleştiğinde izin ver."
+
+#. module: account_payment
+#: model:ir.module.module,shortdesc:base.module_account_payment
+msgid "Payment - Account"
+msgstr "Ödeme - Hesap"
+
+#. module: account_payment
+#: model:ir.model,name:account_payment.model_account_payment_method
+msgid "Payment Method"
+msgstr "Ödeme Yöntemi"
+
+#. module: account_payment
+#: model:ir.model,name:account_payment.model_account_payment_method_line
+msgid "Payment Method Line"
+msgstr "Ödeme Yöntemi Satırı"
+
+#. module: account_payment
+#: model:ir.model.fields,field_description:account_payment.field_payment_provider__available_pricelist_ids
+msgid "Pricelists"
+msgstr "Fiyat Listeleri"
+
+#. module: account_payment
+#: model:ir.model.fields,field_description:account_payment.field_account_payment__payment_token_id
+msgid "Saved Payment Token"
+msgstr "Kayıtlı Ödeme Belirteci"
+
+#. module: account_payment
+#: model:ir.model.fields,field_description:account_payment.field_account_payment_register__payment_token_id
+msgid "Saved payment token"
+msgstr "Kayıtlı ödeme belirteci"
+
+#. module: account_payment
+#: model:ir.model.fields,field_description:account_payment.field_account_payment__suitable_payment_token_ids
+#: model:ir.model.fields,field_description:account_payment.field_account_payment_register__suitable_payment_token_ids
+msgid "Suitable Payment Token"
+msgstr "Uygun Ödeme Belirteci"
+
+#. module: account_payment
+#. odoo-python
+#: code:addons/account_payment/controllers/payment.py:0
+msgid "The access token is invalid."
+msgstr "Erişim belirteci geçersiz."
+
+#. module: account_payment
+#. odoo-python
+#: code:addons/account_payment/models/account_payment_method_line.py:0
+msgid ""
+"You can't delete a payment method that is linked to an installed provider.\n"
+"Linked providers(s): %s"
+msgstr ""
+"Kurulu bir sağlayıcıya bağlı ödeme yöntemini silemezsiniz.\n"
+"Bağlı sağlayıcılar: %s"
+
+#. module: account_payment
+#. odoo-python
+#: code:addons/account_payment/models/account_journal.py:0
+msgid ""
+"You must first uninstall a payment provider before deleting its journal.\n"
+"Linked providers: %s"
+msgstr ""
+"Bir ödeme sağlayıcısının yevmiyesini silmeden önce sağlayıcıyı kaldırmanız "
+"gerekir.\n"
+"Bağlı sağlayıcılar: %s"
+
+#. module: account_payment
+#: model_terms:ir.ui.view,arch_db:account_payment.payment_status
+msgid "Your order is being processed."
+msgstr "Siparişiniz işleniyor."
+
+#. module: account_payment
+#: model_terms:ir.ui.view,arch_db:account_payment.portal_invoice_payment
+msgid "is already paid on this invoice, please make sure to not pay twice."
+msgstr ""
+"tutarında ödeme zaten yapıldı, lütfen iki kez ödeme yapmadığınızdan emin "
+"olun."
+
+#. module: account_payment
+#. odoo-python
+#: code:addons/account_payment/models/payment_provider.py:0
+msgid "pricelist not allowed"
+msgstr "fiyat listesine izin verilmiyor"
