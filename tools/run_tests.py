@@ -179,14 +179,13 @@ def main():
     names = ",".join(modules)
     if args.reuse:
         selection = ["-u", names]
-    elif guarded:
-        if odoo("-c", str(CONF), "-d", db, "-i", PREINSTALL, "--stop-after-init", log=log, record=record):
-            sys.exit(f"could not install {PREINSTALL}; see {log}")
-        # Odoo installs the missing ones and updates those that came with it,
-        # so that the tests of all of them run
-        selection = ["-i", names, "-u", names]
     else:
-        selection = ["-i", names]
+        if guarded and odoo("-c", str(CONF), "-d", db, "-i", PREINSTALL, "--stop-after-init", log=log, record=record):
+            sys.exit(f"could not install {PREINSTALL}; see {log}")
+        # Odoo installs the missing ones and updates those already installed
+        # (with ov_brand, or by the database creation for auto-installed
+        # modules such as ov_i18n_tr), so that the tests of all of them run
+        selection = ["-i", names, "-u", names]
     # Tests start Odoo's HTTP server; a port of its own lets them run next to the dev server.
     rc = odoo("-c", str(CONF), "-d", db, *selection, "--test-enable",
               "--test-tags", tags, "--http-port", TEST_HTTP_PORT, "--stop-after-init", log=log, record=record)

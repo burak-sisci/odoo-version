@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-11-03",
+  "last_updated": "2026-11-04",
   "project": {
     "brand_name": "Nexus",
     "working_name": "odoo-version (depo adı ve geliştirme ortamı; yeniden adlandırma K5, T8.2)",
@@ -28,11 +28,10 @@
   },
   "current_task": "T3.6",
   "session": {
-    "mode": "standart",
-    "number": 4,
-    "started": "2026-11-03",
-    "ended": "2026-11-03",
-    "note": "Otonom mesai 4 kullanıcının isteğiyle T3.6 araştırması sırasında kapandı; özeti CHANGELOG.md. Bekleyen kullanıcı işleri USER_TASKS.md §1 (K22, K23 yeni)."
+    "mode": "otonom",
+    "number": 5,
+    "started": "2026-11-04",
+    "note": "Otonom mesai 5: T3.6'dan PLAN sırasıyla C görevleri."
   },
   "tasks_done": [
     "T0.1",
@@ -70,8 +69,8 @@
   "blocked_on_user": [],
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
-    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K23 (USER_TASKS.md §1)",
-    "Türkçe çeviri: başka modüllerin çevirisini tamamlama yöntemi (araştırma notu PLAN T3.6), ölçüm aracı ve paket modüllerindeki eksikler (T3.6)",
+    "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K24 (USER_TASKS.md §1)",
+    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, öncelik account, sale, purchase, stock, mrp, mail, web; CI eşiği her partide yükseltilir)",
     "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [
@@ -216,7 +215,7 @@
       "default_branch": "main",
       "remote": "origin"
     },
-    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı ve dış istek testleri (MVP_APPS, ov_test_mvp, --tags ov_brand_leak,ov_external; T2.6, T2.7); run_tests Odoo'yu tools/netguard.py ile çalıştırır, yayıncıya istek = FAILED (T2.7)",
+    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + Türkçe çeviri kapsamı eşiği (tools/po_coverage.py report --min, T3.6) + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı ve dış istek testleri (MVP_APPS, ov_test_mvp, --tags ov_brand_leak,ov_external; T2.6, T2.7); run_tests Odoo'yu tools/netguard.py ile çalıştırır, yayıncıya istek = FAILED (T2.7)",
     "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py); bilgisayar yeniden başlayınca elle başlatılır (python tools/pg.py start)",
     "node": null,
     "docker": null,
@@ -351,6 +350,18 @@
         "auto_install": true,
         "task": "T3.5",
         "note": "TCMB döviz kurları: günlük zamanlanmış iş 16.00 İstanbul (today.xml), kaçırılan iş günleri arşivden en çok 31 gün, hata olursa 1 saat sonra yeniden deneme (ir.cron._trigger); kur türü şirket ayarı (döviz/efektif alış/satış, varsayılan döviz alış; efektif yoksa aynı yönün döviz kuru); bülten kendi tarihiyle kaydedilir, 20.0 ertesi günden uygular; kur ana şirkete yazılır, yalnız etkin para birimleri; TRY olmayan şirkete çapraz kur; ayarlarda Şimdi Güncelle ve Geçmiş Kurları Aktar (ov.tcmb.rate.import, en çok 62 gün); güvenli XML ayrıştırma (DTD/varlık yok, 1 MB sınırı); varsayımlar USER_TASKS K23"
+      },
+      {
+        "module": "ov_i18n_tr",
+        "path": "addons/ov_i18n_tr",
+        "version": "20.0.1.0.0",
+        "license": "LGPL-3",
+        "depends": [
+          "base"
+        ],
+        "auto_install": true,
+        "task": "T3.6",
+        "note": "Türkçe çeviri katmanı: i18n_overlay/<modül>.po upstream tr.po'dan sonra okunur; kod metinleri odoo.tools.translate.get_po_paths sarılarak (süreç geneli), kayıt metinleri ve modül adları ir.module.module._load_module_terms/_load_non_installed_modules_manifest_terms çalışırken (contextvar); upstream kuralları (kurulumda yazılır, güncellemede eksik tamamlanır, noupdate korunur); modülün kendi kurulumunda önceden kurulu uygulamalara üzerine yazarak; ölçüm ve denetim tools/po_coverage.py, CI eşiği; varsayımlar USER_TASKS K24"
       }
     ],
     "ported": [

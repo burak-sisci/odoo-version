@@ -1,6 +1,6 @@
 # Mimari
 
-Son güncelleme: 2026-11-03
+Son güncelleme: 2026-11-04
 
 > **Durum: Hedef mimari.**
 > - Dayandığı Geçerli kararlar:
@@ -58,7 +58,7 @@ odoo-version/
 │   ├── specs/               # Enterprise eşdeğerleri için clean-room işlev tanımları
 │   └── research/            # tarihli araştırma kayıtları
 ├── tools/
-│   ├── check_docs.py        # belge tutarlılık denetimi (ileride ayrı araçlar: UBL doğrulama, çeviri ölçümü)
+│   ├── check_docs.py        # belge tutarlılık denetimi (ileride ayrı araç: UBL doğrulama)
 │   ├── pg.py                # yerel PostgreSQL kümesi: init, start, stop, status (T1.3)
 │   ├── odoo_conf.py         # yerel odoo.conf'u şablondan ve .env'den üretir (T1.6)
 │   ├── sync_skills.py       # upstream skills/ → .claude/skills/ kopyası ve fark denetimi (T1.7)
@@ -68,7 +68,8 @@ odoo-version/
 │   ├── check_modules.py     # modüllerimizin proje kuralları: önek, lisans, sürüm, yazar, marka (T1.9)
 │   ├── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
 │   ├── port_oca.py          # OCA modülünü ports/'a alır, upgrade_code'u porta uygular, kaynakla fark (T1.11)
-│   └── tr_districts.py      # Türkiye ilçe listesini İçişleri envanterinden üretir, ov_l10n_tr (T3.4)
+│   ├── tr_districts.py      # Türkiye ilçe listesini İçişleri envanterinden üretir, ov_l10n_tr (T3.4)
+│   └── po_coverage.py       # paket modüllerinin Türkçe çeviri kapsamı; ov_i18n_tr çevirilerini ekler ve denetler (T3.6)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, sığ git submodule, sabit commit (server-ux T1.11, server-brand T2.3)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız, her birinde PORT.md (ilk: reporting-engine/report_xlsx)
@@ -124,6 +125,7 @@ Kurallar:
 |---|---|---|---|
 | Marka | `ov_brand`; uygulamaya bağlı parçalar `ov_brand_<uygulama>` (`ov_brand_mail`, `ov_brand_html_editor`, `ov_brand_portal`, `ov_brand_digest`, `ov_brand_account`, `ov_brand_purchase`; sonra `ov_brand_website` …), ilgili uygulamayla kendiliğinden kurulur | Ad, logo, favicon, başlıklar, giriş ekranı, e-posta, portal ve rapor altbilgileri, PDF başlığı ve üst verisi, botun adı, PWA manifest, kullanıcı menüsü bağlantıları; altyapı metinlerindeki eski ürün adının gösterimde değiştirilmesi (T2.6, `ov_brand/rebrand.py`); odoo.com'a giden çağrıların (yayıncı garantisi, IAP, metin düzenleyici, uygulama mağazası, Gmail/Outlook vekili) ve dokümantasyon bağlantılarının kapatılması; dış istek testi (T2.7). Envanter: `docs/research/brand-inventory.md` | AGPL-3 |
 | Türkiye temeli | `ov_l10n_tr` (T3.2'den beri; `l10n_tr`'yle kendiliğinden kurulur), `ov_l10n_tr_tcmb` (T3.5; `ov_l10n_tr`'yle kendiliğinden kurulur), `ov_l10n_tr_mis_reports`, `ov_l10n_tr_check` … | Hesap planı ve vergi düzeltmeleri (`@template('tr', …)` uzantıları; kurulu şirketler kurulumda güncellenir, T3.2), VKN/TCKN ile kişi/şirket ayrımı ve MERSİS denetimi (T3.3), il/ilçe listesi ve Türkiye adres düzeni (`res.city`, T3.4), vergi/tevkifat eksikleri, günlük TCMB kurları (zamanlanmış iş, geçmiş aktarımı; T3.5), belge çıktıları, Tekdüzen mali tablolar, çek/senet | AGPL-3. LGPL koddan türetilen kısım varsa (ör. `l10n_latam_check` uyarlaması) LGPL-3 |
+| Türkçe | `ov_i18n_tr` (T3.6; her veritabanına kendiliğinden kurulur) | Upstream modüllerinin Türkçe çevirisini tamamlar ve düzeltir: `i18n_overlay/<modül>.po` upstream'in `tr.po`'sundan sonra okunur. Kod metinleri `get_po_paths` sarılarak (süreç geneli), kayıt metinleri `ir.module.module` yükleyicisi çalışırken (veritabanına özgü). Ölçüm ve denetim `tools/po_coverage.py` | LGPL-3 (upstream metinlerinin çevirisi) |
 | e-Belge | `ov_l10n_tr_edi` (çekirdek), `ov_l10n_tr_edi_nilvera` (adaptör), `ov_l10n_tr_edispatch` … | UBL-TR üretimi, senaryolar, fatura tipleri, mükellef sorgulama, durum takibi; entegratör adaptörleri; sahte adaptör | **LGPL-3** (19.0 LGPL koddan türetildiği için, D-008/2) |
 | OCA portları | Orijinal OCA adları (`ports/oca/`) | Mali raporlar, banka mutabakatı, ekstre içe aktarma, kalite kontrol … | Orijinal lisans (çoğu AGPL-3) |
 | Paketler | `ov_pack_ticaret`, `ov_pack_uretim` | Paket bağımlılıkları ve ön ayarlar, kurulum sihirbazı, roller | AGPL-3 |
@@ -184,13 +186,14 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
 - **Yerel testler (T1.8):** `tools/run_tests.py` her çalıştırmada temiz test veritabanı açar (demo yok), ayrı HTTP portu (8079) kullanır. Windows'a özgü filestore temizliği hatalarını ayrı sayar; referans sonuç Linux CI'dır.
   - Dış istekler (T2.7): Odoo `tools/netguard.py` ile çalışır. Yerel ağ dışındaki her ad çözümlemesi günlüğün yanına kaydedilir (`<db>.net.jsonl`), yayıncının alan adları reddedilir. Çalıştırıcı bunları ve günlükteki test çatısı kayıtlarını (Python ve tarayıcı istekleri) listeler; `ov_brand` kuruluysa yayıncıya giden istek sonucu bozar.
   - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur (T2.3). Kurulumu çevrim içi hizmet modüllerini kaldırıyor; modül kaldıran bir çalıştırmada Odoo `post_install` testlerini başlatmaz. Onunla gelen hedef modüller ikinci çalıştırmada güncellenir, testleri de çalışır.
+  - Hedef modüller her çalıştırmada hem kurulur hem güncellenir (`-i … -u …`): veritabanı oluşturulurken kendiliğinden kurulan modüllerin (ör. `ov_i18n_tr`, T3.6) testleri de böylece çalışır.
 - **Lint ve commit öncesi denetimler (T1.9):** `.pre-commit-config.yaml` her commit'te çalışır; CI'da `pre-commit run --all-files` (T1.10).
   - `ruff.toml`: upstream `ruff.toml`'u genişletir; `upstream/`, `vendor/`, `ports/` hariç. Yorum ve docstring'lerde Türkçe "ı" harfi izinli (`allowed-confusables`, T3.4).
   - `.pylintrc`: pylint-odoo'nun Odoo denetimleri (yalnız `addons/`): sürüm 20.0, lisans AGPL-3/LGPL-3, zorunlu yazar, SQL enjeksiyonu, yöntem adları.
     - Modül içi içe aktarmalar upstream gibi mutlak (ruff TID252). Tersini isteyen `odoo-addons-relative-import` denetimi pre-commit kanca argümanıyla kapalı (T2.2).
   - `tools/check_modules.py`: proje kuralları (önek, lisans, sürüm, yazar, kullanıcıya görünen metinlerde marka, `README.rst`, test, `tr.po`).
 - **CI (T1.10, çalışıyor; D-020):** GitHub Actions, `.github/workflows/ci.yml`. Her push'ta, pull request'te ve elle (`workflow_dispatch`) çalışır. İki iş paralel:
-  - **Belgeler, lint, gizli bilgi** (`checks`): belge denetimi → `pre-commit run --all-files` → gitleaks (tüm geçmiş) → `sync_skills.py --check`.
+  - **Belgeler, lint, gizli bilgi** (`checks`): belge denetimi → Türkçe çeviri kapsamı eşiği (`po_coverage.py report --min`, T3.6) → `pre-commit run --all-files` (çeviri dosyalarının denetimi dahil) → gitleaks (tüm geçmiş) → `sync_skills.py --check`.
   - **Modül testleri** (`tests`): Ubuntu 24.04, Python 3.12, PostgreSQL 18 servisi.
     - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
     - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).
@@ -198,7 +201,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
     - Elle çalıştırmada `modules` girdisindeki modüller (ör. upstream) ayrıca test edilir: Linux referans sonucu.
   - Önbellekler: alt modüllerin git nesneleri (upstream ve `vendor/` sabit commit'lerine göre; biri değişince son önbellek geri yüklenir, yalnız yeni commit'ler çekilir), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
   - Güvenlik: yalnız okuma yetkisi; eylemler commit SHA'sıyla sabit; gitleaks arşivi SHA-256 ile doğrulanır.
-  - Özel testler: marka sızıntısı (T2.6) ve dış istek (T2.7), çalışıyor. Planlananlar: UBL-TR doğrulama, çeviri kapsamı, kurulum.
+  - Özel testler: marka sızıntısı (T2.6) ve dış istek (T2.7), çalışıyor; Türkçe çeviri kapsamı (T3.6) belge işinde eşikle çalışıyor. Planlananlar: UBL-TR doğrulama, kurulum.
 - Üretim Linux olduğu için CI aynı zamanda Linux uyumluluk testidir.
 
 ## 6. Sürüm yükseltme stratejisi

@@ -1,6 +1,6 @@
 # Lisans, Marka ve Hukuki Uyum
 
-Son güncelleme: 2026-11-03
+Son güncelleme: 2026-11-04
 İlgili kararlar: D-006, D-007, D-008, D-014, D-015, D-016, D-019, D-020
 
 > Hukuki görüş değildir. Ticari satıştan önce avukat incelemesi yapılacaktır (PLAN T9.4).
@@ -91,6 +91,7 @@ Projeye giren her dış kod buraya yazılır. Depoya girmeyen ama geliştirme or
 | OCA server-ux (`date_range`) | 20.0, commit `d952d4df` (2026-10-13) | `date_range` LGPL-3 (manifest ve dosya başlıkları); depo `LICENSE` AGPL-3 | Hayır (D-010, D-019) | `vendor/oca/server-ux`, sığ git submodule (T1.11) |
 | OCA server-brand (`remove_odoo_enterprise`) | 20.0, commit `9637fe38` (2026-10-07) | AGPL-3 (manifest, dosya başlıkları, depo `LICENSE`); yazarlar Eska, Onestein, OCA | Hayır (D-010, D-019) | `vendor/oca/server-brand`, sığ git submodule (T2.3) |
 | Türkiye ilçe listesi (İçişleri Bakanlığı Mülki İdare Bölümleri Envanteri) | 2026-11-03 indirmesi: 922 ilçe + 51 merkez ilçe | Resmî kamu verisi, lisans belirtilmemiş; içerik kanunla belirlenen adlar (§4) | Evet: Türkçe yazım, 51 "Merkez" eklendi, kendi kimliklerimiz | `addons/ov_l10n_tr/data/res.city.csv`, üretici `tools/tr_districts.py` (T3.4) |
+| Odoo Community metinlerinin Türkçe çevirisi (kendi çevirimiz) | 20.0 şablonları (`.pot`), commit `afbcf79d` | LGPL-3: kaynak metinler ve yorum satırları upstream şablonundan kopyalanır, çeviri bizim | Kaynak metin değişmez; çeviri bizim | `addons/ov_i18n_tr/i18n_overlay/`, araç `tools/po_coverage.py` (T3.6) |
 | OCA `report_xlsx` (reporting-engine) | 19.0, commit `b9e8c6cd` (2026-09-23); port sürümü `20.0.1.0.0` | AGPL-3; yazarlar ACSONE SA/NV, Creu Blanca, OCA; telif başlıkları korunuyor | Evet: 20.0 uyarlaması, ayrıntı modüldeki `PORT.md` | `ports/oca/reporting-engine/report_xlsx` (T1.11) |
 
 **Geliştirme ortamı araçları (depoya girmez, ürünle dağıtılmaz):**

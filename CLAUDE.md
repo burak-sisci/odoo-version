@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Son güncelleme: 2026-11-03
+Son güncelleme: 2026-11-04
 
 Bu dosya, bu projede çalışan Claude (ve diğer AI ajanları) için çalışma talimatıdır. Belgeler Türkçe, kod İngilizce (D-009).
 
@@ -173,6 +173,7 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Testler (T1.8): `python tools/run_tests.py <modül>[,<modül>…]`
   - Her çalıştırmada temiz test veritabanı (`ov_test_<ilk modül>`, demo yok, `en_US`), modül(ler) testlerle kurulur, varsayılan etiket `/<modül>`.
   - Hedef modüller `ov_brand`'e bağlıysa `ov_brand` önce testsiz kurulur: kurulumu çevrim içi hizmet modüllerini kaldırıyor, Odoo da modül kaldıran çalıştırmada `post_install` testlerini başlatmıyor (T2.3). Onunla gelen hedef modüller (ör. `remove_odoo_enterprise`) ikinci çalıştırmada güncellenir, testleri de çalışır.
+  - Hedef modüller hem kurulur hem güncellenir (`-i … -u …`); veritabanı oluşturulurken kendiliğinden kurulanların (ör. `ov_i18n_tr`) testleri de çalışır.
   - Etiketli veya tek test: `--tags` Odoo'nun `--test-tags` sözdizimiyle (`[-][etiket][/modül][:Sınıf][.yöntem]`; ör. `--tags /l10n_tr:TestClassName.test_method`, `--tags post_install/l10n_tr`).
   - Hızlı tekrar: `--reuse` (veritabanını korur, `-u` ile günceller). Demo gerekiyorsa `--with-demo` (testler demoya dayanmamalı).
   - Testler kendi HTTP portunu kullanır (8079); geliştirme sunucusu 8069'da açık kalabilir.
@@ -193,6 +194,10 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Gizli bilgi denetimi (T1.10): `python tools/check_secrets.py`. Staged değişikliklerde `.env` değerlerini arar; pre-commit kancası olarak her commit'te çalışır. CI'da gitleaks tüm geçmişi tarar.
 - CI (T1.10): `gh run list --limit 5` · başarısız adımların günlüğü `gh run view <id> --log-failed`
   - Linux'ta referans test (ör. upstream modülleri): `gh workflow run ci.yml -f modules=l10n_tr` → `gh run watch <id>`
+- Türkçe çeviri (T3.6): `python tools/po_coverage.py` paket modüllerinin kapsamını ölçer (`--modules a,b`, `--min N` eşik altında 1 döner; CI eşiği `.github/workflows/ci.yml`'de, yalnız yükseltilir).
+  - Eksikler: `python tools/po_coverage.py missing <modül> [--limit N] --out iş.json` → çeviriler `{anahtar: çeviri}` JSON'una yazılır → `python tools/po_coverage.py add <modül> çeviri.json` (doğrular, `addons/ov_i18n_tr/i18n_overlay/<modül>.po`'ya yazar). Var olan bir çeviriyi düzeltmek de `add` ile.
+  - Terim tutarlılığı: `python tools/po_coverage.py lookup <metin>`. Denetim: `check` (pre-commit ve CI). Upstream güncellenince `sync`.
+  - Kaynakta "Odoo" geçen metin adla çevrilir, gösterimde `ov_brand` değiştirir. Terim tercihleri ve varsayımlar: USER_TASKS K24.
 - İlçe listesi (T3.4): `.venv/Scripts/python tools/tr_districts.py` İçişleri Bakanlığı envanterini indirir, `addons/ov_l10n_tr/data/res.city.csv`'yi yazar. `--check` fark varsa 1 döner; `--save-dir DIR` indirilen raporları saklar, `--from-dir DIR` onları kullanır.
 - OCA portu (T1.11): `python tools/port_oca.py fetch <depo> <modül> [--branch 19.0] [--commit SHA]` → `python tools/port_oca.py upgrade ports/oca/<depo>/<modül>` → elle uyarlama + `python tools/run_tests.py <modül>`
   - Kaynakla fark: `python tools/port_oca.py diff ports/oca/<depo>/<modül> [--stat]`. Adımların tamamı ve kayıtlar: ARCHITECTURE.md §2 "Port prosedürü".

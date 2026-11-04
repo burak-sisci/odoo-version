@@ -1,6 +1,6 @@
 # Plan ve İlerleme
 
-Son güncelleme: 2026-11-03
+Son güncelleme: 2026-11-04
 İlgili kararlar: D-005, D-011, D-012, D-013, D-014, D-016, D-017, D-018, D-019, D-020, D-021
 
 Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip edilir.
@@ -415,10 +415,20 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
   - Ölçüm aracı `tools/po_coverage.py`; CI'da eşik.
   - Paket modüllerindeki eksikler çevrilir. Öncelik: `l10n_tr` (%33), `account`, `sale`, `purchase`, `stock`, `mrp`, `mail`, `web`.
   - Upstream'e çeviri katkısı isteğe bağlı ve kullanıcı onayıyla (K8).
-  - **Durum (2026-11-03, otonom mesai 4 sonunda):** yöntem araştırması başladı; kod yok. Upstream 20.0'da okunanlar:
-    - Kayıt metinleri (alan adı, menü, görünüm, veri): `.po` satırı hedef modülün kimliğini taşır (`account.field_…`), bu yüzden bizim modülün `.po`'su başka modülün kaydını çevirebilir. Ancak bir modül kurulurken yalnız kendi `.po`'su okunur (`ir.module.module._load_module_terms`); sonradan kurulan uygulama (ör. `mrp`) için bizim dosyanın da okunması bu yöntemin genişletilmesini gerektirir.
-    - Kod metinleri (Python `_()`, JS `_t`): yalnız modülün kendi `i18n/` ve `i18n_extra/` klasöründen okunur (`CodeTranslations`, `get_po_paths`). Yüklü modülün yolu yalnız kendi klasöründe aranır (`file_path`), yani ayrı bir addons yolundaki `account/i18n_extra/tr.po` okunmaz. Kod metinleri için okuma işlevinin genişletilmesi gerekir.
-    - Birleştirme: modül güncellemesinde var olan çeviri korunur (`overwrite` kapalı). Hatalı upstream çevirisini düzeltmenin üzerine yazma kuralı açık nokta.
+  - **Durum (2026-11-04, otonom mesai 5):** yöntem ve ölçüm hazır, çeviri sürüyor.
+    - Yöntem: `ov_i18n_tr` (LGPL-3, her veritabanına kendiliğinden kurulur). Upstream modülünün çevirisi `i18n_overlay/<modül>.po`'da; upstream'in `tr.po`'sundan sonra, aynı içe aktarmada okunur, aynı metin için bizimki geçerli olur.
+      - Kod metinleri (`_()`, `_t`): `odoo.tools.translate.get_po_paths` sarılır (süreç geneli, kod çevirilerinin veritabanı yok).
+      - Kayıt metinleri ve modül adları: aynı işlev `ir.module.module`'de ve manifest okuyucusunda adıyla içe aktarılmış; yalnız bu modülün `_load_module_terms` ve `_load_non_installed_modules_manifest_terms` yöntemleri çalışırken çeviri dosyamızı ekler. Modülün kurulu olmadığı veritabanı etkilenmez.
+      - Kurallar upstream'inki: uygulama kurulurken çevirimiz yazılır; güncellemede var olan çeviri korunur, eksik tamamlanır ("üzerine yaz"la bizimki geçerli); `noupdate` kayıtlara dokunulmaz. Bu modül kurulurken önceden kurulu uygulamalara da yazılır ve var olan çevirilerin yerine geçer (K24 varsayımı).
+      - Kaynakta "Odoo" geçen metinler adla çevrilir; gösterimde `ov_brand` değiştirir (K19).
+    - Ölçüm `tools/po_coverage.py`: upstream `.pot` şablonlarına karşı upstream `tr.po` + çevirimiz. Paket = `MVP_APPS` + modüllerimiz + bağımlılıklar + kendiliğinden kurulanlar (TR dışı ülke modülleri ve kaldırılan çevrim içi hizmetler hariç); CI'daki paket veritabanıyla aynı 90 modül, çeviri şablonu olan 83'ü ölçülür.
+      - `.pot` canlı terimlerle karşılaştırıldı (`ov_demo`): `account` 3.570 canlı terimin 379'u şablonda yok (çoğu genel hesap planı verisi), `base` 164; `web`, `mail`, `product` 0–3. Şablon ölçüm için yeterli; şablon dışı terimler sonraki iş.
+      - Denetim (`check`, pre-commit ve CI): terim şablonda var mı, yer tutucular (`%s`, `%(ad)s`, `{ad}`), etiketler ve çevrilmeyen öznitelikleri, satır başı/sonu, ürün adı eklenmemiş mi, reStructuredText başlık çizgisi.
+      - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95.
+    - Başlangıç (2026-11-04): 83 modül, 29.518 terim, %81,11 çevrili, 5.576 eksik. %95 için yaklaşık 4.100 terim gerekiyor.
+    - İlerleme: `l10n_tr` 21/21.
+    - Testler: `ov_i18n_tr` 11 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması).
+    - Varsayımlar: `USER_TASKS.md` K24.
 - [ ] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.
   - Tutarın yazıyla gösterimi (num2words, Odoo'nun mevcut bağımlılığı); VKN, vergi dairesi, MERSİS alanları.

@@ -1,0 +1,12 @@
+# Test overlay of the account module: fictional translations.
+msgid ""
+msgstr ""
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+
+#. module: account
+#: model:ir.module.module,shortdesc:base.module_account
+msgid "Invoicing"
+msgstr "Faturalama (ov test)"

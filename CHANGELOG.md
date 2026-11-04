@@ -1,9 +1,37 @@
 # Değişiklik Günlüğü
 
-Son güncelleme: 2026-11-03
+Son güncelleme: 2026-11-04
 
 Her adımın kaydı en üste, tarih başlığıyla eklenir. Bir karar değiştiğinde **eski metni ve değişiklik nedeni** buraya yazılır (DECISIONS.md yalnız güncel hali tutar).
 Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
+
+## 2026-11-04
+
+### Adım: Türkçe çeviri katmanı ve ölçüm aracı (T3.6, 1. adım) — otonom mesai 5
+
+**Kod**
+- Yeni modül `ov_i18n_tr` (LGPL-3, `base`'e bağlı, kendiliğinden kurulur). Upstream modülünün eksik ve hatalı Türkçe çevirileri `i18n_overlay/<modül>.po`'da; upstream'in `tr.po`'sundan sonra aynı içe aktarmada okunur.
+  - Kod metinleri: `odoo.tools.translate.get_po_paths` sarıldı (süreç geneli; önbellek modül yüklenince boşaltılır).
+  - Kayıt metinleri ve kurulu olmayan modüllerin adları: aynı işlevin `ir.module.module` ve manifest okuyucusundaki kopyaları yalnız bu modülün yükleyicileri çalışırken çeviri dosyamızı ekler (`contextvars`). Modülün kurulu olmadığı veritabanı etkilenmez.
+  - Upstream kuralları korunur: kurulumda yazılır, güncellemede eksik tamamlanır, `noupdate` kayda dokunulmaz. Bu modülün kendi kurulumunda önceden kurulu uygulamalara da yazılır (var olanın yerine; K24 varsayımı).
+- `tools/po_coverage.py`: paket modüllerinin Türkçe çeviri kapsamı (`report`), eksik terimler (`missing`), çeviri ekleme (`add`, doğrulayarak), terim arama (`lookup`), denetim (`check`), şablonla eşitleme (`sync`).
+  - Paket listesi statik hesaplanıyor: `MVP_APPS` + modüllerimiz + bağımlılıklar + kendiliğinden kurulanlar; TR dışı ülke modülleri ve `ov_brand`'in kaldırdığı çevrim içi hizmetler hariç. CI'daki paket veritabanının 90 modülüyle birebir aynı (fark yalnız sonradan eklenen kendi modüllerimiz).
+  - Denetim kuralları 12 örnekle sınandı (yer tutucu sırası ve adları, `{ad}`, etiket ve çevrilmeyen öznitelikler, satır başı/sonu, ürün adı eklenmesi, reStructuredText başlık çizgisi).
+- pre-commit kancası `check-translations`; CI belge işinde kapsam eşiği (`--min 81.1`, her partide yükselir).
+- `tools/run_tests.py`: hedef modüller her zaman `-i … -u …` ile çalıştırılıyor. Kendiliğinden kurulan modül veritabanı oluşturulurken geldiği için `-i` testleri başlatmıyordu (0 test).
+- Testler: `ov_i18n_tr` 11 test, hepsi geçti (kurgusal çeviri dosyalarıyla Python ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adı; gerçek çeviri dosyaları Odoo'nun okuyucusuyla).
+- İlk çeviriler: `l10n_tr` 14 terim (7/21 → 21/21). Modül açıklamasındaki reStructuredText docutils'le uyarısız işlendi.
+
+**Araştırma**
+- Upstream'in çeviri yükleme yolları (20.0): `get_po_paths` üç yerde adıyla içe aktarılıyor; kod çevirileri süreç genelinde önbellekte; `TranslationImporter` sonraki dosyayı öncekinin üstüne yazıyor, kaydederken `overwrite` ve `noupdate` kuralını uyguluyor; `file_path` yüklü modülün dosyasını yalnız kendi klasöründe arıyor (ayrı addons yolunda `i18n_extra` olmuyor).
+- `.pot` şablonları canlı terimlerle karşılaştırıldı (`ov_demo`): `account`'ta şablon dışı 379 terim (çoğu genel hesap planı verisi), `base` 164, diğerleri 0–3. Ölçüm şablona göre.
+- Başlangıç kapsamı: 83 modül, 29.518 terim, %81,11. En çok eksik: `web` 928, `mail` 735, `base` 490, `spreadsheet` 467, `account` 421.
+
+**Kararlar**
+- Varsayımlar `USER_TASKS.md` K24'e yazıldı (ayrı modül, kurulumda üzerine yazma, "Odoo" adının çeviride kalması, ölçüm yöntemi, terim tutarlılığı).
+
+**Belgeler**
+- PLAN.md (T3.6 durumu), USER_TASKS.md (K24, §1), ARCHITECTURE.md (katman tablosu, araçlar, CI, testler), docs/MODULE_MATRIX.md, docs/COMPLIANCE.md (§5 envanter), README.md, CLAUDE.md (komutlar), state.json.
 
 ## 2026-11-03
 

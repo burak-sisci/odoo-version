@@ -1,0 +1,13 @@
+# Test overlay of the web module: fictional translations.
+msgid ""
+msgstr ""
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/form/form_controller.xml:0
+msgid "Discard"
+msgstr "Vazgeç (ov test)"

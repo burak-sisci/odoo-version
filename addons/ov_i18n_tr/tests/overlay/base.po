@@ -1,0 +1,28 @@
+# Test overlay of the base module: fictional translations.
+msgid ""
+msgstr ""
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_ui_view.py:0
+msgid "%(action_name)s is not a valid action on %(model_name)s"
+msgstr "%(action_name)s, %(model_name)s için geçerli bir işlem değil (ov test)"
+
+#. module: base
+#: model:res.country,name:base.tr
+msgid "Türkiye"
+msgstr "Türkiye (ov test)"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid "Access Rights"
+msgstr "Erişim Hakları (ov test)"
+
+#. module: base
+#: model:ir.ui.menu,name:base.menu_administration
+msgid "Settings"
+msgstr "Ayarlar (ov test)"

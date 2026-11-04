@@ -1,6 +1,6 @@
 # Kullanıcıdan Beklenenler
 
-Son güncelleme: 2026-11-03
+Son güncelleme: 2026-11-04
 İlgili kararlar: D-003, D-015, D-021
 
 Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her şeyin** tek listesidir.
@@ -26,6 +26,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 11. **K22:** ilçe listesi açık lisanslı bir veri seti yerine İçişleri Bakanlığı'nın resmî envanterinden alındı. Merkez ilçelerin adı "Merkez"; il zorunlu, posta kodu isteğe bağlı.
 12. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
 13. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
+14. **K24:** Türkçe çeviri eksikleri ayrı bir modülle (`ov_i18n_tr`) tamamlanıyor; modül kurulurken hatalı upstream çevirilerinin yerine geçiyor. Terim tercihlerin varsa K24'e yazabilirsin.
 
 Otonom mesai 4 bitti (2026-11-03). Özeti CHANGELOG.md'de, "Otonom mesai 4 — özet". Yeni maddeler: K22, K23.
 
@@ -196,6 +197,18 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — varsayımlar kalsın · **B** — bülten yayımlandığı gün de uygulansın (3 Kasım bülteni 3 Kasım'da) · **C** — varsayılan kur türü başka olsun (ör. efektif satış) · **D** — başka bir düzen.
   - Claude önerisi: **A**. Yaygın uygulamada TCMB'nin bir gün ilan ettiği kur ertesi günün işlemlerinde kullanılır; 20.0'ın tarih kuralı bunu kendiliğinden veriyor (ölçüldü). Döviz alış en yaygın seçim. Vergi mevzuatındaki kesin kural bu oturumda birincil kaynaktan doğrulanmadı; mali müşavirle teyit edilmeli.
   - Ne zaman: ilk pilot müşteriden (F9) önce; mali müşavire K20 sorularıyla birlikte sorulabilir.
+
+- [ ] K24 **Karar** — Türkçe çevirinin tamamlanma yöntemi (T3.6).
+  - Neden: upstream'in Türkçe çevirisi paket modüllerinde %81; çevrilmemiş metinler İngilizce görünüyor, bazı çeviriler hatalı (ör. formdaki "Discard" düğmesi "Sil" diye çevrilmiş).
+  - Varsayımlar (otonom mesai 5, geri dönüşü kolay; hepsi `ov_i18n_tr`'de):
+    - Çeviriler ayrı bir modülde (`ov_i18n_tr`, LGPL-3: upstream metinlerinin çevirisi). Her yeni veritabanına kendiliğinden kurulur.
+    - Modül kurulurken çevirileri, önceden kurulu uygulamalardaki var olan çevirilerin yerine yazılır. Sonraki güncellemelerde yalnız eksikler tamamlanır, müşterinin düzenlediği çeviri korunur. Müşterinin düzenlemesine ayrılmış kayıtlara (ör. ülke adları) hiç dokunulmaz.
+    - Kaynak metinde "Odoo" geçen çevirilerde ad olduğu gibi kalır; gösterimde `ov_brand` "Nexus" yazar (K19). Böylece çeviriler istenirse upstream'e de verilebilir (K8).
+    - Ölçüm upstream'in çeviri şablonlarına (`.pot`) göre. Paket: CI'daki MVP uygulamaları, modüllerimiz, bağımlılıkları ve onlarla kendiliğinden kurulanlar (83 modül). CI eşiği her çeviri partisiyle yükselir.
+    - Terimler upstream'in yerleşik Türkçe karşılıklarıyla tutarlı tutulur (ör. Contact → Kontak, Journal Entry → Yevmiye Kaydı); upstream'in kendi içinde tutarsız olduğu yerde en yaygın karşılık seçilir.
+  - Seçenekler: **A** — varsayımlar kalsın · **B** — modül kurulurken var olan çevirilere dokunulmasın, yalnız eksikler tamamlansın · **C** — "Odoo" geçen metinlerin çevirisinde doğrudan "Nexus" yazılsın · **D** — başka bir düzen.
+  - Claude önerisi: **A**. Kurulumda üzerine yazma, hatalı upstream çevirilerinin (ör. "Sil") önceden kurulmuş veritabanlarında da düzelmesini sağlıyor; yeni müşteride zaten ilk kurulumdur.
+  - Ne zaman: acil değil; F9 pilotundan önce. Terim tercihlerin varsa (ör. "Kontak" yerine "Kişi") liste olarak verebilirsin.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

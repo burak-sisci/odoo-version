@@ -31,6 +31,12 @@ repos:
         language: python
         files: ^addons/
         pass_filenames: false
+      - id: check-translations
+        name: Turkish translation overlay (terms, placeholders, tags)
+        entry: python tools/po_coverage.py check
+        language: python
+        files: ^(addons/ov_i18n_tr/i18n_overlay/|tools/po_coverage\.py$)
+        pass_filenames: false
       - id: check-docs
         name: project documents are consistent
         entry: python tools/check_docs.py
