@@ -323,6 +323,46 @@ def _tags(text):
     return Counter(tags)
 
 
+class _OutputStrings(ast.NodeTransformer):
+    """Blank the strings an expression outputs (operands of and/or, branches of x if c else y).
+
+    A translation may change them ('Quotation' in a mail subject); the strings the expression
+    compares ('draft' in a state test) and the rest of the expression must stay the same.
+    """
+
+    @staticmethod
+    def _blank(node):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            return ast.Constant("")
+        return node
+
+    def visit_BoolOp(self, node):
+        self.generic_visit(node)
+        node.values = [self._blank(value) for value in node.values]
+        return node
+
+    def visit_IfExp(self, node):
+        self.generic_visit(node)
+        node.body, node.orelse = self._blank(node.body), self._blank(node.orelse)
+        return node
+
+
+def _braces(text):
+    """Placeholders {name} and expressions {{ ... }}, the latter without their output strings."""
+    found = []
+    for match in BRACE_RE.findall(text):
+        if match.startswith("{{"):
+            try:
+                tree = ast.parse(match[2:-2].strip(), mode="eval")
+            except SyntaxError:
+                found.append(match)
+            else:
+                found.append(ast.dump(_OutputStrings().visit(tree)))
+        else:
+            found.append(match)
+    return Counter(found)
+
+
 def problems(msgid, msgstr):
     """Return the problems of a translation: placeholders, tags, line breaks, product name."""
     found = []
@@ -335,7 +375,7 @@ def problems(msgid, msgstr):
         found.append("named placeholders differ")
     if [p for p in src if p[0] is None] != [p for p in dst if p[0] is None]:
         found.append("positional placeholders differ (count, kind or order)")
-    if Counter(BRACE_RE.findall(msgid)) != Counter(BRACE_RE.findall(msgstr)):
+    if _braces(msgid) != _braces(msgstr):
         found.append("{placeholders} differ")
     if _tags(msgid) != _tags(msgstr):
         found.append("tags or their untranslated attributes differ")

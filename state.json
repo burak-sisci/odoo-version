@@ -70,7 +70,7 @@
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K24 (USER_TASKS.md §1)",
-    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, öncelik account, sale, purchase, stock, mrp, mail, web; CI eşiği her partide yükseltilir)",
+    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase tamam (%83,57); sırada stock, mrp, mail, web, base; CI eşiği her partide yükseltilir)",
     "Türkçe belge çıktıları (T3.7)"
   ],
   "decisions": [
@@ -215,7 +215,7 @@
       "default_branch": "main",
       "remote": "origin"
     },
-    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + Türkçe çeviri kapsamı eşiği (tools/po_coverage.py report --min, T3.6) + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı ve dış istek testleri (MVP_APPS, ov_test_mvp, --tags ov_brand_leak,ov_external; T2.6, T2.7); run_tests Odoo'yu tools/netguard.py ile çalıştırır, yayıncıya istek = FAILED (T2.7)",
+    "ci": "GitHub Actions .github/workflows/ci.yml (push, pull_request, workflow_dispatch): checks = check_docs + araç testleri (tools/tests) + Türkçe çeviri kapsamı eşiği (tools/po_coverage.py report --min, T3.6) + pre-commit + gitleaks 8.30.1 + sync_skills --check; tests = ubuntu-24.04, Python 3.12, postgres:18, şablon örneği + addons/ports testleri; alt modüller .github/actions/submodules (önbellekli); dispatch girdisi modules = Linux referans testi; MVP uygulamalarıyla marka sızıntısı ve dış istek testleri (MVP_APPS, ov_test_mvp, --tags ov_brand_leak,ov_external; T2.6, T2.7); run_tests Odoo'yu tools/netguard.py ile çalıştırır, yayıncıya istek = FAILED (T2.7)",
     "postgresql": "18.6 (EDB taşınabilir ikili dosyalar, %LOCALAPPDATA%/odoo-version, localhost:5432, kullanıcı hesabında; tools/pg.py); bilgisayar yeniden başlayınca elle başlatılır (python tools/pg.py start)",
     "node": null,
     "docker": null,

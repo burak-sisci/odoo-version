@@ -424,9 +424,12 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Ölçüm `tools/po_coverage.py`: upstream `.pot` şablonlarına karşı upstream `tr.po` + çevirimiz. Paket = `MVP_APPS` + modüllerimiz + bağımlılıklar + kendiliğinden kurulanlar (TR dışı ülke modülleri ve kaldırılan çevrim içi hizmetler hariç); CI'daki paket veritabanıyla aynı 90 modül, çeviri şablonu olan 83'ü ölçülür.
       - `.pot` canlı terimlerle karşılaştırıldı (`ov_demo`): `account` 3.570 canlı terimin 379'u şablonda yok (çoğu genel hesap planı verisi), `base` 164; `web`, `mail`, `product` 0–3. Şablon ölçüm için yeterli; şablon dışı terimler sonraki iş.
       - Denetim (`check`, pre-commit ve CI): terim şablonda var mı, yer tutucular (`%s`, `%(ad)s`, `{ad}`), etiketler ve çevrilmeyen öznitelikleri, satır başı/sonu, ürün adı eklenmemiş mi, reStructuredText başlık çizgisi.
+        - `{{ … }}` ifadelerinde (e-posta konuları) yalnız çıktı metinleri çevrilebilir: `and`/`or` işlenenleri ve koşullu ifadenin dalları (ör. `'Quotation'`). Karşılaştırılan değerler (ör. `'draft'`), alanlar ve ifadenin yapısı aynı kalır (Python AST karşılaştırması).
+        - Kuralların testi `tools/tests/test_po_coverage.py` (8 test); pre-commit ve CI'da çalışır.
       - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95.
     - Başlangıç (2026-11-04): 83 modül, 29.518 terim, %81,11 çevrili, 5.576 eksik. %95 için yaklaşık 4.100 terim gerekiyor.
-    - İlerleme: `l10n_tr` 21/21.
+    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105). Paket %83,57, 4.851 eksik.
+      - Uzun e-posta şablonları etiketlerin arasındaki metin parçaları çevrilerek yazıldı; etiketler ve QWeb ifadeleri olduğu gibi kalır (denetim bunu doğrular).
     - Testler: `ov_i18n_tr` 11 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması).
     - Varsayımlar: `USER_TASKS.md` K24.
 - [ ] T3.7 Türkçe belge çıktıları · M · C

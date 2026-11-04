@@ -37,6 +37,12 @@ repos:
         language: python
         files: ^(addons/ov_i18n_tr/i18n_overlay/|tools/po_coverage\.py$)
         pass_filenames: false
+      - id: tool-tests
+        name: tests of the project tools
+        entry: python -m unittest discover -s tools/tests
+        language: python
+        files: ^tools/
+        pass_filenames: false
       - id: check-docs
         name: project documents are consistent
         entry: python tools/check_docs.py

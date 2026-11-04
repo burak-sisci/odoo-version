@@ -206,6 +206,7 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
     - Kaynak metinde "Odoo" geçen çevirilerde ad olduğu gibi kalır; gösterimde `ov_brand` "Nexus" yazar (K19). Böylece çeviriler istenirse upstream'e de verilebilir (K8).
     - Ölçüm upstream'in çeviri şablonlarına (`.pot`) göre. Paket: CI'daki MVP uygulamaları, modüllerimiz, bağımlılıkları ve onlarla kendiliğinden kurulanlar (83 modül). CI eşiği her çeviri partisiyle yükselir.
     - Terimler upstream'in yerleşik Türkçe karşılıklarıyla tutarlı tutulur (ör. Contact → Kontak, Journal Entry → Yevmiye Kaydı); upstream'in kendi içinde tutarsız olduğu yerde en yaygın karşılık seçilir.
+    - Muhasebe terimleri (`account`): Credit Note → İade Faturası, Tax Return → Vergi Beyannamesi (upstream'de yer yer "Vergi İadesi", yanlış), Suspense Account → Geçici Hesap, Reconcile → Denkleştirme, hash → özetlenmiş (hash), Accrued Expenses/Income → Gider/Gelir Tahakkukları, Furniture & Fixtures → Demirbaşlar, leasehold improvements → Özel Maliyetler.
   - Seçenekler: **A** — varsayımlar kalsın · **B** — modül kurulurken var olan çevirilere dokunulmasın, yalnız eksikler tamamlansın · **C** — "Odoo" geçen metinlerin çevirisinde doğrudan "Nexus" yazılsın · **D** — başka bir düzen.
   - Claude önerisi: **A**. Kurulumda üzerine yazma, hatalı upstream çevirilerinin (ör. "Sil") önceden kurulmuş veritabanlarında da düzelmesini sağlıyor; yeni müşteride zaten ilk kurulumdur.
   - Ne zaman: acil değil; F9 pilotundan önce. Terim tercihlerin varsa (ör. "Kontak" yerine "Kişi") liste olarak verebilirsin.

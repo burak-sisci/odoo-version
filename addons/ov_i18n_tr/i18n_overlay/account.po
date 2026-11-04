@@ -1,0 +1,2866 @@
+# Turkish translations of the account module completing upstream's (ov_i18n_tr, T3.6).
+# Read after account/i18n/tr.po. The comments come from account.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment__reconciled_statement_lines_count
+msgid "# Reconciled Bank Transactions"
+msgstr "# Denkleştirilmiş Banka İşlemleri"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid ""
+"%(failed_count)s out of %(total_count)s entries could not be reset to draft."
+msgstr "%(total_count)s kaydın %(failed_count)s tanesi taslağa döndürülemedi."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement_line.py:0
+msgid ""
+"%(move)s reached an invalid state regarding its related bank transaction.\n"
+"To be consistent, the journal entry must always have exactly one suspense "
+"line."
+msgstr ""
+"%(move)s, ilgili banka işlemi açısından geçersiz bir duruma geldi.\n"
+"Tutarlılık için yevmiye kaydında her zaman tam olarak bir geçici hesap "
+"satırı bulunmalıdır."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__vat_disabled_available
+msgid "'Not Subject to VAT' Available"
+msgstr "'KDV'ye Tabi Değil' Kullanılabilir"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_report.py:0
+msgid ""
+"'active' field of account.report shouldn't be directly written to in data "
+"files. Use active_fallback. (Detected while loading %(file_path)s)"
+msgstr ""
+"account.report modelinin 'active' alanına veri dosyalarında doğrudan "
+"yazılmamalıdır. active_fallback kullanın. (%(file_path)s yüklenirken "
+"algılandı)"
+
+#. module: account
+#: model:mail.template,body_html:account.email_template_edi_invoice
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Dear\n"
+"        <t t-if=\"object.partner_id.parent_id\">\n"
+"            <t t-if=\"object.partner_id.name\">\n"
+"                <t t-out=\"object.partner_id.name\">Brandon Freeman</t> (<t "
+"t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+"            </t>\n"
+"            <t t-else=\"\">\n"
+"                <t t-out=\"object.partner_id.parent_id.name or ''\">Azure "
+"Interior</t>,\n"
+"            </t>\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        Here is your\n"
+"        <t t-if=\"object.name\">\n"
+"            invoice <span style=\"font-weight:bold;\" t-out=\"object.name or "
+"''\">INV/2021/05/0005</span>\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            invoice\n"
+"        </t>\n"
+"        <t t-if=\"object.invoice_origin\">\n"
+"            (with reference: <t t-out=\"object.invoice_origin or "
+"''\">SUB003</t>)\n"
+"        </t>\n"
+"        amounting in <span style=\"font-weight:bold;\" "
+"t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">$ "
+"143,750.00</span>\n"
+"        from <t t-out=\"object.company_id.name or ''\">YourCompany</t>.\n"
+"        <t t-if=\"object.payment_state in ('paid', 'in_payment')\">\n"
+"            This invoice is already paid.\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            Please remit payment at your earliest convenience.\n"
+"            <t t-if=\"object.payment_reference\">\n"
+"                <br/><br/>\n"
+"                Please use the following communication for your payment: "
+"<strong t-out=\"object.payment_reference or ''\">INV/2021/05/0005</strong>\n"
+"                <t t-if=\"object.partner_bank_id\">\n"
+"                    on the account <strong "
+"t-out=\"object.partner_bank_id.account_number\"/>\n"
+"                </t>\n"
+"                .\n"
+"            </t>\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        Do not hesitate to contact us if you have any questions.\n"
+"        <t t-if=\"not is_html_empty(object.invoice_user_id.signature)\">\n"
+"            <br/><br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t "
+"t-out=\"object.invoice_user_id.signature or ''\">Mitchell Admin</t></div>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Sayın\n"
+"        <t t-if=\"object.partner_id.parent_id\">\n"
+"            <t t-if=\"object.partner_id.name\">\n"
+"                <t t-out=\"object.partner_id.name\">Brandon Freeman</t> (<t "
+"t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+"            </t>\n"
+"            <t t-else=\"\">\n"
+"                <t t-out=\"object.partner_id.parent_id.name or ''\">Azure "
+"Interior</t>,\n"
+"            </t>\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        <t t-out=\"object.company_id.name or ''\">YourCompany</t> firmasından "
+"adınıza düzenlenen\n"
+"        <t t-if=\"object.name\">\n"
+"            <span style=\"font-weight:bold;\" t-out=\"object.name or "
+"''\">INV/2021/05/0005</span> numaralı\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"        </t>\n"
+"        <t t-if=\"object.invoice_origin\">\n"
+"            (<t t-out=\"object.invoice_origin or ''\">SUB003</t> referanslı)\n"
+"        </t>\n"
+"        <span style=\"font-weight:bold;\" "
+"t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">$ "
+"143,750.00</span> tutarındaki faturanız aşağıdadır.\n"
+"        <t t-if=\"object.payment_state in ('paid', 'in_payment')\">\n"
+"            Bu fatura ödenmiştir.\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            Ödemeyi en kısa sürede yapmanızı rica ederiz.\n"
+"            <t t-if=\"object.payment_reference\">\n"
+"                <br/><br/>\n"
+"                Ödemenizde lütfen şu açıklamayı kullanın: <strong "
+"t-out=\"object.payment_reference or ''\">INV/2021/05/0005</strong>\n"
+"                <t t-if=\"object.partner_bank_id\">\n"
+"                    (hesap: <strong "
+"t-out=\"object.partner_bank_id.account_number\"/>)\n"
+"                </t>\n"
+"                .\n"
+"            </t>\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        Herhangi bir sorunuz olursa bizimle iletişime geçmekten çekinmeyin.\n"
+"        <t t-if=\"not is_html_empty(object.invoice_user_id.signature)\">\n"
+"            <br/><br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t "
+"t-out=\"object.invoice_user_id.signature or ''\">Mitchell Admin</t></div>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: account
+#: model:mail.template,body_html:account.email_template_edi_self_billing_invoice
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Dear\n"
+"        <t t-if=\"object.partner_id.parent_id\">\n"
+"            <t t-if=\"object.partner_id.name\">\n"
+"                <t t-out=\"object.partner_id.name\">Brandon Freeman</t> (<t "
+"t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+"            </t>\n"
+"            <t t-else=\"\">\n"
+"                <t t-out=\"object.partner_id.parent_id.name or ''\">Azure "
+"Interior</t>,\n"
+"            </t>\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        Here is your\n"
+"        <t t-if=\"object.name\">\n"
+"            self-billing invoice <span style=\"font-weight:bold;\" "
+"t-out=\"object.name or ''\">INV/2021/05/0005</span>\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            self-billing invoice\n"
+"        </t>\n"
+"        <t t-if=\"object.invoice_origin\">\n"
+"            (with reference: <t t-out=\"object.invoice_origin or "
+"''\">SUB003</t>)\n"
+"        </t>\n"
+"        amounting in <span style=\"font-weight:bold;\" "
+"t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">$ "
+"143,750.00</span>\n"
+"        from <t t-out=\"object.company_id.name or ''\">YourCompany</t>.\n"
+"        <t t-if=\"object.payment_state in ('paid', 'in_payment')\">\n"
+"            This self-billing invoice has already been paid.\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        Do not hesitate to contact us if you have any questions.\n"
+"        <t t-if=\"not is_html_empty(object.invoice_user_id.signature)\">\n"
+"            <br/><br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t "
+"t-out=\"object.invoice_user_id.signature or ''\">Mitchell Admin</t></div>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Sayın\n"
+"        <t t-if=\"object.partner_id.parent_id\">\n"
+"            <t t-if=\"object.partner_id.name\">\n"
+"                <t t-out=\"object.partner_id.name\">Brandon Freeman</t> (<t "
+"t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+"            </t>\n"
+"            <t t-else=\"\">\n"
+"                <t t-out=\"object.partner_id.parent_id.name or ''\">Azure "
+"Interior</t>,\n"
+"            </t>\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        <t t-out=\"object.company_id.name or ''\">YourCompany</t> firmasının "
+"sizin adınıza düzenlediği\n"
+"        <t t-if=\"object.name\">\n"
+"            <span style=\"font-weight:bold;\" t-out=\"object.name or "
+"''\">INV/2021/05/0005</span> numaralı\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"        </t>\n"
+"        <t t-if=\"object.invoice_origin\">\n"
+"            (<t t-out=\"object.invoice_origin or ''\">SUB003</t> referanslı)\n"
+"        </t>\n"
+"        <span style=\"font-weight:bold;\" "
+"t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">$ "
+"143,750.00</span> tutarındaki alıcı tarafından düzenlenen faturanız "
+"(self-billing) aşağıdadır.\n"
+"        <t t-if=\"object.payment_state in ('paid', 'in_payment')\">\n"
+"            Bu fatura ödenmiştir.\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        Herhangi bir sorunuz olursa bizimle iletişime geçmekten çekinmeyin.\n"
+"        <t t-if=\"not is_html_empty(object.invoice_user_id.signature)\">\n"
+"            <br/><br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t "
+"t-out=\"object.invoice_user_id.signature or ''\">Mitchell Admin</t></div>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: account
+#: model:mail.template,body_html:account.mail_template_data_payment_receipt
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Dear <t t-out=\"object.partner_id.name or ''\">Azure "
+"Interior</t><br/><br/>\n"
+"        <t t-if=\"object.partner_type == 'customer' and object.payment_type "
+"== 'outbound'\">We have processed your refund of</t>\n"
+"        <t t-elif=\"object.partner_type == 'supplier' and "
+"object.payment_type == 'outbound'\">We have processed your payment of</t>\n"
+"        <t t-elif=\"object.partner_type == 'supplier' and "
+"object.payment_type == 'inbound'\">Thank you for your refund of</t>\n"
+"        <t t-else=\"\">Thank you for your payment of</t> <span "
+"style=\"font-weight:bold;\" t-out=\"format_amount(object.amount, "
+"object.currency_id) or ''\">$ 10.00</span>.\n"
+"        Please find the <t "
+"t-out=\"object.payment_receipt_title.lower()\">payment receipt</t> <span "
+"t-if=\"object.name\" style=\"font-weight:bold;\" "
+"t-out=\"object.name.replace('/','-')\">BNK1-2021-05-0002</span> from <t "
+"t-out=\"object.company_id.name or ''\">YourCompany</t>.\n"
+"        <br/><br/>\n"
+"        Do not hesitate to contact us if you have any questions.\n"
+"        <br/><br/>\n"
+"        Best regards,\n"
+"        <t t-if=\"not is_html_empty(user.signature)\">\n"
+"            <br/><br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t "
+"t-out=\"user.signature or ''\">Mitchell Admin</t></div>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Sayın <t t-out=\"object.partner_id.name or ''\">Azure "
+"Interior</t><br/><br/>\n"
+"        <span style=\"font-weight:bold;\" t-out=\"format_amount(object.amount, "
+"object.currency_id) or ''\">$ 10.00</span> tutarındaki\n"
+"        <t t-if=\"object.partner_type == 'customer' and object.payment_type "
+"== 'outbound'\">iadenizi gerçekleştirdik.</t>\n"
+"        <t t-elif=\"object.partner_type == 'supplier' and "
+"object.payment_type == 'outbound'\">ödemenizi gerçekleştirdik.</t>\n"
+"        <t t-elif=\"object.partner_type == 'supplier' and "
+"object.payment_type == 'inbound'\">iadeniz için teşekkür ederiz.</t>\n"
+"        <t t-else=\"\">ödemeniz için teşekkür ederiz.</t>\n"
+"        <t t-out=\"object.company_id.name or ''\">YourCompany</t> firmasının "
+"<span t-if=\"object.name\" style=\"font-weight:bold;\" "
+"t-out=\"object.name.replace('/','-')\">BNK1-2021-05-0002</span> numaralı <t "
+"t-out=\"object.payment_receipt_title.lower()\">payment receipt</t> belgesi "
+"ektedir.\n"
+"        <br/><br/>\n"
+"        Herhangi bir sorunuz olursa bizimle iletişime geçmekten çekinmeyin.\n"
+"        <br/><br/>\n"
+"        Saygılarımızla,\n"
+"        <t t-if=\"not is_html_empty(user.signature)\">\n"
+"            <br/><br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t "
+"t-out=\"user.signature or ''\">Mitchell Admin</t></div>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
+msgid ""
+"<i class=\"o_button_icon oi me-2\" data-icon=\"east\"/> Configure Alias Domain"
+msgstr ""
+"<i class=\"o_button_icon oi me-2\" data-icon=\"east\"/> Takma Alan Adını "
+"Yapılandır"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.address_form_additional_identifiers
+msgid "<i class=\"oi me-1\" data-icon=\"add\"/>Add identifier"
+msgstr "<i class=\"oi me-1\" data-icon=\"add\"/>Tanımlayıcı ekle"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid ""
+"<i class=\"oi oi-filled text-danger\" data-icon=\"delete\"/>\n"
+"                            <span class=\"text-danger\" "
+"invisible=\"duplicated_ref_ids.length == 1\">Delete all duplicates</span>\n"
+"                            <span class=\"text-danger\" "
+"invisible=\"duplicated_ref_ids.length &gt; 1\">Delete duplicate</span>"
+msgstr ""
+"<i class=\"oi oi-filled text-danger\" data-icon=\"delete\"/>\n"
+"                            <span class=\"text-danger\" "
+"invisible=\"duplicated_ref_ids.length == 1\">Tüm mükerrerleri sil</span>\n"
+"                            <span class=\"text-danger\" "
+"invisible=\"duplicated_ref_ids.length &gt; 1\">Mükerreri sil</span>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid "<span class=\"o_stat_text\">Journal Items</span>"
+msgstr "<span class=\"o_stat_text\">Yevmiye Kalemleri</span>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid ""
+"<span invisible=\"name or name_placeholder or "
+"document_sequence_editable\">Draft</span>"
+msgstr ""
+"<span invisible=\"name or name_placeholder or "
+"document_sequence_editable\">Taslak</span>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.tax_repartition_line_kanban
+msgid "<span invisible=\"not account_id\">on</span>"
+msgstr "<span invisible=\"not account_id\">hesap:</span>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_accrued_orders_wizard
+msgid ""
+"<span> already exists for this period. Posting this entry will replace "
+"it.</span>"
+msgstr ""
+"<span> tutarında bir tahakkuk kaydı zaten var. Bu kaydı onaylarsanız mevcut "
+"kaydın yerini alır.</span>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_accrued_orders_wizard
+msgid "<span>An accrual entry of </span>"
+msgstr "<span>Bu dönem için </span>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.setup_financial_year_opening_form
+msgid "<span>Not Subject to VAT</span>"
+msgstr "<span>KDV'ye Tabi Değil</span>"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement.py:0
+msgid ""
+"A statement (%(statement_name)s) belonging to a hashed journal "
+"(%(journal_code)s) cannot be draft."
+msgstr ""
+"Özetlenmiş (hash) bir yevmiyeye (%(journal_code)s) ait hesap ekstresi "
+"(%(statement_name)s) taslak olamaz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+msgid ""
+"Account '%s' used for payable line is not of payable type. Check if the "
+"account type is correct."
+msgstr ""
+"Borç satırında kullanılan '%s' hesabı borç türünde değil. Hesap türünün "
+"doğru olup olmadığını kontrol edin."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+msgid ""
+"Account '%s' used for receivable line is not of receivable type. Check if "
+"the account type is correct."
+msgstr ""
+"Alacak satırında kullanılan '%s' hesabı alacak türünde değil. Hesap türünün "
+"doğru olup olmadığını kontrol edin."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
+msgid "Account (with children)"
+msgstr "Hesap (alt hesaplarıyla)"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_tax_repartition_line__account_active
+msgid "Account Active"
+msgstr "Hesap Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_tax__account_move_line_ids
+msgid "Account Move Line"
+msgstr "Yevmiye Kalemi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_report__filter_hierarchy
+msgid "Account Parents"
+msgstr "Üst Hesaplar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_partner__property_account_payable_active
+#: model:ir.model.fields,field_description:account.field_res_users__property_account_payable_active
+msgid "Account Payable Active"
+msgstr "Borç Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_partner__property_account_receivable_active
+#: model:ir.model.fields,field_description:account.field_res_users__property_account_receivable_active
+msgid "Account Receivable Active"
+msgstr "Alacak Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_tax__account_reconcile_model_line_ids
+msgid "Account Reconcile Model Line"
+msgstr "Denkleştirme Modeli Satırı"
+
+#. module: account
+#: model:onboarding.onboarding,name:account.onboarding_onboarding_account_return_dashboard
+msgid "Account Return Dashboard Onboarding"
+msgstr "Beyanname Panosu İlk Adımları"
+
+#. module: account
+#: model:ir.actions.server,name:account.ir_cron_post_stock_valuation_ir_actions_server
+msgid "Account: Inventory Valuation Closing"
+msgstr "Muhasebe: Envanter Değerleme Kapanışı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_accrued_orders_wizard__accrual_type
+msgid "Accrual Type"
+msgstr "Tahakkuk Türü"
+
+#. module: account
+#. odoo-javascript
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+#: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.xml:0
+msgid "Accruals"
+msgstr "Tahakkuklar"
+
+#. module: account
+#: model:account.account,name:account.21_accrued_expenses
+msgid "Accrued Expenses"
+msgstr "Gider Tahakkukları"
+
+#. module: account
+#: model:account.account,name:account.21_accrued_income
+msgid "Accrued Income"
+msgstr "Gelir Tahakkukları"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_buildings
+msgid "Accumulated Depreciation - Buildings"
+msgstr "Birikmiş Amortismanlar - Binalar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_furniture
+msgid "Accumulated Depreciation - Furniture & Fixtures"
+msgstr "Birikmiş Amortismanlar - Demirbaşlar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_improvements
+msgid "Accumulated Depreciation - Improvements"
+msgstr "Birikmiş Amortismanlar - Özel Maliyetler"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_machines
+msgid "Accumulated Depreciation - Machines & Tools"
+msgstr "Birikmiş Amortismanlar - Makine ve Aletler"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_other_property
+msgid "Accumulated Depreciation - Other Property"
+msgstr "Birikmiş Amortismanlar - Diğer Maddi Varlıklar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_technology
+msgid "Accumulated Depreciation - Technology"
+msgstr "Birikmiş Amortismanlar - Teknoloji"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_depreciation_vehicles
+msgid "Accumulated Depreciation - Vehicles"
+msgstr "Birikmiş Amortismanlar - Taşıtlar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_acc_depreciation
+msgid "Accumulated Depreciation Misc"
+msgstr "Birikmiş Amortismanlar - Diğer"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal_dashboard.py:0
+msgid "Activate E-Invoicing"
+msgstr "e-Faturayı Etkinleştir"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_report__active_fallback
+msgid "Active Fallback"
+msgstr "Yedek Etkinlik Değeri"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_report__active_selection
+msgid "Active Selection"
+msgstr "Etkin Seçim"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/product_catalog/search/search_panel/search_panel.xml:0
+msgid "Add Section"
+msgstr "Bölüm Ekle"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid ""
+"Add a QR-code to your invoices so that your customers can pay instantly "
+"with their banking application."
+msgstr ""
+"Müşterilerinizin bankacılık uygulamalarıyla anında ödeme yapabilmesi için "
+"faturalarınıza QR kod ekleyin."
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/interactions/portal_additional_identifiers.js:0
+msgid "Add identifier"
+msgstr "Tanımlayıcı ekle"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/mail_attachments/account_move_send_attachments_selector.xml:0
+msgid "Add..."
+msgstr "Ekle..."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_secure_entries_wizard__unreconciled_bank_statement_line_ids
+msgid "All unreconciled bank transactions before the selected date."
+msgstr "Seçilen tarihten önceki tüm denkleştirilmemiş banka işlemleri."
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_report_line__foldability__always_unfolded
+msgid "Always Unfolded"
+msgstr "Her Zaman Açık"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+msgid "Analysis"
+msgstr "Analiz"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Apply rounding to the total amount of a sales invoice."
+msgstr "Satış faturasının toplam tutarına yuvarlama uygulayın."
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/stock_valuation/filters/filter_date.xml:0
+msgid "As of"
+msgstr "Tarih:"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement.py:0
+msgid ""
+"At least one transaction in the statement is prior the last posted "
+"transaction (%s)"
+msgstr ""
+"Hesap ekstresindeki en az bir işlem, son onaylanmış işlemden (%s) önce."
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/stock_valuation/filters/filter_date.xml:0
+msgid "At the date of"
+msgstr "Tarih:"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Automatically compute US and Canadian tax rates."
+msgstr "ABD ve Kanada vergi oranlarını otomatik hesaplayın."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__module_account_avatax
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "AvaTax"
+msgstr "AvaTax"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment__available_return_partner_bank_ids
+msgid "Available Return Partner Bank"
+msgstr "Beyanname İçin Kullanılabilir Banka Hesabı"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__product_category__property_cost_method__average
+#: model:ir.model.fields.selection,name:account.selection__product_template__cost_method__average
+#: model:ir.model.fields.selection,name:account.selection__res_company__cost_method__average
+msgid "Average Cost (AVCO)"
+msgstr "Ortalama Maliyet (AVCO)"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/product_catalog/kanban_controller.js:0
+msgid "Back to Credit Note"
+msgstr "İade Faturasına Dön"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/product_catalog/kanban_controller.js:0
+msgid "Back to Refund"
+msgstr "İadeye Dön"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_bad_debts
+msgid "Bad Debts"
+msgstr "Tahsil Edilemeyen Alacaklar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__account_journal_suspense_account_active
+msgid "Bank Suspense Account Active"
+msgstr "Banka Geçici Hesabı Etkin"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_partner_property_form
+msgid "Bank accounts"
+msgstr "Banka hesapları"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Bank settings"
+msgstr "Banka ayarları"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_payment__reconciled_statement_line_ids
+msgid "Bank transactions matched to this payment"
+msgstr "Bu ödemeyle eşleşen banka işlemleri"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__account_cash_basis_base_account_active
+msgid "Base Tax Received Account Active"
+msgstr "Alınan Vergi Matrahı Hesabı Etkin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+msgid "Billed Not Received"
+msgstr "Faturalanan Ancak Teslim Alınmayan"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_accrued_orders_wizard__accrual_type__billed_not_received
+msgid "Billed not received"
+msgstr "Faturalanan ancak teslim alınmayan"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+msgid "Bills to Receive"
+msgstr "Beklenen Faturalar"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_bank_statement_line__journal_group_id
+#: model:ir.model.fields,help:account.field_account_journal__journal_group_id
+#: model:ir.model.fields,help:account.field_account_move__journal_group_id
+#: model:ir.model.fields,help:account.field_account_move_line__journal_group_id
+msgid ""
+"By default, all journals post to the Statutory Ledger (Local GAAP). \n"
+"Specifying a ledger allows you to isolate IFRS, Tax, or Intercompany "
+"adjustments without affecting local statutory accounts."
+msgstr ""
+"Varsayılan olarak tüm yevmiyeler yasal deftere (yerel muhasebe "
+"standartları) kayıt yapar. \n"
+"Bir defter belirtmek, UFRS, vergi veya şirketler arası düzeltmeleri yerel "
+"yasal hesapları etkilemeden ayırmanızı sağlar."
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_ca_alameda
+msgid "CA Alameda County 4.25%"
+msgstr "CA Alameda County %4,25"
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_ca_state
+msgid "CA State 6%"
+msgstr "CA Eyalet %6"
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_ca_exempt
+msgid "CA State 6% Exempt"
+msgstr "CA Eyalet %6 Muaf"
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_ca_nontaxable
+msgid "CA State 6% Non-Taxable"
+msgstr "CA Eyalet %6 Vergi Dışı"
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_ca_reduced
+msgid "CA State 6% reduced to 4%"
+msgstr "CA Eyalet %6, %4'e indirilmiş"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/res_partner_bank.py:0
+#: model:ir.model.fields.selection,name:account.selection__res_partner_bank__account_type__clabe
+msgid "CLABE"
+msgstr "CLABE"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
+msgid "CSV, XLS and XLSX files cannot be imported automatically."
+msgstr "CSV, XLS ve XLSX dosyaları otomatik olarak içe aktarılamaz."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_base_document_layout__can_configure_later
+msgid "Can Configure Later"
+msgstr "Sonra Yapılandırılabilir"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_bank_statement_line_view_search_cashflow
+msgid "Cash In"
+msgstr "Nakit Giriş"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_bank_statement_line_view_search_cashflow
+msgid "Cash Out"
+msgstr "Nakit Çıkış"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__cash_rounding_loss_account_id
+#: model:ir.model.fields,field_description:account.field_res_config_settings__cash_rounding_loss_account_id
+msgid "Cash Rounding Loss Account"
+msgstr "Nakit Yuvarlama Zarar Hesabı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__cash_rounding_profit_account_id
+#: model:ir.model.fields,field_description:account.field_res_config_settings__cash_rounding_profit_account_id
+msgid "Cash Rounding Profit Account"
+msgstr "Nakit Yuvarlama Kâr Hesabı"
+
+#. module: account
+#: model:ir.actions.act_window,name:account.action_account_cashflow_analysis
+#: model:ir.ui.menu,name:account.menu_action_account_cashflow_analysis
+#: model_terms:ir.ui.view,arch_db:account.account_bank_statement_line_view_graph_cashflow
+#: model_terms:ir.ui.view,arch_db:account.account_bank_statement_line_view_pivot_cashflow
+#: model_terms:ir.ui.view,arch_db:account.account_bank_statement_line_view_search_cashflow
+msgid "Cashflow Analysis"
+msgstr "Nakit Akışı Analizi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_product__catalog_is_in_selected_section
+msgid "Catalog Is In Selected Section"
+msgstr "Katalog Seçili Bölümde"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__clearing_label_id
+msgid "Clearing Label"
+msgstr "Takas Etiketi"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/account_pick_currency_rate/account_pick_currency_rate.xml:0
+msgid "Click to swap currencies"
+msgstr "Para birimlerini değiştirmek için tıklayın"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid "Closing: Stock Variation Global for company [%(company)s]"
+msgstr "Kapanış: [%(company)s] şirketi için genel stok değişimi"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid "Closing: Stock Variation Over Period"
+msgstr "Kapanış: Dönem İçi Stok Değişimi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__code_path
+msgid "Code Path"
+msgstr "Kod Yolu"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__cogs_origin_id
+msgid "Cogs Origin"
+msgstr "SMM Kaynağı"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_report__user_groupby
+msgid ""
+"Comma-separated list of fields from account.move.line (Journal Item).       "
+"      When set, the report lines will generate sublines grouped by those "
+"keys except when specified on the report line."
+msgstr ""
+"account.move.line (Yevmiye Kalemi) alanlarının virgülle ayrılmış listesi.   "
+"          Ayarlandığında, rapor satırında aksi belirtilmedikçe rapor "
+"satırları bu anahtarlara göre gruplanmış alt satırlar üretir."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_report__groupby
+msgid ""
+"Comma-separated list of fields from account.move.line (Journal Item).       "
+"      When set, this report will have report lines generating sublines "
+"grouped by those keys except when specified on the report line."
+msgstr ""
+"account.move.line (Yevmiye Kalemi) alanlarının virgülle ayrılmış listesi.   "
+"          Ayarlandığında, rapor satırında aksi belirtilmedikçe bu raporun "
+"satırları bu anahtarlara göre gruplanmış alt satırlar üretir."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__journal_company_id
+#: model:ir.model.fields,field_description:account.field_account_move__journal_company_id
+msgid "Company of the Journal"
+msgstr "Yevmiyenin Şirketi"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.rounding_form_view
+msgid "Conditions"
+msgstr "Koşullar"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_base_document_layout
+msgid "Configure Later"
+msgstr "Sonra Yapılandır"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__consolidation_currency_id
+#: model:ir.model.fields,field_description:account.field_account_report_external_value__consolidation_currency_id
+#: model:ir.model.fields,field_description:account.field_res_currency_rate_consolidation_mixin__consolidation_currency_id
+msgid "Consolidation Currency"
+msgstr "Konsolidasyon Para Birimi"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/js/tours/account.js:0
+msgid "Continue with the default document layout."
+msgstr "Varsayılan belge düzeniyle devam edin."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__consolidation_balance
+msgid "Converted balance"
+msgstr "Dönüştürülmüş bakiye"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__consolidation_credit
+msgid "Converted credit"
+msgstr "Dönüştürülmüş alacak"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__consolidation_debit
+msgid "Converted debit"
+msgstr "Dönüştürülmüş borç"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_product__cost_method
+#: model:ir.model.fields,field_description:account.field_product_template__cost_method
+#: model:ir.model.fields,field_description:account.field_res_company__cost_method
+msgid "Cost Method"
+msgstr "Maliyet Yöntemi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__property_cost_method
+msgid "Costing Method"
+msgstr "Maliyetlendirme Yöntemi"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Couldn't reload data."
+msgstr "Veriler yeniden yüklenemedi."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__count_reconciled_lines
+msgid "Count Reconciled Lines"
+msgstr "Denkleştirilmiş Satır Sayısı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__count_reconciled_lines_excluding_exchange_diff
+msgid "Count Reconciled Lines Excluding Exchange Diff"
+msgstr "Kur Farkı Hariç Denkleştirilmiş Satır Sayısı"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_account__account_stock_expense_id
+msgid ""
+"Counterpart used at closing for accounting adjustments to inventory "
+"valuation."
+msgstr ""
+"Kapanışta envanter değerlemesine yapılan muhasebe düzeltmeleri için "
+"kullanılan karşı hesap."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_res_company__multi_vat_foreign_country_ids
+msgid "Countries for which the company has a Tax ID"
+msgstr "Şirketin vergi kimlik numarasına sahip olduğu ülkeler"
+
+#. module: account
+#: model_terms:ir.actions.act_window,help:account.action_account_matching_rules
+msgid "Create a new matching rule"
+msgstr "Yeni bir eşleştirme kuralı oluşturun"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/tax_totals/tax_totals.js:0
+msgid "Create and edit"
+msgstr "Oluştur ve düzenle"
+
+#. module: account
+#: model_terms:ir.actions.act_window,help:account.rounding_list_action
+msgid "Create the first rounding method"
+msgstr "İlk yuvarlama yöntemini oluşturun"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/many2x_tax_tags/tax_tag_popover.xml:0
+msgid "Credit Note :"
+msgstr "İade Faturası :"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_move_line__cumulated_balance
+msgid "Cumulated balance for the account."
+msgstr "Hesabın kümülatif bakiyesi."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_buildings
+msgid "Cumulative depreciation recorded for building assets."
+msgstr "Bina varlıkları için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_technology
+msgid "Cumulative depreciation recorded for capitalized technology assets."
+msgstr ""
+"Aktifleştirilmiş teknoloji varlıkları için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_furniture
+msgid "Cumulative depreciation recorded for furniture and fixture assets."
+msgstr "Demirbaş varlıkları için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_improvements
+msgid ""
+"Cumulative depreciation recorded for leasehold or property improvements."
+msgstr ""
+"Kiralanan mülklerdeki iyileştirmeler (özel maliyetler) veya mülk "
+"iyileştirmeleri için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_machines
+msgid "Cumulative depreciation recorded for machinery and tool assets."
+msgstr "Makine ve alet varlıkları için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_other_property
+msgid ""
+"Cumulative depreciation recorded for other depreciable property assets."
+msgstr ""
+"Amortismana tabi diğer maddi varlıklar için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_depreciation_vehicles
+msgid "Cumulative depreciation recorded for vehicle assets."
+msgstr "Taşıt varlıkları için kaydedilen birikmiş amortisman."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_retained_earnings
+msgid "Cumulative undistributed profits and losses"
+msgstr "Birikmiş dağıtılmamış kâr ve zararlar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__account_discount_expense_allocation_active
+msgid "Customer Invoices Discounts Account Active"
+msgstr "Müşteri Faturaları İndirim Hesabı Etkin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/controllers/download_docs.py:0
+msgid "CustomerInvoices"
+msgstr "MusteriFaturalari"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/account_automatic_entry_wizard.py:0
+msgid "D"
+msgstr "D"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__res_company__inventory_period__daily
+msgid "Daily"
+msgstr "Günlük"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__default_account_active
+msgid "Default Account Active"
+msgstr "Varsayılan Hesap Etkin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/controllers/portal.py:0
+msgid "Deprecated link"
+msgstr "Kullanımdan kaldırılmış bağlantı"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_deprec_amort_expense
+msgid "Depreciation & Amortization Expense"
+msgstr "Amortisman ve İtfa Payları Gideri"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_buildings
+msgid "Depreciation Expense - Buildings"
+msgstr "Amortisman Gideri - Binalar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_furniture
+msgid "Depreciation Expense - Furniture & Fixtures"
+msgstr "Amortisman Gideri - Demirbaşlar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_improvements
+msgid "Depreciation Expense - Improvements"
+msgstr "Amortisman Gideri - Özel Maliyetler"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_machines
+msgid "Depreciation Expense - Machines & Tools"
+msgstr "Amortisman Gideri - Makine ve Aletler"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_other_property
+msgid "Depreciation Expense - Other Property"
+msgstr "Amortisman Gideri - Diğer Maddi Varlıklar"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_technology
+msgid "Depreciation Expense - Technology"
+msgstr "Amortisman Gideri - Teknoloji"
+
+#. module: account
+#: model:account.account,name:account.22_account_account_us_expense_vehicles
+msgid "Depreciation Expense - Vehicles"
+msgstr "Amortisman Gideri - Taşıtlar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__disable_dashboard_graph
+msgid "Disable chart to speed up dashboard"
+msgstr "Panoyu hızlandırmak için grafiği devre dışı bırak"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_send_wizard__display_attachments_widget
+msgid "Display Attachments Widget"
+msgstr "Ekler Bileşenini Göster"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Display the total amount of an invoice in words"
+msgstr "Fatura toplam tutarını yazıyla göster"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__document_tax_mode
+#: model:ir.model.fields,field_description:account.field_account_move__document_tax_mode
+#: model:ir.model.fields,field_description:account.field_account_move_line__document_tax_mode
+msgid "Document Tax Mode"
+msgstr "Belge Vergi Modu"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__document_sequence_editable
+#: model:ir.model.fields,field_description:account.field_account_move__document_sequence_editable
+#: model:ir.model.fields,field_description:account.field_res_company__document_sequence_editable
+#: model:ir.model.fields,field_description:account.field_res_config_settings__document_sequence_editable
+msgid "Document's sequence editable"
+msgstr "Belge sırası düzenlenebilir"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/controllers/download_docs.py:0
+msgid "Documents"
+msgstr "Belgeler"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_accrued_orders_wizard__duplicate_entry_id
+msgid "Duplicate Entry"
+msgstr "Mükerrer Kayıt"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__account_journal_early_pay_discount_gain_account_active
+msgid "Early Discount Gain Account Active"
+msgstr "Erken Ödeme İndirimi Kazanç Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__account_journal_early_pay_discount_loss_account_active
+msgid "Early Discount Loss Account Active"
+msgstr "Erken Ödeme İndirimi Zarar Hesabı Etkin"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Electronic Invoicing"
+msgstr "Elektronik Faturalama"
+
+#. module: account
+#: model:ir.model,name:account.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "E-posta oluşturma sihirbazı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_report__enable_snapshots
+msgid "Enable Snapshots"
+msgstr "Anlık Görüntüleri Etkinleştir"
+
+#. module: account
+#: model:ir.model,name:account.model_res_currency_rate_consolidation_mixin
+msgid "Enable multi company consolidation"
+msgstr "Çok şirketli konsolidasyonu etkinleştir"
+
+#. module: account
+#. odoo-javascript
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+#: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.xml:0
+msgid "Ending Stock"
+msgstr "Dönem Sonu Stok"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_form
+msgid "Enter description here..."
+msgstr "Açıklamayı buraya girin..."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Entries in error"
+msgstr "Hatalı kayıtlar"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid "Everything is correctly closed"
+msgstr "Her şey doğru biçimde kapatıldı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Exchange Loss"
+msgstr "Kur Farkı Zararı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Exchange Profit"
+msgstr "Kur Farkı Kârı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment_register__exchange_rate
+msgid "Exchange Rate"
+msgstr "Döviz Kuru"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_bank_statement_line__no_followup
+#: model:ir.model.fields,help:account.field_account_move__no_followup
+msgid "Exclude this journal entry from Reminder reports."
+msgstr "Bu yevmiye kaydını hatırlatma raporlarının dışında tut."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_move_line__no_followup
+msgid "Exclude this journal item from Reminder reports."
+msgstr "Bu yevmiye kalemini hatırlatma raporlarının dışında tut."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__account_stock_expense_active
+#: model:ir.model.fields,field_description:account.field_product_product__property_account_expense_active
+#: model:ir.model.fields,field_description:account.field_product_template__property_account_expense_active
+#: model:ir.model.fields,field_description:account.field_res_config_settings__expense_account_active
+msgid "Expense Account Active"
+msgstr "Gider Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_tax_repartition_line__factor
+msgid ""
+"Factor to apply on the journal items generated from this distribution line"
+msgstr ""
+"Bu dağıtım satırından oluşturulan yevmiye kalemlerine uygulanacak katsayı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__first_reconciled_lines_id
+msgid "First Reconciled Lines"
+msgstr "İlk Denkleştirilen Satırlar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__first_reconciled_lines_excluding_exchange_diff_id
+msgid "First Reconciled Lines Excluding Exchange Diff"
+msgstr "Kur Farkı Hariç İlk Denkleştirilen Satırlar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_tax__company_country_code
+msgid "Fiscal Country Code of the Company"
+msgstr "Şirketin Mali Ülke Kodu"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_report_line__foldability
+msgid "Foldability"
+msgstr "Daraltılabilirlik"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_form
+msgid "For Perpetual Continental Only"
+msgstr "Yalnız Sürekli Envanter (Kıta Avrupası) İçin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__multi_vat_foreign_country_ids
+msgid "Foreign Tax ID countries"
+msgstr "Yabancı vergi kimlik numarası ülkeleri"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_partner__global_location_number
+#: model:ir.model.fields,field_description:account.field_res_users__global_location_number
+msgid "GLN"
+msgstr "GLN"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__income_currency_exchange_account_active
+msgid "Gain Exchange Rate Account Active"
+msgstr "Kur Farkı Kazanç Hesabı Etkin"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/stock_valuation/buttons_bar/buttons_bar.xml:0
+msgid "Generate Entries"
+msgstr "Kayıtları Oluştur"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/template_generic_coa.py:0
+msgid "Generic (Minimal) Chart of Accounts"
+msgstr "Genel (Asgari) Hesap Planı"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_res_partner__global_location_number
+#: model:ir.model.fields,help:account.field_res_users__global_location_number
+msgid "Global Location Number"
+msgstr "Küresel Konum Numarası"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__has_draft_move_duplicate
+#: model:ir.model.fields,field_description:account.field_account_move__has_draft_move_duplicate
+msgid "Has Draft Move Duplicate"
+msgstr "Mükerrer Taslak Kaydı Var"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__has_invalid_analytics
+msgid "Has Invalid Analytics"
+msgstr "Geçersiz Analitik Dağıtım Var"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__has_ledger
+#: model:ir.model.fields,field_description:account.field_res_company__has_ledger
+msgid "Has Ledger"
+msgstr "Defteri Var"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__has_phishing_warnings
+#: model:ir.model.fields,field_description:account.field_res_partner_bank__has_phishing_warnings
+msgid "Has Phishing Warnings"
+msgstr "Oltalama Uyarıları Var"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment_register__hide_payment_method
+msgid "Hide Payment Method"
+msgstr "Ödeme Yöntemini Gizle"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__holder_name
+#: model:ir.model.fields,field_description:account.field_res_partner_bank__holder_name
+msgid "Holder Name"
+msgstr "Hesap Sahibinin Adı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid ""
+"If you are not subject to VAT, you will have no sale taxes and only non "
+"deductible taxes activated"
+msgstr ""
+"KDV'ye tabi değilseniz satış vergileriniz olmaz; yalnız indirilemeyen "
+"vergiler etkinleştirilir"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__import_source_attachment_id
+#: model:ir.model.fields,field_description:account.field_account_move__import_source_attachment_id
+msgid "Import Source Attachment"
+msgstr "İçe Aktarma Kaynağı Eki"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/webclient/share_target/account_share_target_item.xml:0
+msgid "In Journal"
+msgstr "Yevmiyede"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__payment_tolerance_type__amount
+msgid "In amount"
+msgstr "Tutar olarak"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__payment_tolerance_type__percentage
+msgid "In percentage"
+msgstr "Yüzde olarak"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal_group__included_journal_ids
+msgid "Included Journals"
+msgstr "Dahil Edilen Yevmiyeler"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_product__property_account_income_active
+#: model:ir.model.fields,field_description:account.field_product_template__property_account_income_active
+#: model:ir.model.fields,field_description:account.field_res_config_settings__income_account_active
+msgid "Income Account Active"
+msgstr "Gelir Hesabı Etkin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement.py:0
+msgid "Incorrect ending balance, expected %s"
+msgstr "Kapanış bakiyesi hatalı, beklenen: %s"
+
+#. module: account
+#. odoo-javascript
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+#: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.xml:0
+msgid "Initial Balance"
+msgstr "Açılış Bakiyesi"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Initial Setup"
+msgstr "İlk Kurulum"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement.py:0
+msgid "Initial balance (%s) does not match previous statement"
+msgstr "Açılış bakiyesi (%s) önceki hesap ekstresiyle uyuşmuyor"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__transfer_account_active
+msgid "Internal Transfer Account Active"
+msgstr "İç Transfer Hesabı Etkin"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+msgid "Invalid Statement"
+msgstr "Geçersiz Hesap Ekstresi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__inventory_closing
+#: model:ir.model.fields,field_description:account.field_account_move__inventory_closing
+msgid "Inventory Closing"
+msgstr "Envanter Kapanışı"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.xml:0
+msgid "Inventory Loss"
+msgstr "Envanter Kaybı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__inventory_period
+msgid "Inventory Period"
+msgstr "Envanter Dönemi"
+
+#. module: account
+#: model:account.account,name:account.21_stock_variation
+#: model:account.account,name:account.22_account_account_us_inventory_variation
+msgid "Inventory Variation"
+msgstr "Envanter Değişimi"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/many2x_tax_tags/tax_tag_popover.xml:0
+msgid "Invoice :"
+msgstr "Fatura :"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.ir_actions_report_form_inherit_account
+msgid "Invoice Report"
+msgstr "Fatura Raporu"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_vendor_bill_id
+#: model:ir.model.fields,field_description:account.field_account_move__invoice_vendor_bill_id
+msgid "Invoice Vendor Bill"
+msgstr "Fatura / Tedarikçi Faturası"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+msgid "Invoiced Not Delivered"
+msgstr "Faturalanan Ancak Teslim Edilmeyen"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_accrued_orders_wizard__accrual_type__invoiced_not_delivered
+msgid "Invoiced not delivered"
+msgstr "Faturalanan ancak teslim edilmeyen"
+
+#. module: account
+#: model:ir.module.module,summary:base.module_account
+msgid "Invoices & Payments"
+msgstr "Faturalar ve Ödemeler"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+msgid "Invoices to be Issued"
+msgstr "Kesilecek Faturalar"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_accrued_orders_wizard__accrual_type__invoice_to_be_issued
+msgid "Invoices to be issued"
+msgstr "Kesilecek faturalar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__is_exact_move_duplicate
+#: model:ir.model.fields,field_description:account.field_account_move__is_exact_move_duplicate
+msgid "Is Exact Move Duplicate"
+msgstr "Tam Mükerrer Kayıt"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement__is_statement_posted
+msgid "Is Statement Posted"
+msgstr "Hesap Ekstresi Onaylandı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid ""
+"It exists closing entries after the selected date. Cancel them before "
+"generate an entry prior to them"
+msgstr ""
+"Seçilen tarihten sonra kapanış kayıtları var. Onlardan önceki bir tarihe "
+"kayıt oluşturmadan önce onları iptal edin"
+
+#. module: account
+#: model:ir.model,name:account.model_account_move_reversal
+msgid "Journal Entry Reversal"
+msgstr "Yevmiye Kaydı İptali"
+
+#. module: account
+#: model:mail.template,name:account.mail_template_invoice_subscriber
+msgid "Journal Notification"
+msgstr "Yevmiye Bildirimi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__sanitize_payment_reference
+#: model:ir.model.fields,field_description:account.field_account_move__sanitize_payment_reference
+msgid "Label sanitize"
+msgstr "Temizlenmiş etiket"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_bank_statement_line_view_search_cashflow
+msgid "Last 12 Months"
+msgstr "Son 12 Ay"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Let your customers pay their invoices on your portal"
+msgstr "Müşterileriniz faturalarını portalınızdan ödesin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__module_account_loan_extract
+msgid "Loans Digitization"
+msgstr "Kredi Belgelerinin Dijitalleştirilmesi"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
+msgid "Local Gaap"
+msgstr "Yerel Muhasebe Standartları"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__loss_account_active
+msgid "Loss Account Active"
+msgstr "Zarar Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__expense_currency_exchange_account_active
+msgid "Loss Exchange Rate Account Active"
+msgstr "Kur Farkı Zarar Hesabı Etkin"
+
+#. module: account
+#: model:ir.actions.server,name:account.action_mark_payment_as_reconciled
+msgid "Mark as Reconciled"
+msgstr "Denkleştirildi Olarak İşaretle"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_reconcile_model__matching_order
+msgid "Matching Order"
+msgstr "Eşleştirme Sırası"
+
+#. module: account
+#: model:ir.actions.act_window,name:account.action_account_matching_rules
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+msgid "Matching Rules"
+msgstr "Eşleştirme Kuralları"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__rule_type__matching_rule
+msgid "Matching rule"
+msgstr "Eşleştirme kuralı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_reconcile_model.py:0
+msgid "Matching rules must be automatic."
+msgstr "Eşleştirme kuralları otomatik olmalıdır."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_account__activity_type_icon
+#: model:ir.model.fields,help:account.field_account_bank_statement_line__activity_type_icon
+#: model:ir.model.fields,help:account.field_account_journal__activity_type_icon
+#: model:ir.model.fields,help:account.field_account_move__activity_type_icon
+#: model:ir.model.fields,help:account.field_account_payment__activity_type_icon
+#: model:ir.model.fields,help:account.field_account_setup_bank_manual_config__activity_type_icon
+#: model:ir.model.fields,help:account.field_res_partner_bank__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Material Symbols simgesi, ör. checklist"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__name_path
+msgid "Name Path"
+msgstr "Ad Yolu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/chart_template.py:0
+msgid "Need to update"
+msgstr "Güncellenmesi gerekiyor"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_report_line__foldability__never_unfolded
+msgid "Never Unfolded"
+msgstr "Hiçbir Zaman Açık Değil"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/tax_totals/tax_totals.js:0
+msgid "New Rounding Method"
+msgstr "Yeni Yuvarlama Yöntemi"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__matching_order__new_first
+msgid "Newest first"
+msgstr "Önce en yeni"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/account_move_send_batch_wizard.py:0
+msgid "No Partner"
+msgstr "Kontak Yok"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__no_followup
+#: model:ir.model.fields,field_description:account.field_account_move__no_followup
+#: model:ir.model.fields,field_description:account.field_account_move_line__no_followup
+msgid "No Reminder"
+msgstr "Hatırlatma Yok"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_move__review_state__no_review
+msgid "No Review"
+msgstr "İnceleme Yok"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "No files found to download"
+msgstr "İndirilecek dosya bulunamadı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "No rounding applied"
+msgstr "Yuvarlama uygulanmadı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_tax__non_deductible_amount
+msgid "Non Deductible Amount"
+msgstr "İndirilemeyen Tutar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__company_vat_disabled
+#: model:ir.model.fields,field_description:account.field_account_financial_year_op__company_vat_disabled
+#: model:ir.model.fields,field_description:account.field_account_move__company_vat_disabled
+#: model:ir.model.fields,field_description:account.field_res_company__vat_disabled
+#: model:ir.model.fields,field_description:account.field_res_config_settings__vat_disabled
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Not Subject to VAT"
+msgstr "KDV'ye Tabi Değil"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__vat_disabled_available
+msgid "Not Subject to VAT Available"
+msgstr "KDV'ye Tabi Değil Kullanılabilir"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_position_form
+msgid "Note to add on invoices using this Fiscal Position."
+msgstr "Bu mali konumu kullanan faturalara eklenecek not."
+
+#. module: account
+#: model_terms:ir.actions.act_window,help:account.action_bank_statement_tree
+#: model_terms:ir.actions.act_window,help:account.action_credit_statement_tree
+msgid ""
+"Odoo allows you to reconcile a transaction directly with\n"
+"                the related sale or purchase invoices."
+msgstr ""
+"Odoo, bir işlemi doğrudan ilgili satış veya satın alma\n"
+"                faturalarıyla denkleştirmenize olanak tanır."
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__matching_order__old_first
+msgid "Oldest first"
+msgstr "Önce en eski"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/partner.py:0
+msgid "Only Accounting managers can create foreign taxes."
+msgstr "Yabancı vergileri yalnız muhasebe yöneticileri oluşturabilir."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__statement_line_id
+#: model_terms:ir.ui.view,arch_db:account.view_move_line_form
+msgid "Originator Bank Transaction"
+msgstr "Kaynak Banka İşlemi"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.js:0
+msgid "Other Stock Variation"
+msgstr "Diğer Stok Değişimi"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_payment_search
+msgid "Outstanding"
+msgstr "Açık"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+msgid "Outstanding payments"
+msgstr "Açık ödemeler"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_partner_view_search
+msgid "Overdue Invoices"
+msgstr "Vadesi Geçmiş Faturalar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__parent_id
+msgid "Parent Account"
+msgstr "Üst Hesap"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_cash_rounding__partner_category_ids
+msgid "Partner Category"
+msgstr "Kontak Kategorisi"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/res_partner_bank.py:0
+msgid "Partner set to %s"
+msgstr "Kontak %s olarak ayarlandı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__payable_account_id
+msgid "Payable Account"
+msgstr "Borç Hesabı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Payment QR Codes"
+msgstr "Ödeme QR Kodları"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__reconcile
+#: model:ir.model.fields,field_description:account.field_account_move_line__is_account_reconcile
+msgid "Payment Reconciliation"
+msgstr "Ödeme Denkleştirme"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_reconcile_model__payment_tolerance
+msgid "Payment Tolerance"
+msgstr "Ödeme Toleransı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_reconcile_model__payment_tolerance_type
+msgid "Payment Tolerance Type"
+msgstr "Ödeme Toleransı Türü"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_payment.py:0
+msgid "Payment must be in paid state to be reconciled."
+msgstr "Ödemenin denkleştirilebilmesi için ödendi durumunda olması gerekir."
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model_line__amount_type__percentage_st_line
+msgid "Percentage of transaction"
+msgstr "İşlemin yüzdesi"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__product_category__property_valuation__periodic
+#: model:ir.model.fields.selection,name:account.selection__product_template__valuation__periodic
+#: model:ir.model.fields.selection,name:account.selection__res_company__inventory_valuation__periodic
+msgid "Periodic (at closing)"
+msgstr "Aralıklı (kapanışta)"
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_buildings
+msgid "Periodic depreciation expense for building assets."
+msgstr "Bina varlıkları için dönemsel amortisman gideri."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_technology
+msgid "Periodic depreciation expense for capitalized technology assets."
+msgstr "Aktifleştirilmiş teknoloji varlıkları için dönemsel amortisman gideri."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_furniture
+msgid "Periodic depreciation expense for furniture and fixture assets."
+msgstr "Demirbaş varlıkları için dönemsel amortisman gideri."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_improvements
+msgid "Periodic depreciation expense for leasehold or property improvements."
+msgstr ""
+"Kiralanan mülklerdeki iyileştirmeler (özel maliyetler) veya mülk "
+"iyileştirmeleri için dönemsel amortisman gideri."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_machines
+msgid "Periodic depreciation expense for machinery and tool assets."
+msgstr "Makine ve alet varlıkları için dönemsel amortisman gideri."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_other_property
+msgid "Periodic depreciation expense for other depreciable property assets."
+msgstr ""
+"Amortismana tabi diğer maddi varlıklar için dönemsel amortisman gideri."
+
+#. module: account
+#: model:account.account,description:account.22_account_account_us_expense_vehicles
+msgid "Periodic depreciation expense for vehicle assets."
+msgstr "Taşıt varlıkları için dönemsel amortisman gideri."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_product_category__property_valuation
+msgid ""
+"Periodic: The accounting entries are suggested manually in the inventory "
+"valuation report.\n"
+"        Perpetual: An accounting entry is automatically created to value "
+"the inventory when a product is billed or invoiced.\n"
+"        "
+msgstr ""
+"Aralıklı: Muhasebe kayıtları envanter değerleme raporunda elle önerilir.\n"
+"        Sürekli: Bir ürün faturalandığında envanteri değerlemek için "
+"kendiliğinden bir muhasebe kaydı oluşturulur.\n"
+"        "
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__product_category__property_valuation__real_time
+#: model:ir.model.fields.selection,name:account.selection__product_template__valuation__real_time
+#: model:ir.model.fields.selection,name:account.selection__res_company__inventory_valuation__real_time
+msgid "Perpetual (at invoicing)"
+msgstr "Sürekli (faturalamada)"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__phishing_warnings
+#: model:ir.model.fields,field_description:account.field_res_partner_bank__phishing_warnings
+msgid "Phishing Warnings"
+msgstr "Oltalama Uyarıları"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_partner_bank_search_inherit
+msgid "Phishing risk"
+msgstr "Oltalama riski"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/res_partner_bank.py:0
+msgid ""
+"Phishing risk: %(label1)s is in %(country1)s but %(label2)s is in "
+"%(country2)s"
+msgstr ""
+"Oltalama riski: %(label1)s %(country1)s ülkesinde, ancak %(label2)s "
+"%(country2)s ülkesinde"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid "Please set the Journal for Inventory Valuation in the settings."
+msgstr "Lütfen ayarlardan envanter değerleme yevmiyesini belirleyin."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.init_accounts_tree
+msgid "Post Entry?"
+msgstr "Kayıt Onaylansın mı?"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_cash_rounding__rounding
+msgid "Precision"
+msgstr "Hassasiyet"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__property_price_difference_account_active
+msgid "Price Difference Account Active"
+msgstr "Fiyat Farkı Hesabı Etkin"
+
+#. module: account
+#: model:ir.actions.server,name:account.action_server_payment_receipt
+msgid "Print Payment Receipt"
+msgstr "Ödeme Makbuzunu Yazdır"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__non_deductible_account_active
+msgid "Private Share Account Active"
+msgstr "Özel Kullanım Payı Hesabı Etkin"
+
+#. module: account
+#: model:ir.model,name:account.model_product_catalog_line_mixin
+msgid "Product Catalog Line Mixin"
+msgstr "Ürün Kataloğu Satırı Karışımı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__deductible_percentage
+msgid "Professional Expense Deductibility Percentage"
+msgstr "Mesleki Giderin İndirilebilirlik Yüzdesi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__profit_account_active
+msgid "Profit Account Active"
+msgstr "Kâr Hesabı Etkin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+#: model:account.account,name:account.21_profit_or_loss
+#: model:account.account,name:account.22_account_account_us_profit_or_loss_appropriation
+msgid "Profit or Loss Appropriation"
+msgstr "Kâr veya Zarar Dağıtımı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_analytic_line__analytic_profitability
+msgid "Profitability"
+msgstr "Kârlılık"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__consolidation_rate
+#: model:ir.model.fields,field_description:account.field_account_report_external_value__consolidation_rate
+#: model:ir.model.fields,field_description:account.field_res_currency_rate_consolidation_mixin__consolidation_rate
+msgid "Rate"
+msgstr "Oran"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__receivable_account_id
+msgid "Receivable Account"
+msgstr "Alacak Hesabı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment_register__partner_bank_id
+msgid "Recipient Account"
+msgstr "Alıcı Hesabı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment__reconciled_statement_line_ids
+msgid "Reconciled Bank Transactions"
+msgstr "Denkleştirilmiş Banka İşlemleri"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__rule_type__reco_model
+msgid "Reconciliation model"
+msgstr "Denkleştirme modeli"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_report_expression__engine__reference
+msgid "Record Reference"
+msgstr "Kayıt Referansı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_payment.py:0
+msgid "Refund Confirmation"
+msgstr "İade Onayı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid "Reload Data"
+msgstr "Verileri Yeniden Yükle"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_payment.py:0
+msgid "Remittance Advice"
+msgstr "Ödeme Bildirimi"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/interactions/portal_additional_identifiers.js:0
+#: model_terms:ir.ui.view,arch_db:account.address_form_additional_identifiers
+msgid "Remove"
+msgstr "Kaldır"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/tax_totals/tax_totals.xml:0
+msgid "Remove Rounding Method"
+msgstr "Yuvarlama Yöntemini Kaldır"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/product_catalog/search/section_row/section_row.xml:0
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_report__filter_line_comparison
+msgid "Report Line Comparison"
+msgstr "Rapor Satırı Karşılaştırması"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__residual_at_date
+msgid "Residual (at date)"
+msgstr "Kalan (tarihte)"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__residual_currency_at_date
+msgid "Residual in currency (at date)"
+msgstr "Para biriminde kalan (tarihte)"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment__return_partner_bank_id
+msgid "Returns Bank Account"
+msgstr "Beyanname Banka Hesabı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid "Reversal Entries"
+msgstr "Ters Kayıtlar"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__reversal_move_count
+#: model:ir.model.fields,field_description:account.field_account_move__reversal_move_count
+msgid "Reversal Move Count"
+msgstr "Ters Kayıt Sayısı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid ""
+"Review all the modification done by the user with right under bookkeeper."
+msgstr ""
+"Muhasebeci yetkisinin altındaki kullanıcıların yaptığı tüm değişiklikleri "
+"inceleyin."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__set_to_review_documents
+#: model:ir.model.fields,field_description:account.field_account_move__set_to_review_documents
+#: model:ir.model.fields,field_description:account.field_res_company__set_to_review_documents
+#: model:ir.model.fields,field_description:account.field_res_config_settings__set_to_review_documents
+msgid "Review data"
+msgstr "Verileri incele"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_form
+msgid "Root account"
+msgstr "Kök hesap"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/tax_totals/tax_totals.js:0
+#: model:ir.actions.act_window,name:account.rounding_list_action
+#: model:ir.ui.menu,name:account.menu_action_rounding_form_view
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Rounding Methods"
+msgstr "Yuvarlama Yöntemleri"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_reconcile_model__rule_type
+msgid "Rule Type"
+msgstr "Kural Türü"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "SEPA QR Codes"
+msgstr "SEPA QR Kodları"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid "Search a product"
+msgstr "Ürün ara"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/tax_totals/tax_totals.js:0
+msgid "Search more..."
+msgstr "Daha fazla ara..."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "See exchange information"
+msgstr "Kur bilgilerini gör"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/tax_totals/tax_totals.js:0
+#: code:addons/account/static/src/components/tax_totals/tax_totals.xml:0
+msgid "Select Rounding Method"
+msgstr "Yuvarlama Yöntemi Seç"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__incoming_einvoice_notification_email
+msgid "Send Copy To"
+msgstr "Kopya Gönderilecek Kişiler"
+
+#. module: account
+#: model:ir.model,name:account.model_account_move_send_batch_wizard
+msgid "Send Invoice Batch Wizard"
+msgstr "Toplu Fatura Gönderme Sihirbazı"
+
+#. module: account
+#: model:ir.model,name:account.model_account_move_send_wizard
+msgid "Send Invoice Wizard"
+msgstr "Fatura Gönderme Sihirbazı"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Send invoices and payment reminders by post"
+msgstr "Faturaları ve ödeme hatırlatmalarını posta ile gönderin"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/invoice_guide/invoice_guide.js:0
+msgid "Set your Company Data"
+msgstr "Şirket Bilgilerinizi Girin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal_dashboard.py:0
+msgid "Setup Your Invoice Layout"
+msgstr "Fatura Düzeninizi Ayarlayın"
+
+#. module: account
+#: model:ir.model,name:account.model_account_move_send
+msgid "Shared Send Invoice Wizard Functions"
+msgstr "Fatura Gönderme Sihirbazlarının Ortak İşlevleri"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__show_clearing_number
+msgid "Show Clearing Number"
+msgstr "Takas Numarasını Göster"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/section_and_note_fields_backend/section_and_note_fields_backend.xml:0
+msgid "Show Composition"
+msgstr "Bileşimi Göster"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__show_invoice_vendor_bill
+#: model:ir.model.fields,field_description:account.field_account_move__show_invoice_vendor_bill
+msgid "Show Invoice Vendor Bill"
+msgstr "Fatura / Tedarikçi Faturasını Göster"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/section_and_note_fields_backend/section_and_note_fields_backend.xml:0
+msgid "Show Prices"
+msgstr "Fiyatları Göster"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid "Show Unreconciled Bank Transactions"
+msgstr "Denkleştirilmemiş Banka İşlemlerini Göster"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Some entries could not be reset to draft"
+msgstr "Bazı kayıtlar taslağa döndürülemedi"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_cash_rounding__strategy
+msgid ""
+"Specify how the rounding difference is applied: add a rounding line or "
+"adjust the highest tax amount."
+msgstr ""
+"Yuvarlama farkının nasıl uygulanacağını belirtin: bir yuvarlama satırı "
+"ekleyin veya en yüksek vergi tutarını düzeltin."
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__product_category__property_cost_method__standard
+#: model:ir.model.fields.selection,name:account.selection__product_template__cost_method__standard
+#: model:ir.model.fields.selection,name:account.selection__res_company__cost_method__standard
+msgid "Standard Price"
+msgstr "Standart Fiyat"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_bank_statement_kanban
+msgid "Starting"
+msgstr "Başlangıç"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_category_property_form
+msgid "Stock Account"
+msgstr "Stok Hesabı"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid "Stock Closing as of %(date)s"
+msgstr "%(date)s itibarıyla stok kapanışı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__property_stock_journal
+#: model:ir.model.fields,field_description:account.field_res_company__account_stock_journal_id
+msgid "Stock Journal"
+msgstr "Stok Yevmiyesi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__property_stock_valuation_account_id
+#: model:ir.model.fields,field_description:account.field_res_company__account_stock_valuation_id
+msgid "Stock Valuation Account"
+msgstr "Stok Değerleme Hesabı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__property_stock_valuation_account_active
+msgid "Stock Valuation Account Active"
+msgstr "Stok Değerleme Hesabı Etkin"
+
+#. module: account
+#. odoo-javascript
+#. odoo-python
+#: code:addons/account/report/account_stock_valuation_report.py:0
+#: code:addons/account/static/src/components/stock_valuation/stock_valuation_report.js:0
+#: model_terms:ir.ui.view,arch_db:account.view_category_property_form
+msgid "Stock Variation"
+msgstr "Stok Değişimi"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__account_stock_variation_id
+msgid "Stock Variation Account"
+msgstr "Stok Değişim Hesabı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_category__account_stock_variation_active
+msgid "Stock Variation Account Active"
+msgstr "Stok Değişim Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_cash_rounding__strategy
+msgid "Strategy"
+msgstr "Strateji"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.portal_my_journal_mail_notifications
+msgid "Successfully unsubscribed"
+msgstr "Abonelikten başarıyla çıkarıldı:"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__suspense_account_active
+msgid "Suspense Account Active"
+msgstr "Geçici Hesap Etkin"
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_tx_state
+msgid "TX State 6.25%"
+msgstr "TX Eyalet %6,25"
+
+#. module: account
+#: model:account.tax,name:account.22_account_tax_us_demo_tx_exempt
+msgid "TX State 6.25% Exempt"
+msgstr "TX Eyalet %6,25 Muaf"
+
+#. module: account
+#: model:account.tax.group,name:account.22_account_tax_group_us_demo_4_25
+msgid "Tax 4.25%"
+msgstr "Vergi %4,25"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/many2x_tax_tags/tax_tag_popover.xml:0
+msgid "Tax Distribution"
+msgstr "Vergi Dağıtımı"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_move__document_tax_mode__tax_excluded
+msgid "Tax Excl."
+msgstr "Vergi Hariç"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_fiscal_position__vat_required
+msgid "Tax ID required"
+msgstr "Vergi kimlik numarası gerekli"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_move__document_tax_mode__tax_included
+msgid "Tax Incl."
+msgstr "Vergi Dahil"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_setup_bank_manual_config__phishing_warnings
+#: model:ir.model.fields,help:account.field_res_partner_bank__phishing_warnings
+msgid ""
+"Technical field used to display warnings if there's a potential phishing "
+"risk"
+msgstr ""
+"Olası bir oltalama riski varsa uyarı göstermek için kullanılan teknik alan"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Template for Bills"
+msgstr "Tedarikçi Faturaları Şablonu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_account.py:0
+msgid "Template for Chart of Accounts"
+msgstr "Hesap Planı Şablonu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Template for Credit Notes"
+msgstr "İade Faturaları Şablonu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Template for Invoices"
+msgstr "Faturalar Şablonu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+msgid "Template for Journal Items"
+msgstr "Yevmiye Kalemleri Şablonu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Template for Misc. Operations"
+msgstr "Çeşitli İşlemler Şablonu"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "Template for Refunds"
+msgstr "Tedarikçi İadeleri Şablonu"
+
+#. module: account
+#: model:ir.model.constraint,message:account.constraint_account_report_column_expression_label_uniq
+msgid "The Expression label must be unique per account report."
+msgstr "İfade etiketi her muhasebe raporunda benzersiz olmalıdır."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid ""
+"The bank account of your company is not trusted. Please ask an admin or "
+"someone with approval rights to check it."
+msgstr ""
+"Şirketinizin banka hesabı güvenilir olarak işaretlenmemiş. Lütfen bir "
+"yöneticiden veya onay yetkisi olan birinden hesabı kontrol etmesini isteyin."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_move_line__statement_line_id
+msgid "The bank transaction that created this entry"
+msgstr "Bu kaydı oluşturan banka işlemi"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid ""
+"The cash rounding method \"%(name)s\" has no Profit/Loss Accounts set, so no "
+"rounding line can be added."
+msgstr ""
+"\"%(name)s\" nakit yuvarlama yönteminde kâr/zarar hesapları tanımlı değil, bu "
+"yüzden yuvarlama satırı eklenemez."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid ""
+"The company bank account (%(account_number)s) linked to this invoice is not "
+"trusted. Go to the Bank Settings, double-check that it is yours or correct "
+"the number, and click on Send Money to trust it."
+msgstr ""
+"Bu faturaya bağlı şirket banka hesabı (%(account_number)s) güvenilir olarak "
+"işaretlenmemiş. Banka Ayarları'na gidin, hesabın size ait olduğunu "
+"doğrulayın veya numarayı düzeltin ve güvenilir olarak işaretlemek için Para "
+"Gönder'e tıklayın."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_cash_rounding__rounding_method
+msgid ""
+"The computation rule used to round values (e.g., UP, DOWN, or HALF-UP)."
+msgstr ""
+"Değerleri yuvarlamak için kullanılan hesaplama kuralı (ör. YUKARI, AŞAĞI "
+"veya YARIM-YUKARI)."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/partner.py:0
+msgid ""
+"The country of the foreign Tax ID could not be detected. Please assign a "
+"country to the fiscal position."
+msgstr ""
+"Yabancı vergi kimlik numarasının ülkesi belirlenemedi. Lütfen mali konuma "
+"bir ülke atayın."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+msgid "The deductibility percentage must be between 0% and 100%"
+msgstr "İndirilebilirlik yüzdesi %0 ile %100 arasında olmalıdır"
+
+#. module: account
+#: model:ir.model.constraint,message:account.constraint_account_move_check_document_tax_mode_set
+msgid "The document tax mode must be set."
+msgstr "Belge vergi modu belirlenmelidir."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "The document's sequence becomes editable on all documents."
+msgstr "Belge sırası tüm belgelerde düzenlenebilir olur."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid ""
+"The entry is using accounts (%(accounts_codes_names)s) from a different "
+"company."
+msgstr ""
+"Kayıt başka bir şirkete ait hesapları (%(accounts_codes_names)s) kullanıyor."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal.py:0
+msgid ""
+"The journal (%(journal_code)s) has some hashed statements so the type "
+"cannot be changed"
+msgstr ""
+"Yevmiyede (%(journal_code)s) özetlenmiş (hash) hesap ekstreleri olduğu için "
+"türü değiştirilemez"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement_line.py:0
+msgid ""
+"The journal entry %s reached an invalid state regarding its related bank "
+"transaction.\n"
+"To be consistent, the journal entry must always have exactly one journal "
+"item involving the bank/cash account."
+msgstr ""
+"%s yevmiye kaydı, ilgili banka işlemi açısından geçersiz bir duruma geldi.\n"
+"Tutarlılık için yevmiye kaydında banka/kasa hesabını içeren her zaman tam "
+"olarak bir yevmiye kalemi bulunmalıdır."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_reconcile_model.py:0
+msgid "The payment tolerance must be positive."
+msgstr "Ödeme toleransı pozitif olmalıdır."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_reconcile_model.py:0
+msgid "The percentage tolerance must be between 0 and 100."
+msgstr "Yüzde toleransı 0 ile 100 arasında olmalıdır."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_reconcile_model__match_label
+msgid ""
+"The reconciliation model will only be applied when either the transaction "
+"label, the transaction details or the note matches the following:\n"
+"        * Contains: The transaction must contain this string (case "
+"insensitive).\n"
+"        * Not Contains: Negation of \"Contains\".\n"
+"        * Match Regex: Define your own regular expression."
+msgstr ""
+"Denkleştirme modeli yalnız işlem etiketi, işlem ayrıntıları veya not "
+"aşağıdakiyle eşleştiğinde uygulanır:\n"
+"        * İçerir: İşlem bu metni içermelidir (büyük/küçük harf duyarsız).\n"
+"        * İçermez: \"İçerir\"in tersi.\n"
+"        * Düzenli İfadeyle Eşleşir: Kendi düzenli ifadenizi tanımlayın."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_send.py:0
+msgid ""
+"The scheduled action 'Send Invoices automatically' is archived. You won't "
+"be able to send invoices in batch."
+msgstr ""
+"'Faturaları otomatik gönder' zamanlanmış eylemi arşivlenmiş. Faturaları "
+"toplu olarak gönderemezsiniz."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_move_line__deductible_percentage
+msgid ""
+"The share of this expense used for business purposes. VAT is only "
+"deductible on this portion; the rest is treated as a private expense. Use "
+"this for mixed-use costs (e.g. a home office, a car used partly for "
+"personal trips)."
+msgstr ""
+"Bu giderin işletme amacıyla kullanılan payı. KDV yalnız bu kısım için "
+"indirilebilir; geri kalanı özel gider sayılır. Karma kullanımlı giderler "
+"için kullanın (ör. ev ofisi, kısmen kişisel yolculuklarda kullanılan bir "
+"araç)."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/account_secure_entries_wizard.py:0
+msgid ""
+"There are still unreconciled bank transactions before the selected date. "
+"The entries from journal prefixes containing them will not be secured: "
+"%(prefix_info)s"
+msgstr ""
+"Seçilen tarihten önce hâlâ denkleştirilmemiş banka işlemleri var. Bu "
+"işlemleri içeren yevmiye öneklerindeki kayıtlar güvenceye alınmayacak: "
+"%(prefix_info)s"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/company.py:0
+msgid ""
+"There are still unreconciled bank transactions in the period you want to "
+"lock. You should either reconcile or delete them."
+msgstr ""
+"Kilitlemek istediğiniz dönemde hâlâ denkleştirilmemiş banka işlemleri var. "
+"Bunları denkleştirmeli ya da silmelisiniz."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_account__reconcile
+#: model:ir.model.fields,help:account.field_account_move_line__is_account_reconcile
+msgid ""
+"This account is used in bank reconciliation. Currency rate difference "
+"entries will be automatically created if needed."
+msgstr ""
+"Bu hesap banka mutabakatında kullanılır. Gerekirse kur farkı kayıtları "
+"kendiliğinden oluşturulur."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.init_accounts_tree
+msgid ""
+"This action is irreversible: the credit/debit cannot be modified again from "
+"this screen.  -  This action will affect your current company only."
+msgstr ""
+"Bu işlem geri alınamaz: alacak/borç bu ekrandan bir daha değiştirilemez.  - "
+" Bu işlem yalnız geçerli şirketinizi etkiler."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "This document has no tax amount to adjust."
+msgstr "Bu belgede düzeltilecek vergi tutarı yok."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/account_move_reversal.py:0
+msgid "This entry has been reversed by %s"
+msgstr "Bu kayıt %s ile ters çevrildi"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/product_catalog_mixin.py:0
+msgid "This model does not support (sub)sections"
+msgstr "Bu model (alt) bölümleri desteklemiyor"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_tax_form
+msgid "This note will be mentioned on invoices using this tax."
+msgstr "Bu not, bu vergiyi kullanan faturalarda belirtilir."
+
+#. module: account
+#: model_terms:ir.actions.act_window,help:account.action_account_matching_rules
+msgid ""
+"Those can be used to automatically match journal items with your "
+"transactions."
+msgstr ""
+"Bunlar yevmiye kalemlerini işlemlerinizle kendiliğinden eşleştirmek için "
+"kullanılabilir."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_line_payment_tree
+msgid "Total Residual at date"
+msgstr "Tarihteki Toplam Kalan"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__group_cash_rounding
+msgid "Total Rounding"
+msgstr "Toplam Yuvarlama"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Total Rounding Accounts:"
+msgstr "Toplam Yuvarlama Hesapları:"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__display_invoice_amount_total_words
+#: model:ir.model.fields,field_description:account.field_res_config_settings__display_invoice_amount_total_words
+msgid "Total amount of invoice in words"
+msgstr "Fatura toplam tutarı (yazıyla)"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment__transaction_uuid
+msgid "Transaction ID"
+msgstr "İşlem Kimliği"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_reconcile_model.py:0
+msgid "Transaction percentage can't be 0"
+msgstr "İşlem yüzdesi 0 olamaz"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_analytic_line__analytic_profitability__uncategorized
+msgid "Uncategorized"
+msgstr "Kategorisiz"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_payment__transaction_uuid
+msgid "Unique transaction identifier assigned by the initiating party"
+msgstr "İşlemi başlatan tarafın atadığı benzersiz işlem tanımlayıcısı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_line__open_on
+msgid "Unreconciled On"
+msgstr "Denkleştirmenin Kaldırıldığı Tarih"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_payment_register__unreconciled_paid_amount
+msgid "Unreconciled Paid Amount"
+msgstr "Denkleştirilmemiş Ödenen Tutar"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/chart_template.py:0
+msgid "Update app"
+msgstr "Uygulamayı güncelle"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__module_l10n_eu_account_vies
+msgid "VAT number validation with VIES"
+msgstr "VIES ile KDV numarası doğrulama"
+
+#. module: account
+#: model:ir.model,name:account.model_validate_account_move
+msgid "Validate Journal Entry"
+msgstr "Yevmiye Kaydını Doğrula"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.init_accounts_tree
+msgid "Validate and Post"
+msgstr "Doğrula ve Onayla"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_account_reconcile_model__trigger
+msgid ""
+"Validate the transaction automatically (reconciliation based on your rule)."
+msgstr "İşlemi kendiliğinden doğrula (kuralınıza göre denkleştirme)."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_product_product__valuation
+#: model:ir.model.fields,field_description:account.field_product_template__valuation
+#: model:ir.model.fields,field_description:account.field_res_company__inventory_valuation
+msgid "Valuation"
+msgstr "Değerleme"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__account_stock_variation_id
+msgid "Variation Account"
+msgstr "Değişim Hesabı"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account__account_stock_variation_active
+msgid "Variation Account Active"
+msgstr "Değişim Hesabı Etkin"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__account_discount_income_allocation_active
+msgid "Vendor Bills Discounts Account Active"
+msgstr "Tedarikçi Faturaları İndirim Hesabı Etkin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/controllers/download_docs.py:0
+msgid "VendorBills"
+msgstr "TedarikciFaturalari"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_config_settings__vat_check_vies
+msgid "Verify VAT Numbers"
+msgstr "KDV Numaralarını Doğrula"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_res_company__vat_check_vies
+msgid "Verify VAT Numbers with VIES"
+msgstr "KDV Numaralarını VIES ile Doğrula"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
+msgid "Verify VAT numbers using the European VIES service"
+msgstr "KDV numaralarını Avrupa VIES hizmetiyle doğrulayın"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/account_payment_register.py:0
+msgid "View payments"
+msgstr "Ödemeleri görüntüle"
+
+#. module: account
+#: model:ir.model.fields,help:account.field_product_category__property_stock_valuation_account_id
+msgid ""
+"When automated inventory valuation is enabled on a product, this account "
+"will hold the current value of the products."
+msgstr ""
+"Bir üründe otomatik envanter değerleme etkinse bu hesap ürünlerin güncel "
+"değerini tutar."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_product_category__property_stock_journal
+msgid ""
+"When doing automated inventory valuation, this is the Accounting Journal in "
+"which entries will be automatically posted when stock moves are processed."
+msgstr ""
+"Otomatik envanter değerlemede, stok hareketleri işlendiğinde kayıtların "
+"kendiliğinden onaylanacağı muhasebe yevmiyesidir."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_product_category__property_price_difference_account_id
+msgid ""
+"With perpetual valuation, this account will hold the price difference "
+"between the standard price and the bill price."
+msgstr ""
+"Sürekli değerlemede bu hesap, standart fiyat ile fatura fiyatı arasındaki "
+"farkı tutar."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.portal_my_journal_mail_notifications
+msgid "You are about to unsubscribe"
+msgstr "Abonelikten çıkmak üzeresiniz"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal.py:0
+msgid ""
+"You can not archive a journal containing draft journal entries.\n"
+"\n"
+"To proceed:\n"
+"1/ go to Accounting > Accounting > Journal Entries\n"
+"2/ filter on this journal and on 'Unposted' entries\n"
+"3/ select them all and post or delete them through the action menu"
+msgstr ""
+"Taslak yevmiye kayıtları içeren bir yevmiye arşivlenemez.\n"
+"\n"
+"Devam etmek için:\n"
+"1/ Muhasebe > Muhasebe > Yevmiye Kayıtları'na gidin\n"
+"2/ bu yevmiyeye ve 'Onaylanmamış' kayıtlara göre filtreleyin\n"
+"3/ hepsini seçip eylem menüsünden onaylayın veya silin"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_send.py:0
+msgid ""
+"You can only generate sales documents or purchase documents for "
+"self-billing."
+msgstr ""
+"Alıcı tarafından düzenlenen fatura (self-billing) için yalnız satış veya "
+"satın alma belgeleri oluşturabilirsiniz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "You can only switch the type of a draft document."
+msgstr "Yalnız taslak bir belgenin türünü değiştirebilirsiniz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/product.py:0
+msgid "You can only use the '=' operator to search on valuation field."
+msgstr ""
+"Değerleme alanında arama yaparken yalnız '=' işlecini kullanabilirsiniz."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.portal_my_journal_mail_notifications
+msgid ""
+"You can unsubscribe from emails received upon invoice sending and reception "
+"here."
+msgstr ""
+"Fatura gönderimi ve alımıyla gelen e-postaların aboneliğinden buradan "
+"çıkabilirsiniz."
+
+#. module: account
+#: model:ir.model.fields,help:account.field_base_document_layout__vat
+msgid "You can use '/' to indicate that the customer has no Tax ID."
+msgstr ""
+"Müşterinin vergi kimlik numarası olmadığını belirtmek için '/' "
+"kullanabilirsiniz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_bank_statement_line.py:0
+msgid ""
+"You can't create a new bank transaction without a suspense account set on "
+"the %s journal."
+msgstr ""
+"%s yevmiyesinde geçici hesap tanımlanmadan yeni banka işlemi "
+"oluşturamazsınız."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_payment.py:0
+msgid ""
+"You cannot change the amount of a payment with multiple liquidity lines."
+msgstr ""
+"Birden çok banka/kasa satırı olan bir ödemenin tutarını değiştiremezsiniz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/base_document_layout.py:0
+msgid "You cannot configure the document layout for this company."
+msgstr "Bu şirket için belge düzenini yapılandıramazsınız."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/partner.py:0
+msgid ""
+"You cannot create a fiscal position with a foreign Tax ID within your "
+"fiscal country without assigning it a state."
+msgstr ""
+"Mali ülkeniz içinde yabancı vergi kimlik numaralı bir mali konumu il "
+"atamadan oluşturamazsınız."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_tax.py:0
+msgid ""
+"You cannot delete taxes that are currently in use. Consider archiving them "
+"instead."
+msgstr "Kullanımdaki vergileri silemezsiniz. Bunun yerine arşivlemeyi düşünün."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/wizard/base_document_layout.py:0
+msgid "You cannot preview this invoice."
+msgstr "Bu faturanın önizlemesini görüntüleyemezsiniz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#: code:addons/account/wizard/account_payment_register.py:0
+msgid "You cannot register payments for blocked invoices."
+msgstr "Engellenmiş faturalar için ödeme kaydedemezsiniz."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal_dashboard.py:0
+msgid "You do not have access to the Accounting Dashboard."
+msgstr "Muhasebe Panosuna erişiminiz yok."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.validate_account_move_view
+msgid "amounts for"
+msgstr "tutarları olağan aralığın dışında olan kontaklar:"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/invoice_guide/invoice_guide.xml:0
+msgid "and"
+msgstr "ve"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.validate_account_move_view
+msgid "dates for"
+msgstr "tarihleri olağan aralığın dışında olan kontaklar:"
+
+#. module: account
+#. odoo-javascript
+#: code:addons/account/static/src/components/invoice_guide/invoice_guide.xml:0
+msgid "e-invoicing"
+msgstr "e-fatura"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_group_form
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_group_tree
+msgid "e.g. CONSO, IFRS, ..."
+msgstr "ör. KONSOLİDE, UFRS, ..."
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
+msgid "e.g. finance@example.com; accountant@example.com"
+msgstr "ör. finans@ornek.com; muhasebe@ornek.com"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.validate_account_move_view
+msgid "fall outside the typical range.<br/>"
+msgstr ".<br/>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.portal_my_journal_mail_notifications
+msgid "from invoice notifications."
+msgstr "adresi artık fatura bildirimi almayacak."
+
+#. module: account
+#: model:mail.template,subject:account.mail_template_data_payment_receipt
+msgid ""
+"{{ object.company_id.name }} {{ object.payment_receipt_title }} (Ref {{ "
+"object.name or 'n/a' }})"
+msgstr ""
+"{{ object.company_id.name }} {{ object.payment_receipt_title }} (Ref {{ "
+"object.name or 'n/a' }})"

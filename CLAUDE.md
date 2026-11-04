@@ -197,6 +197,8 @@ Denetim aracının yakalayamadıkları (elle kontrol et):
 - Türkçe çeviri (T3.6): `python tools/po_coverage.py` paket modüllerinin kapsamını ölçer (`--modules a,b`, `--min N` eşik altında 1 döner; CI eşiği `.github/workflows/ci.yml`'de, yalnız yükseltilir).
   - Eksikler: `python tools/po_coverage.py missing <modül> [--limit N] --out iş.json` → çeviriler `{anahtar: çeviri}` JSON'una yazılır → `python tools/po_coverage.py add <modül> çeviri.json` (doğrular, `addons/ov_i18n_tr/i18n_overlay/<modül>.po`'ya yazar). Var olan bir çeviriyi düzeltmek de `add` ile.
   - Terim tutarlılığı: `python tools/po_coverage.py lookup <metin>`. Denetim: `check` (pre-commit ve CI). Upstream güncellenince `sync`.
+  - `{{ … }}` ifadelerinde yalnız çıktı metinleri çevrilir (`and`/`or` işlenenleri, koşullu ifadenin dalları); karşılaştırılan değerler (ör. `'draft'`) aynı kalır.
+- Araç testleri: `python -m unittest discover -s tools/tests` (pre-commit kancası `tool-tests`, CI).
   - Kaynakta "Odoo" geçen metin adla çevrilir, gösterimde `ov_brand` değiştirir. Terim tercihleri ve varsayımlar: USER_TASKS K24.
 - İlçe listesi (T3.4): `.venv/Scripts/python tools/tr_districts.py` İçişleri Bakanlığı envanterini indirir, `addons/ov_l10n_tr/data/res.city.csv`'yi yazar. `--check` fark varsa 1 döner; `--save-dir DIR` indirilen raporları saklar, `--from-dir DIR` onları kullanır.
 - OCA portu (T1.11): `python tools/port_oca.py fetch <depo> <modül> [--branch 19.0] [--commit SHA]` → `python tools/port_oca.py upgrade ports/oca/<depo>/<modül>` → elle uyarlama + `python tools/run_tests.py <modül>`

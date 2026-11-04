@@ -69,7 +69,8 @@ odoo-version/
 │   ├── check_secrets.py     # staged değişikliklerde .env değerleri; pre-commit kancası (T1.10)
 │   ├── port_oca.py          # OCA modülünü ports/'a alır, upgrade_code'u porta uygular, kaynakla fark (T1.11)
 │   ├── tr_districts.py      # Türkiye ilçe listesini İçişleri envanterinden üretir, ov_l10n_tr (T3.4)
-│   └── po_coverage.py       # paket modüllerinin Türkçe çeviri kapsamı; ov_i18n_tr çevirilerini ekler ve denetler (T3.6)
+│   ├── po_coverage.py       # paket modüllerinin Türkçe çeviri kapsamı; ov_i18n_tr çevirilerini ekler ve denetler (T3.6)
+│   └── tests/               # araçların birim testleri (unittest; pre-commit ve CI)
 ├── upstream/odoo/           # Odoo Community 20.0, sığ git submodule, sabit commit (state.json → upstream)
 ├── vendor/oca/<depo>/       # OCA'nın resmî 20.0 depoları, sığ git submodule, sabit commit (server-ux T1.11, server-brand T2.3)
 ├── ports/oca/<depo>/<modül>/  # OCA 19.0 modüllerinin bizim 20.0 portlarımız, her birinde PORT.md (ilk: reporting-engine/report_xlsx)
@@ -193,7 +194,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
     - Modül içi içe aktarmalar upstream gibi mutlak (ruff TID252). Tersini isteyen `odoo-addons-relative-import` denetimi pre-commit kanca argümanıyla kapalı (T2.2).
   - `tools/check_modules.py`: proje kuralları (önek, lisans, sürüm, yazar, kullanıcıya görünen metinlerde marka, `README.rst`, test, `tr.po`).
 - **CI (T1.10, çalışıyor; D-020):** GitHub Actions, `.github/workflows/ci.yml`. Her push'ta, pull request'te ve elle (`workflow_dispatch`) çalışır. İki iş paralel:
-  - **Belgeler, lint, gizli bilgi** (`checks`): belge denetimi → Türkçe çeviri kapsamı eşiği (`po_coverage.py report --min`, T3.6) → `pre-commit run --all-files` (çeviri dosyalarının denetimi dahil) → gitleaks (tüm geçmiş) → `sync_skills.py --check`.
+  - **Belgeler, lint, gizli bilgi** (`checks`): belge denetimi → araçların birim testleri (`tools/tests`) → Türkçe çeviri kapsamı eşiği (`po_coverage.py report --min`, T3.6) → `pre-commit run --all-files` (çeviri dosyalarının denetimi dahil) → gitleaks (tüm geçmiş) → `sync_skills.py --check`.
   - **Modül testleri** (`tests`): Ubuntu 24.04, Python 3.12, PostgreSQL 18 servisi.
     - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
     - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).

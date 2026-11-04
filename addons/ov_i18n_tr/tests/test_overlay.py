@@ -119,9 +119,11 @@ class TestOverlay(TransactionCase):
         self.assertEqual(self.name_tr(self.menu), 'Ayarlar (ov test)')
 
     def test_module_name(self):
-        # names of the modules not installed, in the applications list
+        # names of the modules not installed, in the applications list (the
+        # fixture module may be installed with other modules: seen as not installed)
         account = self.env['ir.module.module'].search([('name', '=', 'account')])
-        self.assertNotEqual(account.state, 'installed')
+        if account.state == 'installed':
+            account.state = 'uninstalled'
         self.env['ir.module.module']._load_non_installed_modules_manifest_terms(['tr_TR'])
         self.assertEqual(account.with_context(lang='tr_TR').shortdesc, 'Faturalama (ov test)')
 

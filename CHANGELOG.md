@@ -7,6 +7,24 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `account`, `sale`, `purchase` çevirileri; ifade denetimi ve araç testleri (T3.6, 2. adım) — otonom mesai 5
+
+**Kod**
+- Çeviriler: `account` 423 terim (3.392/3.392), `sale` 185 (903/903), `purchase` 105 (656/656). Paket kapsamı %81,16 → %83,57; eksik 5.562 → 4.851.
+  - E-posta şablonları (fatura, alıcı tarafından düzenlenen fatura, ödeme makbuzu, teklif/sipariş, sipariş onayı, ödeme durumu, proforma, teklif talebi) etiketlerin arasındaki metin parçaları çevrilerek yazıldı; etiketler ve QWeb ifadeleri aynı.
+  - `purchase` modül açıklaması reStructuredText olarak docutils'le uyarısız işlendi.
+  - Upstream düzeltmesi: doğrulama sihirbazındaki "dates for" ("gün") ve "amounts for" ("için tutar") parçaları cümleye uyacak biçimde yeniden çevrildi.
+- `tools/po_coverage.py`: `{{ … }}` ifadelerinde çıktı metinleri (`and`/`or` işlenenleri, koşullu ifadenin dalları) artık çevrilebilir. Karşılaştırılan değerler, alanlar ve ifadenin yapısı Python AST'siyle karşılaştırılır. Önceki kural e-posta konularındaki `'Quotation'`/`'Order'` sözcüklerinin çevirisini reddediyordu.
+- Yeni `tools/tests/test_po_coverage.py`: denetim kurallarının 8 testi. Eski kurala karşı çalıştırıldığında ifade testi düşüyor, yenisiyle geçiyor. pre-commit kancası `tool-tests` (`tools/` değişince) ve CI adımı.
+- `ov_i18n_tr` testi `test_module_name`: CI'da bütün modüllerimiz birlikte kurulduğu için `account` kurulu geliyordu ve test düştü (önceki commit'in CI hatası). Test artık örnek modülü kurulu değil sayıyor; `account` kurulu veritabanında 11 test geçti.
+- CI kapsam eşiği `--min 81.1` → `83.5`.
+
+**Kararlar**
+- K24'e terim tercihleri eklendi (varsayım): Credit Note → İade Faturası, Tax Return → Vergi Beyannamesi, Suspense Account → Geçici Hesap, Reconcile → Denkleştirme, hash → özetlenmiş (hash).
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme ve denetim), USER_TASKS.md (K24), ARCHITECTURE.md (araçlar, CI), CLAUDE.md (komutlar), state.json.
+
 ### Adım: Türkçe çeviri katmanı ve ölçüm aracı (T3.6, 1. adım) — otonom mesai 5
 
 **Kod**
