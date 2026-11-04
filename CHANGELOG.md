@@ -7,6 +7,21 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-04
 
+### Adım: `stock` ve `mrp` çevirileri (T3.6, 3. adım) — otonom mesai 5
+
+**Kod**
+- Çeviriler: `stock` 288 terim (1.919/1.919), `mrp` 209 (1.167/1.167). Hepsi eksik tamamlama; upstream çevirisi değiştirilen terim yok. Paket kapsamı %83,57 → %85,25; eksik 4.851 → 4.354.
+  - Etiket yazıcısı (ZPL) şablonlarında yalnız kod içeren parçalar olduğu gibi kopyalandı; metinler Türkçe harfsiz ("Paket Tarihi:", "Barkod yok").
+  - `mrp` modül açıklaması reStructuredText olarak docutils'le uyarısız işlendi.
+- CI kapsam eşiği `--min 83.5` → `85.1`.
+- Önceki commit'in CI'ı (2d55aa6) başarılı: `test_module_name` düzeltmesi Linux'ta da geçti.
+
+**Kararlar**
+- K24'e stok ve üretim terim tercihleri eklendi (varsayım): Batch → Parti, Backorder → Kalan Teslimat, Replenishment → İkmal, Shop Floor → Üretim Alanı, Unbuild → Parçalama; ZPL metinleri Türkçe harfsiz.
+
+**Belgeler**
+- PLAN.md (T3.6 ilerleme), USER_TASKS.md (K24), README.md, state.json.
+
 ### Adım: `account`, `sale`, `purchase` çevirileri; ifade denetimi ve araç testleri (T3.6, 2. adım) — otonom mesai 5
 
 **Kod**

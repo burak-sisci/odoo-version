@@ -46,7 +46,7 @@ jobs:
 
       # Ratchet: raised with each batch of translations, never lowered (T3.6; gate: 95)
       - name: Turkish translation coverage of the package modules
-        run: python tools/po_coverage.py report --quiet --min 83.5
+        run: python tools/po_coverage.py report --quiet --min 85.1
 
       - name: Hook environments cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0

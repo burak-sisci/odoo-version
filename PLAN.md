@@ -428,7 +428,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Kuralların testi `tools/tests/test_po_coverage.py` (8 test); pre-commit ve CI'da çalışır.
       - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95.
     - Başlangıç (2026-11-04): 83 modül, 29.518 terim, %81,11 çevrili, 5.576 eksik. %95 için yaklaşık 4.100 terim gerekiyor.
-    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105). Paket %83,57, 4.851 eksik.
+    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105), `stock` 1.919/1.919 (288), `mrp` 1.167/1.167 (209). Paket %85,25, 4.354 eksik.
       - Uzun e-posta şablonları etiketlerin arasındaki metin parçaları çevrilerek yazıldı; etiketler ve QWeb ifadeleri olduğu gibi kalır (denetim bunu doğrular).
     - Testler: `ov_i18n_tr` 11 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması).
     - Varsayımlar: `USER_TASKS.md` K24.
