@@ -102,7 +102,14 @@ class TurkishPdfCommon(TurkishDocumentsCommon, HttpCase):
     The engines named in the ``OV_PDF_ENGINES`` environment variable (comma
     separated, as CI sets it) must work; the others are skipped when missing.
     With ``OV_PDF_DIR`` set, the PDFs are also written there to be looked at.
+    The Turkish translations are loaded: the test database has none.
     """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        modules = cls.env['ir.module.module'].search([('state', '=', 'installed')])
+        modules._load_module_terms(modules.mapped('name'), ['tr_TR'], overwrite=True)
 
     def render_pdf(self, engine, report_ref, records):
         """Return the PDF of the report printed by ``engine`` for ``records``."""

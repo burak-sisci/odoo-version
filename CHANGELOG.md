@@ -28,6 +28,11 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 **Ölçüm**
 - Yerel (motor yok): `--tags ov_pdf` 4 test, 8 alt test "motor kurulu değil" diye atlandı. Standart koşu 9 test, PDF testleri koşmadı.
+- İlk CI koşusu: iki motor da kuruldu ve PDF bastı.
+  - Tahsilat makbuzu iki motorda geçti. 6 alt test düştü, nedeni test kurulumu:
+    - Test veritabanında Türkçe çeviri yoktu, etiketler İngilizce çıktı ("Issue Date"). `TurkishPdfCommon` artık kurulu modüllerin Türkçe çevirilerini yüklüyor.
+    - Koşuda `ov_brand` kurulu değildi; teklifin PDF üst verisinde upstream'in yazıcısı `Producer: Odoo` yazdı. Üründe olduğu gibi `ov_brand` de kuruluyor. Test, sızıntıyı yakalamak için yazıldığı biçimde çalıştı.
+  - İçerik o koşuda da doğruydu: tutar yazıyla, MERSİS No, VKN, "Sevk İrsaliyesi", Türkçe harfler PDF metninde.
 
 ### Adım: Türk belgelerinin içeriği; çeviri katmanının noupdate düzeltmesi (T3.7, 1. adım) — otonom mesai 7
 

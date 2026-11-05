@@ -22,4 +22,4 @@ class TestTurkishDeliverySlipPdf(TurkishPdfCommon):
         for engine in PDF_ENGINES:
             with self.subTest(engine=engine):
                 content = self.render_pdf(engine, 'stock.action_report_delivery', picking)
-                self.assertPdf(content, ['Sevk İrsaliyesi', 'Düzenleme Tarihi', 'Fiili Sevk Tarihi', CUSTOMER_VKN])
+                self.assertPdf(content, ['Sevk İrsaliyesi', 'Düzenleme Tarihi', 'Fiili Sevk Tarihi', CUSTOMER_VKN, 'MERSİS No'])

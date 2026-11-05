@@ -159,7 +159,8 @@ jobs:
         env:
           OV_PDF_ENGINES: wkhtmltopdf,paper-muncher
           OV_PDF_DIR: ${{ runner.temp }}/pdf
-        run: python tools/run_tests.py ov_l10n_tr_sale,ov_l10n_tr_stock,base_report_paper_muncher --db ov_test_pdf --tags ov_pdf -v
+        # ov_brand as in production: it gives the PDF metadata the product name
+        run: python tools/run_tests.py ov_brand,ov_l10n_tr_sale,ov_l10n_tr_stock,base_report_paper_muncher --db ov_test_pdf --tags ov_pdf -v
 
       - name: Printed PDFs
         if: always()
