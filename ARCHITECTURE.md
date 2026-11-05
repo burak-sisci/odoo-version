@@ -161,7 +161,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
 ```
 
 - **Kiracı ayrımı:** veritabanı başına kiracı, `dbfilter = ^%d$`, `list_db = False`, veritabanı yöneticisi kapalı.
-- **PDF motoru:** Odoo sunucusunda harici program. Öneri wkhtmltopdf, Paper Muncher ikinci motor (USER_TASKS K18, `docs/research/pdf-engine.md`); kurulum aracı kurar (T8.4).
+- **PDF motoru:** Odoo sunucusunda harici program. Öneri wkhtmltopdf, Paper Muncher ikinci motor (USER_TASKS K18, `docs/research/pdf-engine.md`); kurulum aracı kurar (T8.4). İkisi de CI'da kurulu (T3.7).
 - **Yedekleme:** her kiracı için `pg_dump` + filestore. Yedeklerin bir kopyası farklı bir yerde (ikincil arşiv yurt dışında olabilir, `docs/research/hosting.md`).
 - **Konum:** D-013 ile ertelendi (karar noktası T9.5). Ön öneri Türkiye'de bir sunucu (e-Belge saklama + KVKK).
 - **Sağlayıcıdan bağımsızlık (D-013 kısıtı):**
@@ -199,6 +199,7 @@ Bağımlılık yönü: üst katman alt katmana bağımlı olabilir, tersi olamaz
     - Şablondan örnek modül üretilir, modül kuralları, ruff ve pylint-odoo'dan geçirilir (depoya girmez).
     - `addons/` ve `ports/` altındaki bütün modüller örnekle birlikte tek veritabanında test edilir (`run_tests.py -v`).
     - Marka sızıntısı ve dış istek testleri (T2.6, T2.7): `ov_brand` ve MVP uygulamaları (`MVP_APPS`) ayrı bir veritabanına kurulur, yalnız `ov_brand_leak` ve `ov_external` etiketli testler çalışır (M2 ölçütü).
+    - PDF motorları (T3.7): wkhtmltopdf ve Paper Muncher paketleri sha256 özetiyle doğrulanıp kurulur; Türk belgeleri (`ov_pdf` etiketli testler) iki motorla basılıp denetlenir, PDF'ler 14 gün CI çıktısı (`turkish-documents-pdf`).
     - Elle çalıştırmada `modules` girdisindeki modüller (ör. upstream) ayrıca test edilir: Linux referans sonucu.
   - Önbellekler: alt modüllerin git nesneleri (upstream ve `vendor/` sabit commit'lerine göre; biri değişince son önbellek geri yüklenir, yalnız yeni commit'ler çekilir), pip, pre-commit ortamları. GitHub önbellekleri dala bağlıdır; `main`'dekiler her dalda kullanılır.
   - Güvenlik: yalnız okuma yetkisi; eylemler commit SHA'sıyla sabit; gitleaks arşivi SHA-256 ile doğrulanır.

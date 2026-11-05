@@ -7,7 +7,34 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-05
 
-### Adım: Türk belgeleri gerçek PDF motorlarıyla (T3.7, 2. adım) — otonom mesai 7
+### Otonom mesai 7 — özet
+
+Mesai, kullanıcının isteğiyle T3.7 bitirilerek kapandı (2026-11-05).
+
+**Biten görevler:** T3.6 Türkçe çeviri (%100), T3.7 Türkçe belge çıktıları.
+
+**İlerleme:** toplam 31/114 → 33/114 görev; F3 5/9 → 7/9.
+- T3.6, 12. adım: kalan 1.195 terim ve `web` simge arama etiketleri; paket kapsamı %95,95 → %100 (83 modül), CI eşiği 100.
+- T3.7, 1. adım: Türk belgelerinin içeriği (`ov_l10n_tr` 20.0.1.3.0, yeni `ov_l10n_tr_sale`, `ov_l10n_tr_stock`); çeviri katmanının `noupdate` kayıtlar hatası düzeltildi.
+- T3.7, 2. adım: iki PDF motoru CI'da; dört belge iki motorla gerçek PDF'e basılıp ölçülüyor. PDF testi irsaliyede İngilizce basılan sicil etiketlerini yakaladı, düzeltildi.
+
+**Ölçüm (son CI, `52a7784`):** modül testleri 188/188, marka ve dış istek testleri 13/13, PDF testleri 4 test (8 alt test, iki motor) geçti. Sekiz PDF'in hepsi A4, yazı tipleri gömülü, Türkçe harfler doğru; metinde ve üst veride "Odoo" yok (`docs/research/pdf-engine.md` §6).
+
+**Atlanan görev:** yok. K ve B görevlerine kurala göre dokunulmadı (D-021).
+
+**Kullanıcıya yeni sorular (USER_TASKS.md):** K25 (Türk belgelerinin içeriği; kâğıt irsaliyenin geçerliliği mali müşavire). K18'in durumu güncellendi: iki motor da CI'da çalışıyor, karar üretim kurulumundan (T8.4) önce yeterli.
+
+**Onay bekleyen dışa dönük iş:** yeni onay yok. K9 (GitHub güvenlik özellikleri) duruyor.
+
+**Zaman kısıtlı:** K2 TÜBİTAK 2209-A son başvuru 11 Kasım 2026.
+
+**İzlenecek:** `ov_brand` `TestExternalRequestsPages.test_pages` CI'da bir kez ara sıra düştü, yeniden çalıştırınca geçti (state.json `next_actions`).
+
+**Sıradaki:** T3.8 Resmî tatiller ve çalışma takvimi.
+
+**Ortam:** geçici veritabanları `ov_t37`, `ov_t37b`, `ov_test_t37` silindi; PostgreSQL mesai sonunda durduruldu.
+
+### Adım: Türk belgeleri gerçek PDF motorlarıyla; T3.7 bitti (T3.7, 2. adım) — otonom mesai 7
 
 **Kod**
 - `ov_l10n_tr/tests/common.py`: `TurkishPdfCommon` (HttpCase). Belgeyi seçilen motorla (`report.pdf_engine_default`) gerçekten PDF'e basar. `assertPdf` şunları ölçer:
@@ -40,6 +67,12 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
   - Kalıcı test: irsaliye HTML testi, kullanıcı İngilizceyken şirket bloğunun Türkçe basıldığını denetliyor. Belge testleri artık `ov_l10n_tr*` modüllerinin Türkçe çevirilerini yüklüyor; yükleme sonrası şablon önbelleği temizleniyor.
   - Bu hatayı HTML testleri yakalayamıyordu, çünkü test veritabanında çeviri yoktu. PDF testi Türkçe çeviriyle bastığı için yakaladı.
 - Yerel: `ov_l10n_tr`, `ov_l10n_tr_sale`, `ov_l10n_tr_stock` 54 test, 0 hata.
+
+**Belgeler**
+- `docs/research/pdf-engine.md` §6 (yeni, CI ölçümü) ve Sonuç notu; jammy paketinin noble'da kurulduğu yazıldı.
+- PLAN.md (T3.7 `[x]`, pano F3 7/9, toplam 33/114, şu anki görev T3.8; T2.5 ve T2.6'daki PDF notları), USER_TASKS.md (K18 durumu, §1), MODULE_MATRIX.md (Türkçe belge çıktıları "tamam"), ARCHITECTURE.md (CI'daki PDF adımları), README.md, CLAUDE.md (ortam, PDF test komutu), state.json.
+- Üçüncü CI koşusu (`52a7784`): modül testleri 188/188, marka ve dış istek 13/13, PDF 4 test (8 alt test) geçti.
+- CI'ın sakladığı sekiz PDF yerelde ölçüldü (`docs/research/pdf-engine.md` §6): hepsi A4, Lato gömülü; wkhtmltopdf tek kayıtlık PDF'e kendi adını (`wkhtmltopdf 0.12.6.1`, `Qt 4.8.7`), Paper Muncher hiçbir üst veri yazmıyor; sunucunun yeniden yazdığı teklifte `Nexus`. Paper Muncher'ın PDF'i ~100 KB, wkhtmltopdf'inki 28–35 KB.
 - Bir de ara sıra düşen test görüldü: `ov_brand` `TestExternalRequestsPages.test_pages` (6 sayfanın 5'inde tarayıcı yoklaması). Aynı kodla bir önceki koşuda geçmişti, yeniden çalıştırınca geçti. İzlenecek (state.json `next_actions`).
 
 ### Adım: Türk belgelerinin içeriği; çeviri katmanının noupdate düzeltmesi (T3.7, 1. adım) — otonom mesai 7

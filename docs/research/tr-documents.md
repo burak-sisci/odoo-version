@@ -11,7 +11,7 @@ Araştırma tarihi: 2026-11-05
 > - "tutar yazıyla" yalnız faturada ve kapalı; Türkçede "İki" yerine "Iki" yazıyor;
 > - makbuzların adı ("Ödeme Makbuzu", "Ödeme Bildirimi").
 >
-> Çözüm modüllerle (§5), uygulandı ve ölçüldü (§5.1): `ov_l10n_tr` (şirket bilgileri, fatura, makbuz, tutar yazıyla), `ov_l10n_tr_sale` ve `ov_l10n_tr_stock` (kendiliğinden kurulan köprüler). Belge içeriğindeki varsayımlar USER_TASKS **K25**'te ve açık (öneri). Kâğıt irsaliyenin yasal geçerliliği mali müşavire sorulacak (§6). PDF denetimi kaldı (K18).
+> Çözüm modüllerle (§5), uygulandı ve ölçüldü (§5.1): `ov_l10n_tr` (şirket bilgileri, fatura, makbuz, tutar yazıyla), `ov_l10n_tr_sale` ve `ov_l10n_tr_stock` (kendiliğinden kurulan köprüler). Belge içeriğindeki varsayımlar USER_TASKS **K25**'te ve açık (öneri). Kâğıt irsaliyenin yasal geçerliliği mali müşavire sorulacak (§6). Belgeler CI'da iki PDF motoruyla da basılıp ölçülüyor; PDF testi, irsaliyede şirketin sicil etiketlerinin kullanıcının dilinde basıldığını gösterdi, etiketler şablona taşındı (`docs/research/pdf-engine.md` §6).
 
 ## 1. Soru
 

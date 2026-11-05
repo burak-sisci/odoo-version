@@ -19,7 +19,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 4. **K12:** modüllerde yazar olarak görünecek ad. Şimdilik `burak-sisci`; marka belirlendiği için `Nexus` seçeneği öne çıktı.
 5. **K14:** ürünün rengi ve simgesi. Ad artık Nexus; renk ve simge yer tutucu olarak varsayıldı.
 6. **K15:** yayıncının çevrim içi hizmet modülleri (IAP, Aboneliğim) kaldırıldı. SMS ve iş ortağı otomatik tamamlama da bu yüzden yok.
-7. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da denenir. Kurulum T3.7'de; o zamana kadar karar verebilirsin.
+7. **K18:** PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher ikinci motor. İkisi de CI'da kurulu ve Türk belgelerini doğru basıyor (T3.7). Karar üretim kurulumundan (T8.4) önce yeterli.
 8. **K19:** metinlerdeki eski ürün adı, kayıtlı metinler değiştirilmeden gösterimde değiştiriliyor. Botun e-posta adresi örnek bir adres; yayıncının destek masasına yönlendiren cümleler çıkarıldı.
 9. **K20:** Türk hesap planında bazı hesap eşlemeleri varsayımla yapıldı (stopaj 360'a, erken ödeme indirimi 611/649, kasa farkı 679/689). Üç eşleme mali müşavire sorulmalı.
 10. **K21:** TCKN'li iş ortağı (şahıs şirketi dahil) gerçek kişi sayılıyor; MERSİS numarasında yalnız 16 hane denetleniyor.
@@ -29,7 +29,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 14. **K24:** Türkçe çeviri eksikleri ayrı bir modülle (`ov_i18n_tr`) tamamlanıyor; modül kurulurken hatalı upstream çevirilerinin yerine geçiyor. Terim tercihlerin varsa K24'e yazabilirsin.
 15. **K25:** Türk belgelerinin içeriği (fatura, makbuz, teklif, sevk irsaliyesi) yasal kaynaklara göre varsayımlarla yazıldı: "Yalnız: … Türk Lirası … Kuruş", MERSİS ve ticaret sicil no birlikte, makbuz adları tahsilat/tediye. Kâğıt irsaliyenin geçerliliği mali müşavire sorulmalı (K20 ile birlikte).
 
-Otonom mesai 6 bitti (2026-11-04). Özeti CHANGELOG.md'de, "Otonom mesai 6 — özet". Yeni madde yok; K24'e terim tercihleri eklendi (14. madde). Türkçe çeviri kapı ölçütünü geçti (%95,95).
+Otonom mesai 7 bitti (2026-11-05). Özeti CHANGELOG.md'de, "Otonom mesai 7 — özet". T3.6 (Türkçe çeviri %100) ve T3.7 (Türkçe belge çıktıları, iki PDF motoruyla) tamamlandı. Yeni madde K25 (15. madde); K18'in durumu güncellendi (7. madde).
 
 ## 2. Kullanıcı eylemleri, kararları ve onayları
 
@@ -133,10 +133,10 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Özet e-postasındaki ikinci satır ("Sent by") geri gelmedi: aynı e-postada ad iki kez yazmasın diye.
 - [ ] K18 **Karar** — PDF motoru (T2.5).
   - Neden: Odoo 20.0'da iki motor var. wkhtmltopdf upstream'in varsayılanı ama 2022'den beri arşivde, güvenlik düzeltmesi almıyor. Paper Muncher yayıncının yeni motoru; kendi tanımıyla "erken alfa" ve yalnız amd64 Linux için paketli.
-  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A**. Henüz kurulan bir şey yok; T3.7'de CI'a buna göre kurulur.
+  - Varsayım (otonom mesai 2, geri dönüşü kolay): **A**. T3.7'de ikisi de CI'a kuruldu; dört Türk belgesi iki motorla da doğru basılıyor (ölçüm `docs/research/pdf-engine.md` §6). Paper Muncher'ın PDF'i yaklaşık üç kat büyük.
   - Seçenekler: **A** — üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor · **B** — hemen Paper Muncher · **C** — belge türüne göre ikisi.
   - Claude önerisi: **A**. Geçiş ölçütü: Paper Muncher'ın 1.0'a ulaşması ya da upstream'in varsayılanı yapması, ve Türkçe belgelerin (T3.7) onunla doğru çıkması. Ayrıntı `docs/research/pdf-engine.md`.
-  - Ne zaman: T3.7'den önce. Barındırma kararında (D-013) sunucu arm64 olursa Paper Muncher kaynaktan derlenmeli.
+  - Ne zaman: üretim kurulumundan (T8.4) önce. Barındırma kararında (D-013) sunucu arm64 olursa Paper Muncher kaynaktan derlenmeli.
 - [ ] K19 **Karar** — eski ürün adının metinlerde değiştirilme yöntemi (T2.6).
   - Neden: upstream'de 500'den fazla çevrilebilir metin ve onların Türkçe çevirileri eski adı taşıyor. Yenileri her upstream güncellemesiyle gelir.
   - Varsayım (otonom mesai 3, geri dönüşü kolay): **gösterimde değiştirme**. Kayıtlı metinler ve çeviri dosyaları değişmez; ad, kullanıcıya gösterilirken ürün adıyla değiştirilir, Türkçe ekler uydurulur ("Nexus'ta"). Sunucunun kod çevirisi işlevi modül yüklenirken sarmalanır; çekirdeğe dokunulmaz (D-010).

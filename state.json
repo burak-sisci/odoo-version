@@ -26,12 +26,13 @@
     "title": "Türkiye temel yerelleştirmesi",
     "status": "in_progress"
   },
-  "current_task": "T3.7",
+  "current_task": "T3.8",
   "session": {
-    "mode": "otonom",
+    "mode": "standart",
     "number": 7,
     "started": "2026-11-05",
-    "note": "Otonom mesai 7: T3.6'dan (sırada küçük modüller) PLAN sırasıyla C görevleri."
+    "ended": "2026-11-05",
+    "note": "Otonom mesai 7 bitti: T3.6 ve T3.7 tamam. Özet CHANGELOG 'Otonom mesai 7 — özet'."
   },
   "tasks_done": [
     "T0.1",
@@ -65,14 +66,16 @@
     "T3.3",
     "T3.4",
     "T3.5",
-    "T3.6"
+    "T3.6",
+    "T3.7"
   ],
   "blocked_on_user": [],
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K25 (USER_TASKS.md §1)",
-    "T3.7 devam: belge içeriği tamam (ov_l10n_tr, ov_l10n_tr_sale, ov_l10n_tr_stock); kalan PDF motorlarının CI kurulumu (K18 önerisi wkhtmltopdf + Paper Muncher), belgelerin iki motorla PDF basılıp pdftotext ile denetlenmesi, motor üst verisi",
-    "Türkçe çeviri bakımı: paket %100, CI eşiği 100; upstream güncellenince yeni terimler python tools/po_coverage.py missing/add ile çevrilir; paylaşılan kayıtlarda (res.users display_name, ir.qweb adı, report_type yardımı) 5 katman terimi sonradan kurulan modüllerce eziliyor (CHANGELOG 2026-11-05)"
+    "Sıradaki C görevi T3.8 (resmî tatiller ve çalışma takvimi), sonra T3.9 (Türkiye temeli kabul testi)",
+    "Türkçe çeviri bakımı: paket %100, CI eşiği 100; upstream güncellenince yeni terimler python tools/po_coverage.py missing/add ile çevrilir; paylaşılan kayıtlarda (res.users display_name, ir.qweb adı, report_type yardımı) 5 katman terimi sonradan kurulan modüllerce eziliyor (CHANGELOG 2026-11-05)",
+    "İzlenecek: ov_brand TestExternalRequestsPages.test_pages CI'da bir kez ara sıra düştü (6 sayfanın 5'inde tarayıcı yoklaması; yeniden çalıştırınca geçti, CHANGELOG 2026-11-05). Tekrarlarsa sayfa hazır olma beklemesi incelenir."
   ],
   "decisions": [
     {
@@ -221,7 +224,7 @@
     "node": null,
     "docker": null,
     "venv": ".venv (Python 3.12.10, git'e girmez); requirements-dev.txt = upstream requirements.txt + ruff 0.16.10 + pylint-odoo 10.0.12 + pre-commit 4.7.0 + websocket-client 1.9.2",
-    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); PDF motoru kurulu değil (öneri K18: üretimde wkhtmltopdf, Paper Muncher ikinci motor; CI'a T3.7'de); geçici DB'ler ov_brand_scan (T2.1/T2.2), ov_test_ov_brand ve ov_test_mvp (T2.6 sızıntı testi; yalnız yerel)",
+    "odoo_local": "odoo.conf (git'e girmez, tools/odoo_conf.py ile deploy/odoo.conf.example'dan); data_dir OV_HOME/odoo-data; demo DB ov_demo (tr_TR, TR, demo, ov_brand + account + l10n_tr; TR Company'de Türk hesap planı); yerelde PDF motoru kurulu değil (öneri K18: üretimde wkhtmltopdf, Paper Muncher ikinci motor; ikisi de CI'da kurulu, T3.7); geçici DB'ler ov_brand_scan (T2.1/T2.2), ov_test_ov_brand ve ov_test_mvp (T2.6 sızıntı testi; yalnız yerel)",
     "agent_skills": ".claude/skills (upstream skills/ kopyası, commit afbcf79d, LGPL-3; tools/sync_skills.py; öncelik kuralları CLAUDE.md)",
     "tests": "tools/run_tests.py: temiz test DB (ov_test_<modül>, demo yok), HTTP 8079, Windows filestore gc hataları (setUpClass/tearDownClass) ayrı sayılır; günlük OV_HOME/logs/tests; Windows'ta kurulumdan önce test DB'sinin filestore dosyaları yazılabilir yapılır (Odoo ek dosyaları 0o444)",
     "lint": "pre-commit (yerel kanca kurulu): ruff (ruff.toml → upstream kural seti), pylint-odoo (.pylintrc, addons/), tools/check_modules.py, tools/check_docs.py; modül iskeleti tools/new_module.py; tools/check_secrets.py (.env değerleri); pylint-odoo'nun odoo-addons-relative-import denetimi kanca argümanıyla kapalı (ruff TID252 ile çelişiyor; modül içi içe aktarmalar mutlak)",
@@ -337,7 +340,7 @@
         ],
         "auto_install": true,
         "task": "T3.2, T3.3, T3.4, T3.7",
-        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20; T3.3: ad 'Turkey - Localization' (Türkiye Yerelleştirmesi); TCKN'li Türk iş ortağı gerçek kişi (_compute_is_company), mükellef türü _ov_l10n_tr_tax_id_type(); VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS 16 hane (validation_function); kurulu iş ortakları post_init_hook ve migrations/20.0.1.1.0 ile yeniden hesaplanır; varsayımlar USER_TASKS K21; T3.4: 973 ilçe (res.city; İçişleri Bakanlığı envanteri, tools/tr_districts.py), ülke ayarları res.country._ov_l10n_tr_setup (il zorunlu, posta kodu isteğe bağlı, adres '34710 Kadıköy/İstanbul'); il seçiliyse ilçe listesi o ille sınırlı (form, portal ve e-ticaret); kurulu kişiler belirsizlik yoksa ilçeye bağlanır (post_init_hook, migrations/20.0.1.2.0); varsayımlar USER_TASKS K22; T3.7: belgelerde şirket bloğu VKN/TCKN türüyle, MERSİS No, Ticaret Sicil No, web sitesi (TTK 39; web.company_address_list); faturada müşteri 'VKN: …'/'TCKN: …' (_get_document_partner_ident_line); tutar yazıyla (res.currency.amount_to_text tr: bitişik, Türkçe büyük harf, 've' yok; ov_l10n_tr.amount_in_words şablonu 'Yalnız:'), Türk hesap planında display_invoice_amount_total_words açık (migrations/20.0.1.3.0); ödeme makbuzu başlığı gelen 'Tahsilat Makbuzu', giden 'Tediye Makbuzu', tutar yazıyla; tests/common.py TurkishDocumentsCommon; araştırma docs/research/tr-documents.md; varsayımlar USER_TASKS K25"
+        "note": "Türk hesap planı düzeltmeleri @template('tr', …) uzantılarıyla: 69 hesap adı, 17 grubu ve 8 eksik hesap (170, 178, 179, 480, 481, 502, 503, 523), 193/360 vergi hesabı türü; şirketin özel hesapları 611/649/679/689/590 (999 kodlu hesaplar açılmaz); 44 vergi ve 7 tevkifat grubu Türkçe adlı, kira ve serbest meslek stopajı %20 360'a (eski kira stopajı pasif); kurulu şirketler post_init_hook ile güncellenir, kullanıcının değiştirdiği ad korunur; kalıcı Türkçe ad testi (tests/turkish_names.py); eşleme varsayımları USER_TASKS K20; T3.3: ad 'Turkey - Localization' (Türkiye Yerelleştirmesi); TCKN'li Türk iş ortağı gerçek kişi (_compute_is_company), mükellef türü _ov_l10n_tr_tax_id_type(); VKN/TCKN etiketi, yer tutucusu ve hata mesajı Türkçe; MERSİS 16 hane (validation_function); kurulu iş ortakları post_init_hook ve migrations/20.0.1.1.0 ile yeniden hesaplanır; varsayımlar USER_TASKS K21; T3.4: 973 ilçe (res.city; İçişleri Bakanlığı envanteri, tools/tr_districts.py), ülke ayarları res.country._ov_l10n_tr_setup (il zorunlu, posta kodu isteğe bağlı, adres '34710 Kadıköy/İstanbul'); il seçiliyse ilçe listesi o ille sınırlı (form, portal ve e-ticaret); kurulu kişiler belirsizlik yoksa ilçeye bağlanır (post_init_hook, migrations/20.0.1.2.0); varsayımlar USER_TASKS K22; T3.7: belgelerde şirket bloğu VKN/TCKN türüyle, MERSİS No, Ticaret Sicil No, web sitesi (TTK 39; web.company_address_list); faturada müşteri 'VKN: …'/'TCKN: …' (_get_document_partner_ident_line); tutar yazıyla (res.currency.amount_to_text tr: bitişik, Türkçe büyük harf, 've' yok; ov_l10n_tr.amount_in_words şablonu 'Yalnız:'), Türk hesap planında display_invoice_amount_total_words açık (migrations/20.0.1.3.0); ödeme makbuzu başlığı gelen 'Tahsilat Makbuzu', giden 'Tediye Makbuzu', tutar yazıyla; tests/common.py TurkishDocumentsCommon (HTML) ve TurkishPdfCommon (iki PDF motoruyla gerçek PDF; ov_pdf etiketi, -standard); sicil etiketleri şablonda, belgenin dilinde; araştırma docs/research/tr-documents.md; varsayımlar USER_TASKS K25"
       },
       {
         "module": "ov_l10n_tr_tcmb",

@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.7 — Türkçe belge çıktıları
+**Şu anki görev:** T3.8 — Resmî tatiller ve çalışma takvimi
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 6/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 7/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 32/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 33/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -313,12 +313,12 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - `ov_brand_mail`: bildirim e-postalarında "Powered by Nexus", takibi bırakma bağlantısı kalır; e-postalara gömülü yayıncı logosu (ör. e-Fatura bildirimi) süzülür; herkese açık sohbet sayfasının başlığı ve simgesi. Bot (`base.partner_root`) marka adını ve simgesini taşır, `ov_brand.name` değişince eşitlenir;
     - `ov_brand`: PDF başlığı marka adı; sunucunun yazdığı PDF dosyalarında (bölünen, birleştirilen, PDF/A) `Creator/Producer` marka adı;
     - yeni köprü modüller, ilgili uygulamayla kendiliğinden kurulur: `ov_brand_portal` (belge kenar çubuğu, güvenlik sayfasındaki belge bağlantıları), `ov_brand_digest` (özet e-postasında "Sent by" yok, "Powered by Nexus"; mobil uygulama tanıtımı, ipuçları; varsayılan özetin adı), `ov_brand_account` (fatura QR kodundaki logo, şartlar ve koşullar örneğindeki yayıncı adı), `ov_brand_purchase` (tedarikçi portalındaki reklam);
-    - PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor (K18, `docs/research/pdf-engine.md`). Kurulum T3.7 (CI) ve T8.4'te;
+    - PDF motoru önerisi: üretimde wkhtmltopdf, Paper Muncher CI'da ikinci motor (K18, `docs/research/pdf-engine.md`). CI'da ikisi de kurulu (T3.7); üretim kurulumu T8.4'te;
     - web sitesi altbilgileri MVP dışı (`ov_brand_website` sonra). Kalanlar T2.6'da ele alındı.
 - [x] T2.6 Otomatik marka sızıntısı testi · M · C
   - Ana sayfaları, e-posta şablonlarını, PDF raporları ve çevirileri tarar.
   - Kullanıcıya görünen metinde "Odoo" = hata. İzin listesi: lisans notları, teknik adlar (envanter §10). E-tablo `ODOO.*` formül adları izin listesinde; `NEXUS.*` eş adları e-tablo düzenlemeyle gelir (K13).
-  - T2.5'ten kalanlar: botun karşılama mesajlarındaki eski ad (`mail_bot`) ve e-posta adresi (`odoobot@example.com`); MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi). Tek kayıtlık PDF'te motorun kendi üst verisi T3.7'de, Factur-X üst verisi T4.x'te.
+  - T2.5'ten kalanlar: botun karşılama mesajlarındaki eski ad (`mail_bot`) ve e-posta adresi (`odoobot@example.com`); MVP dışı modüllerdeki "Powered by" satırları (masraf, canlı sohbet, satış noktası, yoklama, web sitesi). Tek kayıtlık PDF'te motorun kendi üst verisi T3.7'de ölçüldü (yayıncı adı yok), Factur-X üst verisi T4.x'te.
   - T2.2'den kalanlar (envanter §3): barkod tarayıcının kamera izni mesajı, rapor işçileri uyarısı, güvensiz bağlam konsol uyarısı. Üçü de upstream yöntemlerinin gövdesinde çevrilebilir metin; `patch()` bütün yöntemi kopyalamayı gerektirir. Metin düzeyinde değiştirme yöntemi bu görevde seçilir.
   - Sonuç: yöntem **gösterimde değiştirme** (K19 varsayımı, `ov_brand/rebrand.py`). Kayıtlı metinler ve çeviri dosyaları değişmez; eski ad kullanıcıya gösterilirken ürün adıyla değiştirilir. Çekirdeğe dokunulmadı (D-010):
     - ortak noktalar: sunucunun kod çevirileri, web istemcisi çevirileri, alan adları, yardım metinleri ve seçimler, görünümler ve QWeb şablonları (ekranlar, raporlar, e-posta düzenleri, sayfalar), eylem, grup, uygulama kategorisi ve modül kayıtları, e-posta şablonları ve e-posta yazma penceresi (`ov_brand_mail`). Ürün adı değişince önbellekler temizlenir;
@@ -460,16 +460,18 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Başlık çizgisi başlıktan kısa olunca docutils, Uygulamalar ekranında tanıtımın içine uyarı kutusu basıyor. `check` artık upstream'in çevirip katmanın değiştirmediği tanıtımları da bu kurala göre denetliyor. Ölçüm: paketteki tanıtımlar docutils ile işlendi, uyarı veren 3 tanıtım (`account`, `account_edi_ubl_cii`, `stock_account`) düzeltildi, kalan 0.
     - Testler: `ov_i18n_tr` 14 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin iki tablosu: web metinleri 6 terim/4 modül, kayıt metinleri 16 terim/10 modül; simge araması: 8 Türkçe sözcük İngilizce etiketlerde yokken Türkçe etiketlerde bulunur).
     - Varsayımlar: `USER_TASKS.md` K24.
-- [~] T3.7 Türkçe belge çıktıları · M · C
+- [x] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.
   - Tutarın yazıyla gösterimi (num2words, Odoo'nun mevcut bağımlılığı); VKN, vergi dairesi, MERSİS alanları.
   - PDF motoru CI'a kurulur (K18 önerisi: wkhtmltopdf, Paper Muncher ikinci motor). Belgeler iki motorla PDF olarak basılıp denetlenir; motorun üst verisi de (`docs/research/pdf-engine.md`).
-  - Durum (2026-11-05): belge içeriği tamam; PDF motorları ve PDF denetimi kaldı.
+  - Sonuç (2026-11-05): tamam.
     - Araştırma: `docs/research/tr-documents.md` (VUK 230 ve 230/5, TTK 39, TDK yazım kuralları; upstream 20.0'ın sekiz belgesinin ölçümü).
     - `ov_l10n_tr` (20.0.1.3.0): şirket bilgilerinde "VKN"/"TCKN", MERSİS No, Ticaret Sicil No, web sitesi; faturada müşteri "VKN: …"/"TCKN: …"; Türkçe tutar yazıyla ("Yalnız: Binikiyüzotuzdört Türk Lirası Ellialtı Kuruş", upstream'in "Iki" hatası düzeldi); Türk hesap planında faturada tutar yazıyla açık (kurulu şirketler güncelleme betiğiyle); "Tahsilat Makbuzu" / "Tediye Makbuzu".
     - Yeni modüller, kendiliğinden kurulur: `ov_l10n_tr_sale` (teklif, sipariş, proforma: numara satırı ve tutar yazıyla), `ov_l10n_tr_stock` (çıkış transferinde "Sevk İrsaliyesi": Müşteri bloğu, düzenleme tarihi ve fiili sevk tarihi ayrı).
     - `ov_i18n_tr`: TRY "Türk Lirası", fatura etiketi "Yalnız:". Kurulumda `noupdate` kayıtların çevirisi hâlâ upstream'in değeriyse katmanınki yazılıyor; önceden yeni veritabanında da uygulanmıyordu (ölçüm: uygulanmayan katman kayıt terimi 6/259 → 5/259).
     - Ölçüm: sekiz belge önce/sonra basılıp metinleri karşılaştırıldı (`docs/research/tr-documents.md` §5.1). Testler: `ov_l10n_tr` 11, `ov_l10n_tr_sale` 4, `ov_l10n_tr_stock` 5, `ov_i18n_tr` +1.
+    - PDF: CI'a wkhtmltopdf 0.12.6.1 ve Paper Muncher 0.9.0 kuruldu (sha256 doğrulamalı). Fatura, tahsilat makbuzu, teklif ve sevk irsaliyesi iki motorla basılıp ölçülüyor: Türkçe metin, gömülü yazı tipleri, A4, metinde ve üst veride yayıncı adı yok (`ov_pdf` etiketli testler; ölçüm `docs/research/pdf-engine.md` §6). Basılan PDF'ler CI çıktısı.
+    - PDF testi bir hata buldu ve düzeltildi: irsaliyede şirketin sicil etiketleri kullanıcının dilinde (İngilizce) basılıyordu; etiketler şablona taşındı.
     - Varsayımlar: `USER_TASKS.md` K25 (kâğıt irsaliyenin geçerliliği mali müşavire).
 - [ ] T3.8 Resmî tatiller ve çalışma takvimi · S · C
   - Sabit tatiller + yıllık dini bayram verisi; iş merkezleri ve izin hesapları için.
