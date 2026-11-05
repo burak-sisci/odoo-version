@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Delivery slip of a Turkish company: the dispatch note (sevk irsaliyesi)
+         shows to whom the goods go, with the tax office and tax ID, and the
+         issue date apart from the actual dispatch date (Tax Procedure Law,
+         art. 230/5). -->
+    <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='customer_address']" position="attributes">
+            <attribute name="t-if">o.picking_type_id.code == 'outgoing' and partner and (partner != partner.commercial_partner_id or o._ov_l10n_tr_is_dispatch_note())</attribute>
+        </xpath>
+        <xpath expr="//div[@name='div_sched_date']" position="attributes">
+            <attribute name="t-if">o.state and not o._ov_l10n_tr_is_dispatch_note()</attribute>
+        </xpath>
+        <xpath expr="//div[@name='div_sched_date']" position="after">
+            <t t-if="o._ov_l10n_tr_is_dispatch_note()">
+                <div class="col col-3 mw-100 mb-2" name="ov_l10n_tr_issue_date">
+                    <strong>Issue Date</strong>
+                    <div t-out="o._ov_l10n_tr_issue_date()" t-options="{'widget': 'date'}" class="m-0">2026-01-01</div>
+                </div>
+                <div class="col col-3 mw-100 mb-2" name="ov_l10n_tr_dispatch_date">
+                    <strong>Actual Dispatch Date</strong>
+                    <div t-if="o.date_done" t-field="o.date_done" t-options="{'widget': 'datetime'}" class="m-0">2026-01-01 10:00</div>
+                    <!-- Before the goods leave, written by hand on the printed note. -->
+                    <div t-else="" class="m-0 text-nowrap">....../....../.......... ....:....</div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

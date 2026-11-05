@@ -419,7 +419,7 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Yöntem: `ov_i18n_tr` (LGPL-3, her veritabanına kendiliğinden kurulur). Upstream modülünün çevirisi `i18n_overlay/<modül>.po`'da; upstream'in `tr.po`'sundan sonra, aynı içe aktarmada okunur, aynı metin için bizimki geçerli olur.
       - Kod metinleri (`_()`, `_t`): `odoo.tools.translate.get_po_paths` sarılır (süreç geneli, kod çevirilerinin veritabanı yok).
       - Kayıt metinleri ve modül adları: aynı işlev `ir.module.module`'de ve manifest okuyucusunda adıyla içe aktarılmış; yalnız bu modülün `_load_module_terms` ve `_load_non_installed_modules_manifest_terms` yöntemleri çalışırken çeviri dosyamızı ekler. Modülün kurulu olmadığı veritabanı etkilenmez.
-      - Kurallar upstream'inki: uygulama kurulurken çevirimiz yazılır; güncellemede var olan çeviri korunur, eksik tamamlanır ("üzerine yaz"la bizimki geçerli); `noupdate` kayıtlara dokunulmaz. Bu modül kurulurken önceden kurulu uygulamalara da yazılır ve var olan çevirilerin yerine geçer (K24 varsayımı).
+      - Kurallar upstream'inki: uygulama kurulurken çevirimiz yazılır; güncellemede var olan çeviri korunur, eksik tamamlanır ("üzerine yaz"la bizimki geçerli); `noupdate` kayıtlarda var olan çeviri korunur. Bu modül kurulurken önceden kurulu uygulamalara da yazılır ve var olan çevirilerin yerine geçer; `noupdate` kayıtlarda yalnız hâlâ upstream'in değeri duran çeviri değişir, müşterinin düzenlediği korunur (T3.7'de eklendi; ör. TRY "Türk Lirası") (K24 varsayımı).
       - Kaynakta "Odoo" geçen metinler adla çevrilir; gösterimde `ov_brand` değiştirir (K19).
     - Ölçüm `tools/po_coverage.py`: upstream `.pot` şablonlarına karşı upstream `tr.po` + çevirimiz. Paket = `MVP_APPS` + modüllerimiz + bağımlılıklar + kendiliğinden kurulanlar (TR dışı ülke modülleri ve kaldırılan çevrim içi hizmetler hariç); CI'daki paket veritabanıyla aynı 90 modül, çeviri şablonu olan 83'ü ölçülür.
       - `.pot` canlı terimlerle karşılaştırıldı (`ov_demo`): `account` 3.570 canlı terimin 379'u şablonda yok (çoğu genel hesap planı verisi), `base` 164; `web`, `mail`, `product` 0–3. Şablon ölçüm için yeterli; şablon dışı terimler sonraki iş.
@@ -460,10 +460,17 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Başlık çizgisi başlıktan kısa olunca docutils, Uygulamalar ekranında tanıtımın içine uyarı kutusu basıyor. `check` artık upstream'in çevirip katmanın değiştirmediği tanıtımları da bu kurala göre denetliyor. Ölçüm: paketteki tanıtımlar docutils ile işlendi, uyarı veren 3 tanıtım (`account`, `account_edi_ubl_cii`, `stock_account`) düzeltildi, kalan 0.
     - Testler: `ov_i18n_tr` 14 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin iki tablosu: web metinleri 6 terim/4 modül, kayıt metinleri 16 terim/10 modül; simge araması: 8 Türkçe sözcük İngilizce etiketlerde yokken Türkçe etiketlerde bulunur).
     - Varsayımlar: `USER_TASKS.md` K24.
-- [ ] T3.7 Türkçe belge çıktıları · M · C
+- [~] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.
   - Tutarın yazıyla gösterimi (num2words, Odoo'nun mevcut bağımlılığı); VKN, vergi dairesi, MERSİS alanları.
   - PDF motoru CI'a kurulur (K18 önerisi: wkhtmltopdf, Paper Muncher ikinci motor). Belgeler iki motorla PDF olarak basılıp denetlenir; motorun üst verisi de (`docs/research/pdf-engine.md`).
+  - Durum (2026-11-05): belge içeriği tamam; PDF motorları ve PDF denetimi kaldı.
+    - Araştırma: `docs/research/tr-documents.md` (VUK 230 ve 230/5, TTK 39, TDK yazım kuralları; upstream 20.0'ın sekiz belgesinin ölçümü).
+    - `ov_l10n_tr` (20.0.1.3.0): şirket bilgilerinde "VKN"/"TCKN", MERSİS No, Ticaret Sicil No, web sitesi; faturada müşteri "VKN: …"/"TCKN: …"; Türkçe tutar yazıyla ("Yalnız: Binikiyüzotuzdört Türk Lirası Ellialtı Kuruş", upstream'in "Iki" hatası düzeldi); Türk hesap planında faturada tutar yazıyla açık (kurulu şirketler güncelleme betiğiyle); "Tahsilat Makbuzu" / "Tediye Makbuzu".
+    - Yeni modüller, kendiliğinden kurulur: `ov_l10n_tr_sale` (teklif, sipariş, proforma: numara satırı ve tutar yazıyla), `ov_l10n_tr_stock` (çıkış transferinde "Sevk İrsaliyesi": Müşteri bloğu, düzenleme tarihi ve fiili sevk tarihi ayrı).
+    - `ov_i18n_tr`: TRY "Türk Lirası", fatura etiketi "Yalnız:". Kurulumda `noupdate` kayıtların çevirisi hâlâ upstream'in değeriyse katmanınki yazılıyor; önceden yeni veritabanında da uygulanmıyordu (ölçüm: uygulanmayan katman kayıt terimi 6/259 → 5/259).
+    - Ölçüm: sekiz belge önce/sonra basılıp metinleri karşılaştırıldı (`docs/research/tr-documents.md` §5.1). Testler: `ov_l10n_tr` 11, `ov_l10n_tr_sale` 4, `ov_l10n_tr_stock` 5, `ov_i18n_tr` +1.
+    - Varsayımlar: `USER_TASKS.md` K25 (kâğıt irsaliyenin geçerliliği mali müşavire).
 - [ ] T3.8 Resmî tatiller ve çalışma takvimi · S · C
   - Sabit tatiller + yıllık dini bayram verisi; iş merkezleri ve izin hesapları için.
 - [ ] T3.9 Türkiye temeli kabul testi · S · C

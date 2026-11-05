@@ -14,6 +14,8 @@ NON_DIGITS = re.compile(r'\D')
 DIGITS_AND_SEPARATORS = re.compile(r'[\d\s.-]+')
 SPACES = re.compile(r'\s+')
 CIRCUMFLEX = str.maketrans('âîû', 'aiu')
+# Dotted and dotless i: 'i' -> 'İ', 'ı' -> 'I' (str.upper and str.title give 'I' for both).
+TURKISH_UPPER = str.maketrans('iı', 'İI')
 
 
 def fold_name(name):
@@ -24,6 +26,11 @@ def fold_name(name):
     """
     name = (name or '').replace('I', 'ı').replace('İ', 'i').lower().translate(CIRCUMFLEX)
     return SPACES.sub(' ', name).strip()
+
+
+def turkish_capitalize(text):
+    """Upper-case the first letter of ``text`` with the Turkish rule: 'iki' -> 'İki'."""
+    return text[:1].translate(TURKISH_UPPER).upper() + text[1:]
 
 
 def tax_id_type(vat):

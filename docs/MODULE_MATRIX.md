@@ -1,6 +1,6 @@
 # Modül Matrisi
 
-Son güncelleme: 2026-11-04
+Son güncelleme: 2026-11-05
 İlgili kararlar: D-002, D-006, D-008, D-011, D-012, D-016, D-017, D-018, D-019
 
 Bu matris D-002'nin (tüm Odoo uygulamaları) uygulama planıdır. Her uygulamanın edinme yolu, önceliği ve durumu burada tutulur. Görevler ve sıralama `PLAN.md`'de.
@@ -50,7 +50,7 @@ Bu uygulamalar için iş: marka katmanı + Türkçe çeviri + Türkiye yerelleş
 | Temel yerelleştirme (`ov_l10n_tr`): hesap ve vergi adı düzeltmeleri, eksik THP hesapları, stopaj vergileri ve şirketin özel hesapları (T3.2, tamam); kişi/şirket ayrımı, VKN/TCKN etiketleri ve MERSİS denetimi (T3.3, tamam); il/ilçe listesi ve Türkiye adres düzeni (T3.4, tamam); tevkifat/istisna eksikleri (T4.3) (eksik listesi `docs/research/l10n-tr.md`) | Kendimiz, `l10n_tr` üzerine | `l10n_tr` ve `base_address_extended` (20.0), python-stdnum, İçişleri Bakanlığı ilçe envanteri | AGPL-3 | T, Ü | P0 | geliştiriliyor |
 | TCMB döviz kurları (`ov_l10n_tr_tcmb`): günlük zamanlanmış iş, kur türü seçimi, geçmiş aktarımı (T3.5, tamam) | Kendimiz | TCMB kamuya açık XML | AGPL-3 | T, Ü | P0 | tamam |
 | Türkçe çeviri tamamlama (`ov_i18n_tr`): upstream çevirisinin eksiklerini tamamlar, hatalarını düzeltir; ölçüm `tools/po_coverage.py`, CI eşiği (T3.6) | Kendimiz | Upstream `tr.po` ve `.pot` dosyaları | LGPL-3 (upstream metinlerinin çevirisi) | T, Ü | P0 | geliştiriliyor |
-| Türkçe belge çıktıları (teklif, sipariş, irsaliye, makbuz; tutar yazıyla) | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |
+| Türkçe belge çıktıları (T3.7): şirket bilgilerinde VKN/TCKN, MERSİS No, Ticaret Sicil No, web sitesi; Türkçe tutar yazıyla, tahsilat/tediye makbuzu (`ov_l10n_tr`); teklif, sipariş, proforma (`ov_l10n_tr_sale`); sevk irsaliyesi (`ov_l10n_tr_stock`). İçerik tamam, PDF motoru denetimi kaldı (`docs/research/tr-documents.md`) | Kendimiz; upstream şablonlarına ada bağlı kalıtım | VUK 230, 230/5; TTK 39; TDK yazım kuralları | AGPL-3 | T, Ü | P0 | geliştiriliyor |
 | Resmî tatiller ve çalışma takvimi | Kendimiz | — | AGPL-3 | T, Ü | P0 | plan |
 | Çek ve senet (`ov_l10n_tr_check`) | Kendimiz; Community `l10n_latam_check` incelenerek | Community 20.0 | AGPL-3; türetme olursa LGPL-3 | T, Ü | P0 | plan |
 | Banka ekstresi içe aktarma + Türk bankası şablonları | OCA 19.0 port + kendi şablonlarımız | OCA `account_statement_import_file`, `account_statement_import_sheet_file` | AGPL-3 (OCA) | T, Ü | P0 | plan |

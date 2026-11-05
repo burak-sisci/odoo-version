@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Company block of every document. The tax ID is named after its kind
+         (VKN or TCKN); a Turkish merchant also prints its registry numbers
+         and its website (Turkish Commercial Code, art. 39). -->
+    <template id="company_address_list" inherit_id="web.company_address_list">
+        <xpath expr="//li[@t-if='not forced_vat']//span[@t-field='company.country_id.vat_label']" position="replace">
+            <span t-out="company.partner_id._ov_l10n_tr_tax_id_type() or company.country_id.vat_label">Tax ID</span>
+        </xpath>
+        <xpath expr="//ul[@name='company_address_list']" position="inside">
+            <t t-if="company.account_fiscal_country_id.code == 'TR'">
+                <li t-foreach="company.partner_id._ov_l10n_tr_registry_lines()" t-as="registry_line" name="ov_l10n_tr_registry">
+                    <span t-out="registry_line[0]">MERSIS No</span>: <span t-out="registry_line[1]">0000000000000000</span>
+                </li>
+                <li t-if="company.website" name="ov_l10n_tr_website">
+                    <span t-out="company.website">https://www.example.com</span>
+                </li>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Total in words, the way Turkish documents write it ("Yalnız: ...").
+         Arguments: amount, currency, amount_in_words_class (optional). -->
+    <template id="amount_in_words">
+        <p t-attf-class="lh-sm {{ amount_in_words_class or '' }}" name="ov_l10n_tr_amount_in_words">
+            Total amount in words: <br/>
+            <small class="text-muted lh-sm"><span t-out="currency.amount_to_text(amount)">One thousand lira</span></small>
+        </p>
+    </template>
+
+    <!-- Collection receipt and payment voucher: the amount in words. -->
+    <template id="report_payment_receipt_document" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//div[hasclass('page')]/div[hasclass('mb-4')]" position="after">
+            <t t-if="o.amount and o.company_id.account_fiscal_country_id.code == 'TR'"
+               t-call="ov_l10n_tr.amount_in_words" amount="o.amount" currency="o.currency_id"/>
+        </xpath>
+    </template>
+</odoo>

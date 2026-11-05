@@ -43,6 +43,8 @@ class AccountChartTemplate(models.AbstractModel):
                 'account_journal_early_pay_discount_gain_account_id': 'tr649',
                 'default_cash_difference_income_account_id': 'tr679',
                 'default_cash_difference_expense_account_id': 'tr689',
+                # Turkish documents write the total in words ("Yalnız: ...").
+                'display_invoice_amount_total_words': True,
             },
         }
 

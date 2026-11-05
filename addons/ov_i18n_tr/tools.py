@@ -41,6 +41,14 @@ def overlay_modules():
     return sorted(path.stem for path in OVERLAY_DIR.glob('*.po'))
 
 
+def upstream_po_paths(module_name, lang):
+    """Return the paths of upstream's translation files of ``module_name``, without the overlay."""
+    from odoo.tools import translate  # noqa: PLC0415
+
+    get_po_paths = getattr(translate.get_po_paths, 'ov_i18n_tr_original', translate.get_po_paths)
+    return list(get_po_paths(module_name, lang))
+
+
 def _with_overlay(original, records):
     @functools.wraps(original)
     def get_po_paths(module_name, lang):

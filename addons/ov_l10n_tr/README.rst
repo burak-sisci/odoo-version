@@ -4,8 +4,8 @@ Türkiye Yerelleştirmesi
 
 Türk hesap planı (Tekdüzen Hesap Planı) ve vergi tanımlarındaki ad, hesap ve vergi
 hatalarını düzeltir; VKN/TCKN ve MERSİS numaralarını Türkiye kurallarıyla işler.
-Adreslerde il ve ilçe listeden seçilir. Türkiye muhasebe paketiyle birlikte
-kendiliğinden kurulur.
+Adreslerde il ve ilçe listeden seçilir. Fatura ve makbuzlar Türk belge
+düzeninde basılır. Türkiye muhasebe paketiyle birlikte kendiliğinden kurulur.
 
 Hesap planı
 ===========
@@ -80,11 +80,31 @@ Adres
 * Adres Türkiye düzeninde yazılır: "34710 Kadıköy/İstanbul". İlçe ya da il boşsa
   tek başına eğik çizgi kalmaz.
 
+Belgeler
+========
+
+Türk şirketinin bastığı belgelerde:
+
+* Şirket bilgilerinde vergi numarasının adı türüne göre "VKN" ya da "TCKN"
+  yazılır; MERSİS No, Ticaret Sicil No ve web sitesi de basılır (Türk Ticaret
+  Kanunu md. 39). Numaralar şirketin kişi kaydındaki kimlik numaraları
+  bölümünden gelir.
+* Faturada müşterinin numarası "VKN: …" ya da "TCKN: …" diye yazılır.
+* Tutar yazıyla yazılır: "Yalnız: Binikiyüzotuzdört Türk Lirası Ellialtı
+  Kuruş". Sayılar bitişik yazılır, baş harf Türkçe kurala uyar ("İkibin").
+  Türk hesap planıyla kurulan şirkette faturada kendiliğinden açıktır.
+* Ödeme makbuzu gelen ödemede "Tahsilat Makbuzu", giden ödemede "Tediye
+  Makbuzu" adını alır ve tutarı yazıyla da gösterir.
+
+Satış belgeleri (teklif, sipariş, proforma) ve sevk irsaliyesi için ayrı
+modüller vardır; satış ve stok uygulamalarıyla birlikte kendiliğinden kurulurlar.
+
 Mevcut şirketler
 ================
 
 Modül kurulduğunda Türk hesap planını kullanan şirketler de güncellenir: yeni
-hesaplar ve vergiler eklenir, adlar düzeltilir. Daha önce TCKN'yle kaydedilmiş
+hesaplar ve vergiler eklenir, adlar düzeltilir, faturada tutarın yazıyla
+yazılması açılır. Daha önce TCKN'yle kaydedilmiş
 kişiler de gerçek kişi olur. Şehir alanına ilçe adı yazılmış Türk kişiler, ad
 tek bir ilçeyi gösteriyorsa o ilçeye bağlanır: il seçiliyse o ilin ilçesi, il
 adının kendisi yazılmışsa o ilin merkez ilçesi, il seçili değilse yalnız tek

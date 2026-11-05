@@ -67,6 +67,10 @@ RECORD_CORRECTIONS = [
     ('auth_passkey', 'Passkeys', 'Geçiş Anahtarları'),
     # upstream: 'Sipariş Ver' (an order button), the quantity still to order
     ('stock', 'To Order', 'Sipariş Verilecek'),
+    # upstream: 'Lira', the unit of the amount in words; the currency is the Turkish lira
+    ('base', 'Lira', 'Türk Lirası'),
+    # upstream: 'Yazı ile toplam tutar', Turkish documents write 'Yalnız:' before the words
+    ('account', 'Total amount in words: <br/>', 'Yalnız: <br/>'),
 ]
 
 
@@ -182,6 +186,19 @@ class TestOverlay(TransactionCase):
         module.state = 'to install'
         self.env['ir.module.module']._load_module_terms([tools.MODULE], ['tr_TR'])
         self.assertEqual(self.name_tr(self.menu), 'Ayarlar (ov test)')
+
+    def test_this_module_installed_noupdate(self):
+        # the language is loaded before this module: on installation, a record
+        # the customer may change (noupdate) gets the overlay's translation
+        # while it holds upstream's ('Türkiye'), and keeps the customer's one
+        module = self.env['ir.module.module'].search([('name', '=', tools.MODULE)])
+        module.state = 'to install'
+        self.turkey.with_context(lang='tr_TR').name = 'Türkiye'
+        self.env['ir.module.module']._load_module_terms([tools.MODULE], ['tr_TR'])
+        self.assertEqual(self.name_tr(self.turkey), 'Türkiye (ov test)')
+        self.turkey.with_context(lang='tr_TR').name = 'Türkiye Cumhuriyeti'
+        self.env['ir.module.module']._load_module_terms([tools.MODULE], ['tr_TR'])
+        self.assertEqual(self.name_tr(self.turkey), 'Türkiye Cumhuriyeti')
 
     def test_module_name(self):
         # names of the modules not installed, in the applications list (the

@@ -58,6 +58,20 @@ class ResPartner(models.Model):
             return ''
         return tax_id_type(partner.vat)
 
+    def _ov_l10n_tr_registry_lines(self):
+        """Return the registry numbers a Turkish merchant prints on its documents (TTK 39).
+
+        A list of (label, value): the MERSIS number and the trade registry
+        number, those that are set.
+        """
+        self.ensure_one()
+        identifiers = self.commercial_partner_id.additional_identifiers or {}
+        labels = {
+            'TR_MERSIS': self.env._('MERSIS No'),
+            'TR_TICARET_SICIL': self.env._('Trade Registry No'),
+        }
+        return [(label, identifiers[key]) for key, label in labels.items() if identifiers.get(key)]
+
     @api.depends('country_id')
     def _compute_partner_vat_placeholder(self):
         res = super()._compute_partner_vat_placeholder()

@@ -1752,6 +1752,11 @@ msgid "Linked View Count"
 msgstr "Bağlı Görünüm Sayısı"
 
 #. module: base
+#: model:res.currency,currency_unit_label:base.TRY
+msgid "Lira"
+msgstr "Türk Lirası"
+
+#. module: base
 #. odoo-python
 #: code:addons/partner_identifiers.py:0
 msgid "Lithuanian legal entity code (JAK)."

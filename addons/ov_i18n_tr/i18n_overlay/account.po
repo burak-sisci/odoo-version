@@ -2744,6 +2744,11 @@ msgid "Total Rounding Accounts:"
 msgstr "Toplam Yuvarlama Hesapları:"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "Total amount in words: <br/>"
+msgstr "Yalnız: <br/>"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__display_invoice_amount_total_words
 #: model:ir.model.fields,field_description:account.field_res_config_settings__display_invoice_amount_total_words
 msgid "Total amount of invoice in words"

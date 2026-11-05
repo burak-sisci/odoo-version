@@ -7,6 +7,42 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-05
 
+### Adım: Türk belgelerinin içeriği; çeviri katmanının noupdate düzeltmesi (T3.7, 1. adım) — otonom mesai 7
+
+**Araştırma**
+- `docs/research/tr-documents.md` (yeni): belgede ne yazmalı, birincil kaynaklardan.
+  - VUK 230: fatura; 230/5: sevk irsaliyesi (fiyat dışında aynı bilgiler, malın kime ve nereye gönderildiği, düzenleme ile fiili sevk tarihi ayrı); 231/5: 7 gün kuralı.
+  - TTK 39/2: ticari belgelerde sicil numarası, unvan, merkez ve web sitesi.
+  - TDK Yazım Kuralları 3: para işlemlerindeki sayılar bitişik ("binikiyüzotuzdört").
+  - Kâğıt irsaliye ve anlaşmalı matbaa / e-İrsaliye ikincil kaynaklardan; mali müşavire sorulacak (K25).
+- Upstream 20.0'ın sekiz belgesi (teklif, proforma, sipariş, irsaliye, fatura, tahsilat ve tediye makbuzu, gerçek kişiye teklif) kurgusal bir Türk şirketiyle basılıp ölçüldü. Bulgular B1–B6: şirketin sicil bilgileri yok; numaranın adı "VKN/TCKN"; irsaliyede belge adı ve tarihler eksik; tutar yazıyla yalnız faturada ve kapalı, "İki" yerine "Iki" (upstream'in `.title()` kullanımı); makbuz adları Türk muhasebesine uymuyor; ödeme yöntemi satırı ("Manual Payment") çevrilmeden kopyalanıyor (B6, ayrıca ele alınacak).
+
+**Kod**
+- `ov_l10n_tr` 20.0.1.3.0:
+  - `res.currency.amount_to_text` Türkçede: bitişik sayılar, Türkçe büyük harf (`turkish_capitalize`), "ve"siz, birimler para biriminin çevrilmiş etiketlerinden. Diğer dillerde upstream.
+  - `web.company_address_list`: vergi numarasının adı türüne göre "VKN"/"TCKN"; Türk şirketinde MERSİS No, Ticaret Sicil No, web sitesi.
+  - Faturada müşteri satırı "VKN: …" / "TCKN: …" (`_get_document_partner_ident_line`).
+  - Türk hesap planında `display_invoice_amount_total_words` açık; kurulu şirketler `migrations/20.0.1.3.0`.
+  - Ödeme makbuzu: gelen ödeme "Collection Receipt" (Tahsilat Makbuzu), giden "Payment Voucher" (Tediye Makbuzu); makbuzda tutar yazıyla (`ov_l10n_tr.amount_in_words` şablonu).
+  - `tests/common.py`: `TurkishDocumentsCommon` (kurgusal şirket, müşteri ve kişi; basılan belgenin HTML ağacı). `tests/test_documents.py` 11 test.
+- Yeni `ov_l10n_tr_sale` (`sale` + `ov_l10n_tr`, kendiliğinden kurulur): teklif, sipariş ve proformada numara satırı ve tutar yazıyla. 4 test.
+- Yeni `ov_l10n_tr_stock` (`stock` + `ov_l10n_tr`, kendiliğinden kurulur): çıkış transferinin belgesi "Sevk İrsaliyesi"; Müşteri bloğu (vergi dairesi, VKN/TCKN) her zaman; düzenleme tarihi ve fiili sevk tarihi ayrı, doğrulanmamış transferde elle doldurulacak satır. 5 test.
+- Çeviriler: üç modülün `tr.po`'su Odoo'nun dışa aktardığı şablondan (`i18n export`) dolduruldu. `ov_i18n_tr` katmanı: `base` "Lira" → "Türk Lirası", `account` "Yazı ile toplam tutar" → "Yalnız:"; ikisi `RECORD_CORRECTIONS` tablosunda (18 terim/12 modül).
+- `ov_i18n_tr` hatası düzeltildi: katmanın düzeltmeleri müşterinin değiştirebileceği (`noupdate`) kayıtlarda yeni veritabanında da uygulanmıyordu. Dil, `ov_i18n_tr` kurulmadan önce yükleniyor; kurulumdaki üzerine yazma da upstream kuralıyla `noupdate` kayıtları atlıyor. Artık kurulumda bu kayıtlarda çeviri hâlâ upstream'in değeriyse katmanınki yazılıyor (`_overwrite_upstream_terms`), müşterinin değiştirdiği korunuyor. 1 yeni test.
+  - Ölçüm, yeni Türkçe veritabanında katmanın uygulanmayan kayıt terimleri: 6/259 → 5/259.
+  - Kalan 5 terim paylaşılan kayıtlarda: `res.users` ve `res.users.identitycheck` `display_name` alanı ("İsim Göster" / "Görünen Ad"), `res.users.identitycheck` model adı, `ir.qweb` model adı ("Qweb"), `ir.actions.report` `report_type` yardımı. Aynı kayda birçok modül kendi xmlid'siyle çeviri yazıyor; son yüklenen kazanıyor. Belgelerle ilgisiz; T3.6 bakım işi olarak kaldı (state.json `next_actions`).
+
+**Ölçüm**
+- Sekiz belge değişiklikten önce ve sonra HTML olarak basılıp metinleri karşılaştırıldı: yedi belgede "Yalnız: … Türk Lirası … Kuruş"; sekizinde MERSİS No, Ticaret Sicil No, web sitesi; irsaliyede "Sevk İrsaliyesi", "Düzenleme Tarihi", saatli "Fiili Sevk Tarihi"; müşteri satırı "VKN: …" / "TCKN: …".
+- Testler: `ov_l10n_tr`, `ov_l10n_tr_sale`, `ov_l10n_tr_stock`, `ov_i18n_tr` birlikte 69 test, 0 hata; dış istek yok. Çeviri kapsamı %100 (83 modül), `po_coverage.py check` 0 sorun.
+
+**Kararlar / varsayımlar**
+- USER_TASKS **K25** (yeni, Karar): tutar yazıyla biçimi, MERSİS ve sicil no birlikte, makbuz adları, irsaliye yalnız çıkışta; kâğıt irsaliyenin geçerliliği mali müşavire.
+- USER_TASKS K24 varsayımı değişti. Eski metin: "Müşterinin düzenlemesine ayrılmış kayıtlara (ör. ülke adları) hiç dokunulmaz." Yeni: çeviri yalnız hâlâ upstream'in değeriyse değişir, müşterinin düzenlediği korunur. Neden: TRY'nin "Lira" çevirisi yeni veritabanında da düzelmiyordu. PLAN.md T3.6 kural satırı aynı biçimde güncellendi.
+
+**Belgeler**
+- PLAN.md T3.7 `[~]` ve durum satırları; USER_TASKS K25 ve §1; state.json (modüller, sıradaki işler); MODULE_MATRIX, ARCHITECTURE, README.
+
 ### Adım: küçük modüller ve simge arama etiketleri; Türkçe çeviri %100, T3.6 bitti (T3.6, 12. adım) — otonom mesai 7
 
 **Kod**

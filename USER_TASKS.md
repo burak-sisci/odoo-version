@@ -27,6 +27,7 @@ Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her
 12. **K23:** TCMB kurları kendiliğinden alınıyor. Varsayılan döviz alış; bir bülten ertesi günden başlayarak uygulanıyor (önceki iş gününün kuru). Mali müşavire K20 ile birlikte sorulabilir.
 13. **K4:** örnek banka ekstreleri. Hangi bankalar, hangi işlemler, nasıl anonimleştirileceği ve araştırma soruları K4'te.
 14. **K24:** Türkçe çeviri eksikleri ayrı bir modülle (`ov_i18n_tr`) tamamlanıyor; modül kurulurken hatalı upstream çevirilerinin yerine geçiyor. Terim tercihlerin varsa K24'e yazabilirsin.
+15. **K25:** Türk belgelerinin içeriği (fatura, makbuz, teklif, sevk irsaliyesi) yasal kaynaklara göre varsayımlarla yazıldı: "Yalnız: … Türk Lirası … Kuruş", MERSİS ve ticaret sicil no birlikte, makbuz adları tahsilat/tediye. Kâğıt irsaliyenin geçerliliği mali müşavire sorulmalı (K20 ile birlikte).
 
 Otonom mesai 6 bitti (2026-11-04). Özeti CHANGELOG.md'de, "Otonom mesai 6 — özet". Yeni madde yok; K24'e terim tercihleri eklendi (14. madde). Türkçe çeviri kapı ölçütünü geçti (%95,95).
 
@@ -202,7 +203,7 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Neden: upstream'in Türkçe çevirisi paket modüllerinde %81; çevrilmemiş metinler İngilizce görünüyor, bazı çeviriler hatalı (ör. formdaki "Discard" düğmesi "Sil" diye çevrilmiş).
   - Varsayımlar (otonom mesai 5, geri dönüşü kolay; hepsi `ov_i18n_tr`'de):
     - Çeviriler ayrı bir modülde (`ov_i18n_tr`, LGPL-3: upstream metinlerinin çevirisi). Her yeni veritabanına kendiliğinden kurulur.
-    - Modül kurulurken çevirileri, önceden kurulu uygulamalardaki var olan çevirilerin yerine yazılır. Sonraki güncellemelerde yalnız eksikler tamamlanır, müşterinin düzenlediği çeviri korunur. Müşterinin düzenlemesine ayrılmış kayıtlara (ör. ülke adları) hiç dokunulmaz.
+    - Modül kurulurken çevirileri, önceden kurulu uygulamalardaki var olan çevirilerin yerine yazılır. Sonraki güncellemelerde yalnız eksikler tamamlanır, müşterinin düzenlediği çeviri korunur. Müşterinin düzenlemesine ayrılmış kayıtlarda (ör. ülke adları, para birimleri) çeviri yalnız hâlâ upstream'in değeriyse değişir (ör. TRY "Lira" → "Türk Lirası"); müşterinin düzenlediği korunur (T3.7).
     - Kaynak metinde "Odoo" geçen çevirilerde ad olduğu gibi kalır; gösterimde `ov_brand` "Nexus" yazar (K19). Böylece çeviriler istenirse upstream'e de verilebilir (K8).
     - Ölçüm upstream'in çeviri şablonlarına (`.pot`) göre. Paket: CI'daki MVP uygulamaları, modüllerimiz, bağımlılıkları ve onlarla kendiliğinden kurulanlar (83 modül). CI eşiği her çeviri partisiyle yükselir.
     - Terimler upstream'in yerleşik Türkçe karşılıklarıyla tutarlı tutulur (ör. Contact → Kontak, Journal Entry → Yevmiye Kaydı); upstream'in kendi içinde tutarsız olduğu yerde en yaygın karşılık seçilir.
@@ -227,6 +228,21 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
   - Seçenekler: **A** — varsayımlar kalsın · **B** — modül kurulurken var olan çevirilere dokunulmasın, yalnız eksikler tamamlansın · **C** — "Odoo" geçen metinlerin çevirisinde doğrudan "Nexus" yazılsın · **D** — başka bir düzen.
   - Claude önerisi: **A**. Kurulumda üzerine yazma, hatalı upstream çevirilerinin (ör. "Sil") önceden kurulmuş veritabanlarında da düzelmesini sağlıyor; yeni müşteride zaten ilk kurulumdur.
   - Ne zaman: acil değil; F9 pilotundan önce. Terim tercihlerin varsa (ör. "Kontak" yerine "Kişi") liste olarak verebilirsin.
+- [ ] K25 **Karar** — Türk belgelerinin içeriği (T3.7).
+  - Neden: upstream belgelerinde şirketin MERSİS ve sicil numarası, irsaliyenin yasal alanları ve Türkçe "tutar yazıyla" yoktu (`docs/research/tr-documents.md`).
+  - Varsayımlar (otonom mesai 7, geri dönüşü kolay; `ov_l10n_tr`, `ov_l10n_tr_sale`, `ov_l10n_tr_stock`):
+    - Tutar yazıyla: "Yalnız: Binikiyüzotuzdört Türk Lirası Ellialtı Kuruş". Sayılar bitişik (TDK yazım kuralı), "ve" yok, "TL/Kr." kısaltması yerine tam ad. Faturada Türk hesap planıyla kurulan şirkette varsayılan açık; teklif, sipariş, proforma ve makbuzlarda her zaman.
+    - Şirket bilgilerinde MERSİS No ve Ticaret Sicil No ikisi de (girilmişse) ve web sitesi basılır (TTK 39). Vergi numarasının adı türüne göre "VKN" ya da "TCKN".
+    - Ödeme makbuzu: gelen ödemede "Tahsilat Makbuzu", giden ödemede "Tediye Makbuzu"; iş ortağının müşteri ya da tedarikçi olmasına bakılmaz.
+    - Sevk irsaliyesi yalnız çıkış transferlerinde. Alıcı "Müşteri" bölümünde vergi dairesi ve VKN/TCKN ile yazılır; teslimat adresi ayrıca. Düzenleme tarihi ile fiili sevk tarihi ayrı; transfer doğrulanmadan basılırsa fiili sevk tarihi elle doldurulacak boş satırdır.
+    - TRY'nin birim adı "Lira" yerine "Türk Lirası" (`ov_i18n_tr`); faturadaki "Yazı ile toplam tutar" etiketi "Yalnız:".
+  - Mali müşavire sorulacaklar (K20 ile birlikte):
+    - Kâğıt irsaliye: müşteri anlaşmalı matbaa formu mu kullanacak, e-İrsaliye mi? Nexus'un bastığı irsaliye hangi durumda (ör. e-İrsaliye sistemi çalışmadığında) kullanılabilir?
+    - "Yalnız: … Türk Lirası … Kuruş" yaygın biçim mi, kısaltma mı tercih edilir?
+    - MERSİS ve eski ticaret sicil numarasının ikisi de yazılmalı mı?
+  - Seçenekler: **A** — varsayımlar kalsın · **B** — değişiklik listesi ver (ör. "TL/Kr." kısaltması, yalnız MERSİS) · **C** — mali müşavirin cevabını bekle.
+  - Claude önerisi: **A**, mali müşavirin cevabına göre düzeltme. Hepsi şablon düzeyinde; değişiklik birkaç satır.
+  - Ne zaman: F9 pilotundan önce; e-İrsaliye (T4.x) planlanmadan önce irsaliye sorusu.
 
 Numaralarda boşluk var: eski iki madde (müşteri listesi, yasal yapı) aynı işi anlatan T9.1 ve T9.3 görevleriyle birleştirildi (§3).
 

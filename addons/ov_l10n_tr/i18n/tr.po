@@ -37,6 +37,12 @@ msgid "Branch Number"
 msgstr "Şube No"
 
 #. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/account_payment.py:0
+msgid "Collection Receipt"
+msgstr "Tahsilat Makbuzu"
+
+#. module: ov_l10n_tr
 #: model:ir.model,name:ov_l10n_tr.model_res_company
 msgid "Company"
 msgstr "Şirket"
@@ -49,16 +55,55 @@ msgstr "Kontak"
 #. module: ov_l10n_tr
 #: model:ir.module.module,summary:base.module_ov_l10n_tr
 msgid ""
-"Corrects the Turkish chart of accounts and taxes; tax ID, registry numbers "
-"and districts"
+"Corrects the Turkish chart of accounts and taxes; tax ID, registry numbers, "
+"districts and documents"
 msgstr ""
-"Türk hesap planını ve vergileri düzeltir; VKN/TCKN, MERSİS ve il/ilçe "
-"listesi"
+"Türk hesap planını ve vergileri düzeltir; VKN/TCKN, sicil numaraları, "
+"il/ilçe ve belgeler"
 
 #. module: ov_l10n_tr
 #: model:ir.model,name:ov_l10n_tr.model_res_country
 msgid "Country"
 msgstr "Ülke"
+
+#. module: ov_l10n_tr
+#: model:ir.model,name:ov_l10n_tr.model_res_currency
+msgid "Currency"
+msgstr "Para Birimi"
+
+#. module: ov_l10n_tr
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_account_chart_template__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_account_move__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_account_payment__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_company__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_country__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_currency__display_name
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: ov_l10n_tr
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_account_chart_template__id
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_account_move__id
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_account_payment__id
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_company__id
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_country__id
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_currency__id
+#: model:ir.model.fields,field_description:ov_l10n_tr.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ov_l10n_tr
+#: model:ir.model,name:ov_l10n_tr.model_account_move
+msgid "Journal Entry"
+msgstr "Yevmiye Kaydı"
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr.company_address_list
+msgid "MERSIS No"
+msgstr "MERSİS No"
 
 #. module: ov_l10n_tr
 #. odoo-python
@@ -67,13 +112,33 @@ msgid "MERSIS Number"
 msgstr "MERSİS No"
 
 #. module: ov_l10n_tr
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr.amount_in_words
+msgid "One thousand lira"
+msgstr "Bin Türk Lirası"
+
+#. module: ov_l10n_tr
+#: model:ir.model,name:ov_l10n_tr.model_account_payment
+msgid "Payment"
+msgstr "Ödeme"
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/account_payment.py:0
+msgid "Payment Voucher"
+msgstr "Tediye Makbuzu"
+
+#. module: ov_l10n_tr
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr.company_address_list
+msgid "Tax ID"
+msgstr "VKN/TCKN"
+
+#. module: ov_l10n_tr
 #. odoo-python
 #: code:addons/ov_l10n_tr/models/res_partner.py:0
 msgid ""
 "The tax ID [%(wrong_vat)s] is not valid. A VKN has 10 digits and a TCKN 11 "
 "digits."
-msgstr ""
-"VKN/TCKN [%(wrong_vat)s] geçerli değil. VKN 10, TCKN 11 hanelidir."
+msgstr "VKN/TCKN [%(wrong_vat)s] geçerli değil. VKN 10, TCKN 11 hanelidir."
 
 #. module: ov_l10n_tr
 #. odoo-python
@@ -86,6 +151,17 @@ msgstr ""
 "11 hanelidir."
 
 #. module: ov_l10n_tr
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr.amount_in_words
+msgid "Total amount in words: <br/>"
+msgstr "Yalnız: <br/>"
+
+#. module: ov_l10n_tr
+#. odoo-python
+#: code:addons/ov_l10n_tr/models/res_partner.py:0
+msgid "Trade Registry No"
+msgstr "Ticaret Sicil No"
+
+#. module: ov_l10n_tr
 #. odoo-python
 #: code:addons/ov_l10n_tr/models/res_partner.py:0
 msgid "Trade Registry Number"
@@ -95,3 +171,8 @@ msgstr "Ticaret Sicil No"
 #: model:ir.module.module,shortdesc:base.module_ov_l10n_tr
 msgid "Turkey - Localization"
 msgstr "Türkiye Yerelleştirmesi"
+
+#. module: ov_l10n_tr
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr.company_address_list
+msgid "https://www.example.com"
+msgstr "https://www.example.com"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Quotation, sales order and pro forma invoice. -->
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <!-- The customer's tax ID is named after its kind: "VKN: ..." or "TCKN: ...". -->
+        <xpath expr="//t[@t-set='address']//t[@t-out='doc.company_id.account_fiscal_country_id.vat_label']" position="attributes">
+            <attribute name="t-out">doc.partner_id._ov_l10n_tr_tax_id_type() or doc.company_id.account_fiscal_country_id.vat_label</attribute>
+        </xpath>
+        <!-- Total in words, as on the invoice. -->
+        <xpath expr="//div[@name='so_total_summary']" position="after">
+            <t t-if="doc.company_id.account_fiscal_country_id.code == 'TR'"
+               t-call="ov_l10n_tr.amount_in_words" amount="doc.amount_total" currency="doc.currency_id"
+               amount_in_words_class="'text-end'"/>
+        </xpath>
+    </template>
+</odoo>
