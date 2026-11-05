@@ -1,7 +1,12 @@
 from odoo import Command
 from odoo.tests import tagged
 
-from odoo.addons.ov_l10n_tr.tests.common import CUSTOMER_VKN, TurkishDocumentsCommon
+from odoo.addons.ov_l10n_tr.tests.common import (
+    CUSTOMER_VKN,
+    MERSIS,
+    TRADE_REGISTRY,
+    TurkishDocumentsCommon,
+)
 
 BLANK_DATE = '....../....../..........'
 
@@ -40,6 +45,12 @@ class TestTurkishDeliverySlip(TurkishDocumentsCommon):
         self.assertFalse(self.texts(document, 'div_sched_date'))
         self.assertEqual(len(self.texts(document, 'ov_l10n_tr_issue_date')), 1)
         self.assertIn(BLANK_DATE, ' '.join(self.texts(document, 'ov_l10n_tr_dispatch_date')))
+        # the company block in the language of the document, not of the user
+        self.assertEqual(self.env.user.lang, 'en_US')
+        self.assertEqual(self.texts(document, 'ov_l10n_tr_registry'), [
+            f'MERSİS No: {MERSIS}',
+            f'Ticaret Sicil No: {TRADE_REGISTRY}',
+        ])
 
     def test_dispatch_note_done(self):
         picking = self._picking(self.warehouse.out_type_id)

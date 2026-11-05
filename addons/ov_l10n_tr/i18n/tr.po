@@ -99,11 +99,9 @@ msgid "Journal Entry"
 msgstr "Yevmiye Kaydı"
 
 #. module: ov_l10n_tr
-#. odoo-python
-#: code:addons/ov_l10n_tr/models/res_partner.py:0
 #: model_terms:ir.ui.view,arch_db:ov_l10n_tr.company_address_list
-msgid "MERSIS No"
-msgstr "MERSİS No"
+msgid "<span>MERSIS No</span>:"
+msgstr "<span>MERSİS No</span>:"
 
 #. module: ov_l10n_tr
 #. odoo-python
@@ -156,10 +154,9 @@ msgid "Total amount in words: <br/>"
 msgstr "Yalnız: <br/>"
 
 #. module: ov_l10n_tr
-#. odoo-python
-#: code:addons/ov_l10n_tr/models/res_partner.py:0
-msgid "Trade Registry No"
-msgstr "Ticaret Sicil No"
+#: model_terms:ir.ui.view,arch_db:ov_l10n_tr.company_address_list
+msgid "<span>Trade Registry No</span>:"
+msgstr "<span>Ticaret Sicil No</span>:"
 
 #. module: ov_l10n_tr
 #. odoo-python

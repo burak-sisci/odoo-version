@@ -33,6 +33,14 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
     - Test veritabanında Türkçe çeviri yoktu, etiketler İngilizce çıktı ("Issue Date"). `TurkishPdfCommon` artık kurulu modüllerin Türkçe çevirilerini yüklüyor.
     - Koşuda `ov_brand` kurulu değildi; teklifin PDF üst verisinde upstream'in yazıcısı `Producer: Odoo` yazdı. Üründe olduğu gibi `ov_brand` de kuruluyor. Test, sızıntıyı yakalamak için yazıldığı biçimde çalıştı.
   - İçerik o koşuda da doğruydu: tutar yazıyla, MERSİS No, VKN, "Sevk İrsaliyesi", Türkçe harfler PDF metninde.
+- İkinci CI koşusu: fatura, makbuz ve teklif iki motorda geçti, üst veride marka yok. Yeni bir hata çıktı:
+  - Sevk irsaliyesindeki şirket bloğunda "MERSIS No" ve "Trade Registry No" İngilizce basıldı; belgenin geri kalanı Türkçeydi.
+  - Neden: etiketler Python'da kullanıcının diliyle çevriliyordu. Faturada şirket kaydı belgenin dilini taşıyor, irsaliyede taşımıyor.
+  - Düzeltme: etiketler şablona taşındı (`_ov_l10n_tr_registry_numbers` artık yalnız numaraları döndürüyor). Şablon metni `t-lang` ile belgenin dilinde basılır; `tr.po`'daki msgid Odoo'nun dışa aktardığı biçimde (`<span>MERSIS No</span>:`).
+  - Kalıcı test: irsaliye HTML testi, kullanıcı İngilizceyken şirket bloğunun Türkçe basıldığını denetliyor. Belge testleri artık `ov_l10n_tr*` modüllerinin Türkçe çevirilerini yüklüyor; yükleme sonrası şablon önbelleği temizleniyor.
+  - Bu hatayı HTML testleri yakalayamıyordu, çünkü test veritabanında çeviri yoktu. PDF testi Türkçe çeviriyle bastığı için yakaladı.
+- Yerel: `ov_l10n_tr`, `ov_l10n_tr_sale`, `ov_l10n_tr_stock` 54 test, 0 hata.
+- Bir de ara sıra düşen test görüldü: `ov_brand` `TestExternalRequestsPages.test_pages` (6 sayfanın 5'inde tarayıcı yoklaması). Aynı kodla bir önceki koşuda geçmişti, yeniden çalıştırınca geçti. İzlenecek (state.json `next_actions`).
 
 ### Adım: Türk belgelerinin içeriği; çeviri katmanının noupdate düzeltmesi (T3.7, 1. adım) — otonom mesai 7
 

@@ -58,6 +58,18 @@ class TurkishDocumentsCommon(AccountTestInvoicingCommon):
         lira = cls.company.currency_id.with_context(lang='tr_TR')
         lira.currency_unit_label = 'Türk Lirası'
         lira.currency_subunit_label = 'Kuruş'
+        # The test database has no translation; the documents of these modules
+        # are checked in Turkish
+        Module = cls.env['ir.module.module']
+        modules = Module.search([('state', '=', 'installed'), ('name', '=like', 'ov_l10n_tr%')])
+        cls._load_turkish_terms(modules)
+
+    @classmethod
+    def _load_turkish_terms(cls, modules):
+        """Load the Turkish translations of ``modules``; the importer writes them in SQL."""
+        modules._load_module_terms(modules.mapped('name'), ['tr_TR'], overwrite=True)
+        cls.env.invalidate_all()
+        cls.env.transaction.invalidate_ormcache('templates')
 
     def render(self, report_ref, records):
         """Return the HTML tree of the report printed for ``records``."""
@@ -102,14 +114,13 @@ class TurkishPdfCommon(TurkishDocumentsCommon, HttpCase):
     The engines named in the ``OV_PDF_ENGINES`` environment variable (comma
     separated, as CI sets it) must work; the others are skipped when missing.
     With ``OV_PDF_DIR`` set, the PDFs are also written there to be looked at.
-    The Turkish translations are loaded: the test database has none.
+    The Turkish translations of all the installed modules are loaded.
     """
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        modules = cls.env['ir.module.module'].search([('state', '=', 'installed')])
-        modules._load_module_terms(modules.mapped('name'), ['tr_TR'], overwrite=True)
+        cls._load_turkish_terms(cls.env['ir.module.module'].search([('state', '=', 'installed')]))
 
     def render_pdf(self, engine, report_ref, records):
         """Return the PDF of the report printed by ``engine`` for ``records``."""

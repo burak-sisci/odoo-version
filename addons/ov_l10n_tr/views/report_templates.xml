@@ -9,8 +9,12 @@
         </xpath>
         <xpath expr="//ul[@name='company_address_list']" position="inside">
             <t t-if="company.account_fiscal_country_id.code == 'TR'">
-                <li t-foreach="company.partner_id._ov_l10n_tr_registry_lines()" t-as="registry_line" name="ov_l10n_tr_registry">
-                    <span t-out="registry_line[0]">MERSIS No</span>: <span t-out="registry_line[1]">0000000000000000</span>
+                <t t-set="ov_registry" t-value="company.partner_id._ov_l10n_tr_registry_numbers()"/>
+                <li t-if="ov_registry.get('TR_MERSIS')" name="ov_l10n_tr_registry">
+                    <span>MERSIS No</span>: <span t-out="ov_registry['TR_MERSIS']">0000000000000000</span>
+                </li>
+                <li t-if="ov_registry.get('TR_TICARET_SICIL')" name="ov_l10n_tr_registry">
+                    <span>Trade Registry No</span>: <span t-out="ov_registry['TR_TICARET_SICIL']">123456</span>
                 </li>
                 <li t-if="company.website" name="ov_l10n_tr_website">
                     <span t-out="company.website">https://www.example.com</span>
