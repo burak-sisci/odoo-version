@@ -1,0 +1,73 @@
+# Turkish translations of the mrp_subcontracting_purchase module completing upstream's (ov_i18n_tr, T3.6).
+# Read after mrp_subcontracting_purchase/i18n/tr.po. The comments come from mrp_subcontracting_purchase.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.module.module,description:base.module_mrp_subcontracting_purchase
+msgid ""
+"\n"
+"This bridge module adds some smart buttons between Purchase and "
+"Subcontracting\n"
+msgstr ""
+"\n"
+"Bu köprü modülü, Satın Alma ile Fason arasına bazı akıllı düğmeler ekler\n"
+
+#. module: mrp_subcontracting_purchase
+#. odoo-python
+#: code:addons/mrp_subcontracting_purchase/models/mrp_production.py:0
+msgid "%(name)s - Subcontracting"
+msgstr "%(name)s - Fason"
+
+#. module: mrp_subcontracting_purchase
+#. odoo-python
+#: code:addons/mrp_subcontracting_purchase/models/stock_move.py:0
+msgid "%(value)s for %(quantity)s %(unit)s from %(production)s"
+msgstr "%(value)s: %(production)s üretiminden %(quantity)s %(unit)s için"
+
+#. module: mrp_subcontracting_purchase
+#. odoo-python
+#: code:addons/mrp_subcontracting_purchase/models/stock_rule.py:0
+msgid "+ %d days"
+msgstr "+ %d gün"
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.model,name:mrp_subcontracting_purchase.model_account_move
+msgid "Journal Entry"
+msgstr "Yevmiye Kaydı"
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.model.fields,help:mrp_subcontracting_purchase.field_mrp_production__subcontract_extra_move_id
+msgid ""
+"Journal entry neutralising the subcontractor bill's stock valuation, so the "
+"finished move keeps the full cost while the bill is not counted twice."
+msgstr ""
+"Fasoncu faturasının stok değerlemesini dengeleyen yevmiye kaydı; böylece "
+"bitmiş ürün hareketi tam maliyeti korur, fatura iki kez sayılmaz."
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.model,name:mrp_subcontracting_purchase.model_report_mrp_report_mo_overview
+msgid "MO Overview Report"
+msgstr "ÜE Genel Raporu"
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.model,name:mrp_subcontracting_purchase.model_mrp_production
+msgid "Manufacturing Order"
+msgstr "Üretim Emri"
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.module.module,shortdesc:base.module_mrp_subcontracting_purchase
+msgid "Purchase and Subcontracting Management"
+msgstr "Satın Alma ve Fason Yönetimi"
+
+#. module: mrp_subcontracting_purchase
+#: model:ir.model.fields,field_description:mrp_subcontracting_purchase.field_mrp_production__subcontract_extra_move_id
+msgid "Subcontracting Cost Entry"
+msgstr "Fason Maliyet Kaydı"

@@ -1,0 +1,76 @@
+# Turkish translations of the http_routing module completing upstream's (ov_i18n_tr, T3.6).
+# Read after http_routing/i18n/tr.po. The comments come from http_routing.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: http_routing
+#: model:ir.module.module,description:base.module_http_routing
+msgid ""
+"\n"
+"Proposes advanced routing options not available in web or base to keep\n"
+"base modules simple.\n"
+msgstr ""
+"\n"
+"Temel modülleri sade tutmak için web veya base modüllerinde olmayan "
+"gelişmiş\n"
+"yönlendirme seçenekleri sunar.\n"
+
+#. module: http_routing
+#: model_terms:ir.ui.view,arch_db:http_routing.custom_oe_structure_422_layout_1
+msgid "422: Unprocessable Entity"
+msgstr "422: İşlenemeyen Varlık"
+
+#. module: http_routing
+#: model_terms:ir.ui.view,arch_db:http_routing.400
+#: model_terms:ir.ui.view,arch_db:http_routing.403
+#: model_terms:ir.ui.view,arch_db:http_routing.415
+#: model_terms:ir.ui.view,arch_db:http_routing.422
+#: model_terms:ir.ui.view,arch_db:http_routing.4xx
+msgid "Drag blocks here to add them above the error message"
+msgstr "Hata iletisinin üstüne eklemek için blokları buraya sürükleyin"
+
+#. module: http_routing
+#: model_terms:ir.ui.view,arch_db:http_routing.400
+#: model_terms:ir.ui.view,arch_db:http_routing.403
+#: model_terms:ir.ui.view,arch_db:http_routing.415
+#: model_terms:ir.ui.view,arch_db:http_routing.422
+#: model_terms:ir.ui.view,arch_db:http_routing.4xx
+msgid "Drag blocks here to add them below the error message"
+msgstr "Hata iletisinin altına eklemek için blokları buraya sürükleyin"
+
+#. module: http_routing
+#: model_terms:ir.ui.view,arch_db:http_routing.custom_oe_structure_415_layout_1
+msgid ""
+"It looks like the URL you are accessing doesn't support the format of the "
+"request."
+msgstr "Eriştiğiniz URL, isteğin biçimini desteklemiyor gibi görünüyor."
+
+#. module: http_routing
+#: model_terms:ir.ui.view,arch_db:http_routing.custom_oe_structure_422_layout_1
+msgid ""
+"It looks like the request you made could not be processed due to semantic "
+"errors."
+msgstr "Yaptığınız istek anlam hataları nedeniyle işlenemedi gibi görünüyor."
+
+#. module: http_routing
+#: model:ir.model,name:http_routing.model_res_lang
+msgid "Language"
+msgstr "Dil"
+
+#. module: http_routing
+#: model_terms:ir.ui.view,arch_db:http_routing.custom_oe_structure_400_layout_1
+msgid "The server couldn't understand the request."
+msgstr "Sunucu isteği anlayamadı."
+
+#. module: http_routing
+#: model:ir.module.module,shortdesc:base.module_http_routing
+#: model:ir.module.module,summary:base.module_http_routing
+msgid "Web Routing"
+msgstr "Web Yönlendirme"

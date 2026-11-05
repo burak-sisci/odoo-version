@@ -1,0 +1,98 @@
+# Turkish translations of the base_install_request module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base_install_request/i18n/tr.po. The comments come from base_install_request.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base_install_request
+#: model:ir.module.module,description:base.module_base_install_request
+msgid ""
+"\n"
+"Allow internal users requesting a module installation\n"
+"=====================================================\n"
+msgstr ""
+"\n"
+"İç kullanıcıların modül kurulumu istemesine izin verir\n"
+"======================================================\n"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.mail_installation_request_template
+msgid ""
+",\n"
+"                <br/><br/>"
+msgstr ""
+",\n"
+"                <br/><br/>"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.mail_installation_request_template
+msgid ""
+".\n"
+"                <br/><br/>"
+msgstr ""
+".\n"
+"                <br/><br/>"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.mail_installation_request_template
+msgid "<span> They added the following comment: </span>"
+msgstr "<span> Eklediği yorum: </span>"
+
+#. module: base_install_request
+#. odoo-python
+#: code:addons/base_install_request/models/ir_module_module.py:0
+msgid "Activation Request for %(module_desc)s"
+msgstr "%(module_desc)s için Etkinleştirme İsteği"
+
+#. module: base_install_request
+#: model:ir.module.module,shortdesc:base.module_base_install_request
+msgid "Base - Module Install Request"
+msgstr "Temel - Modül Kurulum İsteği"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.mail_installation_request_template
+msgid "Dear"
+msgstr "Sayın"
+
+#. module: base_install_request
+#. odoo-python
+#: code:addons/base_install_request/wizard/base_module_install_request.py:0
+msgid "Module Activation Request for \"%(module_desc)s\""
+msgstr "\"%(module_desc)s\" için Modül Etkinleştirme İsteği"
+
+#. module: base_install_request
+#. odoo-python
+#: code:addons/base_install_request/wizard/base_module_install_request.py:0
+msgid "Request sent"
+msgstr "İstek gönderildi"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.mail_installation_request_template
+msgid "Review Request"
+msgstr "İsteği İncele"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.base_module_install_request_view_form
+msgid "Send"
+msgstr "Gönder"
+
+#. module: base_install_request
+#: model:ir.model.fields,field_description:base_install_request.field_base_module_install_request__qweb_template_xmlid
+msgid "Template Id"
+msgstr "Şablon Kimliği"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.base_module_install_request_view_form
+msgid "To:"
+msgstr "Alıcı:"
+
+#. module: base_install_request
+#: model_terms:ir.ui.view,arch_db:base_install_request.mail_installation_request_template
+msgid "has requested access to"
+msgstr "şu modüle erişim istedi:"

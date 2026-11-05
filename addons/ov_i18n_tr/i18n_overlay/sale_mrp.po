@@ -1,0 +1,68 @@
+# Turkish translations of the sale_mrp module completing upstream's (ov_i18n_tr, T3.6).
+# Read after sale_mrp/i18n/tr.po. The comments come from sale_mrp.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: sale_mrp
+#: model:ir.module.module,description:base.module_sale_mrp
+msgid ""
+"\n"
+"This module provides facility to the user to install mrp and sales "
+"modulesat a time.\n"
+"====================================================================================\n"
+"\n"
+"It is basically used when we want to keep track of production orders "
+"generated\n"
+"from sales order. It adds sales name and sales Reference on production "
+"order.\n"
+msgstr ""
+"\n"
+"Bu modül, kullanıcıya üretim ve satış modüllerini birlikte kurma olanağı "
+"sağlar.\n"
+"================================================================================\n"
+"\n"
+"Temel olarak satış siparişlerinden oluşturulan üretim emirlerini izlemek "
+"istediğimizde\n"
+"kullanılır. Üretim emrine satış adını ve satış referansını ekler.\n"
+
+#. module: sale_mrp
+#: model_terms:ir.ui.view,arch_db:sale_mrp.sale_order_portal_content_inherit_sale_mrp
+msgid "<i class=\"oi oi-fw\" data-icon=\"check\"/> Manufactured"
+msgstr "<i class=\"oi oi-fw\" data-icon=\"check\"/> Üretildi"
+
+#. module: sale_mrp
+#: model_terms:ir.ui.view,arch_db:sale_mrp.sale_order_portal_content_inherit_sale_mrp
+msgid "<i class=\"oi oi-fw\" data-icon=\"close\"/> Cancelled"
+msgstr "<i class=\"oi oi-fw\" data-icon=\"close\"/> İptal Edildi"
+
+#. module: sale_mrp
+#: model_terms:ir.ui.view,arch_db:sale_mrp.sale_order_portal_content_inherit_sale_mrp
+msgid "<i class=\"oi oi-fw\" data-icon=\"schedule\"/> Confirmed"
+msgstr "<i class=\"oi oi-fw\" data-icon=\"schedule\"/> Onaylandı"
+
+#. module: sale_mrp
+#: model_terms:ir.ui.view,arch_db:sale_mrp.sale_order_portal_content_inherit_sale_mrp
+msgid "<i class=\"oi oi-fw\" data-icon=\"schedule\"/> In Progress"
+msgstr "<i class=\"oi oi-fw\" data-icon=\"schedule\"/> Devam Ediyor"
+
+#. module: sale_mrp
+#: model_terms:ir.ui.view,arch_db:sale_mrp.sale_order_portal_content_inherit_sale_mrp
+msgid "Manufacturing Orders"
+msgstr "Üretim Emirleri"
+
+#. module: sale_mrp
+#: model:ir.model,name:sale_mrp.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "Minimum Envanter Kuralı"
+
+#. module: sale_mrp
+#: model:ir.module.module,shortdesc:base.module_sale_mrp
+msgid "Sales and MRP Management"
+msgstr "Satış ve Üretim Yönetimi"

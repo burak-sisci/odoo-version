@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-11-04",
+  "last_updated": "2026-11-05",
   "project": {
     "brand_name": "Nexus",
     "working_name": "odoo-version (depo adı ve geliştirme ortamı; yeniden adlandırma K5, T8.2)",
@@ -26,13 +26,12 @@
     "title": "Türkiye temel yerelleştirmesi",
     "status": "in_progress"
   },
-  "current_task": "T3.6",
+  "current_task": "T3.7",
   "session": {
-    "mode": "standart",
-    "number": 6,
-    "started": "2026-11-04",
-    "ended": "2026-11-04",
-    "note": "Otonom mesai 6 bitti (kullanıcının isteğiyle): T3.6 5.-11. adımlar, kapsam %87,74 -> %95,95. Özet CHANGELOG.md'de."
+    "mode": "otonom",
+    "number": 7,
+    "started": "2026-11-05",
+    "note": "Otonom mesai 7: T3.6'dan (sırada küçük modüller) PLAN sırasıyla C görevleri."
   },
   "tasks_done": [
     "T0.1",
@@ -65,14 +64,15 @@
     "T3.2",
     "T3.3",
     "T3.4",
-    "T3.5"
+    "T3.5",
+    "T3.6"
   ],
   "blocked_on_user": [],
   "next_actions": [
     "PostgreSQL başlat: python tools/pg.py start",
     "Kullanıcıyla bekleyenler: K2 (son tarih 11 Kasım 2026), K4, K9, K12, K14, K15, K18–K24 (USER_TASKS.md §1)",
-    "Türkçe çeviri: paket modüllerindeki eksiklerin çevirisi (T3.6; python tools/po_coverage.py missing/add, account, sale, purchase, stock, mrp, mail, web arayüzü, base, spreadsheet, product, calendar, html_editor, account_edi_ubl_cii, crm, payment, account_payment, sale_management, portal, resource, sale_stock, stock_account ve purchase_stock tamam, Discard → Vazgeç, spreadsheet makine çevirisi hataları, varsayılan satış koşulları, vergi doğuşu, CRM atama filtresi, ödeme tahsilatı ve Incoterm (Teslim Şekli) düzeltildi (%95,95, kapı ölçütü geçildi); sırada spreadsheet_dashboard, base_import, sale_margin, mail_plugin; web simge arama etiketleri (659) en sonda; CI eşiği her partide yükseltilir)",
-    "Türkçe belge çıktıları (T3.7)"
+    "Türkçe belge çıktıları (T3.7): teklif, sipariş, proforma, irsaliye, tahsilat/tediye makbuzu; PDF motoru K18 açık (öneri wkhtmltopdf + Paper Muncher)",
+    "Türkçe çeviri bakımı: paket %100, CI eşiği 100; upstream güncellenince yeni terimler python tools/po_coverage.py missing/add ile çevrilir"
   ],
   "decisions": [
     {

@@ -1,0 +1,62 @@
+# Turkish translations of the uom module completing upstream's (ov_i18n_tr, T3.6).
+# Read after uom/i18n/tr.po. The comments come from uom.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: uom
+#: model:ir.module.module,description:base.module_uom
+msgid ""
+"\n"
+"This is the base module for managing Units of measure.\n"
+"========================================================================\n"
+msgstr ""
+"\n"
+"Bu, ölçü birimlerini yönetmek için temel modüldür.\n"
+"==================================================\n"
+
+#. module: uom
+#: model:ir.model,name:uom.model_res_groups
+msgid "Access Groups"
+msgstr "Erişim Grupları"
+
+#. module: uom
+#: model:uom.uom,name:uom.product_uom_kwh
+msgid "KWH"
+msgstr "kWh"
+
+#. module: uom
+#: model:uom.uom,name:uom.product_uom_litre
+msgid "L"
+msgstr "L"
+
+#. module: uom
+#: model:uom.uom,name:uom.product_uom_minute
+msgid "Minutes"
+msgstr "Dakika"
+
+#. module: uom
+#: model:ir.module.module,shortdesc:base.module_uom
+msgid "Units of measure"
+msgstr "Ölçü birimleri"
+
+#. module: uom
+#: model:uom.uom,name:uom.product_uom_gram
+msgid "g"
+msgstr "g"
+
+#. module: uom
+#: model:uom.uom,name:uom.product_uom_meter
+msgid "m"
+msgstr "m"
+
+#. module: uom
+#: model:uom.uom,name:uom.product_uom_ton
+msgid "t"
+msgstr "t"

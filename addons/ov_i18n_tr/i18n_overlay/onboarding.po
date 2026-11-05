@@ -1,0 +1,37 @@
+# Turkish translations of the onboarding module completing upstream's (ov_i18n_tr, T3.6).
+# Read after onboarding/i18n/tr.po. The comments come from onboarding.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: onboarding
+#: model:ir.module.module,description:base.module_onboarding
+msgid ""
+"\n"
+"This module allows to manage onboardings and their progress\n"
+"================================================================================\n"
+msgstr ""
+"\n"
+"Bu modül, başlangıç adımlarını ve ilerlemelerini yönetmenizi sağlar\n"
+"===================================================================\n"
+
+#. module: onboarding
+#: model_terms:ir.ui.view,arch_db:onboarding.onboarding_container
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: onboarding
+#: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__done_icon
+msgid "Material Symbols Icon when completed"
+msgstr "Tamamlandığında gösterilecek Material Symbols simgesi"
+
+#. module: onboarding
+#: model:ir.module.module,shortdesc:base.module_onboarding
+msgid "Onboarding Toolbox"
+msgstr "Başlangıç Araç Kutusu"

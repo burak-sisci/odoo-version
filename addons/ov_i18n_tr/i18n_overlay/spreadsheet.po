@@ -564,6 +564,12 @@ msgstr "Sekme rengini değiştir"
 
 #. module: spreadsheet
 #. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+msgid "Chart"
+msgstr "Grafik"
+
+#. module: spreadsheet
+#. odoo-javascript
 #: code:addons/spreadsheet/static/src/index.js:0
 msgid "Chart #%(odooChartId)s"
 msgstr "Grafik #%(odooChartId)s"

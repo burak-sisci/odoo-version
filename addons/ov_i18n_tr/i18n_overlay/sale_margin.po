@@ -1,0 +1,170 @@
+# Turkish translations of the sale_margin module completing upstream's (ov_i18n_tr, T3.6).
+# Read after sale_margin/i18n/tr.po. The comments come from sale_margin.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: sale_margin
+#: model:ir.module.module,description:base.module_sale_margin
+msgid ""
+"\n"
+"This module adds the 'Margin' on sales order.\n"
+"=============================================\n"
+"\n"
+"This gives the profitability by calculating the difference between the Unit\n"
+"Price and Cost Price.\n"
+msgstr ""
+"\n"
+"Bu modül satış siparişine \"Marj\" ekler.\n"
+"=======================================\n"
+"\n"
+"Birim fiyat ile maliyet fiyatı arasındaki farkı hesaplayarak kârlılığı "
+"gösterir.\n"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Delivered"
+msgstr "Teslim Edilen"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Delivered Qty"
+msgstr "Teslim Edilen Miktar"
+
+#. module: sale_margin
+#: model:ir.model.fields,field_description:sale_margin.field_sale_report__purchase_price
+msgid "Expected Cost"
+msgstr "Beklenen Maliyet"
+
+#. module: sale_margin
+#: model:ir.actions.act_window,name:sale_margin.action_order_report_projected_margins
+msgid "Forecast Margins"
+msgstr "Öngörülen Marjlar"
+
+#. module: sale_margin
+#. odoo-python
+#: code:addons/sale_margin/models/sale_order_line.py:0
+msgid "If the cost is not 0, it is not possible to set the margin to 100%"
+msgstr "Maliyet 0 değilse marj %100 yapılamaz"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Invoiced"
+msgstr "Faturalanan"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Invoiced Qty"
+msgstr "Faturalanan Miktar"
+
+#. module: sale_margin
+#. odoo-javascript
+#: code:addons/sale_margin/static/src/js/labeled_field_short_labels.js:0
+msgid "M%:"
+msgstr "M%:"
+
+#. module: sale_margin
+#. odoo-javascript
+#: code:addons/sale_margin/static/src/js/labeled_field_short_labels.js:0
+msgid "M:"
+msgstr "M:"
+
+#. module: sale_margin
+#. odoo-python
+#: code:addons/sale_margin/models/sale_order.py:0
+msgid "Margin (%(percent).0f%%)"
+msgstr "Marj (%%%(percent).0f)"
+
+#. module: sale_margin
+#: model:ir.module.module,shortdesc:base.module_sale_margin
+msgid "Margins in Sales Orders"
+msgstr "Satış Siparişlerinde Marjlar"
+
+#. module: sale_margin
+#: model_terms:ir.actions.act_window,help:sale_margin.action_order_report_projected_margins
+msgid "No data to display"
+msgstr "Gösterilecek veri yok"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Product"
+msgstr "Ürün"
+
+#. module: sale_margin
+#: model:ir.model,name:sale_margin.model_sale_order_template_line
+msgid "Quotation Template Line"
+msgstr "Teklif Şablonu Satırı"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_view_projected_margins_graph
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_view_projected_margins_pivot
+msgid "Sales Analysis"
+msgstr "Satış Analizi"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Sold"
+msgstr "Satılan"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Sold Qty"
+msgstr "Satılan Miktar"
+
+#. module: sale_margin
+#: model_terms:ir.actions.act_window,help:sale_margin.action_order_report_projected_margins
+msgid "This report performs analysis on forecast margins of sales orders."
+msgstr "Bu rapor, satış siparişlerinin öngörülen marjlarını analiz eder."
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Cost"
+msgstr "Toplam Maliyet"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Delivered"
+msgstr "Toplam Teslim Edilen"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Delivered Qty"
+msgstr "Toplam Teslim Edilen Miktar"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Invoiced"
+msgstr "Toplam Faturalanan"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Invoiced Qty"
+msgstr "Toplam Faturalanan Miktar"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Margin"
+msgstr "Toplam Marj"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Sold"
+msgstr "Toplam Satılan"
+
+#. module: sale_margin
+#: model_terms:ir.ui.view,arch_db:sale_margin.sale_report_projected_margins_list
+msgid "Total Sold Qty"
+msgstr "Toplam Satılan Miktar"
+
+#. module: sale_margin
+#: model:ir.model.fields,field_description:sale_margin.field_sale_order_line__purchase_price
+#: model:ir.model.fields,field_description:sale_margin.field_sale_order_template_line__purchase_price
+msgid "Unit Cost"
+msgstr "Birim Maliyet"

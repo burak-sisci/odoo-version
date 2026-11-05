@@ -44,9 +44,9 @@ jobs:
       - name: Tests of the project tools
         run: python -m unittest discover -s tools/tests -v
 
-      # Ratchet: raised with each batch of translations, never lowered (T3.6; gate: 95)
+      # Ratchet: raised with each batch of translations, never lowered (T3.6; gate: 95, reached 100)
       - name: Turkish translation coverage of the package modules
-        run: python tools/po_coverage.py report --quiet --min 95.7
+        run: python tools/po_coverage.py report --quiet --min 100
 
       - name: Hook environments cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0

@@ -1,0 +1,53 @@
+# Turkish translations of the barcodes module completing upstream's (ov_i18n_tr, T3.6).
+# Read after barcodes/i18n/tr.po. The comments come from barcodes.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: barcodes
+#: model_terms:ir.ui.view,arch_db:barcodes.view_partner_barcodes_form
+msgid "Barcode must start with `042`"
+msgstr "Barkod `042` ile başlamalıdır"
+
+#. module: barcodes
+#. odoo-javascript
+#: code:addons/barcodes/static/src/components/barcode_view.xml:0
+msgid ""
+"Click the icon in the browser on the left of the address bar and toggle "
+"Camera permissions."
+msgstr ""
+"Tarayıcıda adres çubuğunun solundaki simgeye tıklayın ve kamera iznini açın."
+
+#. module: barcodes
+#: model:ir.model,name:barcodes.model_res_company
+msgid "Company"
+msgstr "Şirket"
+
+#. module: barcodes
+#. odoo-javascript
+#: code:addons/barcodes/static/src/components/barcode_view.xml:0
+msgid "Edit access to scan"
+msgstr "Tarama için erişimi düzenleyin"
+
+#. module: barcodes
+#. odoo-javascript
+#: code:addons/barcodes/static/src/components/barcode_input.js:0
+msgid "Enter a barcode"
+msgstr "Bir barkod girin"
+
+#. module: barcodes
+#. odoo-javascript
+#: code:addons/barcodes/static/src/components/barcode_view.xml:0
+msgid "No access to your camera"
+msgstr "Kameranıza erişim yok"
+
+#. module: barcodes
+#: model:ir.module.module,summary:base.module_barcodes
+msgid "Scan and Parse Barcodes"
+msgstr "Barkodları Tara ve Ayrıştır"

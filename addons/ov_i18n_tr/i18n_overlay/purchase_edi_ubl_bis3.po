@@ -1,0 +1,45 @@
+# Turkish translations of the purchase_edi_ubl_bis3 module completing upstream's (ov_i18n_tr, T3.6).
+# Read after purchase_edi_ubl_bis3/i18n/tr.po. The comments come from purchase_edi_ubl_bis3.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: purchase_edi_ubl_bis3
+#: model:ir.module.module,description:base.module_purchase_edi_ubl_bis3
+msgid ""
+"\n"
+"Allows to export and import formats: UBL Bis 3.\n"
+"When generating the PDF on the order, the PDF will be embedded inside the "
+"xml for all UBL formats. This allows the\n"
+"receiver to retrieve the PDF with only the xml file.\n"
+msgstr ""
+"\n"
+"Şu biçimlerin dışa ve içe aktarılmasını sağlar: UBL Bis 3.\n"
+"Siparişte PDF oluşturulurken PDF, tüm UBL biçimlerinde XML'in içine "
+"gömülür. Böylece\n"
+"alıcı PDF'i yalnız XML dosyasıyla alabilir.\n"
+
+#. module: purchase_edi_ubl_bis3
+#: model:ir.module.module,shortdesc:base.module_purchase_edi_ubl_bis3
+msgid "Import/Export electronic orders with UBL"
+msgstr "UBL ile elektronik siparişleri içe/dışa aktarın"
+
+#. module: purchase_edi_ubl_bis3
+#: model:ir.model,name:purchase_edi_ubl_bis3.model_account_move
+msgid "Journal Entry"
+msgstr "Yevmiye Kaydı"
+
+#. module: purchase_edi_ubl_bis3
+#. odoo-python
+#: code:addons/purchase_edi_ubl_bis3/models/account_move.py:0
+msgid ""
+"You can only (un)group lines of an invoice not linked to a purchase order"
+msgstr ""
+"Yalnız bir satın alma siparişine bağlı olmayan fatura satırlarını "
+"gruplayabilir veya gruplamasını kaldırabilirsiniz"

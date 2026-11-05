@@ -1,0 +1,242 @@
+# Turkish translations of the base_import module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base_import/i18n/tr.po. The comments come from base_import.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base_import
+#: model:ir.module.module,description:base.module_base_import
+msgid ""
+"\n"
+"New extensible file import for Odoo\n"
+"======================================\n"
+"\n"
+"Re-implement Odoo's file import system:\n"
+"\n"
+"* Server side, the previous system forces most of the logic into the\n"
+"  client which duplicates the effort (between clients), makes the\n"
+"  import system much harder to use without a client (direct RPC or\n"
+"  other forms of automation) and makes knowledge about the\n"
+"  import/export system much harder to gather as it is spread over\n"
+"  3+ different projects.\n"
+"\n"
+"* In a more extensible manner, so users and partners can build their\n"
+"  own front-end to import from other file formats (e.g. OpenDocument\n"
+"  files) which may be simpler to handle in their work flow or from\n"
+"  their data production sources.\n"
+"\n"
+"* In a module, so that administrators and users of Odoo who do not\n"
+"  need or want an online import can avoid it being available to users.\n"
+msgstr ""
+"\n"
+"Odoo için genişletilebilir yeni dosya içe aktarma\n"
+"=================================================\n"
+"\n"
+"Odoo'nun dosya içe aktarma sistemini yeniden uygular:\n"
+"\n"
+"* Sunucu tarafında: önceki sistem mantığın çoğunu istemciye yüklüyordu. Bu, "
+"aynı emeğin istemciler arasında tekrarlanmasına yol açıyor, içe aktarmayı "
+"istemci olmadan (doğrudan RPC veya başka otomasyon biçimleri) kullanmayı "
+"çok zorlaştırıyor ve içe/dışa aktarma sistemiyle ilgili bilgiyi 3'ten fazla "
+"projeye dağıttığı için toplamayı güçleştiriyordu.\n"
+"\n"
+"* Daha genişletilebilir biçimde: kullanıcılar ve iş ortakları, iş "
+"akışlarında veya veri kaynaklarında daha kolay işlenen başka dosya "
+"biçimlerinden (ör. OpenDocument dosyaları) içe aktarmak için kendi "
+"arayüzlerini kurabilir.\n"
+"\n"
+"* Bir modül olarak: çevrim içi içe aktarmaya ihtiyaç duymayan ya da "
+"istemeyen Odoo yöneticileri ve kullanıcıları, bu özelliği kullanıcılara "
+"kapatabilir.\n"
+
+#. module: base_import
+#: model:ir.module.module,shortdesc:base.module_base_import
+msgid "Base import"
+msgstr "Temel içe aktarma"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.xml:0
+msgid "Batch interval"
+msgstr "Parti aralığı"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.xml:0
+msgid "Batch max size"
+msgstr "En büyük parti boyutu"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.xml:0
+msgid "Batch size"
+msgstr "Parti büyüklüğü"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "Datetime Format"
+msgstr "Tarih ve Saat Biçimi"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "Decimals Separator"
+msgstr "Ondalık Ayırıcı"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "Defines how many megabytes can be imported in each batch"
+msgstr "Her partide kaç megabayt içe aktarılabileceğini belirler"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.js:0
+msgid ""
+"Defines the number of records that will be imported in one transaction. "
+"Reduce the batch size in case of heavy imports"
+msgstr ""
+"Tek işlemde içe aktarılacak kayıt sayısını belirler. Büyük içe aktarmalarda "
+"parti büyüklüğünü azaltın"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "Delay applied after each batch to prevent unthrottled calls"
+msgstr ""
+"Çağrıların sınırsız sıklıkta yapılmasını önlemek için her partiden sonra "
+"uygulanan bekleme"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "Delimiter"
+msgstr "Ayırıcı"
+
+#. module: base_import
+#: model:ir.model.fields,help:base_import.field_base_import_import__file
+msgid "File to check and/or import"
+msgstr "Denetlenecek ve/veya içe aktarılacak dosya"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.js:0
+msgid ""
+"If checked, the changes are tracked in the chatter and notifications can be "
+"sent to followers, which could slow down the import"
+msgstr ""
+"İşaretlenirse değişiklikler sohbet geçmişinde izlenir ve takipçilere "
+"bildirim gönderilebilir; bu, içe aktarmayı yavaşlatabilir"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.js:0
+msgid "If checked, the first row of the sheet will not be imported"
+msgstr "İşaretlenirse sayfanın ilk satırı içe aktarılmaz"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "Import failed: see errors below"
+msgstr "İçe aktarma başarısız: aşağıdaki hatalara bakın"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_content/import_data_content.xml:0
+msgid "Lang:"
+msgstr "Dil:"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_content/import_data_content.xml:0
+msgid "Language"
+msgstr "Dil"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "No date detected"
+msgstr "Tarih algılanmadı"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid "No datetime detected"
+msgstr "Tarih ve saat algılanmadı"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_action/import_action.xml:0
+msgid "Re-Upload"
+msgstr "Yeniden Yükle"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_content/import_data_content.js:0
+msgid "Required Fields"
+msgstr "Zorunlu Alanlar"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_content/import_data_content.xml:0
+msgid "Search a language..."
+msgstr "Dil arayın..."
+
+#. module: base_import
+#. odoo-python
+#: code:addons/base_import/models/base_import.py:0
+msgid ""
+"There was an issue decoding the file using encoding “%s”.\n"
+"This encoding was automatically detected."
+msgstr ""
+"Dosya şu kodlamayla çözülürken sorun oluştu: “%s”.\n"
+"Bu kodlama otomatik algılandı."
+
+#. module: base_import
+#. odoo-python
+#: code:addons/base_import/models/base_import.py:0
+msgid ""
+"There was an issue decoding the file using encoding “%s”.\n"
+"This encoding was manually selected."
+msgstr ""
+"Dosya şu kodlamayla çözülürken sorun oluştu: “%s”.\n"
+"Bu kodlama elle seçildi."
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.xml:0
+msgid "Track changes in chatter"
+msgstr "Değişiklikleri sohbet geçmişinde izle"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_data_sidepanel/import_data_sidepanel.js:0
+msgid ""
+"Upload attachments such as images or files that can be mapped with imported "
+"data"
+msgstr ""
+"İçe aktarılan verilerle eşleştirilebilecek görseller veya dosyalar gibi "
+"ekleri yükleyin"
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_model.js:0
+msgid ""
+"Use unique key across objects for External ID's, for example \"lead_1\" "
+"instead of \"1\""
+msgstr ""
+"Dış kimlikler için nesneler arasında benzersiz bir anahtar kullanın; ör. "
+"\"1\" yerine \"lead_1\""
+
+#. module: base_import
+#. odoo-javascript
+#: code:addons/base_import/static/src/import_action/import_action.xml:0
+msgid "or drag a file"
+msgstr "veya bir dosya sürükleyin"

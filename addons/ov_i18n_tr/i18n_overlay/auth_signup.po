@@ -1,0 +1,469 @@
+# Turkish translations of the auth_signup module completing upstream's (ov_i18n_tr, T3.6).
+# Read after auth_signup/i18n/tr.po. The comments come from auth_signup.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: auth_signup
+#: model:ir.module.module,description:base.module_auth_signup
+msgid ""
+"\n"
+"Allow users to sign up and reset their password\n"
+"===============================================\n"
+msgstr ""
+"\n"
+"Kullanıcıların kaydolmasına ve parolalarını sıfırlamasına izin verir\n"
+"====================================================================\n"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.reset_password_email
+msgid ""
+",<br/><br/>\n"
+"        A password reset was requested for the account linked to this "
+"email.\n"
+"        You may change your password by following this link which will "
+"remain valid during"
+msgstr ""
+",<br/><br/>\n"
+"        Bu e-postaya bağlı hesap için parola sıfırlama istendi.\n"
+"        Aşağıdaki bağlantıyla parolanızı değiştirebilirsiniz. Bağlantı"
+
+#. module: auth_signup
+#: model:mail.template,body_html:auth_signup.mail_template_user_signup_account_created
+msgid ""
+"<t>\n"
+"                        Dear <t t-out=\"object.name or ''\">Marc "
+"Demo</t>,<br/><br/>\n"
+"                        Your account has been successfully created!<br/>\n"
+"                        Your login is <strong><t t-out=\"object.email or "
+"''\">mark.brown23@example.com</t></strong><br/>\n"
+"                        To gain access to your account, you can use the "
+"following link:\n"
+"                        <div style=\"margin: 32px 0px 32px 0px;\">\n"
+"                            <a "
+"t-attf-href=\"/web/login?auth_login={{object.email}}\" "
+"t-attf-style=\"background-color: {{object.company_id.email_secondary_color "
+"or '#875A7B'}}; padding: 8px 16px 8px 16px; text-decoration: none; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-radius: 5px; "
+"font-size:13px;\">\n"
+"                                Go to My Account\n"
+"                            </a>\n"
+"                        </div>\n"
+"                        Thanks,<br/>\n"
+"                        <t t-if=\"user.signature\">\n"
+"                            <br/>\n"
+"                            <div data-o-mail-quote=\"1\">--<br "
+"data-o-mail-quote=\"1\"/><t t-out=\"user.signature or ''\">Mitchell "
+"Admin</t></div>\n"
+"                        </t>\n"
+"                    </t>"
+msgstr ""
+"<t>\n"
+"                        Sayın <t t-out=\"object.name or ''\">Marc "
+"Demo</t>,<br/><br/>\n"
+"                        Hesabınız başarıyla oluşturuldu!<br/>\n"
+"                        Giriş adınız: <strong><t t-out=\"object.email or "
+"''\">mark.brown23@example.com</t></strong><br/>\n"
+"                        Hesabınıza erişmek için aşağıdaki bağlantıyı "
+"kullanabilirsiniz:\n"
+"                        <div style=\"margin: 32px 0px 32px 0px;\">\n"
+"                            <a "
+"t-attf-href=\"/web/login?auth_login={{object.email}}\" "
+"t-attf-style=\"background-color: {{object.company_id.email_secondary_color "
+"or '#875A7B'}}; padding: 8px 16px 8px 16px; text-decoration: none; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-radius: 5px; "
+"font-size:13px;\">\n"
+"                                Hesabıma Git\n"
+"                            </a>\n"
+"                        </div>\n"
+"                        Teşekkürler,<br/>\n"
+"                        <t t-if=\"user.signature\">\n"
+"                            <br/>\n"
+"                            <div data-o-mail-quote=\"1\">--<br "
+"data-o-mail-quote=\"1\"/><t t-out=\"user.signature or ''\">Mitchell "
+"Admin</t></div>\n"
+"                        </t>\n"
+"                    </t>"
+
+#. module: auth_signup
+#: model:mail.template,body_html:auth_signup.portal_set_password_email
+msgid ""
+"<t>\n"
+"                Dear <t t-out=\"object.name or ''\">Marc Demo</t>,<br/> <br/>\n"
+"                Welcome to <t "
+"t-out=\"object.company_id.name\">YourCompany</t>'s Portal!<br/><br/>\n"
+"                An account has been created for you with the following "
+"login: <t t-out=\"object.login\">demo</t><br/><br/>\n"
+"                Click on the button below to pick a password and activate "
+"your account.\n"
+"                <div style=\"margin: 16px 0px 16px 0px; text-align: "
+"center;\">\n"
+"                    <a t-att-href=\"object.partner_id._get_signup_url()\" "
+"t-attf-style=\"display: inline-block; padding: 10px; text-decoration: none; "
+"font-size: 12px; background-color: "
+"{{object.company_id.email_secondary_color or '#875A7B'}}; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-radius: "
+"5px;\">\n"
+"                        <strong>Activate Account</strong>\n"
+"                    </a>\n"
+"                </div>\n"
+"                <t t-out=\"ctx.get('welcome_message') or ''\">Welcome to our "
+"company's portal.</t>\n"
+"            </t>"
+msgstr ""
+"<t>\n"
+"                Sayın <t t-out=\"object.name or ''\">Marc Demo</t>,<br/> "
+"<br/>\n"
+"                <t t-out=\"object.company_id.name\">YourCompany</t> portalına "
+"hoş geldiniz!<br/><br/>\n"
+"                Sizin için şu giriş adıyla bir hesap oluşturuldu: <t "
+"t-out=\"object.login\">demo</t><br/><br/>\n"
+"                Bir parola seçip hesabınızı etkinleştirmek için aşağıdaki "
+"düğmeye tıklayın.\n"
+"                <div style=\"margin: 16px 0px 16px 0px; text-align: "
+"center;\">\n"
+"                    <a t-att-href=\"object.partner_id._get_signup_url()\" "
+"t-attf-style=\"display: inline-block; padding: 10px; text-decoration: none; "
+"font-size: 12px; background-color: "
+"{{object.company_id.email_secondary_color or '#875A7B'}}; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-radius: "
+"5px;\">\n"
+"                        <strong>Hesabı Etkinleştir</strong>\n"
+"                    </a>\n"
+"                </div>\n"
+"                <t t-out=\"ctx.get('welcome_message') or ''\">Şirketimizin "
+"portalına hoş geldiniz.</t>\n"
+"            </t>"
+
+#. module: auth_signup
+#: model:mail.template,body_html:auth_signup.set_password_email
+msgid ""
+"<t>\n"
+"<t t-set=\"company_name\" t-value=\"object.company_id.name or ''\"/>\n"
+"<t t-set=\"website_url\" t-value=\"object.get_base_url()\"/>\n"
+"Hi <t t-out=\"object.name or ''\">Marc Demo</t>,<br/><br/>\n"
+"<em>This link is valid for <t "
+"t-out=\"(object.env['ir.config_parameter'].sudo().get_int('auth_signup.signup.validity.hours') or 144)//24\">link_validity_days</t> days </em><br/>\n"
+"<b><t t-out=\"company_name\"/></b> uses <a href=\"https://odoo.com\" "
+"t-attf-style=\"color: {{object.company_id.email_secondary_color or "
+"'#875A7B'}};\">Odoo</a>\n"
+"to run its business. You have been invited by <b><t "
+"t-out=\"object.create_uid.name or ''\">OdooBot</t></b> to connect.\n"
+"<br/><br/>\n"
+"Once accepted, you can reconnect through: <br/>\n"
+"<ul>\n"
+"    <li>Login: <a t-attf-href=\"/web/login?login={{ object.email }}\" "
+"target=\"_blank\" t-out=\"object.email or "
+"''\">mark.brown23@example.com</a></li>\n"
+"    <li>Link: <a t-att-href=\"website_url\" t-out=\"website_url or "
+"''\">http://yourcompany.odoo.com</a></li>\n"
+"</ul>\n"
+"<br/>\n"
+"<div style=\"margin: 16px 0px 16px 0px;\">\n"
+"    <a t-att-href=\"object.partner_id._get_signup_url()\" "
+"t-attf-style=\"background-color: {{object.company_id.email_secondary_color "
+"or '#875A7B'}}; padding: 8px 16px 8px 16px; text-decoration: none; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-radius: 5px; "
+"font-size:13px;\">\n"
+"        Accept invitation\n"
+"    </a>\n"
+"</div>\n"
+"<br/>\n"
+"Enjoy Odoo!<br/><br/>\n"
+"--<br/>The <t t-out=\"company_name\"/> Team</t>\n"
+"            "
+msgstr ""
+"<t>\n"
+"<t t-set=\"company_name\" t-value=\"object.company_id.name or ''\"/>\n"
+"<t t-set=\"website_url\" t-value=\"object.get_base_url()\"/>\n"
+"Merhaba <t t-out=\"object.name or ''\">Marc Demo</t>,<br/><br/>\n"
+"<em>Bu bağlantı <t "
+"t-out=\"(object.env['ir.config_parameter'].sudo().get_int('auth_signup.signup.validity.hours') or 144)//24\">link_validity_days</t> gün geçerlidir </em><br/>\n"
+"<b><t t-out=\"company_name\"/></b>, işlerini yürütmek için <a "
+"href=\"https://odoo.com\" t-attf-style=\"color: "
+"{{object.company_id.email_secondary_color or '#875A7B'}};\">Odoo</a>\n"
+"kullanıyor. <b><t t-out=\"object.create_uid.name or ''\">OdooBot</t></b> sizi "
+"bağlanmaya davet etti.\n"
+"<br/><br/>\n"
+"Daveti kabul ettikten sonra şuradan yeniden bağlanabilirsiniz: <br/>\n"
+"<ul>\n"
+"    <li>Giriş adı: <a t-attf-href=\"/web/login?login={{ object.email }}\" "
+"target=\"_blank\" t-out=\"object.email or "
+"''\">mark.brown23@example.com</a></li>\n"
+"    <li>Bağlantı: <a t-att-href=\"website_url\" t-out=\"website_url or "
+"''\">http://yourcompany.odoo.com</a></li>\n"
+"</ul>\n"
+"<br/>\n"
+"<div style=\"margin: 16px 0px 16px 0px;\">\n"
+"    <a t-att-href=\"object.partner_id._get_signup_url()\" "
+"t-attf-style=\"background-color: {{object.company_id.email_secondary_color "
+"or '#875A7B'}}; padding: 8px 16px 8px 16px; text-decoration: none; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-radius: 5px; "
+"font-size:13px;\">\n"
+"        Daveti kabul et\n"
+"    </a>\n"
+"</div>\n"
+"<br/>\n"
+"Odoo'nun keyfini çıkarın!<br/><br/>\n"
+"--<br/><t t-out=\"company_name\"/> Ekibi</t>\n"
+"            "
+
+#. module: auth_signup
+#: model:mail.template,body_html:auth_signup.mail_template_data_unregistered_users
+msgid ""
+"<t>\n"
+"Dear <t t-out=\"object.name or ''\">Mitchell Admin</t>,<br/> <br/>\n"
+"You added the following user(s) to your database but they haven't "
+"registered yet:\n"
+"<ul>\n"
+"    <t t-foreach=\"invited_users\" t-as=\"invited_user\">\n"
+"        <li t-out=\"invited_user or ''\">demo@example.com</li>\n"
+"    </t>\n"
+"</ul>\n"
+"Follow up with them so they can access your database and start working with "
+"you.\n"
+"<br/><br/>\n"
+"Have a nice day!<br/>\n"
+"--<br/>The <t t-out=\"object.company_id.name or ''\">YourCompany</t> Team\n"
+"            </t>"
+msgstr ""
+"<t>\n"
+"Sayın <t t-out=\"object.name or ''\">Mitchell Admin</t>,<br/> <br/>\n"
+"Veritabanınıza aşağıdaki kullanıcıları eklediniz, ancak henüz "
+"kaydolmadılar:\n"
+"<ul>\n"
+"    <t t-foreach=\"invited_users\" t-as=\"invited_user\">\n"
+"        <li t-out=\"invited_user or ''\">demo@example.com</li>\n"
+"    </t>\n"
+"</ul>\n"
+"Veritabanınıza erişip sizinle çalışmaya başlayabilmeleri için onlarla "
+"iletişime geçin.\n"
+"<br/><br/>\n"
+"İyi günler!<br/>\n"
+"--<br/><t t-out=\"object.company_id.name or ''\">YourCompany</t> Ekibi\n"
+"            </t>"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "A reset password link was sent by email"
+msgstr "E-postayla bir parola sıfırlama bağlantısı gönderildi"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Cannot send email: user %s has no email address."
+msgstr "E-posta gönderilemedi: %s kullanıcısının e-posta adresi yok."
+
+#. module: auth_signup
+#: model:ir.model,name:auth_signup.model_res_partner
+msgid "Contact"
+msgstr "Kişi"
+
+#. module: auth_signup
+#. odoo-javascript
+#: code:addons/auth_signup/static/src/components/signup.xml:0
+msgid "Copy Reset Password Link"
+msgstr "Parola Sıfırlama Bağlantısını Kopyala"
+
+#. module: auth_signup
+#: model:ir.model.fields,field_description:auth_signup.field_ir_http__display_name
+#: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:auth_signup.field_res_partner__display_name
+#: model:ir.model.fields,field_description:auth_signup.field_res_users__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.login
+msgid "Don't have an account?"
+msgstr "Hesabınız yok mu?"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.reset_password
+#: model_terms:ir.ui.view,arch_db:auth_signup.signup
+msgid "Email"
+msgstr "E-posta"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.reset_password_email
+msgid ""
+"If you do not expect this, you can safely ignore this email.<br/><br/>\n"
+"        Thanks,"
+msgstr ""
+"Bu isteği siz yapmadıysanız bu e-postayı güvenle yok "
+"sayabilirsiniz.<br/><br/>\n"
+"        Teşekkürler,"
+
+#. module: auth_signup
+#: model:ir.model.fields.selection,name:auth_signup.selection__res_users__state__inactive
+msgid "Inactive"
+msgstr "Etkin Değil"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/controllers/main.py:0
+msgid "Invalid email; please enter a valid email address."
+msgstr "Geçersiz e-posta; lütfen geçerli bir e-posta adresi girin."
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
+msgid "Let your customers log in to see their documents"
+msgstr "Müşterilerinizin oturum açıp belgelerini görmesine izin verin"
+
+#. module: auth_signup
+#. odoo-javascript
+#: code:addons/auth_signup/static/src/components/signup.js:0
+msgid "Link copied to clipboard!"
+msgstr "Bağlantı panoya kopyalandı!"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/controllers/main.py:0
+msgid "No login provided."
+msgstr "Giriş adı belirtilmedi."
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Only administrators can generate reset password link."
+msgstr "Parola sıfırlama bağlantısını yalnız yöneticiler oluşturabilir."
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Password reset"
+msgstr "Parola sıfırlama"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/controllers/main.py:0
+msgid "Password reset instructions sent to your email address."
+msgstr "Parola sıfırlama talimatları e-posta adresinize gönderildi."
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/controllers/main.py:0
+msgid "Passwords do not match; please retype them."
+msgstr "Parolalar eşleşmiyor; lütfen yeniden yazın."
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
+msgid "Send Password Reset"
+msgstr "Parola Sıfırlama Gönder"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
+msgid "Send an Invitation Email"
+msgstr "Davet E-postası Gönder"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.signup
+msgid "Sign up"
+msgstr "Kaydol"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Sign-up link sent by email!"
+msgstr "Kayıt bağlantısı e-postayla gönderildi!"
+
+#. module: auth_signup
+#: model:ir.module.module,shortdesc:base.module_auth_signup
+msgid "Signup"
+msgstr "Kayıt"
+
+#. module: auth_signup
+#: model:ir.model.fields,field_description:auth_signup.field_res_partner__signup_type
+#: model:ir.model.fields,field_description:auth_signup.field_res_users__signup_type
+msgid "Signup Token Type"
+msgstr "Kayıt Belirteci Türü"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Signup is not allowed for uninvited users"
+msgstr "Davet edilmeyen kullanıcılar kaydolamaz"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Signup: no login given for new user"
+msgstr "Kayıt: yeni kullanıcı için giriş adı verilmedi"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Signup: no name or partner given for new user"
+msgstr "Kayıt: yeni kullanıcı için ad veya iş ortağı verilmedi"
+
+#. module: auth_signup
+#: model:ir.model.fields,field_description:auth_signup.field_res_users__state
+msgid "Status"
+msgstr "Durum"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/controllers/main.py:0
+msgid "The form was not properly filled in."
+msgstr "Form doğru doldurulmadı."
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
+msgid ""
+"To send invitations in B2B mode, open a contact or select several ones in "
+"list view and click on 'Portal Access Management' option in the dropdown "
+"menu *Action*."
+msgstr ""
+"B2B modunda davet göndermek için bir kişiyi açın ya da liste görünümünde "
+"birkaç kişi seçin, ardından *Aksiyonlar* açılır menüsünde 'Portal Giriş "
+"Yönetimi' seçeneğine tıklayın."
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Welcome to Odoo"
+msgstr "Odoo'ya hoş geldiniz"
+
+#. module: auth_signup
+#: model:mail.template,subject:auth_signup.mail_template_user_signup_account_created
+msgid "Welcome to {{ object.company_id.name }}!"
+msgstr "{{ object.company_id.name }} ailesine hoş geldiniz!"
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "You cannot perform this action on your own user."
+msgstr "Bu işlemi kendi kullanıcınız üzerinde yapamazsınız."
+
+#. module: auth_signup
+#. odoo-python
+#: code:addons/auth_signup/controllers/main.py:0
+#: code:addons/auth_signup/models/res_users.py:0
+msgid "Your Account"
+msgstr "Hesabınız"
+
+#. module: auth_signup
+#: model:mail.template,subject:auth_signup.portal_set_password_email
+msgid "Your account at {{ object.company_id.name }}"
+msgstr "{{ object.company_id.name }} hesabınız"
+
+#. module: auth_signup
+#: model_terms:ir.ui.view,arch_db:auth_signup.reset_password_email
+msgid "hours:<br/>"
+msgstr "saat boyunca geçerlidir:<br/>"
+
+#. module: auth_signup
+#: model:mail.template,subject:auth_signup.set_password_email
+msgid ""
+"{{ object.create_uid.name }} from {{ object.company_id.name }} invites you "
+"to connect to Odoo"
+msgstr ""
+"{{ object.company_id.name }} şirketinden {{ object.create_uid.name }} sizi "
+"Odoo'ya bağlanmaya davet ediyor"

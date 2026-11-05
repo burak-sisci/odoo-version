@@ -1,0 +1,153 @@
+# Turkish translations of the auth_totp module completing upstream's (ov_i18n_tr, T3.6).
+# Read after auth_totp/i18n/tr.po. The comments come from auth_totp.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: auth_totp
+#: model:ir.module.module,description:base.module_auth_totp
+msgid ""
+"\n"
+"Two-Factor Authentication (TOTP)\n"
+"================================\n"
+"Allows users to configure two-factor authentication on their user account\n"
+"for extra security, using time-based one-time passwords (TOTP).\n"
+"\n"
+"Once enabled, the user will need to enter a 6-digit code as provided\n"
+"by their authenticator app before being granted access to the system.\n"
+"All popular authenticator apps are supported.\n"
+"\n"
+"Note: logically, two-factor prevents password-based RPC access for users\n"
+"where it is enabled. In order to be able to execute RPC scripts, the user\n"
+"can setup API keys to replace their main password.\n"
+msgstr ""
+"\n"
+"İki Faktörlü Kimlik Doğrulama (TOTP)\n"
+"====================================\n"
+"Kullanıcıların, ek güvenlik için kullanıcı hesaplarında zamana dayalı tek "
+"kullanımlık\n"
+"parolalarla (TOTP) iki faktörlü kimlik doğrulamayı yapılandırmasını sağlar.\n"
+"\n"
+"Etkinleştirildiğinde kullanıcı, sisteme erişmeden önce kimlik doğrulama "
+"uygulamasının\n"
+"verdiği 6 haneli kodu girmelidir. Yaygın kimlik doğrulama uygulamalarının "
+"hepsi desteklenir.\n"
+"\n"
+"Not: iki faktörlü kimlik doğrulama, etkin olduğu kullanıcılar için doğal "
+"olarak parolayla\n"
+"RPC erişimini engeller. RPC betiklerini çalıştırabilmek için kullanıcı, ana "
+"parolasının\n"
+"yerine geçecek API anahtarları tanımlayabilir.\n"
+
+#. module: auth_totp
+#. odoo-python
+#: code:addons/auth_totp/wizard/auth_totp_wizard.py:0
+msgid "2-Factor authentication is now enabled."
+msgstr "İki faktörlü kimlik doğrulama artık etkin."
+
+#. module: auth_totp
+#. odoo-javascript
+#: code:addons/auth_totp/static/src/services/check_identity/check_identity.xml:0
+msgid "Authentication code"
+msgstr "Kimlik doğrulama kodu"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid ""
+"Check your Authenticator app for your code.\n"
+"                        <br/>"
+msgstr ""
+"Kodunuz için kimlik doğrulama uygulamanıza bakın.\n"
+"                        <br/>"
+
+#. module: auth_totp
+#: model:ir.actions.server,name:auth_totp.action_disable_totp
+msgid "Disable two-factor authentication"
+msgstr "İki faktörlü kimlik doğrulamayı devre dışı bırak"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid "Enter code"
+msgstr "Kodu girin"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid "Enter verification code"
+msgstr "Doğrulama kodunu girin"
+
+#. module: auth_totp
+#: model:ir.model,name:auth_totp.model_ir_http
+msgid "HTTP Routing"
+msgstr "HTTP Yönlendirme"
+
+#. module: auth_totp
+#. odoo-javascript
+#: code:addons/auth_totp/static/src/services/check_identity/check_identity.xml:0
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view "
+"your authentication code."
+msgstr ""
+"Kimlik doğrulama kodunuzu görmek için iki faktörlü kimlik doğrulama (TOTP) "
+"uygulamanızı veya tarayıcı eklentinizi açın."
+
+#. module: auth_totp
+#: model:ir.module.module,shortdesc:base.module_auth_totp
+msgid "Two-Factor Authentication (TOTP)"
+msgstr "İki Faktörlü Kimlik Doğrulama (TOTP)"
+
+#. module: auth_totp
+#. odoo-python
+#: code:addons/auth_totp/models/res_users.py:0
+msgid "Two-Factor Authentication Activation"
+msgstr "İki Faktörlü Kimlik Doğrulamayı Etkinleştirme"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.res_users_view_search
+msgid "Two-factor authentication Disabled"
+msgstr "İki faktörlü kimlik doğrulama devre dışı"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.res_users_view_search
+msgid "Two-factor authentication Enabled"
+msgstr "İki faktörlü kimlik doğrulama etkin"
+
+#. module: auth_totp
+#. odoo-python
+#: code:addons/auth_totp/models/res_users.py:0
+msgid "Two-factor authentication disabled for the following user(s): %s"
+msgstr ""
+"Şu kullanıcılar için iki faktörlü kimlik doğrulama devre dışı bırakıldı: %s"
+
+#. module: auth_totp
+#. odoo-javascript
+#: code:addons/auth_totp/static/src/services/check_identity/check_identity.xml:0
+msgid "Use your authenticator app"
+msgstr "Kimlik doğrulama uygulamanızı kullanın"
+
+#. module: auth_totp
+#. odoo-javascript
+#: code:addons/auth_totp/static/src/services/check_identity/check_identity.xml:0
+msgid "Verify"
+msgstr "Doğrula"
+
+#. module: auth_totp
+#. odoo-javascript
+#: code:addons/auth_totp/static/src/services/check_identity/check_identity.xml:0
+msgid "XXXXXX"
+msgstr "XXXXXX"
+
+#. module: auth_totp
+#. odoo-python
+#: code:addons/auth_totp/models/res_users.py:0
+msgid ""
+"You reached the limit of authentication mails sent for your account, please "
+"try again later."
+msgstr ""
+"Hesabınız için gönderilebilecek kimlik doğrulama e-postası sınırına "
+"ulaştınız; lütfen daha sonra tekrar deneyin."

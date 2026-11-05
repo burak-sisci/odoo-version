@@ -1,0 +1,87 @@
+# Turkish translations of the mrp_account module completing upstream's (ov_i18n_tr, T3.6).
+# Read after mrp_account/i18n/tr.po. The comments come from mrp_account.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: mrp_account
+#: model:ir.module.module,shortdesc:base.module_mrp_account
+msgid "Accounting - MRP"
+msgstr "Muhasebe - Üretim"
+
+#. module: mrp_account
+#: model:ir.module.module,summary:base.module_mrp_account
+msgid "Analytic accounting in Manufacturing"
+msgstr "Üretimde analitik muhasebe"
+
+#. module: mrp_account
+#: model:ir.model,name:mrp_account.model_report_mrp_report_bom_structure
+msgid "BOM Overview Report"
+msgstr "BOM Genel Raporu"
+
+#. module: mrp_account
+#: model:ir.model,name:mrp_account.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Ürün Ağacı"
+
+#. module: mrp_account
+#: model:ir.model,name:mrp_account.model_res_company
+msgid "Company"
+msgstr "Şirket"
+
+#. module: mrp_account
+#: model:ir.model.fields,field_description:mrp_account.field_mrp_production__consolidation_currency_id
+msgid "Consolidation Currency"
+msgstr "Konsolidasyon Para Birimi"
+
+#. module: mrp_account
+#: model_terms:ir.ui.view,arch_db:mrp_account.mo_overview_components
+msgid "Extra BoM Cost"
+msgstr "Ek Ürün Ağacı Maliyeti"
+
+#. module: mrp_account
+#. odoo-javascript
+#: code:addons/mrp_account/static/src/components/bom_overview_extra_bom_cost_line/bom_overview_extra_bom_cost_line.xml:0
+#: code:addons/mrp_account/static/src/components/mo_overview_extra_bom_cost_line/mo_overview_extra_bom_cost_line.xml:0
+#: model:ir.model.fields,field_description:mrp_account.field_mrp_bom__extra_cost
+#: model_terms:ir.ui.view,arch_db:mrp_account.mrp_account_inherits_mrp_bom_form_view
+msgid "Extra Cost"
+msgstr "Ek Maliyet"
+
+#. module: mrp_account
+#: model:ir.model,name:mrp_account.model_mrp_account_wip_accounting_line
+msgid "Journal item to be created when posting WIP journal entry"
+msgstr "Yarı mamul (WIP) yevmiye kaydı işlenirken oluşturulacak yevmiye kalemi"
+
+#. module: mrp_account
+#: model:ir.model.fields,field_description:mrp_account.field_mrp_production__consolidation_rate
+msgid "Rate"
+msgstr "Oran"
+
+#. module: mrp_account
+#: model:ir.model.fields,help:mrp_account.field_mrp_bom__extra_cost
+msgid ""
+"Set an additional cost per manufactured unit (e.g. labour, energy, "
+"packaging)"
+msgstr ""
+"Üretilen birim başına ek maliyet belirleyin (ör. işçilik, enerji, ambalaj)"
+
+#. module: mrp_account
+#: model:ir.model,name:mrp_account.model_mrp_account_wip_accounting
+msgid "Wizard to post Manufacturing WIP journal entry"
+msgstr "Üretim yarı mamul (WIP) yevmiye kaydını işleme sihirbazı"
+
+#. module: mrp_account
+#. odoo-python
+#: code:addons/mrp_account/models/mrp_production.py:0
+msgid ""
+"You cannot change the end date of a manufacturing order with associated "
+"journal entries."
+msgstr ""
+"Yevmiye kaydı bağlı bir üretim emrinin bitiş tarihini değiştiremezsiniz."

@@ -1,0 +1,379 @@
+# Turkish translations of the spreadsheet_dashboard module completing upstream's (ov_i18n_tr, T3.6).
+# Read after spreadsheet_dashboard/i18n/tr.po. The comments come from spreadsheet_dashboard.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: spreadsheet_dashboard
+#. odoo-python
+#: code:addons/spreadsheet_dashboard/models/spreadsheet_dashboard_share.py:0
+msgid "%s - Share Link"
+msgstr "%s - Paylaşım Bağlantısı"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_model.js:0
+msgid "(Any value)"
+msgstr "(Herhangi bir değer)"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar_menu/dashboard_custom_favorite_item.js:0
+msgid "A name for your favorite filter is required."
+msgstr "Favori filtreniz için bir ad gereklidir."
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__group_ids
+msgid "Access Groups"
+msgstr "Erişim Grupları"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__active
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__active
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_share_view_search
+msgid "Active"
+msgstr "Etkin"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_form
+msgid "All users"
+msgstr "Tüm kullanıcılar"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__allowed_user_ids
+msgid "Allowed Users"
+msgstr "İzinli Kullanıcılar"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_action.xml:0
+msgid "An error occurred while loading the dashboard"
+msgstr "Kontrol paneli yüklenirken bir hata oluştu"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+msgid "Archived"
+msgstr "Arşivlendi"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_form
+msgid "Choose a dashboard section..."
+msgstr "Bir kontrol paneli bölümü seçin..."
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_action.xml:0
+msgid "Close sidebar"
+msgstr "Kenar çubuğunu kapat"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model,name:spreadsheet_dashboard.model_spreadsheet_dashboard_share
+msgid "Copy of a shared dashboard"
+msgstr "Paylaşılan bir kontrol panelinin kopyası"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/assets/global_filter_widget_loader.js:0
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__dashboard_id
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_group__dashboard_ids
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__dashboard_id
+#: model:res.groups.privilege,name:spreadsheet_dashboard.res_groups_privilege_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_share_view_search
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_search
+msgid "Dashboard"
+msgstr "Kontrol Paneli"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model,name:spreadsheet_dashboard.model_spreadsheet_dashboard_favorite_filters
+msgid "Dashboard Favorite Filter"
+msgstr "Kontrol Paneli Favori Filtresi"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_form
+msgid "Dashboard Filters"
+msgstr "Kontrol Paneli Filtreleri"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_form
+msgid "Dashboard Section"
+msgstr "Kontrol Paneli Bölümü"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_form
+msgid "Dashboard name"
+msgstr "Kontrol paneli adı"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__is_default
+msgid "Default Filter"
+msgstr "Varsayılan Filtre"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar_menu/dashboard_search_bar_menu.xml:0
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar_menu/dashboard_search_bar_menu.xml:0
+msgid "Favorites"
+msgstr "Favoriler"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar_menu/dashboard_search_bar_menu.xml:0
+msgid "Filter"
+msgstr "Filtre"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__name
+msgid "Filter Name"
+msgstr "Filtre Adı"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/public/public_dashboard.xml:0
+msgid "Filters"
+msgstr "Filtreler"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+msgid "Filters shared with all users"
+msgstr "Tüm kullanıcılarla paylaşılan filtreler"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+msgid "Filters shared with myself"
+msgstr "Yalnız benimle paylaşılan filtreler"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+msgid "Global"
+msgstr "Genel"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/assets/global_filter_widget_loader.js:0
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__global_filters
+msgid "Global Filters"
+msgstr "Genel Filtreler"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_share_view_search
+msgid "Inactive"
+msgstr "Etkin Değil"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,help:spreadsheet_dashboard.field_spreadsheet_dashboard__is_favorite
+msgid "Indicates whether the dashboard is favorited by the current user"
+msgstr ""
+"Kontrol panelinin geçerli kullanıcının favorilerinde olup olmadığını "
+"gösterir"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar_menu/dashboard_search_bar_menu.xml:0
+msgid "More..."
+msgstr "Daha fazla..."
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+msgid "My filters"
+msgstr "Filtrelerim"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/global_filter_widget/global_filter_widget.xml:0
+msgid "No global filters defined for this dashboard."
+msgstr "Bu kontrol paneli için tanımlı genel filtre yok."
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/mobile_figure_container/mobile_figure_container.xml:0
+msgid ""
+"Only chart figures are displayed in small screens but this dashboard "
+"doesn't contain any"
+msgstr ""
+"Küçük ekranlarda yalnız grafikler gösterilir, ancak bu kontrol panelinde "
+"grafik yok"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/list/clickable_cell.js:0
+msgid "Open record"
+msgstr "Kaydı aç"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_action.xml:0
+msgid "Open sidebar"
+msgstr "Kenar çubuğunu aç"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__is_published
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_search
+msgid "Published"
+msgstr "Yayınlandı"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_group__published_dashboard_ids
+msgid "Published Dashboard"
+msgstr "Yayınlanmış Kontrol Paneli"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__dashboard_group_id
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__dashboard_group_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_search
+msgid "Section"
+msgstr "Bölüm"
+
+#. module: spreadsheet_dashboard
+#: model:ir.actions.act_window,name:spreadsheet_dashboard.spreadsheet_dashboard_group_action_configuration_sections
+#: model:ir.ui.menu,name:spreadsheet_dashboard.spreadsheet_dashboard_group_menu_configuration_sections
+msgid "Sections"
+msgstr "Bölümler"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/global_filter_widget/global_filter_widget.xml:0
+msgid "Select a dashboard to edit a global filter."
+msgstr "Genel bir filtreyi düzenlemek için bir kontrol paneli seçin."
+
+#. module: spreadsheet_dashboard
+#: model:ir.actions.act_window,name:spreadsheet_dashboard.spreadsheet_dashboard_share_action_configuration_share_links
+#: model:ir.ui.menu,name:spreadsheet_dashboard.spreadsheet_dashboard_share_menu_configuration_share_links
+msgid "Share links"
+msgstr "Paylaşım bağlantıları"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_form
+msgid "Shared with"
+msgstr "Paylaşılanlar"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/public/public_dashboard.xml:0
+msgid "Show Filters"
+msgstr "Filtreleri Göster"
+
+#. module: spreadsheet_dashboard
+#: model:ir.module.module,description:base.module_spreadsheet_dashboard
+#: model:ir.module.module,summary:base.module_spreadsheet_dashboard
+msgid "Spreadsheet"
+msgstr "Hesap Tablosu"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model,name:spreadsheet_dashboard.model_spreadsheet_dashboard
+msgid "Spreadsheet Dashboard"
+msgstr "Hesap Tablosu Kontrol Paneli"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__spreadsheet_data
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__spreadsheet_data
+msgid "Spreadsheet Data"
+msgstr "Hesap Tablosu Verisi"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__spreadsheet_file_name
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__spreadsheet_file_name
+msgid "Spreadsheet File Name"
+msgstr "Hesap Tablosu Dosya Adı"
+
+#. module: spreadsheet_dashboard
+#: model:ir.module.module,shortdesc:base.module_spreadsheet_dashboard
+msgid "Spreadsheet dashboard"
+msgstr "Hesap tablosu kontrol paneli"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__spreadsheet_binary_data
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__spreadsheet_binary_data
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_form
+msgid "Spreadsheet file"
+msgstr "Hesap Tablosu dosyası"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,help:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__user_ids
+msgid ""
+"The users the filter is shared with. If empty, the filter is shared with "
+"all users."
+msgstr ""
+"Filtrenin paylaşıldığı kullanıcılar. Boşsa filtre tüm kullanıcılarla "
+"paylaşılır."
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_action.xml:0
+msgid "Toggle favorite"
+msgstr "Favorilere ekle/çıkar"
+
+#. module: spreadsheet_dashboard
+#: model:res.groups.privilege,placeholder:spreadsheet_dashboard.res_groups_privilege_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_favorite_filters_view_search
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: spreadsheet_dashboard
+#: model:ir.actions.act_window,name:spreadsheet_dashboard.actions_spreadsheet_dashboard_favorite_filters_view
+#: model:ir.ui.menu,name:spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration_global_filters
+msgid "User-defined Dashboard Filters"
+msgstr "Kullanıcı Tanımlı Kontrol Paneli Filtreleri"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_favorite_filters__user_ids
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,help:spreadsheet_dashboard.field_spreadsheet_dashboard__allowed_user_ids
+msgid "Users allowed to access this dashboard"
+msgstr "Bu kontrol paneline erişebilen kullanıcılar"
+
+#. module: spreadsheet_dashboard
+#: model:ir.model.fields,help:spreadsheet_dashboard.field_spreadsheet_dashboard__favorite_user_ids
+msgid "Users who have favorited this dashboard"
+msgstr "Bu kontrol panelini favorilerine ekleyen kullanıcılar"
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_list
+msgid "View"
+msgstr "Görünüm"
+
+#. module: spreadsheet_dashboard
+#. odoo-python
+#: code:addons/spreadsheet_dashboard/models/spreadsheet_dashboard_group.py:0
+msgid "You cannot delete %s as it is used in another module."
+msgstr "%s başka bir modülde kullanıldığı için silinemez."
+
+#. module: spreadsheet_dashboard
+#. odoo-python
+#: code:addons/spreadsheet_dashboard/controllers/share.py:0
+msgid ""
+"You don't have the rights to export data. Please contact an Administrator."
+msgstr ""
+"Veri dışa aktarma yetkiniz yok. Lütfen bir yöneticiyle iletişime geçin."
+
+#. module: spreadsheet_dashboard
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_form
+msgid "e.g. Sales operations"
+msgstr "ör. Satış operasyonları"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_model.js:0
+msgid "has"
+msgstr "içeriyor"
+
+#. module: spreadsheet_dashboard
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard/static/src/public/public_dashboard.xml:0
+msgid "x"
+msgstr "x"

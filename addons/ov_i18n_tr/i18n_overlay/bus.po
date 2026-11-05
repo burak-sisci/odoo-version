@@ -1,0 +1,60 @@
+# Turkish translations of the bus module completing upstream's (ov_i18n_tr, T3.6).
+# Read after bus/i18n/tr.po. The comments come from bus.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: bus
+#. odoo-javascript
+#: code:addons/bus/static/src/debug/bus_logs_menu_item.js:0
+msgid ""
+"Bus logs contain confidential information and must only be shared with "
+"trusted recipients."
+msgstr ""
+"Veri yolu günlükleri gizli bilgiler içerir; yalnız güvenilir alıcılarla "
+"paylaşılmalıdır."
+
+#. module: bus
+#: model:ir.model.fields,field_description:bus.field_bus_bus__create_date
+msgid "Create Date"
+msgstr "Oluşturma Tarihi"
+
+#. module: bus
+#. odoo-javascript
+#: code:addons/bus/static/src/debug/bus_logs_menu_item.js:0
+msgid "Download"
+msgstr "İndir"
+
+#. module: bus
+#: model:ir.module.module,shortdesc:base.module_bus
+msgid "IM Bus"
+msgstr "Anlık Mesajlaşma Veri Yolu"
+
+#. module: bus
+#: model:ir.module.module,description:base.module_bus
+msgid "Instant Messaging Bus allow you to send messages to users, in live."
+msgstr ""
+"Anlık mesajlaşma veri yolu, kullanıcılara canlı olarak mesaj göndermenizi "
+"sağlar."
+
+#. module: bus
+#: model:ir.model,name:bus.model_ir_model
+msgid "Model"
+msgstr "Model"
+
+#. module: bus
+#: model:ir.model,name:bus.model_ir_qweb
+msgid "Qweb"
+msgstr "QWeb"
+
+#. module: bus
+#. odoo-javascript
+#: code:addons/bus/static/src/debug/bus_logs_menu_item.js:0
+msgid "You're about to download the bus logs"
+msgstr "Veri yolu günlüklerini indirmek üzeresiniz"

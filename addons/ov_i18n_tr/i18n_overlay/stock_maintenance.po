@@ -1,0 +1,39 @@
+# Turkish translations of the stock_maintenance module completing upstream's (ov_i18n_tr, T3.6).
+# Read after stock_maintenance/i18n/tr.po. The comments come from stock_maintenance.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: stock_maintenance
+#: model:ir.module.module,description:base.module_stock_maintenance
+msgid ""
+"\n"
+"Stock in Maintenance\n"
+"====================\n"
+"Open the record of the serial number from an equipment form\n"
+msgstr ""
+"\n"
+"Bakımda Stok\n"
+"============\n"
+"Ekipman formundan seri numarasının kaydını açın\n"
+
+#. module: stock_maintenance
+#: model:ir.model,name:stock_maintenance.model_stock_location
+msgid "Inventory Location"
+msgstr "Stok Konumu"
+
+#. module: stock_maintenance
+#: model:ir.module.module,summary:base.module_stock_maintenance
+msgid "See lots used in maintenance"
+msgstr "Bakımda kullanılan lotları görün"
+
+#. module: stock_maintenance
+#: model:ir.module.module,shortdesc:base.module_stock_maintenance
+msgid "Stock - Maintenance"
+msgstr "Stok - Bakım"

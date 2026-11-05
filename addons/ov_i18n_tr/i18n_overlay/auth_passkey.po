@@ -1,0 +1,177 @@
+# Turkish translations of the auth_passkey module completing upstream's (ov_i18n_tr, T3.6).
+# Read after auth_passkey/i18n/tr.po. The comments come from auth_passkey.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: auth_passkey
+#: model:ir.module.module,description:base.module_auth_passkey
+msgid ""
+"\n"
+"The implementation of Passkeys using the webauthn protocol.\n"
+"===========================================================\n"
+"\n"
+"Passkeys are a secure alternative to a username and a password.\n"
+"When a user logs in with a Passkey, MFA will not be required.\n"
+msgstr ""
+"\n"
+"Geçiş anahtarlarının WebAuthn protokolüyle uygulanması.\n"
+"=======================================================\n"
+"\n"
+"Geçiş anahtarları, kullanıcı adı ve parolaya güvenli bir alternatiftir.\n"
+"Kullanıcı geçiş anahtarıyla oturum açtığında çok faktörlü doğrulama (MFA) "
+"gerekmez.\n"
+
+#. module: auth_passkey
+#: model_terms:ir.ui.view,arch_db:auth_passkey.res_users_identitycheck_view_form_passkey
+msgid "<strong>Use your passkey to authenticate</strong>"
+msgstr ""
+"<strong>Kimliğinizi doğrulamak için geçiş anahtarınızı kullanın</strong>"
+
+#. module: auth_passkey
+#: model_terms:ir.ui.view,arch_db:auth_passkey.auth_passkey_users_form
+#: model_terms:ir.ui.view,arch_db:auth_passkey.auth_passkey_users_preferences
+msgid "Add Passkey"
+msgstr "Geçiş Anahtarı Ekle"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_res_users__auth_passkey_key_ids
+msgid "Auth Passkey Key"
+msgstr "Geçiş Anahtarı Kaydı"
+
+#. module: auth_passkey
+#. odoo-python
+#: code:addons/auth_passkey/models/res_users.py:0
+msgid "Create Passkey"
+msgstr "Geçiş Anahtarı Oluştur"
+
+#. module: auth_passkey
+#: model:ir.actions.act_window,name:auth_passkey.action_auth_passkey_key_create
+msgid "Create Passkey Wizard"
+msgstr "Geçiş Anahtarı Oluşturma Sihirbazı"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key__create_uid
+msgid "Create Uid"
+msgstr "Oluşturan"
+
+#. module: auth_passkey
+#: model:ir.model,name:auth_passkey.model_auth_passkey_key_create
+msgid "Create a Passkey"
+msgstr "Bir Geçiş Anahtarı Oluşturun"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key_create__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key__create_date
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key_create__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key__display_name
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key_create__display_name
+#: model:ir.model.fields,field_description:auth_passkey.field_res_users__display_name
+#: model:ir.model.fields,field_description:auth_passkey.field_res_users_identitycheck__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: auth_passkey
+#. odoo-python
+#: code:addons/auth_passkey/models/res_users_identitycheck.py:0
+msgid ""
+"Incorrect Passkey. Please provide a valid passkey or use a different "
+"authentication method."
+msgstr ""
+"Geçersiz geçiş anahtarı. Lütfen geçerli bir geçiş anahtarı kullanın veya "
+"farklı bir kimlik doğrulama yöntemi seçin."
+
+#. module: auth_passkey
+#: model:ir.module.module,summary:base.module_auth_passkey
+msgid "Log in with a Passkey"
+msgstr "Geçiş anahtarıyla oturum açın"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key__name
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key_create__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: auth_passkey
+#. odoo-javascript
+#: code:addons/auth_passkey/static/src/services/check_identity/check_identity.xml:0
+#: model:ir.model,name:auth_passkey.model_auth_passkey_key
+#: model:ir.model.fields.selection,name:auth_passkey.selection__res_users_identitycheck__auth_method__webauthn
+msgid "Passkey"
+msgstr "Geçiş Anahtarı"
+
+#. module: auth_passkey
+#: model:ir.module.module,shortdesc:base.module_auth_passkey
+#: model_terms:ir.ui.view,arch_db:auth_passkey.auth_passkey_users_form
+#: model_terms:ir.ui.view,arch_db:auth_passkey.auth_passkey_users_preferences
+msgid "Passkeys"
+msgstr "Geçiş Anahtarları"
+
+#. module: auth_passkey
+#: model:ir.model,name:auth_passkey.model_res_users_identitycheck
+msgid "Password Check Wizard"
+msgstr "Parola Denetimi Sihirbazı"
+
+#. module: auth_passkey
+#: model_terms:ir.ui.view,arch_db:auth_passkey.auth_passkey_key_view_kanban
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+#. module: auth_passkey
+#. odoo-python
+#: code:addons/auth_passkey/models/auth_passkey_key.py:0
+msgid "Rename Passkey"
+msgstr "Geçiş Anahtarını Yeniden Adlandır"
+
+#. module: auth_passkey
+#: model:ir.model.fields,field_description:auth_passkey.field_auth_passkey_key__sign_count
+msgid "Sign Count"
+msgstr "İmza Sayacı"
+
+#. module: auth_passkey
+#. odoo-python
+#: code:addons/auth_passkey/models/res_users.py:0
+msgid "Unknown passkey"
+msgstr "Bilinmeyen geçiş anahtarı"
+
+#. module: auth_passkey
+#: model_terms:ir.ui.view,arch_db:auth_passkey.res_users_identitycheck_view_form_passkey
+msgid "Use Passkey"
+msgstr "Geçiş Anahtarı Kullan"
+
+#. module: auth_passkey
+#: model_terms:ir.ui.view,arch_db:auth_passkey.auth_passkey_login_oauth
+msgid "Use a Passkey"
+msgstr "Geçiş Anahtarı Kullan"
+
+#. module: auth_passkey
+#. odoo-javascript
+#: code:addons/auth_passkey/static/src/services/check_identity/check_identity.xml:0
+msgid "Use passkey"
+msgstr "Geçiş anahtarı kullan"
+
+#. module: auth_passkey
+#. odoo-javascript
+#: code:addons/auth_passkey/static/src/services/check_identity/check_identity.xml:0
+msgid "Use your passkey"
+msgstr "Geçiş anahtarınızı kullanın"
+
+#. module: auth_passkey
+#. odoo-javascript
+#: code:addons/auth_passkey/static/src/services/check_identity/check_identity.xml:0
+msgid "When you are ready, authenticate using the button below."
+msgstr "Hazır olduğunuzda aşağıdaki düğmeyle kimliğinizi doğrulayın."

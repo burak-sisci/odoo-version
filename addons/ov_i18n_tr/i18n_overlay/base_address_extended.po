@@ -1,0 +1,60 @@
+# Turkish translations of the base_address_extended module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base_address_extended/i18n/tr.po. The comments come from base_address_extended.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base_address_extended
+#: model:ir.module.module,description:base.module_base_address_extended
+msgid ""
+"\n"
+"Extended Addresses Management\n"
+"=============================\n"
+"\n"
+"This module provides the ability to choose a city from a list (in specific "
+"countries).\n"
+"\n"
+"It is primarily used for EDIs that might need a special city code.\n"
+msgstr ""
+"\n"
+"Genişletilmiş Adres Yönetimi\n"
+"============================\n"
+"\n"
+"Bu modül, belirli ülkelerde şehri bir listeden seçme olanağı sağlar.\n"
+"\n"
+"Başlıca, özel bir şehir kodu gerektirebilecek EDI'ler için kullanılır.\n"
+
+#. module: base_address_extended
+#: model:ir.module.module,summary:base.module_base_address_extended
+msgid "Add extra fields on addresses"
+msgstr "Adreslere ek alanlar ekleyin"
+
+#. module: base_address_extended
+#: model:ir.model.fields,field_description:base_address_extended.field_res_city__country_code
+msgid "Country Code"
+msgstr "Ülke Kodu"
+
+#. module: base_address_extended
+#: model:ir.module.module,shortdesc:base.module_base_address_extended
+msgid "Extended Addresses"
+msgstr "Genişletilmiş Adresler"
+
+#. module: base_address_extended
+#: model:ir.model.fields,help:base_address_extended.field_res_city__country_code
+msgid ""
+"The ISO country code in two chars. \n"
+"You can use this field for quick search."
+msgstr ""
+"İki karakterli ISO ülke kodu. \n"
+"Bu alanı hızlı arama için kullanabilirsiniz."
+
+#. module: base_address_extended
+#: model_terms:ir.ui.view,arch_db:base_address_extended.res_city_view_form
+msgid "e.g. London"
+msgstr "ör. Kadıköy"

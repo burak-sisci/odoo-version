@@ -1,0 +1,31 @@
+# Turkish translations of the barcodes_gs1_nomenclature module completing upstream's (ov_i18n_tr, T3.6).
+# Read after barcodes_gs1_nomenclature/i18n/tr.po. The comments come from barcodes_gs1_nomenclature.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: barcodes_gs1_nomenclature
+#. odoo-python
+#: code:addons/barcodes_gs1_nomenclature/models/barcode_nomenclature.py:0
+msgid ""
+"A GS1 barcode nomenclature pattern was matched. However, the barcode failed "
+"to be converted to a valid date: '%(error_message)s'"
+msgstr ""
+"Bir GS1 barkod adlandırma deseni eşleşti, ancak barkod geçerli bir tarihe "
+"dönüştürülemedi: '%(error_message)s'"
+
+#. module: barcodes_gs1_nomenclature
+#: model:ir.module.module,shortdesc:base.module_barcodes_gs1_nomenclature
+msgid "Barcode - GS1 Nomenclature"
+msgstr "Barkod - GS1 Adlandırması"
+
+#. module: barcodes_gs1_nomenclature
+#: model:ir.module.module,summary:base.module_barcodes_gs1_nomenclature
+msgid "Parse barcodes according to the GS1-128 specifications"
+msgstr "Barkodları GS1-128 belirtimine göre ayrıştırın"

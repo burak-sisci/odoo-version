@@ -1,9 +1,35 @@
 # Değişiklik Günlüğü
 
-Son güncelleme: 2026-11-04
+Son güncelleme: 2026-11-05
 
 Her adımın kaydı en üste, tarih başlığıyla eklenir. Bir karar değiştiğinde **eski metni ve değişiklik nedeni** buraya yazılır (DECISIONS.md yalnız güncel hali tutar).
 Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
+
+## 2026-11-05
+
+### Adım: küçük modüller ve simge arama etiketleri; Türkçe çeviri %100, T3.6 bitti (T3.6, 12. adım) — otonom mesai 7
+
+**Kod**
+- Çeviriler: 1.195 eksik terimin hepsi. Paket kapsamı %95,95 → %100 (83 modül, 29.518 terim); katman 82 dosya (59 yeni).
+  - 1. parti (132 terim): `spreadsheet_dashboard`, `base_import`, `sale_margin`, `mail_plugin`. 2. parti (179): `maintenance`, `web_tour`, `mail_bot`, `auth_signup`, `digest`, `base_install_request`, `base_report_wkhtmltox` ve düzeltmeler. 3. parti (286): 48 küçük modül (`auth_totp`, `auth_passkey`, `mrp_account`, `mrp_subcontracting`, `sale_edi_ubl`, `remove_odoo_enterprise` vb.), 19 modül tanıtımı. `auth_totp_mail` davet şablonu (1).
+  - `web` simge seçicisinin arama etiketleri (`web/icons.py`, 659 terim): her simgeye kısa, küçük harfli Türkçe anahtar sözcük listesi; marka adları korundu, Türkçe listelerden "odoo" çıkarıldı. İş listesi `icons.py`'nin sözdizimi ağacından üretildi (düzenli ifade 65 simgeyi kaçırıyordu).
+  - `mail_bot` komutları: kod kullanıcının yazdığını çevrilmiş metinle karşılaştırıyor; "help", "/help" çevrilmedi, "start the tour" → "tura başla".
+- Upstream düzeltmeleri:
+  - `spreadsheet_dashboard` 12 terim (kontrol paneli üç adla geçiyordu), `spreadsheet` 1 ("Chart" → "Plan").
+  - `auth_passkey` 21, `auth_passkey_portal` 8 terim (geçiş anahtarı dört adla geçiyordu; bir eski terim `.pot`'ta yok, atlandı). `auth_totp` 7 ("2 aşamalı giriş", "kullanıcı(s)").
+  - `auth_signup` 26 terim: hesap ve davet e-postaları ("Sevgiler," selamı, fiilsiz "Giriş bilgilerinizi", "Şifre"/"Parola"). `mail_plugin` 9.
+  - `stock`, `mrp`, `purchase_stock`: "To Order" (sipariş edilecek miktar) "Sipariş Ver" (düğme) → "Sipariş Verilecek".
+- Testler: `ov_i18n_tr` 14 geçti (13 + 1).
+  - Kayıt metni düzeltme tablosuna 4 satır (`spreadsheet_dashboard`, `auth_signup`, `auth_passkey`, `stock`); tablo 16 terim/10 modül.
+  - Yeni `test_icon_search`: 8 Türkçe sözcük ("çöp", "yazdır", "fatura", "kargo", "üretim", "ayarlar", "türk lirası", "ızgara") simgenin adında ve İngilizce etiketlerinde yokken Türkçe etiketlerinde bulunur (aramanın kullandığı aksansız, küçük harfli karşılaştırmayla).
+  - Uçtan uca ölçüm (test veritabanı, `search_icons`): "çöp kutusu" → `delete`; "yazdır" → `print`; "kargo" → `local_shipping`, `package_2`; "türk lirası" → `currency_lira`; "fatura" → `receipt_long`; İngilizce "trash" yine 4 sonuç.
+- `check` 82 dosya, 0 sorun; tanıtım taraması 0 uyarı. CI kapsam eşiği `--min 95.7` → `100`.
+
+**Kararlar**
+- K24'e küçük modüllerin terimleri (Kontrol Paneli, Hesap Tablosu, Geçiş Anahtarı, Parola, Fason, Sipariş Verilecek, kayıt alanları) ve simge etiketlerinin yöntemi eklendi. Başka modüllerdeki upstream "İsim Göster" (Display Name, 309 terim) şimdilik değiştirilmedi.
+
+**Belgeler**
+- PLAN.md (T3.6 `[x]`, pano F3 6/9, toplam 32/114, şu anki görev T3.7), USER_TASKS.md (K24), README.md, state.json.
 
 ## 2026-11-04
 

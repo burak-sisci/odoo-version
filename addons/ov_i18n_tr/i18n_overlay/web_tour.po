@@ -1,0 +1,146 @@
+# Turkish translations of the web_tour module completing upstream's (ov_i18n_tr, T3.6).
+# Read after web_tour/i18n/tr.po. The comments come from web_tour.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: web_tour
+#: model:ir.module.module,description:base.module_web_tour
+msgid ""
+"\n"
+"Odoo Web tours.\n"
+"========================\n"
+"\n"
+msgstr ""
+"\n"
+"Odoo web turları.\n"
+"=================\n"
+"\n"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid "'%s' created"
+msgstr "'%s' oluşturuldu"
+
+#. module: web_tour
+#: model:ir.model.fields,field_description:web_tour.field_web_tour_tour__active
+msgid "Active"
+msgstr "Etkin"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid ""
+"Are you sure you want to clear all steps?\n"
+"All steps will be lost."
+msgstr ""
+"Tüm adımları temizlemek istediğinizden emin misiniz?\n"
+"Tüm adımlar kaybolacak."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid ""
+"Are you sure you want to close the tour recorder?\n"
+"All changes will be lost."
+msgstr ""
+"Tur kaydediciyi kapatmak istediğinizden emin misiniz?\n"
+"Tüm değişiklikler kaybolacak."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Clear"
+msgstr "Temizle"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid "Clear all steps?"
+msgstr "Tüm adımlar temizlensin mi?"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Close"
+msgstr "Kapat"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid "Close recorder"
+msgstr "Kaydediciyi kapat"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid "Close tour recorder?"
+msgstr "Tur kaydedici kapatılsın mı?"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Create a new %s."
+msgstr "Yeni %s oluşturun."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Create and edit the %s."
+msgstr "%s oluşturup düzenleyin."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Create the %s."
+msgstr "%s oluşturun."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder_command_provider.js:0
+msgid "Enable the tour recorder"
+msgstr "Tur kaydediciyi etkinleştir"
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Enter the %s."
+msgstr "%s alanını doldurun."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Save the %s."
+msgstr "%s kaydını kaydedin."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Search or create %s."
+msgstr "%s arayın veya oluşturun."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_scenarios.js:0
+msgid "Select this %s."
+msgstr "Bu %s kaydını seçin."
+
+#. module: web_tour
+#. odoo-javascript
+#: code:addons/web_tour/static/src/tour_recorder/tour_recorder.js:0
+msgid "View tour"
+msgstr "Turu görüntüle"

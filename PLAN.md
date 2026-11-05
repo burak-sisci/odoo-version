@@ -1,6 +1,6 @@
 # Plan ve İlerleme
 
-Son güncelleme: 2026-11-04
+Son güncelleme: 2026-11-05
 İlgili kararlar: D-005, D-011, D-012, D-013, D-014, D-016, D-017, D-018, D-019, D-020, D-021
 
 Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip edilir.
@@ -21,14 +21,14 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 
 ## 1. İlerleme panosu
 
-**Şu anki görev:** T3.6 — Türkçe çeviri
+**Şu anki görev:** T3.7 — Türkçe belge çıktıları
 
 | Faz | Ad | Aşama | Kilometre taşı | Durum | Görev | K · B · C |
 |---|---|---|---|---|---|---|
 | F0 | Araştırma ve planlama | Bütçesiz | M0 Plan hazır | `[x]` | 8/8 | 0 · 2 · 6 |
 | F1 | Geliştirme altyapısı ve CI | Bütçesiz | M1 Geliştirme altyapısı | `[x]` | 11/11 | 0 · 0 · 11 |
 | F2 | Marka katmanı | Bütçesiz | M2 Markasız çekirdek | `[x]` | 7/7 | 0 · 0 · 7 |
-| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 5/9 | 0 · 0 · 9 |
+| F3 | Türkiye temel yerelleştirmesi | Bütçesiz | M3 Türkiye temeli | `[~]` | 6/9 | 0 · 0 · 9 |
 | F4 | e-Belge (e-Fatura, e-Arşiv, e-İrsaliye) | Bütçesiz | M4 e-Belge test ortamında | `[ ]` | 0/11 | 0 · 0 · 11 |
 | F5 | Ticaret paketi: muhasebe, cari, raporlar | Bütçesiz | M5 Ticaret paketi | `[ ]` | 0/10 | 0 · 0 · 10 |
 | F6 | Üretim paketi | Bütçesiz | M6 Üretim paketi | `[ ]` | 0/8 | 0 · 0 · 8 |
@@ -38,7 +38,7 @@ Bu dosya projenin **tek plan ve ilerleme belgesidir**. İlerleme buradan takip e
 | F10 | Self-servis SaaS | Büyüme | M10 Self-servis SaaS | `[ ]` | 0/7 | 0 · 1 · 6 |
 | F11 | Genişleme (sürekli, P1 ve sonrası) | Sürekli | — | `[ ]` | 0/14 | 0 · 1 · 13 |
 
-**Toplam:** 31/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
+**Toplam:** 32/114 görev · Kullanıcı 3 · Birlikte 13 · Claude 98
 
 **Okuma notu:**
 - F0–F8 sıfır bütçeyle, müşterisiz ve dış destek olmadan yapılır (D-005, D-017).
@@ -410,12 +410,12 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
     - Güvenlik: XML ayrıştırıcı dış varlık ve DTD yüklemez, DOCTYPE'lı ya da 1 MB'tan büyük yanıt reddedilir. İstekte şirket ya da müşteri bilgisi gönderilmez (`docs/COMPLIANCE.md` §4).
     - Ölçüm: 28 yeni test (TCMB taklit edilerek; dış istek yok); bütün modüllerle birlikte 146 test geçti. `ov_demo`'da canlı: günlük iş 3,4 s'de iki Türk ana şirkete 03.11.2026 bültenini yazdı (USD = 49,9094 TRY, TCMB döviz alışıyla aynı). 01.10–03.11.2026 aktarımı 5,2 s'de 22 bülten; 28 ve 29 Ekim'de bülten yok (404). Arşiv yanıt süresi ortanca 0,35 s, en çok 3,5 s.
     - Varsayımlar: `USER_TASKS.md` K23.
-- [~] T3.6 Türkçe çeviri · L · C
+- [x] T3.6 Türkçe çeviri · L · C
   - Başka modüllerin çevirisini kendi modülümüzle tamamlama/değiştirme yöntemi araştırılır.
   - Ölçüm aracı `tools/po_coverage.py`; CI'da eşik.
   - Paket modüllerindeki eksikler çevrilir. Öncelik: `l10n_tr` (%33), `account`, `sale`, `purchase`, `stock`, `mrp`, `mail`, `web`.
   - Upstream'e çeviri katkısı isteğe bağlı ve kullanıcı onayıyla (K8).
-  - **Durum (2026-11-04, otonom mesai 6):** yöntem ve ölçüm hazır; paket %95,95 ile kapı ölçütünü (§2.6, 4. madde) geçti, çeviri sürüyor.
+  - **Durum (2026-11-05, otonom mesai 7):** bitti. Paketin 83 modülünde 29.518 terimin hepsi çevrili (%100); kapı ölçütü (§2.6, 4. madde) %95. CI eşiği %100.
     - Yöntem: `ov_i18n_tr` (LGPL-3, her veritabanına kendiliğinden kurulur). Upstream modülünün çevirisi `i18n_overlay/<modül>.po`'da; upstream'in `tr.po`'sundan sonra, aynı içe aktarmada okunur, aynı metin için bizimki geçerli olur.
       - Kod metinleri (`_()`, `_t`): `odoo.tools.translate.get_po_paths` sarılır (süreç geneli, kod çevirilerinin veritabanı yok).
       - Kayıt metinleri ve modül adları: aynı işlev `ir.module.module`'de ve manifest okuyucusunda adıyla içe aktarılmış; yalnız bu modülün `_load_module_terms` ve `_load_non_installed_modules_manifest_terms` yöntemleri çalışırken çeviri dosyamızı ekler. Modülün kurulu olmadığı veritabanı etkilenmez.
@@ -426,11 +426,11 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
       - Denetim (`check`, pre-commit ve CI): terim şablonda var mı, yer tutucular (`%s`, `%(ad)s`, `{ad}`), etiketler ve çevrilmeyen öznitelikleri, satır başı/sonu, ürün adı eklenmemiş mi, reStructuredText başlık çizgisi.
         - `{{ … }}` ifadelerinde (e-posta konuları) yalnız çıktı metinleri çevrilebilir: `and`/`or` işlenenleri ve koşullu ifadenin dalları (ör. `'Quotation'`). Karşılaştırılan değerler (ör. `'draft'`), alanlar ve ifadenin yapısı aynı kalır (Python AST karşılaştırması).
         - Kuralların testi `tools/tests/test_po_coverage.py` (8 test); pre-commit ve CI'da çalışır.
-      - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95.
+      - CI eşiği (`report --min`) her çeviri partisiyle yükselir, düşürülmez; kapı ölçütü %95, eşik şimdi %100. Upstream güncellenip yeni terim gelirse CI düşer; yeni terimler çevrilir (`missing`).
     - Başlangıç (2026-11-04): 83 modül, 29.518 terim, %81,11 çevrili, 5.576 eksik. %95 için yaklaşık 4.100 terim gerekiyor.
-    - İlerleme: `l10n_tr` 21/21, `account` 3.392/3.392 (423 terim), `sale` 903/903 (185), `purchase` 656/656 (105), `stock` 1.919/1.919 (288), `mrp` 1.167/1.167 (209), `mail` 2.519/2.519 (735), `web` 4.519/5.178 (270; arayüz metinleri tam), `base` 3.555/3.555 (494), `spreadsheet` 2.468/2.468 (483), `product` 873/873 (219), `calendar` 527/527 (154), `html_editor` 477/477 (155), `account_edi_ubl_cii` 355/355 (118), `crm` 747/747 (125), `payment` 395/395 (111), `account_payment` 129/129 (23), `sale_management` 144/144 (79), `portal` 252/252 (60), `resource` 166/166 (72), `sale_stock` 163/163 (66), `stock_account` 161/161 (53), `purchase_stock` 214/214 (60). Paket %95,95, 1.195 eksik.
+    - İlerleme: 2026-11-04 akşamı %95,95 (1.195 eksik); 2026-11-05 %100 (0 eksik). Katman 82 dosya; modül başına sayılar `python tools/po_coverage.py report`.
       - Upstream düzeltmesi: "Discard" düğmesi "Sil" (silme) diye çevrilmişti; 7 modülde "Vazgeç" (`web`, `html_editor`, `spreadsheet`, `sale`, `mrp`, `stock`, `mail`). Kalıcı test: `ov_i18n_tr` testlerindeki düzeltme tablosu (`CORRECTIONS`).
-      - `web`'de kalan 659 terim simge seçicinin arama etiketleri (`web/icons.py`), en sona bırakıldı. Yalnız simge aramasını etkiliyorlar; upstream'in araması İngilizce etiketlere de baktığı için İngilizce arama çalışıyor.
+      - Simge seçicinin arama etiketleri (`web/icons.py`, 659 terim): her simgeye kısa, küçük harfli Türkçe anahtar kelime listesi (ör. `delete` → "sil|çöp|çöp kutusu|kaldır|at"); marka adları korunur, Türkçe listelerden "odoo" çıkarıldı. Arama hem İngilizce hem Türkçe etiketlere bakar; ölçüm: test veritabanında "çöp kutusu" → `delete`, "yazdır" → `print`, "kargo" → `local_shipping`, `package_2`, "türk lirası" → `currency_lira`, "fatura" → `receipt_long`; "trash" yine 4 sonuç.
       - Upstream düzeltmesi (`base`): erişim hatasındaki işlem adları "oluşturun", "oku", "yazmak" diye karışık çevrilmişti; "oluşturma", "okuma", "yazma", "silme" oldu. Cümle de listelenen kayıtlara bağlandı ("… şu kayıtlar için 'okuma' erişimi yok:").
       - Upstream düzeltmesi (`spreadsheet`, `web`): makine çevirisi hataları. "Wrap" → "Şal", "Freeze" → "Donmak", "All matches" → "Tüm maçlar", "Match to end" → "Maç bitmek üzere", ölçü → "önlem", panoya kopyalama iletileri; emoji adlarında iskambil renkleri ("club suit" → "kulüp kıyafeti"). 19 terim; dördü düzeltme tablosunda.
       - Upstream düzeltmesi (`account`, `account_edi_ubl_cii`, `html_editor`):
@@ -447,13 +447,18 @@ Ayrıntılar ve kaynaklar: `docs/research/e-fatura.md`, `docs/research/planning-
         - Stokta "from" yer bildiren "adresinden" diye çevrilmişti (değerleme satırları); stok hareketi (move) "hamle", satın alma önerisi "Suggest" "Gönder", "Forecasted Issue" "Öngörülen Sayı", "Free Qty Today" "Bugün Ücretsiz Miktar" olmuştu. Bozuk yardım metinleri ("… önceki günlerden daha uzun bir süre önce", "sipariş hatları") yeniden yazıldı. `sale_stock` 8, `stock_account` 9, `purchase_stock` 21 terim.
         - Satın alma istisna e-postasının parçaları ("5 Adet ile ilgili <ürün> yerine sipariş edildi 10 Adet") Türkçe söz dizimine göre kuruldu: "5 Adet miktarında <ürün> sipariş edildi; önceki miktar: 10 Adet".
         - `portal`: "Contact" → "Kontak" (5 terim, "Kişi" oldu). `calendar`: "Bu ve aşağıdaki olaylar", "Tekrarlama Durumu" (Repeat every).
-      - Sırada (eksik): `spreadsheet_dashboard` 50, `base_import` 28, `sale_margin` 28, `mail_plugin` 26, `maintenance` 20, `web_tour` 20, `mail_bot` 18.
+      - Upstream düzeltmesi (küçük modüller, 2026-11-05):
+        - Kontrol paneli üç adla geçiyordu ("Rapor Paneli", "Gösterge Paneli", "Kontrol Paneli"); hesap tablosu iki ("E-tablo", "Elektronik Çizelge"). "Kontrol Paneli" ve "Hesap Tablosu" oldu (`spreadsheet_dashboard` 12 terim, `spreadsheet` "Chart" → "Plan" düzeltmesi).
+        - Geçiş anahtarı (passkey) dört adla geçiyordu ("Şifre Anahtarı", "Anahtar", "Elektronik şifreler", "Geçiş Anahtarı"); "Geçiş Anahtarı" oldu (`auth_passkey` 21, `auth_passkey_portal` 8 terim). İki faktörlü kimlik doğrulamada "2 aşamalı giriş", "kullanıcı(s)" düzeltildi (`auth_totp` 7).
+        - `auth_signup`: hesap ve davet e-postaları ("Sevgiler," selamı, fiilsiz "Giriş bilgilerinizi", "Şifre"/"Parola" karışıklığı) yeniden yazıldı; 26 terim. `mail_plugin`: "Bad Email.", "Log email", "Contact" 9 terim.
+        - Stokta sipariş edilecek miktar "To Order" düğme komutu gibi "Sipariş Ver" diye çevrilmişti; "Sipariş Verilecek" oldu (`stock`, `mrp`, `purchase_stock`).
+        - `mail_bot` komutları: kod kullanıcının yazdığını çevrilmiş metinle karşılaştırıyor; "help" ve "/help" çevrilmedi, "start the tour" → "tura başla".
       - Uzun e-posta şablonları etiketlerin arasındaki metin parçaları çevrilerek yazıldı; etiketler ve QWeb ifadeleri olduğu gibi kalır (denetim bunu doğrular).
         - Türkçe söz dizimi için parça yeniden kurulur, gerekirse boş bırakılır. Ör. takvim davetinde "Your meeting <ad> has been booked." → "<ad> toplantınız planlandı.".
         - `calendar`'ın beş müşteri e-postası (davet, tarih değişikliği, güncelleme, hatırlatma, iptal) upstream'de hiç çevrilmemişti; müşteriye İngilizce gidiyordu. `crm`'in müşteriye giden karşılama e-postası da aynı yolla çevrildi.
         - Uygulamalar ekranındaki uzun modül tanıtımları (reStructuredText; `crm`, `sale_management`) metin dosyası olarak yazılıp başlık çizgileri başlık uzunluğuna göre üretildi.
         - Başlık çizgisi başlıktan kısa olunca docutils, Uygulamalar ekranında tanıtımın içine uyarı kutusu basıyor. `check` artık upstream'in çevirip katmanın değiştirmediği tanıtımları da bu kurala göre denetliyor. Ölçüm: paketteki tanıtımlar docutils ile işlendi, uyarı veren 3 tanıtım (`account`, `account_edi_ubl_cii`, `stock_account`) düzeltildi, kalan 0.
-    - Testler: `ov_i18n_tr` 13 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin iki tablosu: web metinleri 6 terim/4 modül, kayıt metinleri 12 terim/7 modül).
+    - Testler: `ov_i18n_tr` 14 test (kod ve web metinleri, eksik/var olan/`noupdate` kayıt, görünüm terimi, modülün kendi kurulumu, kurulu olmayan modül adları, gerçek çeviri dosyalarının Odoo okuyucusuyla okunması, upstream düzeltmelerinin iki tablosu: web metinleri 6 terim/4 modül, kayıt metinleri 16 terim/10 modül; simge araması: 8 Türkçe sözcük İngilizce etiketlerde yokken Türkçe etiketlerde bulunur).
     - Varsayımlar: `USER_TASKS.md` K24.
 - [ ] T3.7 Türkçe belge çıktıları · M · C
   - Teklif, sipariş, proforma, irsaliye (kâğıt/yedek), tahsilat ve tediye makbuzu.

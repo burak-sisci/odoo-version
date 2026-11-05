@@ -1,0 +1,115 @@
+# Turkish translations of the base_report_wkhtmltox module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base_report_wkhtmltox/i18n/tr.po. The comments come from base_report_wkhtmltox.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base_report_wkhtmltox
+#: model:ir.module.module,description:base.module_base_report_wkhtmltox
+msgid ""
+"\n"
+"This module is the implementation of the wkhtmltopdf and\n"
+"wlhtmltoimage rendering engine for Odoo.\n"
+"\n"
+"learn more about it here:\n"
+"https://wkhtmltopdf.org/\n"
+msgstr ""
+"\n"
+"Bu modül, Odoo için wkhtmltopdf ve\n"
+"wkhtmltoimage oluşturma motorunun uygulamasıdır.\n"
+"\n"
+"Ayrıntılı bilgi:\n"
+"https://wkhtmltopdf.org/\n"
+
+#. module: base_report_wkhtmltox
+#: model:ir.model.fields,field_description:base_report_wkhtmltox.field_ir_actions_report__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: base_report_wkhtmltox
+#: model:ir.model.fields,field_description:base_report_wkhtmltox.field_ir_actions_report__report_type
+msgid "Format"
+msgstr "Biçim"
+
+#. module: base_report_wkhtmltox
+#: model:ir.model.fields,field_description:base_report_wkhtmltox.field_ir_actions_report__id
+msgid "ID"
+msgstr "ID"
+
+#. module: base_report_wkhtmltox
+#: model:ir.model.fields.selection,name:base_report_wkhtmltox.selection__ir_actions_report__report_type__qweb-pdf-wkhtmltopdf
+msgid "PDF (Wkhtmltopdf)"
+msgstr "PDF (Wkhtmltopdf)"
+
+#. module: base_report_wkhtmltox
+#: model:ir.model,name:base_report_wkhtmltox.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapor işlemi"
+
+#. module: base_report_wkhtmltox
+#: model:ir.module.module,shortdesc:base.module_base_report_wkhtmltox
+msgid "Report Engine: wkhtmltopdf/wkhtmltoimage"
+msgstr "Rapor Motoru: wkhtmltopdf/wkhtmltoimage"
+
+#. module: base_report_wkhtmltox
+#: model:ir.model.fields,help:base_report_wkhtmltox.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser, PDF means the report will be generated and downloaded by the user."
+msgstr ""
+"Oluşturulacak raporun türü; her türün kendi oluşturma yöntemi vardır. HTML, "
+"raporun doğrudan tarayıcınızda açılacağı; PDF ise raporun oluşturulup "
+"kullanıcı tarafından indirileceği anlamına gelir."
+
+#. module: base_report_wkhtmltox
+#. odoo-python
+#: code:addons/base_report_wkhtmltox/models/ir_actions_report.py:0
+msgid "Tried to convert multiple documents in wkhtmltopdf using unpatched QT"
+msgstr ""
+"Yamasız QT ile wkhtmltopdf üzerinde birden çok belge dönüştürülmeye "
+"çalışıldı"
+
+#. module: base_report_wkhtmltox
+#. odoo-python
+#: code:addons/base_report_wkhtmltox/models/ir_actions_report.py:0
+msgid ""
+"Wkhtmltoimage failed (error code: %(error_code)s). Message: "
+"%(error_message_end)s"
+msgstr ""
+"Wkhtmltoimage başarısız oldu (hata kodu: %(error_code)s). İleti: "
+"%(error_message_end)s"
+
+#. module: base_report_wkhtmltox
+#. odoo-python
+#: code:addons/base_report_wkhtmltox/models/ir_actions_report.py:0
+msgid ""
+"Wkhtmltopdf failed (error code: %(error_code)s). Memory limit too low or "
+"maximum file number of subprocess reached. Message : %(message)s"
+msgstr ""
+"Wkhtmltopdf başarısız oldu (hata kodu: %(error_code)s). Bellek sınırı çok "
+"düşük ya da alt işlemin en fazla dosya sayısına ulaşıldı. İleti: %(message)s"
+
+#. module: base_report_wkhtmltox
+#. odoo-python
+#: code:addons/base_report_wkhtmltox/models/ir_actions_report.py:0
+msgid "Wkhtmltopdf failed (error code: %(error_code)s). Message: %(message)s"
+msgstr ""
+"Wkhtmltopdf başarısız oldu (hata kodu: %(error_code)s). İleti: %(message)s"
+
+#. module: base_report_wkhtmltox
+#. odoo-python
+#: code:addons/base_report_wkhtmltox/models/ir_actions_report.py:0
+msgid "wkhtmltoimage 0.12.0^ is required in order to render images from html"
+msgstr "HTML'den görsel oluşturmak için wkhtmltoimage 0.12.0^ gereklidir"
+
+#. module: base_report_wkhtmltox
+#: model:ir.module.module,summary:base.module_base_report_wkhtmltox
+msgid "wkhtmltopdf rendering engine"
+msgstr "wkhtmltopdf oluşturma motoru"

@@ -1,0 +1,71 @@
+# Turkish translations of the phone_validation module completing upstream's (ov_i18n_tr, T3.6).
+# Read after phone_validation/i18n/tr.po. The comments come from phone_validation.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: phone_validation
+#: model:ir.module.module,description:base.module_phone_validation
+msgid ""
+"\n"
+"Phone Numbers Validation\n"
+"========================\n"
+"\n"
+"This module adds the feature of validation and formatting phone numbers\n"
+"according to a destination country.\n"
+"\n"
+"It also adds phone blacklist management through a specific model storing\n"
+"blacklisted phone numbers.\n"
+"\n"
+"It adds mail.thread.phone mixin that handles sanitation and blacklist of\n"
+"records numbers. "
+msgstr ""
+"\n"
+"Telefon Numarası Doğrulama\n"
+"==========================\n"
+"\n"
+"Bu modül, telefon numaralarını hedef ülkeye göre doğrulama ve biçimlendirme\n"
+"özelliğini ekler.\n"
+"\n"
+"Ayrıca kara listedeki telefon numaralarını saklayan özel bir model "
+"aracılığıyla\n"
+"telefon kara listesi yönetimi ekler.\n"
+"\n"
+"Kayıtlardaki numaraların temizlenmesini ve kara liste denetimini yapan\n"
+"mail.thread.phone mixin'ini ekler."
+
+#. module: phone_validation
+#: model:ir.model,name:phone_validation.model_mail_activity
+msgid "Activity"
+msgstr "Aktivite"
+
+#. module: phone_validation
+#: model:ir.model,name:phone_validation.model_mail_activity_mixin
+msgid "Activity Mixin"
+msgstr "Aktivite Birleştirme"
+
+#. module: phone_validation
+#: model:ir.model,name:phone_validation.model_mail_activity_schedule
+msgid "Activity schedule plan Wizard"
+msgstr "Aktivite zamanlama planı Sihirbazı"
+
+#. module: phone_validation
+#: model:ir.model.fields,field_description:phone_validation.field_mail_activity_schedule__phone_formatted
+msgid "Phone Formatted"
+msgstr "Biçimlendirilmiş Telefon"
+
+#. module: phone_validation
+#: model:ir.module.module,shortdesc:base.module_phone_validation
+msgid "Phone Numbers Validation"
+msgstr "Telefon Numarası Doğrulama"
+
+#. module: phone_validation
+#: model:ir.module.module,summary:base.module_phone_validation
+msgid "Validate and format phone numbers"
+msgstr "Telefon numaralarını doğrulayın ve biçimlendirin"

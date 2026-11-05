@@ -1570,6 +1570,13 @@ msgstr ""
 "kullanılamaz"
 
 #. module: stock
+#: model:ir.model.fields,field_description:stock.field_stock_replenishment_info__qty_to_order
+#: model:ir.model.fields,field_description:stock.field_stock_replenishment_option__qty_to_order
+#: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__qty_to_order
+msgid "To Order"
+msgstr "Sipariş Verilecek"
+
+#. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__qty_to_order_to_max
 msgid "To Order to Reach Max"
 msgstr "Azamiye Ulaşmak İçin Sipariş Edilecek"

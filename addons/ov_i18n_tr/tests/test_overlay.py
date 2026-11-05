@@ -2,7 +2,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from odoo.tests import TransactionCase, tagged
-from odoo.tools import file_open, translate
+from odoo.tools import file_open, remove_accents, translate
 from odoo.tools.translate import (
     JAVASCRIPT_TRANSLATION_COMMENT,
     PYTHON_TRANSLATION_COMMENT,
@@ -12,6 +12,7 @@ from odoo.tools.translate import (
 
 from odoo.addons.base.models import ir_module
 from odoo.addons.ov_i18n_tr import tools
+from odoo.addons.web.icons import ICONS
 
 FIXTURES = Path(__file__).resolve().parent / 'overlay'
 PYTHON_SOURCE = '%(action_name)s is not a valid action on %(model_name)s'
@@ -58,6 +59,27 @@ RECORD_CORRECTIONS = [
     ('purchase_stock', 'Forecasted Issue', 'Öngörülen Sorun'),
     # upstream: 'ile ilgili' (about), the mail line '5 Units of <product> ordered instead of 10 Units'
     ('purchase_stock', 'of', 'miktarında'),
+    # upstream: 'Yayınlanmış Gösterge Paneli', the dashboard had three names; one term everywhere
+    ('spreadsheet_dashboard', 'Published Dashboard', 'Yayınlanmış Kontrol Paneli'),
+    # upstream: 'Sevgiler,' (with love) and 'Giriş bilgilerinizi' (your login details, no verb)
+    ('auth_signup', 'Your account at {{ object.company_id.name }}', '{{ object.company_id.name }} hesabınız'),
+    # upstream: 'Anahtarlar' / 'Elektronik şifreler', the passkey had four names; one term everywhere
+    ('auth_passkey', 'Passkeys', 'Geçiş Anahtarları'),
+    # upstream: 'Sipariş Ver' (an order button), the quantity still to order
+    ('stock', 'To Order', 'Sipariş Verilecek'),
+]
+
+
+# Turkish words of the icon picker search, absent from the English tags: (word, icon)
+ICON_SEARCHES = [
+    ('çöp', 'delete'),
+    ('yazdır', 'print'),
+    ('fatura', 'receipt_long'),
+    ('kargo', 'local_shipping'),
+    ('üretim', 'manufacturing'),
+    ('ayarlar', 'settings'),
+    ('türk lirası', 'currency_lira'),
+    ('ızgara', 'grid_view'),
 ]
 
 
@@ -218,3 +240,16 @@ class TestOverlayFiles(TransactionCase):
                 rows = translation_file_reader(fileobj, fileformat='po')
                 actual = {row['src']: row['value'] for row in rows if row['type'] != 'code'}
                 self.assertEqual(actual.get(src), value)
+
+    def test_icon_search(self):
+        # the icon picker matches every word of the search in the icon name, its English
+        # tags or its tags translated in the user's language, normalized like this
+        def normalize(text):
+            return remove_accents(text.casefold())
+
+        forget_code_translations()
+        for word, icon in ICON_SEARCHES:
+            with self.subTest(word=word, icon=icon):
+                tags = ICONS[icon]['tags']
+                self.assertNotIn(normalize(word), normalize(f"{icon} {tags._source}"))
+                self.assertIn(normalize(word), normalize(tags._translate('tr_TR')))

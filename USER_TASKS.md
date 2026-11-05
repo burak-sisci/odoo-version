@@ -1,6 +1,6 @@
 # Kullanıcıdan Beklenenler
 
-Son güncelleme: 2026-11-04
+Son güncelleme: 2026-11-05
 İlgili kararlar: D-003, D-015, D-021
 
 Bu belge, **kullanıcının yapması, karar vermesi veya onaylaması gereken her şeyin** tek listesidir.
@@ -221,7 +221,9 @@ Tür: **Eylem** (senin yapacağın iş) · **Karar** (seçim) · **Onay** (Claud
     - Teklif şablonları (`sale_management`): Optional → İsteğe Bağlı, Section → Bölüm, Collapse Prices/Composition → Fiyatları/Bileşenleri Gizle (upstream gibi), Share (şirketler arası) → Paylaşımlı.
     - Portal ve kaynak takvimi (`portal`, `resource`): Contact → Kişi (upstream'in "Kontak"ı yerine), Your contact → İlgili kişiniz, çalışma takviminin satırı (attendance) → çalışma saati, Repeat every → Tekrar aralığı, Absence → Devamsızlık.
     - Satış/satın alma–stok (`sale_stock`, `stock_account`, `purchase_stock`): Incoterm → Teslim Şekli (gümrükteki karşılığı; upstream'deki "Teslimat Koşulu", "İncoterm", "Inkoterm" yerine, `account` ve `sale`'de de), Return → İade, Receipt → Alım (upstream gibi), COGS → SMM, Free Qty → Boş Stok, Suggest (satın alma önerisi) → Öneri, Inventory → Stok (upstream gibi).
-    - Simge seçicinin arama etiketleri (`web`, 659 terim) en sona bırakıldı. Yalnız simge aramasını etkiliyorlar, İngilizce arama zaten çalışıyor. Çevrildiklerinde her simgeye küçük harfli kısa bir Türkçe anahtar sözcük listesi yazılacak; İngilizce eş anlamlıların hepsi karşılanmayacak.
+    - Küçük modüller (otonom mesai 7): Dashboard → Kontrol Paneli (upstream'de "Rapor Paneli", "Gösterge Paneli" de geçiyordu), Spreadsheet → Hesap Tablosu ("E-tablo", "Elektronik Çizelge" yerine), Chart → Grafik ("Plan" yerine), Passkey → Geçiş Anahtarı (upstream'de dört ayrı ad), Two-factor authentication → İki faktörlü kimlik doğrulama, Password → Parola, Subcontracting → Fason (Subcontractor → Fasoncu), To Order (sipariş edilecek miktar) → Sipariş Verilecek. Kayıt alanları: Display Name → Görünen Ad, Created by/on → Oluşturan/Oluşturulma, Last Updated by/on → Son Güncelleyen/Son Güncelleme; başka modüllerdeki upstream "İsim Göster"i (309 terim) şimdilik değiştirilmedi.
+    - Hesap e-postaları (`auth_signup`): selam "Sayın …", konu "{{şirket}} hesabınız", "{{şirket}} ailesine hoş geldiniz!". Sohbet botunun komutları ("help", "/help") çevrilmedi; bot yazılanı çevrilmiş metinle karşılaştırıyor ("tura başla" çalışır).
+    - Simge seçicinin arama etiketleri (`web`, 659 terim) çevrildi: her simgeye küçük harfli kısa bir Türkçe anahtar sözcük listesi (ör. çöp kutusu simgesi "sil|çöp|çöp kutusu|kaldır|at"); İngilizce eş anlamlıların hepsi karşılanmadı. Marka adları kaldı; Türkçe listelerde "odoo" yok. İngilizce arama da çalışmaya devam ediyor. Aksan farkı aramada yok sayıldığı için "çöp" İngilizce "copy" simgesini de bulur (upstream davranışı).
   - Seçenekler: **A** — varsayımlar kalsın · **B** — modül kurulurken var olan çevirilere dokunulmasın, yalnız eksikler tamamlansın · **C** — "Odoo" geçen metinlerin çevirisinde doğrudan "Nexus" yazılsın · **D** — başka bir düzen.
   - Claude önerisi: **A**. Kurulumda üzerine yazma, hatalı upstream çevirilerinin (ör. "Sil") önceden kurulmuş veritabanlarında da düzelmesini sağlıyor; yeni müşteride zaten ilk kurulumdur.
   - Ne zaman: acil değil; F9 pilotundan önce. Terim tercihlerin varsa (ör. "Kontak" yerine "Kişi") liste olarak verebilirsin.

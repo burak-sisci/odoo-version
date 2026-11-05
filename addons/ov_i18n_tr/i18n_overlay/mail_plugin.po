@@ -1,0 +1,229 @@
+# Turkish translations of the mail_plugin module completing upstream's (ov_i18n_tr, T3.6).
+# Read after mail_plugin/i18n/tr.po. The comments come from mail_plugin.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: mail_plugin
+#. odoo-python
+#: code:addons/mail_plugin/controllers/mail_plugin.py:0
+msgid "%(name)s #%(id)s"
+msgstr "%(name)s #%(id)s"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Add to Odoo"
+msgstr "Odoo'ya Ekle"
+
+#. module: mail_plugin
+#: model:ir.module.module,summary:base.module_mail_plugin
+msgid "Allows integration with mail plugins."
+msgstr "E-posta eklentileriyle entegrasyon sağlar."
+
+#. module: mail_plugin
+#. odoo-python
+#: code:addons/mail_plugin/controllers/mail_plugin.py:0
+msgid "Bad Email."
+msgstr "Geçersiz e-posta."
+
+#. module: mail_plugin
+#: model_terms:digest.tip,tip_description:mail_plugin.digest_tip_mail_plugin
+msgid "Connect Odoo to your inbox to access your data from any email."
+msgstr ""
+"Verilerinize her e-postadan erişmek için Odoo'yu gelen kutunuza bağlayın."
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Contact Details"
+msgstr "Kişi Ayrıntıları"
+
+#. module: mail_plugin
+#: model:ir.model.fields,field_description:mail_plugin.field_ir_http__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+msgid "Email already logged"
+msgstr "E-posta zaten kaydedildi"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Email already logged on the contact"
+msgstr "E-posta kişiye zaten kaydedildi"
+
+#. module: mail_plugin
+#: model_terms:digest.tip,tip_description:mail_plugin.digest_tip_mail_plugin
+msgid "Gmail"
+msgstr "Gmail"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "In this conversation"
+msgstr "Bu yazışmada"
+
+#. module: mail_plugin
+#: model:ir.module.module,description:base.module_mail_plugin
+msgid ""
+"Integrate Odoo with your mailbox, get information about contacts directly "
+"inside your mailbox, log content of emails as internal notes"
+msgstr ""
+"Odoo'yu posta kutunuzla bütünleştirin: kişi bilgilerini doğrudan posta "
+"kutunuzda görün, e-posta içeriklerini iç not olarak kaydedin"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Log email"
+msgstr "E-postayı kaydet"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Log out"
+msgstr "Oturumu Kapat"
+
+#. module: mail_plugin
+#. odoo-python
+#: code:addons/mail_plugin/controllers/mail_plugin.py:0
+msgid "Logged from"
+msgstr "Şuradan kaydedildi"
+
+#. module: mail_plugin
+#: model:ir.module.module,shortdesc:base.module_mail_plugin
+msgid "Mail Plugin"
+msgstr "E-posta Eklentisi"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "New Person"
+msgstr "Yeni Kişi"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "No record found."
+msgstr "Kayıt bulunamadı."
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+msgid "Odoo for Gmail"
+msgstr "Gmail için Odoo"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Odoo for Outlook"
+msgstr "Outlook için Odoo"
+
+#. module: mail_plugin
+#: model_terms:digest.tip,tip_description:mail_plugin.digest_tip_mail_plugin
+msgid "Outlook"
+msgstr "Outlook"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Refresh"
+msgstr "Yenile"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+msgid "Search %s"
+msgstr "%s içinde ara"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Search contact"
+msgstr "Kişi ara"
+
+#. module: mail_plugin
+#. odoo-python
+#: code:addons/mail_plugin/controllers/mail_plugin.py:0
+msgid "Sent on: %s"
+msgstr "Gönderilme: %s"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Show all"
+msgstr "Tümünü göster"
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Something bad happened. Please, try again later."
+msgstr "Bir sorun oluştu. Lütfen daha sonra tekrar deneyin."
+
+#. module: mail_plugin
+#: model_terms:digest.tip,tip_description:mail_plugin.digest_tip_mail_plugin
+msgid "Tip: Connect Odoo to your inbox"
+msgstr "İpucu: Odoo'yu gelen kutunuza bağlayın"
+
+#. module: mail_plugin
+#: model:digest.tip,name:mail_plugin.digest_tip_mail_plugin
+msgid "Tip: Connect Odoo to your inbox "
+msgstr "İpucu: Odoo'yu gelen kutunuza bağlayın "
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "Try using different keywords."
+msgstr "Farklı anahtar sözcükler deneyin."
+
+#. module: mail_plugin
+#. odoo-javascript
+#: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
+#: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
+msgid "View in Odoo"
+msgstr "Odoo'da Görüntüle"
+
+#. module: mail_plugin
+#. odoo-python
+#: code:addons/mail_plugin/controllers/mail_plugin.py:0
+msgid "You need to specify at least the partner_id or the email"
+msgstr "En azından partner_id veya e-posta belirtilmelidir"
+
+#. module: mail_plugin
+#. odoo-python
+#: code:addons/mail_plugin/controllers/mail_plugin.py:0
+msgid "by %s"
+msgstr "%s tarafından"
+
+#. module: mail_plugin
+#: model_terms:digest.tip,tip_description:mail_plugin.digest_tip_mail_plugin
+msgid "connect to <br>"
+msgstr "bağlan: <br>"
+
+#. module: mail_plugin
+#: model_terms:ir.ui.view,arch_db:mail_plugin.app_auth
+msgid "to access your Odoo database?"
+msgstr "uygulamasının Odoo veritabanınıza erişmesine izin verilsin mi?"

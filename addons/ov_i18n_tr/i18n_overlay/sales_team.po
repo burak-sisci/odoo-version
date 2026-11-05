@@ -1,0 +1,89 @@
+# Turkish translations of the sales_team module completing upstream's (ov_i18n_tr, T3.6).
+# Read after sales_team/i18n/tr.po. The comments come from sales_team.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: sales_team
+#: model:ir.module.module,description:base.module_sales_team
+msgid ""
+"\n"
+"Using this application you can manage Sales Teams with CRM and/or Sales\n"
+"=======================================================================\n"
+msgstr ""
+"\n"
+"Bu uygulamayla CRM ve/veya Satış için satış ekiplerini yönetebilirsiniz\n"
+"=======================================================================\n"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_form
+msgid ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"business\" "
+"title=\"Company\"/>"
+msgstr ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"business\" "
+"title=\"Şirket\"/>"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_form
+msgid ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"group\" title=\"Sales "
+"Team\"/>"
+msgstr ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"group\" title=\"Satış "
+"Ekibi\"/>"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_form
+msgid ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"mail\" title=\"Email\"/>"
+msgstr ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"mail\" title=\"E-posta\"/>"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_form
+msgid ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"phone\" title=\"Phone\"/>"
+msgstr ""
+"<i class=\"d-none d-md-block oi oi-filled\" data-icon=\"phone\" "
+"title=\"Telefon\"/>"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_kanban
+msgid ""
+"<i class=\"oi oi-fw oi-filled me-1 text-primary\" data-icon=\"group\" "
+"title=\"Sales Team\"/>"
+msgstr ""
+"<i class=\"oi oi-fw oi-filled me-1 text-primary\" data-icon=\"group\" "
+"title=\"Satış Ekibi\"/>"
+
+#. module: sales_team
+#: model:res.groups.privilege,placeholder:sales_team.res_groups_privilege_sales
+msgid "No"
+msgstr "Hayır"
+
+#. module: sales_team
+#. odoo-python
+#: code:addons/sales_team/models/crm_team.py:0
+msgid ""
+"The following team members are not allowed in company '%(company)s' of the "
+"Sales Team '%(team)s': %(users)s"
+msgstr ""
+"Şu ekip üyeleri, '%(team)s' satış ekibinin '%(company)s' şirketinde yetkili "
+"değil: %(users)s"
+
+#. module: sales_team
+#. odoo-python
+#: code:addons/sales_team/models/crm_team_member.py:0
+msgid ""
+"User '%(user)s' is not allowed in the company '%(company)s' of the Sales "
+"Team '%(team)s'."
+msgstr ""
+"'%(user)s' kullanıcısı, '%(team)s' satış ekibinin '%(company)s' şirketinde "
+"yetkili değil."

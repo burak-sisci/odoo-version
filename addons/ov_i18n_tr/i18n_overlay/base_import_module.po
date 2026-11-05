@@ -1,0 +1,51 @@
+# Turkish translations of the base_import_module module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base_import_module/i18n/tr.po. The comments come from base_import_module.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base_import_module
+#: model:ir.module.module,description:base.module_base_import_module
+msgid ""
+"\n"
+"Import a custom data module\n"
+"===========================\n"
+"\n"
+"This module allows authorized users to import a custom data module (.xml "
+"files and static assests)\n"
+"for customization purpose.\n"
+msgstr ""
+"\n"
+"Özel bir veri modülünü içe aktarın\n"
+"==================================\n"
+"\n"
+"Bu modül, yetkili kullanıcıların özelleştirme amacıyla özel bir veri "
+"modülünü\n"
+"(.xml dosyaları ve statik dosyalar) içe aktarmasını sağlar.\n"
+
+#. module: base_import_module
+#: model:ir.module.module,shortdesc:base.module_base_import_module
+msgid "Base import module"
+msgstr "Modül içe aktarma"
+
+#. module: base_import_module
+#: model:ir.model.fields,field_description:base_import_module.field_ir_module_module__total_lines_of_code
+msgid "Extra lines of Code"
+msgstr "Ek kod satırları"
+
+#. module: base_import_module
+#: model:ir.model.fields,help:base_import_module.field_ir_module_module__total_lines_of_code
+msgid ""
+"Number of lines of code that may be billed under an Enterprise "
+"subscription. For exact pricing details, please contact your account "
+"manager or visit odoo.com/pricing."
+msgstr ""
+"Enterprise aboneliği kapsamında faturalanabilecek kod satırı sayısı. Kesin "
+"fiyat ayrıntıları için hesap yöneticinizle iletişime geçin veya "
+"odoo.com/pricing adresini ziyaret edin."

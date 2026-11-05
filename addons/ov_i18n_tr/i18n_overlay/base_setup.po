@@ -1,0 +1,45 @@
+# Turkish translations of the base_setup module completing upstream's (ov_i18n_tr, T3.6).
+# Read after base_setup/i18n/tr.po. The comments come from base_setup.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: base_setup
+#: model:ir.module.module,description:base.module_base_setup
+msgid ""
+"\n"
+"This module helps to configure the system at the installation of a new "
+"database.\n"
+"================================================================================\n"
+"\n"
+"Shows you a list of applications features to install from.\n"
+"\n"
+msgstr ""
+"\n"
+"Bu modül, yeni bir veritabanı kurulurken sistemi yapılandırmaya yardımcı "
+"olur.\n"
+"==============================================================================\n"
+"\n"
+"Kurulabilecek uygulama özelliklerinin bir listesini gösterir.\n"
+"\n"
+
+#. module: base_setup
+#: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
+msgid "Get the latitude and the longitude of your partners"
+msgstr "İş ortaklarınızın enlem ve boylamını alın"
+
+#. module: base_setup
+#: model:ir.module.module,shortdesc:base.module_base_setup
+msgid "Initial Setup Tools"
+msgstr "İlk Kurulum Araçları"
+
+#. module: base_setup
+#: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
+msgid "Number of active users"
+msgstr "Etkin kullanıcı sayısı"

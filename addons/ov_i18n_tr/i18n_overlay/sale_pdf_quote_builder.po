@@ -1,0 +1,46 @@
+# Turkish translations of the sale_pdf_quote_builder module completing upstream's (ov_i18n_tr, T3.6).
+# Read after sale_pdf_quote_builder/i18n/tr.po. The comments come from sale_pdf_quote_builder.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: sale_pdf_quote_builder
+#: model:ir.module.module,description:base.module_sale_pdf_quote_builder
+msgid "Build nice quotations"
+msgstr "Güzel teklifler hazırlayın"
+
+#. module: sale_pdf_quote_builder
+#: model_terms:ir.ui.view,arch_db:sale_pdf_quote_builder.product_document_form
+msgid "Configure"
+msgstr "Yapılandır"
+
+#. module: sale_pdf_quote_builder
+#: model:ir.model.fields,field_description:sale_pdf_quote_builder.field_product_document__form_field_ids
+msgid "Fields"
+msgstr "Alanlar"
+
+#. module: sale_pdf_quote_builder
+#: model:ir.model,name:sale_pdf_quote_builder.model_sale_order_template
+msgid "Order Templates"
+msgstr "Sipariş Şablonları"
+
+#. module: sale_pdf_quote_builder
+#: model:ir.model.fields,field_description:sale_pdf_quote_builder.field_quotation_document__res_access_read
+msgid "Res Access Read"
+msgstr "Kaynak Okuma Erişimi"
+
+#. module: sale_pdf_quote_builder
+#: model:ir.model.fields,field_description:sale_pdf_quote_builder.field_quotation_document__res_access_write
+msgid "Res Access Write"
+msgstr "Kaynak Yazma Erişimi"
+
+#. module: sale_pdf_quote_builder
+#: model:ir.module.module,shortdesc:base.module_sale_pdf_quote_builder
+msgid "Sales PDF Quotation Builder"
+msgstr "Satış PDF Teklif Hazırlayıcı"

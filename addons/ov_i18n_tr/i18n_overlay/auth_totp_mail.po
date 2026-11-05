@@ -1,0 +1,163 @@
+# Turkish translations of the auth_totp_mail module completing upstream's (ov_i18n_tr, T3.6).
+# Read after auth_totp_mail/i18n/tr.po. The comments come from auth_totp_mail.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: auth_totp_mail
+#: model:ir.module.module,description:base.module_auth_totp_mail
+msgid ""
+"\n"
+"2FA Invite mail\n"
+"===============\n"
+"Allow the users to invite another user to use Two-Factor authentication\n"
+"by sending an email to the target user. This email redirects them to:\n"
+"- the users security settings if the user is internal.\n"
+"- the portal security settings page if the user is not internal.\n"
+msgstr ""
+"\n"
+"2FA davet e-postası\n"
+"===================\n"
+"Kullanıcıların, hedef kullanıcıya e-posta göndererek başka bir kullanıcıyı "
+"iki faktörlü\n"
+"kimlik doğrulamayı kullanmaya davet etmesini sağlar. Bu e-posta kullanıcıyı "
+"şuraya yönlendirir:\n"
+"- iç kullanıcıysa kullanıcının güvenlik ayarlarına;\n"
+"- iç kullanıcı değilse portaldaki güvenlik ayarları sayfasına.\n"
+
+#. module: auth_totp_mail
+#: model:ir.module.module,shortdesc:base.module_auth_totp_mail
+msgid "2FA Invite mail"
+msgstr "2FA davet e-postası"
+
+#. module: auth_totp_mail
+#: model:mail.template,body_html:auth_totp_mail.mail_template_totp_mail_code
+msgid ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"Dear <t t-out=\"object.partner_id.name or ''\"/><br/><br/>\n"
+"<p>Someone is trying to log in into your account with a new device.</p>\n"
+"<ul>\n"
+"    <t t-set=\"not_available\">N/A</t>\n"
+"    <li>Location: <t t-out=\"ctx.get('location') or not_available\"/></li>\n"
+"    <li>Device: <t t-out=\"ctx.get('device') or not_available\"/></li>\n"
+"    <li>Browser: <t t-out=\"ctx.get('browser') or not_available\"/></li>\n"
+"    <li>IP address: <t t-out=\"ctx.get('ip') or not_available\"/></li>\n"
+"</ul>\n"
+"<p>If this is you, please enter the following code to complete the "
+"login:</p>\n"
+"<t t-set=\"code_expiration\" t-value=\"object._get_totp_mail_code()\"/>\n"
+"<t t-set=\"code\" t-value=\"code_expiration[0]\"/>\n"
+"<t t-set=\"expiration\" t-value=\"code_expiration[1]\"/>\n"
+"<div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"    <span t-out=\"code\" style=\"background-color:#faf9fa; border: 1px solid "
+"#dad8de; padding: 8px 16px 8px 16px; font-size: 24px; color: #875A7B; "
+"border-radius: 5px;\"/>\n"
+"    <p><small>Expires in <t t-out=\"expiration\"/>.</small></p>\n"
+"</div>\n"
+"\n"
+"<p style=\"margin: 16px 0px 16px 0px;\">\n"
+"    If you did NOT initiate this log-in,\n"
+"    you should immediately change your password to ensure account security.\n"
+"</p>\n"
+"\n"
+"<p style=\"margin: 16px 0px 16px 0px;\">\n"
+"    We also strongly recommend enabling the two-factor authentication using "
+"an authenticator app to help secure your account.\n"
+"</p>\n"
+"\n"
+"<p style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"    <a t-att-href=\"object.get_totp_invite_url()\" "
+"style=\"background-color:#875A7B; padding: 8px 16px 8px 16px; "
+"text-decoration: none; color: #fff; border-radius: 5px;\">\n"
+"        Activate my two-factor authentication\n"
+"    </a>\n"
+"</p>\n"
+"</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"Sayın <t t-out=\"object.partner_id.name or ''\"/><br/><br/>\n"
+"<p>Birisi yeni bir cihazla hesabınızda oturum açmaya çalışıyor.</p>\n"
+"<ul>\n"
+"    <t t-set=\"not_available\">Yok</t>\n"
+"    <li>Konum: <t t-out=\"ctx.get('location') or not_available\"/></li>\n"
+"    <li>Cihaz: <t t-out=\"ctx.get('device') or not_available\"/></li>\n"
+"    <li>Tarayıcı: <t t-out=\"ctx.get('browser') or not_available\"/></li>\n"
+"    <li>IP adresi: <t t-out=\"ctx.get('ip') or not_available\"/></li>\n"
+"</ul>\n"
+"<p>Bu sizseniz oturum açmayı tamamlamak için lütfen şu kodu girin:</p>\n"
+"<t t-set=\"code_expiration\" t-value=\"object._get_totp_mail_code()\"/>\n"
+"<t t-set=\"code\" t-value=\"code_expiration[0]\"/>\n"
+"<t t-set=\"expiration\" t-value=\"code_expiration[1]\"/>\n"
+"<div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"    <span t-out=\"code\" style=\"background-color:#faf9fa; border: 1px solid "
+"#dad8de; padding: 8px 16px 8px 16px; font-size: 24px; color: #875A7B; "
+"border-radius: 5px;\"/>\n"
+"    <p><small>Geçerlilik süresi: <t t-out=\"expiration\"/>.</small></p>\n"
+"</div>\n"
+"\n"
+"<p style=\"margin: 16px 0px 16px 0px;\">\n"
+"    Bu oturum açma girişimini siz BAŞLATMADIYSANIZ,\n"
+"    hesabınızın güvenliği için parolanızı hemen değiştirin.\n"
+"</p>\n"
+"\n"
+"<p style=\"margin: 16px 0px 16px 0px;\">\n"
+"    Hesabınızın güvenliği için bir kimlik doğrulama uygulamasıyla iki "
+"faktörlü kimlik doğrulamayı etkinleştirmenizi de önemle öneririz.\n"
+"</p>\n"
+"\n"
+"<p style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"    <a t-att-href=\"object.get_totp_invite_url()\" "
+"style=\"background-color:#875A7B; padding: 8px 16px 8px 16px; "
+"text-decoration: none; color: #fff; border-radius: 5px;\">\n"
+"        İki faktörlü kimlik doğrulamamı etkinleştir\n"
+"    </a>\n"
+"</p>\n"
+"</div>\n"
+"        "
+
+#. module: auth_totp_mail
+#: model_terms:ir.ui.view,arch_db:auth_totp_mail.auth_totp_mail_form
+msgid "Check your inbox! We sent a code to"
+msgstr "Gelen kutunuza bakın! Şu adrese bir kod gönderdik:"
+
+#. module: auth_totp_mail
+#. odoo-javascript
+#: code:addons/auth_totp_mail/static/src/services/check_identity/check_identity.xml:0
+msgid "Check your mailbox"
+msgstr "Posta kutunuza bakın"
+
+#. module: auth_totp_mail
+#: model:ir.model,name:auth_totp_mail.model_ir_http
+msgid "HTTP Routing"
+msgstr "HTTP Yönlendirme"
+
+#. module: auth_totp_mail
+#. odoo-javascript
+#: code:addons/auth_totp_mail/static/src/services/check_identity/check_identity.xml:0
+msgid "Six-digit authentication code"
+msgstr "Altı haneli kimlik doğrulama kodu"
+
+#. module: auth_totp_mail
+#. odoo-javascript
+#: code:addons/auth_totp_mail/static/src/services/check_identity/check_identity.xml:0
+msgid "Use an authentication code sent by email"
+msgstr "E-postayla gönderilen bir kimlik doğrulama kodu kullanın"
+
+#. module: auth_totp_mail
+#. odoo-javascript
+#: code:addons/auth_totp_mail/static/src/services/check_identity/check_identity.xml:0
+msgid "Verify"
+msgstr "Doğrula"
+
+#. module: auth_totp_mail
+#. odoo-javascript
+#: code:addons/auth_totp_mail/static/src/services/check_identity/check_identity.xml:0
+msgid "We sent a 6-digit code to your email address."
+msgstr "E-posta adresinize 6 haneli bir kod gönderdik."

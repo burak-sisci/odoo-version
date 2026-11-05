@@ -1,0 +1,33 @@
+# Turkish translations of the web_hierarchy module completing upstream's (ov_i18n_tr, T3.6).
+# Read after web_hierarchy/i18n/tr.po. The comments come from web_hierarchy.pot;
+# edit with tools/po_coverage.py (add, sync).
+msgid ""
+msgstr ""
+"Project-Id-Version: ov_i18n_tr 20.0\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: web_hierarchy
+#: model:ir.module.module,description:base.module_web_hierarchy
+msgid ""
+"\n"
+"Odoo Web Hierarchy view\n"
+"=======================\n"
+"\n"
+"This module adds a new view called to be able to define a view to display\n"
+"an organization such as an Organization Chart for employees for instance.\n"
+msgstr ""
+"\n"
+"Odoo Web Hiyerarşi görünümü\n"
+"===========================\n"
+"\n"
+"Bu modül, örneğin çalışanlar için bir organizasyon şeması gibi bir yapıyı\n"
+"göstermek üzere bir görünüm tanımlamayı sağlayan yeni bir görünüm ekler.\n"
+
+#. module: web_hierarchy
+#: model:ir.module.module,shortdesc:base.module_web_hierarchy
+msgid "Web Hierarchy"
+msgstr "Web Hiyerarşi"
