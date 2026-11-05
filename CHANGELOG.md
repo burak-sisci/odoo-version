@@ -7,6 +7,28 @@ Kategoriler: **Kararlar**, **Belgeler**, **Kod**, **Ortam**, **Araştırma**.
 
 ## 2026-11-05
 
+### Adım: Türk belgeleri gerçek PDF motorlarıyla (T3.7, 2. adım) — otonom mesai 7
+
+**Kod**
+- `ov_l10n_tr/tests/common.py`: `TurkishPdfCommon` (HttpCase). Belgeyi seçilen motorla (`report.pdf_engine_default`) gerçekten PDF'e basar. `assertPdf` şunları ölçer:
+  - beklenen metin (Türkçe harfler, boşluksuz karşılaştırma);
+  - metinde "odoo" geçmemesi;
+  - bütün yazı tiplerinin gömülü olması;
+  - ilk sayfanın A4 olması (±2 pt);
+  - üst veri değerlerinde "odoo" geçmemesi.
+  - Paper Muncher'ın test sunucusundan varlık çekebilmesi için upstream testlerindeki gibi çerez ve kilit ayarı.
+  - `OV_PDF_ENGINES` ortam değişkenindeki motor çalışmıyorsa test düşer (CI motorsuz yeşil görünmez). Diğer motorlar atlanır. `OV_PDF_DIR` verilirse PDF'ler oraya yazılır.
+- PDF testleri: `ov_l10n_tr` (fatura, tahsilat makbuzu), `ov_l10n_tr_sale` (gerçek kişiye teklif), `ov_l10n_tr_stock` (sevk irsaliyesi). Her biri iki motorla alt test. Etiket `ov_pdf`, `-standard` (olağan koşularda çalışmaz).
+
+**Ortam**
+- CI `test` işine üç adım eklendi:
+  - "PDF engines": wkhtmltopdf 0.12.6.1-3 (jammy paketi) ve Paper Muncher v0.9.0 (noble paketi) sha256 özetiyle doğrulanıp kurulur.
+  - "Turkish documents in PDF": `run_tests.py ov_l10n_tr_sale,ov_l10n_tr_stock,base_report_paper_muncher --tags ov_pdf`.
+  - "Printed PDFs": basılan PDF'ler 14 gün CI çıktısı (`turkish-documents-pdf`) olarak indirilebilir.
+
+**Ölçüm**
+- Yerel (motor yok): `--tags ov_pdf` 4 test, 8 alt test "motor kurulu değil" diye atlandı. Standart koşu 9 test, PDF testleri koşmadı.
+
 ### Adım: Türk belgelerinin içeriği; çeviri katmanının noupdate düzeltmesi (T3.7, 1. adım) — otonom mesai 7
 
 **Araştırma**
